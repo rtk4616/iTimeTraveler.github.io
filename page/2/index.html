@@ -127,7 +127,7 @@ TextView 对于富文本效果的实现支持不支持呢？比如“局部文�
 一、需求效果
 
 二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
-123456789101112131415161718textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色For...
+textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = ...
           
 
         
@@ -185,7 +185,7 @@ TextView 对于富文本效果的实现支持不支持呢？比如“局部文�
             引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
 使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawingCache会失败。这种方式比较适合对应用界面或者某一部分的截图。步骤很简单：
-123456view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用DrawingCache并创建位图  //创建一个DrawingC...
+view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用DrawingCache并创建位图  //创建一个DrawingCache的拷...
           
 
         
@@ -303,8 +303,8 @@ Android中对View的截图也有以下两种方式，值得注意的是两个方
 也就是说，类型放在后面是为了更加清晰易懂。Rob Pike 曾经在 Go 官方博客解释过这个问题（查看原文：Go’s Declaration Syntax），简略翻译如下（水平有限翻译的不对的地方见谅）：
 引言Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax）会和传统的C家族语言不同。在这篇博文里，我们会进行一个比较，并做出解答。
 C 的语法首先，先看看 C 的语法。C 采用了一种聪明而不同寻常的声明语法。声明变量时，只需写出一个带有目标变量名的表达式，然后在表达式里指明该表达式本身的类型即可。比如：
-1int x;
-上面的代码声明了 x 变量，并且其...
+int x;
+上面的代码声明了 x 变量，并且其类...
           
 
         
@@ -506,7 +506,7 @@ Torch impleme...
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：1234567891011121314&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius...
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
           
 
         

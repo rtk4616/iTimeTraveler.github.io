@@ -135,7 +135,7 @@ Activity和Fragment的生命周期图谱可以参考我的另外一篇博客：�
 三、代码验证
   MainActivity和SecondActivity的布局是这样的，里面各添加了一个Fragment：
     
-1234567...
+/**  * ...
           
 
         
@@ -263,7 +263,7 @@ Activity和Fragment生命周期的对比图：【参考资料】：1、Android F
 
 【实现】
 1、首先,让对应的View设置一个OnTouchListener，在手指按下时触发不停的发送消息,手指抬起时停止发送。
-1234567891011subt...
+subtractButton.se...
           
 
         
@@ -322,8 +322,8 @@ Activity和Fragment生命周期的对比图：【参考资料】：1、Android F
 第一、继承不同第一个不同主要是历史原因。Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。
 
 
-12public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;public class Hashtable&lt;K, V&gt; extends Dictionary&lt;K, V&gt; implements Map&lt;K, V&gt;, Cloneable, Serializable &#123;...&#125;
-而HashMap继承的抽象类...
+public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;public class Hashtable&lt;K, V&gt; extends Dictionary&lt;K, V&gt; implements Map&lt;K, V&gt;, Cloneable, Serializable &#123;...&#125;
+而HashMap继承的抽象类Ab...
           
 
         
@@ -385,7 +385,7 @@ Activity和Fragment生命周期的对比图：【参考资料】：1、Android F
 接下来博主抽时间要整理一下各经典算法思想和心得，敬请期待
 
 
-一、快速排序（Quicksort）12345678910111213141516171819202122232425262728293031323334353637383940import java.util.Arrays;public class MySort &#123;	public static void main(String args[])&#123;		int[] array = &#123;5,3,9,1,6,4,10,2,8,7&#125;;		Syst...
+一、快速排序（Quicksort）import java.util.Arrays;public class MySort &#123;	public static void main(String args[])&#123;		int[] array = &#123;5,3,9,1,6,4,10,2,8,7&#125;;		System.out.println(&quot;Before: &quot; + Arrays.toString(array));		new MyS...
           
 
         
@@ -571,7 +571,7 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
             <div class="entry-summary" style="margin-left:0;">
             最近项目正在将原系统拆分为小型App，所以需要在原Project中启动另一个新的App中的Activity。这样的话启动要用到ComponentName ，它就是用来打开其他应用程序中的Activity或服务的。
 用法其实很简单，像下面这样：
-123456//第一个参数是Activity所在的package包名，第二个参数是完整的Class类名（包括包路径）ComponentName componetName = new ComponentName("com.cybo3d.cybox.miya", 			  								"com.cybo3d.cybox.miya.MainActivity");Intent intent = new Intent();intent.setCompo...
+//第一个参数是Activity所在的package包名，第二个参数是完整的Class类名（包括包路径）ComponentName componetName = new ComponentName("com.cybo3d.cybox.miya", 			  								"com.cybo3d.cybox.miya.MainActivity");Intent intent = new Intent();intent.setComponent(c...
           
 
         
@@ -634,7 +634,7 @@ Android中保存图片的方法可能有如下两种：
 
 第一种是自己写方法，如下代码：
 
-123456789101112131415161718public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Environment.getExternalStorageDirectory(), "Boohee");    if (!appDir.exists(...
+public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Environment.getExternalStorageDirectory(), "Boohee");    if (!appDir.exists()) &#123;        appDir.mkd...
           
 
         
@@ -691,7 +691,7 @@ Android中保存图片的方法可能有如下两种：
             <div class="entry-summary" style="margin-left:0;">
             一、问题描述：问答区有个问题是这样问的：如何在eclipse中删除多行首字母？
 题主的问题是代码中每行都有序号，这些序号一行一行地删太麻烦，如何进行批量删除？我们在进行代码重用的时候时常会出现行号同时被复制的情况，比如下面的这点代码：
-12345678910111213141516171819202122232425262728155.     @Override  156.     public boolean onKeyDown(int keyCode, KeyEvent event)   157.     &#123;   158.         Log.d("onKeyDown:", " keyCode=" + keyCode + " KeyEvent=" + event);...
+155.     @Override  156.     public boolean onKeyDown(int keyCode, KeyEvent event)   157.     &#123;   158.         Log.d("onKeyDown:", " keyCode=" + keyCode + " KeyEvent=" + event);   159.         switch (keyCode)   160.        ...
           
 
         
