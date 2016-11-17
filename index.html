@@ -94,6 +94,103 @@
         
           <section id="main">
   
+    <article id="post-【Android】微信热修复 Tinker 的集成和使用"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/">【Android】微信热修复 Tinker 的集成和使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="article-date">
+	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">November 17, 2016</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p> <strong><code>Tinker</code></strong>： n.   〈英〉小炉匠，补锅匠，修补匠</p>
+<p><a href="https://github.com/Tencent/tinker"><strong>Tinker</strong></a> 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 <code>dex</code>, <code>library</code> and <code>resources</code> 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。</p>
+<p>Tinker GitHub: <a href="https://github.com/Tencent/tinker">https://github.com/Tencent/tinker</a></p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a><strong>使用步骤</strong></h2><h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><p>很多人遇到的第一个错误就是提示 <code>tinkerId is not set</code> ，这个在tinker-sample-android的<code>app/build.gradle</code> 中默认设置为Git的提交版本号，如下</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : gitSha()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : <span class="string">"tinker_id_2333"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。</p>
+<h3 id="一、工程根目录的build-gradle中添加依赖"><a href="#一、工程根目录的build-gradle中添加依赖" class="headerlink" title="一、工程根目录的build.gradle中添加依赖"></a><strong>一、工程根目录的build.gradle中添加依赖</strong></h3><p>在项目的build.gradle中，添加<code>tinker-patch-gradle-plugin</code>的依赖</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath (<span class="string">'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此时如果gradle Sync不成功可能是因为没有加入 <strong>jcenter仓库</strong></p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenLocal()</div><div class="line">        jcenter()    <span class="comment">//注意这里，因为maven仓库里没有</span></div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.2.2'</span></div><div class="line">        classpath <span class="string">"com.tencent.tinker:tinker-patch-gradle-plugin:$&#123;TINKER_VERSION&#125;"</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// default values for all sub projects</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二、在app-build-gradle中的dependencies节点添加依赖"><a href="#二、在app-build-gradle中的dependencies节点添加依赖" class="headerlink" title="二、在app/build.gradle中的dependencies节点添加依赖"></a><strong>二、在app/build.gradle中的dependencies节点添加依赖</strong></h3><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    <span class="comment">//可选，用于生成application类 </span></div><div class="line">    provided(<span class="string">'com.tencent.tinker:tinker-android-anno:1.7.3'</span>)</div><div class="line">    <span class="comment">//tinker的核心库</span></div><div class="line">    compile(<span class="string">'com.tencent.tinker:tinker-android-lib:1.7.3'</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="三、复制官方sample工程app-build-gradle中的其他相关配置"><a href="#三、复制官方sample工程app-build-gradle中的其他相关配置" class="headerlink" title="三、复制官方sample工程app/build.gradle中的其他相关配置"></a><strong>三、复制官方sample工程app/build.gradle中的其他相关配置</strong></h3><p>把官方 tinker-sample-android 工程中的<code>app/build.gradle</code>复制到自己的app/build.gradle中，特别是最下面的task 代码块，否则无法生成patch。</p>
+<h3 id="四、替换自己的Application类"><a href="#四、替换自己的Application类" class="headerlink" title="四、替换自己的Application类"></a><strong>四、替换自己的Application类</strong></h3><p>这一块需要特殊说明一下，tinker为了达到修改应用自己的Application的目的，使用代码框架封装继承<code>DefaultApplicationLike</code>的方式来实现对Application的修改，主要为了减少反射的使用和提高兼容性，具体说明参考 <a href="https://github.com/Tencent/tinker/wiki/Tinker-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%A9%E5%B1%95"><strong>Tinker Wiki：自定义Application类</strong></a>。</p>
+<blockquote>
+<p>在替换更改之前，强烈建议先把项目中的Application类做个备份。因为需要采用Annotation自动生成Application，<strong>原来的Application类需要删掉</strong>。</p>
+</blockquote>
+<p>然后我们修改项目的 Application ，使之继承<code>DefaultApplicationLike</code>; 这块的确有点奇葩,这个<code>DefaultApplicationLike</code>不是继承自Application，需要用注解来设置项目中真正的Application，<strong>Tinker插件会自动生成真正的Application</strong>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@DefaultLifeCycle</span>(application = <span class="string">"com.cuc.android.aps.MyApplication"</span>,<span class="comment">//通过注解，由tinker自动生成MyApplication</span></div><div class="line">        flags = ShareConstants.TINKER_ENABLE_ALL,                 <span class="comment">//tinkerFlags</span></div><div class="line">        loaderClass = <span class="string">"com.tencent.tinker.loader.TinkerLoader"</span>,   <span class="comment">//loaderClassName, 我们这里使用默认</span></div><div class="line">        loadVerifyFlag = <span class="keyword">false</span>)</div><div class="line">        </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationFromTinkerLike</span> <span class="keyword">extends</span> <span class="title">DefaultApplicationLike</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ApplicationFromTinkerLike</span><span class="params">(Application application, <span class="keyword">int</span> tinkerFlags, <span class="keyword">boolean</span> tinkerLoadVerifyFlag, <span class="keyword">long</span> applicationStartElapsedTime, <span class="keyword">long</span> applicationStartMillisTime, Intent tinkerResultIntent, Resources[] resources, ClassLoader[] classLoader, AssetManager[] assetManager)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent, resources, classLoader, assetManager);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上边的<strong><code>com.cuc.android.aps.MyApplication</code></strong>就是真正的Application,不用我们自己写,是自动生成的。然后修改manifest.xml将application指向<code>com.cuc.android.aps.MyApplication</code>就行，开始会报错，build一下项目就好了。</p>
+<h3 id="五、在刚改好的-ApplicationFromTinkerLike-中重载onBaseContextAttached方法"><a href="#五、在刚改好的-ApplicationFromTinkerLike-中重载onBaseContextAttached方法" class="headerlink" title="五、在刚改好的 ApplicationFromTinkerLike 中重载onBaseContextAttached方法"></a><strong>五、在刚改好的 ApplicationFromTinkerLike 中重载onBaseContextAttached方法</strong></h3><p>并在该方法中增加以下代码调用初始化tinker</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBaseContextAttached</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBaseContextAttached(base);</div><div class="line">        </div><div class="line">        <span class="comment">//you must install multiDex whatever tinker is installed!</span></div><div class="line">        MultiDex.install(base);</div><div class="line">        TinkerInstaller.install(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><strong>或者</strong>，我们可以直接将Sample工程中的文件（特别是Utils包下的）拷贝到我们自己的工程中，就像我一样，方便后期使用。比如SampleResultService、TinkerManager这几个类</p>
+<p><img src="http://img.blog.csdn.net/20161117111013179" alt=""></p>
+<p>然后重载onBaseContextAttached方法，可以向我写成下面这样</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBaseContextAttached</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBaseContextAttached(base);</div><div class="line">        <span class="comment">//you must install multiDex whatever tinker is installed!</span></div><div class="line">        MultiDex.install(base);</div><div class="line"></div><div class="line">        MyApplicationContext.application = (MyApplication) getApplication();</div><div class="line">        MyApplicationContext.context = getApplication();</div><div class="line">        TinkerManager.setTinkerApplicationLike(<span class="keyword">this</span>);</div><div class="line">        TinkerManager.initFastCrashProtect();</div><div class="line">        <span class="comment">//should set before tinker is installed</span></div><div class="line">        TinkerManager.setUpgradeRetryEnable(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">        <span class="comment">//optional set logIml, or you can use default debug log</span></div><div class="line">        TinkerInstaller.setLogIml(<span class="keyword">new</span> MyLogImp());</div><div class="line"></div><div class="line">        <span class="comment">//installTinker after load multiDex</span></div><div class="line">        <span class="comment">//or you can put com.tencent.tinker.** to main dex</span></div><div class="line">        TinkerManager.installTinker(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>至此，自定义Application，也就是将Application中的实现移动到SampleApplicationLike中已经完成。</p>
+<h3 id="六、可以开始写测试patch的代码啦"><a href="#六、可以开始写测试patch的代码啦" class="headerlink" title="六、可以开始写测试patch的代码啦"></a><strong>六、可以开始写测试patch的代码啦</strong></h3><p>使用下面代码来load patch</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">TinkerInstaller.onReceiveUpgradePatch(<span class="keyword">this</span>.getApplication(), Environment.getExternalStorageDirectory().getAbsolutePath() + <span class="string">"/patch_signed_7zip.apk"</span>);</div></pre></td></tr></table></figure>
+<p>在自己的工程中增加两个按钮，其中一个按钮用来显示EditText中的内容，另一个按钮用来加载补丁，在加载补丁按钮点击事件中执行加载patch的操作，为后期修复代码bug做准备，代码为：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Button toastInfo = (Button) top.findViewById(R.id.toastInfo);</div><div class="line">        toastInfo.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                //清除补丁</div><div class="line">                Toast.makeText(SysUtils.getApp(),&quot;clean patch!&quot;,Toast.LENGTH_LONG).show();</div><div class="line">                Tinker.with(SysUtils.getApp()).cleanPatch();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        Button loadPatchButton = (Button) top.findViewById(R.id.loadPatch);</div><div class="line">        loadPatchButton.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                //加载补丁（加载成功以后patch文件会自动删掉）</div><div class="line">                TinkerInstaller.onReceiveUpgradePatch(SysUtils.getApp(), Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;/patch_signed_7zip.apk&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="打patch包的步骤"><a href="#打patch包的步骤" class="headerlink" title="打patch包的步骤"></a><strong>打patch包的步骤</strong></h2><p>1、调用<code>assembleDebug</code>编译原始包，AndroidStudio 命令行下运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ ./gradlew assembleDebug</div></pre></td></tr></table></figure>
+<p>编译过的包会保存在build/bakApk中。然后我们将它安装到手机，可以看到补丁并没有加载。</p>
+<p>2、我们需要修改build.gradle中的参数，将步骤一编译保存的安装包路径拷贝到<code>tinkerPatch</code>中的<code>tinkerOldApkPath</code>参数中，根据需要也得同时修改<code>tinkerApplyResourcePath</code> ，<code>tinkerApplyMappingPath</code> 。</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * you can use assembleRelease to build you base apk</div><div class="line"> * use tinkerPatchRelease -POLD_APK=  -PAPPLY_MAPPING=  -PAPPLY_RESOURCE= to build patch</div><div class="line"> * add apk from the build/bakApk</div><div class="line"> */</div><div class="line">ext &#123;</div><div class="line">    <span class="comment">//for some reason, you may want to ignore tinkerBuild, such as instant run debug build?</span></div><div class="line">    tinkerEnabled = <span class="literal">true</span></div><div class="line"></div><div class="line">    <span class="comment">//for normal build</span></div><div class="line">    <span class="comment">//old apk file to build patch apk</span></div><div class="line">    tinkerOldApkPath = <span class="string">"$&#123;bakPath&#125;/app-debug-1116-15-53-17.apk"</span></div><div class="line">    <span class="comment">//proguard mapping file to build patch apk</span></div><div class="line">    tinkerApplyMappingPath = <span class="string">"$&#123;bakPath&#125;/app-debug-1116-15-53-17-mapping.txt"</span></div><div class="line">    <span class="comment">//resource R.txt to build patch apk, must input if there is resource changed</span></div><div class="line">    tinkerApplyResourcePath = <span class="string">"$&#123;bakPath&#125;/app-debug-1116-15-53-17-R.txt"</span></div><div class="line"></div><div class="line">    <span class="comment">//only use for build all flavor, if not, just ignore this field</span></div><div class="line">    tinkerBuildFlavorDirectory = <span class="string">"$&#123;bakPath&#125;/app-debug-1107-10-33-32"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3、调用tinkerPatchDebug, 生成补丁包。补丁包与相关日志会保存在/build/outputs/tinkerPatch/。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ ./gradlew tinkerPatchDebug</div></pre></td></tr></table></figure>
+<p>然后我们将patch_signed_7zip.apk推送到手机的sdcard中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ adb push ./app/build/outputs/tinkerPatch/debug/patch_signed_7zip.apk /storage/sdcard0/</div></pre></td></tr></table></figure>
+<p>4、运行app，执行LOAD PATCH代码块, 如果看到<code>patch success, please restart process</code>的toast，即可锁屏或者KILL 应用进程</p>
+<p>5、我们可以看到，补丁包的确已经加载成功了。</p>
+<hr>
+<p>####【参考资料】</p>
+<ul>
+<li><a href="https://github.com/Tencent/tinker/wiki/Tinker-%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97">Tinker 官方接入指南</a> </li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286306&amp;idx=1&amp;sn=d6b2865e033a99de60b2d4314c6e0a25&amp;scene=23&amp;srcid=0705vd1zLzQEHZ9G6JyQSqTG#rd" target="_blank" rel="external">微信Android热补丁实践演进之路</a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286384&amp;idx=1&amp;sn=f1aff31d6a567674759be476bcd12549&amp;scene=4#wechat_redirect" target="_blank" rel="external">微信Tinker的一切都在这里，包括源码(一)</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22089905" target="_blank" rel="external">【腾讯Bugly干货分享】微信热补丁Tinker的实践演进之路</a></li>
+<li><a href="http://blog.csdn.net/xiejc01/article/details/52735920" target="_blank" rel="external">将Tinke集成到自己的项目</a></li>
+<li><a href="http://blog.csdn.net/a750457103/article/details/52815096" target="_blank" rel="external">Android 微信热修复Tinker接入过程以及使用方法</a></li>
+<li><a href="https://www.zybuluo.com/dodola/note/554061" target="_blank" rel="external">Tinker 逆向分析</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Tinker/">Tinker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/hotfix/">hotfix</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Android 热修复原理和实现"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -647,71 +744,6 @@ Chrome自带开发者工具。它的功能十分丰富，包括元素、网络�
 <!-- Table of Contents -->
 
   
-    <article id="post-【Go语言】基本类型排序和 slice 排序"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2016/09/07/【Go语言】基本类型排序和 slice 排序/">【Go语言】基本类型排序和 slice 排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="2016/09/07/【Go语言】基本类型排序和 slice 排序/" class="article-date">
-	  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">September 7, 2016</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
-Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（将来也不好说支不支持），所以，Go 的 sort 和 search 使用起来跟类型是有关的，或是需要像 c 一样写比较函数等，稍微显得也不是很方便。
-
-引言  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是任何对象， 虽然很多情况下是一个 slice (分片， 类似于数组)，或是包含 slice 的一个对象。
-排序(接口)的三个要素：
-
-待排序元素个数 n ；
-第 i 和第 j 个元素的比较函数 cmp ；
-第 i 和 第 j 个元素的交换 swap ；
-
-乍一看条件 3 是多余的， c 和 c++ 都不提供 swap ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="2016/09/07/【Go语言】基本类型排序和 slice 排序/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Go语言/">Go语言</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Go语言/">Go语言</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -825,6 +857,18 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/">【Android】微信热修复 Tinker 的集成和使用</a></h6>
+              <span>November 17, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
                 <a href="2016/11/10/Android 热修复原理和实现/" title=""><img width="50" height="50" src="http://img.blog.csdn.net/20161110131925707" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
@@ -888,18 +932,6 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="2016/10/17/Hiker中文使用教程/">Hiker Guide</a></h6>
-              <span>October 17, 2016</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -909,7 +941,7 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -919,7 +951,7 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Neo4j/">Neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/hotfix/">hotfix</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Neo4j/">Neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -929,7 +961,7 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/Google/" style="font-size: 10px;">Google</a> <a href="tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="tags/Java/" style="font-size: 17.5px;">Java</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 10px;">Neo4j</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 10px;">hotfix</a>
+      <a href="tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/Google/" style="font-size: 10px;">Google</a> <a href="tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="tags/Java/" style="font-size: 17.5px;">Java</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 10px;">Neo4j</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
     </div>
   </div>
 
@@ -939,7 +971,7 @@ Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（�
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

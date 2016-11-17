@@ -94,6 +94,70 @@
         
           <section id="main">
   
+    <article id="post-如何生成100个1-100以内的不重复的随机数"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/">如何生成100个1-100以内的不重复的随机数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
+	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">January 22, 2016</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            
+这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数
+
+一、简单实现思路:(1) 把N个数放入Hashtable 或者arrayList 中.
+(2) 从上面的集合中随机抽取一个数放入int数组中.
+(3) 把取出的这个数从上面的集合中删除.
+(4) 循环 (2),(3) 步骤,直到int数组取满为止.
+
+这是一种比较简单的实现思路，实现代码如下：
+import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main &#123;	private static int range = 100;	private static Ar...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】如何查看Activity Task栈的情况"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -658,51 +722,6 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
 <!-- Table of Contents -->
 
   
-    <article id="post-【Java】不用循环语句如何输入打印数组元素"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2015/12/09/【Java】不用循环语句如何输入打印数组元素/">【Java】不用循环语句如何输入打印数组元素</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="../../2015/12/09/【Java】不用循环语句如何输入打印数组元素/" class="article-date">
-	  <time datetime="2015-12-09T05:58:20.000Z" itemprop="datePublished">December 9, 2015</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java中可以使用Arrays.toString()来输出数组，免了使用各种循环来挨个print的痛苦。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">package</span> javacc.test;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>&#125;;</div><div class="line">        System.out.println(Arrays.toString(array));    <span class="comment">//注意这里的 Arrays.toString()</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -816,6 +835,18 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/">【Android】微信热修复 Tinker 的集成和使用</a></h6>
+              <span>November 17, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
                 <a href="../../2016/11/10/Android 热修复原理和实现/" title=""><img width="50" height="50" src="http://img.blog.csdn.net/20161110131925707" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
@@ -879,18 +910,6 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="../../2016/10/17/Hiker中文使用教程/">Hiker Guide</a></h6>
-              <span>October 17, 2016</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -900,7 +919,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -910,7 +929,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -920,7 +939,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/Google/" style="font-size: 10px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 10px;">Neo4j</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 10px;">hotfix</a>
+      <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/Google/" style="font-size: 10px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 10px;">Neo4j</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
     </div>
   </div>
 
@@ -930,7 +949,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
