@@ -22,7 +22,7 @@ Tinker GitHub: https://github.com">
 Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
 Tinker GitHub: https://github.com">
 <meta property="og:image" content="http://img.blog.csdn.net/20161117111013179">
-<meta property="og:updated_time" content="2016-11-17T05:31:15.283Z">
+<meta property="og:updated_time" content="2016-11-17T05:33:34.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】微信热修复 Tinker 的集成和使用">
 <meta name="twitter:description" content="简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
@@ -134,6 +134,7 @@ Tinker GitHub: https://github.com">
 <p>如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : <span class="string">"tinker_id_2333"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。</p>
+<a id="more"></a>
 <h3 id="一、工程根目录的build-gradle中添加依赖"><a href="#一、工程根目录的build-gradle中添加依赖" class="headerlink" title="一、工程根目录的build.gradle中添加依赖"></a><strong>一、工程根目录的build.gradle中添加依赖</strong></h3><p>在项目的build.gradle中，添加<code>tinker-patch-gradle-plugin</code>的依赖</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath (<span class="string">'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此时如果gradle Sync不成功可能是因为没有加入 <strong>jcenter仓库</strong></p>
