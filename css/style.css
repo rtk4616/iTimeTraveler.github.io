@@ -562,7 +562,7 @@ a.article-title:hover {
   float: left;
   font-family: "FontAwesome";
   content: "\f10d";
-  margin-left: -0.5em;
+  margin-left: -0.8em;
 }
 .article-entry blockquote:after {
   float: right;
@@ -927,6 +927,11 @@ a.article-title:hover {
 }
 .toc-title {
   font-size: 120%;
+}
+.toc-title:before {
+  font-family: "FontAwesome";
+  content: "\f0ca";
+  margin-right: 0.5em;
 }
 #toc {
   width: inherit;
