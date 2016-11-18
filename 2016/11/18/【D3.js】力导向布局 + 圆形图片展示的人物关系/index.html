@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【d3.js】力导向布局 + 圆形图片展示的人物关系 | iTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="D3" />
+  
+  
+  
+  
+  <meta name="description" content="前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
+
+但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【D3.js】力导向布局 + 圆形图片展示的人物关系">
+<meta property="og:url" content="http://github.com/2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/index.html">
+<meta property="og:site_name" content="iTime">
+<meta property="og:description" content="前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
+
+但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：">
+<meta property="og:image" content="http://img.blog.csdn.net/20161118161025881">
+<meta property="og:updated_time" content="2016-11-18T08:20:16.290Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【D3.js】力导向布局 + 圆形图片展示的人物关系">
+<meta name="twitter:description" content="前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
+
+但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161118161025881">
+  
+    <link rel="alternate" href="/atom.xml" title="iTime" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+<body>
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            <a href="http://demo.athemes.com/hiero/" title="Hiero" rel="home">
+              iTime</a>
+          </h1>
+          <div class="site-description">Someone knock at the door.</div>
+
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【D3.js】力导向布局 + 圆形图片展示的人物关系" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://img.blog.csdn.net/20161118161025881" rel="gallery_civnin1aa002opsmytn4sd1jo">
+        <img src="http://img.blog.csdn.net/20161118161025881" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【D3.js】力导向布局 + 圆形图片展示的人物关系
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">November 18, 2016</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： <a href="http://blog.csdn.net/lzhlzz/article/details/40450379" target="_blank" rel="external"><strong>【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图</strong></a>，博主实现了下面这种样式，已经相当不错了。</p>
+<p><img src="http://img.blog.csdn.net/20161118161553200" alt=""></p>
+<p>但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：</p>
+<a id="more"></a>
+<h2 id="index-html"><a href="#index-html" class="headerlink" title="# index.html"></a># <strong>index.html</strong></h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Force<span class="tag">&lt;/<span class="name">title</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"></div><div class="line">.nodetext &#123;</div><div class="line">	font-size: 12px ;</div><div class="line">	font-family: SimSun;</div><div class="line">	fill:#000000;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.linetext &#123;</div><div class="line">	font-size: 12px ;</div><div class="line">	font-family: SimSun;</div><div class="line">	fill:#1f77b4;</div><div class="line">	fill-opacity:0.0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.circleImg &#123;</div><div class="line">  stroke: #ff7f0e;</div><div class="line">  stroke-width: 1.5px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span> </div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span>  </div><div class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://d3js.org/d3.v3.min.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">		   </span></div><div class="line">		</div><div class="line">		<span class="keyword">var</span> width = <span class="number">900</span>;</div><div class="line">		<span class="keyword">var</span> height = <span class="number">800</span>;</div><div class="line">		<span class="keyword">var</span> img_w = <span class="number">77</span>;</div><div class="line">		<span class="keyword">var</span> img_h = <span class="number">80</span>;</div><div class="line">		<span class="keyword">var</span> radius = <span class="number">30</span>;	<span class="comment">//圆形半径</span></div><div class="line">		</div><div class="line">		<span class="keyword">var</span> svg = d3.select(<span class="string">"body"</span>).append(<span class="string">"svg"</span>)</div><div class="line">								.attr(<span class="string">"width"</span>,width)</div><div class="line">								.attr(<span class="string">"height"</span>,height);</div><div class="line">		</div><div class="line">		</div><div class="line">		d3.json(<span class="string">"relation.json"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,root</span>)</span>&#123;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>( error )&#123;</div><div class="line">				<span class="keyword">return</span> <span class="built_in">console</span>.log(error);</div><div class="line">			&#125;</div><div class="line">			<span class="built_in">console</span>.log(root);</div><div class="line">			</div><div class="line">			<span class="comment">//D3力导向布局</span></div><div class="line">			<span class="keyword">var</span> force = d3.layout.force()</div><div class="line">							.nodes(root.nodes)</div><div class="line">							.links(root.edges)</div><div class="line">							.size([width,height])</div><div class="line">							.linkDistance(<span class="number">200</span>)</div><div class="line">							.charge(<span class="number">-1500</span>)</div><div class="line">							.start();</div><div class="line">			</div><div class="line">			<span class="comment">//边				</span></div><div class="line">			<span class="keyword">var</span> edges_line = svg.selectAll(<span class="string">"line"</span>)</div><div class="line">								.data(root.edges)</div><div class="line">								.enter()</div><div class="line">								.append(<span class="string">"line"</span>)</div><div class="line">								.style(<span class="string">"stroke"</span>,<span class="string">"#ccc"</span>)</div><div class="line">								.style(<span class="string">"stroke-width"</span>,<span class="number">1</span>);</div><div class="line">			</div><div class="line">			<span class="comment">//边上的文字（人物之间的关系）			</span></div><div class="line">			<span class="keyword">var</span> edges_text = svg.selectAll(<span class="string">".linetext"</span>)</div><div class="line">								.data(root.edges)</div><div class="line">								.enter()</div><div class="line">								.append(<span class="string">"text"</span>)</div><div class="line">								.attr(<span class="string">"class"</span>,<span class="string">"linetext"</span>)</div><div class="line">								.text(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</div><div class="line">									<span class="keyword">return</span> d.relation;</div><div class="line">								&#125;);</div><div class="line">			</div><div class="line">								</div><div class="line">			<span class="comment">// 圆形图片节点（人物头像）</span></div><div class="line">			<span class="keyword">var</span> nodes_img = svg.selectAll(<span class="string">"image"</span>)</div><div class="line">								.data(root.nodes)</div><div class="line">								.enter()</div><div class="line">								.append(<span class="string">"circle"</span>)</div><div class="line">								.attr(<span class="string">"class"</span>, <span class="string">"circleImg"</span>)</div><div class="line">							    .attr(<span class="string">"r"</span>, radius)</div><div class="line">							    .attr(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d, i</span>)</span>&#123;</div><div class="line"></div><div class="line">							    	<span class="comment">//创建圆形图片</span></div><div class="line">							    	<span class="keyword">var</span> defs = svg.append(<span class="string">"defs"</span>).attr(<span class="string">"id"</span>, <span class="string">"imgdefs"</span>)</div><div class="line"></div><div class="line">									<span class="keyword">var</span> catpattern = defs.append(<span class="string">"pattern"</span>)</div><div class="line">									                        .attr(<span class="string">"id"</span>, <span class="string">"catpattern"</span> + i)</div><div class="line">									                        .attr(<span class="string">"height"</span>, <span class="number">1</span>)</div><div class="line">									                        .attr(<span class="string">"width"</span>, <span class="number">1</span>)</div><div class="line"></div><div class="line">									catpattern.append(<span class="string">"image"</span>)</div><div class="line">											.attr(<span class="string">"x"</span>, - (img_w / <span class="number">2</span> - radius))</div><div class="line">     										.attr(<span class="string">"y"</span>, - (img_h / <span class="number">2</span> - radius))</div><div class="line">										    .attr(<span class="string">"width"</span>, img_w)</div><div class="line">										    .attr(<span class="string">"height"</span>, img_h)</div><div class="line">										    .attr(<span class="string">"xlink:href"</span>, d.image)</div><div class="line"></div><div class="line">									<span class="keyword">return</span> <span class="string">"url(#catpattern"</span> + i + <span class="string">")"</span>;</div><div class="line"></div><div class="line">							    &#125;)</div><div class="line">							    .on(<span class="string">"mouseover"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</div><div class="line">									<span class="comment">//显示连接线上的文字</span></div><div class="line">									edges_text.style(<span class="string">"fill-opacity"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">edge</span>)</span>&#123;</div><div class="line">										<span class="keyword">if</span>( edge.source === d || edge.target === d )&#123;</div><div class="line">											<span class="keyword">return</span> <span class="number">1.0</span>;</div><div class="line">										&#125;</div><div class="line">									&#125;);</div><div class="line">								&#125;)</div><div class="line">								.on(<span class="string">"mouseout"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</div><div class="line">									<span class="comment">//隐去连接线上的文字</span></div><div class="line">									edges_text.style(<span class="string">"fill-opacity"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">edge</span>)</span>&#123;</div><div class="line">										<span class="keyword">if</span>( edge.source === d || edge.target === d )&#123;</div><div class="line">											<span class="keyword">return</span> <span class="number">0.0</span>;</div><div class="line">										&#125;</div><div class="line">									&#125;);</div><div class="line">								&#125;)</div><div class="line">							    .call(force.drag);</div><div class="line"></div><div class="line">           	</div><div class="line">			<span class="keyword">var</span> text_dx = <span class="number">-20</span>;</div><div class="line">			<span class="keyword">var</span> text_dy = <span class="number">20</span>;</div><div class="line">			</div><div class="line">			<span class="keyword">var</span> nodes_text = svg.selectAll(<span class="string">".nodetext"</span>)</div><div class="line">								.data(root.nodes)</div><div class="line">								.enter()</div><div class="line">								.append(<span class="string">"text"</span>)</div><div class="line">								.attr(<span class="string">"class"</span>,<span class="string">"nodetext"</span>)</div><div class="line">								.attr(<span class="string">"dx"</span>,text_dx)</div><div class="line">								.attr(<span class="string">"dy"</span>,text_dy)</div><div class="line">								.text(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</div><div class="line">									<span class="keyword">return</span> d.name;</div><div class="line">								&#125;);</div><div class="line">			</div><div class="line">								</div><div class="line">			force.on(<span class="string">"tick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				</div><div class="line">				<span class="comment">//限制结点的边界</span></div><div class="line">				root.nodes.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</div><div class="line">					d.x = d.x - img_w/<span class="number">2</span> &lt; <span class="number">0</span>     ? img_w/<span class="number">2</span> : d.x ;</div><div class="line">					d.x = d.x + img_w/<span class="number">2</span> &gt; width ? width - img_w/<span class="number">2</span> : d.x ;</div><div class="line">					d.y = d.y - img_h/<span class="number">2</span> &lt; <span class="number">0</span>      ? img_h/<span class="number">2</span> : d.y ;</div><div class="line">					d.y = d.y + img_h/<span class="number">2</span> + text_dy &gt; height ? height - img_h/<span class="number">2</span> - text_dy : d.y ;</div><div class="line">				&#125;);</div><div class="line">			</div><div class="line">				<span class="comment">//更新连接线的位置</span></div><div class="line">				 edges_line.attr(<span class="string">"x1"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.source.x; &#125;);</div><div class="line">				 edges_line.attr(<span class="string">"y1"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.source.y; &#125;);</div><div class="line">				 edges_line.attr(<span class="string">"x2"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.target.x; &#125;);</div><div class="line">				 edges_line.attr(<span class="string">"y2"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.target.y; &#125;);</div><div class="line">				 </div><div class="line">				 <span class="comment">//更新连接线上文字的位置</span></div><div class="line">				 edges_text.attr(<span class="string">"x"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> (d.source.x + d.target.x) / <span class="number">2</span> ; &#125;);</div><div class="line">				 edges_text.attr(<span class="string">"y"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> (d.source.y + d.target.y) / <span class="number">2</span> ; &#125;);</div><div class="line">				 </div><div class="line">				 </div><div class="line">				 <span class="comment">//更新结点图片和文字</span></div><div class="line">				 nodes_img.attr(<span class="string">"cx"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.x &#125;);</div><div class="line">				 nodes_img.attr(<span class="string">"cy"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.y &#125;);</div><div class="line">				 </div><div class="line">				 nodes_text.attr(<span class="string">"x"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.x &#125;);</div><div class="line">				 nodes_text.attr(<span class="string">"y"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123; <span class="keyword">return</span> d.y + img_w/<span class="number">2</span>; &#125;);</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">		  </div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="relation-json"><a href="#relation-json" class="headerlink" title="# relation.json"></a># <strong>relation.json</strong></h2><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">"nodes"</span>:[</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"云天河"</span>   , <span class="attr">"image"</span> : <span class="string">"tianhe.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"韩菱纱"</span>   , <span class="attr">"image"</span> : <span class="string">"lingsha.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"柳梦璃"</span>   , <span class="attr">"image"</span> : <span class="string">"mengli.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"慕容紫英"</span> , <span class="attr">"image"</span> : <span class="string">"ziying.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"云天青"</span> , <span class="attr">"image"</span> : <span class="string">"tianqing.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"夙玉"</span> , <span class="attr">"image"</span> : <span class="string">"suyu.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"玄霄"</span> , <span class="attr">"image"</span> : <span class="string">"xuanxiao.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"夙瑶"</span> , <span class="attr">"image"</span> : <span class="string">"suyao.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"太清"</span> , <span class="attr">"image"</span> : <span class="string">"taiqing.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"宗炼"</span> , <span class="attr">"image"</span> : <span class="string">"zonglian.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"婵幽"</span> , <span class="attr">"image"</span> : <span class="string">"chanyou.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"奚仲"</span> , <span class="attr">"image"</span> : <span class="string">"xizhong.png"</span> &#125;,</div><div class="line">&#123; <span class="attr">"name"</span>: <span class="string">"归邪"</span> , <span class="attr">"image"</span> : <span class="string">"guixie.png"</span> &#125;</div><div class="line">],</div><div class="line"><span class="attr">"edges"</span>:[</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">1</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">2</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">3</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">1</span> , <span class="attr">"target"</span>: <span class="number">2</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">1</span> , <span class="attr">"target"</span>: <span class="number">3</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">2</span> , <span class="attr">"target"</span>: <span class="number">3</span> , <span class="attr">"relation"</span>:<span class="string">"挚友"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">4</span> , <span class="attr">"relation"</span>:<span class="string">"父子"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">5</span> , <span class="attr">"relation"</span>:<span class="string">"母子"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">4</span> , <span class="attr">"target"</span>: <span class="number">5</span> , <span class="attr">"relation"</span>:<span class="string">"夫妻"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">0</span> , <span class="attr">"target"</span>: <span class="number">6</span> , <span class="attr">"relation"</span>:<span class="string">"义兄弟"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">4</span> , <span class="attr">"target"</span>: <span class="number">6</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">5</span> , <span class="attr">"target"</span>: <span class="number">6</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">4</span> , <span class="attr">"target"</span>: <span class="number">7</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">5</span> , <span class="attr">"target"</span>: <span class="number">7</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">6</span> , <span class="attr">"target"</span>: <span class="number">7</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">4</span> , <span class="attr">"target"</span>: <span class="number">8</span> , <span class="attr">"relation"</span>:<span class="string">"师徒"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">5</span> , <span class="attr">"target"</span>: <span class="number">8</span> , <span class="attr">"relation"</span>:<span class="string">"师徒"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">6</span> , <span class="attr">"target"</span>: <span class="number">8</span> , <span class="attr">"relation"</span>:<span class="string">"师徒"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">7</span> , <span class="attr">"target"</span>: <span class="number">8</span> , <span class="attr">"relation"</span>:<span class="string">"师徒"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">8</span> , <span class="attr">"target"</span>: <span class="number">9</span> , <span class="attr">"relation"</span>:<span class="string">"同门"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">3</span> , <span class="attr">"target"</span>: <span class="number">9</span> , <span class="attr">"relation"</span>:<span class="string">"师徒"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">2</span> , <span class="attr">"target"</span>: <span class="number">10</span> , <span class="attr">"relation"</span>:<span class="string">"母子"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">10</span> , <span class="attr">"target"</span>: <span class="number">11</span> , <span class="attr">"relation"</span>:<span class="string">"主臣"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">10</span> , <span class="attr">"target"</span>: <span class="number">12</span> , <span class="attr">"relation"</span>:<span class="string">"主臣"</span> &#125;,</div><div class="line">&#123; <span class="attr">"source"</span>: <span class="number">11</span> , <span class="attr">"target"</span>: <span class="number">12</span> , <span class="attr">"relation"</span>:<span class="string">"同僚"</span> &#125;</div><div class="line">]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="【参考资料】"><a href="#【参考资料】" class="headerlink" title="【参考资料】"></a>【参考资料】</h3><ul>
+<li><a href="http://blog.csdn.net/lzhlzz/article/details/40450379" target="_blank" rel="external">【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图</a></li>
+<li><a href="http://stackoverflow.com/questions/25524906/how-to-make-an-image-round-in-d3-js" target="_blank" rel="external">how to make an image round in d3.js</a></li>
+<li><a href="http://www.cnblogs.com/wypeng/p/4986762.html" target="_blank" rel="external">用D3画简单的力导图</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/D3/">D3</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/D3/">D3</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" data-title="【D3.js】力导向布局 + 圆形图片展示的人物关系" data-url="http://github.com/2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"iTimeTraveler"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="../../../../css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../17/【Android】微信热修复 Tinker 的集成和使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Android】微信热修复 Tinker 的集成和使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index-html"><span class="toc-number">2.</span> <span class="toc-text"># index.html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#relation-json"><span class="toc-number">3.</span> <span class="toc-text"># relation.json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#【参考资料】"><span class="toc-number">3.1.</span> <span class="toc-text">【参考资料】</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2016 iTime All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
