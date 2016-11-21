@@ -20,7 +20,7 @@
 <meta property="og:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
 其中的分析和可视化是用Gephi做">
 <meta property="og:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
-<meta property="og:updated_time" content="2016-11-21T03:57:14.094Z">
+<meta property="og:updated_time" content="2016-11-21T04:03:16.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
 <meta name="twitter:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
@@ -106,7 +106,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_civrjli8x004htgmy3a5g3rll">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_civrjrydn004l3omy9oc5eeh7">
         <img src="../../../../gallery/Game-of-Thrones.jpg" itemprop="image">
       </a>
     
@@ -147,8 +147,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">LOAD CSV WITH HEADERS FROM &quot;https://www.macalester.edu/~abeverid/data/stormofswords.csv&quot; AS row</div><div class="line">MERGE (src:Character &#123;name: row.Source&#125;)</div><div class="line">MERGE (tgt:Character &#123;name: row.Target&#125;)</div><div class="line">MERGE (src)-[r:INTERACTS]-&gt;(tgt)</div><div class="line">SET r.weight = toInt(row.Weight)</div></pre></td></tr></table></figure>
 <p>这样得到一个简单的数据模型：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CALL apoc.meta.graph()</div></pre></td></tr></table></figure>
-<p><img src="/gallery/game/1.png" alt=""></p>
-<p>图1 ：《权力的游戏》模型的图。Character角色节点由INTERACTS关系联结</p>
+<p><img src="/gallery/game/1.png" alt="图1 ：《权力的游戏》模型的图。Character角色节点由INTERACTS关系联结"></p>
 <p>我们能可视化整个图形，但是这并不能给我们很多信息，比如哪些是最重要的人物，以及他们相互接触的信息：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH p=(:Character)-[:INTERACTS]-(:Character)</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
 <p><img src="/gallery/game/2.jpg" alt="图2"></p>
@@ -219,11 +218,9 @@
 <h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><p>作者使用Cypher 的shortestPath函数找到图中任意两个角色之间的最短路径。让我们找出凯特琳·史塔克（Catelyn Stark ）和卓戈·卡奥（Kahl Drogo）之间的最短路径：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Shortest path from Catelyn Stark to Khal Drogo</div><div class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</div><div class="line">MATCH p=shortestPath((catelyn)-[INTERACTS*]-(drogo))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
 <p><img src="/gallery/game/3.jpg" alt="图3"></p>
-<p>图3</p>
 <h3 id="所有最短路径"><a href="#所有最短路径" class="headerlink" title="所有最短路径"></a>所有最短路径</h3><p>联结凯特琳·史塔克（Catelyn Stark ）和卓戈·卡奥（Kahl Drogo）之间的最短路径可能还有其它路径，我们可以使用Cypher的allShortestPaths函数来查找：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// All shortest paths from Catelyn Stark to Khal Drogo</div><div class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</div><div class="line">MATCH p=allShortestPaths((catelyn)-[INTERACTS*]-(drogo))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
 <p><img src="/gallery/game/4.jpg" alt="图4"></p>
-<p>图4</p>
 <h3 id="关键节点"><a href="#关键节点" class="headerlink" title="关键节点"></a>关键节点</h3><p>在网络中，如果一个节点位于其它两个节点所有的最短路径上，即称为关键节点。下面我们找出网络中所有的关键节点：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Find all pivotal nodes in network</div><div class="line">MATCH (a:Character), (b:Character)</div><div class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b)) WITH collect(p) AS paths, a, b</div><div class="line">MATCH (c:Character) WHERE all(x IN paths WHERE c IN nodes(x)) AND NOT c IN [a,b]</div><div class="line">RETURN a.name, b.name, c.name AS PivotalNode SKIP 490 LIMIT 10</div></pre></td></tr></table></figure>
 <table>
@@ -290,7 +287,6 @@
 <p>从结果表格中我们可以看出有趣的结果：罗柏·史塔克（Robb）是卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）的关键节点。这意味着，所有联结卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）的最短路径都要经过罗柏·史塔克（Robb）。我们可以通过可视化卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）之间的所有最短路径来验证：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (a:Character &#123;name: &quot;Drogo&quot;&#125;), (b:Character &#123;name: &quot;Ramsay&quot;&#125;)</div><div class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
 <p><img src="/gallery/game/5.jpg" alt="图5"></p>
-<p>图5</p>
 <h3 id="节点中心度"><a href="#节点中心度" class="headerlink" title="节点中心度"></a>节点中心度</h3><p>节点中心度给出网络中节点的重要性的相对度量。有许多不同的方式来度量中心度，每种方式都代表不同类型的“重要性”。</p>
 <h3 id="度中心性-Degree-Centrality"><a href="#度中心性-Degree-Centrality" class="headerlink" title="度中心性(Degree Centrality)"></a>度中心性(Degree Centrality)</h3><p>度中心性是最简单度量，即为某个节点在网络中的联结数。在《权力的游戏》的图中，某个角色的度中心性是指该角色接触的其他角色数。作者使用Cypher计算度中心性：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)-[:INTERACTS]-()</div><div class="line">RETURN c.name AS character, count(*) AS degree ORDER BY degree DESC</div></pre></td></tr></table></figure>
@@ -398,8 +394,7 @@
 </tbody>
 </table>
 <h3 id="介数中心性（Betweenness-Centrality）"><a href="#介数中心性（Betweenness-Centrality）" class="headerlink" title="介数中心性（Betweenness Centrality）"></a>介数中心性（Betweenness Centrality）</h3><p>介数中心性：在网络中，一个节点的介数中心性是指其它两个节点的所有最短路径都经过这个节点，则这些所有最短路径数即为此节点的介数中心性。介数中心性是一种重要的度量，因为它可以鉴别出网络中的“信息中间人”或者网络聚类后的联结点。</p>
-<p><img src="/gallery/game/6.jpg" alt=""></p>
-<p>图6中红色节点是具有高的介数中心性，网络聚类的联结点。</p>
+<p><img src="/gallery/game/6.jpg" alt="图6中红色节点是具有高的介数中心性，网络聚类的联结点。"></p>
 <p>为了计算介数中心性，作者使用Neo4j 3.x或者apoc库。安装apoc后能用Cypher调用其170+的程序：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)</div><div class="line">WITH collect(c) AS characters</div><div class="line">CALL apoc.algo.betweenness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</div><div class="line">SET node.betweenness = score</div><div class="line">RETURN node.name AS name, score ORDER BY score DESC</div></pre></td></tr></table></figure>
 <table>
@@ -453,8 +448,7 @@
 </tbody>
 </table>
 <h3 id="紧度中心性（Closeness-centrality）"><a href="#紧度中心性（Closeness-centrality）" class="headerlink" title="紧度中心性（Closeness centrality）"></a>紧度中心性（Closeness centrality）</h3><p>紧度中心性是指到网络中所有其他角色的平均距离的倒数。在图中，具有高紧度中心性的节点在聚类社区之间被高度联结，但在社区之外不一定是高度联结的。</p>
-<p><img src="/gallery/game/7.png" alt=""></p>
-<p>图7 ：网络中具有高紧度中心性的节点被其它节点高度联结</p>
+<p><img src="/gallery/game/7.png" alt="图7 ：网络中具有高紧度中心性的节点被其它节点高度联结"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)</div><div class="line">WITH collect(c) AS characters</div><div class="line">CALL apoc.algo.closeness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</div><div class="line">RETURN node.name AS name, score ORDER BY score DESC</div></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -566,7 +560,6 @@
 </tbody>
 </table>
 <p><img src="/gallery/game/8.jpg" alt=""></p>
-<p>图8</p>
 <p>社区发现算法用来找出图中的社区聚类。作者使用igraph实现的随机游走算法（ walktrap）来找到在社区中频繁有接触的角色社区，在社区之外角色不怎么接触。</p>
 <p>在igraph中运行随机游走的社区发现算法，然后把社区发现的结果导入Neo4j，其中每个角色所属的社区用一个整数来表示：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><div class="line">clusters = IGraph.community_walktrap(ig, weights=<span class="string">"weight"</span>).as_clustering()</div><div class="line"></div><div class="line">nodes = [&#123;<span class="string">"name"</span>: node[<span class="string">"name"</span>]&#125; <span class="keyword">for</span> node <span class="keyword">in</span> ig.vs]<span class="keyword">for</span> node <span class="keyword">in</span> nodes:</div><div class="line">    idx = ig.vs.find(name=node[<span class="string">"name"</span>]).index</div><div class="line">    node[<span class="string">"community"</span>] = clusters.membership[idx]</div><div class="line"></div><div class="line">write_clusters_query = <span class="string">'''</span></div><div class="line">UNWIND &#123;nodes&#125; AS n</div><div class="line">MATCH (c:Character) WHERE c.name = n.name</div><div class="line">SET c.community = toInt(n.community)</div><div class="line">'''graph.run(write_clusters_query, nodes=nodes)</div></pre></td></tr></table></figure>
