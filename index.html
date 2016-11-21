@@ -348,11 +348,10 @@ This example shows how to link nodes in a force-directed graph using a named ide
     <div class="article-entry" itemprop="articleBody">
       
         
-          <div class="entry-thumbnail">
-            <a href="2016/11/10/Android 热修复原理和实现/"><img width="250" height="175" src="http://img.blog.csdn.net/20161110131925707" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
+
           
+            <div class="entry-summary" style="margin-left:0;">
+            
 查看原文： Android 热修复，没你想的那么难 —— by kymjs张涛
 
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
@@ -360,7 +359,10 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
 这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
 
-原理ClassLo...
+原理ClassLoader在 Java 中，要加载一个类需要用到ClassLoader。Android 中有三个 ClassLoader, 分别为URLClassLoader、PathClassLoader、DexClassLoader。其中:
+
+URLClassLoader : 只能用于加载jar文件，但是由于 d...
+          
 
         
           <p class="article-more-link">
@@ -862,10 +864,7 @@ CB Insights 今日发布了一篇关于谷歌业务战略的深度分析报告: 
           <li class="clearfix">
 
             
-              <div class="widget-entry-thumbnail">
-                <a href="2016/11/10/Android 热修复原理和实现/" title=""><img width="50" height="50" src="http://img.blog.csdn.net/20161110131925707" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
+              <div class="widget-entry-summary" style="margin: 0;">
             
 
               <h6 style="margin: 0;"><a href="2016/11/10/Android 热修复原理和实现/">Android 热修复原理和实现</a></h6>
