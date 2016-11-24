@@ -126,15 +126,17 @@
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/"><img src="http://lorempixel.com/750/450/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 在Linux中执行.sh脚本，异常/bin/bash^M: bad interpreter: No such file or directory.
 
 一、分析这是不同系统编码格式引起的：在windows系统中编辑的.sh文件可能有不可见字符，所以在Linux系统下执行会报以上异常信息。 
-二、解决1）在windows下转换：利用一些编辑器如UltraEdit或EditPlus等工具先将脚本...
+二、解决1）在windows下转换：利用一些编辑器如UltraEdit或EditPlus等工具先将脚本编码转换，再放到Linux中执行。转换方式如下（UltraEdit）：File–&gt;Conversions–&gt;DOS-&gt;UNIX即可。 
+
+2）直接在Linux中转换（推荐做法）：
+首先要确保文件有可执行权限 
+#sh&gt; chmod a+x filename
+然后修改文件格式 ...
           
 
         
@@ -193,16 +195,13 @@
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/04/06/”二分查找“算法的时间复杂度/"><img src="http://lorempixel.com/750/450/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 算法的时间复杂度无非就是for、while等包含起来的基本运算单元的循环次数
 
 1、二分查找二分查找（binary search），也称作折半查找（half-interval search），每次划分一半进行下一步搜索，所以时间复杂度无非就是while循环的次数！
 
-//二分查找 Java 实现public static int binarySearch(Integer[] srcArra...
+//二分查找 Java 实现public static int binarySearch(Integer[] srcArray, int des) &#123;    int low = 0;    int high = srcArray.length - 1;     while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)          ...
           
 
         
@@ -258,17 +257,16 @@
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/"><img src="http://lorempixel.com/750/450/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             先给大家看一下这个主题的颜值：
 
 
 
 
 快看安装方法：1、下载：https://github.com/kenwheeler/brogrammer-theme/archive/master.zip
-2、解压后将文件夹改名成Theme - Brogrammer，然后打开sublime text3，找到里面的 Preferences -&gt; Browse Packages，将改名后的文件夹co...
+2、解压后将文件夹改名成Theme - Brogrammer，然后打开sublime text3，找到里面的 Preferences -&gt; Browse Packages，将改名后的文件夹copy到弹出的文件夹中
+3、然后首选项-&gt;设置用户（Preferences -&gt; setting uer），将下列代码拷进去：
+&#123;	&quot;color_scheme&quot;: &quot;Packages/brogrammer-theme-master/brogramme...
           
 
         
@@ -385,10 +383,7 @@
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/"><img src="http://lorempixel.com/750/450/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数
 
@@ -398,7 +393,7 @@
 (4) 循环 (2),(3) 步骤,直到int数组取满为止.
 
 这是一种比较简单的实现思路，实现代码如下：
-impo...
+import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main &#123;	private static int range = 100;	private static Ar...
           
 
         
@@ -457,14 +452,14 @@ impo...
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/"><img src="http://lorempixel.com/750/450/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 我们都知道，每个Activity都有taskAffinity属性，这个属性指出了它希望进入的Task。
 
-如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属...
+如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 
+一、查看task栈情况
+在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：adb shell dumpsys activity
+然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的状...
           
 
         
@@ -523,15 +518,14 @@ impo...
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/15/Java中的封装、继承与多态/"><img src="http://lorempixel.com/750/450/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 这次我们来了解一下面向对象的三大基石封装，继承、多态，然后大致对比一下继承和多态的区别。
 
 一、封装：　　封装是实现面向对象程序设计的第一步，封装就是将数据或函数等集合在一个个的单元中（我们称之为类）。被封装的对象通常被称为抽象数据类型。 
- 封装的意义：　　封装的意义在于保护或者防止代码（数据）被我们无意中破坏。在面向对象程序设计中数据被看作是一个中心的元素并且和使用它的函数结合的很密切...
+ 封装的意义：　　封装的意义在于保护或者防止代码（数据）被我们无意中破坏。在面向对象程序设计中数据被看作是一个中心的元素并且和使用它的函数结合的很密切，从而保护它不被其它的函数意外的修改。封装提供了一个有效的途径来保护数据不被意外的破坏。相比我们将数据（用域来实现）在程序中定义为公用的（public）我们将它们(fields)定义为私有的（privat）在很多方面会更好。
+
+　　　　Java有四种访问权限，其中三种有访问权限修饰符，分别为priv...
           
 
         
@@ -590,14 +584,13 @@ impo...
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/15/Java访问权限修饰符的区别/"><img src="http://lorempixel.com/750/450/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             　　Java有四种访问权限，其中三种有访问权限修饰符，分别为private，public和protected，还有一种不带任何修饰符：
 
 private: Java语言中对访问权限限制的最窄的修饰符，一般称之为“私有的”。被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。
-default：即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一...
+default：即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一个包中进行访问。
+protect: 介于public 和 private 之间的一种访问修饰符，一般称之为“保护形”。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。
+public： Java语言中访问限制最宽的修饰符，一般称之为“公共的”。被其修饰的类、属性...
           
 
         
@@ -656,14 +649,12 @@ default：即不加任何访问修饰符，通常称为“默认访问模式“�
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/"><img src="http://lorempixel.com/750/450/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 走台阶算法（本质上是斐波那契数列）在面试中常会遇到，描述就如题目那样：总共100级台阶（任意级都行），小明每次可选择走1步、2步或者3步，问走完这100级台阶总共有多少种走法？
 
-一、 题目分析这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有...
+一、 题目分析这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有大于2级的n级台阶，那么假如第一次跳一级台阶，剩下还有n-1级台阶，有f(n-1)种跳法，假如第一次条2级台阶，剩下n-2级台阶，有f(n-2)种跳法。这就表示f(n)=f(n-1)+f(n-2)。将上面的斐波那契数列代码稍微改一下就是本题的答案。我们来看一下代码的实现。
+二、斐波那契数列法publ...
           
 
         
@@ -722,10 +713,7 @@ default：即不加任何访问修饰符，通常称为“默认访问模式“�
         
 
           
-            <div class="entry-thumbnail">
-              <a href="../../2016/01/04/新主题酝酿中/"><img src="http://lorempixel.com/750/450/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
+            <div class="entry-summary" style="margin-left:0;">
             
 人们对于“美”，都有着超乎自己想象的执念。
 
@@ -753,7 +741,12 @@ TA4.cn 波浪
 
 EndSkin Wordpress主题
 （报纸黑白）FASHIONISTA
-tagDi...
+tagDiv &amp; （报纸）NEWSMAG
+
+
+漂亮的蒙层
+
+
           
 
         
