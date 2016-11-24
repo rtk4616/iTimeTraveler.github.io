@@ -187,13 +187,16 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2016/01/02/【Java】内部类（Inner Class）如何创建（new）/"><img src="http://lorempixel.com/750/450/city/7" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             
 简单来说，内部类（inner class）指那些类定义代码被置于其它类定义中的类；而对于一般的、类定义代码不嵌套在其它类定义中的类，称为顶层（top-level）类。对于一个内部类，包含其定义代码的类称为它的外部（outer）类。 
 
 那么对于内部类，该如何去使用呢？
 下面给出静态成员类（Static Member Class）和普通成员类（Member Class）使用的方式。
-package cuc;import cuc.TestClass.Inner1;public class Main &#123;	public static void main(String args[]) &#123;		//静态的内部类		TestClass.Inner1 inner1 = new In...
+pack...
           
 
         
@@ -252,12 +255,13 @@ package cuc;import cuc.TestClass.Inner1;public class Main &#123;	public static v
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/12/31/【Android】 加解密算法 HMAC 的使用/"><img src="http://lorempixel.com/750/450/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             1、HMAC算法
 &nbsp;&nbsp; HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
-&nbsp;&nbsp;简而言之，HMAC就是含有密钥散列函数算法，兼容了MD和SHA算法的特性，并在此基础上加上了密钥。因此MAC算法也经常被称作HMAC算法。关于hmac算法的详情可以参看RFC 2104(http://www.ietf.org/rfc/rfc2104.txt)，这里包含了HmacMD5算法的C语言实现。
-
-2、代码实现（Android）//这是HMAC的Android代码//之所以不是Java是因为代码中的Base64使用...
+&nbsp;&nbsp;简而言之，HMAC就是含有密钥散列函数算法，兼容了MD和SHA算法的特性，并在此基础上加上了密钥。因此MAC算法也经常被称作...
           
 
         
@@ -316,13 +320,15 @@ package cuc;import cuc.TestClass.Inner1;public class Main &#123;	public static v
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/12/25/【Android】app打包成apk文件以后，如何查看VersionCode、VersionName等版本信息/"><img src="http://lorempixel.com/750/450/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             
 Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk改为zip然后用winrar打开也能看到里面的文件结构。还能看到AndroidManifest.xml。但是里面的内容经过编码显示为乱码，不方便查看。
 
 — aapt工具：
-&nbsp;&nbsp;这里我们可以使用aapt工具来查看。aapt.exe工具即Android Asset Packaging Tool，在SDK的build-tools目录下。
-&nbsp;&nbsp;该工具可以查看，创建， 更新ZIP格式的文档附件(zip, jar, apk)。也可将资源文件编译成二进制文件，尽管你可能没有直接使用过aapt工具，但是build scripts和IDE插件会使用这个工具打包apk文件构成一个Andr...
+&nbsp;&nbsp;这里我们可以使用aapt工具来查看。aapt.exe工具即Android Asset Packaging Tool，在...
           
 
         
@@ -431,7 +437,10 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/"><img src="http://lorempixel.com/750/450/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             一、问题描述：
 
 假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？
@@ -440,13 +449,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
 
 
 二、生命周期知识
-Activity和Fragment的生命周期图谱可以参考我的另外一篇博客：【Android】Fragment的生命周期详解，他们的关系大致如下图：
-
-
-三、代码验证
-  MainActivity和SecondActivity的布局是这样的，里面各添加了一个Fragment：
-    
-/**  * ...
+...
           
 
         
@@ -505,15 +508,17 @@ Activity和Fragment的生命周期图谱可以参考我的另外一篇博客：�
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/11/25/【Android】Fragment的生命周期详解/"><img src="http://lorempixel.com/750/450/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             
 作为Android开发的基础知识，大家可能都了解Activity的生命周期，但是Fragment的生命周期和Activity生命周期之间的关系到底是怎么样的呢？相互调用机制又如何呢？
 
 一、我们首先观察一下Activity的生命周期：
 
 Fragment生命周期：
-Activity和Fragment生命周期的对比图：【参考资料】：1、Android Fragment源代码2、API Doc for fragments (Fragments | Android Developers)3、Fragment生命周期
-
+Activity和Fragment生命周期的对比图：【参考资料】：1、Android Fragment源代码2、API Doc...
           
 
         
@@ -572,19 +577,17 @@ Activity和Fragment生命周期的对比图：【参考资料】：1、Android F
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/11/19/【Android】长按连续触发事件的实现方法/"><img src="http://lorempixel.com/750/450/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             
 项目中需要实现一个类似购物车数量的小组件，需要单击时增加数量，长按时可以连续增大，之前的代码实现效果不理想，google后得到一个解决方法,测试可以完美实现。
 
 实现效果大致如图：
 【原理说明】
 
-大致原理是,如果手指按在view上，则使用ScheduledExecutorService对象执行scheduleWithFixedDelay()方法，每隔一个间隔不停地向Handler发送Message，此处Message里的信息是View id，然后由Handler在handlemessage的时候处理需要触发的事件。
-
-
-【实现】
-1、首先,让对应的View设置一个OnTouchListener，在手指按下时触发不停的发送消息,手指抬起时停止发送。
-subtractButton.se...
+大致原理是,如果手指按在view上，则使用ScheduledExecutorService对象执行scheduleWithFixedDelay()方法，每隔一个间隔不停地向Handler发送Me...
           
 
         
@@ -643,13 +646,15 @@ subtractButton.se...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/"><img src="http://lorempixel.com/750/450/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
             
 第一、继承不同第一个不同主要是历史原因。Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。
 
 
-public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;public class Hashtable&lt;K, V&gt; extends Dictionary&lt;K, V&gt; implements Map&lt;K, V&gt;, Cloneable, Serializable &#123;...&#125;
-而HashMap继承的抽象类Ab...
+public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;...
           
 
         
@@ -708,7 +713,10 @@ public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Clon
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
+            <div class="entry-thumbnail">
+              <a href="../../2015/11/03/各种排序算法时间复杂度和空间复杂度表/"><img src="http://lorempixel.com/750/450/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
              各种排序算法时间复杂度和空间复杂度表:
 比较时间复杂度函数的情况如下图：
 对n较大的排序记录。一般的选择都是时间复杂度为O(nlog2n)的排序方法：
@@ -716,7 +724,7 @@ public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Clon
 接下来博主抽时间要整理一下各经典算法思想和心得，敬请期待
 
 
-一、快速排序（Quicksort）import java.util.Arrays;public class MySort &#123;	public static void main(String args[])&#123;		int[] array = &#123;5,3,9,1,6,4,10,2,8,7&#125;;		System.out.println(&quot;Before: &quot; + Arrays.toString(array));		new MyS...
+一、快速排序（Quicksort）import java.util.Arrays;public class MySort &#123;	public static void m...
           
 
         
