@@ -1658,7 +1658,7 @@ pre .xml .cdata {
   color: #777;
   background: transparent;
   padding: 15px 0 0;
-  border-top: 2px solid #333;
+  border-top: 1px solid #333;
 }
 .widget a {
   color: #555;
