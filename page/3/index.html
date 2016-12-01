@@ -1,665 +1,1081 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  
   <title>iTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Someone knock at the door.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="iTime">
+<meta property="og:url" content="http://github.com/page/3/index.html">
+<meta property="og:site_name" content="iTime">
+<meta property="og:description" content="Someone knock at the door.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iTime">
+<meta name="twitter:description" content="Someone knock at the door.">
+  
+    <link rel="alternate" href="/atom.xml" title="iTime" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
-</head>
-<body class="home">
-	
-  <header class="site-header navfixed-false">
 
-  <div class="container">
-      <h1><a href="../../index.html" title="iTime"><span class="octicon octicon-mark-github"></span> iTime</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="../../index.html"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="../../archives/"  class=" site-header-nav-item hvr-underline-from-center" title="Archives">Archives</a>
-        
-              
-              <a href="../../tags/"  class=" site-header-nav-item hvr-underline-from-center" title="Tags">Tags</a>
-        
-              
-              <a href="../../about/"  class=" site-header-nav-item hvr-underline-from-center" title="About">About</a>
-        
-      </nav>
+  <script src="../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+<body>
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            <a href="http://demo.athemes.com/hiero/" title="Hiero" rel="home">
+              iTime</a>
+          </h1>
+          <div class="site-description">Someone knock at the door.</div>
+
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
   </div>
 </header>
 
-	
-    <section class="banner-false">
 
-    <div class="collection-head">
-        <div class="container">
-            <div class="collection-title">
-                <h1 class="collection-header" id="site-description">
-                    Someone knock at the door.
-                </h1>
-                <script type="text/javascript">
-                    $(function(){
-                        
-                    });
-                </script>
-                <div class="collection-info">
-                    
-                    
-                        <span class="meta-info">
-                            
-                                <span class="octicon octicon-location">
-                                   
-                                        Beijing, China
-                                    
-                                </span>
-                                
-                            
-                        </span>
-                    
-                        <span class="meta-info">
-                            
-                                <span class="octicon octicon-mark-github">
-                                   
-                                </span>
-                                
-                                    <a href="http://github.com/iTimeTraveler" target="_blank">iTimeTraveler</a>
-                                
-                            
-                        </span>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-	
-   <section class="container">
 
-    <div class="columns">
-        <div class="column two-thirds">
+
+  <div id="container">
+    <div id="wrap">
             
-                  <article id="post-【Machine Learning】机器学习：简明入门指南" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+    <article id="post-【Machine Learning】机器学习：简明入门指南"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/">【Machine Learning】机器学习：简明入门指南</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>本文是一篇转载自<a href="http://blog.jobbole.com/67616/"><strong>伯乐在线的译文</strong></a>，英文原文是这里：<a href="https://medium.com/code-poet/80ea3ec3c471"><strong>Machine Learning is Fun!</strong> — by Adam Geitgey</a></p>
-</blockquote>
-<p>在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！</p>
-<p>本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了<a href="https://en.wikipedia.org/wiki/Machine_learning">“机器学习” ——维基百科词条</a>，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。</p>
-<p>本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">2016-08-14</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="article-date">
+	  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">August 14, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-【Machine Learning】Github上关注最多的53个深度学习项目" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+本文是一篇转载自伯乐在线的译文，英文原文是这里：Machine Learning is Fun! — by Adam Geitgey
+
+在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！
+本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了“机器学习” ——维基百科词条，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。
+本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。
+
+何为机器学习？机器学习这个概念认为，对于待解问题，你无需编写任何专门的程序代码，遗传算法（generic algori...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Machine Learning】Github上关注最多的53个深度学习项目"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/">【Machine Learning】Github上关注最多的53个深度学习项目</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <h2 id="Top-Deep-Learning-Projects"><a href="#Top-Deep-Learning-Projects" class="headerlink" title="Top Deep Learning Projects"></a>Top Deep Learning Projects</h2><p>A list of popular github projects related to deep learning (ranked by stars).</p>
-<p>Last Update: 2016.08.09</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">2016-08-12</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
+	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">August 12, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
-            
-                  <article id="post-【Android】使用shape的同时，动态替换shape的颜色属性" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+Last Update: 2016.08.09
+ 
+
+
+
+Project Name
+Stars
+Description
+
+
+
+
+TensorFlow
+29622
+Computation using data flow graphs for scalable machine learning.
+
+
+Caffe
+11799
+Caffe: a fast open framework for deep learning.
+
+
+Neural Style
+10148
+Torch impleme...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】使用shape的同时，动态替换shape的颜色属性"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/">【Android】使用shape的同时，动态替换shape的颜色属性</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？</p>
-</blockquote>
-<h4 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a><strong>一、问题</strong></h4><p>比如以下这三个按钮：</p>
-<p><img src="http://img.blog.csdn.net/20160808175543250" alt="三个样式相同的按钮"></p>
-<p>为第一个灰色按钮自定义背景如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span></div><div class="line">    <span class="attr">android:color</span>=<span class="string">"@color/gray"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">corners</span></div><div class="line">        <span class="attr">android:radius</span>=<span class="string">"60dip"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">solid</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">2016-08-08</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
+	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">August 8, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-BAT人才体系的职位层级、薪酬、晋升标准大全" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
+
+一、问题比如以下这三个按钮：
+
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-BAT人才体系的职位层级、薪酬、晋升标准大全"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/">BAT人才体系的职位层级、薪酬、晋升标准</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <img src="/2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/01.jpg" alt="&nbsp;" title="&nbsp;">
-<blockquote>
-<p>互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题<a href="https://www.zhihu.com/question/27108669">百度、腾讯和阿里内部的级别和薪资待遇是什么样的？</a></p>
-</blockquote>
-<h3 id="★-腾讯-★"><a href="#★-腾讯-★" class="headerlink" title="★ 腾讯 ★"></a><strong>★ 腾讯 ★</strong></h3><h4 id="1、职级"><a href="#1、职级" class="headerlink" title="1、职级"></a><strong>1、职级</strong></h4><p>腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：</p>
-<p>产品/项目通道，简称P族<br>技术通道，简称T族<br>市场通道，简称M族<br>职能通道，简称S族</p>
-<p>以T族为例，分别为：</p>
-<ul>
-<li><p>T1：助理工程师 （一般为校招新人）</p>
-</li>
-<li><p>T2：工程师</p>
-</li>
-<li><p>T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）</p>
-</li>
-<li><p>T4：专家工程师</p>
-</li>
-<li><p>T5：科学家</p>
-</li>
-<li><p>T6：首席科学家</p>
-</li>
-</ul>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">2016-08-02</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
+	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">August 2, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/BAT/">BAT</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-【Android】dip和px之间到底如何转换" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+
+互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
+
+★ 腾讯 ★1、职级腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：
+产品/项目通道，简称P族技术通道，简称T族市场通道，简称M族职能通道，简称S族
+以T族为例，分别为：
+
+T1：助理工程师 （一般为校招新人）
+
+T2：工程师
+
+T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）
+
+T4：专家工程师
+
+T5：科学家
+
+T6：首席科学家
+
+
+
+目前全腾讯貌似就一个T6。
+每一级之间又分为3个子级，3-1是任命组长/副组长的必要条件，其他线也...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/BAT/">BAT</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】dip和px之间到底如何转换"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/07/22/【Android】dip和px之间到底如何转换/">【Android】dip和px之间到底如何转换</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。</p>
-<p>但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。</p>
-</blockquote>
-<h4 id="一、名词介绍"><a href="#一、名词介绍" class="headerlink" title="一、名词介绍"></a><strong>一、名词介绍</strong></h4><ol>
-<li><p><strong>PPI</strong> = Pixels per inch，每英寸上的像素数,即 “像素密度”<br>&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0<br>&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5<br>&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)<br>&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75<br>下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。<strong>注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 <a href="http://zhidao.baidu.com/link?url=vPAxK6EdTCzBfQy8xUCnHcZS6M45oijy87YKvW7UlM4W7majdUf7Af3tL8S8CvCX8Thswwf2SU-uKSwpdLQ-6a">dpi与ppi区别</a></strong>）：<br><img src="http://img.blog.csdn.net/20160722113144430" alt="官方dpi定义"></p>
-</li>
-<li><p><strong>dp</strong> = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:<br>&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px<br>&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px<br>&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数</p>
-</li>
-<li><p><strong>sp</strong> = Scale-independent pixels，它是安卓的字体单位</p>
-</li>
-</ol>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">2016-07-22</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
+	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">July 22, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-【Android】Monkey压力测试与停止" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
+但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
+
+一、名词介绍
+PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】Monkey压力测试与停止"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/07/19/【Android】Monkey压力测试与停止/">【Android】Monkey压力测试与停止</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a><strong>一、Monkey 是什么？</strong></h4><p>Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</p>
-<h4 id="二、Monkey命令"><a href="#二、Monkey命令" class="headerlink" title="二、Monkey命令"></a><strong>二、Monkey命令</strong></h4><p>1）. 标准的monkey 命令<br>[adb shell] monkey [options] &lt; eventcount &gt; , 例如：</p>
-<blockquote>
-<p>adb shell monkey -v 500</p>
-</blockquote>
-<p>产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。<br>上面只是一个简单的例子，实际情况中通常会有很多的options 选项.</p>
-<p>2）. 四大类</p>
-<blockquote>
-<ul>
-<li>常用选项</li>
-<li>事件选项 </li>
-<li>约束选项 </li>
-<li>调试选项</li>
-</ul>
-</blockquote>
-<p>具体的命令解释可以看这里：<a href="http://www.jb51.net/article/48557.htm">android 压力测试命令monkey详解</a></p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">2016-07-19</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
+	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">July 19, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
-            
-                  <article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventcount &gt; , 例如：
+
+adb shell monkey -v 500
+
+产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activit...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/">【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
-<p>手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？</p>
-</blockquote>
-<p>这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。</p>
-<p>其实方法很简单，这里我们需要用到 <strong>Thread.setDefaultUncaughtExceptionHandler()</strong>，当应用崩溃的时候代码就会自动调用 <strong>uncaughtException()</strong> 这个方法。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
+	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">July 14, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-【SVN】使用patch命令保存更改" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+英文原文： Auto Restart application after Crash/Force Close in Android.
+手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
+
+这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。
+其实方法很简单，这里我们需要用到 Thread.setDefaultUncaughtExceptionHandler()，当应用崩溃的时候代码就会自动调用 uncaughtException() 这个方法。
+
+操作步骤如下：
+Step 1
+像下面这...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【SVN】使用patch命令保存更改"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/06/12/【SVN】使用patch命令保存更改/">【SVN】使用patch命令保存更改</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！</p>
-</blockquote>
-<h4 id="一、生成patch文件"><a href="#一、生成patch文件" class="headerlink" title="一、生成patch文件"></a><strong>一、生成patch文件</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">svn diff &gt; patchFile 			// 整个工程的变动生成patch</div><div class="line">svn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch</div></pre></td></tr></table></figure>
-<h4 id="二、svn回滚"><a href="#二、svn回滚" class="headerlink" title="二、svn回滚"></a><strong>二、svn回滚</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">svn revert FILE 				// 单个文件回滚</div><div class="line">svn revert DIR --depth=infinity // 整个目录进行递归回滚</div><div class="line">svn revert . --depth=infinity 	// 当前目录进行递归回滚</div></pre></td></tr></table></figure>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">2016-06-12</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
+	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">June 12, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SVN/">SVN</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/06/12/【SVN】使用patch命令保存更改/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
-                  <article id="post-【Java】按位存储：使用int存储boolean数组" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
-        
-  
-      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
-  
+使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。</p>
-</blockquote>
-<p>首先，敲定每个boolean值存储的位置<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> mBroadcastCustomValue = <span class="number">0</span>;   <span class="comment">//用来存储的int值</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_BASE = <span class="number">1</span>;				<span class="comment">//基础类播报</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_TRAFFIC = <span class="number">1</span> &lt;&lt; <span class="number">1</span>;		<span class="comment">//实时路况</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_CAMERA = <span class="number">1</span> &lt;&lt; <span class="number">2</span>;		<span class="comment">//摄像头限速播报</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_SAFE = <span class="number">1</span> &lt;&lt; <span class="number">3</span>;		<span class="comment">//安全提醒类</span></div></pre></td></tr></table></figure></p>
-<h2 id="一、添加Add"><a href="#一、添加Add" class="headerlink" title="一、添加Add"></a><strong>一、添加Add</strong></h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addLevel</span><span class="params">(<span class="keyword">int</span> level)</span></span>&#123;</div><div class="line">	mBroadcastCustomValue |= level;    <span class="comment">//add</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用方式如下</span></div><div class="line">addLevel(BROADCAST_TYPE_CUSTOM_BASE);</div></pre></td></tr></table></figure>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
-        </span>
-
-        <!--
+一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
+二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
           
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-          
-        -->
 
         
-        
-            <span class="article-more-link">
-              <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
+          <p class="article-more-link">
+            <a href="../../2016/06/12/【SVN】使用patch命令保存更改/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
     </div>
-  </article>
-            
-                  <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/SVN/">SVN</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SVN/">SVN</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/">【Android】技术调研：用代码模拟屏幕点击、触摸事件</a>
+    </h1>
   
 
-      </h3>
-      <div class="repo-list-description article-entry">
-        
-          <blockquote>
-<p>在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。</p>
-</blockquote>
-<p>经过调研发现，给系统模拟注入输入事件有如下几种方式：</p>
-<h2 id="一、使用shell命令"><a href="#一、使用shell命令" class="headerlink" title="一、使用shell命令"></a><strong>一、使用shell命令</strong></h2><p>使用android自带的adb shell，里面自带一个input工具，使用方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">adb shell <span class="comment">#进入系统</span></div><div class="line">input keyevent KEYCODE_BACK  <span class="comment">#模拟按返回键</span></div><div class="line">input keyevent KEYCODE_HOME  <span class="comment">#模拟按Home键</span></div></pre></td></tr></table></figure>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
-        </span>
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
+	</a>
 
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-          
-        -->
-
-        
-        
-            <span class="article-more-link">
-              <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more" class="btn btn-sm btn-outline">Read More</a>
-           </span>
-        
-      </p>
     </div>
-  </article>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
             
+在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
+
+经过调研发现，给系统模拟注入输入事件有如下几种方式：
+一、使用shell命令使用android自带的adb shell，里面自带一个input工具，使用方法如下：
+adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input keyevent KEYCODE_HOME  #模拟按Home键
+
+还可以直接输入点击屏幕的事件，模拟点击屏幕：
+input tap 100 200  #在屏幕坐标(1...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more">Continue Reading →</a>
+          </p>
         </div>
-        
-            <div class="column one-third">
-                
-    <h3>Popular Repositories</h3>
-    <div class="popular-container"></div>
-    
-    <script type="text/template" id="popular-list-template">
-        <section class="repo-card">
-            <a href="{%=clone_url%}" target="_blank">
-                <div class="repo-card-image geopattern" data-pattern-id="{%=name%}">
-                    <h3 class="repo-card-title">{%=name%}</h3>
-                </div>
-                <div class="repo-card-body-wrapper">
-                    <div class="repo-card-body">
-                        <p class="repo-card-description">{%=description%}</p>
-                        <div class="repo-card-meta">
-                            <span class="meta-info tooltipped tooltipped-n {%=language%}" aria-label="{%=language%} Project">{%=language%}</span>
-                            <span class="meta-info tooltipped tooltipped-n" aria-label="{%=stargazers_count%} stars">
-                                <span class="octicon octicon-star"></span> {%=stargazers_count%}</span>
-                            <span class="meta-info tooltipped tooltipped-n" aria-label="{%=forks_count%}">
-                                <span class="octicon octicon-git-branch"></span> {%=forks_count%}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </section>
-    </script>
-
-    <script src="../../js/baiduTemplate.js"></script>
-    <script type="text/javascript">
-        var popular_repos = function(){
-
-            var baiduTpl = new Object();
-
-            var handleTpl = function(){
-                baiduTpl.popular_list = baidu.template("popular-list-template");
-            };
-
-            var handleGithub = function(){
-                var popularContainer = $(".popular-container");
-
-                var repos = "Dreambox,floodlight_cuc".split(",");
-                for(var i in repos){
-                    var name = repos[i];
-                    $.get("https://api.github.com/repos/iTimeTraveler/"+name,handle);
-                }
-                function handle(result){
-                    if(result){
-                        var html = baiduTpl.popular_list(result);
-                        popularContainer.append(html);
-                        $(".geopattern").each(function(){           
-                            $(this).geopattern($(this).data('pattern-id'));
-                        });
-                    }
-                }
-            };
-
-            return {
-                init:function(){
-                    handleTpl();
-                    handleGithub();
-                }
-            }
-        }; 
-        $(popular_repos().init);
-    </script>
-
-
-
-
-            </div>
-        
+      
     </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-      <div class="pagination text-align">
-          <div class="btn-group">
-              <a class="extend prev" rel="prev" href="../2/">&laquo; Prev</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><span class="page-number current">3</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><a class="extend next" rel="next" href="../4/">Next &raquo;</a>
-          </div>
-      </div>
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            
+有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;				//基础类播报public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;		//实时路况public static final int...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="../2/">Prev</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><span class="page-number current">3</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><a class="extend next" rel="next" href="../4/">Next</a>
+  </nav>
+
 </section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="Search">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../js/insight.js"></script>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
 
-        <a href="https://github.com/iTimeTraveler/iTimeTraveler.github.io" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+    	<ul class="clearfix widget-social-icons">   
+    	
+   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
 
-        <ul class="site-footer-links mobile-hidden">
-            
-             
-              
-              <li>
-                <a href="../../index.html"  title="Home">Home</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../archives/"  title="Archives">Archives</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../tags/"  title="Tags">Tags</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../about/"  title="About">About</a>
-              </li>
-            
+   		
+   			<li><a href="http://weibo.com/xueyubowen" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
 
-        </ul>
+   		
+   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+
+   		
+   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
 
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" title=""><img width="50" height="50" src="/gallery/apk.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/">【Android】APK瘦身记，实现将近一半的压缩效果</a></h6>
+              <span>November 30, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" title=""><img width="50" height="50" src="/gallery/Game-of-Thrones.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/">基于社区发现算法和图分析Neo4j解读《权力的游戏》</a></h6>
+              <span>November 21, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" title=""><img width="50" height="50" src="http://img.blog.csdn.net/20161118161025881" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/">【D3.js】力导向布局 + 圆形图片展示的人物关系</a></h6>
+              <span>November 18, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" title=""><img width="50" height="50" src="/gallery/tinker.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/">【Android】微信热修复 Tinker 的集成和使用</a></h6>
+              <span>November 17, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2016/11/16/【D3】Link Nodes by Name/" title=""><img width="50" height="50" src="/gallery/d3_link-node-by-name.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/16/【D3】Link Nodes by Name/">【D3】Link Nodes by Name</a></h6>
+              <span>November 16, 2016</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2016/11/10/Android 热修复原理和实现/">Android 热修复原理和实现</a></h6>
+              <span>November 10, 2016</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/D3/">D3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 15px;">D3</a> <a href="../../tags/Google/" style="font-size: 10px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2016 iTime All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-		
-		<script src="../../js/typer.js"></script>
 
-		<script src="../../js/geopattern.js"></script>
+<!-- min height -->
 
-		<script src="../../js/index.js"></script>
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
 
-		 <script src="../../js/popular_repo.js"></script> 
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
-	</body>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../fancybox/jquery.fancybox.css">
+  <script src="../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../js/script.js"></script>
+<script src="../../js/bootstrap.js"></script>
+<script src="../../js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
 </html>

@@ -1,169 +1,299 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>iTime</title>
+  
+  <title>【android】 加解密算法 hmac 的使用 | iTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Android" />
+  
+  
+  
+  
+  <meta name="description" content="HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android】 加解密算法 HMAC 的使用">
+<meta property="og:url" content="http://github.com/2015/12/31/【Android】 加解密算法 HMAC 的使用/index.html">
+<meta property="og:site_name" content="iTime">
+<meta property="og:description" content="HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。">
+<meta property="og:updated_time" content="2016-10-18T04:54:48.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android】 加解密算法 HMAC 的使用">
+<meta name="twitter:description" content="HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。">
+  
+    <link rel="alternate" href="/atom.xml" title="iTime" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
 <body>
-	
-  <header class="site-header navfixed-false">
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
 
-  <div class="container">
-      <h1><a href="../../../../index.html" title="iTime"><span class="octicon octicon-mark-github"></span> iTime</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="../../../../index.html"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="../../../../archives/"  class=" site-header-nav-item hvr-underline-from-center" title="Archives">Archives</a>
-        
-              
-              <a href="../../../../tags/"  class=" site-header-nav-item hvr-underline-from-center" title="Tags">Tags</a>
-        
-              
-              <a href="../../../../about/"  class=" site-header-nav-item hvr-underline-from-center" title="About">About</a>
-        
-      </nav>
+          <h1 class="site-title">
+            <a href="http://demo.athemes.com/hiero/" title="Hiero" rel="home">
+              iTime</a>
+          </h1>
+          <div class="site-description">Someone knock at the door.</div>
+
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
   </div>
 </header>
 
-	
-    <section class="collection-head geopattern" data-pattern-id="【Android】 加解密算法 HMAC 的使用" >
 
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">【Android】 加解密算法 HMAC 的使用</h1>
-            <div class="collection-info">
-                <span class="meta-info">
-                    
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2015-12-31T07:30:00.000Z" itemprop="datePublished">2015-12-31</time>
-                    
-                </span>
-            </div>
-        </div>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【Android】 加解密算法 HMAC 的使用" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Android】 加解密算法 HMAC 的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2015-12-31T07:30:00.000Z" itemprop="datePublished">December 31, 2015</time>
+	</a>
+
     </div>
-</section>
-	
-
-    <section class="container">
-
-    <div class="columns">
-        <div class="column three-fourths" >
-            <article class="article-content article-entry">
-                <p><strong>1、HMAC算法</strong></p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1、HMAC算法</strong></p>
 <p>&nbsp;&nbsp; HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。</p>
 <p>&nbsp;&nbsp;简而言之，HMAC就是含有密钥散列函数算法，兼容了MD和SHA算法的特性，并在此基础上加上了密钥。因此MAC算法也经常被称作HMAC算法。关于hmac算法的详情可以参看RFC 2104(<a href="http://www.ietf.org/rfc/rfc2104.txt)，这里包含了HmacMD5算法的C语言实现。" target="_blank" rel="external">http://www.ietf.org/rfc/rfc2104.txt)，这里包含了HmacMD5算法的C语言实现。</a></p>
 <a id="more"></a>
 <p><strong>2、代码实现（Android）</strong><br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//这是HMAC的Android代码</span></div><div class="line"><span class="comment">//之所以不是Java是因为代码中的Base64使用的是android.util包下的Base64类，而不是Java自带的Base64类。</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HMACTest</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"HMACTest"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String REGISTER_HMAC_KEY = <span class="string">"12a9cc3f-1fd9-48a3-1fd9-1fd9d027ac2"</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">stringToSign</span><span class="params">(String data)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Mac mac = Mac.getInstance(<span class="string">"HmacSHA1"</span>);</div><div class="line">            SecretKeySpec secret = <span class="keyword">new</span> SecretKeySpec(</div><div class="line">                    REGISTER_HMAC_KEY.getBytes(<span class="string">"UTF-8"</span>), mac.getAlgorithm());</div><div class="line">            mac.init(secret);</div><div class="line">            <span class="keyword">return</span> Base64.encodeToString(mac.doFinal(data.getBytes()), Base64.NO_WRAP);</div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</div><div class="line">            Log.e(LOG_TAG, <span class="string">"Hash algorithm SHA-1 is not supported"</span>, e);</div><div class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</div><div class="line">            Log.e(LOG_TAG, <span class="string">"Encoding UTF-8 is not supported"</span>, e);</div><div class="line">        &#125; <span class="keyword">catch</span> (InvalidKeyException e) &#123;</div><div class="line">            Log.e(LOG_TAG, <span class="string">"Invalid key"</span>, e);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * 测试函数</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">		HMACTest hmac = <span class="keyword">new</span> HMACTest();</div><div class="line">		String str = <span class="string">"Bello, Miss.Seven"</span>;</div><div class="line">		System.out.println(<span class="string">"加密前："</span> + str);</div><div class="line">		System.out.println(<span class="string">"加密后："</span> + hmac.stringToSign(str));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>【参考资料】：<br>1、<a href="http://blog.csdn.net/feiyangxiaomi/article/details/34445005" target="_blank" rel="external">消息摘要算法-HMAC算法</a><br>2、<a href="http://blog.csdn.net/happylee6688/article/details/43968549" target="_blank" rel="external">Java 加解密技术系列之 HMAC</a></p>
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component"></div>
-
-<script src="../../../../js/share.min.js"></script>
-                </div>    
-            
-            
-                <div class="comment">
-                    
-<div class="ds-thread" data-thread-key="【Android】 加解密算法 HMAC 的使用" data-title="【Android】 加解密算法 HMAC 的使用" data-url="http://github.com"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"iTimeTraveler"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-</script>
-                </div>
-            
-        </div>
-        <div class="column one-fourth">
-            
-                <h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		
-	</section>
-</div>
-            
-        </div>
-       
+      
     </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2015/12/31/【Android】 加解密算法 HMAC 的使用/" data-title="【Android】 加解密算法 HMAC 的使用" data-url="http://github.com/2015/12/31/【Android】 加解密算法 HMAC 的使用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"iTimeTraveler"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="../../../../css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../../2016/01/02/【Java】内部类（Inner Class）如何创建（new）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【Java】内部类（Inner Class）如何创建（new）
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../25/【Android】app打包成apk文件以后，如何查看VersionCode、VersionName等版本信息/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Android】app打包成apk文件以后，如何查看VersionCode、VersionName等版本信息</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+    <ol class="toc">None</ol>
+    
+    </div>
+  </aside>
 </section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
-
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
-
-        <a href="https://github.com/iTimeTraveler/iTimeTraveler.github.io" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <ul class="site-footer-links mobile-hidden">
-            
-             
-              
-              <li>
-                <a href="../../../../index.html"  title="Home">Home</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../archives/"  title="Archives">Archives</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../tags/"  title="Tags">Tags</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../about/"  title="About">About</a>
-              </li>
-            
-
-        </ul>
-
-    </div>
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2016 iTime All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-		
-		<script src="../../../../js/typer.js"></script>
 
-		<script src="../../../../js/geopattern.js"></script>
+<!-- min height -->
 
-		<script src="../../../../js/index.js"></script>
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
 
-		 <script src="../../../../js/popular_repo.js"></script> 
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
-	</body>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
 </html>

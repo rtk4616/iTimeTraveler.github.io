@@ -1,65 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>iTime</title>
+  
+  <title>基于社区发现算法和图分析neo4j解读《权力的游戏》 | iTime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Neo4j" />
+  
+  
+  
+  
+  <meta name="description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
+其中的分析和可视化是用Gephi做">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
+<meta property="og:url" content="http://github.com/2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/index.html">
+<meta property="og:site_name" content="iTime">
+<meta property="og:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
+其中的分析和可视化是用Gephi做">
+<meta property="og:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
+<meta property="og:updated_time" content="2016-11-30T09:53:00.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
+<meta name="twitter:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
+其中的分析和可视化是用Gephi做">
+<meta name="twitter:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="iTime" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
 </head>
 
 <body>
-	
-  <header class="site-header navfixed-false">
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
 
-  <div class="container">
-      <h1><a href="../../../../index.html" title="iTime"><span class="octicon octicon-mark-github"></span> iTime</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="../../../../index.html"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="../../../../archives/"  class=" site-header-nav-item hvr-underline-from-center" title="Archives">Archives</a>
-        
-              
-              <a href="../../../../tags/"  class=" site-header-nav-item hvr-underline-from-center" title="Tags">Tags</a>
-        
-              
-              <a href="../../../../about/"  class=" site-header-nav-item hvr-underline-from-center" title="About">About</a>
-        
-      </nav>
+          <h1 class="site-title">
+            <a href="http://demo.athemes.com/hiero/" title="Hiero" rel="home">
+              iTime</a>
+          </h1>
+          <div class="site-description">Someone knock at the door.</div>
+
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
   </div>
 </header>
 
-	
-    <section class="collection-head geopattern" data-pattern-id="基于社区发现算法和图分析Neo4j解读《权力的游戏》" >
 
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">基于社区发现算法和图分析Neo4j解读《权力的游戏》</h1>
-            <div class="collection-info">
-                <span class="meta-info">
-                    
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">2016-11-21</time>
-                    
-                </span>
-            </div>
-        </div>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-基于社区发现算法和图分析Neo4j解读《权力的游戏》" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_ciw623e9h004u70mypv00dzeo">
+        <img src="../../../../gallery/Game-of-Thrones.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      基于社区发现算法和图分析Neo4j解读《权力的游戏》
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">November 21, 2016</time>
+	</a>
+
     </div>
-</section>
-	
-
-    <section class="container">
-
-    <div class="columns">
-        <div class="column three-fourths" >
-            <article class="article-content article-entry">
-                <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="external"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="external"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
 <p>其中的分析和可视化是用Gephi做的，Gephi是非常流行的图分析工具。但作者觉得使用Neo4j来实现更有趣。</p>
 <h2 id="导入原始数据到Neo4j"><a href="#导入原始数据到Neo4j" class="headerlink" title="导入原始数据到Neo4j"></a>导入原始数据到Neo4j</h2><p>原始数据可<a href="https://www.macalester.edu/~abeverid/data/stormofswords.csv" target="_blank" rel="external">从网络上下载</a>，格式如下：</p>
 <figure class="highlight"><table><tr><td class="code"><pre><div class="line">Source,Target,Weight</div><div class="line">Aemon,Grenn,5</div><div class="line">Aemon,Samwell,31</div><div class="line">Aerys,Jaime,18</div><div class="line">...</div></pre></td></tr></table></figure>
@@ -562,104 +636,175 @@
 <li><a href="http://www.hizher.com/pageContent-1148688-51394.html" target="_blank" rel="external">基于社区发现算法和图分析Neo4j解读《权力的游戏》下篇</a></li>
 </ul>
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component"></div>
-
-<script src="../../../../js/share.min.js"></script>
-                </div>    
-            
-            
-                <div class="comment">
-                    
-<div class="ds-thread" data-thread-key="基于社区发现算法和图分析Neo4j解读《权力的游戏》" data-title="基于社区发现算法和图分析Neo4j解读《权力的游戏》" data-url="http://github.com"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"iTimeTraveler"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-</script>
-                </div>
-            
-        </div>
-        <div class="column one-fourth">
-            
-                <h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#导读"><span class="toc-text">导读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入原始数据到Neo4j"><span class="toc-text">导入原始数据到Neo4j</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人物网络分析"><span class="toc-text">人物网络分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人物数量"><span class="toc-text">人物数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概要统计"><span class="toc-text">概要统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图（网络）的直径"><span class="toc-text">图（网络）的直径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最短路径"><span class="toc-text">最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所有最短路径"><span class="toc-text">所有最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键节点"><span class="toc-text">关键节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点中心度"><span class="toc-text">节点中心度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#度中心性-Degree-Centrality"><span class="toc-text">度中心性(Degree Centrality)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加权度中心性（Weighted-Degree-Centrality）"><span class="toc-text">加权度中心性（Weighted Degree Centrality）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介数中心性（Betweenness-Centrality）"><span class="toc-text">介数中心性（Betweenness Centrality）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#紧度中心性（Closeness-centrality）"><span class="toc-text">紧度中心性（Closeness centrality）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用python-igraph"><span class="toc-text">使用python-igraph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从Neo4j构建一个igraph实例"><span class="toc-text">从Neo4j构建一个igraph实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageRank"><span class="toc-text">PageRank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#角色“大合影”"><span class="toc-text">角色“大合影”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
-	</section>
-</div>
-            
-        </div>
-       
+      
     </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Web/">Web</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Neo4j/">Neo4j</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" data-title="基于社区发现算法和图分析Neo4j解读《权力的游戏》" data-url="http://github.com/2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"iTimeTraveler"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="../../../../css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../30/【Android】APK瘦身记，实现将近一半的压缩效果/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【Android】APK瘦身记，实现将近一半的压缩效果
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【D3.js】力导向布局 + 圆形图片展示的人物关系</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#导读"><span class="toc-number">1.</span> <span class="toc-text">导读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入原始数据到Neo4j"><span class="toc-number">2.</span> <span class="toc-text">导入原始数据到Neo4j</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#人物网络分析"><span class="toc-number">3.</span> <span class="toc-text">人物网络分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人物数量"><span class="toc-number">3.1.</span> <span class="toc-text">人物数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概要统计"><span class="toc-number">3.2.</span> <span class="toc-text">概要统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图（网络）的直径"><span class="toc-number">3.3.</span> <span class="toc-text">图（网络）的直径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最短路径"><span class="toc-number">3.4.</span> <span class="toc-text">最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所有最短路径"><span class="toc-number">3.5.</span> <span class="toc-text">所有最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键节点"><span class="toc-number">3.6.</span> <span class="toc-text">关键节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点中心度"><span class="toc-number">3.7.</span> <span class="toc-text">节点中心度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#度中心性-Degree-Centrality"><span class="toc-number">3.8.</span> <span class="toc-text">度中心性(Degree Centrality)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加权度中心性（Weighted-Degree-Centrality）"><span class="toc-number">3.9.</span> <span class="toc-text">加权度中心性（Weighted Degree Centrality）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介数中心性（Betweenness-Centrality）"><span class="toc-number">3.10.</span> <span class="toc-text">介数中心性（Betweenness Centrality）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#紧度中心性（Closeness-centrality）"><span class="toc-number">3.11.</span> <span class="toc-text">紧度中心性（Closeness centrality）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用python-igraph"><span class="toc-number">4.</span> <span class="toc-text">使用python-igraph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从Neo4j构建一个igraph实例"><span class="toc-number">4.1.</span> <span class="toc-text">从Neo4j构建一个igraph实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageRank"><span class="toc-number">4.2.</span> <span class="toc-text">PageRank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#角色“大合影”"><span class="toc-number">4.3.</span> <span class="toc-text">角色“大合影”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resources"><span class="toc-number">5.</span> <span class="toc-text">Resources</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
-
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
-
-        <a href="https://github.com/iTimeTraveler/iTimeTraveler.github.io" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <ul class="site-footer-links mobile-hidden">
-            
-             
-              
-              <li>
-                <a href="../../../../index.html"  title="Home">Home</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../archives/"  title="Archives">Archives</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../tags/"  title="Tags">Tags</a>
-              </li>
-            
-              
-              <li>
-                <a href="../../../../about/"  title="About">About</a>
-              </li>
-            
-
-        </ul>
-
-    </div>
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2016 iTime All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
 </footer>
 
-		
-		<script src="../../../../js/typer.js"></script>
 
-		<script src="../../../../js/geopattern.js"></script>
+<!-- min height -->
 
-		<script src="../../../../js/index.js"></script>
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
 
-		 <script src="../../../../js/popular_repo.js"></script> 
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
 
-	</body>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
 </html>
