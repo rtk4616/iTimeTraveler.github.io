@@ -20,7 +20,7 @@
 <meta property="og:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
 其中的分析和可视化是用Gephi做">
 <meta property="og:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
-<meta property="og:updated_time" content="2016-11-30T09:53:00.258Z">
+<meta property="og:updated_time" content="2016-12-09T07:18:04.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
 <meta name="twitter:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
@@ -110,7 +110,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_ciwetlwal004e70myekmpinc3">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_ciwhgnwho004u54mywtyqbwm4">
         <img src="../../../../gallery/Game-of-Thrones.jpg" itemprop="image">
       </a>
     
@@ -510,7 +510,7 @@
 </table>
 <h2 id="使用python-igraph"><a href="#使用python-igraph" class="headerlink" title="使用python-igraph"></a>使用python-igraph</h2><p>Neo4j与其它工具（比如，R和Python数据科学工具）完美结合。我们继续使用apoc运行 PageRank和社区发现（community detection）算法。这里接着使用python-igraph计算分析。Python-igraph移植自R的igraph图形分析库。 使用pip install python-igraph安装它。</p>
 <h3 id="从Neo4j构建一个igraph实例"><a href="#从Neo4j构建一个igraph实例" class="headerlink" title="从Neo4j构建一个igraph实例"></a>从Neo4j构建一个igraph实例</h3><p>为了在《权力的游戏》的数据的图分析中使用igraph，首先需要从Neo4j拉取数据，用Python建立igraph实例。作者使用 Neo4j 的Python驱动库py2neo。我们能直接传入Py2neo查询结果对象到igraph的TupleList构造器，创建igraph实例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graphfrom igraph <span class="keyword">import</span> Graph <span class="keyword">as</span> IGraph</div><div class="line">graph = Graph()</div><div class="line"></div><div class="line">query = <span class="string">'''</span></div><div class="line">MATCH (c1:Character)-[r:INTERACTS]-&gt;(c2:Character)</div><div class="line">RETURN c1.name, c2.name, r.weight AS weight</div><div class="line">'''ig = IGraph.TupleList(graph.run(query), weights=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph</div><div class="line"><span class="keyword">from</span> igraph <span class="keyword">import</span> Graph <span class="keyword">as</span> IGraph</div><div class="line">graph = Graph()</div><div class="line"></div><div class="line">query = <span class="string">'''</span></div><div class="line">MATCH (c1:Character)-[r:INTERACTS]-&gt;(c2:Character)</div><div class="line">RETURN c1.name, c2.name, r.weight AS weight</div><div class="line">'''ig = IGraph.TupleList(graph.run(query), weights=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p>现在有了igraph对象，可以运行igraph实现的各种图算法来。</p>
 <h3 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h3><p>作者使用igraph运行的第一个算法是<a href="https://en.wikipedia.org/wiki/PageRank" target="_blank" rel="external">PageRank</a>。PageRank算法源自Google的网页排名。它是一种<a href="https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality" target="_blank" rel="external">特征向量中心性(eigenvector centrality)</a>算法。</p>
 <p><img src="/gallery/game/page-rank.png" alt=""></p>
