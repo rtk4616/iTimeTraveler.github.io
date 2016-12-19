@@ -728,7 +728,7 @@ Step 1
 <!-- Table of Contents -->
 
   
-    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -736,7 +736,7 @@ Step 1
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+      <a class="article-title" href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/">【Android】技术调研：用代码模拟屏幕点击、触摸事件</a>
     </h1>
   
 
@@ -744,13 +744,13 @@ Step 1
     
     <div class="article-meta">
       
-	<a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	<a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -760,14 +760,19 @@ Step 1
           
             <div class="entry-summary" style="margin-left:0;">
             
-有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
 
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;				//基础类播报public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;		//实时路况public static final int...
+经过调研发现，给系统模拟注入输入事件有如下几种方式：
+一、使用shell命令使用android自带的adb shell，里面自带一个input工具，使用方法如下：
+adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input keyevent KEYCODE_HOME  #模拟按Home键
+
+还可以直接输入点击屏幕的事件，模拟点击屏幕：
+input tap 100 200  #在屏幕坐标(1...
           
 
         
           <p class="article-more-link">
-            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
+            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more">Continue Reading →</a>
           </p>
         </div>
       
@@ -775,11 +780,11 @@ Step 1
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
       
     </footer>
@@ -899,7 +904,7 @@ Step 1
 
             
               <div class="widget-entry-thumbnail">
-                <a href="../../2016/12/19/【Android】RxJava 入门详解/" title=""><img width="50" height="50" src="/gallery/RxJava-Android.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="../../2016/12/19/【Android】RxJava 入门详解/" title=""><img width="50" height="50" src="/gallery/rxjava-introduction.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
