@@ -22,7 +22,7 @@ Tinker GitHub: https://github.com">
 Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
 Tinker GitHub: https://github.com">
 <meta property="og:image" content="http://github.com/gallery/tinker.png">
-<meta property="og:updated_time" content="2016-12-05T08:01:35.924Z">
+<meta property="og:updated_time" content="2016-12-19T07:29:50.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】微信热修复 Tinker 的集成和使用">
 <meta name="twitter:description" content="简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
@@ -113,7 +113,7 @@ Tinker GitHub: https://github.com">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/tinker.png" rel="gallery_ciwrll4js0025a0mytisd7nu3">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/tinker.png" rel="gallery_ciwvrhjtp001wg4myg2guavmc">
         <img src="../../../../gallery/tinker.png" itemprop="image">
       </a>
     
@@ -170,7 +170,7 @@ Tinker GitHub: https://github.com">
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBaseContextAttached</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBaseContextAttached(base);</div><div class="line">        </div><div class="line">        <span class="comment">//you must install multiDex whatever tinker is installed!</span></div><div class="line">        MultiDex.install(base);</div><div class="line">        TinkerInstaller.install(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p><strong>或者</strong>，我们可以直接将Sample工程中的文件（特别是Utils包下的）拷贝到我们自己的工程中，就像我一样，方便后期使用。比如SampleResultService、TinkerManager这几个类</p>
 <p><img src="http://img.blog.csdn.net/20161117111013179" alt=""></p>
-<p>然后重载onBaseContextAttached方法，可以向我写成下面这样</p>
+<p>然后重载onBaseContextAttached方法，可以像我一样写成下面这样</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBaseContextAttached</span><span class="params">(Context base)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBaseContextAttached(base);</div><div class="line">        <span class="comment">//you must install multiDex whatever tinker is installed!</span></div><div class="line">        MultiDex.install(base);</div><div class="line"></div><div class="line">        MyApplicationContext.application = (MyApplication) getApplication();</div><div class="line">        MyApplicationContext.context = getApplication();</div><div class="line">        TinkerManager.setTinkerApplicationLike(<span class="keyword">this</span>);</div><div class="line">        TinkerManager.initFastCrashProtect();</div><div class="line">        <span class="comment">//should set before tinker is installed</span></div><div class="line">        TinkerManager.setUpgradeRetryEnable(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">        <span class="comment">//optional set logIml, or you can use default debug log</span></div><div class="line">        TinkerInstaller.setLogIml(<span class="keyword">new</span> MyLogImp());</div><div class="line"></div><div class="line">        <span class="comment">//installTinker after load multiDex</span></div><div class="line">        <span class="comment">//or you can put com.tencent.tinker.** to main dex</span></div><div class="line">        TinkerManager.installTinker(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>至此，自定义Application，也就是将Application中的实现移动到SampleApplicationLike中已经完成。</p>
 <h3 id="六、可以开始写测试patch的代码啦"><a href="#六、可以开始写测试patch的代码啦" class="headerlink" title="六、可以开始写测试patch的代码啦"></a><strong>六、可以开始写测试patch的代码啦</strong></h3><p>使用下面代码来load patch</p>
