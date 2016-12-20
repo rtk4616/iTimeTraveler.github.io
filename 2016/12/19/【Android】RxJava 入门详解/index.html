@@ -22,7 +22,7 @@
 
 前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJav">
 <meta property="og:image" content="http://github.com/gallery/rxjava-introduction.jpg">
-<meta property="og:updated_time" content="2016-12-19T11:00:58.572Z">
+<meta property="og:updated_time" content="2016-12-20T03:04:00.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】RxJava 入门详解">
 <meta name="twitter:description" content="本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线
@@ -113,7 +113,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/rxjava-introduction.jpg" rel="gallery_ciwvze4gp001qx4myxcfbb69z">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/rxjava-introduction.jpg" rel="gallery_ciwwxrq3h0023ykmyr1err73j">
         <img src="../../../../gallery/rxjava-introduction.jpg" itemprop="image">
       </a>
     
@@ -387,7 +387,7 @@
 <p>示例代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Observable.create(onSubscribe)</div><div class="line">    .subscribeOn(Schedulers.io())</div><div class="line">    .doOnSubscribe(<span class="keyword">new</span> Action0() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">            progressBar.setVisibility(View.VISIBLE); <span class="comment">// 需要在主线程执行</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    .subscribeOn(AndroidSchedulers.mainThread()) <span class="comment">// 指定主线程</span></div><div class="line">    .observeOn(AndroidSchedulers.mainThread())</div><div class="line">    .subscribe(subscriber);</div></pre></td></tr></table></figure>
 <p>如上，在 <code>doOnSubscribe()</code>的后面跟一个 <code>subscribeOn()</code> ，就能指定准备工作的线程了。</p>
-<h2 id="RxJava-的适用场景和使用方式"><a href="#RxJava-的适用场景和使用方式" class="headerlink" title="RxJava 的适用场景和使用方式"></a>RxJava 的适用场景和使用方式</h2><h3 id="1-与-Retrofit-的结合"><a href="#1-与-Retrofit-的结合" class="headerlink" title="1. 与 Retrofit 的结合"></a>1. 与 Retrofit 的结合</h3><blockquote>
+<h2 id="RxJava-的适用场景和使用方式"><a href="#RxJava-的适用场景和使用方式" class="headerlink" title="RxJava 的适用场景和使用方式"></a><strong>RxJava 的适用场景和使用方式</strong></h2><h3 id="1-与-Retrofit-的结合"><a href="#1-与-Retrofit-的结合" class="headerlink" title="1. 与 Retrofit 的结合"></a>1. 与 Retrofit 的结合</h3><blockquote>
 <p>Retrofit 是 Square 的一个著名的网络请求库。没有用过 Retrofit 的可以选择跳过这一小节也没关系，我举的每种场景都只是个例子，而且例子之间并无前后关联，只是个抛砖引玉的作用，所以你跳过这里看别的场景也可以的。</p>
 </blockquote>
 <p>Retrofit 除了提供了传统的 <code>Callback</code> 形式的 API，还有 RxJava 版本的 Observable 形式 API。下面我用对比的方式来介绍 Retrofit 的 RxJava 版 API 和传统版本的区别。</p>
@@ -429,7 +429,7 @@
 <p>如果想对 RxBinding 有更多了解，可以去它的 <a href="https://github.com/JakeWharton/RxBinding"><strong>GitHub 项目</strong></a> 下面看看。</p>
 <h3 id="3-各种异步操作"><a href="#3-各种异步操作" class="headerlink" title="3. 各种异步操作"></a>3. 各种异步操作</h3><p>前面举的 <strong>Retrofit</strong> 和 <strong>RxBinding</strong> 的例子，是两个可以提供现成的 Observable 的库。而如果你有某些异步操作无法用这些库来自动生成 Observable，也完全可以自己写。例如数据库的读写、大图片的载入、文件压缩/解压等各种需要放在后台工作的耗时操作，都可以用 RxJava 来实现，有了之前几章的例子，这里应该不用再举例了。</p>
 <h3 id="4-RxBus"><a href="#4-RxBus" class="headerlink" title="4. RxBus"></a>4. RxBus</h3><p><strong>RxBus 名字看起来像一个库，但它并不是一个库，而是一种模式</strong>。它的思想是使用 RxJava 来实现了 <code>EventBus</code> ，而让你不再需要使用 <code>Otto</code> 或者 GreenRobot 的 <code>EventBus</code>。至于什么是 RxBus，可以看<a href="http://blog.kaush.co/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/" target="_blank" rel="external"><strong>这篇文章</strong></a>。顺便说一句，Flipboard 已经用 RxBus 替换掉了 Otto ，目前为止没有不良反应。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>对于 Android 开发者来说， RxJava 是一个很难上手的库，因为它对于 Android 开发者来说有太多陌生的概念了。可是它真的很牛逼。因此，我写了这篇《给 Android 开发者的 RxJava 详解》，希望能给始终搞不明白什么是 RxJava 的人一些入门的指引，或者能让正在使用 RxJava 但仍然心存疑惑的人看到一些更深入的解析。无论如何，只要能给各位同为 Android 工程师的你们提供一些帮助，这篇文章的目的就达到了。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>对于 Android 开发者来说， RxJava 是一个很难上手的库，因为它对于 Android 开发者来说有太多陌生的概念了。可是它真的很牛逼。因此，我写了这篇《给 Android 开发者的 RxJava 详解》，希望能给始终搞不明白什么是 RxJava 的人一些入门的指引，或者能让正在使用 RxJava 但仍然心存疑惑的人看到一些更深入的解析。无论如何，只要能给各位同为 Android 工程师的你们提供一些帮助，这篇文章的目的就达到了。</p>
 <h3 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h3><p>朱凯（<a href="https://github.com/rengwuxian">扔物线</a>），<a href="http://www.flipboard.cn/app" target="_blank" rel="external">Flipboard 北京</a> Android 工程师。</p>
 <h3 id="为什么写这个？"><a href="#为什么写这个？" class="headerlink" title="为什么写这个？"></a>为什么写这个？</h3><p>与两三年前的境况不同，中国现在已经不缺初级 Android 工程师，但中级和高级工程师严重供不应求。因此我决定从今天开始不定期地发布我的技术分享，只希望能够和大家共同提升，通过我们的成长来解决一点点国内互联网公司人才稀缺的困境，也提升各位技术党的收入。所以，不仅要写这篇，我还会写更多。至于内容的定位，我计划只定位真正的干货，一些边边角角的小技巧和炫酷的黑科技应该都不会写，总之希望每篇文章都能帮读者提升真正的实力。</p>
 
