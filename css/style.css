@@ -983,7 +983,7 @@ li
   color: color-link;
 }
 .toc-link:hover {
-  color: #1fa0ae;
+  color: #333;
 }
 .toc-child {
   margin-left: 1em;
