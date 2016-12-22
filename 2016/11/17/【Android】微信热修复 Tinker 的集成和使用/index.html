@@ -22,7 +22,7 @@ Tinker GitHub: https://github.com">
 Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
 Tinker GitHub: https://github.com">
 <meta property="og:image" content="http://github.com/gallery/tinker.png">
-<meta property="og:updated_time" content="2016-12-22T06:49:13.028Z">
+<meta property="og:updated_time" content="2016-12-22T06:52:41.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】微信热修复 Tinker 的集成和使用">
 <meta name="twitter:description" content="简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
@@ -111,7 +111,7 @@ Tinker GitHub: https://github.com">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/tinker.png" rel="gallery_cix00crj3002dkkmy8ldyuy3x">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/tinker.png" rel="gallery_cix00h1jp002e1cmyem3os4n1">
         <img src="../../../../gallery/tinker.png" itemprop="image">
       </a>
     
@@ -187,17 +187,11 @@ Tinker GitHub: https://github.com">
 <h3 id="6、重新启动App"><a href="#6、重新启动App" class="headerlink" title="6、重新启动App"></a>6、重新启动App</h3><p>我们可以看到，补丁包的确已经加载成功了。</p>
 <hr>
 <h2 id="使用Tinker的注意事项"><a href="#使用Tinker的注意事项" class="headerlink" title="使用Tinker的注意事项"></a><strong>使用Tinker的注意事项</strong></h2><ul>
-<li><ol>
-<li>Tinker_id的大版本升级问题</li>
-</ol>
-</li>
+<li>1、Tinker_id的大版本升级问题</li>
 </ul>
 <p><img src="/gallery/tinker_id_problem.png" alt=""></p>
 <ul>
-<li><ol>
-<li>如果生成patch失败，并且原因如下：</li>
-</ol>
-</li>
+<li>2、如果生成patch失败，并且原因如下：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Warning: ignoreWarning is false, but we found loader classes are found in old secondary dex.</div></pre></td></tr></table></figure>
 <p>那么需要把<strong>相应的报错类</strong>声明在项目的<code>keep_in_main_dex.txt</code> 文件中，保证它编译时会被放置到主dex中。参考<a href="https://github.com/Tencent/tinker/issues/96">Tinker Issue #96</a> 。</p>
@@ -211,6 +205,7 @@ Tinker GitHub: https://github.com">
 <li><a href="http://blog.csdn.net/a750457103/article/details/52815096" target="_blank" rel="external">Android 微信热修复Tinker接入过程以及使用方法</a></li>
 <li><a href="https://www.zybuluo.com/dodola/note/554061" target="_blank" rel="external">Tinker 逆向分析</a></li>
 </ul>
+<hr>
 
       
     </div>
