@@ -22,7 +22,7 @@
 
 记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能够专门">
 <meta property="og:image" content="http://github.com/gallery/Thomas-Bayes.jpg">
-<meta property="og:updated_time" content="2016-12-22T04:08:06.439Z">
+<meta property="og:updated_time" content="2016-12-22T04:42:40.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学之美番外篇：平凡而又神奇的贝叶斯方法">
 <meta name="twitter:description" content="Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。） —— Pierre-Simon Laplace
@@ -111,7 +111,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Thomas-Bayes.jpg" rel="gallery_ciwzulfjy0058zomytt0hawbj">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Thomas-Bayes.jpg" rel="gallery_ciwzweqbd005ht8my7ah423h9">
         <img src="../../../../gallery/Thomas-Bayes.jpg" itemprop="image">
       </a>
     
@@ -165,8 +165,8 @@
 </blockquote>
 <p>一些认知科学的研究表明（《决策与判断》以及《<a href="https://book.douban.com/subject/3199621/" target="_blank" rel="external">Rationality for Mortals</a>》第12章：小孩也可以解决贝叶斯问题），我们对形式化的贝叶斯问题不擅长，但对于以频率形式呈现的等价问题却很擅长。在这里，我们不妨把问题重新叙述成：你在校园里面<a href="https://en.wikipedia.org/wiki/Random_walk" target="_blank" rel="external"><strong>随机游走</strong></a>，遇到了 N 个穿长裤的人（仍然假设你无法直接观察到他们的性别），问这 N 个人里面有多少个女生多少个男生。</p>
 <p>你说，这还不简单：算出学校里面有多少穿长裤的，然后在这些人里面再算出有多少女生，不就行了？</p>
-<p>我们来算一算：假设学校里面人的总数是 U 个。60% 的男生都穿长裤，于是我们得到了 <code>U * P(Boy) * P(Pants|Boy)</code>个穿长裤的（男生）（其中男生的概率 P(Boy) = 60%，这里可以简单的理解为男生的比例；<code>P(Pants|Boy)</code> 是条件概率，即在 Boy 这个条件下穿长裤的概率是多大，这里是 100% ，因为所有男生都穿长裤）。40% 的女生里面又有一半（50%）是穿长裤的，于是我们又得到了 <code>U * P(Girl) * P(Pants|Girl)</code> 个穿长裤的（女生）。加起来一共是 <code>U * P(Boy) * P(Pants|Boy) + U * P(Girl) * P(Pants|Girl)</code> 个穿长裤的，其中有 <code>U * P(Girl) * P(Pants|Girl)</code> 个女生。两者一比就是你要求的答案。</p>
-<p>下面我们把这个答案形式化一下：我们要求的是 P(Girl|Pants) （穿长裤的人里面有多少女生），我们计算的结果是 <code>U * P(Girl) * P(Pants|Girl) / [U * P(Boy) * P(Pants|Boy) + U * P(Girl) * P(Pants|Girl)]</code> 。容易发现这里校园内人的总数是无关的，可以消去。于是得到</p>
+<p>我们来算一算：假设学校里面人的总数是 U 个。60% 的男生都穿长裤，于是我们得到了 <code>U * P(Boy) * P(Pants|Boy)</code>个穿长裤的（男生）（其中男生的概率 P(Boy) = 60%，这里可以简单的理解为男生的比例；<code>P(Pants|Boy)</code> 是条件概率，即在 Boy 这个条件下穿长裤的概率是多大，这里是 100% ，因为所有男生都穿长裤）。40% 的女生里面又有一半（50%）是穿长裤的，于是我们又得到了 <code>U * P(Girl) * P(Pants|Girl)</code> 个穿长裤的（女生）。加起来一共是 U <em> P(Boy) </em> P(Pants|Boy) + U <em> P(Girl) </em> P(Pants|Girl) 个穿长裤的，其中有 <code>U * P(Girl) * P(Pants|Girl)</code> 个女生。两者一比就是你要求的答案。</p>
+<p>下面我们把这个答案形式化一下：我们要求的是 P(Girl|Pants) （穿长裤的人里面有多少女生），我们计算的结果是 U <em> P(Girl) </em> P(Pants|Girl) / [U <em> P(Boy) </em> P(Pants|Boy) + U <em> P(Girl) </em> P(Pants|Girl)] 。容易发现这里校园内人的总数是无关的，可以消去。于是得到</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(Girl|Pants) = P(Girl) * P(Pants|Girl) / [P(Boy) * P(Pants|Boy) + P(Girl) * P(Pants|Girl)]</div></pre></td></tr></table></figure>
 <p>注意，如果把上式收缩起来，分母其实就是 P(Pants) ，分子其实就是 P(Pants, Girl) 。而这个比例很自然地就读作：在穿长裤的人（ P(Pants) ）里面有多少（穿长裤）的女孩（ P(Pants, Girl) ）。</p>
 <p>上式中的 Pants 和 Boy/Girl 可以指代一切东西，所以其一般形式就是：</p>

@@ -126,11 +126,11 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
+          <div class="entry-summary">
+          引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
 所以 这点就让人很痛苦， 然而问题总还是要被解决的，作者曾经亲眼看到过使用android studio仅仅用了2.5秒就编译完毕(在代码更改很少的情况下)。 现在把如何优化gradle编译速度的方法记录在此，希望可以 帮助到广大的同行们。
-准备工作首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Grad...
-          
+准备工作首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Gradle 2.4之后在编译效率上面有了一个非常大的提高，看下图官方的速度对比。
+
 
         
           <p class="article-more-link">
@@ -188,16 +188,16 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 关于类型，官网上有一段仔细地介绍了一下函数指针的部分，现在的设计比起 C 的语法，清晰很多。
 
 也就是说，类型放在后面是为了更加清晰易懂。Rob Pike 曾经在 Go 官方博客解释过这个问题（查看原文：Go’s Declaration Syntax），简略翻译如下（水平有限翻译的不对的地方见谅）：
 引言Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax）会和传统的C家族语言不同。在这篇博文里，我们会进行一个比较，并做出解答。
 C 的语法首先，先看看 C 的语法。C 采用了一种聪明而不同寻常的声明语法。声明变量时，只需写出一个带有目标变量名的表达式，然后在表达式里指明该表达式本身的类型即可。比如：
 int x;
-上面的代码声明了 x 变量，并且其类...
-          
+上面的代码声明了 x 变量，并且其类型为 int——即，表达式 x 为 int 类型。一般而言，为了指明新变量的类型，我们得写出一个表达式，其中含有我们要声明的变量，这个表达式运算的结果值属于某种基本类型，我们把这种基本类型写到表达式的左边。所以，下述声明：
+int *p;int a[3];
 
         
           <p class="article-more-link">
@@ -255,16 +255,13 @@ int x;
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 本文是一篇转载自伯乐在线的译文，英文原文是这里：Machine Learning is Fun! — by Adam Geitgey
 
 在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！
 本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了“机器学习” ——维基百科词条，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。
 本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。
-
-何为机器学习？机器学习这个概念认为，对于待解问题，你无需编写任何专门的程序代码，遗传算法（generic algori...
-          
 
         
           <p class="article-more-link">
@@ -322,34 +319,9 @@ int x;
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+          <div class="entry-summary">
+          Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
 Last Update: 2016.08.09
- 
-
-
-
-Project Name
-Stars
-Description
-
-
-
-
-TensorFlow
-29622
-Computation using data flow graphs for scalable machine learning.
-
-
-Caffe
-11799
-Caffe: a fast open framework for deep learning.
-
-
-Neural Style
-10148
-Torch impleme...
-          
 
         
           <p class="article-more-link">
@@ -407,14 +379,14 @@ Torch impleme...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
-          
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &lt;stroke        android:width="0dp"        android:color="@color/gray" /&gt;    &lt;solid        android:color="@color/gray" /&gt;&lt;/shape&gt;
+然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。
 
         
           <p class="article-more-link">
@@ -472,8 +444,8 @@ Torch impleme...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 
 互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
 
@@ -494,10 +466,6 @@ T5：科学家
 T6：首席科学家
 
 
-
-目前全腾讯貌似就一个T6。
-每一级之间又分为3个子级，3-1是任命组长/副组长的必要条件，其他线也...
-          
 
         
           <p class="article-more-link">
@@ -555,14 +523,19 @@ T6：首席科学家
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
 但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
 
 一、名词介绍
-PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&...
-          
+PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 dpi与ppi区别）：
+
+dp = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数
+
+sp = Scale-independent pixels，它是安卓的字体单位
+
+
 
         
           <p class="article-more-link">
@@ -620,14 +593,23 @@ PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nb
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+          <div class="entry-summary">
+          一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
 二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventcount &gt; , 例如：
 
 adb shell monkey -v 500
 
-产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activit...
-          
+产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。上面只是一个简单的例子，实际情况中通常会有很多的options 选项.
+2）. 四大类
+
+
+常用选项
+事件选项 
+约束选项 
+调试选项
+
+
+具体的命令解释可以看这里：android 压力测试命令monkey详解
 
         
           <p class="article-more-link">
@@ -685,18 +667,13 @@ adb shell monkey -v 500
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 英文原文： Auto Restart application after Crash/Force Close in Android.
 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
 
 这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。
 其实方法很简单，这里我们需要用到 Thread.setDefaultUncaughtExceptionHandler()，当应用崩溃的时候代码就会自动调用 uncaughtException() 这个方法。
-
-操作步骤如下：
-Step 1
-像下面这...
-          
 
         
           <p class="article-more-link">
@@ -754,13 +731,12 @@ Step 1
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
 一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
-二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
-          
+二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	// 当前目录进行递归回滚
 
         
           <p class="article-more-link">
