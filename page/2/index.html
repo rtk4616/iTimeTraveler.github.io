@@ -658,6 +658,8 @@ c++ 的 sort 的用法： sort(data, data+n, cmp_int); data 是第一个元素�
 TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”
 
 一、需求效果
+二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
+textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.RED);ForegroundColorSpan whiteSpan = new ForegroundColorSpan(Color.WHITE);ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.BLUE);ForegroundColorSpan greenSpan = new ForegroundColorSpan(Color.GREEN);ForegroundColorSpan yellowSpan = new ForegroundColorSpan(Color.YELLOW);  builder.setSpan(redSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(whiteSpan, 1, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);builder.setSpan(blueSpan, 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(greenSpan, 3, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(yellowSpan, 4,5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);textView.setText(builder);
 
         
           <p class="article-more-link">
