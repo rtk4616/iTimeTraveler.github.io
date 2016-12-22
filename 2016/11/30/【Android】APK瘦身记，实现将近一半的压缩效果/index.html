@@ -22,7 +22,7 @@
 
 一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
 <meta property="og:image" content="http://github.com/gallery/apk.png">
-<meta property="og:updated_time" content="2016-11-30T04:00:06.061Z">
+<meta property="og:updated_time" content="2016-12-22T05:01:06.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】APK瘦身记，实现将近一半的压缩效果">
 <meta name="twitter:description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
@@ -111,7 +111,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_ciwzweq8t000xt8myd7e7tmgk">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_ciwzwjwls000xdomykef6kjgs">
         <img src="../../../../gallery/apk.png" itemprop="image">
       </a>
     
@@ -147,9 +147,9 @@
 </blockquote>
 <h2 id="一、我是怎么思考这件事情的"><a href="#一、我是怎么思考这件事情的" class="headerlink" title="一、我是怎么思考这件事情的"></a><strong>一、我是怎么思考这件事情的</strong></h2><p>APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个思考和总结，所以随笔给大家，希望对大家从事相关工作的时候有所帮助和参考，同时也是抛砖引玉，希望大家共同探讨这个开放性的话题。</p>
 <p>关于为什么APK要瘦身，这个不多说，只从三个方面唠叨一下，对于用户（或者客户）来说，APK越大，在下载安装过程中，他们耗费的流量会越多，安装等待时间也会越长；对于产品本身，意味着下载转化率会越低（因为竞品中，用户有更多机会选择那个体验最好，功能最多，性能最好，包最小的）；对于研发来说，是一种优化改进技术的机会。</p>
+<a id="more"></a>
 <p>欲瘦身，我们先找找胖的原因和问题。按目标－路径－资源的思维模式，找原因和问题有如下几条路径，一是拍脑袋，按自己的经验和判断，甚至是主观想象；二是去搜索引擎找关键字，逛各种技术论坛听技术大牛们怎么说，看各类技术文章抽取提炼；三是用一种可测量的工具或者方法发现问题。</p>
 <p>前两种不赘述，我这里说说第三种方法。用一种可测量的工具或者方法来分析，所谓工欲善其事，必先利其器。这个器可以可以自己锻造，也可以用现成的。这里推荐一个在线apk分析工具，因为是外部工具，所以大家请在使用过程中，不要上传未发布出去的产品，为了数据安全，笔者这里拿一个github上开源的Android项目作为瘦身示例。</p>
-<a id="more"></a>
 <h2 id="二、寻找问题"><a href="#二、寻找问题" class="headerlink" title="二、寻找问题"></a><strong>二、寻找问题</strong></h2><p><a href="https://nimbledroid.com/" target="_blank" rel="external"><strong>NimbleDroid</strong></a> 是美国哥伦比亚大学的博士创业团队研发出来的分析Android app性能指标的系统，分析的方式有静态和动态两种方式，其中静态分析可以分析出APK安装包中大文件排行榜，各种知名SDK的大小以及占代码整体的比例，各种类型文件的大小以及占排行，各种知名SDK的方法数以及占所有dex中方法数的比例，废话不多说，下面上高清无码大图看看颜值吧。</p>
 <p>如果想使用分析功能分析自己的产品，请登录并上传自己产品的apk包，所有功能目前均免费使用，如果是想分析Google Play上已经发布的产品，可以直接点击”Play Apps”查看，还可以使用搜索功能根据应用名和包名查看结果。再次强调下，请不要上传任何未发布的产品。</p>
 <ul>
