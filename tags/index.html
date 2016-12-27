@@ -115,21 +115,21 @@
             
                 <a href="#BAT" title="BAT" rel="1">BAT</a>
             
-                <a href="#WebDevelopment" title="WebDevelopment" rel="1">WebDevelopment</a>
-            
                 <a href="#Hexo" title="Hexo" rel="2">Hexo</a>
-            
-                <a href="#D3" title="D3" rel="3">D3</a>
             
                 <a href="#Java" title="Java" rel="10">Java</a>
             
                 <a href="#Android" title="Android" rel="21">Android</a>
             
+                <a href="#WebDevelopment" title="WebDevelopment" rel="1">WebDevelopment</a>
+            
                 <a href="#Algorithm" title="Algorithm" rel="3">Algorithm</a>
+            
+                <a href="#Broadcast" title="Broadcast" rel="1">Broadcast</a>
             
                 <a href="#APK" title="APK" rel="1">APK</a>
             
-                <a href="#Broadcast" title="Broadcast" rel="1">Broadcast</a>
+                <a href="#D3" title="D3" rel="3">D3</a>
             
                 <a href="#RxJava" title="RxJava" rel="1">RxJava</a>
             
@@ -137,17 +137,17 @@
             
                 <a href="#Go语言" title="Go语言" rel="2">Go语言</a>
             
-                <a href="#Linux" title="Linux" rel="1">Linux</a>
-            
                 <a href="#Machine Learning" title="Machine Learning" rel="2">Machine Learning</a>
+            
+                <a href="#Linux" title="Linux" rel="1">Linux</a>
             
                 <a href="#MySQL" title="MySQL" rel="1">MySQL</a>
             
                 <a href="#SVN" title="SVN" rel="1">SVN</a>
             
-                <a href="#Neo4j" title="Neo4j" rel="2">Neo4j</a>
-            
                 <a href="#Bayesian" title="Bayesian" rel="1">Bayesian</a>
+            
+                <a href="#Neo4j" title="Neo4j" rel="2">Neo4j</a>
             
                 <a href="#Google" title="Google" rel="1">Google</a>
             
@@ -1677,7 +1677,22 @@
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="" class="mobile-nav-link">Tags</a>
+  
+    <a href="../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
   
 
   <div class="clearfix container">
@@ -1697,23 +1712,9 @@
     var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
 
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="../index.html" class="mobile-nav-link">Home</a>
-  
-    <a href="../archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="../categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="" class="mobile-nav-link">Tags</a>
-  
-    <a href="../about" class="mobile-nav-link">About</a>
-  
-</nav> -->
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>

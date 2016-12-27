@@ -109,7 +109,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cix5q6neg002u0omyx26fwdlw">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cix6xhlsf0050rcmyo8mazunb">
         <img src="../../../../gallery/d3_link-node-by-name.png" itemprop="image">
       </a>
     
@@ -223,7 +223,22 @@ This example shows how to link nodes in a force-directed graph using a named ide
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
   
 
   <div class="clearfix container">
@@ -243,23 +258,9 @@ This example shows how to link nodes in a force-directed graph using a named ide
     var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
 
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
-  
-    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../about" class="mobile-nav-link">About</a>
-  
-</nav> -->
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
