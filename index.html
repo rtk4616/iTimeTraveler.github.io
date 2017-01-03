@@ -141,10 +141,6 @@ BackgroundColorSpan(int color) —— 背景着色，参数是颜色数值，可
 ForegroundColorSpan(int color) —— 前景着色，也就是字的着色，参数与背景着色一致
 
 
-问题网上已经有着很多使用这些span的教程了，所以没必要在这里继续探讨这些基础使用了。但是，如果使用了AbsoluteSizeSpan(int size) 在同一个TextView中定义了不同字体大小，就会默认显示成底部对齐的方式：
-
-说到这里，第一反应肯定是tv.setGravity(Gravity.CENTER_VERTICAL)，但是很不幸，怎么试都不凑效。那么到底有没有办法使用Span让不同字体大小的垂直居中呢？
-答案是：当然可以，得用ReplacementSpan
 
         
           <p class="article-more-link">

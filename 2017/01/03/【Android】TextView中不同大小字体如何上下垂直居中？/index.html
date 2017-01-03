@@ -24,7 +24,7 @@ AbsoluteSizeSpan(int si">
 
 AbsoluteSizeSpan(int si">
 <meta property="og:image" content="http://github.com/gallery/Textview-vertical/FontMetricsInt.png">
-<meta property="og:updated_time" content="2017-01-03T09:18:38.132Z">
+<meta property="og:updated_time" content="2017-01-03T09:46:47.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】TextView中不同大小字体如何上下垂直居中？">
 <meta name="twitter:description" content="前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
@@ -115,7 +115,7 @@ AbsoluteSizeSpan(int si">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhazzra001l7gmy6cuk4xm8">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhbz5w4001kv4my3z4rhd61">
         <img src="../../../../gallery/Textview-vertical/FontMetricsInt.png" itemprop="image">
       </a>
     
@@ -158,11 +158,11 @@ AbsoluteSizeSpan(int si">
 <li><p><strong>ForegroundColorSpan(int color)</strong> —— 前景着色，也就是字的着色，参数与背景着色一致</p>
 </li>
 </ul>
+<a id="more"></a>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>网上已经有着很多使用这些span的教程了，所以没必要在这里继续探讨这些基础使用了。但是，如果使用了<strong><code>AbsoluteSizeSpan(int size)</code></strong> 在同一个TextView中定义了不同字体大小，就会默认显示成底部对齐的方式：</p>
 <p><img src="/gallery/Textview-vertical/not.png" alt=""></p>
 <p>说到这里，第一反应肯定是<code>tv.setGravity(Gravity.CENTER_VERTICAL)</code>，但是很不幸，怎么试都不凑效。那么到底有没有办法使用Span让不同字体大小的垂直居中呢？</p>
 <p>答案是：<strong>当然可以，得用<code>ReplacementSpan</code></strong></p>
-<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><h3 id="为何是ReplacementSpan？"><a href="#为何是ReplacementSpan？" class="headerlink" title="为何是ReplacementSpan？"></a><strong>为何是ReplacementSpan？</strong></h3><p>它是系统提供给我们的一个抽象类。通过名字我们可以知道其实用于是用于替换。指示我们<strong>可以把文本的某一部分替换成我们想要的内容</strong>。这也许是我们想要的。</p>
 <p><code>Relpacement</code>的定义很简单：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ReplacementSpan</span> <span class="keyword">extends</span> <span class="title">MetricAffectingSpan</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">(Paint paint, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Paint.FontMetricsInt fm)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">int</span> top, <span class="keyword">int</span> y, <span class="keyword">int</span> bottom, Paint paint)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateMeasureState</span><span class="params">(TextPaint p)</span> </span>&#123; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateDrawState</span><span class="params">(TextPaint ds)</span> </span>&#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
