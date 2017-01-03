@@ -24,7 +24,7 @@ AbsoluteSizeSpan(int si">
 
 AbsoluteSizeSpan(int si">
 <meta property="og:image" content="http://github.com/gallery/Textview-vertical/FontMetricsInt.png">
-<meta property="og:updated_time" content="2017-01-03T09:14:00.824Z">
+<meta property="og:updated_time" content="2017-01-03T09:18:38.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】TextView中不同大小字体如何上下垂直居中？">
 <meta name="twitter:description" content="前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
@@ -160,7 +160,7 @@ AbsoluteSizeSpan(int si">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhatadj001npwmyrqzo0zuf">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhayy0d001f2wmy3qr5v6z8">
         <img src="../../../../gallery/Textview-vertical/FontMetricsInt.png" itemprop="image">
       </a>
     
@@ -203,7 +203,7 @@ AbsoluteSizeSpan(int si">
 </li>
 </ul>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>网上已经有着很多使用这些span的教程了，所以没必要在这里继续探讨这些基础使用了。但是，如果使用了<strong><code>AbsoluteSizeSpan(int size)</code></strong> 在同一个TextView中定义了不同字体大小，就会默认显示成底部对齐的方式：</p>
-<p><img src="http://img.blog.csdn.net/20170103155748635?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="/gallery/Textview-vertical/not.png" alt=""></p>
 <p>说到这里，第一反应肯定是<code>tv.setGravity(Gravity.CENTER_VERTICAL)</code>，但是很不幸，怎么试都不凑效。那么到底有没有办法使用Span让不同字体大小的垂直居中呢？</p>
 <p>答案是：<strong>当然可以，得用<code>ReplacementSpan</code></strong></p>
 <a id="more"></a>
@@ -250,7 +250,7 @@ AbsoluteSizeSpan(int si">
 <li><strong>ascent</strong> : 字体最上端到基线的距离，为负值。</li>
 <li><strong>descent</strong>：字体最下端到基线的距离，为正值。</li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20170103161856191?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="/gallery/Textview-vertical/FontMetricsInt.png" alt=""></p>
 <p>中间那条线（Baseline）就是基线，基线到上面那条线的距离就是<code>ascent</code>，基线到下面那条线的距离就是<code>descent</code>。</p>
 <p>回到我们的主题， 我们发现<code>getSize()</code>方法的参数中有<code>Paint.FontMetricsInt</code>，那我们是否就可以通过改变传入的Paint.FontMetricsInt的<code>asent</code>和<code>desent</code>来达到改变高度的目的呢？答案是可行的。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h2><p>按照上面的分析，我们继承<code>ReplacementSpan</code> 自定义一个Span</p>
@@ -271,8 +271,8 @@ AbsoluteSizeSpan(int si">
 <p><code>((y + fm.descent + y + fm.ascent) / 2 - (bottom + top) / 2)</code> 就是字体需要向上调整的距离</p>
 <h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a><strong>使用方式</strong></h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">SpannableString ss = <span class="keyword">new</span> SpannableString(disStr + unitString);</div><div class="line"></div><div class="line">ss.setSpan(<span class="keyword">new</span> AbsoluteSizeSpan(<span class="number">40</span>, <span class="keyword">true</span>), <span class="number">0</span>, disStr.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);</div><div class="line"><span class="comment">//垂直居中显示文字</span></div><div class="line">ss.setSpan(<span class="keyword">new</span> CustomVerticalCenterSpan(<span class="number">23</span>), disStr.length(), ss.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);</div></pre></td></tr></table></figure>
 <p>看看效果：</p>
-<p><img src="http://img.blog.csdn.net/20170103163521713?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20170103163540229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="/gallery/Textview-vertical/ok1.png" alt=""></p>
+<p><img src="/gallery/Textview-vertical/ok2.png" alt=""></p>
 <hr>
 <h3 id="【参考资料】"><a href="#【参考资料】" class="headerlink" title="【参考资料】"></a><strong>【参考资料】</strong></h3><ol>
 <li><p><a href="http://stackoverflow.com/questions/36964034/how-to-make-relativesizespan-align-to-top" target="_blank" rel="external"><strong>How to make RelativeSizeSpan align to top？</strong></a> </p>

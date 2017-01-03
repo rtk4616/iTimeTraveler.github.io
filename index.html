@@ -243,7 +243,7 @@
 </li>
 </ul>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>网上已经有着很多使用这些span的教程了，所以没必要在这里继续探讨这些基础使用了。但是，如果使用了<strong><code>AbsoluteSizeSpan(int size)</code></strong> 在同一个TextView中定义了不同字体大小，就会默认显示成底部对齐的方式：</p>
-<p><img src="http://img.blog.csdn.net/20170103155748635?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="/gallery/Textview-vertical/not.png" alt=""></p>
 <p>说到这里，第一反应肯定是<code>tv.setGravity(Gravity.CENTER_VERTICAL)</code>，但是很不幸，怎么试都不凑效。那么到底有没有办法使用Span让不同字体大小的垂直居中呢？</p>
 <p>答案是：<strong>当然可以，得用<code>ReplacementSpan</code></strong></p>
         <!-- 前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
