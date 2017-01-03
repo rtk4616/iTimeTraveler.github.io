@@ -29,7 +29,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -41,120 +41,72 @@ This example shows how to link nodes in a force-directed graph using a named ide
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-
-  
-    <link rel="stylesheet" href="../../../../css/dialog.css">
-  
-
-  
-    <link rel="stylesheet" href="/css/header-post.css" >
-  
-
-  
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
 
 <body>
-  
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
 
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+          <h1 class="site-title">
+            <a href="http://demo.athemes.com/hiero/" title="Hiero" rel="home">
+              iTimeTraveler</a>
+          </h1>
+          <div class="site-description">Someone knock at the door.</div>
 
             
-              <a class="brand" style="border-width: 0;">
-                <p>iTimeTraveler</p>
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="../../../../index.html">Home</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../archives">Archives</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../categories">Categories</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../tags">Tags</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../about">About</a> </li>
-                
-                  <li><div id="search-form-wrap">
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../../../js/insight.js"></script>
-
-</div></li>
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
+                    
+              </ul>
             </div>
-          </div>
-                
-      </div>
-    </div>
+          </nav>
 
+
+      </div>
+  </div>
 </header>
 
 
 
-      
+
+  <div id="container">
+    <div id="wrap">
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【D3】Link Nodes by Name" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+          <section id="main" style="float:none;"><article id="post-【D3】Link Nodes by Name" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cixgwc2bl005sj0my2p5doocg">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cixgwk3rk002yuomy7thxozyu">
         <img src="../../../../gallery/d3_link-node-by-name.png" itemprop="image">
       </a>
     
@@ -174,12 +126,9 @@ This example shows how to link nodes in a force-directed graph using a named ide
     
     <div class="article-meta">
       
-	<a href="" class="article-date">
-	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">2016-11-16</time>
+	Posted on <a href="" class="article-date">
+	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">November 16, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../../../categories/D3-js/">D3.js</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -187,12 +136,20 @@ This example shows how to link nodes in a force-directed graph using a named ide
         <p>Source : <a href="http://bl.ocks.org/mbostock/533daf20348023dfdd76" target="_blank" rel="external">http://bl.ocks.org/mbostock/533daf20348023dfdd76</a></p>
 <p>This example shows how to link nodes in a <a href="http://bl.ocks.org/mbostock/4062045" target="_blank" rel="external"><strong>force-directed graph</strong></a> using a named identifier rather than a numeric index.</p>
 <a id="more"></a>
-<h2 id="index-html"><a href="#index-html" class="headerlink" title="# index.html"></a># index.html</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"></div><div class="line"><span class="selector-class">.node</span> &#123;</div><div class="line">  <span class="attribute">stroke</span>: <span class="number">#000</span>;</div><div class="line">  <span class="attribute">stroke-width</span>: <span class="number">1.5px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.link</span> &#123;</div><div class="line">  <span class="attribute">stroke</span>: <span class="number">#999</span>;</div><div class="line">  <span class="attribute">stroke-width</span>: <span class="number">1.5px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"960"</span> <span class="attr">height</span>=<span class="string">"500"</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//d3js.org/d3.v4.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line"><span class="keyword">var</span> svg = d3.select(<span class="string">"svg"</span>),</div><div class="line">    width = +svg.attr(<span class="string">"width"</span>),</div><div class="line">    height = +svg.attr(<span class="string">"height"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> simulation = d3.forceSimulation()</div><div class="line">    .force(<span class="string">"charge"</span>, d3.forceManyBody().strength(<span class="number">-200</span>))</div><div class="line">    .force(<span class="string">"link"</span>, d3.forceLink().id(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;).distance(<span class="number">40</span>))</div><div class="line">    .force(<span class="string">"x"</span>, d3.forceX(width / <span class="number">2</span>))</div><div class="line">    .force(<span class="string">"y"</span>, d3.forceY(height / <span class="number">2</span>))</div><div class="line">    .on(<span class="string">"tick"</span>, ticked);</div><div class="line"></div><div class="line"><span class="keyword">var</span> link = svg.selectAll(<span class="string">".link"</span>),</div><div class="line">    node = svg.selectAll(<span class="string">".node"</span>);</div><div class="line"></div><div class="line">d3.json(<span class="string">"graph.json"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, graph</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</div><div class="line"></div><div class="line">  simulation.nodes(graph.nodes);</div><div class="line">  simulation.force(<span class="string">"link"</span>).links(graph.links);</div><div class="line"></div><div class="line">  link = link</div><div class="line">    .data(graph.links)</div><div class="line">    .enter().append(<span class="string">"line"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"link"</span>);</div><div class="line"></div><div class="line">  node = node</div><div class="line">    .data(graph.nodes)</div><div class="line">    .enter().append(<span class="string">"circle"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"node"</span>)</div><div class="line">      .attr(<span class="string">"r"</span>, <span class="number">6</span>)</div><div class="line">      .style(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ticked</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  link.attr(<span class="string">"x1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.x; &#125;)</div><div class="line">      .attr(<span class="string">"y1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.y; &#125;)</div><div class="line">      .attr(<span class="string">"x2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.x; &#125;)</div><div class="line">      .attr(<span class="string">"y2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.y; &#125;);</div><div class="line"></div><div class="line">  node.attr(<span class="string">"cx"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.x; &#125;)</div><div class="line">      .attr(<span class="string">"cy"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.y; &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="index-html"><a href="#index-html" class="headerlink" title="# index.html"></a># index.html</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"></div><div class="line">.node &#123;</div><div class="line">  stroke: #000;</div><div class="line">  stroke-width: 1.5px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.link &#123;</div><div class="line">  stroke: #999;</div><div class="line">  stroke-width: 1.5px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"960"</span> <span class="attr">height</span>=<span class="string">"500"</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//d3js.org/d3.v4.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line"><span class="keyword">var</span> svg = d3.select(<span class="string">"svg"</span>),</div><div class="line">    width = +svg.attr(<span class="string">"width"</span>),</div><div class="line">    height = +svg.attr(<span class="string">"height"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> simulation = d3.forceSimulation()</div><div class="line">    .force(<span class="string">"charge"</span>, d3.forceManyBody().strength(<span class="number">-200</span>))</div><div class="line">    .force(<span class="string">"link"</span>, d3.forceLink().id(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;).distance(<span class="number">40</span>))</div><div class="line">    .force(<span class="string">"x"</span>, d3.forceX(width / <span class="number">2</span>))</div><div class="line">    .force(<span class="string">"y"</span>, d3.forceY(height / <span class="number">2</span>))</div><div class="line">    .on(<span class="string">"tick"</span>, ticked);</div><div class="line"></div><div class="line"><span class="keyword">var</span> link = svg.selectAll(<span class="string">".link"</span>),</div><div class="line">    node = svg.selectAll(<span class="string">".node"</span>);</div><div class="line"></div><div class="line">d3.json(<span class="string">"graph.json"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, graph</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</div><div class="line"></div><div class="line">  simulation.nodes(graph.nodes);</div><div class="line">  simulation.force(<span class="string">"link"</span>).links(graph.links);</div><div class="line"></div><div class="line">  link = link</div><div class="line">    .data(graph.links)</div><div class="line">    .enter().append(<span class="string">"line"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"link"</span>);</div><div class="line"></div><div class="line">  node = node</div><div class="line">    .data(graph.nodes)</div><div class="line">    .enter().append(<span class="string">"circle"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"node"</span>)</div><div class="line">      .attr(<span class="string">"r"</span>, <span class="number">6</span>)</div><div class="line">      .style(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ticked</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  link.attr(<span class="string">"x1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.x; &#125;)</div><div class="line">      .attr(<span class="string">"y1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.y; &#125;)</div><div class="line">      .attr(<span class="string">"x2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.x; &#125;)</div><div class="line">      .attr(<span class="string">"y2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.y; &#125;);</div><div class="line"></div><div class="line">  node.attr(<span class="string">"cx"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.x; &#125;)</div><div class="line">      .attr(<span class="string">"cy"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.y; &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="graph-json"><a href="#graph-json" class="headerlink" title="# graph.json"></a># graph.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"nodes"</span>: [</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"red"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"orange"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"yellow"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"green"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"blue"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"violet"</span>&#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"links"</span>: [</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"yellow"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"blue"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"green"</span>&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/D3-js/">D3.js</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/D3/">D3</a></li></ul>
+
       
         
 	<div id="comment">
@@ -215,12 +172,10 @@ This example shows how to link nodes in a force-directed graph using a named ide
 	<!-- 多说公共JS代码 end -->
 	
 	</div>
+	<link rel="stylesheet" href="../../../../css/comment.css">
 
 
       
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/D3/">D3</a></li></ul>
-
     </footer>
   </div>
   
@@ -260,16 +215,16 @@ This example shows how to link nodes in a force-directed graph using a named ide
 </section>
         
       </div>
-      
-      <footer id="footer">
+      <footer id="footer" class="site-footer">
   
 
-  <div class="container">
-      <div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
-	      <p id="copyRightCn">Mr.Seven hold copyright</p>
-	</div>
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
@@ -279,14 +234,9 @@ This example shows how to link nodes in a force-directed graph using a named ide
 <script>
     var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
 
     wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -342,12 +292,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
 <script src="../../../../js/script.js"></script>
 <script src="../../../../js/bootstrap.js"></script>
-
-
-
-
-  <script src="../../../../js/dialog.js"></script>
-
+<script src="../../../../js/main.js"></script>
 
 
 
@@ -355,65 +300,8 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
   </div>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            iTimeTraveler
-          </div>
-          <div class="panel-body">
-            Copyright © 2017 Mr.Seven All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
   
 
 	<div style="display: none;">
