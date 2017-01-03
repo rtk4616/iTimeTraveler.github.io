@@ -24,7 +24,7 @@ AbsoluteSizeSpan(int si">
 
 AbsoluteSizeSpan(int si">
 <meta property="og:image" content="http://github.com/gallery/Textview-vertical/FontMetricsInt.png">
-<meta property="og:updated_time" content="2017-01-03T09:49:12.815Z">
+<meta property="og:updated_time" content="2017-01-03T09:51:40.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】TextView中不同大小字体如何上下垂直居中？">
 <meta name="twitter:description" content="前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
@@ -115,7 +115,7 @@ AbsoluteSizeSpan(int si">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhc2l5y001hk4my4s1vec10">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixhc5wgr001jykmywim20vjy">
         <img src="../../../../gallery/Textview-vertical/FontMetricsInt.png" itemprop="image">
       </a>
     
@@ -207,7 +207,7 @@ AbsoluteSizeSpan(int si">
 <li><strong>descent</strong>：字体最下端到基线的距离，为正值。</li>
 </ul>
 <p><img src="/gallery/Textview-vertical/FontMetricsInt.png" alt=""></p>
-<p>中间那条线（Baseline）就是基线，基线到上面那条线的距离就是<code>ascent</code>，基线到下面那条线的距离就是<code>descent</code>。</p>
+<p>如上图，中间那条线（Baseline）就是基线，基线到上面那条线的距离就是<code>ascent</code>，基线到下面那条线的距离就是<code>descent</code>。</p>
 <p>回到我们的主题， 我们发现<code>getSize()</code>方法的参数中有<code>Paint.FontMetricsInt</code>，那我们是否就可以通过改变传入的Paint.FontMetricsInt的<code>asent</code>和<code>desent</code>来达到改变高度的目的呢？答案是可行的。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h2><p>按照上面的分析，我们继承<code>ReplacementSpan</code> 自定义一个Span</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 使TextView中不同大小字体垂直居中</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomVerticalCenterSpan</span> <span class="keyword">extends</span> <span class="title">ReplacementSpan</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> fontSizeSp;    <span class="comment">//字体大小sp</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomVerticalCenterSpan</span><span class="params">(<span class="keyword">int</span> fontSizeSp)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.fontSizeSp = fontSizeSp;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">(Paint paint, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Paint.FontMetricsInt fm)</span> </span>&#123;</div><div class="line">		text = text.subSequence(start, end);</div><div class="line">		Paint p = getCustomTextPaint(paint);</div><div class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) p.measureText(text.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">int</span> top, <span class="keyword">int</span> y, <span class="keyword">int</span> bottom, Paint paint)</span> </span>&#123;</div><div class="line">		text = text.subSequence(start, end);</div><div class="line">		Paint p = getCustomTextPaint(paint);</div><div class="line">		Paint.FontMetricsInt fm = p.getFontMetricsInt();</div><div class="line">		canvas.drawText(text.toString(), x, y - ((y + fm.descent + y + fm.ascent) / <span class="number">2</span> - (bottom + top) / <span class="number">2</span>), p);    <span class="comment">//此处重新计算y坐标，使字体居中</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> TextPaint <span class="title">getCustomTextPaint</span><span class="params">(Paint srcPaint)</span> </span>&#123;</div><div class="line">		TextPaint paint = <span class="keyword">new</span> TextPaint(srcPaint);</div><div class="line">		paint.setTextSize(ViewUtils.getSpPixel(mContext, fontSizeSp));   <span class="comment">//设定字体大小, sp转换为px</span></div><div class="line">		<span class="keyword">return</span> paint;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
