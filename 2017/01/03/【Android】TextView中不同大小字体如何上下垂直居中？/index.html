@@ -62,7 +62,11 @@ AbsoluteSizeSpan(int si">
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -72,11 +76,14 @@ AbsoluteSizeSpan(int si">
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -92,8 +99,6 @@ AbsoluteSizeSpan(int si">
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -117,7 +122,7 @@ AbsoluteSizeSpan(int si">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixjs8701001d6gmyviagfh0m">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixl57cq2001xw0myqit6uxxt">
         <img src="../../../../gallery/Textview-vertical/FontMetricsInt.png" itemprop="image">
       </a>
     
@@ -306,7 +311,7 @@ AbsoluteSizeSpan(int si">
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为何是ReplacementSpan？"><span class="toc-number">3.1.</span> <span class="toc-text">为何是ReplacementSpan？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-Paint-FontMetrics"><span class="toc-number">3.2.</span> <span class="toc-text">什么是 Paint.FontMetrics</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">4.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-number">4.1.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【参考资料】"><span class="toc-number">4.2.</span> <span class="toc-text">【参考资料】</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为何是ReplacementSpan？"><span class="nav-number">3.1.</span> <span class="nav-text">为何是ReplacementSpan？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Paint-FontMetrics"><span class="nav-number">3.2.</span> <span class="nav-text">什么是 Paint.FontMetrics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">4.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">4.1.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【参考资料】"><span class="nav-number">4.2.</span> <span class="nav-text">【参考资料】</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -324,8 +329,6 @@ AbsoluteSizeSpan(int si">
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -352,6 +355,11 @@ AbsoluteSizeSpan(int si">
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

@@ -48,7 +48,11 @@
 
 </head>
 
-<body>
+
+
+  <body>
+
+
   
 
 
@@ -58,11 +62,14 @@
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -78,8 +85,6 @@
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
                     
@@ -1020,8 +1025,6 @@ adb shell monkey -v 500
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../../collection" class="mobile-nav-link">Collection</a>
-  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
@@ -1047,6 +1050,11 @@ adb shell monkey -v 500
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

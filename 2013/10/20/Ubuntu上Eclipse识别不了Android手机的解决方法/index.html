@@ -57,7 +57,11 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -67,11 +71,14 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -87,8 +94,6 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -344,7 +349,7 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作步骤："><span class="toc-number">1.</span> <span class="toc-text">操作步骤：</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作步骤："><span class="nav-number">1.</span> <span class="nav-text">操作步骤：</span></a></li></ol>
     
     </div>
   </aside>
@@ -362,8 +367,6 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -390,6 +393,11 @@ google官方开发向导里对Android手机已经设置了允许安装非market�
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

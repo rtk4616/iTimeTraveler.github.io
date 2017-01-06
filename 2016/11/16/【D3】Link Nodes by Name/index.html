@@ -56,7 +56,11 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -66,11 +70,14 @@ This example shows how to link nodes in a force-directed graph using a named ide
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -86,8 +93,6 @@ This example shows how to link nodes in a force-directed graph using a named ide
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -111,7 +116,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cixjs870w002s6gmylsg4u22w">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cixl57ctj005qw0mywl13rc26">
         <img src="../../../../gallery/d3_link-node-by-name.png" itemprop="image">
       </a>
     
@@ -218,7 +223,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#index-html"><span class="toc-number">1.</span> <span class="toc-text"># index.html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#graph-json"><span class="toc-number">2.</span> <span class="toc-text"># graph.json</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#index-html"><span class="nav-number">1.</span> <span class="nav-text"># index.html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-json"><span class="nav-number">2.</span> <span class="nav-text"># graph.json</span></a></li></ol>
     
     </div>
   </aside>
@@ -236,8 +241,6 @@ This example shows how to link nodes in a force-directed graph using a named ide
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -264,6 +267,11 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

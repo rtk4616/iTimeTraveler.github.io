@@ -59,7 +59,11 @@
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -69,11 +73,14 @@
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -89,8 +96,6 @@
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -114,7 +119,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/rxjava-introduction.png" rel="gallery_cixjs870b001q6gmyfq9vgm4c">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/rxjava-introduction.png" rel="gallery_cixl57cpm001gw0myj2krmb0a">
         <img src="../../../../gallery/rxjava-introduction.png" itemprop="image">
       </a>
     
@@ -504,7 +509,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxJava-到底是什么"><span class="toc-number">2.</span> <span class="toc-text">RxJava 到底是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxJava-好在哪"><span class="toc-number">3.</span> <span class="toc-text">RxJava 好在哪</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#举个例子？"><span class="toc-number">3.1.</span> <span class="toc-text">举个例子？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-介绍和原理简析"><span class="toc-number">4.</span> <span class="toc-text">API 介绍和原理简析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念：扩展的观察者模式"><span class="toc-number">4.1.</span> <span class="toc-text">1. 概念：扩展的观察者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#观察者模式"><span class="toc-number">4.1.1.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RxJava-的观察者模式"><span class="toc-number">4.1.2.</span> <span class="toc-text">RxJava 的观察者模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-基本实现"><span class="toc-number">4.2.</span> <span class="toc-text">2. 基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建-Observer"><span class="toc-number">4.2.1.</span> <span class="toc-text">1) 创建 Observer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建-Observable"><span class="toc-number">4.2.2.</span> <span class="toc-text">2) 创建 Observable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Subscribe-订阅"><span class="toc-number">4.2.3.</span> <span class="toc-text">3) Subscribe (订阅)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-场景示例"><span class="toc-number">4.2.4.</span> <span class="toc-text">4) 场景示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-线程控制-——-Scheduler-一"><span class="toc-number">4.3.</span> <span class="toc-text">3. 线程控制 —— Scheduler (一)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Scheduler-的-API-一"><span class="toc-number">4.3.1.</span> <span class="toc-text">1) Scheduler 的 API (一)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Scheduler-的原理-一"><span class="toc-number">4.3.2.</span> <span class="toc-text">2) Scheduler 的原理 (一)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-变换"><span class="toc-number">4.4.</span> <span class="toc-text">4. 变换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-API"><span class="toc-number">4.4.1.</span> <span class="toc-text">1) API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-变换的原理：lift"><span class="toc-number">4.4.2.</span> <span class="toc-text">2) 变换的原理：lift()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-compose-对-Observable-整体的变换"><span class="toc-number">4.4.3.</span> <span class="toc-text">3) compose: 对 Observable 整体的变换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-线程控制：Scheduler-二"><span class="toc-number">4.5.</span> <span class="toc-text">5. 线程控制：Scheduler (二)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Scheduler-的-API-二"><span class="toc-number">4.5.1.</span> <span class="toc-text">1) Scheduler 的 API (二)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Scheduler-的原理（二）"><span class="toc-number">4.5.2.</span> <span class="toc-text">2) Scheduler 的原理（二）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-延伸：doOnSubscribe"><span class="toc-number">4.5.3.</span> <span class="toc-text">3) 延伸：doOnSubscribe()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxJava-的适用场景和使用方式"><span class="toc-number">5.</span> <span class="toc-text">RxJava 的适用场景和使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-与-Retrofit-的结合"><span class="toc-number">5.1.</span> <span class="toc-text">1. 与 Retrofit 的结合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RxBinding"><span class="toc-number">5.2.</span> <span class="toc-text">2. RxBinding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-各种异步操作"><span class="toc-number">5.3.</span> <span class="toc-text">3. 各种异步操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-RxBus"><span class="toc-number">5.4.</span> <span class="toc-text">4. RxBus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">6.</span> <span class="toc-text">最后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于作者"><span class="toc-number">6.1.</span> <span class="toc-text">关于作者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么写这个？"><span class="toc-number">6.2.</span> <span class="toc-text">为什么写这个？</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-到底是什么"><span class="nav-number">2.</span> <span class="nav-text">RxJava 到底是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-好在哪"><span class="nav-number">3.</span> <span class="nav-text">RxJava 好在哪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#举个例子？"><span class="nav-number">3.1.</span> <span class="nav-text">举个例子？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-介绍和原理简析"><span class="nav-number">4.</span> <span class="nav-text">API 介绍和原理简析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念：扩展的观察者模式"><span class="nav-number">4.1.</span> <span class="nav-text">1. 概念：扩展的观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#观察者模式"><span class="nav-number">4.1.1.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJava-的观察者模式"><span class="nav-number">4.1.2.</span> <span class="nav-text">RxJava 的观察者模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基本实现"><span class="nav-number">4.2.</span> <span class="nav-text">2. 基本实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建-Observer"><span class="nav-number">4.2.1.</span> <span class="nav-text">1) 创建 Observer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建-Observable"><span class="nav-number">4.2.2.</span> <span class="nav-text">2) 创建 Observable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Subscribe-订阅"><span class="nav-number">4.2.3.</span> <span class="nav-text">3) Subscribe (订阅)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-场景示例"><span class="nav-number">4.2.4.</span> <span class="nav-text">4) 场景示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线程控制-——-Scheduler-一"><span class="nav-number">4.3.</span> <span class="nav-text">3. 线程控制 —— Scheduler (一)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Scheduler-的-API-一"><span class="nav-number">4.3.1.</span> <span class="nav-text">1) Scheduler 的 API (一)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scheduler-的原理-一"><span class="nav-number">4.3.2.</span> <span class="nav-text">2) Scheduler 的原理 (一)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-变换"><span class="nav-number">4.4.</span> <span class="nav-text">4. 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-API"><span class="nav-number">4.4.1.</span> <span class="nav-text">1) API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-变换的原理：lift"><span class="nav-number">4.4.2.</span> <span class="nav-text">2) 变换的原理：lift()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-compose-对-Observable-整体的变换"><span class="nav-number">4.4.3.</span> <span class="nav-text">3) compose: 对 Observable 整体的变换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-线程控制：Scheduler-二"><span class="nav-number">4.5.</span> <span class="nav-text">5. 线程控制：Scheduler (二)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Scheduler-的-API-二"><span class="nav-number">4.5.1.</span> <span class="nav-text">1) Scheduler 的 API (二)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scheduler-的原理（二）"><span class="nav-number">4.5.2.</span> <span class="nav-text">2) Scheduler 的原理（二）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-延伸：doOnSubscribe"><span class="nav-number">4.5.3.</span> <span class="nav-text">3) 延伸：doOnSubscribe()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-的适用场景和使用方式"><span class="nav-number">5.</span> <span class="nav-text">RxJava 的适用场景和使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-与-Retrofit-的结合"><span class="nav-number">5.1.</span> <span class="nav-text">1. 与 Retrofit 的结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RxBinding"><span class="nav-number">5.2.</span> <span class="nav-text">2. RxBinding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-各种异步操作"><span class="nav-number">5.3.</span> <span class="nav-text">3. 各种异步操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-RxBus"><span class="nav-number">5.4.</span> <span class="nav-text">4. RxBus</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于作者"><span class="nav-number">6.1.</span> <span class="nav-text">关于作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么写这个？"><span class="nav-number">6.2.</span> <span class="nav-text">为什么写这个？</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -522,8 +527,6 @@
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -550,6 +553,11 @@
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

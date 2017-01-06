@@ -63,15 +63,19 @@ Profi">
 
 </head>
 
-<body>
+
+
+  <body>
+
+
   
   
   <div class="site-header-image">
-    <img width="100%" alt="Hike News" src="/css/images/01.jpg">
+    <img width="100%" alt="Hike News" src="/css/images/02.jpg">
   </div>
 
-  <div class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img width="100%" style="top: 96%" alt="Hike News" src="/css/images/01.jpg">
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img width="100%" style="top: 96%" alt="Hike News" src="/css/images/02.jpg">
   </div>
 
 
@@ -82,11 +86,14 @@ Profi">
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -102,8 +109,6 @@ Profi">
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="">About</a> </li>
                     
@@ -453,8 +458,6 @@ Profi">
   
     <a href="../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../collection" class="mobile-nav-link">Collection</a>
-  
     <a href="" class="mobile-nav-link">About</a>
   
 </nav> -->
@@ -480,6 +483,11 @@ Profi">
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

@@ -60,7 +60,11 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -70,11 +74,14 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -90,8 +97,6 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -278,7 +283,7 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一、继承不同"><span class="toc-number">1.</span> <span class="toc-text">第一、继承不同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二、线程安全不一样"><span class="toc-number">2.</span> <span class="toc-text">第二、线程安全不一样</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三、允不允许null值"><span class="toc-number">3.</span> <span class="toc-text">第三、允不允许null值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第四、遍历方式的内部实现上不同"><span class="toc-number">4.</span> <span class="toc-text">第四、遍历方式的内部实现上不同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第五、哈希值的使用不同"><span class="toc-number">5.</span> <span class="toc-text">第五、哈希值的使用不同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第六、内部实现方式的数组的初始大小和扩容的方式不一样"><span class="toc-number">6.</span> <span class="toc-text">第六、内部实现方式的数组的初始大小和扩容的方式不一样</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【总结】："><span class="toc-number">7.</span> <span class="toc-text">【总结】：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【建议】："><span class="toc-number">8.</span> <span class="toc-text">【建议】：</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一、继承不同"><span class="nav-number">1.</span> <span class="nav-text">第一、继承不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二、线程安全不一样"><span class="nav-number">2.</span> <span class="nav-text">第二、线程安全不一样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三、允不允许null值"><span class="nav-number">3.</span> <span class="nav-text">第三、允不允许null值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四、遍历方式的内部实现上不同"><span class="nav-number">4.</span> <span class="nav-text">第四、遍历方式的内部实现上不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五、哈希值的使用不同"><span class="nav-number">5.</span> <span class="nav-text">第五、哈希值的使用不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第六、内部实现方式的数组的初始大小和扩容的方式不一样"><span class="nav-number">6.</span> <span class="nav-text">第六、内部实现方式的数组的初始大小和扩容的方式不一样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【总结】："><span class="nav-number">7.</span> <span class="nav-text">【总结】：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【建议】："><span class="nav-number">8.</span> <span class="nav-text">【建议】：</span></a></li></ol>
     
     </div>
   </aside>
@@ -296,8 +301,6 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -324,6 +327,11 @@ public class HashMap&amp;lt;K, V&amp;gt; extends AbstractMap&amp;lt;K, V&amp;gt;
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

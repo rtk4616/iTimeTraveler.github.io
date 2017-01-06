@@ -57,7 +57,11 @@
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -67,11 +71,14 @@
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -87,8 +94,6 @@
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -240,7 +245,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型排序-int、float64-和-string"><span class="toc-number">2.</span> <span class="toc-text">基本类型排序(int、float64 和 string)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、升序排序"><span class="toc-number">2.1.</span> <span class="toc-text">1、升序排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、降序排序"><span class="toc-number">2.2.</span> <span class="toc-text">2、降序排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、深入理解排序"><span class="toc-number">2.3.</span> <span class="toc-text">3、深入理解排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体类型的排序"><span class="toc-number">3.</span> <span class="toc-text">结构体类型的排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、模拟-IntSlice-排序"><span class="toc-number">3.1.</span> <span class="toc-text">1、模拟 IntSlice 排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、封装成-Wrapper"><span class="toc-number">3.2.</span> <span class="toc-text">2、封装成 Wrapper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、进一步封装"><span class="toc-number">3.3.</span> <span class="toc-text">3、进一步封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、另一种思路"><span class="toc-number">3.4.</span> <span class="toc-text">4、另一种思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料："><span class="toc-number">3.5.</span> <span class="toc-text">参考资料：</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型排序-int、float64-和-string"><span class="nav-number">2.</span> <span class="nav-text">基本类型排序(int、float64 和 string)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、升序排序"><span class="nav-number">2.1.</span> <span class="nav-text">1、升序排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、降序排序"><span class="nav-number">2.2.</span> <span class="nav-text">2、降序排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、深入理解排序"><span class="nav-number">2.3.</span> <span class="nav-text">3、深入理解排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体类型的排序"><span class="nav-number">3.</span> <span class="nav-text">结构体类型的排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、模拟-IntSlice-排序"><span class="nav-number">3.1.</span> <span class="nav-text">1、模拟 IntSlice 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、封装成-Wrapper"><span class="nav-number">3.2.</span> <span class="nav-text">2、封装成 Wrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、进一步封装"><span class="nav-number">3.3.</span> <span class="nav-text">3、进一步封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、另一种思路"><span class="nav-number">3.4.</span> <span class="nav-text">4、另一种思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料："><span class="nav-number">3.5.</span> <span class="nav-text">参考资料：</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -258,8 +263,6 @@
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -286,6 +289,11 @@
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">

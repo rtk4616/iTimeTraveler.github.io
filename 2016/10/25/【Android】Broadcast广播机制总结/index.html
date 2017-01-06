@@ -71,7 +71,11 @@
 
 </head>
 
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
   
 
 
@@ -81,11 +85,14 @@
       <div class="site-branding">
 
           <h1 class="site-title">
-            <a href="/" title="iTimeTraveler" rel="home">
-              iTimeTraveler</a>
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
           </h1>
-          <div class="site-description">Someone knock at the door.</div>
-
+          
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
@@ -101,8 +108,6 @@
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
@@ -126,7 +131,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/newyorkcity.jpg" rel="gallery_cixjs86zu00116gmy1eplxrfi">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/newyorkcity.jpg" rel="gallery_cixl57cq20021w0myycs27azi">
         <img src="../../../../gallery/newyorkcity.jpg" itemprop="image">
       </a>
     
@@ -374,7 +379,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Android广播机制概述"><span class="toc-number">1.</span> <span class="toc-text">1. Android广播机制概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-BroadcastReceiver"><span class="toc-number">2.</span> <span class="toc-text">2. BroadcastReceiver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义BroadcastReceiver"><span class="toc-number">2.1.</span> <span class="toc-text">自定义BroadcastReceiver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BroadcastReceiver注册类型"><span class="toc-number">2.2.</span> <span class="toc-text">BroadcastReceiver注册类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-静态注册："><span class="toc-number">2.2.1.</span> <span class="toc-text">1). 静态注册：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-动态注册："><span class="toc-number">2.2.2.</span> <span class="toc-text">2). 动态注册：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-广播发送及广播类型"><span class="toc-number">3.</span> <span class="toc-text">3. 广播发送及广播类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Normal-Broadcast：普通广播"><span class="toc-number">3.1.</span> <span class="toc-text">1). Normal Broadcast：普通广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-System-Broadcast-系统广播"><span class="toc-number">3.2.</span> <span class="toc-text">2). System Broadcast: 系统广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Ordered-broadcast：有序广播"><span class="toc-number">3.3.</span> <span class="toc-text">3). Ordered broadcast：有序广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Sticky-Broadcast：粘性广播"><span class="toc-number">3.4.</span> <span class="toc-text">4)Sticky Broadcast：粘性广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Local-Broadcast：App应用内广播（此处的App应用以App应用进程为界）"><span class="toc-number">3.5.</span> <span class="toc-text">5)Local Broadcast：App应用内广播（此处的App应用以App应用进程为界）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-不同注册方式的广播接收器回调onReceive-context-intent-中的context具体类型"><span class="toc-number">4.</span> <span class="toc-text">4. 不同注册方式的广播接收器回调onReceive(context, intent)中的context具体类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-不同Android-API版本中广播机制相关API重要变迁"><span class="toc-number">5.</span> <span class="toc-text">5. 不同Android API版本中广播机制相关API重要变迁</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Android广播机制概述"><span class="nav-number">1.</span> <span class="nav-text">1. Android广播机制概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-BroadcastReceiver"><span class="nav-number">2.</span> <span class="nav-text">2. BroadcastReceiver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义BroadcastReceiver"><span class="nav-number">2.1.</span> <span class="nav-text">自定义BroadcastReceiver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BroadcastReceiver注册类型"><span class="nav-number">2.2.</span> <span class="nav-text">BroadcastReceiver注册类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-静态注册："><span class="nav-number">2.2.1.</span> <span class="nav-text">1). 静态注册：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态注册："><span class="nav-number">2.2.2.</span> <span class="nav-text">2). 动态注册：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-广播发送及广播类型"><span class="nav-number">3.</span> <span class="nav-text">3. 广播发送及广播类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Normal-Broadcast：普通广播"><span class="nav-number">3.1.</span> <span class="nav-text">1). Normal Broadcast：普通广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-System-Broadcast-系统广播"><span class="nav-number">3.2.</span> <span class="nav-text">2). System Broadcast: 系统广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Ordered-broadcast：有序广播"><span class="nav-number">3.3.</span> <span class="nav-text">3). Ordered broadcast：有序广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Sticky-Broadcast：粘性广播"><span class="nav-number">3.4.</span> <span class="nav-text">4)Sticky Broadcast：粘性广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Local-Broadcast：App应用内广播（此处的App应用以App应用进程为界）"><span class="nav-number">3.5.</span> <span class="nav-text">5)Local Broadcast：App应用内广播（此处的App应用以App应用进程为界）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-不同注册方式的广播接收器回调onReceive-context-intent-中的context具体类型"><span class="nav-number">4.</span> <span class="nav-text">4. 不同注册方式的广播接收器回调onReceive(context, intent)中的context具体类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-不同Android-API版本中广播机制相关API重要变迁"><span class="nav-number">5.</span> <span class="nav-text">5. 不同Android API版本中广播机制相关API重要变迁</span></a></li></ol>
     
     </div>
   </aside>
@@ -392,8 +397,6 @@
     <a href="../../../../categories" class="mobile-nav-link">Categories</a>
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
@@ -420,6 +423,11 @@
 
     wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
 </script>
     
 <div style="display: none;">
