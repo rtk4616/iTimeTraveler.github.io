@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,81 +33,142 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
 
 </head>
 
-
-
-  <body>
-
+<body>
+  
+    <header id="header">
 
   
+    <div id="intrologo" class="intro-logo">
+  
 
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-<header id="allheader" class="site-header" role="banner" 
-   >
-  <div class="clearfix container">
-      <div class="site-branding">
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+      
+    </script>
+    
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-          
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
+    
+      <div id="homelogo" class="homelogo"> 
+    
 
-            <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="index.html">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
-
-      </div>
+        
+          <div class="homelogoback" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="index.html">Home</a>
+        
+          <a id="beautifont" class="main-nav-link" href="archives">Archives</a>
+        
+          <a id="beautifont" class="main-nav-link" href="categories">Categories</a>
+        
+          <a id="beautifont" class="main-nav-link" href="tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-【Android】TextView中不同大小字体如何上下垂直居中？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -123,53 +184,42 @@
     <div class="article-meta">
       
 	<a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" class="article-date">
-	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">January 3, 2017</time>
+	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">2017-01-03</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/"><img src="/gallery/Textview-vertical/FontMetricsInt.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了<code>AttributedString</code>，而Android则提供了<strong><code>SpannableString</code></strong>。</p>
+<p>在Android的android.text.style包下为我们提供了各种各样的span（可以<a href="http://blog.csdn.net/u010983881/article/details/52383539"><strong>参考这篇文章</strong></a>），例如：</p>
+<ul>
+<li><p><strong>AbsoluteSizeSpan(int size)</strong> —— 设置字体大小，参数是绝对数值，相当于Word中的字体大小</p>
+</li>
+<li><p><strong>RelativeSizeSpan(float proportion)</strong> —— 设置字体大小，参数是相对于默认字体大小的倍数，比如默认字体大小是x, 那么设置后的字体大小就是x*proportion，这个用起来比较灵活，proportion&gt;1就是放大(zoom in), proportion&lt;1就是缩小(zoom out)</p>
+</li>
+<li><p><strong>BackgroundColorSpan(int color)</strong> —— 背景着色，参数是颜色数值，可以直接使用android.graphics.Color里面定义的常量，或是用Color.rgb(int, int, int)</p>
+</li>
+<li><p><strong>ForegroundColorSpan(int color)</strong> —— 前景着色，也就是字的着色，参数与背景着色一致</p>
+</li>
+</ul>
+        <!-- 前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
 在Android的android.text.style包下为我们提供了各种各样的span（可以参考这篇文章），例如：
 
-AbsoluteSizeSpan(int size) —— 设置字体大小，参数是绝对数值，相当于Word中的字体大小
-
-RelativeSizeSpan(float proportion) —— 设置字体大小，参数是相对于默认字体大小的倍数，比如默认字体大小是x, 那么设置后的字体大小就是x*proportion，这个用起来比较灵活，proportion&gt;1就是放大(zoom in), proportion&lt;1就是缩小(zoom out)
-
-BackgroundColorSpan(int color) —— 背景着色，参数是颜色数值，可以直接使用android.graphics.Color里面定义的常量，或是用Color.rgb(int, int, int)
-
-ForegroundColorSpan(int color) —— 前景着色，也就是字的着色，参数与背景着色一致
-
-
-
-        
-          <p class="article-more-link">
-            <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/#more">Continue Reading →</a>
-          </p>
-        </div>
+AbsoluteSizeSpan(int......  -->
+        <p class="article-more-link">
+          <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -178,7 +228,7 @@ ForegroundColorSpan(int color) —— 前景着色，也就是字的着色，参
 
   
     <article id="post-【Java】泛型中 extends 和 super 的区别？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -194,51 +244,43 @@ ForegroundColorSpan(int color) —— 前景着色，也就是字的着色，参
     <div class="article-meta">
       
 	<a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/" class="article-date">
-	  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">December 27, 2016</time>
+	  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">2016-12-27</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/"><img src="/gallery/Java-Generics.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <p><img src="/gallery/java-genericity/example.png" alt=""></p>
+<p><code>&lt;? extends T&gt;</code>和<code>&lt;? super T&gt;</code>是Java泛型中的<strong>“通配符（Wildcards）”</strong>和<strong>“边界（Bounds）”</strong>的概念。</p>
+<ul>
+<li><code>&lt;? extends T&gt;</code>：是指 <strong>“上界通配符（Upper Bounds Wildcards）”</strong></li>
+<li><code>&lt;? super T&gt;</code>：是指 <strong>“下界通配符（Lower Bounds Wildcards）”</strong></li>
+</ul>
+<h2 id="为什么要用通配符和边界？"><a href="#为什么要用通配符和边界？" class="headerlink" title="为什么要用通配符和边界？"></a><strong>为什么要用通配符和边界？</strong></h2><p>使用泛型的过程中，经常出现一种很别扭的情况。比如按照题主的例子，我们有Fruit类，和它的派生类Apple类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>然后有一个最简单的容器：Plate类。盘子里可以放一个泛型的“东西”。我们可以对这个东西做最简单的“放”和“取”的动作：<code>set( )</code>和<code>get( )</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plate</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">    <span class="keyword">private</span> T item;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Plate</span><span class="params">(T t)</span></span>&#123;item=t;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T t)</span></span>&#123;item=t;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> item;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 
 &lt;? extends T&gt;和&lt;? super T&gt;是Java泛型中的“通配符（Wildcards）”和“边界（Bounds）”的概念。
 
 &lt;? extends T&gt;：是指 “上界通配符（Upper Bounds Wildcards）”
 &lt;? super T&gt;：是指 “下界通配符（Lower Bounds Wildcards）”
 
-为什么要用通配符和边界？使用泛型的过程中，经常出现一种很别扭的情况。比如按照题主的例子，我们有Fruit类，和它的派生类Apple类。
-class Fruit &#123;&#125;class Apple extends Fruit &#123;&#125;
-然后有一个最简单的容器：Plate类。盘子里可以放一个泛型的“东西”。我们可以对这个东西做最简单的“放”和“取”的动作：set( )和get( )方法。
-class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&#125;    public void set(T t)&#123;item=t;&#125;    public T get()&#123;return item;&#125;&#125;
-
-        
-          <p class="article-more-link">
-            <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/#more">Continue Reading →</a>
-          </p>
-        </div>
+为什么要用通......  -->
+        <p class="article-more-link">
+          <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java-Generics/">Java Generics</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -247,7 +289,7 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
 
   
     <article id="post-数学之美番外篇：平凡而又神奇的贝叶斯方法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -263,50 +305,38 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
     <div class="article-meta">
       
 	<a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="article-date">
-	  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">December 22, 2016</time>
+	  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">2016-12-22</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/"><img src="/gallery/Thomas-Bayes.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。） —— Pierre-Simon Laplace
+        <blockquote class="pullquote right"><p>Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。）<br> —— <a href="https://zh.wikipedia.org/wiki/%E7%9A%AE%E5%9F%83%E5%B0%94-%E8%A5%BF%E8%92%99%C2%B7%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF">Pierre-Simon Laplace</a></p>
+</blockquote>
+<p>记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能够专门写出一本书来，肯定很牛逼。后来，我发现当初的那个朴素归纳推理成立了 —— 这果然是个牛逼的方法。</p>
+<p>——题记</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>这是一篇关于贝叶斯方法的科普文，我会尽量少用公式，多用平白的语言叙述，多举实际例子。更严格的公式和计算我会在相应的地方注明参考资料。贝叶斯方法被证明是非常 general 且强大的推理框架，文中你会看到很多有趣的应用。</p>
+<h2 id="1-历史"><a href="#1-历史" class="headerlink" title="1. 历史"></a><strong>1. 历史</strong></h2><p>托马斯·贝叶斯（Thomas Bayes）同学的详细生平<a href="https://en.wikipedia.org/wiki/Thomas_Bayes"><strong>在这里</strong></a>。以下摘一段 wikipedia 上的简介：</p>
+<blockquote>
+<p>所谓的贝叶斯方法源于他生前为解决一个“逆概”问题写的一篇文章，而这篇文章是在他死后才由他的一位朋友发表出来的。在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，如“假设袋子里面有N个白球，M个黑球，你伸手进去摸一把，摸出黑球的概率是多大”。而一个自然而然的问题是反过来：“如果我们事先并不知道袋子里面黑白球的比例，而是闭着眼睛摸出一个（或好几个）球，观察这些取出来的球的颜色之后，那么我们可以就此对袋子里面的黑白球的比例作出什么样的推测”。这个问题，就是所谓的逆概问题。</p>
+</blockquote>
+        <!-- Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。） —— Pierre-Simon Laplace
 
-记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能够专门写出一本书来，肯定很牛逼。后来，我发现当初的那个朴素归纳推理成立了 —— 这果然是个牛逼的方法。
-——题记
-前言这是一篇关于贝叶斯方法的科普文，我会尽量少用公式，多用平白的语言叙述，多举实际例子。更严格的公式和计算我会在相应的地方注明参考资料。贝叶斯方法被证明是非常 general 且强大的推理框架，文中你会看到很多有趣的应用。
-1. 历史托马斯·贝叶斯（Thomas Bayes）同学的详细生平在这里。以下摘一段 wikipedia 上的简介：
-
-所谓的贝叶斯方法源于他生前为解决一个“逆概”问题写的一篇文章，而这篇文章是在他死后才由他的一位朋友发表出来的。在贝叶斯写这篇文章之前，人们已经能够计算“正向概率”，如“假设袋子里面有N个白球，M个黑球，你伸手进去摸一把，摸出黑球的概率是多大”。而一个自然而然的问题是反过来：“如果我们事先并不知道袋子里面黑白球的比例，而是闭着眼睛摸出一个（或好几个）球，观察这些取出来的球的颜色之后，那么我们可以就此对袋子里面的黑白球的比例作出什么样的推测”。这个问题，就是所谓的逆概问题。
-
-
-        
-          <p class="article-more-link">
-            <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/#more">Continue Reading →</a>
-          </p>
-        </div>
+记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能......  -->
+        <p class="article-more-link">
+          <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Bayesian/">Bayesian</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -315,7 +345,7 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
 
   
     <article id="post-【Android】RxJava 入门详解"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -331,54 +361,43 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
     <div class="article-meta">
       
 	<a href="2016/12/19/【Android】RxJava 入门详解/" class="article-date">
-	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">December 19, 2016</time>
+	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">2016-12-19</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/12/19/【Android】RxJava 入门详解/"><img src="/gallery/rxjava-introduction.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文转载自 <a href="http://gank.io/post/560e15be2dca930e00da1083">给 Android 开发者的 RxJava 详解</a> —— by <a href="https://github.com/rengwuxian">扔物线</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJava 真是太难用了』，另外更多的人表示：我真的百度了也谷歌了，但我还是想问： RxJava 到底是什么？</p>
+<p>鉴于 RxJava 目前这种既火爆又神秘的现状，而我又在一年的使用过程中对 RxJava 有了一些理解，我决定写下这篇文章来对 RxJava 做一个相对详细的、针对 Android 开发者的介绍。</p>
+<p>这篇文章的目的有两个： </p>
+<ol>
+<li>给对 RxJava 感兴趣的人一些入门的指引 </li>
+<li>给正在使用 RxJava 但仍然心存疑惑的人一些更深入的解析</li>
+</ol>
+<p>在正文开始之前的最后，放上 GitHub 链接和引入依赖的 gradle 代码：<br>RxJava ： <a href="https://github.com/ReactiveX/RxJava">https://github.com/ReactiveX/RxJava</a><br>RxAndroid： <a href="https://github.com/ReactiveX/RxAndroid">https://github.com/ReactiveX/RxAndroid</a> </p>
+<p>引入依赖： </p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="comment">//（版本号是文章发布时的最新稳定版）</span></div><div class="line">compile <span class="string">'io.reactivex:rxjava:1.0.14'</span> </div><div class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></div></pre></td></tr></table></figure>
+        <!-- 
 本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线
 
-前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJava 真是太难用了』，另外更多的人表示：我真的百度了也谷歌了，但我还是想问： RxJava 到底是什么？
-鉴于 RxJava 目前这种既火爆又神秘的现状，而我又在一年的使用过程中对 RxJava 有了一些理解，我决定写下这篇文章来对 RxJava 做一个相对详细的、针对 Android 开发者的介绍。
-这篇文章的目的有两个： 
-
-给对 RxJava 感兴趣的人一些入门的指引 
-给正在使用 RxJava 但仍然心存疑惑的人一些更深入的解析
-
-在正文开始之前的最后，放上 GitHub 链接和引入依赖的 gradle 代码：RxJava ： https://github.com/ReactiveX/RxJavaRxAndroid： https://github.com/ReactiveX/RxAndroid 
-引入依赖： 
-//（版本号是文章发布时的最新稳定版）compile 'io.reactivex:rxjava:1.0.14' compile 'io.reactivex:rxandroid:1.0.1'
-
-        
-          <p class="article-more-link">
-            <a href="2016/12/19/【Android】RxJava 入门详解/#more">Continue Reading →</a>
-          </p>
-        </div>
+前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『Rx......  -->
+        <p class="article-more-link">
+          <a href="2016/12/19/【Android】RxJava 入门详解/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/RxJava/">RxJava</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -387,7 +406,7 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
 
   
     <article id="post-【Android】APK瘦身记，实现将近一半的压缩效果"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -403,46 +422,35 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
     <div class="article-meta">
       
 	<a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" class="article-date">
-	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">November 30, 2016</time>
+	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">2016-11-30</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/"><img src="/gallery/apk.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文转载自知乎： <a href="https://zhuanlan.zhihu.com/p/23882195"><strong>APK瘦身记，如何实现高达53%的压缩效果</strong></a> —— by <a href="https://www.zhihu.com/org/a-li-ju-an-quan-60">阿里聚安全</a></p>
+</blockquote>
+<h2 id="一、我是怎么思考这件事情的"><a href="#一、我是怎么思考这件事情的" class="headerlink" title="一、我是怎么思考这件事情的"></a><strong>一、我是怎么思考这件事情的</strong></h2><p>APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个思考和总结，所以随笔给大家，希望对大家从事相关工作的时候有所帮助和参考，同时也是抛砖引玉，希望大家共同探讨这个开放性的话题。</p>
+<p>关于为什么APK要瘦身，这个不多说，只从三个方面唠叨一下，对于用户（或者客户）来说，APK越大，在下载安装过程中，他们耗费的流量会越多，安装等待时间也会越长；对于产品本身，意味着下载转化率会越低（因为竞品中，用户有更多机会选择那个体验最好，功能最多，性能最好，包最小的）；对于研发来说，是一种优化改进技术的机会。</p>
+        <!-- 
 本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
 
-一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个思考和总结，所以随笔给大家，希望对大家从事相关工作的时候有所帮助和参考，同时也是抛砖引玉，希望大家共同探讨这个开放性的话题。
-关于为什么APK要瘦身，这个不多说，只从三个方面唠叨一下，对于用户（或者客户）来说，APK越大，在下载安装过程中，他们耗费的流量会越多，安装等待时间也会越长；对于产品本身，意味着下载转化率会越低（因为竞品中，用户有更多机会选择那个体验最好，功能最多，性能最好，包最小的）；对于研发来说，是一种优化改进技术的机会。
-
-        
-          <p class="article-more-link">
-            <a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/#more">Continue Reading →</a>
-          </p>
-        </div>
+一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这......  -->
+        <p class="article-more-link">
+          <a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/APK/">APK</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -451,7 +459,7 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
 
   
     <article id="post-基于社区发现算法和图分析Neo4j解读《权力的游戏》"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -467,45 +475,32 @@ class Plate&lt;T&gt;&#123;    private T item;    public Plate(T t)&#123;item=t;&
     <div class="article-meta">
       
 	<a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" class="article-date">
-	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">November 21, 2016</time>
+	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">2016-11-21</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Web/">Web</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/"><img src="/gallery/Game-of-Thrones.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
-其中的分析和可视化是用Gephi做的，Gephi是非常流行的图分析工具。但作者觉得使用Neo4j来实现更有趣。
-导入原始数据到Neo4j原始数据可从网络上下载，格式如下：
-Source,Target,WeightAemon,Grenn,5Aemon,Samwell,31Aerys,Jaime,18...
-
-        
-          <p class="article-more-link">
-            <a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/#more">Continue Reading →</a>
-          </p>
-        </div>
+        <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
+<p>其中的分析和可视化是用Gephi做的，Gephi是非常流行的图分析工具。但作者觉得使用Neo4j来实现更有趣。</p>
+<h2 id="导入原始数据到Neo4j"><a href="#导入原始数据到Neo4j" class="headerlink" title="导入原始数据到Neo4j"></a>导入原始数据到Neo4j</h2><p>原始数据可<a href="https://www.macalester.edu/~abeverid/data/stormofswords.csv">从网络上下载</a>，格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">Source,Target,Weight</div><div class="line">Aemon,Grenn,5</div><div class="line">Aemon,Samwell,31</div><div class="line">Aerys,Jaime,18</div><div class="line">...</div></pre></td></tr></table></figure>
+        <!-- 导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
+其中的分析和可视化是用Gep......  -->
+        <p class="article-more-link">
+          <a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Web/">Web</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Neo4j/">Neo4j</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -514,7 +509,7 @@ Source,Target,WeightAemon,Grenn,5Aemon,Samwell,31Aerys,Jaime,18...
 
   
     <article id="post-【D3.js】力导向布局 + 圆形图片展示的人物关系"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -530,44 +525,34 @@ Source,Target,WeightAemon,Grenn,5Aemon,Samwell,31Aerys,Jaime,18...
     <div class="article-meta">
       
 	<a href="2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" class="article-date">
-	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">November 18, 2016</time>
+	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">2016-11-18</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/D3-js/">D3.js</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/"><img src="http://img.blog.csdn.net/20161118161025881" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： <a href="http://blog.csdn.net/lzhlzz/article/details/40450379"><strong>【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图</strong></a>，博主实现了下面这种样式，已经相当不错了。</p>
+<p><img src="http://img.blog.csdn.net/20161118161553200" alt=""></p>
+<p>但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：</p>
+        <!-- 前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
 
 但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：
 
-        
-          <p class="article-more-link">
-            <a href="2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/#more">Continue Reading →</a>
-          </p>
-        </div>
+# index.html&lt;html&......  -->
+        <p class="article-more-link">
+          <a href="2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/D3-js/">D3.js</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/D3/">D3</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -576,7 +561,7 @@ Source,Target,WeightAemon,Grenn,5Aemon,Samwell,31Aerys,Jaime,18...
 
   
     <article id="post-【Android】微信热修复 Tinker 的集成和使用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -592,49 +577,37 @@ Source,Target,WeightAemon,Grenn,5Aemon,Samwell,31Aerys,Jaime,18...
     <div class="article-meta">
       
 	<a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="article-date">
-	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">November 17, 2016</time>
+	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">2016-11-17</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/"><img src="/gallery/tinker.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p> <strong><code>Tinker</code></strong>： n.   〈英〉小炉匠，补锅匠，修补匠</p>
+<p><a href="https://github.com/Tencent/tinker"><strong>Tinker</strong></a> 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 <code>dex</code>, <code>library</code> and <code>resources</code> 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。</p>
+<p>Tinker GitHub: <a href="https://github.com/Tencent/tinker">https://github.com/Tencent/tinker</a></p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a><strong>使用步骤</strong></h2><h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><p>很多人遇到的第一个错误就是提示 <code>tinkerId is not set</code> ，这个在tinker-sample-android的<code>app/build.gradle</code> 中默认设置为Git的提交版本号，如下</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : gitSha()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : <span class="string">"tinker_id_2333"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。</p>
+        <!-- 简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
 Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
-Tinker GitHub: https://github.com/Tencent/tinker
-使用步骤一个小坑很多人遇到的第一个错误就是提示 tinkerId is not set ，这个在tinker-sample-android的app/build.gradle 中默认设置为Git的提交版本号，如下
-def getTinkerIdValue() &#123;    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()&#125;
-如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：
-def getTinkerIdValue() &#123;    return hasProperty("TINKER_ID") ? TINKER_ID : "tinker_id_2333"&#125;
-下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。
-
-        
-          <p class="article-more-link">
-            <a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/#more">Continue Reading →</a>
-          </p>
-        </div>
+Tinker GitHub: https://github.......  -->
+        <p class="article-more-link">
+          <a href="2016/11/17/【Android】微信热修复 Tinker 的集成和使用/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Tinker/">Tinker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/hotfix/">hotfix</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -643,7 +616,7 @@ def getTinkerIdValue() &#123;    return hasProperty("TINKER_ID") ? TINKER_ID : "
 
   
     <article id="post-【D3】Link Nodes by Name"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -659,43 +632,32 @@ def getTinkerIdValue() &#123;    return hasProperty("TINKER_ID") ? TINKER_ID : "
     <div class="article-meta">
       
 	<a href="2016/11/16/【D3】Link Nodes by Name/" class="article-date">
-	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">November 16, 2016</time>
+	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">2016-11-16</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/D3-js/">D3.js</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/11/16/【D3】Link Nodes by Name/"><img src="/gallery/d3_link-node-by-name.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
+        <p>Source : <a href="http://bl.ocks.org/mbostock/533daf20348023dfdd76">http://bl.ocks.org/mbostock/533daf20348023dfdd76</a></p>
+<p>This example shows how to link nodes in a <a href="http://bl.ocks.org/mbostock/4062045"><strong>force-directed graph</strong></a> using a named identifier rather than a numeric index.</p>
+        <!-- Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
 This example shows how to link nodes in a force-directed graph using a named identifier rather than a numeric index.
 
-        
-          <p class="article-more-link">
-            <a href="2016/11/16/【D3】Link Nodes by Name/#more">Continue Reading →</a>
-          </p>
-        </div>
+# index.html&lt;!DOCT......  -->
+        <p class="article-more-link">
+          <a href="2016/11/16/【D3】Link Nodes by Name/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/D3-js/">D3.js</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/D3/">D3</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -704,7 +666,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
   
     <article id="post-Android 热修复原理和实现"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -720,60 +682,54 @@ This example shows how to link nodes in a force-directed graph using a named ide
     <div class="article-meta">
       
 	<a href="2016/11/10/Android 热修复原理和实现/" class="article-date">
-	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">November 10, 2016</time>
+	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">2016-11-10</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>查看原文： <a href="http://kymjs.com/code/2016/05/08/01"><strong>Android 热修复，没你想的那么难</strong></a> —— by kymjs张涛</p>
+</blockquote>
+<p>一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。</p>
+<p>《插件化从放弃到捡起》第一章，首先看一张图：</p>
+<p><img src="http://img.blog.csdn.net/20161110131925707" alt=""></p>
+<p>这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 <a href="https://zhuanlan.zhihu.com/p/20308548">【Qzone 热修复方案】</a>为例，跟大家讲一讲插件化中 <code>热修复方案</code> 的实现。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><p>在 Java 中，要加载一个类需要用到<code>ClassLoader</code>。<br>Android 中有三个 ClassLoader, 分别为<code>URLClassLoader</code>、<code>PathClassLoader</code>、<code>DexClassLoader</code>。其中:</p>
+<ul>
+<li><p><strong>URLClassLoader</strong> : 只能用于加载jar文件，但是由于 dalvik 不能直接识别jar，所以在 Android 中无法使用这个加载器。</p>
+</li>
+<li><p><strong>PathClassLoader</strong> :它只能加载已经安装的apk。因为 PathClassLoader 只会去读取 /data/dalvik-cache 目录下的 dex 文件。例如我们安装一个包名为<code>com.hujiang.xxx</code>的 apk,那么当 apk 安装过程中，就会在<code>/data/dalvik-cache</code>目录下生产一个名为<code>data@app@com.hujiang.xxx-1.apk@classes.dex</code>的 ODEX 文件。在使用 PathClassLoader 加载 apk 时，它就会去这个文件夹中找相应的 ODEX 文件，如果 apk 没有安装，自然会报<code>ClassNotFoundException</code>。</p>
+</li>
+<li><p><strong>DexClassLoader</strong> : 是最理想的加载器。它的构造函数包含四个参数，分别为：</p>
+<p>  1、dexPath, 指目标类所在的APK或jar文件的路径.类装载器将从该路径中寻找指定的目标类,该类必须是APK或jar的全路径.如果要包含多个路径,路径之间必须使用特定的分割符分隔,特定的分割符可以使用System.getProperty(“path.separtor”)获得.</p>
+<p>  2、dexOutputDir, 由于dex文件被包含在APK或者Jar文件中,因此在装载目标类之前需要先从APK或Jar文件中解压出dex文件,该参数就是制定解压出的dex 文件存放的路径.在Android系统中,一个应用程序一般对应一个Linux用户id,应用程序仅对属于自己的数据目录路径有写的权限,因此,该参数可以使用该程序的数据路径.</p>
+<p>  3、libPath, 指目标类中所使用的C/C++库存放的路径</p>
+<p> 4、classload, 是指该装载器的父装载器,一般为当前执行类的装载器</p>
+</li>
+</ul>
+        <!-- 
 查看原文： Android 热修复，没你想的那么难 —— by kymjs张涛
 
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
 《插件化从放弃到捡起》第一章，首先看一张图：
 
 这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
-原理ClassLoader在 Java 中，要加载一个类需要用到ClassLoader。Android 中有三个 ClassLoader, 分别为URLClassLoader、PathClassLoader、DexClassLoader。其中:
-
-URLClassLoader : 只能用于加载jar文件，但是由于 dalvik 不能直接识别jar，所以在 Android 中无法使用这个加载器。
-
-PathClassLoader :它只能加载已经安装的apk。因为 PathClassLoader 只会去读取 /data/dalvik-cache 目录下的 dex 文件。例如我们安装一个包名为com.hujiang.xxx的 apk,那么当 apk 安装过程中，就会在/data/dalvik-cache目录下生产一个名为data@app@com.hujiang.xxx-1.apk@classes.dex的 ODEX 文件。在使用 PathClassLoader 加载 apk 时，它就会去这个文件夹中找相应的 ODEX 文件，如果 apk 没有安装，自然会报ClassNotFoundException。
-
-DexClassLoader : 是最理想的加载器。它的构造函数包含四个参数，分别为：
-  1、dexPath, 指目标类所在的APK或jar文件的路径.类装载器将从该路径中寻找指定的目标类,该类必须是APK或jar的全路径.如果要包含多个路径,路径之间必须使用特定的分割符分隔,特定的分割符可以使用System.getProperty(“path.separtor”)获得.
-  2、dexOutputDir, 由于dex文件被包含在APK或者Jar文件中,因此在装载目标类之前需要先从APK或Jar文件中解压出dex文件,该参数就是制定解压出的dex 文件存放的路径.在Android系统中,一个应用程序一般对应一个Linux用户id,应用程序仅对属于自己的数据目录路径有写的权限,因此,该参数可以使用该程序的数据路径.
-  3、libPath, 指目标类中所使用的C/C++库存放的路径
- 4、classload, 是指该装载器的父装载器,一般为当前执行类的装载器
-
-
-
-        
-          <p class="article-more-link">
-            <a href="2016/11/10/Android 热修复原理和实现/#more">Continue Reading →</a>
-          </p>
-        </div>
+原理ClassLoa......  -->
+        <p class="article-more-link">
+          <a href="2016/11/10/Android 热修复原理和实现/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/hotfix/">hotfix</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -785,245 +741,42 @@ DexClassLoader : 是最理想的加载器。它的构造函数包含四个参数
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/7/">7</a><a class="extend next" rel="next" href="page/2/">Next</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/7/">7</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: 'content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" title=""><img width="50" height="50" src="/gallery/Textview-vertical/FontMetricsInt.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/">【Android】TextView中不同大小字体如何上下垂直居中？</a></h6>
-              <span>January 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/" title=""><img width="50" height="50" src="/gallery/Java-Generics.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/">【Java】泛型中 extends 和 super 的区别？</a></h6>
-              <span>December 27, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" title=""><img width="50" height="50" src="/gallery/Thomas-Bayes.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">数学之美番外篇：平凡而又神奇的贝叶斯方法</a></h6>
-              <span>December 22, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2016/12/19/【Android】RxJava 入门详解/" title=""><img width="50" height="50" src="/gallery/rxjava-introduction.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2016/12/19/【Android】RxJava 入门详解/">【Android】RxJava 入门详解</a></h6>
-              <span>December 19, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" title=""><img width="50" height="50" src="/gallery/apk.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/">【Android】APK瘦身记，实现将近一半的压缩效果</a></h6>
-              <span>November 30, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" title=""><img width="50" height="50" src="/gallery/Game-of-Thrones.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/">基于社区发现算法和图分析Neo4j解读《权力的游戏》</a></h6>
-              <span>November 21, 2016</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/D3-js/">D3.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Android/">Android</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Bayesian/">Bayesian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/D3/">D3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java-Generics/">Java Generics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="tags/APK/" style="font-size: 10px;">APK</a> <a href="tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/D3/" style="font-size: 15px;">D3</a> <a href="tags/Google/" style="font-size: 10px;">Google</a> <a href="tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="tags/Java/" style="font-size: 17.5px;">Java</a> <a href="tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
 
+  <div class="container">
+      <div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      <p id="copyRightCn">Mr.Seven hold copyright</p>
+	</div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1035,39 +788,9 @@ DexClassLoader : 是最理想的加载器。它的构造函数包含四个参数
   
     <a href="tags" class="mobile-nav-link">Tags</a>
   
-    <a href="collection" class="mobile-nav-link">Collection</a>
-  
     <a href="about" class="mobile-nav-link">About</a>
   
 </nav> -->
-    <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
-    var headerblur = document.getElementById("header-blur");
-    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
-</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
@@ -1111,7 +834,12 @@ DexClassLoader : 是最理想的加载器。它的构造函数包含四个参数
 
 <script src="js/script.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/main.js"></script>
+
+
+  <script src="js/home.js"></script>
+
+
+
 
 
 
@@ -1119,11 +847,68 @@ DexClassLoader : 是最理想的加载器。它的构造函数包含四个参数
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
   
 
-  <div style="display: none;">
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
