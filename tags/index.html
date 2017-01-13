@@ -36,13 +36,15 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../css/style.css">
 
   <script src="../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
@@ -52,7 +54,11 @@
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -61,7 +67,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-
+          
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -69,9 +75,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../index.html">Home</a> </li>
                     
@@ -81,18 +87,17 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="">Tags</a> </li>
                     
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../collection">collection</a> </li>
+                    
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../about">About</a> </li>
                     
               </ul>
             </div>
           </nav>
 
-
       </div>
   </div>
 </header>
-
-
 
 
   <div id="container">
@@ -117,11 +122,9 @@
             
                 <a href="#hotfix" title="hotfix" rel="2">hotfix</a>
             
-                <a href="#BAT" title="BAT" rel="1">BAT</a>
-            
-                <a href="#D3" title="D3" rel="3">D3</a>
-            
                 <a href="#WebDevelopment" title="WebDevelopment" rel="1">WebDevelopment</a>
+            
+                <a href="#BAT" title="BAT" rel="1">BAT</a>
             
                 <a href="#Hexo" title="Hexo" rel="2">Hexo</a>
             
@@ -129,11 +132,13 @@
             
                 <a href="#Android" title="Android" rel="22">Android</a>
             
+                <a href="#D3" title="D3" rel="3">D3</a>
+            
                 <a href="#Algorithm" title="Algorithm" rel="3">Algorithm</a>
             
-                <a href="#APK" title="APK" rel="1">APK</a>
-            
                 <a href="#Broadcast" title="Broadcast" rel="1">Broadcast</a>
+            
+                <a href="#APK" title="APK" rel="1">APK</a>
             
                 <a href="#RxJava" title="RxJava" rel="1">RxJava</a>
             
@@ -141,17 +146,17 @@
             
                 <a href="#Go语言" title="Go语言" rel="2">Go语言</a>
             
-                <a href="#Java Generics" title="Java Generics" rel="1">Java Generics</a>
-            
                 <a href="#Linux" title="Linux" rel="1">Linux</a>
             
                 <a href="#Machine Learning" title="Machine Learning" rel="2">Machine Learning</a>
             
                 <a href="#SVN" title="SVN" rel="1">SVN</a>
             
-                <a href="#MySQL" title="MySQL" rel="1">MySQL</a>
-            
                 <a href="#Neo4j" title="Neo4j" rel="2">Neo4j</a>
+            
+                <a href="#Java Generics" title="Java Generics" rel="1">Java Generics</a>
+            
+                <a href="#MySQL" title="MySQL" rel="1">MySQL</a>
             
                 <a href="#Bayesian" title="Bayesian" rel="1">Bayesian</a>
             
@@ -1498,13 +1503,13 @@
 </div></section>
           <aside id="sidebar">
   
-    <div class="widget-wrap" style="margin: 20px 0;">
+    <div style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 75%;">
+        <label style="width: 72%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="Search">
     </form>
@@ -1551,7 +1556,7 @@
    			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
 
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
 
    		
    			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
@@ -1564,12 +1569,6 @@
 
    		
    			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
 
    		
    		</ul>
@@ -1736,27 +1735,7 @@
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var contentdiv = document.getElementById("content");
-
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1768,9 +1747,39 @@
   
     <a href="" class="mobile-nav-link">Tags</a>
   
+    <a href="../collection" class="mobile-nav-link">Collection</a>
+  
     <a href="../about" class="mobile-nav-link">About</a>
   
 </nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>

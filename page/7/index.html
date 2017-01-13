@@ -35,13 +35,15 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
@@ -51,7 +53,11 @@
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -60,7 +66,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-
+          
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -68,9 +74,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
                     
@@ -80,18 +86,17 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
                     
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
+                    
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
                     
               </ul>
             </div>
           </nav>
 
-
       </div>
   </div>
 </header>
-
-
 
 
   <div id="container">
@@ -117,9 +122,13 @@
     
     <div class="article-meta">
       
-	Posted on <a href="../../2013/10/20/Ubuntu上Eclipse识别不了Android手机的解决方法/" class="article-date">
+	<a href="../../2013/10/20/Ubuntu上Eclipse识别不了Android手机的解决方法/" class="article-date">
 	  <time datetime="2013-10-20T08:46:00.000Z" itemprop="datePublished">October 20, 2013</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -127,15 +136,14 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 转载链接：    http://www.cnblogs.com/AndroidManifest/archive/2011/12/09/2281635.html
 
 google官方开发向导里对Android手机已经设置了允许安装非market程序，并且处于usb调试模式，但是仍然在usb连接电脑后无法被识别的问题作了解释。官方网址：http://developer.android.com/guide/developing/device.html
 操作步骤：如果是windows平台下，需要安装一个为adb准备的usb驱动。如果是Ubuntu Linux需要添加一个rules文件，里面包含了每一个想要调试的设备的usb配置信息。以HTC手机为例实现步骤如下：
 1、在终端输入 :
-sudo ...
-          
+sudo gedit /etc/udev/rules.d/51-android.rules
 
         
           <p class="article-more-link">
@@ -155,6 +163,7 @@ sudo ...
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -178,9 +187,13 @@ sudo ...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2013/08/01/【Java】操作excel表，包括创建、读取、以及修改/" class="article-date">
+	<a href="../../2013/08/01/【Java】操作excel表，包括创建、读取、以及修改/" class="article-date">
 	  <time datetime="2013-08-01T04:31:20.000Z" itemprop="datePublished">August 1, 2013</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -188,8 +201,8 @@ sudo ...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            作者的网站上对它的特征有如下描述： 
+          <div class="entry-summary">
+          作者的网站上对它的特征有如下描述： 
 
 支持Excel 95-2000的所有版本 
 生成Excel 2000标准格式 
@@ -199,10 +212,6 @@ sudo ...
 
 应该说以上功能已经能够大致满足我们的需要。最关键的是这套API是纯Java的，并不依赖Windows系统，即使运行在Linux下，它同样能够正确的处理Excel文件。另外需要说明的是，这套API对图形和图表的支持很有限，而且仅仅识别PNG格式。 
 搭建环境下载jxl.jar（可以点击这里进行下载），放入classpath，安装就完成了。 
-
-基本操作一、创建文件拟生成一个名为“测试数据.xls”的Excel文件，其中第一个工作表被命名为“第一页”。代码（CreateXLS.java）： 
-//生成E...
-          
 
         
           <p class="article-more-link">
@@ -222,6 +231,7 @@ sudo ...
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -239,13 +249,13 @@ sudo ...
 </section>
           <aside id="sidebar">
   
-    <div class="widget-wrap" style="margin: 20px 0;">
+    <div style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 75%;">
+        <label style="width: 72%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="Search">
     </form>
@@ -292,7 +302,7 @@ sudo ...
    			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
 
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
 
    		
    			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
@@ -305,12 +315,6 @@ sudo ...
 
    		
    			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
 
    		
    		</ul>
@@ -477,27 +481,7 @@ sudo ...
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var contentdiv = document.getElementById("content");
-
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -509,9 +493,39 @@ sudo ...
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
+    <a href="../../collection" class="mobile-nav-link">Collection</a>
+  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>

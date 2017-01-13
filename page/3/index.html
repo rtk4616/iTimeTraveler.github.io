@@ -35,13 +35,15 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
@@ -51,7 +53,11 @@
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -60,7 +66,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-
+          
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -68,9 +74,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
                     
@@ -80,18 +86,17 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
                     
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
+                    
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
                     
               </ul>
             </div>
           </nav>
 
-
       </div>
   </div>
 </header>
-
-
 
 
   <div id="container">
@@ -117,9 +122,13 @@
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/09/07/【Android 】TextView 局部文字变色/" class="article-date">
+	<a href="../../2016/09/07/【Android 】TextView 局部文字变色/" class="article-date">
 	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">September 7, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -127,14 +136,13 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”
 
 一、需求效果
 二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
-textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = n...
-          
+textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.RED);ForegroundColorSpan whiteSpan = new ForegroundColorSpan(Color.WHITE);ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.BLUE);ForegroundColorSpan greenSpan = new ForegroundColorSpan(Color.GREEN);ForegroundColorSpan yellowSpan = new ForegroundColorSpan(Color.YELLOW);  builder.setSpan(redSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(whiteSpan, 1, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);builder.setSpan(blueSpan, 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(greenSpan, 3, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(yellowSpan, 4,5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);textView.setText(builder);
 
         
           <p class="article-more-link">
@@ -154,6 +162,7 @@ textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -177,9 +186,13 @@ textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/30/【Android】获取View的截图/" class="article-date">
+	<a href="../../2016/08/30/【Android】获取View的截图/" class="article-date">
 	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">August 30, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -187,12 +200,11 @@ textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
+          <div class="entry-summary">
+          引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
 使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawingCache会失败。这种方式比较适合对应用界面或者某一部分的截图。步骤很简单：
-view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用DrawingCache并创建位图  //创建一个DrawingCache的拷...
-          
+view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用DrawingCache并创建位图  //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收  Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); view.setDrawingCacheEnabled(false);  	//禁用DrawingCahce否则会影响性能
 
         
           <p class="article-more-link">
@@ -212,6 +224,7 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -235,9 +248,13 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/" class="article-date">
+	<a href="../../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/" class="article-date">
 	  <time datetime="2016-08-26T07:20:00.000Z" itemprop="datePublished">August 26, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -245,11 +262,11 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
+          <div class="entry-summary">
+          引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
 所以 这点就让人很痛苦， 然而问题总还是要被解决的，作者曾经亲眼看到过使用android studio仅仅用了2.5秒就编译完毕(在代码更改很少的情况下)。 现在把如何优化gradle编译速度的方法记录在此，希望可以 帮助到广大的同行们。
-准备工作首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Grad...
-          
+准备工作首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Gradle 2.4之后在编译效率上面有了一个非常大的提高，看下图官方的速度对比。
+
 
         
           <p class="article-more-link">
@@ -269,6 +286,7 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -292,9 +310,13 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/" class="article-date">
+	<a href="../../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/" class="article-date">
 	  <time datetime="2016-08-18T08:36:00.000Z" itemprop="datePublished">August 18, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -302,16 +324,16 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 关于类型，官网上有一段仔细地介绍了一下函数指针的部分，现在的设计比起 C 的语法，清晰很多。
 
 也就是说，类型放在后面是为了更加清晰易懂。Rob Pike 曾经在 Go 官方博客解释过这个问题（查看原文：Go’s Declaration Syntax），简略翻译如下（水平有限翻译的不对的地方见谅）：
 引言Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax）会和传统的C家族语言不同。在这篇博文里，我们会进行一个比较，并做出解答。
 C 的语法首先，先看看 C 的语法。C 采用了一种聪明而不同寻常的声明语法。声明变量时，只需写出一个带有目标变量名的表达式，然后在表达式里指明该表达式本身的类型即可。比如：
 int x;
-上面的代码声明了 x 变量，并且其类...
-          
+上面的代码声明了 x 变量，并且其类型为 int——即，表达式 x 为 int 类型。一般而言，为了指明新变量的类型，我们得写出一个表达式，其中含有我们要声明的变量，这个表达式运算的结果值属于某种基本类型，我们把这种基本类型写到表达式的左边。所以，下述声明：
+int *p;int a[3];
 
         
           <p class="article-more-link">
@@ -331,6 +353,7 @@ int x;
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -354,9 +377,13 @@ int x;
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="article-date">
+	<a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="article-date">
 	  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">August 14, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -364,16 +391,13 @@ int x;
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 本文是一篇转载自伯乐在线的译文，英文原文是这里：Machine Learning is Fun! — by Adam Geitgey
 
 在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！
 本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了“机器学习” ——维基百科词条，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。
 本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。
-
-何为机器学习？机器学习这个概念认为，对于待解问题，你无需编写任何专门的程序代码，遗传算法（generic algori...
-          
 
         
           <p class="article-more-link">
@@ -393,6 +417,7 @@ int x;
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -416,9 +441,13 @@ int x;
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
+	<a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
 	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">August 12, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -426,34 +455,9 @@ int x;
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+          <div class="entry-summary">
+          Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
 Last Update: 2016.08.09
- 
-
-
-
-Project Name
-Stars
-Description
-
-
-
-
-TensorFlow
-29622
-Computation using data flow graphs for scalable machine learning.
-
-
-Caffe
-11799
-Caffe: a fast open framework for deep learning.
-
-
-Neural Style
-10148
-Torch impleme...
-          
 
         
           <p class="article-more-link">
@@ -473,6 +477,7 @@ Torch impleme...
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -496,9 +501,13 @@ Torch impleme...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
+	<a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
 	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">August 8, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -506,14 +515,14 @@ Torch impleme...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
-          
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &lt;stroke        android:width="0dp"        android:color="@color/gray" /&gt;    &lt;solid        android:color="@color/gray" /&gt;&lt;/shape&gt;
+然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。
 
         
           <p class="article-more-link">
@@ -533,6 +542,7 @@ Torch impleme...
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -556,9 +566,13 @@ Torch impleme...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
+	<a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
 	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">August 2, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -566,8 +580,8 @@ Torch impleme...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 
 互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
 
@@ -589,10 +603,6 @@ T6：首席科学家
 
 
 
-目前全腾讯貌似就一个T6。
-每一级之间又分为3个子级，3-1是任命组长/副组长的必要条件，其他线也...
-          
-
         
           <p class="article-more-link">
             <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">Continue Reading →</a>
@@ -611,6 +621,7 @@ T6：首席科学家
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -634,9 +645,13 @@ T6：首席科学家
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
+	<a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
 	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">July 22, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -644,14 +659,19 @@ T6：首席科学家
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
 但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
 
 一、名词介绍
-PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&...
-          
+PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 dpi与ppi区别）：
+
+dp = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数
+
+sp = Scale-independent pixels，它是安卓的字体单位
+
+
 
         
           <p class="article-more-link">
@@ -671,6 +691,7 @@ PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nb
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -694,9 +715,13 @@ PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nb
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
+	<a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
 	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">July 19, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -704,14 +729,23 @@ PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nb
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+          <div class="entry-summary">
+          一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
 二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventcount &gt; , 例如：
 
 adb shell monkey -v 500
 
-产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activit...
-          
+产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。上面只是一个简单的例子，实际情况中通常会有很多的options 选项.
+2）. 四大类
+
+
+常用选项
+事件选项 
+约束选项 
+调试选项
+
+
+具体的命令解释可以看这里：android 压力测试命令monkey详解
 
         
           <p class="article-more-link">
@@ -731,6 +765,7 @@ adb shell monkey -v 500
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -748,13 +783,13 @@ adb shell monkey -v 500
 </section>
           <aside id="sidebar">
   
-    <div class="widget-wrap" style="margin: 20px 0;">
+    <div style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 75%;">
+        <label style="width: 72%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="Search">
     </form>
@@ -801,7 +836,7 @@ adb shell monkey -v 500
    			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
 
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
 
    		
    			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
@@ -814,12 +849,6 @@ adb shell monkey -v 500
 
    		
    			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
 
    		
    		</ul>
@@ -986,27 +1015,7 @@ adb shell monkey -v 500
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var contentdiv = document.getElementById("content");
-
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1018,9 +1027,39 @@ adb shell monkey -v 500
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
+    <a href="../../collection" class="mobile-nav-link">Collection</a>
+  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>

@@ -35,13 +35,15 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
@@ -51,7 +53,11 @@
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -60,7 +66,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-
+          
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -68,9 +74,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
                     
@@ -80,18 +86,17 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
                     
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
+                    
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
                     
               </ul>
             </div>
           </nav>
 
-
       </div>
   </div>
 </header>
-
-
 
 
   <div id="container">
@@ -117,9 +122,13 @@
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
+	<a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
 	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">July 14, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -127,18 +136,13 @@
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 英文原文： Auto Restart application after Crash/Force Close in Android.
 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
 
 这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。
 其实方法很简单，这里我们需要用到 Thread.setDefaultUncaughtExceptionHandler()，当应用崩溃的时候代码就会自动调用 uncaughtException() 这个方法。
-
-操作步骤如下：
-Step 1
-像下面这...
-          
 
         
           <p class="article-more-link">
@@ -158,6 +162,7 @@ Step 1
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -181,9 +186,13 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
+	<a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
 	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">June 12, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/SVN/">SVN</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -191,13 +200,12 @@ Step 1
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
 一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
-二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
-          
+二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	// 当前目录进行递归回滚
 
         
           <p class="article-more-link">
@@ -217,64 +225,7 @@ Step 1
 
       
     </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
-	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
-有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
-
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;				//基础类播报public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;		//实时路况public static final int...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-
-      
-    </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -298,9 +249,13 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
+	<a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -308,17 +263,13 @@ Step 1
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
 
 经过调研发现，给系统模拟注入输入事件有如下几种方式：
 一、使用shell命令使用android自带的adb shell，里面自带一个input工具，使用方法如下：
 adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input keyevent KEYCODE_HOME  #模拟按Home键
-
-还可以直接输入点击屏幕的事件，模拟点击屏幕：
-input tap 100 200  #在屏幕坐标(1...
-          
 
         
           <p class="article-more-link">
@@ -338,6 +289,70 @@ input tap 100 200  #在屏幕坐标(1...
 
       
     </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          
+有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;				//基础类播报public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;		//实时路况public static final int BROADCAST_TYPE_CUSTOM_CAMERA = 1 &lt;&lt; 2;		//摄像头限速播报public static final int BROADCAST_TYPE_CUSTOM_SAFE = 1 &lt;&lt; 3;		//安全提醒类
+一、添加Addprivate void addLevel(int level)&#123;	mBroadcastCustomValue |= level;    //add&#125;//调用方式如下addLevel(BROADCAST_TYPE_CUSTOM_BASE);
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -361,9 +376,13 @@ input tap 100 200  #在屏幕坐标(1...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
+	<a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
 	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">April 29, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -371,17 +390,11 @@ input tap 100 200  #在屏幕坐标(1...
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 select * from table_name where id in ()的时候，MySQL会自动按主键自增排序，要是按IN中给定的顺序来取，如何实现呢？
 
 比如下面这个查询结果，mysql会默认使用主键id的ASC自增排序结果集：
-
-那么，如果我们想维持查询语句中IN(26613,26612,26611,26610,26609,26608,26607)的顺序可以么？当然可以，像下面这样，使用Order by field()：
-SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612,26611,26610);
-这样读取出来的顺序就是IN（）语句中的顺序。
-
-          
 
         
           <p class="article-more-link">
@@ -401,6 +414,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -424,9 +438,13 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="article-date">
+	<a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="article-date">
 	  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">April 29, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -434,18 +452,12 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 在Linux中执行.sh脚本，异常/bin/bash^M: bad interpreter: No such file or directory.
 
 一、分析这是不同系统编码格式引起的：在windows系统中编辑的.sh文件可能有不可见字符，所以在Linux系统下执行会报以上异常信息。 
 二、解决1）在windows下转换：利用一些编辑器如UltraEdit或EditPlus等工具先将脚本编码转换，再放到Linux中执行。转换方式如下（UltraEdit）：File–&gt;Conversions–&gt;DOS-&gt;UNIX即可。 
-
-2）直接在Linux中转换（推荐做法）：
-首先要确保文件有可执行权限 
-#sh&gt; chmod a+x filename
-然后修改文件格式 ...
-          
 
         
           <p class="article-more-link">
@@ -465,6 +477,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -488,9 +501,13 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/06/”二分查找“算法的时间复杂度/" class="article-date">
+	<a href="../../2016/04/06/”二分查找“算法的时间复杂度/" class="article-date">
 	  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">April 6, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -498,14 +515,11 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 算法的时间复杂度无非就是for、while等包含起来的基本运算单元的循环次数
 
 1、二分查找二分查找（binary search），也称作折半查找（half-interval search），每次划分一半进行下一步搜索，所以时间复杂度无非就是while循环的次数！
-
-//二分查找 Java 实现public static int binarySearch(Integer[] srcArray, int des) &#123;    int low = 0;    int high = srcArray.length - 1;     while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)          ...
-          
 
         
           <p class="article-more-link">
@@ -525,6 +539,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -548,27 +563,21 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="article-date">
+	<a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="article-date">
 	  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">March 30, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            先给大家看一下这个主题的颜值：
+          <div class="entry-summary">
+          先给大家看一下这个主题的颜值：
 
 
-
-
-快看安装方法：1、下载：https://github.com/kenwheeler/brogrammer-theme/archive/master.zip
-2、解压后将文件夹改名成Theme - Brogrammer，然后打开sublime text3，找到里面的 Preferences -&gt; Browse Packages，将改名后的文件夹copy到弹出的文件夹中
-3、然后首选项-&gt;设置用户（Preferences -&gt; setting uer），将下列代码拷进去：
-&#123;	&quot;color_scheme&quot;: &quot;Packages/brogrammer-theme-master/brogramme...
-          
 
         
           <p class="article-more-link">
@@ -582,6 +591,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
       
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -605,9 +615,13 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="article-date">
+	<a href="../../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="article-date">
 	  <time datetime="2016-03-08T07:03:00.000Z" itemprop="datePublished">March 8, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -641,6 +655,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -664,9 +679,13 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
+	<a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
 	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">January 22, 2016</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -674,18 +693,14 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
         
 
           
-            <div class="entry-summary" style="margin-left:0;">
-            
+          <div class="entry-summary">
+          
 这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数
 
 一、简单实现思路:(1) 把N个数放入Hashtable 或者arrayList 中.
 (2) 从上面的集合中随机抽取一个数放入int数组中.
 (3) 把取出的这个数从上面的集合中删除.
 (4) 循环 (2),(3) 步骤,直到int数组取满为止.
-
-这是一种比较简单的实现思路，实现代码如下：
-import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main &#123;	private static int range = 100;	private static Ar...
-          
 
         
           <p class="article-more-link">
@@ -705,6 +720,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -722,13 +738,13 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 </section>
           <aside id="sidebar">
   
-    <div class="widget-wrap" style="margin: 20px 0;">
+    <div style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 75%;">
+        <label style="width: 72%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="Search">
     </form>
@@ -775,7 +791,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
    			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
 
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
 
    		
    			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
@@ -788,12 +804,6 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 
    		
    			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
 
    		
    		</ul>
@@ -960,27 +970,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var contentdiv = document.getElementById("content");
-
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -992,9 +982,39 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
+    <a href="../../collection" class="mobile-nav-link">Collection</a>
+  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>

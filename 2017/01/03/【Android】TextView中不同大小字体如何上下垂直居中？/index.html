@@ -49,13 +49,15 @@ AbsoluteSizeSpan(int si">
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
@@ -65,7 +67,11 @@ AbsoluteSizeSpan(int si">
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -74,7 +80,7 @@ AbsoluteSizeSpan(int si">
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-
+          
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -82,9 +88,9 @@ AbsoluteSizeSpan(int si">
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
                     
@@ -94,18 +100,17 @@ AbsoluteSizeSpan(int si">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
                     
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
+                    
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
                     
               </ul>
             </div>
           </nav>
 
-
       </div>
   </div>
 </header>
-
-
 
 
   <div id="container">
@@ -119,7 +124,7 @@ AbsoluteSizeSpan(int si">
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixu869ak001k6smyeuv62n5y">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Textview-vertical/FontMetricsInt.png" rel="gallery_cixvg4f6n004zysmyn125vgt1">
         <img src="../../../../gallery/Textview-vertical/FontMetricsInt.png" itemprop="image">
       </a>
     
@@ -139,9 +144,13 @@ AbsoluteSizeSpan(int si">
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
+	<a href="" class="article-date">
 	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">January 3, 2017</time>
 	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -281,6 +290,7 @@ AbsoluteSizeSpan(int si">
 
       
     </footer>
+    <hr class="entry-footer-hr">
   </div>
   
     
@@ -310,27 +320,7 @@ AbsoluteSizeSpan(int si">
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
-  
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var contentdiv = document.getElementById("content");
-
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -342,9 +332,39 @@ AbsoluteSizeSpan(int si">
   
     <a href="../../../../tags" class="mobile-nav-link">Tags</a>
   
+    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
+  
     <a href="../../../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    var headerblur = document.getElementById("header-blur");
+    headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
+</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
