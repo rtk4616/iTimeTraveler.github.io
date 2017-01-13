@@ -16,8 +16,7 @@
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
 《插件化从放弃到捡起》第一章，首先看一张图：
 
-这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
-原理ClassLoader">
+这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 热修复原理和实现">
 <meta property="og:url" content="http://github.com/2016/11/10/Android 热修复原理和实现/index.html">
@@ -27,10 +26,9 @@
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
 《插件化从放弃到捡起》第一章，首先看一张图：
 
-这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
-原理ClassLoader">
+这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。">
 <meta property="og:image" content="http://github.com/gallery/hotfix.png">
-<meta property="og:updated_time" content="2017-01-13T10:47:28.304Z">
+<meta property="og:updated_time" content="2017-01-13T10:48:48.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 热修复原理和实现">
 <meta name="twitter:description" content="查看原文： Android 热修复，没你想的那么难 —— by kymjs张涛
@@ -38,8 +36,7 @@
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
 《插件化从放弃到捡起》第一章，首先看一张图：
 
-这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
-原理ClassLoader">
+这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。">
 <meta name="twitter:image" content="http://github.com/gallery/hotfix.png">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
@@ -133,7 +130,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/hotfix.png" rel="gallery_cixvokavv00025smyg7xyuple">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/hotfix.png" rel="gallery_cixvoqxbs000290myw9o2aquf">
         <img src="../../../../gallery/hotfix.png" itemprop="image">
       </a>
     
@@ -171,6 +168,7 @@
 <p>《插件化从放弃到捡起》第一章，首先看一张图：</p>
 <p><img src="http://img.blog.csdn.net/20161110131925707" alt=""></p>
 <p>这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 <a href="https://zhuanlan.zhihu.com/p/20308548" target="_blank" rel="external">【Qzone 热修复方案】</a>为例，跟大家讲一讲插件化中 <code>热修复方案</code> 的实现。</p>
+<a id="more"></a>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><p>在 Java 中，要加载一个类需要用到<code>ClassLoader</code>。<br>Android 中有三个 ClassLoader, 分别为<code>URLClassLoader</code>、<code>PathClassLoader</code>、<code>DexClassLoader</code>。其中:</p>
 <ul>
 <li><p><strong>URLClassLoader</strong> : 只能用于加载jar文件，但是由于 dalvik 不能直接识别jar，所以在 Android 中无法使用这个加载器。</p>
@@ -184,7 +182,6 @@
 <p> 4、classload, 是指该装载器的父装载器,一般为当前执行类的装载器</p>
 </li>
 </ul>
-<a id="more"></a>
 <p>从<a href="http://androidxref.com/4.0.4/xref/libcore/dalvik/src/main/java/dalvik/system/BaseDexClassLoader.java" target="_blank" rel="external">framework源码</a>中的<code>dalvik.system</code>包下，找到<code>DexClassLoader</code>源码，并没有什么卵用，实际内容是在它的父类<code>BaseDexClassLoader</code>中，顺带一提，这个类最低在API14开始有用。包含了两个变量：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/** originally specified path (just used for &#123;<span class="doctag">@code</span> toString()&#125;) */</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> String originalPath;</div><div class="line"> </div><div class="line"><span class="comment">/** structured lists of path elements */</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> DexPathList pathList;</div></pre></td></tr></table></figure>
 <p>可以看到注释：pathList就是多dex的结构列表，查看其<a href="http://androidxref.com/4.0.4/xref/libcore/dalvik/src/main/java/dalvik/system/DexPathList.java" target="_blank" rel="external">源码</a></p>
