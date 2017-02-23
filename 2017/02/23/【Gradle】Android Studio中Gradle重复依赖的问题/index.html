@@ -20,7 +20,7 @@ Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingFor
 <meta property="og:description" content="问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
 Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingForAutoioDebug&amp;apos;.&amp;gt; com.android.build.api.transform.TransformException: java.">
 <meta property="og:image" content="http://github.com/gallery/gradle-as.png">
-<meta property="og:updated_time" content="2017-02-23T05:18:30.231Z">
+<meta property="og:updated_time" content="2017-02-23T05:20:38.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Gradle】Android Studio中Gradle重复依赖的问题">
 <meta name="twitter:description" content="问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
@@ -118,7 +118,7 @@ Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingFor
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/gradle-as.png" rel="gallery_cizhxuxq8002o1wmyldu27muf">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/gradle-as.png" rel="gallery_cizhxxbvk003fbcmy14gf47gk">
         <img src="../../../../gallery/gradle-as.png" itemprop="image">
       </a>
     
@@ -154,6 +154,7 @@ Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingFor
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><p>看到错误中的这个<strong>duplicate</strong>，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的<code>Expose.class</code> 类。</p>
 <p>使用快捷键（Shift + Ctrl + T）查看项目中的<code>Expose.class</code> 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。</p>
 <p><img src="http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<a id="more"></a>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>在往下面分析之前，需要先根据项目结构说明一下问题的本质，就是Module</p>
 <p><img src="http://img.blog.csdn.net/20170223124701598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>第一个查到的解决办法是这个<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>Android Studio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a>，但是他的问题是依赖另外一个库retrofit，她用了下面的办法：</p>
