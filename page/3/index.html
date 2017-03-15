@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,18 +33,20 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
 
 </head>
 
@@ -54,60 +56,118 @@
 
 
   
+    <header id="header">
 
+  
+    <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+    <script>
+        var imgUrls = "css/images/home-bg.jpg,css/images/sample.jpg,http://t.cn/RMbvEza".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("intrologo").style.backgroundImage='url(' + imgUrls[random] + ')';
+        } else {
+          document.getElementById("intrologo").style.backgroundImage='url(/' + imgUrls[random] + ')';
+        }
+    </script>
+  
 
-<header id="allheader" class="site-header" role="banner" 
-   >
-  <div class="clearfix container">
-      <div class="site-branding">
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-          
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
+      
+    </script>
+    
 
-            <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
 
-      </div>
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+    <script>
+        var img = new Image();
+        var intrologodiv = document.getElementById("intrologo");
+        img.src = intrologodiv.style.backgroundImage.replace('url(','').replace(')','').replace(/\"/gi, "");
+        img.onload=function(){
+          if (img.width / img.height <= document.body.clientWidth / document.body.clientHeight) {
+            intrologodiv.style.backgroundSize = "100% auto";
+          } else {
+            intrologodiv.style.backgroundSize = "auto 100%";
+          }
+        };
+    </script>
+ 
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="../../index.html">Home</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../archives">Archives</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../categories">Categories</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-【Go语言】基本类型排序和 slice 排序"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -123,52 +183,42 @@
     <div class="article-meta">
       
 	<a href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/" class="article-date">
-	  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">September 7, 2016</time>
+	  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">2016-09-07</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（将来也不好说支不支持），所以，Go 的 sort 和 search 使用起来跟类型是有关的，或是需要像 c 一样写比较函数等，稍微显得也不是很方便。</p>
+</blockquote>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h3><p>  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是<strong><code>任何对象</code></strong>， 虽然很多情况下是一个 <code>slice</code> (分片， 类似于数组)，或是包含 slice 的一个对象。</p>
+<p>排序(接口)的三个要素：</p>
+<ul>
+<li>待排序元素个数 n ；</li>
+<li>第 i 和第 j 个元素的比较函数 cmp ；</li>
+<li>第 i 和 第 j 个元素的交换 swap ；</li>
+</ul>
+<p>乍一看条件 3 是多余的， c 和 c++ 都不提供 swap 。 c 的 qsort 的用法： <code>qsort(data, n, sizeof(int), cmp_int);</code>  data 是起始地址， n 是元素个数， sizeof(int) 是每个元素的大小， cmp_int 是一个比较两个 int 的函数。</p>
+<p>c++ 的 sort 的用法： <code>sort(data, data+n, cmp_int);</code> data 是第一个元素的位置， data+n 是最后一个元素的下一个位置， cmp_int 是比较函数。</p>
+        <!-- 
 Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（将来也不好说支不支持），所以，Go 的 sort 和 search 使用起来跟类型是有关的，或是需要像 c 一样写比较函数等，稍微显得也不是很方便。
 
-引言  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是任何对象， 虽然很多情况下是一个 slice (分片， 类似于数组)，或是包含 slice 的一个对象。
-排序(接口)的三个要素：
-
-待排序元素个数 n ；
-第 i 和第 j 个元素的比较函数 cmp ；
-第 i 和 第 j 个元素的交换 swap ；
-
-乍一看条件 3 是多余的， c 和 c++ 都不提供 swap 。 c 的 qsort 的用法： qsort(data, n, sizeof(int), cmp_int);  data 是起始地址， n 是元素个数， sizeof(int) 是每个元素的大小， cmp_int 是一个比较两个 int 的函数。
-c++ 的 sort 的用法： sort(data, data+n, cmp_int); data 是第一个元素的位置， data+n 是最后一个元素的下一个位置， cmp_int 是比较函数。
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/#more">Continue Reading →</a>
-          </p>
-        </div>
+引言  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是任何对象， 虽然很多......  -->
+        <p class="article-more-link">
+          <a href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Go语言/">Go语言</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -177,7 +227,7 @@ c++ 的 sort 的用法： sort(data, data+n, cmp_int); data 是第一个元素�
 
   
     <article id="post-【Android 】TextView 局部文字变色"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -193,46 +243,38 @@ c++ 的 sort 的用法： sort(data, data+n, cmp_int); data 是第一个元素�
     <div class="article-meta">
       
 	<a href="../../2016/09/07/【Android 】TextView 局部文字变色/" class="article-date">
-	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">September 7, 2016</time>
+	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">2016-09-07</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”</p>
+</blockquote>
+<h3 id="一、需求效果"><a href="#一、需求效果" class="headerlink" title="一、需求效果"></a><strong>一、需求效果</strong></h3><p><img src="http://img.blog.csdn.net/20161009150647271" alt="比如这个"></p>
+<h3 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a><strong>二、解决方案</strong></h3><p>针对这类问题，Android提供了 <a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html"><strong><code>SpannableStringBuilder</code></strong></a>，方便我们自定义富文本的实现。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">textView = (TextView) findViewById(R.id.textview);</div><div class="line">SpannableStringBuilder builder = <span class="keyword">new</span> SpannableStringBuilder(textView.getText().toString());</div><div class="line"></div><div class="line"><span class="comment">//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色</span></div><div class="line">ForegroundColorSpan redSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.RED);</div><div class="line">ForegroundColorSpan whiteSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.WHITE);</div><div class="line">ForegroundColorSpan blueSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.BLUE);</div><div class="line">ForegroundColorSpan greenSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.GREEN);</div><div class="line">ForegroundColorSpan yellowSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.YELLOW);</div><div class="line"> </div><div class="line"> </div><div class="line">builder.setSpan(redSpan, <span class="number">0</span>, <span class="number">1</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(whiteSpan, <span class="number">1</span>, <span class="number">2</span>, Spannable.SPAN_INCLUSIVE_INCLUSIVE);</div><div class="line">builder.setSpan(blueSpan, <span class="number">2</span>, <span class="number">3</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(greenSpan, <span class="number">3</span>, <span class="number">4</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(yellowSpan, <span class="number">4</span>,<span class="number">5</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line"></div><div class="line">textView.setText(builder);</div></pre></td></tr></table></figure>
+        <!-- 
 TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”
 
 一、需求效果
 二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
-textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.RED);ForegroundColorSpan whiteSpan = new ForegroundColorSpan(Color.WHITE);ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.BLUE);ForegroundColorSpan greenSpan = new ForegroundColorSpan(Color.GREEN);ForegroundColorSpan yellowSpan = new ForegroundColorSpan(Color.YELLOW);  builder.setSpan(redSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(whiteSpan, 1, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);builder.setSpan(blueSpan, 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(greenSpan, 3, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);builder.setSpan(yellowSpan, 4,5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);textView.setText(builder);
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/09/07/【Android 】TextView 局部文字变色/#more">Continue Reading →</a>
-          </p>
-        </div>
+textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder bui......  -->
+        <p class="article-more-link">
+          <a href="../../2016/09/07/【Android 】TextView 局部文字变色/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -241,7 +283,7 @@ textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder
 
   
     <article id="post-【Android】获取View的截图"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -257,44 +299,33 @@ textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder
     <div class="article-meta">
       
 	<a href="../../2016/08/30/【Android】获取View的截图/" class="article-date">
-	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">August 30, 2016</time>
+	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">2016-08-30</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h3><p> 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。</p>
+<p>Android中对View的截图也有以下两种方式，值得注意的是<strong>两个方法都不适用于<code>SurfaceView</code></strong>：</p>
+<h3 id="使用DrawingCache"><a href="#使用DrawingCache" class="headerlink" title="使用DrawingCache"></a><strong>使用DrawingCache</strong></h3><p>如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawingCache会失败。这种方式比较适合对应用界面或者某一部分的截图。步骤很简单：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">view.setDrawingCacheEnabled(<span class="keyword">true</span>);  </div><div class="line">view.buildDrawingCache();  		<span class="comment">//启用DrawingCache并创建位图  </span></div><div class="line"></div><div class="line"><span class="comment">//创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收  </span></div><div class="line">Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); </div><div class="line">view.setDrawingCacheEnabled(<span class="keyword">false</span>);  	<span class="comment">//禁用DrawingCahce否则会影响性能</span></div></pre></td></tr></table></figure>
+        <!-- 引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
-使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawingCache会失败。这种方式比较适合对应用界面或者某一部分的截图。步骤很简单：
-view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用DrawingCache并创建位图  //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收  Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); view.setDrawingCacheEnabled(false);  	//禁用DrawingCahce否则会影响性能
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/30/【Android】获取View的截图/#more">Continue Reading →</a>
-          </p>
-        </div>
+使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDraw......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/30/【Android】获取View的截图/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -303,7 +334,7 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
 
   
     <article id="post-【Android】如何加速 AndroidStudio 的编译效率"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -319,44 +350,32 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
     <div class="article-meta">
       
 	<a href="../../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/" class="article-date">
-	  <time datetime="2016-08-26T07:20:00.000Z" itemprop="datePublished">August 26, 2016</time>
+	  <time datetime="2016-08-26T07:20:00.000Z" itemprop="datePublished">2016-08-26</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
-所以 这点就让人很痛苦， 然而问题总还是要被解决的，作者曾经亲眼看到过使用android studio仅仅用了2.5秒就编译完毕(在代码更改很少的情况下)。 现在把如何优化gradle编译速度的方法记录在此，希望可以 帮助到广大的同行们。
-准备工作首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Gradle 2.4之后在编译效率上面有了一个非常大的提高，看下图官方的速度对比。
-
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/#more">Continue Reading →</a>
-          </p>
-        </div>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h3><p>如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”<strong>编译速度有点慢</strong>“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。</p>
+<p>所以 这点就让人很痛苦， 然而问题总还是要被解决的，作者曾经亲眼看到过使用android studio仅仅用了2.5秒就编译完毕(在代码更改很少的情况下)。 现在把如何优化gradle编译速度的方法记录在此，希望可以 帮助到广大的同行们。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><strong>准备工作</strong></h3><p>首先，保证项目使用的Gradle是最新的，我这里用的是2.10版本。因为Gradle 2.4之后在编译效率上面有了一个非常大的提高，看下图官方的速度对比。</p>
+<p><img src="http://img.blog.csdn.net/20160826151929475" alt="这是官方的速度对比，下一代编译速度更快"></p>
+        <!-- 引言如果你之前用eclipse开发过Android app的话，转到android studio的第一反应也许就是：”编译速度有点慢“，表现的最明显的一点就是，每次android studio使用gradle编译，即便是更改的代码量很少，也会按照预先设置的task的顺序，依次走完编译的各项流程。这时候如果电脑CPU配置不高的时候，就会超级卡界面，更别说改代码了。
+所以 这点就让人很痛苦， 然......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -365,7 +384,7 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
 
   
     <article id="post-【Go】为什么 Go 语言把类型声明放在后面？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -381,49 +400,40 @@ view.setDrawingCacheEnabled(true);  view.buildDrawingCache();  		//启用Drawing
     <div class="article-meta">
       
 	<a href="../../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/" class="article-date">
-	  <time datetime="2016-08-18T08:36:00.000Z" itemprop="datePublished">August 18, 2016</time>
+	  <time datetime="2016-08-18T08:36:00.000Z" itemprop="datePublished">2016-08-18</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>关于类型，官网上有一段仔细地介绍了一下函数指针的部分，现在的设计比起 C 的语法，清晰很多。</p>
+</blockquote>
+<p>也就是说，类型放在后面是为了更加清晰易懂。Rob Pike 曾经在 Go 官方博客解释过这个问题（查看原文：<a href="http://blog.golang.org/gos-declaration-syntax"><strong>Go’s Declaration Syntax</strong></a>），简略翻译如下（水平有限翻译的不对的地方见谅）：</p>
+<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h4><p>Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax）会和传统的C家族语言不同。在这篇博文里，我们会进行一个比较，并做出解答。</p>
+<h4 id="C-的语法"><a href="#C-的语法" class="headerlink" title="C 的语法"></a><strong>C 的语法</strong></h4><p>首先，先看看 C 的语法。C 采用了一种聪明而不同寻常的声明语法。声明变量时，只需写出一个带有目标变量名的表达式，然后在表达式里指明该表达式本身的类型即可。比如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="keyword">int</span> x;</div></pre></td></tr></table></figure>
+<p>上面的代码声明了 <code>x</code> 变量，并且其类型为 <code>int</code>——即，表达式 <code>x</code> 为 <code>int</code> 类型。一般而言，为了指明新变量的类型，我们得写出一个表达式，其中含有我们要声明的变量，这个表达式运算的结果值属于某种基本类型，我们把这种基本类型写到表达式的左边。所以，下述声明：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><div class="line"><span class="keyword">int</span> *p;</div><div class="line"><span class="keyword">int</span> a[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+        <!-- 
 关于类型，官网上有一段仔细地介绍了一下函数指针的部分，现在的设计比起 C 的语法，清晰很多。
 
 也就是说，类型放在后面是为了更加清晰易懂。Rob Pike 曾经在 Go 官方博客解释过这个问题（查看原文：Go’s Declaration Syntax），简略翻译如下（水平有限翻译的不对的地方见谅）：
-引言Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax）会和传统的C家族语言不同。在这篇博文里，我们会进行一个比较，并做出解答。
-C 的语法首先，先看看 C 的语法。C 采用了一种聪明而不同寻常的声明语法。声明变量时，只需写出一个带有目标变量名的表达式，然后在表达式里指明该表达式本身的类型即可。比如：
-int x;
-上面的代码声明了 x 变量，并且其类型为 int——即，表达式 x 为 int 类型。一般而言，为了指明新变量的类型，我们得写出一个表达式，其中含有我们要声明的变量，这个表达式运算的结果值属于某种基本类型，我们把这种基本类型写到表达式的左边。所以，下述声明：
-int *p;int a[3];
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/#more">Continue Reading →</a>
-          </p>
-        </div>
+引言Go语言新人常常会很疑惑为什么这门语言的声明语法（declaration syntax......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Go语言/">Go语言</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -432,7 +442,7 @@ int *p;int a[3];
 
   
     <article id="post-【Machine Learning】机器学习：简明入门指南"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -448,46 +458,37 @@ int *p;int a[3];
     <div class="article-meta">
       
 	<a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="article-date">
-	  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">August 14, 2016</time>
+	  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">2016-08-14</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文是一篇转载自<a href="http://blog.jobbole.com/67616/"><strong>伯乐在线的译文</strong></a>，英文原文是这里：<a href="https://medium.com/code-poet/80ea3ec3c471"><strong>Machine Learning is Fun!</strong> — by Adam Geitgey</a></p>
+</blockquote>
+<p>在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！</p>
+<p>本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了<a href="https://en.wikipedia.org/wiki/Machine_learning">“机器学习” ——维基百科词条</a>，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。</p>
+<p>本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。</p>
+        <!-- 
 本文是一篇转载自伯乐在线的译文，英文原文是这里：Machine Learning is Fun! — by Adam Geitgey
 
 在听到人们谈论机器学习的时候，你是不是对它的涵义只有几个模糊的认识呢？你是不是已经厌倦了在和同事交谈时只能一直点头？让我们改变一下吧！
-本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了“机器学习” ——维基百科词条，倍感挫折，以为没人能给出一个高层次的解释。本文就是你们想要的东西。
-本文目标在于平易近人，这意味着文中有大量的概括。但是谁在乎这些呢？只要能让读者对于ML更感兴趣，任务也就完成了。
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/#more">Continue Reading →</a>
-          </p>
-        </div>
+本指南的读者对象是所有对机器学习有求知欲但却不知道如何开头的朋友。我猜很多人已经读过了“机器学习” ——维基百科词条，倍......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/14/【Machine Learning】机器学习：简明入门指南/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -496,7 +497,7 @@ int *p;int a[3];
 
   
     <article id="post-【Machine Learning】Github上关注最多的53个深度学习项目"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -512,42 +513,44 @@ int *p;int a[3];
     <div class="article-meta">
       
 	<a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
-	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">August 12, 2016</time>
+	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">2016-08-12</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+        <h2 id="Top-Deep-Learning-Projects"><a href="#Top-Deep-Learning-Projects" class="headerlink" title="Top Deep Learning Projects"></a>Top Deep Learning Projects</h2><p>A list of popular github projects related to deep learning (ranked by stars).</p>
+<p>Last Update: 2016.08.09</p>
+        <!-- Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
 Last Update: 2016.08.09
+ 
 
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more">Continue Reading →</a>
-          </p>
-        </div>
+
+
+Project Name
+Stars
+Description
+
+
+
+
+TensorFlow
+29622
+Computation ......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -556,7 +559,7 @@ Last Update: 2016.08.09
 
   
     <article id="post-【Android】使用shape的同时，动态替换shape的颜色属性"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -572,47 +575,39 @@ Last Update: 2016.08.09
     <div class="article-meta">
       
 	<a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
-	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">August 8, 2016</time>
+	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">2016-08-08</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？</p>
+</blockquote>
+<h4 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a><strong>一、问题</strong></h4><p>比如以下这三个按钮：</p>
+<p><img src="http://img.blog.csdn.net/20160808175543250" alt="三个样式相同的按钮"></p>
+<p>为第一个灰色按钮自定义背景如下：<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span></div><div class="line">    <span class="attr">android:color</span>=<span class="string">"@color/gray"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">corners</span></div><div class="line">        <span class="attr">android:radius</span>=<span class="string">"60dip"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></div><div class="line">        <span class="attr">android:width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">solid</span></div><div class="line">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。</p>
+        <!-- 
 在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &lt;stroke        android:width="0dp"        android:color="@color/gray" /&gt;    &lt;solid        android:color="@color/gray" /&gt;&lt;/shape&gt;
-然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more">Continue Reading →</a>
-          </p>
-        </div>
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schema......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -621,7 +616,7 @@ Last Update: 2016.08.09
 
   
     <article id="post-BAT人才体系的职位层级、薪酬、晋升标准大全"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -637,61 +632,54 @@ Last Update: 2016.08.09
     <div class="article-meta">
       
 	<a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
-	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">August 2, 2016</time>
+	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">2016-08-02</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/BAT/">BAT</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <img src="/2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/01.jpg" alt="&nbsp;" title="&nbsp;">
+<blockquote>
+<p>互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题<a href="https://www.zhihu.com/question/27108669">百度、腾讯和阿里内部的级别和薪资待遇是什么样的？</a></p>
+</blockquote>
+<h3 id="★-腾讯-★"><a href="#★-腾讯-★" class="headerlink" title="★ 腾讯 ★"></a><strong>★ 腾讯 ★</strong></h3><h4 id="1、职级"><a href="#1、职级" class="headerlink" title="1、职级"></a><strong>1、职级</strong></h4><p>腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：</p>
+<p>产品/项目通道，简称P族<br>技术通道，简称T族<br>市场通道，简称M族<br>职能通道，简称S族</p>
+<p>以T族为例，分别为：</p>
+<ul>
+<li><p>T1：助理工程师 （一般为校招新人）</p>
+</li>
+<li><p>T2：工程师</p>
+</li>
+<li><p>T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）</p>
+</li>
+<li><p>T4：专家工程师</p>
+</li>
+<li><p>T5：科学家</p>
+</li>
+<li><p>T6：首席科学家</p>
+</li>
+</ul>
+        <!-- 
 
 互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
 
 ★ 腾讯 ★1、职级腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：
 产品/项目通道，简称P族技术通道，简称T族市场通道，简称M族职能通道，简称S族
-以T族为例，分别为：
-
-T1：助理工程师 （一般为校招新人）
-
-T2：工程师
-
-T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）
-
-T4：专家工程师
-
-T5：科学家
-
-T6：首席科学家
-
-
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">Continue Reading →</a>
-          </p>
-        </div>
+以T族为例......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/BAT/">BAT</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -700,7 +688,7 @@ T6：首席科学家
 
   
     <article id="post-【Android】dip和px之间到底如何转换"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -716,52 +704,44 @@ T6：首席科学家
     <div class="article-meta">
       
 	<a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
-	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">July 22, 2016</time>
+	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">2016-07-22</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。</p>
+<p>但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。</p>
+</blockquote>
+<h4 id="一、名词介绍"><a href="#一、名词介绍" class="headerlink" title="一、名词介绍"></a><strong>一、名词介绍</strong></h4><ol>
+<li><p><strong>PPI</strong> = Pixels per inch，每英寸上的像素数,即 “像素密度”<br>&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0<br>&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5<br>&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)<br>&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75<br>下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。<strong>注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 <a href="http://zhidao.baidu.com/link?url=vPAxK6EdTCzBfQy8xUCnHcZS6M45oijy87YKvW7UlM4W7majdUf7Af3tL8S8CvCX8Thswwf2SU-uKSwpdLQ-6a">dpi与ppi区别</a></strong>）：<br><img src="http://img.blog.csdn.net/20160722113144430" alt="官方dpi定义"></p>
+</li>
+<li><p><strong>dp</strong> = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:<br>&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px<br>&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px<br>&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数</p>
+</li>
+<li><p><strong>sp</strong> = Scale-independent pixels，它是安卓的字体单位</p>
+</li>
+</ol>
+        <!-- 
 在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
 但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
 
 一、名词介绍
-PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 dpi与ppi区别）：
-
-dp = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数
-
-sp = Scale-independent pixels，它是安卓的字体单位
-
-
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more">Continue Reading →</a>
-          </p>
-        </div>
+PPI = Pixels per......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -773,245 +753,50 @@ sp = Scale-independent pixels，它是安卓的字体单位
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../2/">Prev</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><span class="page-number current">3</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><span class="space">&hellip;</span><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../4/">Next</a>
+    <a class="extend prev" rel="prev" href="../2/">&laquo; Prev</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><span class="page-number current">3</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><span class="space">&hellip;</span><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../4/">Next &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="/atom.xml" title="Rss"><i class="fa fa-rss" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" title=""><img width="50" height="50" src="/gallery/gradle-as.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/">【Gradle】Android Studio中Gradle重复依赖的问题</a></h6>
-              <span>February 23, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/13/【Android】内存泄漏分析心得/" title=""><img width="50" height="50" src="/gallery/memoryleak.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/13/【Android】内存泄漏分析心得/">【Android】内存泄漏分析心得</a></h6>
-              <span>February 13, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" title=""><img width="50" height="50" src="/gallery/android_m_marshmallow.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/">【Android】AlertDialog中的EditText不能弹出软键盘的问题</a></h6>
-              <span>January 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" title=""><img width="50" height="50" src="/gallery/Textview-vertical/FontMetricsInt.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/">【Android】TextView中不同大小字体如何上下垂直居中？</a></h6>
-              <span>January 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2016/12/27/【Java】泛型中 extends 和 super 的区别？/" title=""><img width="50" height="50" src="/gallery/Java-Generics.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2016/12/27/【Java】泛型中 extends 和 super 的区别？/">【Java】泛型中 extends 和 super 的区别？</a></h6>
-              <span>December 27, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" title=""><img width="50" height="50" src="/gallery/Thomas-Bayes.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">数学之美番外篇：平凡而又神奇的贝叶斯方法</a></h6>
-              <span>December 22, 2016</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Bayesian/">Bayesian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java-Generics/">Java Generics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 10px;">D3</a> <a href="../../tags/Google/" style="font-size: 10px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="../../tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
 
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				<span id="busuanzi_container_site_uv"> UV : <span id="busuanzi_value_site_uv"></span></span> |  
+				<span id="busuanzi_container_site_pv"> PV : <span id="busuanzi_value_site_pv"></span></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1023,43 +808,17 @@ sp = Scale-independent pixels，它是安卓的字体单位
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../../collection" class="mobile-nav-link">Collection</a>
-  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
-    <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
-    
-    
-</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
 </div>
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1099,7 +858,12 @@ sp = Scale-independent pixels，它是安卓的字体单位
 
 <script src="../../js/script.js"></script>
 <script src="../../js/bootstrap.js"></script>
-<script src="../../js/main.js"></script>
+
+
+  <script src="../../js/home.js"></script>
+
+
+
 
 
 
@@ -1107,11 +871,68 @@ sp = Scale-independent pixels，它是安卓的字体单位
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
   
 
-  <div style="display: none;">
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 

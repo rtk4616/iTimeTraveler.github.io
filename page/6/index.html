@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,18 +33,20 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
 
 </head>
 
@@ -54,60 +56,118 @@
 
 
   
+    <header id="header">
 
+  
+    <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+    <script>
+        var imgUrls = "css/images/home-bg.jpg,css/images/sample.jpg,http://t.cn/RMbvEza".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("intrologo").style.backgroundImage='url(' + imgUrls[random] + ')';
+        } else {
+          document.getElementById("intrologo").style.backgroundImage='url(/' + imgUrls[random] + ')';
+        }
+    </script>
+  
 
-<header id="allheader" class="site-header" role="banner" 
-   >
-  <div class="clearfix container">
-      <div class="site-branding">
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-          
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
+      
+    </script>
+    
 
-            <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
 
-      </div>
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+    <script>
+        var img = new Image();
+        var intrologodiv = document.getElementById("intrologo");
+        img.src = intrologodiv.style.backgroundImage.replace('url(','').replace(')','').replace(/\"/gi, "");
+        img.onload=function(){
+          if (img.width / img.height <= document.body.clientWidth / document.body.clientHeight) {
+            intrologodiv.style.backgroundSize = "100% auto";
+          } else {
+            intrologodiv.style.backgroundSize = "auto 100%";
+          }
+        };
+    </script>
+ 
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="../../index.html">Home</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../archives">Archives</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../categories">Categories</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-【Java】不用循环语句如何输入打印数组元素"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -123,11 +183,10 @@
     <div class="article-meta">
       
 	<a href="../../2015/12/09/【Java】不用循环语句如何输入打印数组元素/" class="article-date">
-	  <time datetime="2015-12-09T05:58:20.000Z" itemprop="datePublished">December 9, 2015</time>
+	  <time datetime="2015-12-09T05:58:20.000Z" itemprop="datePublished">2015-12-09</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Java/">Java</a>
 
     </div>
@@ -137,18 +196,12 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">package</span> javacc.test;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>&#125;;</div><div class="line">        System.out.println(Arrays.toString(array));    <span class="comment">//注意这里的 Arrays.toString()</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -157,7 +210,7 @@
 
   
     <article id="post-【Android】Activity与Fragment的生命周期的关系"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -173,45 +226,38 @@
     <div class="article-meta">
       
 	<a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/" class="article-date">
-	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">November 25, 2015</time>
+	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">2015-11-25</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          一、问题描述：
+        <h2 id="一、问题描述："><a href="#一、问题描述：" class="headerlink" title="一、问题描述："></a><strong>一、问题描述：</strong></h2><blockquote>
+<p>假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20151125142250638" alt=""></p>
+<hr>
+        <!-- 一、问题描述：
 假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？
 
 
 
 
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/#more">Continue Reading →</a>
-          </p>
-        </div>
+二、生命周期知识Ac......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -220,7 +266,7 @@
 
   
     <article id="post-【Android】Fragment的生命周期详解"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -236,44 +282,37 @@
     <div class="article-meta">
       
 	<a href="../../2015/11/25/【Android】Fragment的生命周期详解/" class="article-date">
-	  <time datetime="2015-11-25T03:43:55.000Z" itemprop="datePublished">November 25, 2015</time>
+	  <time datetime="2015-11-25T03:43:55.000Z" itemprop="datePublished">2015-11-25</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>作为Android开发的基础知识，大家可能都了解Activity的生命周期，但是Fragment的生命周期和Activity生命周期之间的关系到底是怎么样的呢？相互调用机制又如何呢？</p>
+</blockquote>
+<p>一、我们首先观察一下Activity的生命周期：<br><img src="http://img.blog.csdn.net/20151125113335794" alt=""></p>
+        <!-- 
 作为Android开发的基础知识，大家可能都了解Activity的生命周期，但是Fragment的生命周期和Activity生命周期之间的关系到底是怎么样的呢？相互调用机制又如何呢？
 
 一、我们首先观察一下Activity的生命周期：
 
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/25/【Android】Fragment的生命周期详解/#more">Continue Reading →</a>
-          </p>
-        </div>
+Fragment生命周期：
+Activity和Fragment生命周期的对比图：【参考资料】：1、Android Fragment源代码2、API Doc......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/25/【Android】Fragment的生命周期详解/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -282,7 +321,7 @@
 
   
     <article id="post-【Android】长按连续触发事件的实现方法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -298,48 +337,41 @@
     <div class="article-meta">
       
 	<a href="../../2015/11/19/【Android】长按连续触发事件的实现方法/" class="article-date">
-	  <time datetime="2015-11-19T06:35:55.000Z" itemprop="datePublished">November 19, 2015</time>
+	  <time datetime="2015-11-19T06:35:55.000Z" itemprop="datePublished">2015-11-19</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>项目中需要实现一个类似购物车数量的小组件，需要单击时增加数量，长按时可以连续增大，之前的代码实现效果不理想，google后得到一个解决方法,测试可以完美实现。</p>
+</blockquote>
+<p>实现效果大致如图：<br><img src="http://img.blog.csdn.net/20151119142521160" alt=""></p>
+<p><strong>【原理说明】</strong></p>
+<ul>
+<li>大致原理是,如果手指按在view上，则使用ScheduledExecutorService对象执行scheduleWithFixedDelay()方法，每隔一个间隔不停地向Handler发送Message，此处Message里的信息是View id，然后由Handler在handlemessage的时候处理需要触发的事件。</li>
+</ul>
+        <!-- 
 项目中需要实现一个类似购物车数量的小组件，需要单击时增加数量，长按时可以连续增大，之前的代码实现效果不理想，google后得到一个解决方法,测试可以完美实现。
 
 实现效果大致如图：
 【原理说明】
 
-大致原理是,如果手指按在view上，则使用ScheduledExecutorService对象执行scheduleWithFixedDelay()方法，每隔一个间隔不停地向Handler发送Message，此处Message里的信息是View id，然后由Handler在handlemessage的时候处理需要触发的事件。
-
-
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/19/【Android】长按连续触发事件的实现方法/#more">Continue Reading →</a>
-          </p>
-        </div>
+大致原理是,如果手指按在view上，则使用ScheduledExecutorService对象执行scheduleWithFixedDelay()方法，每隔一个间隔不停地向Handler发送Me......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/19/【Android】长按连续触发事件的实现方法/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -348,7 +380,7 @@
 
   
     <article id="post-【Java】HashMap 和 HashTable 的区别到底是什么？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -364,47 +396,38 @@
     <div class="article-meta">
       
 	<a href="../../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/" class="article-date">
-	  <time datetime="2015-11-10T03:55:00.000Z" itemprop="datePublished">November 10, 2015</time>
+	  <time datetime="2015-11-10T03:55:00.000Z" itemprop="datePublished">2015-11-10</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <ul>
+<li><h4 id="第一、继承不同"><a href="#第一、继承不同" class="headerlink" title="第一、继承不同"></a><strong>第一、继承不同</strong></h4><p>第一个不同主要是历史原因。Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;...&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hashtable</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">Dictionary</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+<p>而HashMap继承的抽象类AbstractMap实现了Map接口：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;...&#125;</div></pre></td></tr></table></figure>
+        <!-- 
 第一、继承不同第一个不同主要是历史原因。Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。
 
 
-public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;public class Hashtable&lt;K, V&gt; extends Dictionary&lt;K, V&gt; implements Map&lt;K, V&gt;, Cloneable, Serializable &#123;...&#125;
-而HashMap继承的抽象类AbstractMap实现了Map接口：
-public abstract class AbstractMap&lt;K, V&gt; implements Map&lt;K, V&gt; &#123;...&#125;
-
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/#more">Continue Reading →</a>
-          </p>
-        </div>
+public class HashMap&lt;K, V&gt; extends AbstractMap&lt;K, V&gt; implements Cloneable, Serializable &#123;...&#125;......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -413,7 +436,7 @@ public abstract class AbstractMap&lt;K, V&gt; implements Map&lt;K, V&gt; &#123;.
 
   
     <article id="post-各种排序算法时间复杂度和空间复杂度表"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -429,46 +452,40 @@ public abstract class AbstractMap&lt;K, V&gt; implements Map&lt;K, V&gt; &#123;.
     <div class="article-meta">
       
 	<a href="../../2015/11/03/各种排序算法时间复杂度和空间复杂度表/" class="article-date">
-	  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">November 3, 2015</time>
+	  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">2015-11-03</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-           各种排序算法时间复杂度和空间复杂度表:
+        <p> 各种排序算法时间复杂度和空间复杂度表:<br><img src="http://img.blog.csdn.net/20151030144431204" alt=" 各种排序算法时间复杂度和空间复杂度表 "></p>
+<p>比较时间复杂度函数的情况如下图：<br><img src="http://img.blog.csdn.net/20151103162645669" alt=" 比较时间复杂度函数的情况"></p>
+<p>对n较大的排序记录。一般的选择都是时间复杂度为O(nlog2n)的排序方法：<br><img src="http://img.blog.csdn.net/20151103162831646" alt="所以对n较大的排序记录。一般的选择都是时间复杂度为O(nlog2n)的排序方法。"></p>
+<blockquote>
+<p>接下来博主抽时间要整理一下各经典算法思想和心得，敬请期待</p>
+</blockquote>
+        <!--  各种排序算法时间复杂度和空间复杂度表:
 比较时间复杂度函数的情况如下图：
 对n较大的排序记录。一般的选择都是时间复杂度为O(nlog2n)的排序方法：
 
 接下来博主抽时间要整理一下各经典算法思想和心得，敬请期待
 
 
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/03/各种排序算法时间复杂度和空间复杂度表/#more">Continue Reading →</a>
-          </p>
-        </div>
+一、快速排序（Quicksort）import java.util.Arrays;public class MySort &#123;	public static void m......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/03/各种排序算法时间复杂度和空间复杂度表/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -477,7 +494,7 @@ public abstract class AbstractMap&lt;K, V&gt; implements Map&lt;K, V&gt; &#123;.
 
   
     <article id="post-【Java】函数中的参数传递是“引用传递”还是“值传递”？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -493,54 +510,48 @@ public abstract class AbstractMap&lt;K, V&gt; implements Map&lt;K, V&gt; &#123;.
     <div class="article-meta">
       
 	<a href="../../2015/11/02/【Java】函数中的参数传递是“引用传递”还是“值传递”？/" class="article-date">
-	  <time datetime="2015-11-02T07:33:20.000Z" itemprop="datePublished">November 2, 2015</time>
+	  <time datetime="2015-11-02T07:33:20.000Z" itemprop="datePublished">2015-11-02</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Java/">Java</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>问题引入：在一个快速排序的函数 private void quickSort(List<Integer> intList, int left, int right) 中，传进去的参数intList是对象传递还是引用传递呢？</p>
+</blockquote>
+<p>先抛出结论：</p>
+<ol>
+<li><p>将对象（对象的引用）作为参数传递时传递的是引用(相当于指针)。也就是说函数内对参数所做的修改会影响原来的对象。</p>
+</li>
+<li><p>当将基本类型或基本类型的包装集作为参数传递时，传递的是值。也就是说函数内对参数所做的修改不会影响原来的变量。</p>
+</li>
+<li><p>数组(数组引用)）作为参数传递时传递的是引用(相当于指针)。也就是说函数内对参数所做的修改会影响原来的数组。</p>
+</li>
+<li><p>String类型(引用)作为参数传递时传递的是引用，只是对String做出任何修改时有一个新的String对象会产生，原来的String对象的值不会做任何修改。(但是可以将新的对象的       引用赋给原来的引用,这样给人的表面现象就是原来的对象变了，其实没有变，只是原来指向它的引用指向了新的对象)。</p>
+</li>
+</ol>
+        <!-- 
 问题引入：在一个快速排序的函数 private void quickSort(List intList, int left, int right) 中，传进去的参数intList是对象传递还是引用传递呢？
 
 先抛出结论：
 
 将对象（对象的引用）作为参数传递时传递的是引用(相当于指针)。也就是说函数内对参数所做的修改会影响原来的对象。
 
-当将基本类型或基本类型的包装集作为参数传递时，传递的是值。也就是说函数内对参数所做的修改不会影响原来的变量。
-
-数组(数组引用)）作为参数传递时传递的是引用(相当于指针)。也就是说函数内对参数所做的修改会影响原来的数组。
-
-String类型(引用)作为参数传递时传递的是引用，只是对String做出任何修改时有一个新的String对象会产生，原来的String对象的值不会做任何修改。(但是可以将新的对象的       引用赋给原来的引用,这样给人的表面现象就是原来的对象变了，其实没有变，只是原来指向它的引用指向了新的对象)。
-
-
-
-        
-          <p class="article-more-link">
-            <a href="../../2015/11/02/【Java】函数中的参数传递是“引用传递”还是“值传递”？/#more">Continue Reading →</a>
-          </p>
-        </div>
+当将基本类型或基本类型的包装集作为参数传递时，传递的是......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/02/【Java】函数中的参数传递是“引用传递”还是“值传递”？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -549,7 +560,7 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
 
   
     <article id="post-【Android】onActivityResult()和onResume()的调用顺序问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -565,73 +576,65 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
     <div class="article-meta">
       
 	<a href="../../2015/09/18/【Android】onActivityResult()和onResume()的调用顺序问题/" class="article-date">
-	  <time datetime="2015-09-18T09:16:55.000Z" itemprop="datePublished">September 18, 2015</time>
+	  <time datetime="2015-09-18T09:16:55.000Z" itemprop="datePublished">2015-09-18</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
-在Android生命周期中，如果使用到startActivityForResult()，则在新Activity被finish掉之后，onActivityResult()和onResume()到底是哪一个先调用的呢？
-
-我们来看官方源码：
-/**
+        <blockquote>
+<p>在Android生命周期中，如果使用到startActivityForResult()，则在新Activity被finish掉之后，onActivityResult()和onResume()到底是哪一个先调用的呢？</p>
+</blockquote>
+<p>我们来看官方源码：</p>
+<pre><code class="java"><span class="comment">/**
      * Called when an activity you launched exits, giving you the requestCode
      * you started it with, the resultCode it returned, and any additional
      * data from it.  The &lt;var&gt;resultCode&lt;/var&gt; will be
-     * {@link #RESULT_CANCELED} if the activity explicitly returned that,
+     * {<span class="doctag">@link</span> #RESULT_CANCELED} if the activity explicitly returned that,
      * didn't return any result, or crashed during its operation.
      *
      * &lt;p&gt;You will receive this call immediately before onResume() when your
      * activity is re-starting.
      *
      * &lt;p&gt;This method is never invoked if your activity sets
-     * {@link android.R.styleable#AndroidManifestActivity_noHistory noHistory} to
+     * {<span class="doctag">@link</span> android.R.styleable#AndroidManifestActivity_noHistory noHistory} to
      * &lt;code&gt;true&lt;/code&gt;.
      *
-     * @param requestCode The integer request code originally supplied to
+     * <span class="doctag">@param</span> requestCode The integer request code originally supplied to
      *                    startActivityForResult(), allowing you to identify who this
      *                    result came from.
-     * @param resultCode The integer result code returned by the child activity
+     * <span class="doctag">@param</span> resultCode The integer result code returned by the child activity
      *                   through its setResult().
-     * @param data An Intent, which can return result data to the caller
+     * <span class="doctag">@param</span> data An Intent, which can return result data to the caller
      *               (various data can be attached to Intent "extras").
      *
-     * @see #startActivityForResult
-     * @see #createPendingResult
-     * @see #setResult(int)
-     */
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+     * <span class="doctag">@see</span> #startActivityForResult
+     * <span class="doctag">@see</span> #createPendingResult
+     * <span class="doctag">@see</span> #setResult(int)
+     */</span>
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>{
     }
+</code></pre>
+        <!-- 
+在Android生命周期中，如果使用到startActivityForResult()，则在新Activity被finish掉之后，onActivityResult()和onResume()到底是哪一个先调用的呢？
 
-
-        
-          <p class="article-more-link">
-            <a href="../../2015/09/18/【Android】onActivityResult()和onResume()的调用顺序问题/#more">Continue Reading →</a>
-          </p>
-        </div>
+我们来看官方源码：
+/**
+     * Called when an activity you launched exits, giving you the request......  -->
+        <p class="article-more-link">
+          <a href="../../2015/09/18/【Android】onActivityResult()和onResume()的调用顺序问题/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -640,7 +643,7 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
 
   
     <article id="post-【Android】如何启动调用其他app中的Activity"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -656,43 +659,32 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
     <div class="article-meta">
       
 	<a href="../../2015/09/15/【Android】如何启动调用其他app中的Activity/" class="article-date">
-	  <time datetime="2015-09-15T03:06:00.000Z" itemprop="datePublished">September 15, 2015</time>
+	  <time datetime="2015-09-15T03:06:00.000Z" itemprop="datePublished">2015-09-15</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          最近项目正在将原系统拆分为小型App，所以需要在原Project中启动另一个新的App中的Activity。这样的话启动要用到ComponentName ，它就是用来打开其他应用程序中的Activity或服务的。
+        <p>最近项目正在将原系统拆分为小型App，所以需要在原Project中启动另一个新的App中的Activity。这样的话启动要用到ComponentName ，它就是用来打开其他应用程序中的Activity或服务的。</p>
+<p>用法其实很简单，像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//第一个参数是Activity所在的package包名，第二个参数是完整的Class类名（包括包路径）</span></div><div class="line">ComponentName componetName = <span class="keyword">new</span> ComponentName(<span class="string">"com.cybo3d.cybox.miya"</span>, 			  </div><div class="line">								<span class="string">"com.cybo3d.cybox.miya.MainActivity"</span>);</div><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setComponent(componetName);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+        <!-- 最近项目正在将原系统拆分为小型App，所以需要在原Project中启动另一个新的App中的Activity。这样的话启动要用到ComponentName ，它就是用来打开其他应用程序中的Activity或服务的。
 用法其实很简单，像下面这样：
-//第一个参数是Activity所在的package包名，第二个参数是完整的Class类名（包括包路径）ComponentName componetName = new ComponentName("com.cybo3d.cybox.miya", 			  								"com.cybo3d.cybox.miya.MainActivity");Intent intent = new Intent();intent.setComponent(componetName);startActivity(intent);
-
-        
-          <p class="article-more-link">
-            <a href="../../2015/09/15/【Android】如何启动调用其他app中的Activity/#more">Continue Reading →</a>
-          </p>
-        </div>
+//第一个参数是Activity所在的package包名，第二个参数是完整的Class类名（包括包路径）ComponentName componetN......  -->
+        <p class="article-more-link">
+          <a href="../../2015/09/15/【Android】如何启动调用其他app中的Activity/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -701,7 +693,7 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
 
   
     <article id="post-【Android】保存图片到系统图库, 并立即显示在图库中"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -717,21 +709,25 @@ String类型(引用)作为参数传递时传递的是引用，只是对String做
     <div class="article-meta">
       
 	<a href="../../2014/09/12/【Android】保存图片到系统图库, 并立即显示在图库中/" class="article-date">
-	  <time datetime="2014-09-12T03:55:00.000Z" itemprop="datePublished">September 12, 2014</time>
+	  <time datetime="2014-09-12T03:55:00.000Z" itemprop="datePublished">2014-09-12</time>
 	</a>
 
       
-	<span class="ico-folder"></span>
     <a class="article-category-link" href="../../categories/Android/">Android</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>搬运原链接：<a href="http://stormzhang.github.io/android/2014/07/24/android-save-image-to-gallery">http://stormzhang.github.io/android/2014/07/24/android-save-image-to-gallery</a></p>
+</blockquote>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a><strong>正文</strong></h3><p>最近有些用户反映保存图片之后在系统图库找不到保存的图片，遂决定彻底查看并解决下。</p>
+<p>Android中保存图片的方法可能有如下两种：</p>
+<ul>
+<li>第一种是自己写方法，如下代码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">saveImage</span><span class="params">(Bitmap bmp)</span> </span>&#123;</div><div class="line">    File appDir = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(), <span class="string">"Boohee"</span>);</div><div class="line">    <span class="keyword">if</span> (!appDir.exists()) &#123;</div><div class="line">        appDir.mkdir();</div><div class="line">    &#125;</div><div class="line">    String fileName = System.currentTimeMillis() + <span class="string">".jpg"</span>;</div><div class="line">    File file = <span class="keyword">new</span> File(appDir, fileName);</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(file);</div><div class="line">        bmp.compress(CompressFormat.JPEG, <span class="number">100</span>, fos);</div><div class="line">        fos.flush();</div><div class="line">        fos.close();</div><div class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 
 搬运原链接：http://stormzhang.github.io/android/2014/07/24/android-save-image-to-gallery
 
 正文最近有些用户反映保存图片之后在系统图库找不到保存的图片，遂决定彻底查看并解决下。
@@ -739,27 +735,18 @@ Android中保存图片的方法可能有如下两种：
 
 第一种是自己写方法，如下代码：
 
-public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Environment.getExternalStorageDirectory(), "Boohee");    if (!appDir.exists()) &#123;        appDir.mkdir();    &#125;    String fileName = System.currentTimeMillis() + ".jpg";    File file = new File(appDir, fileName);    try &#123;        FileOutputStream fos = new FileOutputStream(file);        bmp.compress(CompressFormat.JPEG, 100, fos);        fos.flush();        fos.close();    &#125; catch (FileNotFoundException e) &#123;        e.printStackTrace();    &#125; catch (IOException e) &#123;        e.printStackTrace();    &#125;&#125;
-
-        
-          <p class="article-more-link">
-            <a href="../../2014/09/12/【Android】保存图片到系统图库, 并立即显示在图库中/#more">Continue Reading →</a>
-          </p>
-        </div>
+public static File saveImag......  -->
+        <p class="article-more-link">
+          <a href="../../2014/09/12/【Android】保存图片到系统图库, 并立即显示在图库中/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -771,245 +758,50 @@ public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Enviro
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../5/">Prev</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><span class="page-number current">6</span><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../7/">Next</a>
+    <a class="extend prev" rel="prev" href="../5/">&laquo; Prev</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../4/">4</a><a class="page-number" href="../5/">5</a><span class="page-number current">6</span><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../7/">Next &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="/atom.xml" title="Rss"><i class="fa fa-rss" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" title=""><img width="50" height="50" src="/gallery/gradle-as.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/">【Gradle】Android Studio中Gradle重复依赖的问题</a></h6>
-              <span>February 23, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/13/【Android】内存泄漏分析心得/" title=""><img width="50" height="50" src="/gallery/memoryleak.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/13/【Android】内存泄漏分析心得/">【Android】内存泄漏分析心得</a></h6>
-              <span>February 13, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" title=""><img width="50" height="50" src="/gallery/android_m_marshmallow.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/">【Android】AlertDialog中的EditText不能弹出软键盘的问题</a></h6>
-              <span>January 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" title=""><img width="50" height="50" src="/gallery/Textview-vertical/FontMetricsInt.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/">【Android】TextView中不同大小字体如何上下垂直居中？</a></h6>
-              <span>January 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2016/12/27/【Java】泛型中 extends 和 super 的区别？/" title=""><img width="50" height="50" src="/gallery/Java-Generics.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2016/12/27/【Java】泛型中 extends 和 super 的区别？/">【Java】泛型中 extends 和 super 的区别？</a></h6>
-              <span>December 27, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" title=""><img width="50" height="50" src="/gallery/Thomas-Bayes.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">数学之美番外篇：平凡而又神奇的贝叶斯方法</a></h6>
-              <span>December 22, 2016</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Bayesian/">Bayesian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java-Generics/">Java Generics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 10px;">D3</a> <a href="../../tags/Google/" style="font-size: 10px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="../../tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
 
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				<span id="busuanzi_container_site_uv"> UV : <span id="busuanzi_value_site_uv"></span></span> |  
+				<span id="busuanzi_container_site_pv"> PV : <span id="busuanzi_value_site_pv"></span></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1021,43 +813,17 @@ public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Enviro
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../../collection" class="mobile-nav-link">Collection</a>
-  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
-    <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
-    
-    
-</script>
     
 <div style="display: none;">
   <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
 </div>
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1097,7 +863,12 @@ public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Enviro
 
 <script src="../../js/script.js"></script>
 <script src="../../js/bootstrap.js"></script>
-<script src="../../js/main.js"></script>
+
+
+  <script src="../../js/home.js"></script>
+
+
+
 
 
 
@@ -1105,11 +876,68 @@ public static File saveImage(Bitmap bmp) &#123;    File appDir = new File(Enviro
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
   
 
-  <div style="display: none;">
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
