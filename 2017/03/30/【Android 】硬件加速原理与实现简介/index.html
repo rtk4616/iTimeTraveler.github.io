@@ -19,13 +19,13 @@
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
 本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其中上层">
-<meta property="og:image" content="http://github.com/gallery/tinker.png">
-<meta property="og:updated_time" content="2017-03-30T07:31:59.357Z">
+<meta property="og:image" content="http://github.com/gallery/hardware-acceleration.jpg">
+<meta property="og:updated_time" content="2017-03-30T07:39:20.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android 】硬件加速原理与实现简介">
 <meta name="twitter:description" content="在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
 本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其中上层">
-<meta name="twitter:image" content="http://github.com/gallery/tinker.png">
+<meta name="twitter:image" content="http://github.com/gallery/hardware-acceleration.jpg">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
@@ -117,8 +117,8 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/tinker.png" rel="gallery_cj0w31f8n000xq0myixzdm56p">
-        <img src="../../../../gallery/tinker.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/hardware-acceleration.jpg" rel="gallery_cj0w3ajvg0016skmydv8f147b">
+        <img src="../../../../gallery/hardware-acceleration.jpg" itemprop="image">
       </a>
     
   </div>
@@ -146,6 +146,7 @@
       
         <p>在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。</p>
 <p>本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其中上层实现基于Android 6.0。</p>
+<a id="more"></a>
 <h2 id="了解硬件加速对App开发的意义"><a href="#了解硬件加速对App开发的意义" class="headerlink" title="了解硬件加速对App开发的意义"></a>了解硬件加速对App开发的意义</h2><p>对于App开发者，简单了解硬件加速原理及上层API实现，开发时就可以充分利用硬件加速提高页面的性能。以Android举例，实现一个圆角矩形按钮通常有两种方案：使用PNG图片；使用代码（XML/Java）实现。简单对比两种方案如下。</p>
 <table>
 <thead>
