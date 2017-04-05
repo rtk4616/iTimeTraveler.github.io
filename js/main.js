@@ -10,6 +10,11 @@ $('#main-nav > li').each(function () {
 		lastIndex--;//如果url最后一位是/，则不截取该位
 	}
 	url = url.substring(lastSlashIndex,lastIndex);
+	console.log("UUUUUUUUUUUTTTXXXXXX");
+	console.log(url);
+	console.log(themeMenus);
+	console.log(themeMenus[url]);
+	console.log($(this).text().trim());
 	if(themeMenus[url] == $(this).text().trim()){
 		$(this).addClass('current-menu-item current_page_item');
 		hasCurrent = true;

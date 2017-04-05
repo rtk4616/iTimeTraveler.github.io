@@ -50,13 +50,17 @@
 <script>
 var themeMenus = {};
 
-  themeMenus["../index.html"] = "Home"; 
+  themeMenus[""] = "Home"; 
 
   themeMenus["../archives"] = "Archives"; 
 
   themeMenus["../categories"] = "Categories"; 
 
-  themeMenus[""] = "Tags"; 
+  themeMenus["../tags"] = "abcd"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
 
   themeMenus["../about"] = "About"; 
 
@@ -93,7 +97,11 @@ var themeMenus = {};
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../categories">Categories</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="">Tags</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="">abcd</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../funnysite">funnysite</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../about">About</a> </li>
                     
@@ -131,41 +139,41 @@ var themeMenus = {};
             
                 <a href="#D3" title="D3" rel="1">D3</a>
             
+                <a href="#hotfix" title="hotfix" rel="2">hotfix</a>
+            
                 <a href="#BAT" title="BAT" rel="1">BAT</a>
-            
-                <a href="#Android" title="Android" rel="25">Android</a>
-            
-                <a href="#Java" title="Java" rel="10">Java</a>
             
                 <a href="#WebDevelopment" title="WebDevelopment" rel="1">WebDevelopment</a>
             
-                <a href="#hotfix" title="hotfix" rel="2">hotfix</a>
+                <a href="#Java" title="Java" rel="10">Java</a>
             
                 <a href="#Hexo" title="Hexo" rel="2">Hexo</a>
             
-                <a href="#Algorithm" title="Algorithm" rel="3">Algorithm</a>
+                <a href="#Android" title="Android" rel="25">Android</a>
             
-                <a href="#Broadcast" title="Broadcast" rel="1">Broadcast</a>
+                <a href="#Algorithm" title="Algorithm" rel="3">Algorithm</a>
             
                 <a href="#GPU" title="GPU" rel="1">GPU</a>
             
                 <a href="#APK" title="APK" rel="1">APK</a>
             
-                <a href="#RxJava" title="RxJava" rel="1">RxJava</a>
+                <a href="#Broadcast" title="Broadcast" rel="1">Broadcast</a>
             
-                <a href="#Go语言" title="Go语言" rel="2">Go语言</a>
+                <a href="#RxJava" title="RxJava" rel="1">RxJava</a>
             
                 <a href="#Tinker" title="Tinker" rel="1">Tinker</a>
             
+                <a href="#Go语言" title="Go语言" rel="2">Go语言</a>
+            
                 <a href="#Gradle" title="Gradle" rel="1">Gradle</a>
+            
+                <a href="#Java Generics" title="Java Generics" rel="1">Java Generics</a>
+            
+                <a href="#Linux" title="Linux" rel="1">Linux</a>
             
                 <a href="#Machine Learning" title="Machine Learning" rel="2">Machine Learning</a>
             
                 <a href="#MySQL" title="MySQL" rel="1">MySQL</a>
-            
-                <a href="#Linux" title="Linux" rel="1">Linux</a>
-            
-                <a href="#Java Generics" title="Java Generics" rel="1">Java Generics</a>
             
                 <a href="#SVN" title="SVN" rel="1">SVN</a>
             
@@ -1641,29 +1649,41 @@ var themeMenus = {};
 
     	<ul class="clearfix widget-social-icons">   
     	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
    		
    		</ul>
 
@@ -1835,6 +1855,12 @@ var themeMenus = {};
   <div class="clearfix container">
       <div class="site-info">
 	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
       </div>
       <div class="site-credit">
         Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
@@ -1859,15 +1885,16 @@ var themeMenus = {};
   
     <a href="../categories" class="mobile-nav-link">Categories</a>
   
-    <a href="" class="mobile-nav-link">Tags</a>
+    <a href="" class="mobile-nav-link">ABCD</a>
+  
+    <a href="../funnysite" class="mobile-nav-link">FunnySite</a>
+  
+    <a href="../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../about" class="mobile-nav-link">About</a>
   
 </nav> -->
     
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1913,16 +1940,25 @@ var themeMenus = {};
 
 
 
-  </div>
 
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  
 
   <div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

@@ -49,15 +49,19 @@
 <script>
 var themeMenus = {};
 
-  themeMenus["../../index.html"] = "Home"; 
+  themeMenus[""] = "Home"; 
 
-  themeMenus["../../archives"] = "Archives"; 
+  themeMenus["../archives"] = "Archives"; 
 
-  themeMenus["../../categories"] = "Categories"; 
+  themeMenus["../categories"] = "Categories"; 
 
-  themeMenus["../../tags"] = "Tags"; 
+  themeMenus["../tags"] = "abcd"; 
 
-  themeMenus["../../about"] = "About"; 
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "About"; 
 
 </script>
 
@@ -92,7 +96,11 @@ var themeMenus = {};
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">abcd</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../funnysite">funnysite</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
                     
@@ -135,6 +143,7 @@ var themeMenus = {};
 	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">July 22, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -195,6 +204,7 @@ PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nb
 	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">July 19, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -255,6 +265,7 @@ adb shell monkey -v 500
 	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">July 14, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -319,6 +330,7 @@ Step 1
 	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">June 12, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -358,64 +370,6 @@ Step 1
 <!-- Table of Contents -->
 
   
-    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
-	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
-有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
-
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -436,6 +390,7 @@ Step 1
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -475,6 +430,65 @@ Step 1
 <!-- Table of Contents -->
 
   
+    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">June 2, 2016</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            
+有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【MySQL】查询保持IN中的顺序"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -495,6 +509,7 @@ Step 1
 	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">April 29, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -558,6 +573,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 	  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">April 29, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -622,6 +638,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 	  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">April 6, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -682,6 +699,7 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 	  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">March 30, 2016</time>
 	</a>
 
+      
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -777,29 +795,41 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
     	<ul class="clearfix widget-social-icons">   
     	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
    		
    		</ul>
 
@@ -971,6 +1001,12 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
   <div class="clearfix container">
       <div class="site-info">
 	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
       </div>
       <div class="site-credit">
         Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
@@ -995,15 +1031,16 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
   
     <a href="../../categories" class="mobile-nav-link">Categories</a>
   
-    <a href="../../tags" class="mobile-nav-link">Tags</a>
+    <a href="../../tags" class="mobile-nav-link">ABCD</a>
+  
+    <a href="../../funnysite" class="mobile-nav-link">FunnySite</a>
+  
+    <a href="../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
     
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1049,16 +1086,25 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
 
 
-  </div>
 
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
-  
 
   <div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
 
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
