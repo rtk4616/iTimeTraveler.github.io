@@ -2061,9 +2061,9 @@
       <category term="Android" scheme="http://github.com/categories/Android/"/>
     
     
-      <category term="Tinker" scheme="http://github.com/tags/Tinker/"/>
-    
       <category term="hotfix" scheme="http://github.com/tags/hotfix/"/>
+    
+      <category term="Tinker" scheme="http://github.com/tags/Tinker/"/>
     
   </entry>
   
