@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-05-03T07:36:11.637Z</updated>
+  <updated>2017-05-05T09:25:36.579Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google 面试题 | 判断字符串是否可由重复子字符串组成</title>
+    <link href="http://github.com/2017/05/05/Google%20%E9%9D%A2%E8%AF%95%E9%A2%98%20-%20%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%B1%E9%87%8D%E5%A4%8D%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E6%88%90/"/>
+    <id>http://github.com/2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/</id>
+    <published>2017-05-05T09:20:55.000Z</published>
+    <updated>2017-05-05T09:25:36.579Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abab”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>： 输入可由”ab”重复两次组成</li>
+</ul>
+</blockquote>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “aba”</li>
+<li><strong>输出</strong>： False</li>
+</ul>
+</blockquote>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abcabcabcabc”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>：输入可由”abc”重复四次组成</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><h4 id="1-一个简单的思路"><a href="#1-一个简单的思路" class="headerlink" title="1. 一个简单的思路"></a><strong>1. 一个简单的思路</strong></h4><p>枚举子字符串的长度lenSub &lt; len(len为原字符串长度)，将原字符串分成多个子字符串，每个子字符串长度为lenSub（由此可见，lenSub整除len），再判断这些子字符串是否全部相等，若全部相等，则返回True，如果对于所有lenSub均不满足该条件，则返回False。时间复杂度为O(len*v(len))，其中v(len)为len的因数个数（因为我们只需要对整除len的lenSub进行进一步判断）。</p>
+<h4 id="2-下面再说一种神奇的方法"><a href="#2-下面再说一种神奇的方法" class="headerlink" title="2. 下面再说一种神奇的方法"></a><strong>2. 下面再说一种神奇的方法</strong></h4><p>由kmp算法中的next数组实现。</p>
+<ol>
+<li><p>字符串s的下标从0到n-1，n为字符串长度，记s(i)表示s的第i位字符，s(i,j)表示从s的第i位到第j位的子字符串，若i&gt;j，则s(i,j)=””(空串）。</p>
+</li>
+<li><p>next数组的定义为：next(i)=p，表示p为小于i且满足s(0 , p) = s(i-p , i)的最大的p，如果不存在这样的p，则next(i) = -1，显然next(0) = -1。我们可以用O(n)的时间计算出next数组。假设我们已知next(0)，next(1)，……，next(i-1) ，现在要求next(i)，不妨设next(i-1) = j0，则由next数组定义可知s(0 , j0) = s(i-1-j0 , i-1)。</p>
+</li>
+</ol>
+<ul>
+<li><p>若s(j0+1) = s(i)，则结合s(0 , j0) = s(i-1-j0 , i-1)可知s(0 , j0+1) = s(i - (j0+1) , i)，由此可知，next(i)=j0+1。</p>
+</li>
+<li><p>若s(j0+1)!=s(i)但s(next(j0)+1)=s(i)，记j1=next(j0)，则s(j1+1)=s(i)，由next数组的定义，s(0 , j1) = s(j0 - j1 , j0) = s(i - 1 - j1 , i - 1)，即s(0，j1) = s(i - 1 - j1 , i - 1)，由假设s(j1+1) = s(i)，则s(0 , j1+1) = s(i - (j1+1) , i)，故next(i) = j1+1。</p>
+</li>
+<li><p>同前两步的分析，如果我们能找到一个k，使得对于所有小于k的k0，s(j(k0)+1)!=s(i)，但有s(j(k)+1) = s(i)，则由next数组的定义可以得到next(i)=j(k)+1，否则需进一步考虑j(k+1) = next(j(k))，如果我们找不到这样的k，则next(i)=-1。</p>
+</li>
+</ul>
+<ol>
+<li><p>对于字符串s，如果j满足，0&lt;=j&lt;=n-1，且s(0，j) = s(n-1-j，n-1)，令k=n-1-j，若k整除n，不妨设n=mk，则s(0，(m-1)k - 1) = s(k，mk - 1)，即s(0，k-1) = s(k，2k-1) = …… = s((m-1)k - 1，mk - 1)，即s满足题设条件。故要判断s是否为重复子串组成，只需找到满足上述条件的j，且k整除n，即说明s满足条件，否则不满足。</p>
+</li>
+<li><p>利用已算出的next(n-1)，令k=n-1-next(n-1)，由c可知，若k整除n，且k &lt; n，则s满足条件，否则不满足。上述算法的复杂度可证明为O(n)。</p>
+</li>
+</ol>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a><strong>参考代码</strong></h2><p>参考代码给出了利用next数组求解的代码。来自<a href="http://www.jiuzhang.com/solutions/repeated-substring-pattern/" target="_blank" rel="external"><strong>九章算法答案</strong></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = s.length();</div><div class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[l];</div><div class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> i, j = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; l; i++) &#123;</div><div class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j = next[j];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            next[i] = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> lenSub = l - <span class="number">1</span> - next[l - <span class="number">1</span>];</div><div class="line">        <span class="keyword">return</span> lenSub != l &amp;&amp; l % lenSub ==<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试官角度分析"><a href="#面试官角度分析" class="headerlink" title="面试官角度分析"></a><strong>面试官角度分析</strong></h2><p>这道题的第一种解法比较简单，考察穷举和字符串处理的能力，给出第一种方法并正确分析时间复杂度基本可以达到hire；如果面试者对KMP算法有了解，可以给出第二种next数组的算法可以达到strong hire。</p>
+<p>本文来自九章算法公众号 <a href="http://mp.weixin.qq.com/s?__biz=MzA5MzE4MjgyMw==&amp;mid=2649457295&amp;idx=1&amp;sn=e2f9448ff2b83c36f2abc343936125b8&amp;chksm=887eec87bf096591aa2ae39c12003e786e9ffbf738d2784d26f70f9db6fe1a57099eb5cb129d&amp;mpshare=1&amp;scene=1&amp;srcid=05059UsS011ChQckeShTIQX4#rd" target="_blank" rel="external">Google 面试题 | 重复子字符串模式</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。&lt;/p&gt;
+&lt;h3 id=&quot;样例1&quot;&gt;&lt;a href=&quot;#样例1&quot; class=&quot;headerlink&quot; title=&quot;样例1&quot;&gt;&lt;/a&gt;样例1&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;： “abab”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;： True&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;样例解释&lt;/strong&gt;： 输入可由”ab”重复两次组成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;样例-2&quot;&gt;&lt;a href=&quot;#样例-2&quot; class=&quot;headerlink&quot; title=&quot;样例 2&quot;&gt;&lt;/a&gt;样例 2&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;： “aba”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;： False&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;样例-3&quot;&gt;&lt;a href=&quot;#样例-3&quot; class=&quot;headerlink&quot; title=&quot;样例 3&quot;&gt;&lt;/a&gt;样例 3&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;： “abcabcabcabc”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出&lt;/strong&gt;： True&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;样例解释&lt;/strong&gt;：输入可由”abc”重复四次组成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
+    
+    
+      <category term="Google" scheme="http://github.com/tags/Google/"/>
+    
+  </entry>
   
   <entry>
     <title>【Android】判断应用Application、Activity是否处于活动状态</title>
@@ -2915,98 +3005,6 @@
     
     
       <category term="Android" scheme="http://github.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hiker Guide</title>
-    <link href="http://github.com/2016/10/17/Hiker%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>http://github.com/2016/10/17/Hiker中文使用教程/</id>
-    <published>2016-10-17T07:47:20.000Z</published>
-    <updated>2017-01-13T10:54:10.160Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hiker"><a href="#Hiker" class="headerlink" title="Hiker"></a>Hiker</h1><p><a href="https://travis-ci.org/iTimeTraveler/hexo-theme-hiker" target="_blank" rel="external"><img src="https://travis-ci.org/iTimeTraveler/hexo-theme-hiker.svg?branch=master" alt="Build Status"></a>        <a href="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
-<p>An attractive, exquisite theme for <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>. named “Hiker”, short for “HikerNews”.  </p>
-<p><a href="https://itimetraveler.github.io/hexo-theme-hiker/" target="_blank" rel="external"><strong>☞ Live Preview</strong></a>  |  <a href="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/README.cn.md"><strong>Hiker 中文版使用文档</strong></a></p>
-<p><img src="https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/homepage-index.png" alt="Desktop Preview"><br><img src="https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/article-chrome.png" alt="Post Preview"><br><img src="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/source/preview/preview-mobile.png?raw=true" alt="Mobile Preview"></p>
-<a id="more"></a>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><ol>
-<li><p>Get it from GitHub</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git clone https://github.com/iTimeTraveler/hexo-theme-hiker.git themes/hiker</div></pre></td></tr></table></figure>
-</li>
-<li><p>Enable</p>
-<p>Modify <code>theme</code> setting in <code>_config.yml</code> to <code>hiker</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">## Themes: http://hexo.io/themes/</div><div class="line">theme: hiker</div></pre></td></tr></table></figure>
-</li>
-<li><p>Update</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ cd themes/Hiker</div><div class="line">$ git pull</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><h3 id="Theme-configuration-example"><a href="#Theme-configuration-example" class="headerlink" title="Theme configuration example"></a>Theme configuration example</h3><figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Site Information Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Header Menu</span></div><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  Home:</span> /</div><div class="line"><span class="attr">  Archives:</span> archives</div><div class="line"><span class="attr">  Categories:</span> categories</div><div class="line"><span class="attr">  Tags:</span> tags</div><div class="line"><span class="attr">  About:</span> about</div><div class="line"><span class="attr">rss:</span> /atom.xml</div><div class="line"></div><div class="line"><span class="attr">since:</span> <span class="number">2013</span></div><div class="line"></div><div class="line"><span class="comment"># Set default keywords (Use a comma to separate)</span></div><div class="line"><span class="attr">keywords:</span> <span class="string">""</span></div><div class="line"></div><div class="line"><span class="comment"># Put your favicon.ico into `hexo-site/themes/hiker/source/` directory.</span></div><div class="line"><span class="attr">avatar:</span> css/images/mylogo.jpg</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Homepage</span></div><div class="line"><span class="comment"># eg. home_background_image: css/images/home-bg.jpg</span></div><div class="line"><span class="attr">home_background_image:</span> css/images/home-bg.jpg</div><div class="line"><span class="attr">home_logo_image:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  border:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  url:</span> css/images/homelogo.jpg</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># AboutPage background</span></div><div class="line"><span class="attr">about_big_image:</span> css/images/pose.jpg</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Content</span></div><div class="line"><span class="attr">excerpt_link:</span> Read More</div><div class="line"><span class="attr">fancybox:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Sidebar</span></div><div class="line"><span class="attr">sidebar:</span> right</div><div class="line"><span class="attr">widgets:</span></div><div class="line"><span class="bullet">-</span> category</div><div class="line"><span class="bullet">-</span> tag</div><div class="line"><span class="bullet">-</span> tagcloud</div><div class="line"><span class="bullet">-</span> archive</div><div class="line"><span class="bullet">-</span> recent_posts</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># comment ShortName, you can choose only ONE to display.</span></div><div class="line"><span class="attr">duoshuo_shortname:</span> iTimeTraveler</div><div class="line"><span class="attr">disqus_shortname:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Code Highlight theme</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    default | normal | night | night eighties | night blue | night bright</span></div><div class="line"><span class="comment"># https://github.com/chriskempson/tomorrow-theme</span></div><div class="line"><span class="attr">highlight_theme:</span> default</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Article theme color</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    random | orange | blue | red | green | black</span></div><div class="line"><span class="attr">theme_color:</span> random</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># display widgets at the bottom of index pages (pagination == 2)</span></div><div class="line"><span class="attr">index_widgets:</span></div><div class="line"><span class="comment"># - category</span></div><div class="line"><span class="comment"># - tagcloud</span></div><div class="line"><span class="comment"># - archive</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># widget behavior</span></div><div class="line"><span class="attr">archive_type:</span> <span class="string">'monthly'</span></div><div class="line"><span class="attr">show_count:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Google Webmaster tools verification setting</span></div><div class="line"><span class="comment"># See: https://www.google.com/webmasters/</span></div><div class="line"><span class="attr">google_site_verification:</span></div><div class="line"><span class="attr">baidu_site_verification:</span></div><div class="line"><span class="attr">qihu_site_verification:</span></div><div class="line"></div><div class="line"><span class="comment"># Miscellaneous</span></div><div class="line"><span class="attr">google_analytics:</span></div><div class="line"><span class="attr">gauges_analytics:</span></div><div class="line"><span class="attr">twitter:</span></div><div class="line"><span class="attr">google_plus:</span></div><div class="line"><span class="attr">fb_admins:</span></div><div class="line"><span class="attr">fb_app_id:</span></div></pre></td></tr></table></figure>
-<ul>
-<li><strong>menu</strong> - Navigation menu</li>
-<li><strong>rss</strong> - RSS link</li>
-<li><strong>excerpt_link</strong> - “Read More” link at the bottom of excerpted articles. <code>false</code> to hide the link.</li>
-<li><strong>fancybox</strong> - Enable <a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">Fancybox</a></li>
-<li><strong>sidebar</strong> - Sidebar style. You can choose <code>left</code>, <code>right</code>, <code>bottom</code> or <code>false</code>.</li>
-<li><strong>widgets</strong> - Widgets displaying in sidebar</li>
-<li><strong>google_analytics</strong> - Google Analytics ID</li>
-<li><strong>favicon</strong> - Favicon path</li>
-<li><strong>twitter</strong> - Twiiter ID</li>
-<li><strong>google_plus</strong> - Google+ ID</li>
-</ul>
-<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><h3 id="Homepage-background"><a href="#Homepage-background" class="headerlink" title="Homepage background"></a>Homepage background</h3><p>You could place the image file in <code>YOUR_HEXO_SITE\themes\hiker\source\css\images</code> directory. and modify <code>home_background_image</code> in hiker/_config.yml. </p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Homepage</span></div><div class="line"><span class="comment"># eg. home_background_image: css/images/home-bg.jpg</span></div><div class="line"><span class="attr">home_background_image:</span> css/images/home-bg.jpg</div></pre></td></tr></table></figure>
-<p>If you DON’T want any image as your homepage background, just set <code>home_background_image</code> empty in hiker/_config.yml, then you have an default homepage with <strong>random decorative pattern</strong>.</p>
-<p><img src="https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/home-no-background1.png" alt=""></p>
-<h3 id="Code-Highlight-Theme"><a href="#Code-Highlight-Theme" class="headerlink" title="Code Highlight Theme"></a>Code Highlight Theme</h3><p>Hiker use <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a> for your code block. We have six options in total: <code>default</code>, <code>normal</code>, <code>night</code>, <code>night blue</code>, <code>night bright</code>, <code>night eighties</code></p>
-<p><img src="https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/code-theme-default.png" alt="code `default` theme Preview"></p>
-<p>Above preview picture is default theme. the image below show other five Highlight themes.</p>
-<p><img src="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/source/preview/code-theme.jpg?raw=true" alt="code themes"></p>
-<p>Modify <code>highlight_theme</code> in hiker/_config.yml.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Code Highlight theme</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    default | normal | night | night eighties | night blue | night bright</span></div><div class="line"><span class="comment"># https://github.com/chriskempson/tomorrow-theme</span></div><div class="line"><span class="attr">highlight_theme:</span> default</div></pre></td></tr></table></figure>
-<h3 id="Blog-Theme-Color"><a href="#Blog-Theme-Color" class="headerlink" title="Blog Theme Color"></a>Blog Theme Color</h3><p>Hiker provide five color themes for your blog.</p>
-<p><img src="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/source/preview/theme-color.png?raw=true" alt="theme colors"></p>
-<ul>
-<li><span style="display: inline-block; width: 18px; height: 18px; margin: 0 4px; background-color: #fb6d19; border-radius: 3px; vertical-align: middle;"></span> orange</li>
-<li><span style="display: inline-block; width: 18px; height: 18px; margin: 0 4px; background-color: #00aced; border-radius: 3px; vertical-align: middle;"></span> blue</li>
-<li><span style="display: inline-block; width: 18px; height: 18px; margin: 0 4px; background-color: #f03838; border-radius: 3px; vertical-align: middle;"></span> red</li>
-<li><span style="display: inline-block; width: 18px; height: 18px; margin: 0 4px; background-color: #39aa56; border-radius: 3px; vertical-align: middle;"></span> green</li>
-<li><span style="display: inline-block; width: 18px; height: 18px; margin: 0 4px; background-color: #404040; border-radius: 3px; vertical-align: middle;"></span> black</li>
-</ul>
-<p>You can modify <code>theme_color</code> in hiker/_config.yml.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Article theme color</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    random | orange | blue | red | green | black</span></div><div class="line"><span class="attr">theme_color:</span> random</div></pre></td></tr></table></figure>
-<h3 id="Night-mode"><a href="#Night-mode" class="headerlink" title="Night mode"></a>Night mode</h3><p>Just for article reading. In article page, you can click the <strong>logo image of header</strong> to switch to Night mode.</p>
-<p><img src="https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/night-mode.gif" alt=""></p>
-<h3 id="Fancybox"><a href="#Fancybox" class="headerlink" title="Fancybox"></a>Fancybox</h3><p>Hiker uses <a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">Fancybox</a> to showcase your photos. You can use Markdown syntax or fancybox tag plugin to add your photos.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">![img caption](img url)</div><div class="line"></div><div class="line">&#123;% fancybox img_url [img_thumbnail] [img_caption] %&#125;</div></pre></td></tr></table></figure>
-<h3 id="Sidebar"><a href="#Sidebar" class="headerlink" title="Sidebar"></a>Sidebar</h3><p>You can put your sidebar in left side, right side or bottom of your site by editing <code>sidebar</code> setting.<br>Hiker provides 5 built-in widgets:</p>
-<ul>
-<li>category</li>
-<li>tag</li>
-<li>tagcloud</li>
-<li>archives</li>
-<li>recent_posts</li>
-</ul>
-<p>All of them are enabled by default. You can edit them in <code>widget</code> setting.</p>
-<h3 id="Comment-support"><a href="#Comment-support" class="headerlink" title="Comment support"></a>Comment support</h3><p>Hiker has native support for DuoShuo &amp; Disqus comment systems. Modify the following snippets to hiker <code>hiker/_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><div class="line"><span class="comment"># comment ShortName, you can choose only ONE to display.</span></div><div class="line"><span class="attr">duoshuo_shortname:</span> iTimeTraveler</div><div class="line"><span class="attr">disqus_shortname:</span></div></pre></td></tr></table></figure>
-<h2 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h2><p><img src="https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/source/preview/browser-support.png?raw=true" alt=""></p>
-<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>All kinds of contributions (enhancements, new features, documentation &amp; code improvements, issues &amp; bugs reporting) are welcome.</p>
-<p>Looking forward to your pull request.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Hiker&quot;&gt;&lt;a href=&quot;#Hiker&quot; class=&quot;headerlink&quot; title=&quot;Hiker&quot;&gt;&lt;/a&gt;Hiker&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://travis-ci.org/iTimeTraveler/hexo-theme-hiker&quot;&gt;&lt;img src=&quot;https://travis-ci.org/iTimeTraveler/hexo-theme-hiker.svg?branch=master&quot; alt=&quot;Build Status&quot;&gt;&lt;/a&gt;        &lt;a href=&quot;https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/LICENSE&quot;&gt;&lt;img src=&quot;https://img.shields.io/badge/license-MIT-blue.svg&quot; alt=&quot;GitHub license&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;An attractive, exquisite theme for &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;. named “Hiker”, short for “HikerNews”.  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://itimetraveler.github.io/hexo-theme-hiker/&quot;&gt;&lt;strong&gt;☞ Live Preview&lt;/strong&gt;&lt;/a&gt;  |  &lt;a href=&quot;https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/README.cn.md&quot;&gt;&lt;strong&gt;Hiker 中文版使用文档&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/homepage-index.png&quot; alt=&quot;Desktop Preview&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://itimetraveler.github.io/hexo-theme-hiker/2016/10/24/Hiker%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/article-chrome.png&quot; alt=&quot;Post Preview&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://github.com/iTimeTraveler/hexo-theme-hiker/blob/master/source/preview/preview-mobile.png?raw=true&quot; alt=&quot;Mobile Preview&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://github.com/tags/Hexo/"/>
     
   </entry>
   

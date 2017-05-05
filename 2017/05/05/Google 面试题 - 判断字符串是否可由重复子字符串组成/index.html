@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>google 面试题 | 判断字符串是否可由重复子字符串组成 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Algorithm" />
+  
+  
+  
+  
+  <meta name="description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+样例1
+
+输入： “abab”
+输出： True
+样例解释： 输入可由”ab”重复两次组成
+
+
+样例 2
+
+输入： “aba”
+输出： False
+
+
+样例 3
+
+输入： “abcabcabcabc”
+输出： True
+样例解释：输入可由”abc”重复四次组成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google 面试题 | 判断字符串是否可由重复子字符串组成">
+<meta property="og:url" content="http://github.com/2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+样例1
+
+输入： “abab”
+输出： True
+样例解释： 输入可由”ab”重复两次组成
+
+
+样例 2
+
+输入： “aba”
+输出： False
+
+
+样例 3
+
+输入： “abcabcabcabc”
+输出： True
+样例解释：输入可由”abc”重复四次组成">
+<meta property="og:image" content="http://github.com/gallery/Google-Interview-Qs.jpg">
+<meta property="og:updated_time" content="2017-05-05T09:25:36.579Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google 面试题 | 判断字符串是否可由重复子字符串组成">
+<meta name="twitter:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+样例1
+
+输入： “abab”
+输出： True
+样例解释： 输入可由”ab”重复两次组成
+
+
+样例 2
+
+输入： “aba”
+输出： False
+
+
+样例 3
+
+输入： “abcabcabcabc”
+输出： True
+样例解释：输入可由”abc”重复四次组成">
+<meta name="twitter:image" content="http://github.com/gallery/Google-Interview-Qs.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "Home"; 
+
+  themeMenus["../archives"] = "Archives"; 
+
+  themeMenus["../categories"] = "Categories"; 
+
+  themeMenus["../tags"] = "Tags"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">funnysite</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">collection</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Google-Interview-Qs.jpg" rel="gallery_cj2bmyawo000npgmyv4gn3vfb">
+        <img src="../../../../gallery/Google-Interview-Qs.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Google 面试题 | 判断字符串是否可由重复子字符串组成
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">May 5, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abab”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>： 输入可由”ab”重复两次组成</li>
+</ul>
+</blockquote>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “aba”</li>
+<li><strong>输出</strong>： False</li>
+</ul>
+</blockquote>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abcabcabcabc”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>：输入可由”abc”重复四次组成</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a><strong>解题思路</strong></h2><h4 id="1-一个简单的思路"><a href="#1-一个简单的思路" class="headerlink" title="1. 一个简单的思路"></a><strong>1. 一个简单的思路</strong></h4><p>枚举子字符串的长度lenSub &lt; len(len为原字符串长度)，将原字符串分成多个子字符串，每个子字符串长度为lenSub（由此可见，lenSub整除len），再判断这些子字符串是否全部相等，若全部相等，则返回True，如果对于所有lenSub均不满足该条件，则返回False。时间复杂度为O(len*v(len))，其中v(len)为len的因数个数（因为我们只需要对整除len的lenSub进行进一步判断）。</p>
+<h4 id="2-下面再说一种神奇的方法"><a href="#2-下面再说一种神奇的方法" class="headerlink" title="2. 下面再说一种神奇的方法"></a><strong>2. 下面再说一种神奇的方法</strong></h4><p>由kmp算法中的next数组实现。</p>
+<ol>
+<li><p>字符串s的下标从0到n-1，n为字符串长度，记s(i)表示s的第i位字符，s(i,j)表示从s的第i位到第j位的子字符串，若i&gt;j，则s(i,j)=””(空串）。</p>
+</li>
+<li><p>next数组的定义为：next(i)=p，表示p为小于i且满足s(0 , p) = s(i-p , i)的最大的p，如果不存在这样的p，则next(i) = -1，显然next(0) = -1。我们可以用O(n)的时间计算出next数组。假设我们已知next(0)，next(1)，……，next(i-1) ，现在要求next(i)，不妨设next(i-1) = j0，则由next数组定义可知s(0 , j0) = s(i-1-j0 , i-1)。</p>
+</li>
+</ol>
+<ul>
+<li><p>若s(j0+1) = s(i)，则结合s(0 , j0) = s(i-1-j0 , i-1)可知s(0 , j0+1) = s(i - (j0+1) , i)，由此可知，next(i)=j0+1。</p>
+</li>
+<li><p>若s(j0+1)!=s(i)但s(next(j0)+1)=s(i)，记j1=next(j0)，则s(j1+1)=s(i)，由next数组的定义，s(0 , j1) = s(j0 - j1 , j0) = s(i - 1 - j1 , i - 1)，即s(0，j1) = s(i - 1 - j1 , i - 1)，由假设s(j1+1) = s(i)，则s(0 , j1+1) = s(i - (j1+1) , i)，故next(i) = j1+1。</p>
+</li>
+<li><p>同前两步的分析，如果我们能找到一个k，使得对于所有小于k的k0，s(j(k0)+1)!=s(i)，但有s(j(k)+1) = s(i)，则由next数组的定义可以得到next(i)=j(k)+1，否则需进一步考虑j(k+1) = next(j(k))，如果我们找不到这样的k，则next(i)=-1。</p>
+</li>
+</ul>
+<ol>
+<li><p>对于字符串s，如果j满足，0&lt;=j&lt;=n-1，且s(0，j) = s(n-1-j，n-1)，令k=n-1-j，若k整除n，不妨设n=mk，则s(0，(m-1)k - 1) = s(k，mk - 1)，即s(0，k-1) = s(k，2k-1) = …… = s((m-1)k - 1，mk - 1)，即s满足题设条件。故要判断s是否为重复子串组成，只需找到满足上述条件的j，且k整除n，即说明s满足条件，否则不满足。</p>
+</li>
+<li><p>利用已算出的next(n-1)，令k=n-1-next(n-1)，由c可知，若k整除n，且k &lt; n，则s满足条件，否则不满足。上述算法的复杂度可证明为O(n)。</p>
+</li>
+</ol>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a><strong>参考代码</strong></h2><p>参考代码给出了利用next数组求解的代码。来自<a href="http://www.jiuzhang.com/solutions/repeated-substring-pattern/" target="_blank" rel="external"><strong>九章算法答案</strong></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = s.length();</div><div class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[l];</div><div class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> i, j = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; l; i++) &#123;</div><div class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j = next[j];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            next[i] = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> lenSub = l - <span class="number">1</span> - next[l - <span class="number">1</span>];</div><div class="line">        <span class="keyword">return</span> lenSub != l &amp;&amp; l % lenSub ==<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="面试官角度分析"><a href="#面试官角度分析" class="headerlink" title="面试官角度分析"></a><strong>面试官角度分析</strong></h2><p>这道题的第一种解法比较简单，考察穷举和字符串处理的能力，给出第一种方法并正确分析时间复杂度基本可以达到hire；如果面试者对KMP算法有了解，可以给出第二种next数组的算法可以达到strong hire。</p>
+<p>本文来自九章算法公众号 <a href="http://mp.weixin.qq.com/s?__biz=MzA5MzE4MjgyMw==&amp;mid=2649457295&amp;idx=1&amp;sn=e2f9448ff2b83c36f2abc343936125b8&amp;chksm=887eec87bf096591aa2ae39c12003e786e9ffbf738d2784d26f70f9db6fe1a57099eb5cb129d&amp;mpshare=1&amp;scene=1&amp;srcid=05059UsS011ChQckeShTIQX4#rd" target="_blank" rel="external">Google 面试题 | 重复子字符串模式</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" data-title="Google 面试题 | 判断字符串是否可由重复子字符串组成" data-url="http://github.com/2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"iTimeTraveler"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="../../../../css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../03/【Android】判断应用Application、Activity是否处于活动状态/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【Android】判断应用Application、Activity是否处于活动状态</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例1"><span class="nav-number">1.1.</span> <span class="nav-text">样例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-2"><span class="nav-number">1.2.</span> <span class="nav-text">样例 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-3"><span class="nav-number">1.3.</span> <span class="nav-text">样例 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-一个简单的思路"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 一个简单的思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-下面再说一种神奇的方法"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 下面再说一种神奇的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试官角度分析"><span class="nav-number">4.</span> <span class="nav-text">面试官角度分析</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">FunnySite</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">Collection</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/script.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
