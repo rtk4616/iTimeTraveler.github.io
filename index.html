@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,98 +33,141 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
 
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "Home"; 
-
-  themeMenus["../archives"] = "Archives"; 
-
-  themeMenus["../categories"] = "Categories"; 
-
-  themeMenus["../tags"] = "Tags"; 
-
-  themeMenus["../funnysite"] = "funnysite"; 
-
-  themeMenus["../collection"] = "collection"; 
-
-  themeMenus["../about"] = "About"; 
-
-</script>
 
 
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+    <header id="header">
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
+  
+    <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+    <script>
+        var imgUrls = "css/images/home-bg.jpg,css/images/sample.jpg,http://t.cn/RMbvEza".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("intrologo").style.backgroundImage='url(' + imgUrls[random] + ')';
+        } else {
+          document.getElementById("intrologo").style.backgroundImage='url(/' + imgUrls[random] + ')';
+        }
+    </script>
+  
 
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="index.html">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="funnysite">funnysite</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
+      
+    </script>
+    
 
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
 
-      </div>
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+    <script>
+        var img = new Image();
+        var intrologodiv = document.getElementById("intrologo");
+        img.src = intrologodiv.style.backgroundImage.replace('url(','').replace(')','').replace(/\"/gi, "");
+        img.onload=function(){
+          if (img.width / img.height <= document.body.clientWidth / document.body.clientHeight) {
+            intrologodiv.style.backgroundSize = "100% auto";
+          } else {
+            intrologodiv.style.backgroundSize = "auto 100%";
+          }
+        };
+    </script>
+ 
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="index.html">Home</a>
+        
+          <a id="beautifont" class="main-nav-link" href="archives">Archives</a>
+        
+          <a id="beautifont" class="main-nav-link" href="categories">Categories</a>
+        
+          <a id="beautifont" class="main-nav-link" href="tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -139,20 +182,38 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="article-date">
-	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">May 5, 2017</time>
+	<a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">2017-05-05</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/"><img width="250" height="175" src="/gallery/Google-Interview-Qs.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abab”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>： 输入可由”ab”重复两次组成</li>
+</ul>
+</blockquote>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “aba”</li>
+<li><strong>输出</strong>： False</li>
+</ul>
+</blockquote>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abcabcabcabc”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>：输入可由”abc”重复四次组成</li>
+</ul>
+</blockquote>
+        <!-- 题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
 样例1
 
 输入： “abab”
@@ -174,25 +235,17 @@ var themeMenus = {};
 
 
 
-解题思路1....
-
-        
-          <p class="article-more-link">
-            <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/#more">Continue Reading →</a>
-          </p>
-        </div>
+解题思路1.......  -->
+        <p class="article-more-link">
+          <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Google/">Google</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -202,7 +255,7 @@ var themeMenus = {};
 
   
     <article id="post-【Android】判断应用Application、Activity是否处于活动状态"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -217,39 +270,30 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="article-date">
-	  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">May 3, 2017</time>
+	<a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="article-date">
+	  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">2017-05-03</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/"><img width="250" height="175" src="/gallery/singleInstance.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          通过ActivityManager我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。
-1、判断应用App是否活动/** * 判断应用是否已经启动 * @param context 一个context * @param packageName 要判断应用的包名 * @return boolean */pr...
-
-        
-          <p class="article-more-link">
-            <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/#more">Continue Reading →</a>
-          </p>
-        </div>
+        <p>通过<strong><code>ActivityManager</code></strong>我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。</p>
+<h2 id="1、判断应用App是否活动"><a href="#1、判断应用App是否活动" class="headerlink" title="1、判断应用App是否活动"></a><strong>1、判断应用App是否活动</strong></h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * 判断应用是否已经启动</div><div class="line"> * <span class="doctag">@param</span> context 一个context</div><div class="line"> * <span class="doctag">@param</span> packageName 要判断应用的包名</div><div class="line"> * <span class="doctag">@return</span> boolean</div><div class="line"> */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isAppAlive</span><span class="params">(Context context, String packageName)</span></span>&#123;</div><div class="line">   ActivityManager activityManager =</div><div class="line">           (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line">   List&lt;ActivityManager.RunningAppProcessInfo&gt; processInfos</div><div class="line">           = activityManager.getRunningAppProcesses();</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; processInfos.size(); i++)&#123;</div><div class="line">       <span class="keyword">if</span>(processInfos.get(i).processName.equals(packageName))&#123;</div><div class="line">           Log.i(<span class="string">"NotificationLaunch"</span>,</div><div class="line">                   String.format(<span class="string">"the %s is running, isAppAlive return true"</span>, packageName));</div><div class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   Log.i(<span class="string">"NotificationLaunch"</span>,</div><div class="line">           String.format(<span class="string">"the %s is not running, isAppAlive return false"</span>, packageName));</div><div class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 通过ActivityManager我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。
+1、判断应用App是否活动/** * 判断应用是否已经启动 * @param context 一个context * @param packageName 要判断应用的包名 * @return boolean */pr......  -->
+        <p class="article-more-link">
+          <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -259,7 +303,7 @@ var themeMenus = {};
 
   
     <article id="post-【Android】使用UncaughtExceptionHandler捕获全局异常"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -274,40 +318,30 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="article-date">
-	  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">April 20, 2017</time>
+	<a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="article-date">
+	  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">2017-04-20</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/"><img width="250" height="175" src="/gallery/exception-handling.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          简介当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助UncaughtExceptionHandler这个类。
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助<strong><code>UncaughtExceptionHandler</code></strong>这个类。</p>
+        <!-- 简介当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助UncaughtExceptionHandler这个类。
 
-使用方法一、实例化public class CrashLogCatch &#123;	public static final String THREAD_NAME_MAIN = "com.example.A...
-
-        
-          <p class="article-more-link">
-            <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/#more">Continue Reading →</a>
-          </p>
-        </div>
+使用方法一、实例化public class CrashLogCatch &#123;	public static final String THREAD_NAME_MAIN = "com.example.A......  -->
+        <p class="article-more-link">
+          <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Exception/">Exception</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -317,7 +351,7 @@ var themeMenus = {};
 
   
     <article id="post-【Android 】硬件加速原理与实现简介"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -332,39 +366,30 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/03/30/【Android 】硬件加速原理与实现简介/" class="article-date">
-	  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">March 30, 2017</time>
+	<a href="2017/03/30/【Android 】硬件加速原理与实现简介/" class="article-date">
+	  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">2017-03-30</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/03/30/【Android 】硬件加速原理与实现简介/"><img width="250" height="175" src="/gallery/hardware-acceleration.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
-本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其...
-
-        
-          <p class="article-more-link">
-            <a href="2017/03/30/【Android 】硬件加速原理与实现简介/#more">Continue Reading →</a>
-          </p>
-        </div>
+        <p>在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。</p>
+<p>本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其中上层实现基于Android 6.0。</p>
+        <!-- 在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
+本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其......  -->
+        <p class="article-more-link">
+          <a href="2017/03/30/【Android 】硬件加速原理与实现简介/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/GPU/">GPU</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -374,7 +399,7 @@ var themeMenus = {};
 
   
     <article id="post-【Gradle】Android Studio中Gradle重复依赖的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -389,39 +414,33 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="article-date">
-	  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">February 23, 2017</time>
+	<a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="article-date">
+	  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">2017-02-23</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Gradle/">Gradle</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/"><img width="250" height="175" src="/gallery/gradle-as.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
-Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.&gt; com.android.build.api.transform.TransformException: ja...
-
-        
-          <p class="article-more-link">
-            <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/#more">Continue Reading →</a>
-          </p>
-        </div>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.</div><div class="line">&gt; com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/google/gson/annotations/Expose.class</div></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><p>看到错误中的这个<strong>duplicate</strong>，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的<code>Expose.class</code> 类。</p>
+<p>使用快捷键（Shift + Ctrl + T）查看项目中的<code>Expose.class</code> 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。</p>
+<p><img src="http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+        <!-- 问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
+Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.&gt; com.android.build.api.transform.TransformException: ja......  -->
+        <p class="article-more-link">
+          <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Gradle/">Gradle</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Gradle/">Gradle</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -431,7 +450,7 @@ Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAuto
 
   
     <article id="post-【Android】内存泄漏分析心得"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -446,45 +465,48 @@ Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAuto
     
     <div class="article-meta">
       
-	Posted on <a href="2017/02/13/【Android】内存泄漏分析心得/" class="article-date">
-	  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">February 13, 2017</time>
+	<a href="2017/02/13/【Android】内存泄漏分析心得/" class="article-date">
+	  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">2017-02-13</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/02/13/【Android】内存泄漏分析心得/"><img width="250" height="175" src="/gallery/memoryleak.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文来源：<a href="http://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=2649796884&amp;idx=1&amp;sn=92b4e344060362128e4a86d6132c3736&amp;chksm=f1fcc54cc68b4c5add08371265320163381ea81333daea5664b94e9a12246a34cfaa31e6f0b3&amp;mpshare=1&amp;scene=1&amp;srcid=0213Ssp5geOThmtF6tg9Bz7U#rd">QQ空间终端开发团队公众号</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>对于C++来说，内存泄漏就是new出来的对象没有delete，俗称野指针；<br>对于Java来说，就是new出来的Object 放在Heap上无法被GC回收；</p>
+<p><img src="http://img.blog.csdn.net/20170213160148023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>本文通过QQ和Qzone中内存泄漏实例来讲android中内存泄漏分析解法和编写代码应注意的事项。</p>
+<h2 id="Java-中的内存分配"><a href="#Java-中的内存分配" class="headerlink" title="Java 中的内存分配"></a><strong>Java 中的内存分配</strong></h2><ul>
+<li><p><strong>静态储存区</strong>：编译时就分配好，在程序整个运行期间都存在。它主要存放静态数据和常量；</p>
+</li>
+<li><p><strong>栈区</strong>：当方法执行时，会在栈区内存中创建方法体内部的局部变量，方法结束后自动释放内存；</p>
+</li>
+<li><p><strong>堆区</strong>：通常存放 new 出来的对象。由 Java 垃圾回收器回收。</p>
+</li>
+</ul>
+        <!-- 
 本文来源：QQ空间终端开发团队公众号
 
 前言对于C++来说，内存泄漏就是new出来的对象没有delete，俗称野指针；对于Java来说，就是new出来的Object 放在Heap上无法被GC回收；
 
 本文通过QQ和Qzone中内存泄漏实例来讲android中内存泄漏分析解法和编写代码应注意的事项。
 Java 中的内存分配
-静态储存区：编译时就分配好，在程序整个运行期间都存在。它主要存放静态...
-
-        
-          <p class="article-more-link">
-            <a href="2017/02/13/【Android】内存泄漏分析心得/#more">Continue Reading →</a>
-          </p>
-        </div>
+静态储存区：编译时就分配好，在程序整个运行期间都存在。它主要存放静态......  -->
+        <p class="article-more-link">
+          <a href="2017/02/13/【Android】内存泄漏分析心得/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -494,7 +516,7 @@ Java 中的内存分配
 
   
     <article id="post-【Android】AlertDialog中的EditText不能弹出软键盘的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -509,41 +531,35 @@ Java 中的内存分配
     
     <div class="article-meta">
       
-	Posted on <a href="2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" class="article-date">
-	  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">January 20, 2017</time>
+	<a href="2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" class="article-date">
+	  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">2017-01-20</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/"><img width="250" height="175" src="/gallery/android_m_marshmallow.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h2><p>AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是<strong>强制弹出软键盘</strong>，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><p>Dialog的官方文档：<a href="http://developer.android.com/reference/android/app/Dialog.html">http://developer.android.com/reference/android/app/Dialog.html</a> ，其中有一段：</p>
+<blockquote>
+<p><strong>Note:</strong> Activities provide a facility to manage the creation, saving and restoring of dialogs. See <a href="https://developer.android.com/reference/android/app/Activity.html#onCreateDialog%28int%29">onCreateDialog(int)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#onPrepareDialog%28int,%20android.app.Dialog%29">onPrepareDialog(int, Dialog)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#showDialog%28int%29">showDialog(int)</a>, and <a href="https://developer.android.com/reference/android/app/Activity.html#dismissDialog%28int%29">dismissDialog(int)</a>. If these methods are used, <a href="https://developer.android.com/reference/android/app/Dialog.html#getOwnerActivity%28%29">getOwnerActivity()</a> will return the Activity that managed this dialog.</p>
+</blockquote>
+        <!-- 摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。
 解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：
 
-Note: Ac...
-
-        
-          <p class="article-more-link">
-            <a href="2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/#more">Continue Reading →</a>
-          </p>
-        </div>
+Note: Ac......  -->
+        <p class="article-more-link">
+          <a href="2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -553,7 +569,7 @@ Note: Ac...
 
   
     <article id="post-【Android】TextView中不同大小字体如何上下垂直居中？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -568,41 +584,42 @@ Note: Ac...
     
     <div class="article-meta">
       
-	Posted on <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" class="article-date">
-	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">January 3, 2017</time>
+	<a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" class="article-date">
+	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">2017-01-03</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/"><img width="250" height="175" src="/gallery/Textview-vertical/FontMetricsInt.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了<code>AttributedString</code>，而Android则提供了<strong><code>SpannableString</code></strong>。</p>
+<p>在Android的android.text.style包下为我们提供了各种各样的span（可以<a href="http://blog.csdn.net/u010983881/article/details/52383539"><strong>参考这篇文章</strong></a>），例如：</p>
+<ul>
+<li><p><strong>AbsoluteSizeSpan(int size)</strong> —— 设置字体大小，参数是绝对数值，相当于Word中的字体大小</p>
+</li>
+<li><p><strong>RelativeSizeSpan(float proportion)</strong> —— 设置字体大小，参数是相对于默认字体大小的倍数，比如默认字体大小是x, 那么设置后的字体大小就是x*proportion，这个用起来比较灵活，proportion&gt;1就是放大(zoom in), proportion&lt;1就是缩小(zoom out)</p>
+</li>
+<li><p><strong>BackgroundColorSpan(int color)</strong> —— 背景着色，参数是颜色数值，可以直接使用android.graphics.Color里面定义的常量，或是用Color.rgb(int, int, int)</p>
+</li>
+<li><p><strong>ForegroundColorSpan(int color)</strong> —— 前景着色，也就是字的着色，参数与背景着色一致</p>
+</li>
+</ul>
+        <!-- 前言在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了AttributedString，而Android则提供了SpannableString。
 在Android的android.text.style包下为我们提供了各种各样的span（可以参考这篇文章），例如：
 
-AbsoluteSizeSpan(int...
-
-        
-          <p class="article-more-link">
-            <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/#more">Continue Reading →</a>
-          </p>
-        </div>
+AbsoluteSizeSpan(int......  -->
+        <p class="article-more-link">
+          <a href="2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -612,7 +629,7 @@ AbsoluteSizeSpan(int...
 
   
     <article id="post-【Java】泛型中 extends 和 super 的区别？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -627,44 +644,43 @@ AbsoluteSizeSpan(int...
     
     <div class="article-meta">
       
-	Posted on <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/" class="article-date">
-	  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">December 27, 2016</time>
+	<a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/" class="article-date">
+	  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">2016-12-27</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/"><img width="250" height="175" src="/gallery/Java-Generics.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <p><img src="/gallery/java-genericity/example.png" alt=""></p>
+<p><code>&lt;? extends T&gt;</code>和<code>&lt;? super T&gt;</code>是Java泛型中的<strong>“通配符（Wildcards）”</strong>和<strong>“边界（Bounds）”</strong>的概念。</p>
+<ul>
+<li><code>&lt;? extends T&gt;</code>：是指 <strong>“上界通配符（Upper Bounds Wildcards）”</strong></li>
+<li><code>&lt;? super T&gt;</code>：是指 <strong>“下界通配符（Lower Bounds Wildcards）”</strong></li>
+</ul>
+<h2 id="为什么要用通配符和边界？"><a href="#为什么要用通配符和边界？" class="headerlink" title="为什么要用通配符和边界？"></a><strong>为什么要用通配符和边界？</strong></h2><p>使用泛型的过程中，经常出现一种很别扭的情况。比如按照题主的例子，我们有Fruit类，和它的派生类Apple类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>然后有一个最简单的容器：Plate类。盘子里可以放一个泛型的“东西”。我们可以对这个东西做最简单的“放”和“取”的动作：<code>set( )</code>和<code>get( )</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plate</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">    <span class="keyword">private</span> T item;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Plate</span><span class="params">(T t)</span></span>&#123;item=t;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T t)</span></span>&#123;item=t;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> item;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 
 &lt;? extends T&gt;和&lt;? super T&gt;是Java泛型中的“通配符（Wildcards）”和“边界（Bounds）”的概念。
 
 &lt;? extends T&gt;：是指 “上界通配符（Upper Bounds Wildcards）”
 &lt;? super T&gt;：是指 “下界通配符（Lower Bounds Wildcards）”
 
-为什么要用通...
-
-        
-          <p class="article-more-link">
-            <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/#more">Continue Reading →</a>
-          </p>
-        </div>
+为什么要用通......  -->
+        <p class="article-more-link">
+          <a href="2016/12/27/【Java】泛型中 extends 和 super 的区别？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java-Generics/">Java Generics</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -674,7 +690,7 @@ AbsoluteSizeSpan(int...
 
   
     <article id="post-数学之美番外篇：平凡而又神奇的贝叶斯方法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -689,40 +705,34 @@ AbsoluteSizeSpan(int...
     
     <div class="article-meta">
       
-	Posted on <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="article-date">
-	  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">December 22, 2016</time>
+	<a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="article-date">
+	  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">2016-12-22</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/"><img width="250" height="175" src="/gallery/Thomas-Bayes.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。） —— Pierre-Simon Laplace
+        <blockquote class="pullquote right"><p>Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。）<br> —— <a href="https://zh.wikipedia.org/wiki/%E7%9A%AE%E5%9F%83%E5%B0%94-%E8%A5%BF%E8%92%99%C2%B7%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF">Pierre-Simon Laplace</a></p>
+</blockquote>
+<p>记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能够专门写出一本书来，肯定很牛逼。后来，我发现当初的那个朴素归纳推理成立了 —— 这果然是个牛逼的方法。</p>
+<p>——题记</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>这是一篇关于贝叶斯方法的科普文，我会尽量少用公式，多用平白的语言叙述，多举实际例子。更严格的公式和计算我会在相应的地方注明参考资料。贝叶斯方法被证明是非常 general 且强大的推理框架，文中你会看到很多有趣的应用。</p>
+        <!-- Probability is nothing but common sense reduced to calculation.（概率论只不过是把常识用数学公式表达了出来。） —— Pierre-Simon Laplace
 
-记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能...
-
-        
-          <p class="article-more-link">
-            <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/#more">Continue Reading →</a>
-          </p>
-        </div>
+记得读本科的时候，最喜欢到城里的计算机书店里面去闲逛，一逛就是好几个小时；有一次，在书店看到一本书，名叫贝叶斯方法。当时数学系的课程还没有学到概率统计。我心想，一个方法能......  -->
+        <p class="article-more-link">
+          <a href="2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Bayesian/">Bayesian</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -735,278 +745,32 @@ AbsoluteSizeSpan(int...
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/7/">7</a><a class="extend next" rel="next" href="page/2/">Next</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/7/">7</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: 'content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" title=""><img width="50" height="50" src="/gallery/Google-Interview-Qs.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a></h6>
-              <span>May 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" title=""><img width="50" height="50" src="/gallery/singleInstance.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/">【Android】判断应用Application、Activity是否处于活动状态</a></h6>
-              <span>May 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" title=""><img width="50" height="50" src="/gallery/exception-handling.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/">【Android】使用UncaughtExceptionHandler捕获全局异常</a></h6>
-              <span>April 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/03/30/【Android 】硬件加速原理与实现简介/" title=""><img width="50" height="50" src="/gallery/hardware-acceleration.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/03/30/【Android 】硬件加速原理与实现简介/">【Android 】硬件加速原理与实现简介</a></h6>
-              <span>March 30, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" title=""><img width="50" height="50" src="/gallery/gradle-as.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/">【Gradle】Android Studio中Gradle重复依赖的问题</a></h6>
-              <span>February 23, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/02/13/【Android】内存泄漏分析心得/" title=""><img width="50" height="50" src="/gallery/memoryleak.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/02/13/【Android】内存泄漏分析心得/">【Android】内存泄漏分析心得</a></h6>
-              <span>February 13, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Android/">Android</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Bayesian/">Bayesian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Exception/">Exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/GPU/">GPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Google/">Google</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Java-Generics/">Java Generics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="tags/APK/" style="font-size: 10px;">APK</a> <a href="tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/D3/" style="font-size: 10px;">D3</a> <a href="tags/Exception/" style="font-size: 10px;">Exception</a> <a href="tags/GPU/" style="font-size: 10px;">GPU</a> <a href="tags/Google/" style="font-size: 12.5px;">Google</a> <a href="tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="tags/Java/" style="font-size: 17.5px;">Java</a> <a href="tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/11/">November 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				<span id="busuanzi_container_site_uv"> UV : <span id="busuanzi_value_site_uv"></span></span> |  
+				<span id="busuanzi_container_site_pv"> PV : <span id="busuanzi_value_site_pv"></span></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -1014,9 +778,16 @@ AbsoluteSizeSpan(int...
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -1029,14 +800,17 @@ AbsoluteSizeSpan(int...
   
     <a href="tags" class="mobile-nav-link">Tags</a>
   
-    <a href="funnysite" class="mobile-nav-link">FunnySite</a>
-  
-    <a href="collection" class="mobile-nav-link">Collection</a>
-  
     <a href="about" class="mobile-nav-link">About</a>
   
 </nav> -->
     
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1076,7 +850,9 @@ AbsoluteSizeSpan(int...
 
 <script src="js/script.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/main.js"></script>
+
+
+  <script src="js/home.js"></script>
 
 
 
@@ -1084,23 +860,74 @@ AbsoluteSizeSpan(int...
 
 
 
-  <div style="display: none;">
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
 
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

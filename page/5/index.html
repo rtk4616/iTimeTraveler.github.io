@@ -21,7 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,98 +33,141 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
 
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "Home"; 
-
-  themeMenus["../archives"] = "Archives"; 
-
-  themeMenus["../categories"] = "Categories"; 
-
-  themeMenus["../tags"] = "Tags"; 
-
-  themeMenus["../funnysite"] = "funnysite"; 
-
-  themeMenus["../collection"] = "collection"; 
-
-  themeMenus["../about"] = "About"; 
-
-</script>
 
 
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+    <header id="header">
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
+  
+    <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+    <script>
+        var imgUrls = "css/images/home-bg.jpg,css/images/sample.jpg,http://t.cn/RMbvEza".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("intrologo").style.backgroundImage='url(' + imgUrls[random] + ')';
+        } else {
+          document.getElementById("intrologo").style.backgroundImage='url(/' + imgUrls[random] + ')';
+        }
+    </script>
+  
 
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">Home</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">Archives</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">Tags</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../funnysite">funnysite</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">About</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
+      
+    </script>
+    
 
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
 
-      </div>
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+    <script>
+        var img = new Image();
+        var intrologodiv = document.getElementById("intrologo");
+        img.src = intrologodiv.style.backgroundImage.replace('url(','').replace(')','').replace(/\"/gi, "");
+        img.onload=function(){
+          if (img.width / img.height <= document.body.clientWidth / document.body.clientHeight) {
+            intrologodiv.style.backgroundSize = "100% auto";
+          } else {
+            intrologodiv.style.backgroundSize = "auto 100%";
+          }
+        };
+    </script>
+ 
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="../../index.html">Home</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../archives">Archives</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../categories">Categories</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../tags">Tags</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../about">About</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -139,47 +182,36 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="article-date">
-	  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">April 29, 2016</time>
+	<a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="article-date">
+	  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">2016-04-29</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>在Linux中执行.sh脚本，异常/bin/bash^M: bad interpreter: No such file or directory.<br><img src="http://img.blog.csdn.net/20160429114707846" alt=""></p>
+</blockquote>
+<h2 id="一、分析"><a href="#一、分析" class="headerlink" title="一、分析"></a><strong>一、分析</strong></h2><p>这是不同系统编码格式引起的：在windows系统中编辑的.sh文件可能有不可见字符，所以在Linux系统下执行会报以上异常信息。 </p>
+<h2 id="二、解决"><a href="#二、解决" class="headerlink" title="二、解决"></a><strong>二、解决</strong></h2><p>1）在windows下转换：<br>利用一些编辑器如UltraEdit或EditPlus等工具先将脚本编码转换，再放到Linux中执行。转换方式如下（UltraEdit）：File–&gt;Conversions–&gt;DOS-&gt;UNIX即可。 </p>
+        <!-- 
 在Linux中执行.sh脚本，异常/bin/bash^M: bad interpreter: No such file or directory.
 
 一、分析这是不同系统编码格式引起的：在windows系统中编辑的.sh文件可能有不可见字符，所以在Linux系统下执行会报以上异常信息。 
-二、解决1）在windows下转换：利用一些编辑器如UltraEdit或EditPlus等工具先将脚本编码转换，再放到Linux中执行。转换方式如下（UltraEdit）：File–&gt;Conversions–&gt;DOS-&gt;UNIX即可。 
-
-2）直接在Linux中转换（推荐做法）：
-首先要确保文件有可执行权限 
-#sh&gt; chmod a+x filename
-然后修改文件格式 ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/#more">Continue Reading →</a>
-          </p>
-        </div>
+二、解决1）在windows下转换：利用一些编辑器如UltraEdit或EditPlus等工具先将脚本......  -->
+        <p class="article-more-link">
+          <a href="../../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Linux/">Linux</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Linux/">Linux</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -189,7 +221,7 @@ var themeMenus = {};
 
   
     <article id="post-”二分查找“算法的时间复杂度"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -204,43 +236,36 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/06/”二分查找“算法的时间复杂度/" class="article-date">
-	  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">April 6, 2016</time>
+	<a href="../../2016/04/06/”二分查找“算法的时间复杂度/" class="article-date">
+	  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">2016-04-06</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>算法的时间复杂度无非就是for、while等包含起来的基本运算单元的循环次数</p>
+</blockquote>
+<h2 id="1、二分查找"><a href="#1、二分查找" class="headerlink" title="1、二分查找"></a><strong>1、二分查找</strong></h2><p>二分查找（binary search），也称作折半查找（half-interval search），每次划分一半进行下一步搜索，所以时间复杂度无非就是while循环的次数！</p>
+        <!-- 
 算法的时间复杂度无非就是for、while等包含起来的基本运算单元的循环次数
 
 1、二分查找二分查找（binary search），也称作折半查找（half-interval search），每次划分一半进行下一步搜索，所以时间复杂度无非就是while循环的次数！
 
-//二分查找 Java 实现public static int binarySearch(Integer[] srcArray, int des) &#123;    int low = 0;    int high = srcArray.length - 1;     while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)          ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/04/06/”二分查找“算法的时间复杂度/#more">Continue Reading →</a>
-          </p>
-        </div>
+//二分查找 Java 实现public static int binarySearch(Integer[] srcArra......  -->
+        <p class="article-more-link">
+          <a href="../../2016/04/06/”二分查找“算法的时间复杂度/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -250,7 +275,7 @@ var themeMenus = {};
 
   
     <article id="post-给大家推荐一款Sublime Text的主题”brogrammer-theme“"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -265,36 +290,30 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="article-date">
-	  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">March 30, 2016</time>
+	<a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="article-date">
+	  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">2016-03-30</time>
 	</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/"><img width="250" height="175" src="http://img.blog.csdn.net/20160330165335855" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          先给大家看一下这个主题的颜值：
+        <p>先给大家看一下这个主题的颜值：</p>
+<p><img src="http://img.blog.csdn.net/20160330165335855" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20160330164049417" alt=""></p>
+        <!-- 先给大家看一下这个主题的颜值：
 
 
 
 
 快看安装方法：1、下载：https://github.com/kenwheeler/brogrammer-theme/archive/master.zip
-2、解压后将文件夹改名成Theme - Brogrammer，然后打开sublime text3，找到里面的 Preferences -&gt; Browse Packages，将改名后的文件夹co...
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/#more">Continue Reading →</a>
-          </p>
-        </div>
+2、解压后将文件夹改名成Theme - Brogrammer，然后打开sublime text3，找到里面的 Preferences -&gt; Browse Packages，将改名后的文件夹co......  -->
+        <p class="article-more-link">
+          <a href="../../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
+    <footer class="article-footer">
       
       
     </footer>
@@ -306,7 +325,7 @@ var themeMenus = {};
 
   
     <article id="post-【Android】Picasso加载本地图片如何清理缓存cache？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -321,11 +340,13 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="article-date">
-	  <time datetime="2016-03-08T07:03:00.000Z" itemprop="datePublished">March 8, 2016</time>
+	<a href="../../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="article-date">
+	  <time datetime="2016-03-08T07:03:00.000Z" itemprop="datePublished">2016-03-08</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -347,16 +368,11 @@ var themeMenus = {};
 
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -366,7 +382,7 @@ var themeMenus = {};
 
   
     <article id="post-如何生成100个1-100以内的不重复的随机数"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -381,19 +397,24 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
-	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">January 22, 2016</time>
+	<a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
+	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">2016-01-22</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数</p>
+</blockquote>
+<h2 id="一、简单实现思路"><a href="#一、简单实现思路" class="headerlink" title="一、简单实现思路:"></a><strong>一、简单实现思路:</strong></h2><p>(1) 把N个数放入Hashtable 或者arrayList 中.</p>
+<p>(2) 从上面的集合中随机抽取一个数放入int数组中.</p>
+<p>(3) 把取出的这个数从上面的集合中删除.</p>
+<p>(4) 循环 (2),(3) 步骤,直到int数组取满为止.</p>
+        <!-- 
 这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数
 
 一、简单实现思路:(1) 把N个数放入Hashtable 或者arrayList 中.
@@ -402,26 +423,17 @@ var themeMenus = {};
 (4) 循环 (2),(3) 步骤,直到int数组取满为止.
 
 这是一种比较简单的实现思路，实现代码如下：
-import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main &#123;	private static int range = 100;	private static Ar...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/#more">Continue Reading →</a>
-          </p>
-        </div>
+impo......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -431,7 +443,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 
   
     <article id="post-【Android】如何查看Activity Task栈的情况"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -446,44 +458,37 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/" class="article-date">
-	  <time datetime="2016-01-19T03:48:00.000Z" itemprop="datePublished">January 19, 2016</time>
+	<a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/" class="article-date">
+	  <time datetime="2016-01-19T03:48:00.000Z" itemprop="datePublished">2016-01-19</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>我们都知道，每个Activity都有taskAffinity属性，这个属性指出了它希望进入的Task。</p>
+</blockquote>
+<p>如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 </p>
+<p><strong>一、查看task栈情况</strong></p>
+<p>在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">adb shell dumpsys activity</div></pre></td></tr></table></figure></p>
+<p>然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的状态如下：<br><img src="http://img.blog.csdn.net/20160119120838863" alt=""></p>
+        <!-- 
 我们都知道，每个Activity都有taskAffinity属性，这个属性指出了它希望进入的Task。
 
-如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 
-一、查看task栈情况
-在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：adb shell dumpsys activity
-然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的状...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/#more">Continue Reading →</a>
-          </p>
-        </div>
+如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -493,7 +498,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 
   
     <article id="post-Java中的封装、继承与多态"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -508,44 +513,36 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/15/Java中的封装、继承与多态/" class="article-date">
-	  <time datetime="2016-01-15T07:43:20.000Z" itemprop="datePublished">January 15, 2016</time>
+	<a href="../../2016/01/15/Java中的封装、继承与多态/" class="article-date">
+	  <time datetime="2016-01-15T07:43:20.000Z" itemprop="datePublished">2016-01-15</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>这次我们来了解一下面向对象的三大基石<strong>封装，继承、多态</strong>，然后大致对比一下继承和多态的区别。</p>
+</blockquote>
+<h2 id="一、封装："><a href="#一、封装：" class="headerlink" title="一、封装："></a><strong>一、封装：</strong></h2><p>　　封装是实现面向对象程序设计的第一步，封装就是将数据或函数等集合在一个个的单元中（我们称之为类）。被封装的对象通常被称为抽象数据类型。 </p>
+<p> 封装的意义：<br>　　封装的意义在于保护或者防止代码（数据）被我们无意中破坏。在面向对象程序设计中数据被看作是一个中心的元素并且和使用它的函数结合的很密切，从而保护它不被其它的函数意外的修改。封装提供了一个有效的途径来保护数据不被意外的破坏。相比我们将数据（用域来实现）在程序中定义为公用的（public）我们将它们(fields)定义为私有的（privat）在很多方面会更好。</p>
+        <!-- 
 这次我们来了解一下面向对象的三大基石封装，继承、多态，然后大致对比一下继承和多态的区别。
 
 一、封装：　　封装是实现面向对象程序设计的第一步，封装就是将数据或函数等集合在一个个的单元中（我们称之为类）。被封装的对象通常被称为抽象数据类型。 
- 封装的意义：　　封装的意义在于保护或者防止代码（数据）被我们无意中破坏。在面向对象程序设计中数据被看作是一个中心的元素并且和使用它的函数结合的很密切，从而保护它不被其它的函数意外的修改。封装提供了一个有效的途径来保护数据不被意外的破坏。相比我们将数据（用域来实现）在程序中定义为公用的（public）我们将它们(fields)定义为私有的（privat）在很多方面会更好。
-
-　　　　Java有四种访问权限，其中三种有访问权限修饰符，分别为priv...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/15/Java中的封装、继承与多态/#more">Continue Reading →</a>
-          </p>
-        </div>
+ 封装的意义：　　封装的意义在于保护或者防止代码（数据）被我们无意中破坏。在面向对象程序设计中数据被看作是一个中心的元素并且和使用它的函数结合的很密切......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/15/Java中的封装、继承与多态/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -555,7 +552,7 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 
   
     <article id="post-Java访问权限修饰符的区别"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -570,43 +567,37 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/15/Java访问权限修饰符的区别/" class="article-date">
-	  <time datetime="2016-01-15T07:07:20.000Z" itemprop="datePublished">January 15, 2016</time>
+	<a href="../../2016/01/15/Java访问权限修饰符的区别/" class="article-date">
+	  <time datetime="2016-01-15T07:07:20.000Z" itemprop="datePublished">2016-01-15</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            　　Java有四种访问权限，其中三种有访问权限修饰符，分别为private，public和protected，还有一种不带任何修饰符：
+        <p>　　Java有四种访问权限，其中三种有访问权限修饰符，分别为private，public和protected，还有一种不带任何修饰符：</p>
+<ol>
+<li><strong>private:</strong> Java语言中对访问权限限制的最窄的修饰符，一般称之为“私有的”。被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。</li>
+<li><strong>default：</strong>即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一个包中进行访问。</li>
+<li><strong>protect:</strong> 介于public 和 private 之间的一种访问修饰符，一般称之为“保护形”。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。</li>
+<li><strong>public：</strong> Java语言中访问限制最宽的修饰符，一般称之为“公共的”。被其修饰的类、属性以及方法不仅可以跨类访问，而且允许跨包（package）访问。</li>
+</ol>
+        <!-- 　　Java有四种访问权限，其中三种有访问权限修饰符，分别为private，public和protected，还有一种不带任何修饰符：
 
 private: Java语言中对访问权限限制的最窄的修饰符，一般称之为“私有的”。被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。
-default：即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一个包中进行访问。
-protect: 介于public 和 private 之间的一种访问修饰符，一般称之为“保护形”。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。
-public： Java语言中访问限制最宽的修饰符，一般称之为“公共的”。被其修饰的类、属性...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/15/Java访问权限修饰符的区别/#more">Continue Reading →</a>
-          </p>
-        </div>
+default：即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/15/Java访问权限修饰符的区别/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -616,7 +607,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 
   
     <article id="post-【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -631,42 +622,35 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="article-date">
-	  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">January 5, 2016</time>
+	<a href="../../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="article-date">
+	  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">2016-01-05</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>走台阶算法（本质上是斐波那契数列）在面试中常会遇到，描述就如题目那样：总共100级台阶（任意级都行），小明每次可选择走1步、2步或者3步，问走完这100级台阶总共有多少种走法？</p>
+</blockquote>
+<h3 id="一、-题目分析"><a href="#一、-题目分析" class="headerlink" title="一、 题目分析"></a><strong>一、 题目分析</strong></h3><p>这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有大于2级的n级台阶，那么假如第一次跳一级台阶，剩下还有n-1级台阶，有f(n-1)种跳法，假如第一次条2级台阶，剩下n-2级台阶，有f(n-2)种跳法。这就表示<strong>f(n)=f(n-1)+f(n-2)</strong>。将上面的斐波那契数列代码稍微改一下就是本题的答案。我们来看一下代码的实现。</p>
+<h3 id="二、斐波那契数列法"><a href="#二、斐波那契数列法" class="headerlink" title="二、斐波那契数列法"></a><strong>二、斐波那契数列法</strong></h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> s = <span class="number">100</span>; <span class="comment">//自定义的台阶数</span></div><div class="line">   </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compute</span><span class="params">(<span class="keyword">int</span> stair)</span></span>&#123;</div><div class="line">    	<span class="keyword">if</span> ( stair &lt;= <span class="number">0</span>)&#123;</div><div class="line">    		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">if</span> (stair == <span class="number">1</span>)&#123;</div><div class="line">    		<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">if</span> (stair == <span class="number">2</span>)&#123;</div><div class="line">    		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> compute(stair-<span class="number">1</span>) + compute(stair-<span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"共有"</span> + compute(s) + <span class="string">"种走法"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 
 走台阶算法（本质上是斐波那契数列）在面试中常会遇到，描述就如题目那样：总共100级台阶（任意级都行），小明每次可选择走1步、2步或者3步，问走完这100级台阶总共有多少种走法？
 
-一、 题目分析这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有大于2级的n级台阶，那么假如第一次跳一级台阶，剩下还有n-1级台阶，有f(n-1)种跳法，假如第一次条2级台阶，剩下n-2级台阶，有f(n-2)种跳法。这就表示f(n)=f(n-1)+f(n-2)。将上面的斐波那契数列代码稍微改一下就是本题的答案。我们来看一下代码的实现。
-二、斐波那契数列法publ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/#more">Continue Reading →</a>
-          </p>
-        </div>
+一、 题目分析这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -676,7 +660,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 
   
     <article id="post-新主题酝酿中"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -691,19 +675,43 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/01/04/新主题酝酿中/" class="article-date">
-	  <time datetime="2016-01-04T07:08:00.000Z" itemprop="datePublished">January 4, 2016</time>
+	<a href="../../2016/01/04/新主题酝酿中/" class="article-date">
+	  <time datetime="2016-01-04T07:08:00.000Z" itemprop="datePublished">2016-01-04</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../categories/Hexo/">Hexo</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>人们对于“美”，都有着超乎自己想象的执念。</p>
+</blockquote>
+<h2 id="Website"><a href="#Website" class="headerlink" title="Website"></a>Website</h2><ul>
+<li><p>冷淡简洁风格</p>
+<ul>
+<li><a href="http://jsdatav.is/">jsdatav.is</a></li>
+</ul>
+</li>
+<li><p><a href="http://www.akina.pw/">Akina theme</a></p>
+<ul>
+<li><a href="http://www.zhangdanteng.com/">淡腾</a></li>
+<li><a href="http://i94.me/">louie</a></li>
+<li><a href="http://iacool.com/">iacool</a></li>
+<li><a href="http://www.ta4.cn/">TA4.cn 波浪</a></li>
+</ul>
+</li>
+<li><p><a href="https://www.endskin.com/">EndSkin Wordpress主题</a></p>
+</li>
+<li><p><a href="http://tagdiv.com/">tagDiv</a> &amp; <a href="http://demo.tagdiv.com/newsmag_classic_blog/">（报纸）NEWSMAG</a></p>
+</li>
+<li><a href="http://demo.designwall.com/dw-timeline/#">漂亮的蒙层</a></li>
+</ul>
+<h2 id="图集"><a href="#图集" class="headerlink" title="图集"></a>图集</h2><ul>
+<li><a href="https://dribbble.com/shots/1706854-Nice-Bird-Wordpress-Theme-for-Newspaper-Bloggers-Magazines">from Dribbble</a><br> <img src="https://itimetraveler.github.io/2016/01/04/新主题酝酿中/nice-bird-fullpreview1.jpg" alt=""><br> <img src="https://itimetraveler.github.io/2016/01/04/新主题酝酿中/nice-bird-fullpreview.jpg" alt=""></li>
+</ul>
+        <!-- 
 人们对于“美”，都有着超乎自己想象的执念。
 
 Website
@@ -733,32 +741,17 @@ from Dribbble
 
 from Dribbble
 
-from Dribbble
-
-from Dribbble
-
-
-
-
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/04/新主题酝酿中/#more">Continue Reading →</a>
-          </p>
-        </div>
+from Dribbbl......  -->
+        <p class="article-more-link">
+          <a href="../../2016/01/04/新主题酝酿中/#more">Read More</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Hexo/">Hexo</a>
-
       
-  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Hexo/">Hexo</a></li></ul>
 
-      
     </footer>
   </div>
   
@@ -771,278 +764,32 @@ from Dribbble
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../4/">Prev</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../3/">3</a><a class="page-number" href="../4/">4</a><span class="page-number current">5</span><a class="page-number" href="../6/">6</a><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../6/">Next</a>
+    <a class="extend prev" rel="prev" href="../4/">&laquo; Prev</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../3/">3</a><a class="page-number" href="../4/">4</a><span class="page-number current">5</span><a class="page-number" href="../6/">6</a><a class="page-number" href="../7/">7</a><a class="extend next" rel="next" href="../6/">Next &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" title=""><img width="50" height="50" src="/gallery/Google-Interview-Qs.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a></h6>
-              <span>May 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" title=""><img width="50" height="50" src="/gallery/singleInstance.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/">【Android】判断应用Application、Activity是否处于活动状态</a></h6>
-              <span>May 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" title=""><img width="50" height="50" src="/gallery/exception-handling.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/">【Android】使用UncaughtExceptionHandler捕获全局异常</a></h6>
-              <span>April 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/03/30/【Android 】硬件加速原理与实现简介/" title=""><img width="50" height="50" src="/gallery/hardware-acceleration.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/03/30/【Android 】硬件加速原理与实现简介/">【Android 】硬件加速原理与实现简介</a></h6>
-              <span>March 30, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" title=""><img width="50" height="50" src="/gallery/gradle-as.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/">【Gradle】Android Studio中Gradle重复依赖的问题</a></h6>
-              <span>February 23, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/02/13/【Android】内存泄漏分析心得/" title=""><img width="50" height="50" src="/gallery/memoryleak.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/02/13/【Android】内存泄漏分析心得/">【Android】内存泄漏分析心得</a></h6>
-              <span>February 13, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/APK/">APK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Android/">Android</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/BAT/">BAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Bayesian/">Bayesian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Broadcast/">Broadcast</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Exception/">Exception</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/GPU/">GPU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Google/">Google</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Go语言/">Go语言</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java/">Java</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Java-Generics/">Java Generics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Neo4j/">Neo4j</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/RxJava/">RxJava</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SVN/">SVN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Tinker/">Tinker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/WebDevelopment/">WebDevelopment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/hotfix/">hotfix</a><span class="tag-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 10px;">D3</a> <a href="../../tags/Exception/" style="font-size: 10px;">Exception</a> <a href="../../tags/GPU/" style="font-size: 10px;">GPU</a> <a href="../../tags/Google/" style="font-size: 12.5px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="../../tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="../../tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 17.5px;">Java</a> <a href="../../tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="../../tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/01/">January 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">November 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">October 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">July 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">January 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">November 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">October 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				<span id="busuanzi_container_site_uv"> UV : <span id="busuanzi_value_site_uv"></span></span> |  
+				<span id="busuanzi_container_site_pv"> PV : <span id="busuanzi_value_site_pv"></span></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -1050,9 +797,16 @@ from Dribbble
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -1065,14 +819,17 @@ from Dribbble
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../../funnysite" class="mobile-nav-link">FunnySite</a>
-  
-    <a href="../../collection" class="mobile-nav-link">Collection</a>
-  
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
     
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1112,7 +869,9 @@ from Dribbble
 
 <script src="../../js/script.js"></script>
 <script src="../../js/bootstrap.js"></script>
-<script src="../../js/main.js"></script>
+
+
+  <script src="../../js/home.js"></script>
 
 
 
@@ -1120,23 +879,74 @@ from Dribbble
 
 
 
-  <div style="display: none;">
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
 
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
