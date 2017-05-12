@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 4 页 | iTimeTraveler</title>
+  <title>iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -35,29 +35,41 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
 
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "关于"; 
+
+</script>
 
 
   <body>
 
 
-  
-
-
-<header id="allheader" class="site-header" role="banner" 
-   >
+  <header id="allheader" class="site-header" role="banner">
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -66,7 +78,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-          
+
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -74,9 +86,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-
             <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">首页</a> </li>
                     
@@ -96,9 +108,12 @@
             </div>
           </nav>
 
+
       </div>
   </div>
 </header>
+
+
 
 
   <div id="container">
@@ -124,14 +139,10 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
+	Posted on <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
 	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">八月 12, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -139,9 +150,34 @@
         
 
           
-          <div class="entry-summary">
-          Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+            <div class="entry-summary" style="margin-left:0;">
+            Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
 Last Update: 2016.08.09
+ 
+
+
+
+Project Name
+Stars
+Description
+
+
+
+
+TensorFlow
+29622
+Computation using data flow graphs for scalable machine learning.
+
+
+Caffe
+11799
+Caffe: a fast open framework for deep learning.
+
+
+Neural Style
+10148
+Torch impleme...
+          
 
         
           <p class="article-more-link">
@@ -161,7 +197,6 @@ Last Update: 2016.08.09
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -185,14 +220,10 @@ Last Update: 2016.08.09
     
     <div class="article-meta">
       
-	<a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
+	Posted on <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
 	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">八月 8, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -200,14 +231,14 @@ Last Update: 2016.08.09
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &lt;stroke        android:width="0dp"        android:color="@color/gray" /&gt;    &lt;solid        android:color="@color/gray" /&gt;&lt;/shape&gt;
-然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。
+为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
+          
 
         
           <p class="article-more-link">
@@ -227,7 +258,6 @@ Last Update: 2016.08.09
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -251,14 +281,10 @@ Last Update: 2016.08.09
     
     <div class="article-meta">
       
-	<a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
+	Posted on <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
 	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">八月 2, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -266,8 +292,8 @@ Last Update: 2016.08.09
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 
 互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
 
@@ -289,6 +315,10 @@ T6：首席科学家
 
 
 
+目前全腾讯貌似就一个T6。
+每一级之间又分为3个子级，3-1是任命组长/副组长的必要条件，其他线也...
+          
+
         
           <p class="article-more-link">
             <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">阅读全文</a>
@@ -307,7 +337,6 @@ T6：首席科学家
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -331,14 +360,10 @@ T6：首席科学家
     
     <div class="article-meta">
       
-	<a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
+	Posted on <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
 	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">七月 22, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -346,19 +371,14 @@ T6：首席科学家
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
 但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
 
 一、名词介绍
-PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&nbsp;&nbsp;&nbsp; ● ldpi: 0.75下图是Android官网dpi的定义（其实在计算机中dpi就是ppi。注意，是dpi，不是dip，dpi是现实概念，dip是人为抽象概念。还是不明白可以看看这里 dpi与ppi区别）：
-
-dp = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:&nbsp;&nbsp;&nbsp;&nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px&nbsp;&nbsp;&nbsp;&nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px&nbsp;&nbsp;&nbsp;&nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数
-
-sp = Scale-independent pixels，它是安卓的字体单位
-
-
+PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”&nbsp;&nbsp;&nbsp;&nbsp; ● xhdpi: 2.0&nbsp;&nbsp;&nbsp;&nbsp; ● hdpi: 1.5&nbsp;&nbsp;&nbsp;&nbsp; ● mdpi: 1.0 (baseline)&nbsp;&...
+          
 
         
           <p class="article-more-link">
@@ -378,7 +398,6 @@ sp = Scale-independent pixels，它是安卓的字体单位
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -402,14 +421,10 @@ sp = Scale-independent pixels，它是安卓的字体单位
     
     <div class="article-meta">
       
-	<a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
+	Posted on <a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
 	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">七月 19, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -417,23 +432,14 @@ sp = Scale-independent pixels，它是安卓的字体单位
         
 
           
-          <div class="entry-summary">
-          一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+            <div class="entry-summary" style="margin-left:0;">
+            一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
 二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventcount &gt; , 例如：
 
 adb shell monkey -v 500
 
-产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。上面只是一个简单的例子，实际情况中通常会有很多的options 选项.
-2）. 四大类
-
-
-常用选项
-事件选项 
-约束选项 
-调试选项
-
-
-具体的命令解释可以看这里：android 压力测试命令monkey详解
+产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activit...
+          
 
         
           <p class="article-more-link">
@@ -453,7 +459,6 @@ adb shell monkey -v 500
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -477,14 +482,10 @@ adb shell monkey -v 500
     
     <div class="article-meta">
       
-	<a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
+	Posted on <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
 	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">七月 14, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -492,13 +493,18 @@ adb shell monkey -v 500
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 英文原文： Auto Restart application after Crash/Force Close in Android.
 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
 
 这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。
 其实方法很简单，这里我们需要用到 Thread.setDefaultUncaughtExceptionHandler()，当应用崩溃的时候代码就会自动调用 uncaughtException() 这个方法。
+
+操作步骤如下：
+Step 1
+像下面这...
+          
 
         
           <p class="article-more-link">
@@ -518,7 +524,6 @@ adb shell monkey -v 500
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -542,14 +547,10 @@ adb shell monkey -v 500
     
     <div class="article-meta">
       
-	<a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
+	Posted on <a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
 	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">六月 12, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/SVN/">SVN</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -557,12 +558,13 @@ adb shell monkey -v 500
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
 一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
-二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	// 当前目录进行递归回滚
+二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
+          
 
         
           <p class="article-more-link">
@@ -582,7 +584,6 @@ adb shell monkey -v 500
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -606,29 +607,24 @@ adb shell monkey -v 500
     
     <div class="article-meta">
       
-	<a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
+	Posted on <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         
           <div class="entry-thumbnail">
-            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/"><img src="/gallery/touch-screen.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/"><img width="250" height="175" src="/gallery/touch-screen.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           
 在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
 
 经过调研发现，给系统模拟注入输入事件有如下几种方式：
-一、使用shell命令使用android自带的adb shell，里面自带一个input工具，使用方法如下：
-adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input keyevent KEYCODE_HOME  #模拟按Home键
+一、使用shell命令使用android自带的adb shell，里面自带一个input工具...
 
         
           <p class="article-more-link">
@@ -648,7 +644,6 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -672,14 +667,10 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
     
     <div class="article-meta">
       
-	<a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -687,12 +678,12 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
 
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUSTOM_CAMERA = 1 &lt;&lt; 2;public static final int BROADCAST_TYPE_CUSTOM_SAFE = 1 &lt;&lt; 3;
-一、添加Addprivate void addLevel(int level)&#123;	mBroadcastCustomValue |= level;    //add&#125;//调用方式如下addLevel(BROADCAST_TYPE_CUSTOM_BASE);
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
+          
 
         
           <p class="article-more-link">
@@ -712,7 +703,6 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -736,14 +726,10 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
     
     <div class="article-meta">
       
-	<a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
+	Posted on <a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
 	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">四月 29, 2016</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
- 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -751,11 +737,17 @@ adb shell #进入系统input keyevent KEYCODE_BACK  #模拟按返回键input key
         
 
           
-          <div class="entry-summary">
-          
+            <div class="entry-summary" style="margin-left:0;">
+            
 select * from table_name where id in ()的时候，MySQL会自动按主键自增排序，要是按IN中给定的顺序来取，如何实现呢？
 
 比如下面这个查询结果，mysql会默认使用主键id的ASC自增排序结果集：
+
+那么，如果我们想维持查询语句中IN(26613,26612,26611,26610,26609,26608,26607)的顺序可以么？当然可以，像下面这样，使用Order by field()：
+SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612,26611,26610);
+这样读取出来的顺序就是IN（）语句中的顺序。
+
+          
 
         
           <p class="article-more-link">
@@ -775,7 +767,6 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 
       
     </footer>
-    <hr class="entry-footer-hr">
   </div>
   
 </article>
@@ -793,13 +784,13 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 </section>
           <aside id="sidebar">
   
-    <div style="margin: 20px 0;">
+    <div class="widget-wrap" style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 72%;">
+        <label style="width: 75%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" 搜索…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="搜索">
     </form>
@@ -843,23 +834,41 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 
     	<ul class="clearfix widget-social-icons">   
     	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
    		
    		</ul>
 
@@ -1025,7 +1034,33 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 </aside>
         
       </div>
+      <footer id="footer" class="site-footer">
+  
 
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1044,44 +1079,7 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
     <a href="../../about" class="mobile-nav-link">About</a>
   
 </nav> -->
-    <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-        
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
     
-    
-</script>
-    
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
 
 <!-- mathjax config similar to math.stackexchange -->
 

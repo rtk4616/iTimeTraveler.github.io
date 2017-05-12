@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Categories | iTimeTraveler</title>
+  <title>分类 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -36,29 +36,41 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
     
   <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
-
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../css/style.css">
 
   <script src="../js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
   <link rel="stylesheet" href="/css/glyphs.css" >
 
 </head>
 
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "关于"; 
+
+</script>
 
 
   <body>
 
 
-  
-
-
-<header id="allheader" class="site-header" role="banner" 
-   >
+  <header id="allheader" class="site-header" role="banner">
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -67,7 +79,7 @@
               <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
             
           </h1>
-          
+
           
             <div class="site-description">Someone knock at the door.</div>
           
@@ -75,9 +87,9 @@
           <nav id="main-navigation" class="main-navigation" role="navigation">
             <a class="nav-open">Menu</a>
             <a class="nav-close">Close</a>
-
             <div class="clearfix sf-menu">
-              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../index.html">首页</a> </li>
                     
@@ -97,9 +109,12 @@
             </div>
           </nav>
 
+
       </div>
   </div>
 </header>
+
+
 
 
   <div id="container">
@@ -108,20 +123,20 @@
       <div id="content" class="outer">
         
           <section id="main"><div class="archives-wrap" style="margin: 0px;">
-	<div class="archives-category-wrap">
-		<blockquote>
-		
-		  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="Android/">Android</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Web/">Web</a><span class="category-list-count">2</span></li></ul>
-		
-		</blockquote>
-	</div>
-	
-	<!-- 分类列表 -->
+    <div class="archives-category-wrap">
+        <blockquote>
+        
+          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="Android/">Android</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="Web/">Web</a><span class="category-list-count">2</span></li></ul>
+        
+        </blockquote>
+    </div>
+    
+    <!-- 分类列表 -->
 
     
     <div class="archives-wrap">
-        <div class="archive-year-wrap" id="Algorithm">
-            <h1 class="archive-category">Algorithm</h1>
+        <div class="archive-year-wrap" id="Machine Learning">
+            <h1 class="archive-category">Machine Learning</h1>
         </div>
         <div class="archives">
             
@@ -129,13 +144,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="archive-article-date">
-		  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">5月 05, 2017</time>
+      <a href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="archive-article-date">
+		  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">8月 14, 2016</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a>
+      <a class="archive-article-title" href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/">【Machine Learning】机器学习：简明入门指南</a>
     </h1>
   
 
@@ -148,13 +163,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="archive-article-date">
-		  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">12月 22, 2016</time>
+      <a href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="archive-article-date">
+		  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">8月 12, 2016</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">数学之美番外篇：平凡而又神奇的贝叶斯方法</a>
+      <a class="archive-article-title" href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/">【Machine Learning】Github上关注最多的53个深度学习项目</a>
     </h1>
   
 
@@ -163,17 +178,26 @@
 </article>
                 
             
+        </div>
+    </div>
+    
+    <div class="archives-wrap">
+        <div class="archive-year-wrap" id="D3.js">
+            <h1 class="archive-category">D3.js</h1>
+        </div>
+        <div class="archives">
+            
                 <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2016/04/06/”二分查找“算法的时间复杂度/" class="archive-article-date">
-		  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">4月 06, 2016</time>
+      <a href="../2016/11/09/D3.js加载本地json文件的问题/" class="archive-article-date">
+		  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">11月 09, 2016</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/04/06/”二分查找“算法的时间复杂度/">”二分查找“算法的时间复杂度</a>
+      <a class="archive-article-title" href="../2016/11/09/D3.js加载本地json文件的问题/">D3.js加载本地json文件的问题</a>
     </h1>
   
 
@@ -182,55 +206,26 @@
 </article>
                 
             
-                <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="archive-article-date">
-		  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">1月 22, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/">如何生成100个1-100以内的不重复的随机数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-                
+        </div>
+    </div>
+    
+    <div class="archives-wrap">
+        <div class="archive-year-wrap" id="BAT">
+            <h1 class="archive-category">BAT</h1>
+        </div>
+        <div class="archives">
             
                 <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="archive-article-date">
-		  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">1月 05, 2016</time>
+      <a href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="archive-article-date">
+		  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">8月 02, 2016</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/">【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-                
-            
-                <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/" class="archive-article-date">
-		  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">11月 03, 2015</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/">各种排序算法时间复杂度和空间复杂度表</a>
+      <a class="archive-article-title" href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/">BAT人才体系的职位层级、薪酬、晋升标准</a>
     </h1>
   
 
@@ -860,8 +855,8 @@
     </div>
     
     <div class="archives-wrap">
-        <div class="archive-year-wrap" id="BAT">
-            <h1 class="archive-category">BAT</h1>
+        <div class="archive-year-wrap" id="Algorithm">
+            <h1 class="archive-category">Algorithm</h1>
         </div>
         <div class="archives">
             
@@ -869,13 +864,13 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="archive-article-date">
-		  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">8月 02, 2016</time>
+      <a href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="archive-article-date">
+		  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">5月 05, 2017</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/">BAT人才体系的职位层级、薪酬、晋升标准</a>
+      <a class="archive-article-title" href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a>
     </h1>
   
 
@@ -884,26 +879,93 @@
 </article>
                 
             
-        </div>
-    </div>
-    
-    <div class="archives-wrap">
-        <div class="archive-year-wrap" id="D3.js">
-            <h1 class="archive-category">D3.js</h1>
-        </div>
-        <div class="archives">
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="archive-article-date">
+		  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">12月 22, 2016</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">数学之美番外篇：平凡而又神奇的贝叶斯方法</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
             
                 <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
 
-      <a href="../2016/11/09/D3.js加载本地json文件的问题/" class="archive-article-date">
-		  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">11月 09, 2016</time>
+      <a href="../2016/04/06/”二分查找“算法的时间复杂度/" class="archive-article-date">
+		  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">4月 06, 2016</time>
 	  </a>
       
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/11/09/D3.js加载本地json文件的问题/">D3.js加载本地json文件的问题</a>
+      <a class="archive-article-title" href="../2016/04/06/”二分查找“算法的时间复杂度/">”二分查找“算法的时间复杂度</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="archive-article-date">
+		  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">1月 22, 2016</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/">如何生成100个1-100以内的不重复的随机数</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="archive-article-date">
+		  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">1月 05, 2016</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/">【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/" class="archive-article-date">
+		  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">11月 03, 2015</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/">各种排序算法时间复杂度和空间复杂度表</a>
     </h1>
   
 
@@ -1274,53 +1336,6 @@
     </div>
     
     <div class="archives-wrap">
-        <div class="archive-year-wrap" id="Machine Learning">
-            <h1 class="archive-category">Machine Learning</h1>
-        </div>
-        <div class="archives">
-            
-                <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="archive-article-date">
-		  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">8月 14, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/">【Machine Learning】机器学习：简明入门指南</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-                
-            
-                <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="archive-article-date">
-		  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">8月 12, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/">【Machine Learning】Github上关注最多的53个深度学习项目</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-                
-            
-        </div>
-    </div>
-    
-    <div class="archives-wrap">
         <div class="archive-year-wrap" id="MySQL">
             <h1 class="archive-category">MySQL</h1>
         </div>
@@ -1426,13 +1441,13 @@
 </div></section>
           <aside id="sidebar">
   
-    <div style="margin: 20px 0;">
+    <div class="widget-wrap" style="margin: 20px 0;">
 	<div id="search-form-wrap">
 
     <form class="search-form">
-        <label style="width: 72%;">
+        <label style="width: 75%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" 搜索…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
         </label>
         <input type="submit" class="search-form-submit" value="搜索">
     </form>
@@ -1476,23 +1491,41 @@
 
     	<ul class="clearfix widget-social-icons">   
     	
-   			<li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
    		
-   			<li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
    		
    		</ul>
 
@@ -1658,7 +1691,33 @@
 </aside>
         
       </div>
+      <footer id="footer" class="site-footer">
+  
 
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1677,44 +1736,7 @@
     <a href="../about" class="mobile-nav-link">About</a>
   
 </nav> -->
-    <footer id="footer" class="site-footer">
-  
-
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-        
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
-      </div>
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
-
-
-    <!-- headerblur min height -->
     
-    
-</script>
-    
-<div style="display: none;">
-  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-</div>
 
 <!-- mathjax config similar to math.stackexchange -->
 
