@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-05-05T09:33:01.082Z</updated>
+  <updated>2017-05-18T03:42:05.220Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Android】Audio音频输出通道切换 - 蓝牙、外放</title>
+    <link href="http://github.com/2017/05/18/%E3%80%90Android%E3%80%91Audio%E9%9F%B3%E9%A2%91%E8%BE%93%E5%87%BA%E9%80%9A%E9%81%93%E5%88%87%E6%8D%A2%20-%20%E8%93%9D%E7%89%99%E3%80%81%E5%A4%96%E6%94%BE/"/>
+    <id>http://github.com/2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/</id>
+    <published>2017-05-18T03:40:00.000Z</published>
+    <updated>2017-05-18T03:42:05.220Z</updated>
+    
+    <content type="html"><![CDATA[<p>手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。</p>
+<h2 id="场景需求"><a href="#场景需求" class="headerlink" title="场景需求"></a><strong>场景需求</strong></h2><p>Android系统自动切换的这些策略，并不能全部满足我们的产品需求，比如音乐App需要对听歌时拔出耳机的操作进行阻止（暂停播放），防止突然切换到外放导致尴尬。</p>
+<p>最近项目需求希望<strong><code>即使在连接蓝牙音箱的情况下，仍旧使用手机外放播放音频</code></strong>。这就需要强制切换Audio输出通道，打破系统原有的策略。</p>
+<p>查阅资料，看到了Android中可以通过<code>AudioManager</code>查询、切换当前Audio输出的情况，并且在Audio输出发生变化时，捕获并处理这种变化。</p>
+<p>首先提醒下大家，使用下面的方法时，需要添加权限：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.MODIFY_AUDIO_SETTINGS"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Audio输出状态查询"><a href="#Audio输出状态查询" class="headerlink" title="Audio输出状态查询"></a><strong>Audio输出状态查询</strong></h2><p>AudioManager 提供的下列方法可以用来查询当前Audio输出的状态：</p>
+<ul>
+<li><p><strong><code>isBluetoothA2dpOn()</code></strong>：检查A2DPAudio音频输出是否通过蓝牙耳机；</p>
+</li>
+<li><p><strong><code>isSpeakerphoneOn()</code></strong>：检查扬声器是否打开；</p>
+</li>
+<li><p><strong><code>isWiredHeadsetOn()</code></strong>：检查线控耳机是否连着；注意这个方法只是用来判断耳机是否是插入状态，并不能用它的结果来判定当前的Audio是通过耳机输出的，这还依赖于其他条件。</p>
+</li>
+<li><p><strong><code>setSpeakerphoneOn(boolean on)</code></strong>：直接选择外放扬声器发声；</p>
+</li>
+<li><p><strong><code>setBluetoothScoOn(boolean on)</code></strong>：要求使用蓝牙SCO耳机进行通讯；</p>
+</li>
+</ul>
+<p>在Android系统中通过<code>AudioManager.setMode()</code>方法来管理播放模式。在<code>setMode()</code>方法中有以下几种对应不同的播放模式:</p>
+<ul>
+<li><code>MODE_NORMAL</code> : 普通模式，既不是铃声模式也不是通话模式</li>
+<li><code>MODE_RINGTONE</code> : 铃声模式</li>
+<li><code>MODE_IN_CALL</code> : 通话模式</li>
+<li><code>MODE_IN_COMMUNICATION</code> : 通信模式，包括音/视频,VoIP通话.(3.0加入的，与通话模式类似)</li>
+</ul>
+<p>在设置播放模式的时候，需要考虑流类型，我在这里使用的流类型是 <code>STREAM_MUSIC</code> ，所以切换播放设备的时候就需要设置为<strong><code>MODE_IN_COMMUNICATION</code></strong> 模式而不是 <code>MODE_NORMAL</code> 模式。可以参考<a href="http://stackoverflow.com/questions/31871328/android-5-0-audiomanager-setmode-not-working" target="_blank" rel="external"><strong>这个问题</strong></a>。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a><strong>解决问题</strong></h2><p>使用以下方法切换音频Audio输出，参考<a href="http://stackoverflow.com/questions/22770321/android-switching-audio-between-bluetooth-and-phone-speaker-is-inconsistent" target="_blank" rel="external">Android : Switching audio between Bluetooth and Phone Speaker is inconsistent</a>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 切换到外放</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToSpeaker</span><span class="params">()</span></span>&#123;</div><div class="line">    mAudioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);    <span class="comment">//注意此处不是MODE_NORMAL</span></div><div class="line">	mAudioManager.stopBluetoothSco();</div><div class="line">	mAudioManager.setBluetoothScoOn(<span class="keyword">false</span>);</div><div class="line">	mAudioManager.setSpeakerphoneOn(<span class="keyword">true</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 切换到蓝牙音箱</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToHeadset</span><span class="params">()</span></span>&#123;</div><div class="line">    mAudioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);</div><div class="line">	mAudioManager.startBluetoothSco();</div><div class="line">	mAudioManager.setBluetoothScoOn(<span class="keyword">true</span>);</div><div class="line">	mAudioManager.setSpeakerphoneOn(<span class="keyword">false</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/************************************************************/</span></div><div class="line"><span class="comment">//注意：以下两个方法还未验证</span></div><div class="line"><span class="comment">/************************************************************/</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 切换到耳机模式</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToHeadset</span><span class="params">()</span></span>&#123;</div><div class="line">    mAudioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);</div><div class="line">	mAudioManager.stopBluetoothSco();</div><div class="line">	mAudioManager.setBluetoothScoOn(<span class="keyword">false</span>);</div><div class="line">	mAudioManager.setSpeakerphoneOn(<span class="keyword">false</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 切换到听筒</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeToReceiver</span><span class="params">()</span></span>&#123;</div><div class="line">    audioManager.setSpeakerphoneOn(<span class="keyword">false</span>);</div><div class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB)&#123;</div><div class="line">        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        audioManager.setMode(AudioManager.MODE_IN_CALL);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>直接切换输出通道的方法我们已经知道了。剩下需要解决的问题是，<strong>当蓝牙设备断开、连接的时候，我们希望可以自动切换到用户原本设置的输出通道上</strong>，比如在蓝牙未连接时，用户设置的是希望通过蓝牙播报，所以应该在蓝牙一旦连接以后，就吧音频切换到蓝牙设备上。</p>
+<p>下面我们就看看如何监听蓝牙设备的连接状态。</p>
+<h2 id="监听蓝牙连接状态"><a href="#监听蓝牙连接状态" class="headerlink" title="监听蓝牙连接状态"></a><strong>监听蓝牙连接状态</strong></h2><p>根据<a href="http://blog.csdn.net/l627859442/article/details/7918597" target="_blank" rel="external">这篇文章</a>，我们发现可以使用 <a href="https://developer.android.com/reference/android/media/AudioManager.html#ACTION_AUDIO_BECOMING_NOISY" target="_blank" rel="external"><code>AudioManager.ACTION_AUDIO_BECOMING_NOISY</code></a> 这个Intent Action来监听蓝牙断开、耳机插拔的广播，但是测试发现，它也只能收到蓝牙断开的广播，无法接收到蓝牙连接的广播，所以不是我们想要的。</p>
+<p>进一步我们发现了<code>BluetoothDevice.ACTION_ACL_CONNECTED</code> 和 <code>BluetoothDevice.ACTION_ACL_DISCONNECTED</code> 这两个Intent广播，参考<a href="http://www.b2cloud.com.au/tutorial/listening-to-bluetooth-connections/" target="_blank" rel="external"><strong>Listening to bluetooth connections</strong></a>这篇文章。首先需要以下权限：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH_ADMIN"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>注册蓝牙连接、断开广播的两种方式如下：</p>
+<ul>
+<li>静态注册广播</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmls:android</span>=<span class="string">"http://schema.android.com/apk/res/android"</span> <span class="attr">package</span>=<span class="string">"com.squizbit.bluetoothexample"</span>&gt;</span></div><div class="line">...</div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH_ADMIN"</span>/&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH"</span>/&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">application</span> <span class="attr">...</span>&gt;</span></div><div class="line">        ...</div><div class="line">        <span class="tag">&lt;<span class="name">receiver</span></span></div><div class="line">            <span class="attr">android:name</span>=<span class="string">"..."</span></div><div class="line">            <span class="attr">android:enabled</span>=<span class="string">"true"</span></div><div class="line">            <span class="attr">android:exported</span>=<span class="string">"false"</span>&gt;</div><div class="line">            <span class="comment">&lt;!-- 在这里 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.bluetooth.adapter.action.ACL_CONNECTED/&gt;</span></span></div><div class="line">                &lt;action android:name="<span class="attr">android.bluetooth.adapter.action.ACL_DISCONNECTED</span>/&gt;</div><div class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>动态注册广播</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BluetoothConnectionReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BluetoothConnectionReceiver</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//No initialisation code needed</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(BluetoothDevice.ACTION_ACL_CONNECTED.equals(action.getAction())&#123;</div><div class="line">            <span class="comment">//连接，切换音频输出（到蓝牙、或者强制仍然扬声器外放）</span></div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action.getAction())&#123;</div><div class="line">            <span class="comment">//断开，切换音频输出</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后，我们就可以根据上面切换音频输出通道的代码来实现蓝牙设备连接、断开以后<strong>强制打破操作系统原有的输出通道切换策略</strong>，来实现我们自己想要的切换功能了。</p>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>1、<a href="http://blog.csdn.net/l627859442/article/details/7918597" target="_blank" rel="external">Android中的Audio播放：控制Audio输出通道切换 </a><br>2、<a href="http://www.devwiki.net/2015/09/20/Android-Music-Play-Mode/" target="_blank" rel="external">Android音乐播放模式切换-外放、听筒、耳机</a><br>3、<a href="http://stackoverflow.com/questions/22770321/android-switching-audio-between-bluetooth-and-phone-speaker-is-inconsistent" target="_blank" rel="external">Android : Switching audio between Bluetooth and Phone Speaker is inconsistent</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。&lt;/p&gt;
+&lt;h2 id=&quot;场景需求&quot;&gt;&lt;a href=&quot;#场景需求&quot; class=&quot;headerlink&quot; title=&quot;场景需求&quot;&gt;&lt;/a&gt;&lt;strong&gt;场景需求&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Android系统自动切换的这些策略，并不能全部满足我们的产品需求，比如音乐App需要对听歌时拔出耳机的操作进行阻止（暂停播放），防止突然切换到外放导致尴尬。&lt;/p&gt;
+&lt;p&gt;最近项目需求希望&lt;strong&gt;&lt;code&gt;即使在连接蓝牙音箱的情况下，仍旧使用手机外放播放音频&lt;/code&gt;&lt;/strong&gt;。这就需要强制切换Audio输出通道，打破系统原有的策略。&lt;/p&gt;
+&lt;p&gt;查阅资料，看到了Android中可以通过&lt;code&gt;AudioManager&lt;/code&gt;查询、切换当前Audio输出的情况，并且在Audio输出发生变化时，捕获并处理这种变化。&lt;/p&gt;
+&lt;p&gt;首先提醒下大家，使用下面的方法时，需要添加权限：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://github.com/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://github.com/tags/Android/"/>
+    
+      <category term="Audio" scheme="http://github.com/tags/Audio/"/>
+    
+  </entry>
   
   <entry>
     <title>Google 面试题 | 判断字符串是否可由重复子字符串组成</title>
@@ -2853,156 +2928,6 @@
     
     
       <category term="Google" scheme="http://github.com/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入了解Android Studio和Gradle</title>
-    <link href="http://github.com/2016/10/18/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3Android%20Studio%E5%92%8CGradle/"/>
-    <id>http://github.com/2016/10/18/深入了解Android Studio和Gradle/</id>
-    <published>2016-10-18T09:08:00.000Z</published>
-    <updated>2016-10-18T10:07:30.387Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>原文链接： <a href="https://zhuanlan.zhihu.com/p/22990436" target="_blank" rel="external"><strong>重新认识AndroidStudio和Gradle，这些都是我们应该知道的</strong></a>  — by <a href="https://www.zhihu.com/people/zeng-jing-fang" target="_blank" rel="external">井方哥</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>主要从AndroidStudio的环境安装升级，Gradle，Eclipse转AS,多渠道配置，Maven私服，Action,Option，快捷键等几个方面出发，讲一些操作技巧以及我对AndroidStudio使用的一些理解与经验。本文较全面的讲述了我们在开发中必须要了解的，比较多而全，可能不能马上记住，目的在于大家看我之后能有一个认识，在需要使用的时候知道有这么个东西。希望对你的开发工作有所帮助，不足之处，请批评指正。</p>
-<h2 id="一、Install-amp-Settings-amp-Update"><a href="#一、Install-amp-Settings-amp-Update" class="headerlink" title="一、Install&amp;Settings&amp;Update"></a><strong>一、Install&amp;Settings&amp;Update</strong></h2><h3 id="1、Gradle"><a href="#1、Gradle" class="headerlink" title="1、Gradle"></a>1、Gradle</h3><p>Gradle官方会不断更新，我们可以使用本地安装的方式，并配置path，我们就可以使用Terminal直接输入gradle命令执行构建任务。当然如果我们想快速更新，可以修改配置文件。 首先，修改<code>project\gradle\warpper\gradle-wapper.properties</code> 文件，其中distributionUrl的值：</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">distributionUrl=https\:<span class="comment">//services.gradle.org/distributions/gradle-2.4-all.zip</span></div></pre></td></tr></table></figure>
-<p>这里实际是从网络下载配置的版本，会自动检测，如果不是的就会下载。</p>
-<p>然后修改 project的build.gradle</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.3.0'</span></div><div class="line"></div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">    <span class="comment">// in the individual module build.gradle files</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>注意：这两个配置是一一对应的，比如gradle-2.4-all对应的就是1.3.0。后者的意思是这个project配置的gradle构建版本为1.3.0，前者的意思是这个project使用的gradle的版本为2.4。我们会发现，如果我们修改前者，如果本地没有安装这个版本的gradle，会自动从gradle官网下载。但是，如果我们修改后者，它会自动从jcenter()仓库下载一些plugin之类的。</p>
-<h3 id="2、AS具体的安装和更新网上有许多的详细教程，我只想说以下三点。"><a href="#2、AS具体的安装和更新网上有许多的详细教程，我只想说以下三点。" class="headerlink" title="2、AS具体的安装和更新网上有许多的详细教程，我只想说以下三点。"></a>2、AS具体的安装和更新网上有许多的详细教程，我只想说以下三点。</h3><ul>
-<li><p>Android Studio是Google官方基于IntelliJ IDEA开发的一款Android应用开发工具,绝逼比Eclipse强大，还没有转的尽快吧:</p>
-</li>
-<li><p>关闭AndroidStudio的自检升级，如果准备好升级还是自己选择想升级的版本升级靠谱；</p>
-</li>
-<li><p>升级前导出AndroidStudio的配置文件settings.jar(C:\Users\Administrator.AndroidStudio1.4\config目录下，或者操作File|Export Setings导出)，升级后导入Settings.jar，这样就不需要重新配置，有必要的话给自己备份一个，说不定老天无缘无故挂了重装很方便。</p>
-</li>
-<li><p>具体细节的配置可以阅读，强烈建议直接打开AS的设置窗口，多转几次就熟悉了里边的各种配置啦。也可以参考这边文章，（1.4版本，有点旧了，差不多够用）<a href="http://blog.csdn.net/JF_1994/article/details/50085825" target="_blank" rel="external">打造你的开发工具，settings必备</a></p>
-</li>
-</ul>
-<h2 id="二、Gradle"><a href="#二、Gradle" class="headerlink" title="二、Gradle"></a><strong>二、Gradle</strong></h2><h3 id="1-简述Groovy语言"><a href="#1-简述Groovy语言" class="headerlink" title="1 简述Groovy语言"></a>1 简述Groovy语言</h3><p>Groovy是一种开发语言，是在Java平台上的，具有向Python，Ruby语言特性的灵活动态语言,Groovy保重了这些特性像Java语法一样被Java开发者使用。编译最终都会转成java的.class文件。他们的关系如下图。我想这大概也是Gradle构建系统为什么要选择Groovy的原因，它具有java语言的特性，开发者容易理解使用。一定要明白我们在build.gradle里边不是简单的配置，而是直接的逻辑开发。如果你熟练掌握Groovy，那么你在build.grale里边可以做任何你想做的事。</p>
-<h3 id="2-Gradle编程框架"><a href="#2-Gradle编程框架" class="headerlink" title="2 Gradle编程框架"></a>2 Gradle编程框架</h3><p>Gradle是一个工具，同时它也是一个编程框架。使用这个工具可以完成app的编译打包等工作，也可以干别的工作！Gradle里边有许多不同的插件，对应不同的工程结构、打包方式和输出文件类型。我们经常使用到的便是maven\java\com.android.application\android-library等。当按照要求配置好gradle的环境后，执行gradle的task，便会自动编译打包输出你想要的.apk.aar.jar文件,如果你足够牛逼，你有gradle就够了，直接拿记事本开发；</p>
-<p><strong>如下图，是Gradle的工作流程。</strong></p>
-<ul>
-<li><p>Initializtion 初始化，执行settings.gradle(我们看到都是include”,实际里边可深了）</p>
-</li>
-<li><p>Hook 通过API来添加，这中间我们可以自己编程干些自己想做的事情</p>
-</li>
-<li><p>Configuration 解析每个project的build.gradle，确定project以及内部Task关系，形成一个有向图</p>
-</li>
-<li><p>Execution 执行任务，输入命令 gradle xxx ,按照顺序执行该task的所有依赖以自己本身</p>
-</li>
-</ul>
-<h3 id="3-关于gradle的task"><a href="#3-关于gradle的task" class="headerlink" title="3 关于gradle的task"></a>3 关于gradle的task</h3><p>每个构建由一个或者多个project构成，一个project代表一个jar，一个moudle等等。一个project包含若干个task，包含多少由插件决定，而每一个task就是更细的构建任务，比如创建一个jar、生成Javadoc、上传aar到maven仓库。我们可以通过执行如下命令查看所有的task:</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">gradle tasks --all</div></pre></td></tr></table></figure>
-<p>当然，我们也可以在AS中可以看到所有的task，双击就可以执行单个的task.</p>
-<p>当然，我们也可以在build.gradle中写自己的task。关于详细的task介绍可以查看网络资料进行学习，推荐<a href="http://blog.jobbole.com/71999/" target="_blank" rel="external">Gradle入门系列</a>，基本花上半天到一天的时候简单的过一遍就有一个大概的了解。</p>
-<h3 id="4-Gradle环境下Android的文件结构"><a href="#4-Gradle环境下Android的文件结构" class="headerlink" title="4 Gradle环境下Android的文件结构"></a>4 Gradle环境下Android的文件结构</h3><blockquote>
-<ul>
-<li>project-name<ul>
-<li>gradle</li>
-<li>module-name<ul>
-<li>build    //构建生成文件<ul>
-<li>intermediates//构建打包的资源文件<ul>
-<li>assets//资源文件</li>
-<li>exploded-aar//如果我们依赖了许多的aar或者依赖工程，最终都“copy”到了这个目录下</li>
-<li>mainfests//合并的mainfest</li>
-</ul>
-</li>
-<li>outputs<ul>
-<li>apk//输出我们需要的.apk文件</li>
-<li>lint-results.html//lint检查报告</li>
-</ul>
-</li>
-<li>reports<ul>
-<li>tests//单元测试报告</li>
-</ul>
-</li>
-<li>ivy.xml//moudle的配置（task任务）、依赖关系等</li>
-</ul>
-</li>
-<li>libs    //本地的依赖jar包等</li>
-<li>src    //本moudule所有的代码和资源文件<ul>
-<li>androidTest    //需要android环境的单元测试，比如UI的单元测试</li>
-<li>Test    //普通的java单元测试</li>
-<li>main    //主渠道<ul>
-<li>java    //java code</li>
-<li>jni //navtive jni so</li>
-<li>gen</li>
-<li>res</li>
-<li>assets</li>
-<li>AndroidManifest.xml +build.gradle //module</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>build.gradle // for all module</li>
-<li>gradle.propeties //全局配置文件</li>
-<li>local.properties //SDK、NDK配置</li>
-<li>config.gradle//自定义的配置文件</li>
-<li>settings.gradle//module管理</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="6-关于几个buid-gradle、gradle-propeties文件"><a href="#6-关于几个buid-gradle、gradle-propeties文件" class="headerlink" title="6 关于几个buid.gradle、gradle.propeties文件"></a>6 关于几个buid.gradle、gradle.propeties文件</h3><ul>
-<li>build.gradle文件(主工程的Top-level)</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">apply <span class="keyword">from</span>:<span class="string">"config.gradle"</span><span class="comment">//可以给所有的moudle引入一个配置文件</span></div><div class="line"></div><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">     <span class="keyword">repositories</span> &#123;</div><div class="line">     jcenter()</div><div class="line">&#125;</div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.3.0'</span></div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">     <span class="comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        jcenter()<span class="comment">//引入远程仓库</span></div><div class="line">        maven &#123; url MAVEN_URL &#125;<span class="comment">//引入自己的私有maven仓库</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>gradle.properties(全局配置文件）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># This can really make a significant difference if you are building a very complex project with many sub-module dependencies:</div><div class="line">#sub-moudle并行构建</div><div class="line">org.gradle.parallel=true</div><div class="line">#后台进程构建</div><div class="line">org.gradle.daemon=true</div><div class="line">#私有maven仓库地址</div><div class="line">MAVEN_URL= http://xxx.xx.1.147:8081/nexus/content/repositories/thirdparty/</div></pre></td></tr></table></figure>
-<ul>
-<li>build.gradle(module)</li>
-</ul>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span><span class="comment">//插件 决定是apk\aar\jar等</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">compileSdkVersion <span class="number">23</span></div><div class="line">buildToolsVersion <span class="string">"24.0.0"</span></div><div class="line"></div><div class="line"><span class="comment">// 此处注释保持默认打开，关闭后可使不严格的图片可以通过编译,但会导致apk包变大</span></div><div class="line"><span class="comment">//aaptOptions.cruncherEnabled = false</span></div><div class="line"><span class="comment">//aaptOptions.useNewCruncher = false</span></div><div class="line"></div><div class="line"> packagingOptions &#123;</div><div class="line">     <span class="keyword">exclude</span> <span class="string">'META-INF/NOTICE.txt'</span><span class="comment">// 这里是具体的冲突文件全路径</span></div><div class="line">     <span class="keyword">exclude</span> <span class="string">'META-INF/LICENSE.txt'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//默认配置</span></div><div class="line">defaultConfig &#123;</div><div class="line">    applicationId <span class="string">"com.locove.meet"</span></div><div class="line">    minSdkVersion <span class="number">16</span></div><div class="line">    targetSdkVersion <span class="number">23</span></div><div class="line">    versionCode <span class="number">1</span></div><div class="line">    versionName <span class="string">"1.0"</span></div><div class="line">    multiDexEnabled=<span class="keyword">true</span><span class="comment">//65536问题</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">sourceSets</span> &#123;</div><div class="line">    main &#123;</div><div class="line">        jniLibs.srcDirs = [<span class="string">'libs'</span>]<span class="comment">//重新配置路径</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">buildTypes &#123;</div><div class="line">    release &#123;</div><div class="line">    <span class="comment">// zipAlign优化</span></div><div class="line">    zipAlignEnabled <span class="keyword">true</span></div><div class="line">    <span class="comment">// 移除无用的resource文件</span></div><div class="line">    shrinkResources <span class="keyword">false</span></div><div class="line">    <span class="comment">// 混淆</span></div><div class="line">    minifyEnabled <span class="keyword">false</span></div><div class="line">    proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">    signingConfig signingConfigs.releaseConfig</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.google.code.gson:gson:2.2.+'</span></div><div class="line">    testCompile <span class="string">'junit:junit:4.12'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="7-gradle编译文件和缓存文件"><a href="#7-gradle编译文件和缓存文件" class="headerlink" title="7 gradle编译文件和缓存文件"></a>7 gradle编译文件和缓存文件</h3><ul>
-<li>gradle缓存文件：C:\Users\Administrator.gradle\caches\modules-2\files-2.1</li>
-<li>idea缓存文件： C:\Users\Administrator.AndroidStudio1.4</li>
-</ul>
-<h2 id="三、构建过程简析"><a href="#三、构建过程简析" class="headerlink" title="三、构建过程简析"></a>三、构建过程简析</h2><p>这里参考了QQ音乐技术团队Android构建过程分析 下图是文章末尾的一张构建流程图：</p>
-<ul>
-<li><p><strong>解压合并资源</strong>： 主要是assets目录，res目录，Androidmainfest.xml目录。其中合并的时候会涉及到优先级的问题，详情请查看该篇文章。</p>
-</li>
-<li><p><strong>AAPT(Android Asset Packaging Tool)打包</strong></p>
-<ul>
-<li>R.java文件 资源ID</li>
-<li>app.ap 压缩包</li>
-<li>对png图进行优化等</li>
-</ul>
-</li>
-<li><p><strong>源码编译</strong>：  生成.class字节码，在这里可以进行删除无用类，字节码优化，重命名（包名），还有一点就是代码混淆。</p>
-</li>
-<li><p><strong>生成dex、打包签名、zipalign</strong></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;原文链接： &lt;a href=&quot;https://zhuanlan.zhihu.com/p/22990436&quot;&gt;&lt;strong&gt;重新认识AndroidStudio和Gradle，这些都是我们应该知道的&lt;/strong&gt;&lt;/a&gt;  — by &lt;a href=&quot;https://www.zhihu.com/people/zeng-jing-fang&quot;&gt;井方哥&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;主要从AndroidStudio的环境安装升级，Gradle，Eclipse转AS,多渠道配置，Maven私服，Action,Option，快捷键等几个方面出发，讲一些操作技巧以及我对AndroidStudio使用的一些理解与经验。本文较全面的讲述了我们在开发中必须要了解的，比较多而全，可能不能马上记住，目的在于大家看我之后能有一个认识，在需要使用的时候知道有这么个东西。希望对你的开发工作有所帮助，不足之处，请批评指正。&lt;/p&gt;
-&lt;h2 id=&quot;一、Install-amp-Settings-amp-Update&quot;&gt;&lt;a href=&quot;#一、Install-amp-Settings-amp-Update&quot; class=&quot;headerlink&quot; title=&quot;一、Install&amp;amp;Settings&amp;amp;Update&quot;&gt;&lt;/a&gt;&lt;strong&gt;一、Install&amp;amp;Settings&amp;amp;Update&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;1、Gradle&quot;&gt;&lt;a href=&quot;#1、Gradle&quot; class=&quot;headerlink&quot; title=&quot;1、Gradle&quot;&gt;&lt;/a&gt;1、Gradle&lt;/h3&gt;&lt;p&gt;Gradle官方会不断更新，我们可以使用本地安装的方式，并配置path，我们就可以使用Terminal直接输入gradle命令执行构建任务。当然如果我们想快速更新，可以修改配置文件。 首先，修改&lt;code&gt;project\gradle\warpper\gradle-wapper.properties&lt;/code&gt; 文件，其中distributionUrl的值：&lt;/p&gt;
-&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;distributionUrl=https\:&lt;span class=&quot;comment&quot;&gt;//services.gradle.org/distributions/gradle-2.4-all.zip&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这里实际是从网络下载配置的版本，会自动检测，如果不是的就会下载。&lt;/p&gt;
-&lt;p&gt;然后修改 project的build.gradle&lt;/p&gt;
-&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;dependencies&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;classpath&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.android.tools.build:gradle:1.3.0&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// &lt;span class=&quot;doctag&quot;&gt;NOTE:&lt;/span&gt; Do not place your application dependencies here; they belong&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// in the individual module build.gradle files&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://github.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://github.com/tags/Android/"/>
     
   </entry>
   
