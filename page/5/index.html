@@ -188,6 +188,67 @@ var themeMenus = {};
 <!-- Table of Contents -->
 
   
+    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            
+有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【MySQL】查询保持IN中的顺序"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -699,69 +760,6 @@ import java.util.ArrayList;import java.util.Collections;import java.util.Random;
 <!-- Table of Contents -->
 
   
-    <article id="post-Java访问权限修饰符的区别"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/01/15/Java访问权限修饰符的区别/">Java访问权限修饰符的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="../../2016/01/15/Java访问权限修饰符的区别/" class="article-date">
-	  <time datetime="2016-01-15T07:07:20.000Z" itemprop="datePublished">一月 15, 2016</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            　　Java有四种访问权限，其中三种有访问权限修饰符，分别为private，public和protected，还有一种不带任何修饰符：
-
-private: Java语言中对访问权限限制的最窄的修饰符，一般称之为“私有的”。被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。
-default：即不加任何访问修饰符，通常称为“默认访问模式“。该模式下，只允许在同一个包中进行访问。
-protect: 介于public 和 private 之间的一种访问修饰符，一般称之为“保护形”。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。
-public： Java语言中访问限制最宽的修饰符，一般称之为“公共的”。被其修饰的类、属性...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/01/15/Java访问权限修饰符的区别/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -1168,6 +1166,21 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 
             
               <div class="widget-entry-thumbnail">
+                <a href="../../2017/06/15/【面试题】Java String常量相等（==）问题/" title=""><img width="50" height="50" src="/gallery/java-string-pool.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/06/15/【面试题】Java String常量相等（==）问题/">【面试题】Java String常量相等（==）问题</a></h6>
+              <span>六月 15, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
                 <a href="../../2017/06/02/详解Java类的生命周期/" title=""><img width="50" height="50" src="/gallery/hotspot-jvm.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
@@ -1239,21 +1252,6 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/03/30/【Android 】硬件加速原理与实现简介/" title=""><img width="50" height="50" src="/gallery/hardware-acceleration.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/03/30/【Android 】硬件加速原理与实现简介/">【Android 】硬件加速原理与实现简介</a></h6>
-              <span>三月 30, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1263,7 +1261,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
