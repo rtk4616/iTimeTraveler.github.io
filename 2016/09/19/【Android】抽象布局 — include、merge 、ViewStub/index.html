@@ -21,14 +21,14 @@
 <meta property="og:description" content="在布局优化中，Androi的官方提到了这三种布局&amp;lt;include/&amp;gt;、&amp;lt;merge /&amp;gt;、&amp;lt;ViewStub /&amp;gt;，并介绍了这三种布局各有的优势，下面也是简单说一下他们的优势，以及怎么使用，记下来权当做笔记。
 一、布局重用&amp;lt;include/&amp;gt;&amp;lt;include /&amp;gt;标签能够重用布局文件，简单的使用如下：
 &amp;lt;LinearLayout x">
-<meta property="og:image" content="http://github.com/gallery/Re-usingLayouts.jpg">
-<meta property="og:updated_time" content="2017-01-13T10:54:07.248Z">
+<meta property="og:image" content="http://github.com/gallery/android_m_marshmallow.jpg">
+<meta property="og:updated_time" content="2017-06-15T10:21:19.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】抽象布局 — include、merge 、ViewStub">
 <meta name="twitter:description" content="在布局优化中，Androi的官方提到了这三种布局&amp;lt;include/&amp;gt;、&amp;lt;merge /&amp;gt;、&amp;lt;ViewStub /&amp;gt;，并介绍了这三种布局各有的优势，下面也是简单说一下他们的优势，以及怎么使用，记下来权当做笔记。
 一、布局重用&amp;lt;include/&amp;gt;&amp;lt;include /&amp;gt;标签能够重用布局文件，简单的使用如下：
 &amp;lt;LinearLayout x">
-<meta name="twitter:image" content="http://github.com/gallery/Re-usingLayouts.jpg">
+<meta name="twitter:image" content="http://github.com/gallery/android_m_marshmallow.jpg">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
@@ -141,8 +141,8 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Re-usingLayouts.jpg" rel="gallery_cj3y7ew2i003mp4my5tut1x1a">
-        <img src="../../../../gallery/Re-usingLayouts.jpg" itemprop="image">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/android_m_marshmallow.jpg" rel="gallery_cj3ya00nj003g5gmytn5jiap0">
+        <img src="../../../../gallery/android_m_marshmallow.jpg" itemprop="image">
       </a>
     
   </div>
@@ -213,16 +213,15 @@ var themeMenus = {};
 <p>可以看到，<code>FrameLayout</code>下面直接就是<code>TextView</code>，与之前的相比<strong>少了一层 RelativeLayout </strong>而实现的效果相同。</p>
 <ul>
 <li><p>那么，什么情况考虑使用<code>&lt;merge /&gt;</code>标签？</p>
-<ul>
+</li>
 <li><p>一种是向上面的例子一样，子视图不需要指定任何针对父视图的布局属性，例子中TextView仅仅需要直接添加到父视图上用于显示就行。</p>
-</li>
-<li><p>另外一种是假如需要在LinearLayout里面嵌入一个布局（或者视图），而恰恰这个布局（或者视图）的根节点也是LinearLayout，这样就多了一层没有用的嵌套，无疑这样只会拖慢程序速度。而这个时候如果我们使用merge根标签就可以避免那样的问题，官方文档 <a href="http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-by.html" target="_blank" rel="external">Android Layout Tricks #3: Optimize by merging</a>  中的例子演示的就是这种情况。</p>
-</li>
+<ul>
+<li>另外一种是假如需要在LinearLayout里面嵌入一个布局（或者视图），而恰恰这个布局（或者视图）的根节点也是LinearLayout，这样就多了一层没有用的嵌套，无疑这样只会拖慢程序速度。而这个时候如果我们使用merge根标签就可以避免那样的问题，官方文档 <a href="http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-by.html" target="_blank" rel="external">Android Layout Tricks #3: Optimize by merging</a>  中的例子演示的就是这种情况。</li>
 </ul>
 </li>
 <li><p><code>&lt;merge /&gt;</code>标签有什么限制没？</p>
-<ul>
-<li>&lt;merge /&gt;只能作为XML布局的根标签使用。</li>
+</li>
+<li>&lt;merge /&gt;只能作为XML布局的根标签使用。<ul>
 <li>当 Inflate 以&lt;merge /&gt;开头的布局文件时，必须指定一个父ViewGroup，并且必须设定attachToRoot为<strong><code>true</code></strong>。</li>
 </ul>
 </li>
