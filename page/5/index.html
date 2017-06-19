@@ -157,8 +157,8 @@ var themeMenus = {};
             
 使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
-一、生成patch文件12svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
-二、svn回滚123svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinit...
+一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
+二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
           
 
         
@@ -281,7 +281,7 @@ var themeMenus = {};
             
 有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
 
-首先，敲定每个boolean值存储的位置12345private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYP...
+首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
           
 
         
@@ -345,7 +345,7 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 比如下面这个查询结果，mysql会默认使用主键id的ASC自增排序结果集：
 
 那么，如果我们想维持查询语句中IN(26613,26612,26611,26610,26609,26608,26607)的顺序可以么？当然可以，像下面这样，使用Order by field()：
-1SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612,26611,26610);
+SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612,26611,26610);
 这样读取出来的顺序就是IN（）语句中的顺序。
 
           
@@ -413,8 +413,8 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 
 2）直接在Linux中转换（推荐做法）：
 首先要确保文件有可执行权限 
-1#sh&gt; chmod a+x filename
-然后修改文件格式...
+#sh&gt; chmod a+x filename
+然后修改文件格式 ...
           
 
         
@@ -477,7 +477,7 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 
 1、二分查找二分查找（binary search），也称作折半查找（half-interval search），每次划分一半进行下一步搜索，所以时间复杂度无非就是while循环的次数！
 
-123456789101112131415161718//二分查找 Java 实现public static int binarySearch(Integer[] srcArray, int des) &#123;    int low = 0;    int high = srcArray.length - 1;     while ((low &lt;= high) &amp;&amp; (low &lt;= src...
+//二分查找 Java 实现public static int binarySearch(Integer[] srcArray, int des) &#123;    int low = 0;    int high = srcArray.length - 1;     while ((low &lt;= high) &amp;&amp; (low &lt;= srcArray.length - 1)          ...
           
 
         
@@ -594,7 +594,7 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 </blockquote>
 <h3 id="1、Picasso缓存策略"><a href="#1、Picasso缓存策略" class="headerlink" title="1、Picasso缓存策略"></a>1、<strong>Picasso缓存策略</strong></h3><p>我们都知道图片缓存使用的是Map键值对存储的，这里的Key就是加载的图片的Url，所以如果我们使用相同的ImageUrl去加载图片的话，如果使用了缓存，Picasso会直接读取缓存的内容，而不是从SD卡、或者网络Http中重新加载。</p>
 <h3 id="2、Picasso如何跳过缓存"><a href="#2、Picasso如何跳过缓存" class="headerlink" title="2、Picasso如何跳过缓存"></a>2、<strong>Picasso如何跳过缓存</strong></h3><p>试了很多网上推荐的方法均不见起效，最后使用了下面这种策略，也就是<strong><code>加载图片时直接跳过缓存</code></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Picasso.with(getContext()).load(imageUrl).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Picasso.with(getContext()).load(imageUrl).memoryPolicy(MemoryPolicy.NO_CACHE).into(image);</div></pre></td></tr></table></figure>
 <p>注意其中的<em>.memoryPolicy(MemoryPolicy.NO_CACHE)</em>即是关键代码，其中</p>
 <ul>
 <li>MemoryPolicy.NO_CACHE：是指图片加载时放弃在内存缓存中查找。</li>
@@ -664,7 +664,7 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 (4) 循环 (2),(3) 步骤,直到int数组取满为止.
 
 这是一种比较简单的实现思路，实现代码如下：
-123456789101112131415161718192021222324252627282930313233import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main...
+import java.util.ArrayList;import java.util.Collections;import java.util.Random;public class Main &#123;	private static int range = 100;	private static Ar...
           
 
         
@@ -727,8 +727,8 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 
 如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 
 一、查看task栈情况
-在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：1adb shell dumpsys activity
-然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的...
+在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：adb shell dumpsys activity
+然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的状...
           
 
         

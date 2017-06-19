@@ -155,9 +155,9 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             问题打开本地html文件时，报错如下
-123XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.Uncaught NetworkError: Failed to execute &apos;send&apos; on &apos;XMLHttpRequest&apos;: Failed to load
+XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.Uncaught NetworkError: Failed to execute &apos;send&apos; on &apos;XMLHttpRequest&apos;: Failed to load
 分析原因是因为浏览器为了安全性考虑，默认对跨域访问禁止，不允许直接读取本地文件。
-解...
+解决给浏...
           
 
         
@@ -407,7 +407,7 @@ An attractive, exquisite theme for Hexo. named “Hiker”, short for “HikerNe
 
 Installation
 Get it from GitHub
-1$ git clone https://github.com/iTi...
+$ git clone https://github.com/iTim...
 
         
           <p class="article-more-link">
@@ -525,7 +525,7 @@ Chrome自带开发者工具。它的功能十分丰富，包括元素、网络�
           <div class="entry-summary">
           在布局优化中，Androi的官方提到了这三种布局&lt;include/&gt;、&lt;merge /&gt;、&lt;ViewStub /&gt;，并介绍了这三种布局各有的优势，下面也是简单说一下他们的优势，以及怎么使用，记下来权当做笔记。
 一、布局重用&lt;include/&gt;&lt;include /&gt;标签能够重用布局文件，简单的使用如下：
-123456789101112...
+&lt;LinearLayou...
 
         
           <p class="article-more-link">
@@ -727,7 +727,7 @@ TextView 对于富文本效果的实现支持不支持呢？比如“局部文�
 
 一、需求效果
 二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
-123456789101112131415161718textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色Fore...
+textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder builder = new SpannableStringBuilder(textView.getText().toString());//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色ForegroundColorSpan redSpan = n...
           
 
         

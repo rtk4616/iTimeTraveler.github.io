@@ -285,7 +285,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 走台阶算法（本质上是斐波那契数列）在面试中常会遇到，描述就如题目那样：总共100级台阶（任意级都行），小明每次可选择走1步、2步或者3步，问走完这100级台阶总共有多少种走法？
 
 一、 题目分析这个问题本质上是斐波那契数列，假设只有一个台阶，那么只有一种跳法，那就是一次跳一级，f(1)=1；如果有两个台阶，那么有两种跳法，第一种跳法是一次跳一级，第二种跳法是一次跳两级,f(2)=2。如果有大于2级的n级台阶，那么假如第一次跳一级台阶，剩下还有n-1级台阶，有f(n-1)种跳法，假如第一次条2级台阶，剩下n-2级台阶，有f(n-2)种跳法。这就表示f(n)=f(n-1)+f(n-2)。将上面的斐波那契数列代码稍微改一下就是本题的答案。我们来看一下代码的实现。
-二、斐波那契数列法1234...
+二、斐波那契数列法publ...
           
 
         
@@ -442,7 +442,7 @@ from Dribbble
 多说样式
 啊…简简单单就好，这个样式也是抄袭 jjlin 的，头像什么的都没有做动画 没意义我觉得
 
-下边是css代码 备份一下12345678910111213141516171819202122232425262728293031323334353637383940414243444...
+下边是css代码 备份一下#ds-reset .ds-avatar img &#123;width:50px;height:auto ;border;border-radius: 50%...
 
         
           <p class="article-more-link">
@@ -501,7 +501,7 @@ from Dribbble
 
 那么对于内部类，该如何去使用呢？
 下面给出静态成员类（Static Member Class）和普通成员类（Member Class）使用的方式。
-12345678910111213141516package cuc;import cuc.TestClass.Inner1;public class Main &#123;	public static void main(String args[]) &#123;		//静态的内部类		TestClass...
+package cuc;import cuc.TestClass.Inner1;public class Main &#123;	public static void main(String args[]) &#123;		//静态的内部类		TestClass.Inner1 inner1 = new In...
           
 
         
@@ -563,7 +563,7 @@ from Dribbble
 &nbsp;&nbsp; HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）,HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
 &nbsp;&nbsp;简而言之，HMAC就是含有密钥散列函数算法，兼容了MD和SHA算法的特性，并在此基础上加上了密钥。因此MAC算法也经常被称作HMAC算法。关于hmac算法的详情可以参看RFC 2104(http://www.ietf.org/rfc/rfc2104.txt)，这里包含了HmacMD5算法的C语言实现。
 
-2、代码实现（Android）12345678910111213141516171819202122232425262...
+2、代码实现（Android）//这是HMAC的Android代码//之所以不是Java是因为代码中的Base64使用...
           
 
         
@@ -681,7 +681,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
     <div class="article-entry" itemprop="articleBody">
       
         <p>Java中可以使用Arrays.toString()来输出数组，免了使用各种循环来挨个print的痛苦。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> javacc.test;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>&#125;;</div><div class="line">        System.out.println(Arrays.toString(array));    <span class="comment">//注意这里的 Arrays.toString()</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">package</span> javacc.test;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>&#125;;</div><div class="line">        System.out.println(Arrays.toString(array));    <span class="comment">//注意这里的 Arrays.toString()</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -743,7 +743,7 @@ Android App打包成Apk后，其实是一个压缩文件，可以将后缀名apk
 
 三、代码验证  MainActivity和SecondActivity的布局是这样的，里面各添加了一个Fragment：
     
-1234567891...
+/**  * Mai...
           
 
         
