@@ -21,7 +21,8 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -33,101 +34,149 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "funnysite"; 
-
-  themeMenus["../collection"] = "collection"; 
-
-  themeMenus["../about"] = "关于"; 
-
-</script>
 
 
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+    <header id="header">
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
+  
+    <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+    <script>
+        var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("intrologo").style.backgroundImage='url(' + imgUrls[random] + ')';
+        } else {
+          document.getElementById("intrologo").style.backgroundImage='url(/' + imgUrls[random] + ')';
+        }
+    </script>
+  
 
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="funnysite">funnysite</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="collection">collection</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="about">关于</a> </li>
-                    
-              </ul>
-            </div>
-          </nav>
+      
+    </script>
+    
 
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
 
-      </div>
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+    <script>
+        var img = new Image();
+        var intrologodiv = document.getElementById("intrologo");
+        img.src = intrologodiv.style.backgroundImage.replace('url(','').replace(')','').replace(/\"/gi, "");
+        img.onload=function(){
+          if (img.width / img.height <= document.body.clientWidth / document.body.clientHeight) {
+            intrologodiv.style.backgroundSize = "100% auto";
+          } else {
+            intrologodiv.style.backgroundSize = "auto 100%";
+          }
+        };
+    </script>
+ 
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="index.html">首页</a>
+        
+          <a id="beautifont" class="main-nav-link" href="archives">归档</a>
+        
+          <a id="beautifont" class="main-nav-link" href="categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="tags">标签</a>
+        
+          <a id="beautifont" class="main-nav-link" href="funnysite">funnysite</a>
+        
+          <a id="beautifont" class="main-nav-link" href="collection">collection</a>
+        
+          <a id="beautifont" class="main-nav-link" href="about">关于</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-Java 8系列之重新认识HashMap"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -142,43 +191,37 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/06/16/Java 8系列之重新认识HashMap/" class="article-date">
-	  <time datetime="2017-06-16T09:30:55.000Z" itemprop="datePublished">六月 16, 2017</time>
+	<a href="2017/06/16/Java 8系列之重新认识HashMap/" class="article-date">
+	  <time datetime="2017-06-16T09:30:55.000Z" itemprop="datePublished">2017-06-16</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/06/16/Java 8系列之重新认识HashMap/"><img width="250" height="175" src="/gallery/Hashmap_Current_Logo_PNG-copy.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文来自美团点评技术团队： <a href="http://tech.meituan.com/java-hashmap.html">Java 8系列之重新认识HashMap</a></p>
+</blockquote>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h2><p>HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>Java为数据结构中的映射定义了一个接口java.util.Map，此接口主要有四个常用的实现类，分别是<code>HashMap</code>、<code>Hashtable</code>、<code>LinkedHashMap</code>和<code>TreeMap</code>，类继承关系如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20170616165413193" alt=""></p>
+        <!-- 
 本文来自美团点评技术团队： Java 8系列之重新认识HashMap
 
-摘要HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理...
-
-        
-          <p class="article-more-link">
-            <a href="2017/06/16/Java 8系列之重新认识HashMap/#more">阅读全文</a>
-          </p>
-        </div>
+摘要HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理......  -->
+        <p class="article-more-link">
+          <a href="2017/06/16/Java 8系列之重新认识HashMap/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -188,7 +231,7 @@ var themeMenus = {};
 
   
     <article id="post-【面试题】Java String常量相等（==）问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -203,41 +246,31 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="2017/06/15/【面试题】Java String常量相等（==）问题/" class="article-date">
-	  <time datetime="2017-06-15T08:51:55.000Z" itemprop="datePublished">六月 15, 2017</time>
+	<a href="2017/06/15/【面试题】Java String常量相等（==）问题/" class="article-date">
+	  <time datetime="2017-06-15T08:51:55.000Z" itemprop="datePublished">2017-06-15</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/06/15/【面试题】Java String常量相等（==）问题/"><img width="250" height="175" src="/gallery/java-string-pool.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          问题以下三个结果分别输出（true or false）？别小看它，很多程序员因为上面问题出过生产bug
-String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello";String s6 = "he"+"llo";System.out.println(s5==s6);---Integer i ...
-
-        
-          <p class="article-more-link">
-            <a href="2017/06/15/【面试题】Java String常量相等（==）问题/#more">阅读全文</a>
-          </p>
-        </div>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>以下三个结果分别输出（true or false）？别小看它，很多程序员因为上面问题出过生产bug</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">String s3 = <span class="string">"s"</span>;</div><div class="line">String s4 = <span class="string">"s"</span>;</div><div class="line">System.out.println(s3==s4);</div><div class="line"></div><div class="line"></div><div class="line">---</div><div class="line">String s5 = <span class="string">"hello"</span>;</div><div class="line">String s6 = <span class="string">"he"</span>+<span class="string">"llo"</span>;</div><div class="line">System.out.println(s5==s6);</div><div class="line"></div><div class="line"></div><div class="line">---</div><div class="line">Integer i = <span class="number">2017</span>;</div><div class="line">Integer j = <span class="number">2017</span>;</div><div class="line">System.out.println(i==j);</div><div class="line"></div><div class="line"></div><div class="line">---</div><div class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"s"</span>);</div><div class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"s"</span>);</div><div class="line">System.out.println(s1==s2);</div><div class="line">System.out.println(s1.intern()==s2.intern());</div></pre></td></tr></table></figure>
+        <!-- 问题以下三个结果分别输出（true or false）？别小看它，很多程序员因为上面问题出过生产bug
+String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello";String s6 = "he"+"llo";System.out.println(s5==s6);---Integer i ......  -->
+        <p class="article-more-link">
+          <a href="2017/06/15/【面试题】Java String常量相等（==）问题/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -247,7 +280,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-详解Java类的生命周期"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -262,40 +295,36 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/06/02/详解Java类的生命周期/" class="article-date">
-	  <time datetime="2017-06-02T03:36:55.000Z" itemprop="datePublished">六月 2, 2017</time>
+	<a href="2017/06/02/详解Java类的生命周期/" class="article-date">
+	  <time datetime="2017-06-02T03:36:55.000Z" itemprop="datePublished">2017-06-02</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/06/02/详解Java类的生命周期/"><img width="250" height="175" src="/gallery/hotspot-jvm.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          引言最近有位细心的朋友在阅读笔者的文章时，对Java类的生命周期问题有一些疑惑，笔者打开百度搜了一下相关的问题，看到网上的资料很少有把这个问题讲明白的，主要是因为目前国内Java方面的教材大多只是告诉你“怎样做”，但至于“为什么这样做”却不多说，所以造成大家在基础和原理方面的知识比较匮乏，所以笔者今天就斗胆来讲一下这个问题，权当抛砖引玉，希望对在这个问题上有疑惑的朋友有所帮助，文中有说的不对...
-
-        
-          <p class="article-more-link">
-            <a href="2017/06/02/详解Java类的生命周期/#more">阅读全文</a>
-          </p>
-        </div>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h2><p>最近有位细心的朋友在阅读笔者的文章时，对Java类的生命周期问题有一些疑惑，笔者打开百度搜了一下相关的问题，看到网上的资料很少有把这个问题讲明白的，主要是因为目前国内Java方面的教材大多只是告诉你“怎样做”，但至于“为什么这样做”却不多说，所以造成大家在基础和原理方面的知识比较匮乏，所以笔者今天就斗胆来讲一下这个问题，权当抛砖引玉，希望对在这个问题上有疑惑的朋友有所帮助，文中有说的不对的地方，也希望各路高手前来指正。</p>
+<p>首先来了解一下jvm（java虚拟机）中的几个比较重要的内存区域，这几个区域在java类的生命周期中扮演着比较重要的角色：</p>
+<ul>
+<li><strong>方法区</strong>：在java的虚拟机中有一块专门用来存放已经加载的类信息、常量、静态变量以及方法代码的内存区域，叫做方法区。</li>
+<li><strong>常量池</strong>：常量池是方法区的一部分，主要用来存放常量和类中的符号引用等信息。</li>
+<li><strong>堆区</strong>：用于存放类的对象实例。</li>
+<li><strong>栈区</strong>：也叫java虚拟机栈，是由一个一个的栈帧组成的后进先出的栈式结构，栈桢中存放方法运行时产生的局部变量、方法出口等信息。当调用一个方法时，虚拟机栈中就会创建一个栈帧存放这些数据，当方法调用完成时，栈帧消失，如果方法中调用了其他方法，则继续在栈顶创建新的栈桢。</li>
+</ul>
+        <!-- 引言最近有位细心的朋友在阅读笔者的文章时，对Java类的生命周期问题有一些疑惑，笔者打开百度搜了一下相关的问题，看到网上的资料很少有把这个问题讲明白的，主要是因为目前国内Java方面的教材大多只是告诉你“怎样做”，但至于“为什么这样做”却不多说，所以造成大家在基础和原理方面的知识比较匮乏，所以笔者今天就斗胆来讲一下这个问题，权当抛砖引玉，希望对在这个问题上有疑惑的朋友有所帮助，文中有说的不对......  -->
+        <p class="article-more-link">
+          <a href="2017/06/02/详解Java类的生命周期/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -305,7 +334,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-【Android】Audio音频输出通道切换 - 蓝牙、外放"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -320,41 +349,33 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" class="article-date">
-	  <time datetime="2017-05-18T03:40:00.000Z" itemprop="datePublished">五月 18, 2017</time>
+	<a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" class="article-date">
+	  <time datetime="2017-05-18T03:40:00.000Z" itemprop="datePublished">2017-05-18</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/"><img width="250" height="175" src="/gallery/round_trip_on_device.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。
-场景需求Android系统自动切换的这些策略，...
-
-        
-          <p class="article-more-link">
-            <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/#more">阅读全文</a>
-          </p>
-        </div>
+        <p>手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。</p>
+<h2 id="场景需求"><a href="#场景需求" class="headerlink" title="场景需求"></a><strong>场景需求</strong></h2><p>Android系统自动切换的这些策略，并不能全部满足我们的产品需求，比如音乐App需要对听歌时拔出耳机的操作进行阻止（暂停播放），防止突然切换到外放导致尴尬。</p>
+<p>最近项目需求希望<strong><code>即使在连接蓝牙音箱的情况下，仍旧使用手机外放播放音频</code></strong>。这就需要强制切换Audio输出通道，打破系统原有的策略。</p>
+<p>查阅资料，看到了Android中可以通过<code>AudioManager</code>查询、切换当前Audio输出通道，并且在Audio输出发生变化时，捕获并处理这种变化。</p>
+        <!-- 手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。
+场景需求Android系统自动切换的这些策略，......  -->
+        <p class="article-more-link">
+          <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Audio/">Audio</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -364,7 +385,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -379,20 +400,38 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="article-date">
-	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">五月 5, 2017</time>
+	<a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">2017-05-05</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/"><img width="250" height="175" src="/gallery/Google-Interview-Qs.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abab”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>： 输入可由”ab”重复两次组成</li>
+</ul>
+</blockquote>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “aba”</li>
+<li><strong>输出</strong>： False</li>
+</ul>
+</blockquote>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abcabcabcabc”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>：输入可由”abc”重复四次组成</li>
+</ul>
+</blockquote>
+        <!-- 题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
 样例1
 
 输入： “abab”
@@ -414,27 +453,18 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
 
 
-解题思路1....
-
-        
-          <p class="article-more-link">
-            <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/#more">阅读全文</a>
-          </p>
-        </div>
+解题思路1.......  -->
+        <p class="article-more-link">
+          <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Google/">Google</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -444,7 +474,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-【Android】判断应用Application、Activity是否处于活动状态"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -459,41 +489,31 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="article-date">
-	  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">五月 3, 2017</time>
+	<a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="article-date">
+	  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">2017-05-03</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/"><img width="250" height="175" src="/gallery/singleInstance.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          通过ActivityManager我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。
-1、判断应用App是否活动/** * 判断应用是否已经启动 * @param context 一个context * @param packageName 要判断应用的包名 * @return boolean */pr...
-
-        
-          <p class="article-more-link">
-            <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/#more">阅读全文</a>
-          </p>
-        </div>
+        <p>通过<strong><code>ActivityManager</code></strong>我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。</p>
+<h2 id="1、判断应用App是否活动"><a href="#1、判断应用App是否活动" class="headerlink" title="1、判断应用App是否活动"></a><strong>1、判断应用App是否活动</strong></h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * 判断应用是否已经启动</div><div class="line"> * <span class="doctag">@param</span> context 一个context</div><div class="line"> * <span class="doctag">@param</span> packageName 要判断应用的包名</div><div class="line"> * <span class="doctag">@return</span> boolean</div><div class="line"> */</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isAppAlive</span><span class="params">(Context context, String packageName)</span></span>&#123;</div><div class="line">   ActivityManager activityManager =</div><div class="line">           (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line">   List&lt;ActivityManager.RunningAppProcessInfo&gt; processInfos</div><div class="line">           = activityManager.getRunningAppProcesses();</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; processInfos.size(); i++)&#123;</div><div class="line">       <span class="keyword">if</span>(processInfos.get(i).processName.equals(packageName))&#123;</div><div class="line">           Log.i(<span class="string">"NotificationLaunch"</span>,</div><div class="line">                   String.format(<span class="string">"the %s is running, isAppAlive return true"</span>, packageName));</div><div class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   Log.i(<span class="string">"NotificationLaunch"</span>,</div><div class="line">           String.format(<span class="string">"the %s is not running, isAppAlive return false"</span>, packageName));</div><div class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 通过ActivityManager我们可以获得系统里正在运行的activities，包括进程(Process)等、应用程序/包、服务(Service)、任务(Task)信息。
+1、判断应用App是否活动/** * 判断应用是否已经启动 * @param context 一个context * @param packageName 要判断应用的包名 * @return boolean */pr......  -->
+        <p class="article-more-link">
+          <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -503,7 +523,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-【Android】使用UncaughtExceptionHandler捕获全局异常"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -518,42 +538,31 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="article-date">
-	  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">四月 20, 2017</time>
+	<a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="article-date">
+	  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">2017-04-20</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/"><img width="250" height="175" src="/gallery/exception-handling.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          简介当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助UncaughtExceptionHandler这个类。
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助<strong><code>UncaughtExceptionHandler</code></strong>这个类。</p>
+        <!-- 简介当程序崩溃（Crash）的时候，默认是不对异常信息做处理的。如果想要把异常信息保存到本地文件中，或上传的服务器。那么就要借助UncaughtExceptionHandler这个类。
 
-使用方法一、实例化public class CrashLogCatch &#123;	public static final String THREAD_NAME_MAIN = "com.example.A...
-
-        
-          <p class="article-more-link">
-            <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/#more">阅读全文</a>
-          </p>
-        </div>
+使用方法一、实例化public class CrashLogCatch &#123;	public static final String THREAD_NAME_MAIN = "com.example.A......  -->
+        <p class="article-more-link">
+          <a href="2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Exception/">Exception</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -563,7 +572,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-【Android 】硬件加速原理与实现简介"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -578,41 +587,31 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/03/30/【Android 】硬件加速原理与实现简介/" class="article-date">
-	  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">三月 30, 2017</time>
+	<a href="2017/03/30/【Android 】硬件加速原理与实现简介/" class="article-date">
+	  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">2017-03-30</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/03/30/【Android 】硬件加速原理与实现简介/"><img width="250" height="175" src="/gallery/hardware-acceleration.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
-本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其...
-
-        
-          <p class="article-more-link">
-            <a href="2017/03/30/【Android 】硬件加速原理与实现简介/#more">阅读全文</a>
-          </p>
-        </div>
+        <p>在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。</p>
+<p>本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其中上层实现基于Android 6.0。</p>
+        <!-- 在手机客户端尤其是Android应用的开发过程中，我们经常会接触到“硬件加速”这个词。由于操作系统对底层软硬件封装非常完善，上层软件开发者往往对硬件加速的底层原理了解很少，也不清楚了解底层原理的意义，因此常会有一些误解，如硬件加速是不是通过特殊算法实现页面渲染加速，或是通过硬件提高CPU/GPU运算速率实现渲染加速。
+本文尝试从底层硬件原理，一直到上层代码实现，对硬件加速技术进行简单介绍，其......  -->
+        <p class="article-more-link">
+          <a href="2017/03/30/【Android 】硬件加速原理与实现简介/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/GPU/">GPU</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -622,7 +621,7 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
 
   
     <article id="post-【Gradle】Android Studio中Gradle重复依赖的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -637,41 +636,34 @@ String s3 = "s";String s4 = "s";System.out.println(s3==s4);---String s5 = "hello
     
     <div class="article-meta">
       
-	Posted on <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="article-date">
-	  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">二月 23, 2017</time>
+	<a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="article-date">
+	  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">2017-02-23</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Gradle/">Gradle</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/"><img width="250" height="175" src="/gallery/gradle-as.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
-Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.&gt; com.android.build.api.transform.TransformException: ja...
-
-        
-          <p class="article-more-link">
-            <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/#more">阅读全文</a>
-          </p>
-        </div>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.</div><div class="line">&gt; com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/google/gson/annotations/Expose.class</div></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><p>看到错误中的这个<strong>duplicate</strong>，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的<code>Expose.class</code> 类。</p>
+<p>使用快捷键（Shift + Ctrl + T）查看项目中的<code>Expose.class</code> 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。</p>
+<p><img src="http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+        <!-- 问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
+Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.&gt; com.android.build.api.transform.TransformException: ja......  -->
+        <p class="article-more-link">
+          <a href="2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Gradle/">Gradle</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Gradle/">Gradle</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -681,7 +673,7 @@ Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAuto
 
   
     <article id="post-【Android】内存泄漏分析心得"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -696,47 +688,49 @@ Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAuto
     
     <div class="article-meta">
       
-	Posted on <a href="2017/02/13/【Android】内存泄漏分析心得/" class="article-date">
-	  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">二月 13, 2017</time>
+	<a href="2017/02/13/【Android】内存泄漏分析心得/" class="article-date">
+	  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">2017-02-13</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="2017/02/13/【Android】内存泄漏分析心得/"><img width="250" height="175" src="/gallery/memoryleak.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>本文来源：<a href="http://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=2649796884&amp;idx=1&amp;sn=92b4e344060362128e4a86d6132c3736&amp;chksm=f1fcc54cc68b4c5add08371265320163381ea81333daea5664b94e9a12246a34cfaa31e6f0b3&amp;mpshare=1&amp;scene=1&amp;srcid=0213Ssp5geOThmtF6tg9Bz7U#rd">QQ空间终端开发团队公众号</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>对于C++来说，内存泄漏就是new出来的对象没有delete，俗称野指针；<br>对于Java来说，就是new出来的Object 放在Heap上无法被GC回收；</p>
+<p><img src="http://img.blog.csdn.net/20170213160148023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>本文通过QQ和Qzone中内存泄漏实例来讲android中内存泄漏分析解法和编写代码应注意的事项。</p>
+<h2 id="Java-中的内存分配"><a href="#Java-中的内存分配" class="headerlink" title="Java 中的内存分配"></a><strong>Java 中的内存分配</strong></h2><ul>
+<li><p><strong>静态储存区</strong>：编译时就分配好，在程序整个运行期间都存在。它主要存放静态数据和常量；</p>
+</li>
+<li><p><strong>栈区</strong>：当方法执行时，会在栈区内存中创建方法体内部的局部变量，方法结束后自动释放内存；</p>
+</li>
+<li><p><strong>堆区</strong>：通常存放 new 出来的对象。由 Java 垃圾回收器回收。</p>
+</li>
+</ul>
+        <!-- 
 本文来源：QQ空间终端开发团队公众号
 
 前言对于C++来说，内存泄漏就是new出来的对象没有delete，俗称野指针；对于Java来说，就是new出来的Object 放在Heap上无法被GC回收；
 
 本文通过QQ和Qzone中内存泄漏实例来讲android中内存泄漏分析解法和编写代码应注意的事项。
 Java 中的内存分配
-静态储存区：编译时就分配好，在程序整个运行期间都存在。它主要存放静态...
-
-        
-          <p class="article-more-link">
-            <a href="2017/02/13/【Android】内存泄漏分析心得/#more">阅读全文</a>
-          </p>
-        </div>
+静态储存区：编译时就分配好，在程序整个运行期间都存在。它主要存放静态......  -->
+        <p class="article-more-link">
+          <a href="2017/02/13/【Android】内存泄漏分析心得/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
 
-      
-
-      
     </footer>
   </div>
   
@@ -749,537 +743,32 @@ Java 中的内存分配
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/8/">8</a><a class="extend next" rel="next" href="page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/8/">8</a><a class="extend next" rel="next" href="page/2/">下一页 &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap">
-<h3 class="widget-title">起床了！</h3>
-<div class="widget">
-  <canvas id="c" style="background: url(/collection/code/img/window.jpg) no-repeat; 
-  background-size: contain;"></canvas>
-  <script type="text/javascript">
-
-  	var width = 300,
-  	height = 250,
-  	physics_accuracy = 3,
-	mouse_influence = 20,
-	mouse_cut = 5,
-	gravity = 1200,
-	cloth_height = 25,
-	cloth_width = 36,
-	start_y = 20,
-	spacing = 7,
-	tear_distance = 60;
-
-	window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-	function(callback) {
-	    window.setTimeout(callback, 1000 / 60);
-	};
-
-	var canvas, ctx, cloth, boundsx, boundsy, mouse = {
-	    down: false,
-	    button: 1,
-	    x: 0,
-	    y: 0,
-	    px: 0,
-	    py: 0
-	};
-
-	var Point = function(x, y) {
-
-	    this.x = x;
-	    this.y = y;
-	    this.px = x;
-	    this.py = y;
-	    this.vx = 0;
-	    this.vy = 0;
-	    this.pin_x = null;
-	    this.pin_y = null;
-
-	    this.constraints = [];
-	};
-
-	Point.prototype.update = function(delta) {
-
-	    if (mouse.down) {
-
-	        var diff_x = this.x - mouse.x,
-	        diff_y = this.y - mouse.y,
-	        dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
-
-	        if (mouse.button == 1) {
-
-	            if (dist < mouse_influence) {
-	                this.px = this.x - (mouse.x - mouse.px) * 1.8;
-	                this.py = this.y - (mouse.y - mouse.py) * 1.8;
-	            }
-
-	        } else if (dist < mouse_cut) this.constraints = [];
-	    }
-
-	    this.add_force(0, gravity);
-
-	    delta *= delta;
-	    nx = this.x + ((this.x - this.px) * .99) + ((this.vx / 2) * delta);
-	    ny = this.y + ((this.y - this.py) * .99) + ((this.vy / 2) * delta);
-
-	    this.px = this.x;
-	    this.py = this.y;
-
-	    this.x = nx;
-	    this.y = ny;
-
-	    this.vy = this.vx = 0
-	};
-
-	Point.prototype.draw = function() {
-
-	    if (this.constraints.length <= 0) return;
-
-	    var i = this.constraints.length;
-	    while (i--) this.constraints[i].draw();
-	};
-
-	Point.prototype.resolve_constraints = function() {
-
-	    if (this.pin_x != null && this.pin_y != null) {
-
-	        this.x = this.pin_x;
-	        this.y = this.pin_y;
-	        return;
-	    }
-
-	    var i = this.constraints.length;
-	    while (i--) this.constraints[i].resolve();
-
-	    if (this.x > boundsx) {
-
-	        this.x = 2 * boundsx - this.x;
-
-	    } else if (this.x < 1) {
-
-	        this.x = 2 - this.x;
-	    }
-
-	    if (this.y > boundsy) {
-
-	        this.y = 2 * boundsy - this.y;
-
-	    } else if (this.y < 1) {
-
-	        this.y = 2 - this.y;
-	    }
-	};
-
-	Point.prototype.attach = function(point) {
-
-	    this.constraints.push(new Constraint(this, point));
-	};
-
-	Point.prototype.remove_constraint = function(lnk) {
-
-	    var i = this.constraints.length;
-	    while (i--) if (this.constraints[i] == lnk) this.constraints.splice(i, 1);
-	};
-
-	Point.prototype.add_force = function(x, y) {
-
-	    this.vx += x;
-	    this.vy += y;
-	};
-
-	Point.prototype.pin = function(pinx, piny) {
-	    this.pin_x = pinx;
-	    this.pin_y = piny;
-	};
-
-	var Constraint = function(p1, p2) {
-
-	    this.p1 = p1;
-	    this.p2 = p2;
-	    this.length = spacing;
-	};
-
-	Constraint.prototype.resolve = function() {
-
-	    var diff_x = this.p1.x - this.p2.x,
-	    diff_y = this.p1.y - this.p2.y,
-	    dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y),
-	    diff = (this.length - dist) / dist;
-
-	    if (dist > tear_distance) this.p1.remove_constraint(this);
-
-	    var px = diff_x * diff * 0.5;
-	    var py = diff_y * diff * 0.5;
-
-	    this.p1.x += px;
-	    this.p1.y += py;
-	    this.p2.x -= px;
-	    this.p2.y -= py;
-	};
-
-	Constraint.prototype.draw = function() {
-
-	    ctx.moveTo(this.p1.x, this.p1.y);
-	    ctx.lineTo(this.p2.x, this.p2.y);
-	};
-
-	var Cloth = function() {
-
-	    this.points = [];
-
-	    var start_x = canvas.width / 2 - cloth_width * spacing / 2;
-
-	    for (var y = 0; y <= cloth_height; y++) {
-
-	        for (var x = 0; x <= cloth_width; x++) {
-
-	            var p = new Point(start_x + x * spacing, start_y + y * spacing);
-
-	            x != 0 && p.attach(this.points[this.points.length - 1]);
-	            y == 0 && p.pin(p.x, p.y);
-	            y != 0 && p.attach(this.points[x + (y - 1) * (cloth_width + 1)])
-
-	            this.points.push(p);
-	        }
-	    }
-	};
-
-	Cloth.prototype.update = function() {
-
-	    var i = physics_accuracy;
-
-	    while (i--) {
-	        var p = this.points.length;
-	        while (p--) this.points[p].resolve_constraints();
-	    }
-
-	    i = this.points.length;
-	    while (i--) this.points[i].update(.016);
-	};
-
-	Cloth.prototype.draw = function() {
-
-	    ctx.beginPath();
-
-	    var i = cloth.points.length;
-	    while (i--) cloth.points[i].draw();
-
-	    ctx.stroke();
-	};
-
-	function update() {
-
-	    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	    cloth.update();
-	    cloth.draw();
-
-	    requestAnimFrame(update);
-	}
-
-	function start() {
-
-	    canvas.onmousedown = function(e) {
-	        mouse.button = e.which;
-	        mouse.px = mouse.x;
-	        mouse.py = mouse.y;
-	        var rect = canvas.getBoundingClientRect();
-	        mouse.x = e.clientX - rect.left,
-	        mouse.y = e.clientY - rect.top,
-	        mouse.down = true;
-	        e.preventDefault();
-	    };
-
-	    canvas.onmouseup = function(e) {
-	        mouse.down = false;
-	        e.preventDefault();
-	    };
-
-	    canvas.onmousemove = function(e) {
-	        mouse.px = mouse.x;
-	        mouse.py = mouse.y;
-	        var rect = canvas.getBoundingClientRect();
-	        mouse.x = e.clientX - rect.left,
-	        mouse.y = e.clientY - rect.top,
-	        e.preventDefault();
-	    };
-
-	    canvas.oncontextmenu = function(e) {
-	        e.preventDefault();
-	    };
-
-	    boundsx = canvas.width - 1;
-	    boundsy = canvas.height - 1;
-
-	    ctx.strokeStyle = '#fff';
-	    cloth = new Cloth();
-	    update();
-	}
-
-	window.onload = function() {
-
-	    canvas = document.getElementById('c');
-	    ctx = canvas.getContext('2d');
-
-	    canvas.width = width;
-	    canvas.height = height;
-
-	    start();
-	};
-
-  </script>
-</div>
-</div>
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: 'content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/06/16/Java 8系列之重新认识HashMap/" title=""><img width="50" height="50" src="/gallery/Hashmap_Current_Logo_PNG-copy.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/06/16/Java 8系列之重新认识HashMap/">Java 8系列之重新认识HashMap</a></h6>
-              <span>六月 16, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/06/15/【面试题】Java String常量相等（==）问题/" title=""><img width="50" height="50" src="/gallery/java-string-pool.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/06/15/【面试题】Java String常量相等（==）问题/">【面试题】Java String常量相等（==）问题</a></h6>
-              <span>六月 15, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/06/02/详解Java类的生命周期/" title=""><img width="50" height="50" src="/gallery/hotspot-jvm.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/06/02/详解Java类的生命周期/">详解Java类的生命周期</a></h6>
-              <span>六月 2, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" title=""><img width="50" height="50" src="/gallery/round_trip_on_device.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/">【Android】Audio音频输出通道切换 - 蓝牙、外放</a></h6>
-              <span>五月 18, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" title=""><img width="50" height="50" src="/gallery/Google-Interview-Qs.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a></h6>
-              <span>五月 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" title=""><img width="50" height="50" src="/gallery/singleInstance.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/">【Android】判断应用Application、Activity是否处于活动状态</a></h6>
-              <span>五月 3, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="tags/APK/" style="font-size: 10px;">APK</a> <a href="tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/Audio/" style="font-size: 10px;">Audio</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/D3/" style="font-size: 10px;">D3</a> <a href="tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="tags/Exception/" style="font-size: 10px;">Exception</a> <a href="tags/GPU/" style="font-size: 10px;">GPU</a> <a href="tags/Google/" style="font-size: 12.5px;">Google</a> <a href="tags/Go语言/" style="font-size: 12.5px;">Go语言</a> <a href="tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="tags/Java/" style="font-size: 17.5px;">Java</a> <a href="tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 12.5px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 12.5px;">Neo4j</a> <a href="tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 12.5px;">hotfix</a>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2017 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -1287,9 +776,16 @@ Java 中的内存分配
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -1310,6 +806,14 @@ Java 中的内存分配
   
 </nav> -->
     
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <!-- mathjax config similar to math.stackexchange -->
 
@@ -1349,7 +853,9 @@ Java 中的内存分配
 
 <script src="js/script.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/main.js"></script>
+
+
+  <script src="js/home.js"></script>
 
 
 
@@ -1357,23 +863,74 @@ Java 中的内存分配
 
 
 
-  <div style="display: none;">
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
 
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
