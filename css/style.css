@@ -1157,6 +1157,11 @@ a.article-title:hover {
 .archives:after {
   clear: both;
 }
+@media screen and (max-width: 479px) {
+  .archives {
+    margin-left: 0.5em;
+  }
+}
 .archive-year-wrap {
   margin-bottom: 1em;
 }
@@ -1265,6 +1270,16 @@ a.article-title:hover {
   overflow: hidden;
   break-inside: avoid-column;
 }
+@media screen and (max-width: 479px) {
+  .archive-article-header {
+    display: grid;
+  }
+}
+@media screen and (max-width: 479px) {
+  .archive-article-header h1 {
+    font-size: 14px;
+  }
+}
 .archive-article-inner {
   padding: 0px;
   margin-bottom: 0px;
@@ -1279,6 +1294,11 @@ a.article-title:hover {
   line-height: 1.6em;
   border-left: 1px solid #39aa56;
   padding-left: 15px;
+}
+@media screen and (max-width: 479px) {
+  .archive-article-title {
+    padding-left: 8px;
+  }
 }
 .archive-article-title:hover {
   color: #39aa56;
