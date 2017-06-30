@@ -142,7 +142,7 @@ body {
 #rocket {
   position: fixed;
   right: 50px;
-  bottom: 50px;
+  bottom: 60px;
   display: block;
   visibility: hidden;
   width: 26px;
@@ -157,6 +157,12 @@ body {
   transition: visibility 0.6s cubic-bezier(0.6, 0.04, 0.98, 0.335), opacity 0.6s cubic-bezier(0.6, 0.04, 0.98, 0.335), transform 0.6s cubic-bezier(0.6, 0.04, 0.98, 0.335);
 }
 @media screen and (max-width: 479px) {
+  #rocket {
+    right: 12px;
+    bottom: 20px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
   #rocket {
     right: 12px;
     bottom: 20px;
@@ -217,6 +223,35 @@ body {
   -moz-transform: scale(1.4, 3.2);
   -ms-transform: scale(1.4, 3.2);
   transform: scale(1.4, 3.2);
+}
+#menu-switch {
+  display: block;
+  position: fixed;
+  right: 49px;
+  bottom: 20px;
+  padding: 0.2em 0 0.2em 0.2em;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #999;
+  opacity: 0.6;
+}
+@media screen and (max-width: 479px) {
+  #menu-switch {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  #menu-switch {
+    display: none;
+  }
+}
+#menu-switch:hover {
+  background: #f3f3f3;
+  opacity: 1;
+}
+.toc-hide {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 .outer {
   max-width: 1040px;
@@ -538,6 +573,23 @@ body {
 .article {
   color: #555;
   margin: 50px 0;
+  -webkit-transition: width 0.1s;
+  -moz-transition: width 0.1s;
+  -ms-transition: width 0.1s;
+  transition: width 0.1s;
+  -moz-transition: width 0.1s;
+/* Firefox 4 */
+  -webkit-transition: width 0.1s;
+/* Safari and Chrome */
+  -o-transition: width 0.1s;
+/* Opera */
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out; /* Firefox 4 */
+  -webkit-transition-timing-function: ease-out; /* Safari 和 Chrome */
+  -o-transition-timing-function: ease-out; /* Opera */
 }
 @media screen and (max-width: 479px) {
   .article {
@@ -1071,6 +1123,22 @@ a.article-title:hover {
     float: left;
     width: 23.03921568627451%;
     margin: 0 0.980392156862745%;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    visibility: visible;
+    opacity: 1;
   }
 }
 @media screen and (max-width: 479px) {
@@ -1126,8 +1194,8 @@ a.article-title:hover {
   color: #39aa56;
 }
 .nav-link {
-  font-family: "futura-pt", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", Microsoft JhengHei, WenQuanYi Micro Hei, "Microsoft YaHei", sans-serif;
-  color: #0e83cd;
+  font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'Microsoft Yahei Light', 'STHeitiSC-Light', 'Arial', sans-serif;
+  color: #777;
   padding: 1px !important;
 }
 .nav-link:hover {
