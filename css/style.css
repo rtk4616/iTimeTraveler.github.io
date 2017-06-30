@@ -780,6 +780,7 @@ a.article-title:hover {
 }
 .article-entry blockquote p {
   font-size: 15px;
+  margin: 15px 0;
 }
 .article-entry blockquote footer {
   font-size: 15px;
