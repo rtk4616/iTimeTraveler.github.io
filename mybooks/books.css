@@ -58,8 +58,8 @@
 
 #book {
 /*	margin: -47px 0 -30px -105px;*/
-	/*background: #F5F0B6*/
 	display: table;
+	/*background: #F5F0B6*/
 }
 
 #book h2 {
@@ -106,9 +106,4 @@
 	box-shadow: 5px 0 6px #512301;
 	position: absolute;
     bottom: 0;
-}
-
-
-@media (min-width: 768px) and (max-width: 991px) {
-  
 }
