@@ -322,6 +322,123 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Android 热修复原理和实现"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/11/10/Android 热修复原理和实现/">Android 热修复原理和实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/11/10/Android 热修复原理和实现/" class="article-date">
+	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">2016-11-10</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>查看原文： <a href="http://kymjs.com/code/2016/05/08/01"><strong>Android 热修复，没你想的那么难</strong></a> —— by kymjs张涛</p>
+</blockquote>
+<p>一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。</p>
+<p>《插件化从放弃到捡起》第一章，首先看一张图：</p>
+<p><img src="http://img.blog.csdn.net/20161110131925707" alt=""></p>
+<p>这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 <a href="https://zhuanlan.zhihu.com/p/20308548">【Qzone 热修复方案】</a>为例，跟大家讲一讲插件化中 <code>热修复方案</code> 的实现。</p>
+        <!-- 
+查看原文： Android 热修复，没你想的那么难 —— by kymjs张涛
+
+一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
+《插件化从放弃到捡起》第一章，首先看一张图：
+
+这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
+
+原理ClassLo......  -->
+        <p class="article-more-link">
+          <a href="../../2016/11/10/Android 热修复原理和实现/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/hotfix/">hotfix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-使用Neo4j进行全栈Web开发"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/11/10/使用Neo4j进行全栈Web开发/">使用Neo4j进行全栈Web开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/11/10/使用Neo4j进行全栈Web开发/" class="article-date">
+	  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">2016-11-10</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Web/">Web</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。</p>
+<h2 id="Neo4j是什么？"><a href="#Neo4j是什么？" class="headerlink" title="Neo4j是什么？"></a>Neo4j是什么？</h2><p><img src="http://img.blog.csdn.net/20161110104435615" alt="图1. Neo4j Web控制台"></p>
+<p>Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保存为节点以及节点之间的关系。在Neo4j中，节点以及关系都能够包含保存值的属性，此外：</p>
+<ul>
+<li>可以为节点设置零或多个<strong>标签</strong>（例如Author或Book）</li>
+<li>每个关系都对应一种<strong>类型</strong>（例如WROTE或FRIEND_OF）</li>
+<li>关系总是从一个节点指向另一个节点（但可以在不考虑指向性的情况下进行查询）</li>
+</ul>
+        <!-- 在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。
+Neo4j是什么？
+Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，......  -->
+        <p class="article-more-link">
+          <a href="../../2016/11/10/使用Neo4j进行全栈Web开发/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Neo4j/">Neo4j</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-D3.js加载本地json文件的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -775,124 +892,6 @@ Chrome自带开发者工具。它的功能十分丰富，包括元素、网络�
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Design-Pattern/">Design Pattern</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Go语言】基本类型排序和 slice 排序"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/">【Go语言】基本类型排序和 slice 排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/" class="article-date">
-	  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">2016-09-07</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Go语言/">Go语言</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（将来也不好说支不支持），所以，Go 的 sort 和 search 使用起来跟类型是有关的，或是需要像 c 一样写比较函数等，稍微显得也不是很方便。</p>
-</blockquote>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h3><p>  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是<strong><code>任何对象</code></strong>， 虽然很多情况下是一个 <code>slice</code> (分片， 类似于数组)，或是包含 slice 的一个对象。</p>
-<p>排序(接口)的三个要素：</p>
-<ul>
-<li>待排序元素个数 n ；</li>
-<li>第 i 和第 j 个元素的比较函数 cmp ；</li>
-<li>第 i 和 第 j 个元素的交换 swap ；</li>
-</ul>
-<p>乍一看条件 3 是多余的， c 和 c++ 都不提供 swap 。 c 的 qsort 的用法： <code>qsort(data, n, sizeof(int), cmp_int);</code>  data 是起始地址， n 是元素个数， sizeof(int) 是每个元素的大小， cmp_int 是一个比较两个 int 的函数。</p>
-<p>c++ 的 sort 的用法： <code>sort(data, data+n, cmp_int);</code> data 是第一个元素的位置， data+n 是最后一个元素的下一个位置， cmp_int 是比较函数。</p>
-        <!-- 
-Go 是通过 sort 包提供排序和搜索，因为 Go 暂时不支持泛型（将来也不好说支不支持），所以，Go 的 sort 和 search 使用起来跟类型是有关的，或是需要像 c 一样写比较函数等，稍微显得也不是很方便。
-
-引言  Go 的排序思路和 C 和 C++ 有些差别。 C 默认是对数组进行排序， C++ 是对一个序列进行排序， Go 则更宽泛一些，待排序的可以是任何对象， 虽然很多......  -->
-        <p class="article-more-link">
-          <a href="../../2016/09/07/【Go语言】基本类型排序和 slice 排序/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Go语言/">Go语言</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android 】TextView 局部文字变色"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/09/07/【Android 】TextView 局部文字变色/">【Android 】TextView 局部文字变色</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/09/07/【Android 】TextView 局部文字变色/" class="article-date">
-	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">2016-09-07</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”</p>
-</blockquote>
-<h3 id="一、需求效果"><a href="#一、需求效果" class="headerlink" title="一、需求效果"></a><strong>一、需求效果</strong></h3><p><img src="http://img.blog.csdn.net/20161009150647271" alt="比如这个"></p>
-<h3 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a><strong>二、解决方案</strong></h3><p>针对这类问题，Android提供了 <a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html"><strong><code>SpannableStringBuilder</code></strong></a>，方便我们自定义富文本的实现。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">textView = (TextView) findViewById(R.id.textview);</div><div class="line">SpannableStringBuilder builder = <span class="keyword">new</span> SpannableStringBuilder(textView.getText().toString());</div><div class="line"></div><div class="line"><span class="comment">//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色</span></div><div class="line">ForegroundColorSpan redSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.RED);</div><div class="line">ForegroundColorSpan whiteSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.WHITE);</div><div class="line">ForegroundColorSpan blueSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.BLUE);</div><div class="line">ForegroundColorSpan greenSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.GREEN);</div><div class="line">ForegroundColorSpan yellowSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.YELLOW);</div><div class="line"> </div><div class="line"> </div><div class="line">builder.setSpan(redSpan, <span class="number">0</span>, <span class="number">1</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(whiteSpan, <span class="number">1</span>, <span class="number">2</span>, Spannable.SPAN_INCLUSIVE_INCLUSIVE);</div><div class="line">builder.setSpan(blueSpan, <span class="number">2</span>, <span class="number">3</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(greenSpan, <span class="number">3</span>, <span class="number">4</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">builder.setSpan(yellowSpan, <span class="number">4</span>,<span class="number">5</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line"></div><div class="line">textView.setText(builder);</div></pre></td></tr></table></figure>
-        <!-- 
-TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”
-
-一、需求效果
-二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
-textView = (TextView) findViewById(R.id.textview);SpannableStringBuilder bui......  -->
-        <p class="article-more-link">
-          <a href="../../2016/09/07/【Android 】TextView 局部文字变色/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
     </footer>
   </div>

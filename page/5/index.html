@@ -322,6 +322,125 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Android】Monkey压力测试与停止"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/07/19/【Android】Monkey压力测试与停止/">【Android】Monkey压力测试与停止</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
+	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">2016-07-19</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a><strong>一、Monkey 是什么？</strong></h4><p>Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</p>
+<h4 id="二、Monkey命令"><a href="#二、Monkey命令" class="headerlink" title="二、Monkey命令"></a><strong>二、Monkey命令</strong></h4><p>1）. 标准的monkey 命令<br>[adb shell] monkey [options] &lt; eventcount &gt; , 例如：</p>
+<blockquote>
+<p>adb shell monkey -v 500</p>
+</blockquote>
+<p>产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。<br>上面只是一个简单的例子，实际情况中通常会有很多的options 选项.</p>
+<p>2）. 四大类</p>
+<blockquote>
+<ul>
+<li>常用选项</li>
+<li>事件选项 </li>
+<li>约束选项 </li>
+<li>调试选项</li>
+</ul>
+</blockquote>
+<p>具体的命令解释可以看这里：<a href="http://www.jb51.net/article/48557.htm">android 压力测试命令monkey详解</a></p>
+        <!-- 一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventc......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/">【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
+	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
+<p>手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？</p>
+</blockquote>
+<p>这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。</p>
+<p>其实方法很简单，这里我们需要用到 <strong>Thread.setDefaultUncaughtExceptionHandler()</strong>，当应用崩溃的时候代码就会自动调用 <strong>uncaughtException()</strong> 这个方法。</p>
+        <!-- 
+英文原文： Auto Restart application after Crash/Force Close in Android.
+手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
+
+这篇教程我们将学到如何自动处理Exceptio......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【SVN】使用patch命令保存更改"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -744,124 +863,6 @@ select * from table_name where id in ()的时候，MySQL会自动按主键自增
 <p>1、<code>Picasso.with(getActivity()).invalidate(file);</code><br>2、<code>Picasso.with(getActivity()).load(url).skipMemoryCache().into(image);</code></p>
 <p>最后还是在StackOverFlow的<a href="http://stackoverflow.com/questions/27502659/clear-cache-memory-of-picasso" target="_blank" rel="external">Clear Cache memory of Picasso</a>查到了如上的解决办法。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-如何生成100个1-100以内的不重复的随机数"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/">如何生成100个1-100以内的不重复的随机数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="article-date">
-	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">2016-01-22</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数</p>
-</blockquote>
-<h2 id="一、简单实现思路"><a href="#一、简单实现思路" class="headerlink" title="一、简单实现思路:"></a><strong>一、简单实现思路:</strong></h2><p>(1) 把N个数放入Hashtable 或者arrayList 中.</p>
-<p>(2) 从上面的集合中随机抽取一个数放入int数组中.</p>
-<p>(3) 把取出的这个数从上面的集合中删除.</p>
-<p>(4) 循环 (2),(3) 步骤,直到int数组取满为止.</p>
-        <!-- 
-这是个经典的面试题目：生成长度为100的数组，插入1-100以内的但均不重复的随机数
-
-一、简单实现思路:(1) 把N个数放入Hashtable 或者arrayList 中.
-(2) 从上面的集合中随机抽取一个数放入int数组中.
-(3) 把取出的这个数从上面的集合中删除.
-(4) 循环 (2),(3) 步骤,直到int数组取满为止.
-
-这是一种比较简单的实现思路，实现代码如下：
-impo......  -->
-        <p class="article-more-link">
-          <a href="../../2016/01/22/如何生成100个1-100以内的不重复的随机数/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】如何查看Activity Task栈的情况"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/">【Android】如何查看Activity Task栈的情况</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/" class="article-date">
-	  <time datetime="2016-01-19T03:48:00.000Z" itemprop="datePublished">2016-01-19</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我们都知道，每个Activity都有taskAffinity属性，这个属性指出了它希望进入的Task。</p>
-</blockquote>
-<p>如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 </p>
-<p><strong>一、查看task栈情况</strong></p>
-<p>在cmd命令行里或者Android Studio中的Terminal里敲入如下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">adb shell dumpsys activity</div></pre></td></tr></table></figure></p>
-<p>然后会出现很长一段详细信息，滚到中间的地方，会看到Task栈的状态如下：<br><img src="http://img.blog.csdn.net/20160119120838863" alt=""></p>
-        <!-- 
-我们都知道，每个Activity都有taskAffinity属性，这个属性指出了它希望进入的Task。
-
-如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属......  -->
-        <p class="article-more-link">
-          <a href="../../2016/01/19/【Android】如何查看Activity Task栈的情况/#more">阅读全文</a>
-        </p>
       
     </div>
     <footer class="article-footer">
