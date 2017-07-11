@@ -566,6 +566,64 @@ AbsoluteSizeSpan(int......  -->
 <!-- Table of Contents -->
 
   
+    <article id="post-【Java】泛型详解"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/12/27/【Java】泛型详解/">【Java】泛型详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/12/27/【Java】泛型详解/" class="article-date">
+	  <time datetime="2016-12-27T04:30:55.000Z" itemprop="datePublished">2016-12-27</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-为什么需要泛型？"><a href="#一-为什么需要泛型？" class="headerlink" title="一. 为什么需要泛型？"></a><strong>一. 为什么需要泛型？</strong></h2><p>首先，我们看下下面这段简短的代码:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List list = <span class="keyword">new</span> ArrayList();</div><div class="line">        list.add(<span class="string">"qqyumidi"</span>);</div><div class="line">        list.add(<span class="string">"corn"</span>);</div><div class="line">        list.add(<span class="number">100</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</div><div class="line">            String name = (String) list.get(i);  <span class="comment">// ① 错误</span></div><div class="line">            System.out.println(<span class="string">"name:"</span> + name);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>定义了一个List类型的集合，先向其中加入了两个字符串类型的值，随后加入一个Integer类型的值。这是完全允许的，因为此时list默认的类型为Object类型。在之后的循环中，由于忘记了之前在list中也加入了Integer类型的值或其他编码原因，很容易出现类似于<code>//①</code>中的错误。因为编译阶段正常，而运行时会出现<strong>“java.lang.ClassCastException”异常</strong>。因此，导致此类错误编码过程中不易发现。</p>
+<p> 在如上的编码过程中，我们发现主要存在两个问题：</p>
+<ol>
+<li><p>当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</p>
+</li>
+<li><p>因此，//① 处取出集合元素时需要人为的强制类型转化到具体的目标类型，且很容易出现“java.lang.ClassCastException”异常。</p>
+</li>
+</ol>
+<p>那么有没有什么办法可以使集合能够记住集合内元素各类型，且能够达到只要编译时不出现问题，运行时就不会出现“java.lang.ClassCastException”异常呢？答案就是使用<strong>泛型</strong>。</p>
+        <!-- 一. 为什么需要泛型？首先，我们看下下面这段简短的代码:
+public class GenericTest &#123;    public static void main(String[] args) &#123;        List list = new ArrayList();        list.add("qqyumidi");        list.add("corn"......  -->
+        <p class="article-more-link">
+          <a href="../../2016/12/27/【Java】泛型详解/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-数学之美番外篇：平凡而又神奇的贝叶斯方法"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -830,62 +888,6 @@ AbsoluteSizeSpan(int......  -->
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/D3/">D3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】微信热修复 Tinker 的集成和使用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/">【Android】微信热修复 Tinker 的集成和使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="article-date">
-	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">2016-11-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p> <strong><code>Tinker</code></strong>： n.   〈英〉小炉匠，补锅匠，修补匠</p>
-<p><a href="https://github.com/Tencent/tinker"><strong>Tinker</strong></a> 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 <code>dex</code>, <code>library</code> and <code>resources</code> 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。</p>
-<p>Tinker GitHub: <a href="https://github.com/Tencent/tinker">https://github.com/Tencent/tinker</a></p>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a><strong>使用步骤</strong></h2><h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><p>很多人遇到的第一个错误就是提示 <code>tinkerId is not set</code> ，这个在tinker-sample-android的<code>app/build.gradle</code> 中默认设置为Git的提交版本号，如下</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : gitSha()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : <span class="string">"tinker_id_2333"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。</p>
-        <!-- 简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
-Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
-Tinker GitHub: https://github.......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Tinker/">Tinker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/hotfix/">hotfix</a></li></ul>
 
     </footer>
   </div>
