@@ -721,7 +721,7 @@ body {
 .article-inner .h4,
 .article-inner .h5,
 .article-inner .h6 {
-  font-family: Arial, "Hiragino Sans GB", "黑体", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Helvetica, Tahoma, "Arial sans-serif";
+  font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei Light", "微软雅黑", SimSun, "宋体", Helvetica, Tahoma, "Arial sans-serif";
 }
 .article-meta {
   text-align: center;
@@ -772,10 +772,12 @@ body {
   text-align: center;
 }
 .article-header h1 {
+  font-size: 25px;
   font-weight: bold;
-  font-family: Arial, "Hiragino Sans GB", "黑体", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Helvetica, Tahoma, "Arial sans-serif";
+  font-family: Arial, "Hiragino Sans GB", "Microsoft YaHei Light", "微软雅黑", SimSun, "宋体", Helvetica, Tahoma, "Arial sans-serif";
 }
 .article-header .thumb {
+  font-size: 23px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
