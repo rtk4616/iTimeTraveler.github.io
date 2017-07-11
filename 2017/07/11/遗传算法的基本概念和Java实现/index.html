@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>遗传算法的基本概念和java实现 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Algorithm" />
+  
+  
+  
+  
+  <meta name="description" content="基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遗传算法的基本概念和Java实现">
+<meta property="og:url" content="http://github.com/2017/07/11/遗传算法的基本概念和Java实现/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-BYDJpa6M2rzWNSurvspf8Q.png">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-vIrsxg12DSltpdWoO561yA.png">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-Wi6ou9jyMHdxrF2dgczz7g.png">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-eQxFezBtdfdLxHsvSvBNGQ.png">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-_Dl6Hwkay-UU24DJ_oVrLw.png">
+<meta property="og:image" content="http://github.com/gallery/genetic-algorithms/1-CGt_UhRqCjIDb7dqycmOAg.png">
+<meta property="og:updated_time" content="2017-07-11T10:57:00.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="遗传算法的基本概念和Java实现">
+<meta name="twitter:description" content="基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。">
+<meta name="twitter:image" content="http://github.com/gallery/genetic-algorithms/1-BYDJpa6M2rzWNSurvspf8Q.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  <link rel="apple-touch-icon" href="/http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">readlist</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-遗传算法的基本概念和Java实现" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      遗传算法的基本概念和Java实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2017-07-11T10:30:55.000Z" itemprop="datePublished">2017-07-11</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。</p>
+<p><img src="/gallery/genetic-algorithms/1-BYDJpa6M2rzWNSurvspf8Q.png" alt="如上图（左）所示，遗传算法的个体由多条染色体组成，每条染色体由多个基因组成。上图（右）展示了染色体分割和组合的方式。"></p>
+<a id="more"></a>
+<h3 id="遗传算法的概念"><a href="#遗传算法的概念" class="headerlink" title="遗传算法的概念"></a><strong>遗传算法的概念</strong></h3><p>自然选择的过程从选择群体中最适应环境的个体开始。后代继承了父母的特性，并且这些特性将添加到下一代中。如果父母具有更好的适应性，那么它们的后代将更易于存活。迭代地进行该自然选择的过程，最终，我们将得到由最适应环境的个体组成的一代。</p>
+<p>这一概念可以被应用于搜索问题中。我们考虑一个问题的诸多解决方案，并从中搜寻出最佳方案。</p>
+<p>遗传算法含以下五步：</p>
+<ol>
+<li>初始化</li>
+<li>个体评价（计算适应度函数）</li>
+<li>选择运算</li>
+<li>交叉运算</li>
+<li>变异运算</li>
+</ol>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a><strong>初始化</strong></h4><p>该过程从种群的一组个体开始，且每一个体都是待解决问题的一个候选解。</p>
+<p>个体以一组参数（变量）为特征，这些特征被称为基因，串联这些基因就可以组成染色体（问题的解）。</p>
+<p>在遗传算法中，单个个体的基因组以字符串的方式呈现，通常我们可以使用二进制（1 和 0 的字符串）编码，即一个二进制串代表一条染色体串。因此可以说我们将基因串或候选解的特征编码在染色体中。</p>
+<p><img src="/gallery/genetic-algorithms/1-vIrsxg12DSltpdWoO561yA.png" alt="*种群、染色体和基因*"></p>
+<h4 id="个体评价（计算适应度函数）"><a href="#个体评价（计算适应度函数）" class="headerlink" title="个体评价（计算适应度函数）"></a><strong>个体评价（计算适应度函数）</strong></h4><p>个体评价利用适应度函数评估了该个体对环境的适应度（与其它个体竞争的能力）。每一个体都有适应度评分，个体被选中进行繁殖的可能性取决于其适应度评分。适应度函数值越大，解的质量就越高。适应度函数是遗传算法进化的驱动力，也是进行自然选择的唯一标准，它的设计应结合求解问题本身的要求而定。</p>
+<h4 id="选择运算"><a href="#选择运算" class="headerlink" title="选择运算"></a><strong>选择运算</strong></h4><p>选择运算的目的是选出适应性最好的个体，并使它们将基因传到下一代中。基于其适应度评分，我们选择多对较优个体（父母）。适应度高的个体更易被选中繁殖，即将较优父母的基因传递到下一代。</p>
+<h4 id="交叉运算"><a href="#交叉运算" class="headerlink" title="交叉运算"></a><strong>交叉运算</strong></h4><p>交叉运算是遗传算法中最重要的阶段。对每一对配对的父母，基因都存在随机选中的交叉点。</p>
+<p>举个例子，下图的交叉点为 3：</p>
+<p><img src="/gallery/genetic-algorithms/1-Wi6ou9jyMHdxrF2dgczz7g.png" alt="Crossover point"></p>
+<p>父母间在交叉点之前交换基因，从而产生了后代。</p>
+<p><img src="/gallery/genetic-algorithms/1-eQxFezBtdfdLxHsvSvBNGQ.png" alt="Exchanging genes among parents"></p>
+<p>父母间交换基因，然后产生的新后代被添加到种群中。</p>
+<p><img src="/gallery/genetic-algorithms/1-_Dl6Hwkay-UU24DJ_oVrLw.png" alt="New offspring"></p>
+<h4 id="变异运算"><a href="#变异运算" class="headerlink" title="变异运算"></a><strong>变异运算</strong></h4><p>在某些形成的新后代中，它们的某些基因可能受到低概率变异因子的作用。这意味着二进制位串中的某些位可能会翻转。</p>
+<p><img src="/gallery/genetic-algorithms/1-CGt_UhRqCjIDb7dqycmOAg.png" alt="变异运算前后"></p>
+<p>变异运算可用于保持种群内的多样性，并防止过早收敛。</p>
+<h4 id="终止"><a href="#终止" class="headerlink" title="终止"></a><strong>终止</strong></h4><p>在群体收敛的情况下（群体内不产生与前一代差异较大的后代）该算法终止。也就是说遗传算法提供了一组问题的解。</p>
+<h3 id="案例实现"><a href="#案例实现" class="headerlink" title="案例实现"></a><strong>案例实现</strong></h3><p>种群的规模恒定。新一代形成时，适应度最差的个体凋亡，为后代留出空间。这些阶段的序列被不断重复，以产生优于先前的新一代。</p>
+<p>这一迭代过程的伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">START</div><div class="line">Generate the initial population</div><div class="line">Compute fitness</div><div class="line">REPEAT</div><div class="line">    Selection</div><div class="line">    Crossover</div><div class="line">    Mutation</div><div class="line">    Compute fitness</div><div class="line">UNTIL population has converged</div><div class="line">STOP</div></pre></td></tr></table></figure>
+<h4 id="Java-中的实例实现"><a href="#Java-中的实例实现" class="headerlink" title="Java 中的实例实现"></a><strong>Java 中的实例实现</strong></h4><p>以下展示的是遗传算法在 Java 中的示例实现，我们可以随意调试和修改这些代码。给定一组五个基因，每一个基因可以保存一个二进制值 0 或 1。这里的适应度是基因组中 1 的数量。如果基因组内共有五个 1，则该个体适应度达到最大值。如果基因组内没有 1，那么个体的适应度达到最小值。该遗传算法希望最大化适应度，并提供适应度达到最大的个体所组成的群体。注意：本例中，在交叉运算与突变运算之后，适应度最低的个体被新的，适应度最高的后代所替代。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Random;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> Vijini</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">//Main class</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleDemoGA</span> </span>&#123;</div><div class="line"></div><div class="line">    Population population = <span class="keyword">new</span> Population();</div><div class="line">    Individual fittest;</div><div class="line">    Individual secondFittest;</div><div class="line">    <span class="keyword">int</span> generationCount = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        Random rn = <span class="keyword">new</span> Random();</div><div class="line">        </div><div class="line">        SimpleDemoGA demo = <span class="keyword">new</span> SimpleDemoGA();</div><div class="line">        </div><div class="line">        <span class="comment">//Initialize population</span></div><div class="line">        demo.population.initializePopulation(<span class="number">10</span>);</div><div class="line">        </div><div class="line">        <span class="comment">//Calculate fitness of each individual</span></div><div class="line">        demo.population.calculateFitness();</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"Generation: "</span> + demo.generationCount + <span class="string">" Fittest: "</span> + demo.population.fittest);</div><div class="line"></div><div class="line">        <span class="comment">//While population gets an individual with maximum fitness</span></div><div class="line">        <span class="keyword">while</span> (demo.population.fittest &lt; <span class="number">5</span>) &#123;</div><div class="line">            ++demo.generationCount;</div><div class="line">            </div><div class="line">            <span class="comment">//Do selection</span></div><div class="line">            demo.selection();</div><div class="line">            </div><div class="line">            <span class="comment">//Do crossover</span></div><div class="line">            demo.crossover();</div><div class="line">            </div><div class="line">            <span class="comment">//Do mutation under a random probability</span></div><div class="line">            <span class="keyword">if</span> (rn.nextInt()%<span class="number">7</span> &lt; <span class="number">5</span>) &#123;</div><div class="line">                demo.mutation();</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="comment">//Add fittest offspring to population</span></div><div class="line">            demo.addFittestOffspring();</div><div class="line">            </div><div class="line">            <span class="comment">//Calculate new fitness value </span></div><div class="line">            demo.population.calculateFitness();</div><div class="line">            </div><div class="line">            System.out.println(<span class="string">"Generation: "</span> + demo.generationCount + <span class="string">" Fittest: "</span> + demo.population.fittest);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"\nSolution found in generation "</span> + demo.generationCount);</div><div class="line">        System.out.println(<span class="string">"Fitness: "</span>+demo.population.getFittest().fitness);</div><div class="line">        System.out.print(<span class="string">"Genes: "</span>);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">            System.out.print(demo.population.getFittest().genes[i]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">""</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Selection</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">selection</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="comment">//Select the most fittest individual</span></div><div class="line">        fittest = population.getFittest();</div><div class="line">        </div><div class="line">        <span class="comment">//Select the second most fittest individual</span></div><div class="line">        secondFittest = population.getSecondFittest();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Crossover</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">crossover</span><span class="params">()</span> </span>&#123;</div><div class="line">        Random rn = <span class="keyword">new</span> Random();</div><div class="line">        </div><div class="line">        <span class="comment">//Select a random crossover point</span></div><div class="line">        <span class="keyword">int</span> crossOverPoint = rn.nextInt(population.individuals[<span class="number">0</span>].geneLength);</div><div class="line"></div><div class="line">        <span class="comment">//Swap values among parents</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; crossOverPoint; i++) &#123;</div><div class="line">            <span class="keyword">int</span> temp = fittest.genes[i];</div><div class="line">            fittest.genes[i] = secondFittest.genes[i];</div><div class="line">            secondFittest.genes[i] = temp;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Mutation</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mutation</span><span class="params">()</span> </span>&#123;</div><div class="line">        Random rn = <span class="keyword">new</span> Random();</div><div class="line">        </div><div class="line">        <span class="comment">//Select a random mutation point</span></div><div class="line">        <span class="keyword">int</span> mutationPoint = rn.nextInt(population.individuals[<span class="number">0</span>].geneLength);</div><div class="line"></div><div class="line">        <span class="comment">//Flip values at the mutation point</span></div><div class="line">        <span class="keyword">if</span> (fittest.genes[mutationPoint] == <span class="number">0</span>) &#123;</div><div class="line">            fittest.genes[mutationPoint] = <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            fittest.genes[mutationPoint] = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        mutationPoint = rn.nextInt(population.individuals[<span class="number">0</span>].geneLength);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (secondFittest.genes[mutationPoint] == <span class="number">0</span>) &#123;</div><div class="line">            secondFittest.genes[mutationPoint] = <span class="number">1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            secondFittest.genes[mutationPoint] = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Get fittest offspring</span></div><div class="line">    <span class="function">Individual <span class="title">getFittestOffspring</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (fittest.fitness &gt; secondFittest.fitness) &#123;</div><div class="line">            <span class="keyword">return</span> fittest;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> secondFittest;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">//Replace least fittest individual from most fittest offspring</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addFittestOffspring</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="comment">//Update fitness values of offspring</span></div><div class="line">        fittest.calcFitness();</div><div class="line">        secondFittest.calcFitness();</div><div class="line">        </div><div class="line">        <span class="comment">//Get index of least fit individual</span></div><div class="line">        <span class="keyword">int</span> leastFittestIndex = population.getLeastFittestIndex();</div><div class="line">        </div><div class="line">        <span class="comment">//Replace least fittest individual from most fittest offspring</span></div><div class="line">        population.individuals[leastFittestIndex] = getFittestOffspring();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//Individual class</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Individual</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> fitness = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span>[] genes = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div><div class="line">    <span class="keyword">int</span> geneLength = <span class="number">5</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Individual</span><span class="params">()</span> </span>&#123;</div><div class="line">        Random rn = <span class="keyword">new</span> Random();</div><div class="line"></div><div class="line">        <span class="comment">//Set genes randomly for each individual</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; genes.length; i++) &#123;</div><div class="line">            genes[i] = rn.nextInt() % <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        fitness = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Calculate fitness</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calcFitness</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        fitness = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (genes[i] == <span class="number">1</span>) &#123;</div><div class="line">                ++fitness;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Population class</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Population</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> popSize = <span class="number">10</span>;</div><div class="line">    Individual[] individuals = <span class="keyword">new</span> Individual[<span class="number">10</span>];</div><div class="line">    <span class="keyword">int</span> fittest = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">//Initialize population</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initializePopulation</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; individuals.length; i++) &#123;</div><div class="line">            individuals[i] = <span class="keyword">new</span> Individual();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Get the fittest individual</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Individual <span class="title">getFittest</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> maxFit = Integer.MIN_VALUE;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; individuals.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (maxFit &lt;= individuals[i].fitness) &#123;</div><div class="line">                maxFit = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        fittest = individuals[maxFit].fitness;</div><div class="line">        <span class="keyword">return</span> individuals[maxFit];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Get the second most fittest individual</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Individual <span class="title">getSecondFittest</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> maxFit1 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> maxFit2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; individuals.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (individuals[i].fitness &gt; individuals[maxFit1].fitness) &#123;</div><div class="line">                maxFit2 = maxFit1;</div><div class="line">                maxFit1 = i;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (individuals[i].fitness &gt; individuals[maxFit2].fitness) &#123;</div><div class="line">                maxFit2 = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> individuals[maxFit2];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Get index of least fittest individual</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLeastFittestIndex</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> minFit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; individuals.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (minFit &gt;= individuals[i].fitness) &#123;</div><div class="line">                minFit = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> minFit;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Calculate fitness of each individual</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calculateFitness</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; individuals.length; i++) &#123;</div><div class="line">            individuals[i].calcFitness();</div><div class="line">        &#125;</div><div class="line">        getFittest();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>原文来自：<a href="https://medium.com/towards-data-science/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3" target="_blank" rel="external">Introduction to Genetic Algorithms — Including Example Code</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'iTimeTraveler';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../【Java】Integer变量相等（==）比较问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【Java】Integer变量相等（==）比较问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#遗传算法的概念"><span class="nav-number">1.</span> <span class="nav-text">遗传算法的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个体评价（计算适应度函数）"><span class="nav-number">1.2.</span> <span class="nav-text">个体评价（计算适应度函数）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择运算"><span class="nav-number">1.3.</span> <span class="nav-text">选择运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉运算"><span class="nav-number">1.4.</span> <span class="nav-text">交叉运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变异运算"><span class="nav-number">1.5.</span> <span class="nav-text">变异运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止"><span class="nav-number">1.6.</span> <span class="nav-text">终止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#案例实现"><span class="nav-number">2.</span> <span class="nav-text">案例实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-中的实例实现"><span class="nav-number">2.1.</span> <span class="nav-text">Java 中的实例实现</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">ReadList</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
