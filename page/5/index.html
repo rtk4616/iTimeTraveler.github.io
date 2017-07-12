@@ -484,25 +484,31 @@
 <p>但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。</p>
 </blockquote>
 <h4 id="一、名词介绍"><a href="#一、名词介绍" class="headerlink" title="一、名词介绍"></a><strong>一、名词介绍</strong></h4><ol>
-<li><p><strong>PPI</strong> = Pixels per inch，每英寸上的像素数,即 “像素密度”</p>
-<pre><code>● xhdpi: 2.0
-● hdpi: 1.5
-● mdpi: 1.0 (baseline)
-● ldpi: 0.75
-</code></pre><p>下图是Android官网dpi的定义（其实在计算机中dpi就是ppi）</p>
-<p><strong>注意，是dpi，不是dip</strong></p>
-<blockquote>
-<p>dpi是Dot Per Inch，中文就是每英寸的点数，是现实概念。<br>而dip是Device Independent Pixels，是设备独立像素，又称设备无关像素，是人为抽象概念）。还是不明白可以看看这里 <a href="http://zhidao.baidu.com/link?url=vPAxK6EdTCzBfQy8xUCnHcZS6M45oijy87YKvW7UlM4W7majdUf7Af3tL8S8CvCX8Thswwf2SU-uKSwpdLQ-6a">dpi与ppi区别</a>）</p>
-</blockquote>
+<li><strong>PPI</strong> = Pixels per inch，每英寸上的像素数,即 “像素密度”<ul>
+<li>xhdpi: 2.0</li>
+<li>hdpi: 1.5</li>
+<li>mdpi: 1.0 (baseline)</li>
+<li>ldpi: 0.75</li>
+</ul>
 </li>
 </ol>
-<pre><code>![官方dpi定义](http://img.blog.csdn.net/20160722113144430)
-</code></pre><ol>
+<p>下图是Android官网dpi的定义（其实在计算机中dpi就是ppi，不明白可以看这里 <a href="http://zhidao.baidu.com/link?url=vPAxK6EdTCzBfQy8xUCnHcZS6M45oijy87YKvW7UlM4W7majdUf7Af3tL8S8CvCX8Thswwf2SU-uKSwpdLQ-6a">dpi与ppi区别</a>）：</p>
+<p><strong>同时也注意，是dpi，不是dip。</strong></p>
+<blockquote>
+<p>dpi是<strong>Dots Per Inch，每英寸点数</strong>。（一个量度单位，用于点阵数码影像，指每一英寸长度中，取样、可显示或输出点的数目。是现实概念）。</p>
+<p>dip是<strong>Device Independent Pixels，设备独立像素</strong>。（又称设备无关像，是人为抽象概念 ）。</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20160722113144430" alt="官方dpi定义"></p>
+<ol>
 <li><p><strong>dp</strong> = 也就是dip（device independent pixels），设备独立像素。以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:</p>
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; ● 在320x480分辨率，像素密度为160，1dp=1px
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; ● 在480x800分辨率，像素密度为240，1dp=1.5px
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &gt; 计算公式：1dp*像素密度/160 = 实际像素数
-</code></pre></li>
+<ul>
+<li>在320x480分辨率，像素密度为160，1dp=1px</li>
+<li>在480x800分辨率，像素密度为240，1dp=1.5px<blockquote>
+<p>计算公式：1dp*像素密度/160 = 实际像素数</p>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><p><strong>sp</strong> = Scale-independent pixels，它是安卓的字体单位</p>
 </li>
 </ol>
