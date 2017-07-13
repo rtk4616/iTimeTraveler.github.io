@@ -313,6 +313,7 @@ body {
 }
 .article-date,
 .article-category-link,
+.article-views,
 .archive-year,
 .archive-tag,
 .archive-category,
@@ -766,6 +767,17 @@ body {
   padding-right: 0.3em;
 }
 .article-category-link:hover {
+  color: #414141;
+}
+.article-views {
+  text-align: center;
+  font-weight: normal;
+}
+.article-views:before {
+  font-family: "FontAwesome";
+  content: "\f06e";
+}
+.article-views:hover {
   color: #414141;
 }
 .article-header {

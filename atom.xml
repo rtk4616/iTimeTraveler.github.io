@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-07-13T10:35:08.211Z</updated>
+  <updated>2017-07-13T10:37:10.583Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/07/13/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%9110%E4%BA%BFint%E5%9E%8B%E6%95%B0%E5%8E%BB%E9%87%8D/"/>
     <id>http://github.com/2017/07/13/【算法】10亿int型数去重/</id>
     <published>2017-07-13T10:30:55.000Z</published>
-    <updated>2017-07-13T10:35:08.211Z</updated>
+    <updated>2017-07-13T10:37:10.583Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong>题目</strong></h2><p>10亿int整型数，以及一台可用内存为1GB的机器，时间复杂度要求O(n)，统计只出现一次的数？</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先分析多大的内存能够表示10亿的数呢？一个int型占4字节，10亿就是40亿字节（很明显就是4GB），也就是如果完全读入内存需要占用4GB，而题目只给1GB内存，显然不可能将所有数据读入内存。</p>
