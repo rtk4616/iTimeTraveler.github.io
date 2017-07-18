@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>八大排序算法总结与java实现 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Sort" />
+  
+  
+  
+  
+  <meta name="description" content="概述因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：
+
+
+直接插入排序
+希尔排序
+简单选择排序
+堆排序
+冒泡排序
+快速排序
+归并排序
+基数排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="八大排序算法总结与java实现">
+<meta property="og:url" content="http://github.com/2017/07/18/八大排序算法总结与java实现/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="概述因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：
+
+
+直接插入排序
+希尔排序
+简单选择排序
+堆排序
+冒泡排序
+快速排序
+归并排序
+基数排序">
+<meta property="og:image" content="http://github.com/gallery/sort-algorithms/big-o.png">
+<meta property="og:updated_time" content="2017-07-18T11:10:28.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="八大排序算法总结与java实现">
+<meta name="twitter:description" content="概述因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：
+
+
+直接插入排序
+希尔排序
+简单选择排序
+堆排序
+冒泡排序
+快速排序
+归并排序
+基数排序">
+<meta name="twitter:image" content="http://github.com/gallery/sort-algorithms/big-o.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  <link rel="apple-touch-icon" href="/http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">readlist</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-八大排序算法总结与java实现" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/sort-algorithms/big-o.png" rel="gallery_cj59hb5zy006j7smyb4iil4ur">
+        <img src="../../../../gallery/sort-algorithms/big-o.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      八大排序算法总结与java实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2017-07-18T04:30:55.000Z" itemprop="datePublished">2017-07-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：</p>
+<p><img src="/gallery/sort-algorithms/1156494-ab4cecff133d87b3.png" alt=""></p>
+<ul>
+<li>直接插入排序</li>
+<li>希尔排序</li>
+<li>简单选择排序</li>
+<li>堆排序</li>
+<li>冒泡排序</li>
+<li>快速排序</li>
+<li>归并排序</li>
+<li>基数排序</li>
+</ul>
+<a id="more"></a>
+<h3 id="一、直接插入排序（Insertion-Sort）"><a href="#一、直接插入排序（Insertion-Sort）" class="headerlink" title="一、直接插入排序（Insertion Sort）"></a>一、直接插入排序（Insertion Sort）</h3><hr>
+<h4 id="1、基本思想"><a href="#1、基本思想" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过为止。</p>
+<p><img src="/gallery/sort-algorithms/Insertion-sort-example-300px.gif" alt="使用插入排序为一列数字进行排序的过程"></p>
+<h4 id="2、算法描述"><a href="#2、算法描述" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
+<p>①. 从第一个元素开始，该元素可以认为已经被排序<br>②. 取出下一个元素，在已经排序的元素序列中从后向前扫描<br>③. 如果该元素（已排序）大于新元素，将该元素移到下一位置<br>④. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置<br>⑤. 将新元素插入到该位置后<br>⑥. 重复步骤②~⑤</p>
+<p><img src="/gallery/sort-algorithms/insert-sort.gif" alt="直接插入排序演示"></p>
+<p>如果<em>比较操作</em>的代价比<em>交换操作</em>大的话，可以采用<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95" target="_blank" rel="external">二分查找法</a>来减少<em>比较操作</em>的数目。该算法可以认为是<strong>插入排序</strong>的一个变种，称为<a href="https://zh.wikipedia.org/w/index.php?title=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F&amp;action=edit&amp;redlink=1" target="_blank" rel="external">二分查找插入排序</a>。</p>
+<h4 id="3、代码实现"><a href="#3、代码实现" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * 插入排序</div><div class="line">    *</div><div class="line">    * 1. 从第一个元素开始，该元素可以认为已经被排序</div><div class="line">    * 2. 取出下一个元素，在已经排序的元素序列中从后向前扫描</div><div class="line">    * 3. 如果该元素（已排序）大于新元素，将该元素移到下一位置</div><div class="line">    * 4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</div><div class="line">    * 5. 将新元素插入到该位置后</div><div class="line">    * 6. 重复步骤2~5</div><div class="line">    * <span class="doctag">@param</span> arr  待排序数组</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">       <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length-<span class="number">1</span>; i++ ) &#123;</div><div class="line">           <span class="keyword">for</span>( <span class="keyword">int</span> j=i+<span class="number">1</span>; j&gt;<span class="number">0</span>; j-- ) &#123;</div><div class="line">               <span class="keyword">if</span>( arr[j-<span class="number">1</span>] &lt;= arr[j] )</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">               <span class="keyword">int</span> temp = arr[j];		<span class="comment">//交换操作</span></div><div class="line">               arr[j] = arr[j-<span class="number">1</span>];</div><div class="line">               arr[j-<span class="number">1</span>] = temp;</div><div class="line">               System.out.println(<span class="string">"Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h4 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h4><p>时间复杂度：O（n^2）</p>
+<h3 id="二、希尔排序（Shell-Sort）"><a href="#二、希尔排序（Shell-Sort）" class="headerlink" title="二、希尔排序（Shell Sort）"></a>二、希尔排序（Shell Sort）</h3><hr>
+<blockquote class="pullquote right"><p>第一个突破O(n^2)的排序算法；是简单插入排序的改进版；它与插入排序的不同之处在于，它会优先比较距离较远的元素。</p>
+</blockquote>
+<p>希尔排序，也称<strong>递减增量排序算法</strong>，1959年Shell发明。是插入排序的一种高速而稳定的改进版本。</p>
+<p>希尔排序是先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。</p>
+<h4 id="1、基本思想-1"><a href="#1、基本思想-1" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p><img src="/gallery/sort-algorithms/shell-sort.jpg" alt=""></p>
+<p>将待排序数组按照步长gap进行分组，然后将每组的元素利用直接插入排序的方法进行排序；每次再将gap折半减小，循环上述操作；当gap=1时，利用直接插入，完成排序。</p>
+<p>可以看到步长的选择是希尔排序的重要部分。只要最终步长为1任何步长序列都可以工作。一般来说最简单的步长取值是<strong>初次取数组长度的一半</strong>为增量，之后每次再减半，直到增量为1。更好的步长序列取值可以参考<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F#.E6.AD.A5.E9.95.BF.E5.BA.8F.E5.88.97" target="_blank" rel="external">维基百科</a>。</p>
+<h4 id="2、算法描述-1"><a href="#2、算法描述-1" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>①. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（<strong>一般初次取数组半长，之后每次再减半，直到增量为1</strong>）<br>②. 按增量序列个数k，对序列进行k 趟排序；<br>③. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
+<h4 id="3、代码实现-1"><a href="#3、代码实现-1" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><p>以下是我自己的实现，可以看到实现很幼稚，但是好处是理解起来很简单。因为没有经过任何的优化，所以不建议大家直接使用。建议对比下方的维基百科官方实现代码，特别是步长取值策略部分。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序</div><div class="line"> *</div><div class="line"> * 1. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（一般初次取数组半长，之后每次再减半，直到增量为1）</div><div class="line"> * 2. 按增量序列个数k，对序列进行k 趟排序；</div><div class="line"> * 3. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> gap = arr.length / <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span> (; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) &#123;      <span class="comment">//不断缩小gap，直到1为止</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; (j+gap) &lt; arr.length; j++)&#123;     <span class="comment">//使用每个gap进行遍历</span></div><div class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j+gap])&#123;</div><div class="line">                <span class="keyword">int</span> temp = arr[j+gap];      <span class="comment">//交换操作</span></div><div class="line">                arr[j+gap] = arr[j];</div><div class="line">                arr[j] = temp;</div><div class="line">                System.out.println(<span class="string">"Gap="</span> + gap + <span class="string">", Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(gap == <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是维基百科官方实现，大家注意gap步长取值部分：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序（Wiki官方版）</div><div class="line"> *</div><div class="line"> * 1. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（注意此算法的gap取值）</div><div class="line"> * 2. 按增量序列个数k，对序列进行k 趟排序；</div><div class="line"> * 3. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shell_sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> gap = <span class="number">1</span>, i, j, len = arr.length;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    <span class="keyword">while</span> (gap &lt; len / <span class="number">3</span>)</div><div class="line">        gap = gap * <span class="number">3</span> + <span class="number">1</span>;      <span class="comment">// &lt;O(n^(3/2)) by Knuth,1973&gt;: 1, 4, 13, 40, 121, ...</span></div><div class="line">    <span class="keyword">for</span> (; gap &gt; <span class="number">0</span>; gap /= <span class="number">3</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (i = gap; i &lt; len; i++) &#123;</div><div class="line">            temp = arr[i];</div><div class="line">            <span class="keyword">for</span> (j = i - gap; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap)</div><div class="line">                arr[j + gap] = arr[j];</div><div class="line">            arr[j + gap] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下是希尔排序复杂度:</p>
+<table>
+<thead>
+<tr>
+<th>平均时间复杂度</th>
+<th>最好情况</th>
+<th>最坏情况</th>
+<th>空间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(nlog2 n)</td>
+<td>O(nlog2 n)</td>
+<td>O(nlog2 n)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三、选择排序（Selection-Sort）"><a href="#三、选择排序（Selection-Sort）" class="headerlink" title="三、选择排序（Selection Sort）"></a>三、选择排序（Selection Sort）</h3><hr>
+<blockquote class="pullquote right"><p><img src="/gallery/sort-algorithms/Selection-Sort-Animation.gif" alt="选择排序的示例动画。红色表示当前最小值，黄色表示已排序序列，蓝色表示当前位置。"></p>
+</blockquote>
+<p>从算法逻辑上看，选择排序是一种简单直观的排序算法，在简单选择排序过程中，所需移动记录的次数比较少。</p>
+<h4 id="1、基本思想-2"><a href="#1、基本思想-2" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>选择排序的基本思想：比较 + 交换。</p>
+<p>在未排序序列中找到最小（大）元素，存放到未排序序列的起始位置。在所有的完全依靠交换去移动元素的排序方法中，选择排序属于非常好的一种。</p>
+<h4 id="2、算法描述-2"><a href="#2、算法描述-2" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>①. 从待排序序列中，找到关键字最小的元素；<br>②. 如果最小元素不是待排序序列的第一个元素，将其和第一个元素互换；<br>③. 从余下的 N - 1 个元素中，找出关键字最小的元素，重复①、②步，直到排序结束。</p>
+<h4 id="3、代码实现-2"><a href="#3、代码实现-2" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><p>选择排序比较简单，以下是我自己的实现，跟官方版差不多，所以完全可以参考。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 选择排序</div><div class="line"> *</div><div class="line"> * 1. 从待排序序列中，找到关键字最小的元素；</div><div class="line"> * 2. 如果最小元素不是待排序序列的第一个元素，将其和第一个元素互换；</div><div class="line"> * 3. 从余下的 N - 1 个元素中，找出关键字最小的元素，重复①、②步，直到排序结束。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length-<span class="number">1</span>; i++)&#123;</div><div class="line">        <span class="keyword">int</span> min = i;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; arr.length; j++)&#123;    <span class="comment">//选出之后待排序中值最小的位置</span></div><div class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[min])&#123;</div><div class="line">                min = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(min != i)&#123;</div><div class="line">            <span class="keyword">int</span> temp = arr[min];      <span class="comment">//交换操作</span></div><div class="line">            arr[min] = arr[i];</div><div class="line">            arr[i] = temp;</div><div class="line">            System.out.println(<span class="string">"Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以下是选择排序复杂度:</p>
+<table>
+<thead>
+<tr>
+<th>平均时间复杂度</th>
+<th>最好情况</th>
+<th>最坏情况</th>
+<th>空间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四、堆排序（Heap-Sort）"><a href="#四、堆排序（Heap-Sort）" class="headerlink" title="四、堆排序（Heap Sort）"></a>四、堆排序（Heap Sort）</h3><hr>
+<h4 id="1、基本思想-3"><a href="#1、基本思想-3" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><h4 id="2、算法描述-3"><a href="#2、算法描述-3" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><h4 id="3、代码实现-3"><a href="#3、代码实现-3" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><p><img src="/gallery/sort-algorithms/2016-07-15_常用排序算法.png" alt=""></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>数据结构可视化：<a href="https://visualgo.net/zh" target="_blank" rel="external">visualgo</a></li>
+<li><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html" target="_blank" rel="external">Sorting - 卡内基梅隆大学课件</a></li>
+<li><a href="http://www.jianshu.com/p/7d037c332a9d" target="_blank" rel="external">数据结构常见的八大排序算法（详细整理）</a></li>
+<li><a href="http://www.jianshu.com/p/8c915179fd02" target="_blank" rel="external">必须知道的八大种排序算法【java实现】</a></li>
+<li><a href="http://web.jobbole.com/87968/" target="_blank" rel="external">十大经典排序算法</a></li>
+<li><a href="http://blog.jobbole.com/11745/" target="_blank" rel="external">视觉直观感受 7 种常用的排序算法</a></li>
+<li><a href="http://louiszhai.github.io/2016/12/23/sort/" target="_blank" rel="external">JS中可能用得到的全部的排序算法</a></li>
+<li><a href="http://www.cnblogs.com/minkaihui/p/4077888.html" target="_blank" rel="external">总结5种比较高效常用的排序算法</a></li>
+<li><a href="http://www.cnblogs.com/zyb428/p/5673738.html" target="_blank" rel="external">常见排序算法C++总结</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../13/【算法】10亿int型数，统计只出现一次的数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【算法】10亿int型数，统计只出现一次的数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、直接插入排序（Insertion-Sort）"><span class="nav-number">2.</span> <span class="nav-text">一、直接插入排序（Insertion Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本思想"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、算法描述"><span class="nav-number">2.2.</span> <span class="nav-text">2、算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、代码实现"><span class="nav-number">2.3.</span> <span class="nav-text">3、代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率"><span class="nav-number">2.4.</span> <span class="nav-text">效率</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、希尔排序（Shell-Sort）"><span class="nav-number">3.</span> <span class="nav-text">二、希尔排序（Shell Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本思想-1"><span class="nav-number">3.1.</span> <span class="nav-text">1、基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、算法描述-1"><span class="nav-number">3.2.</span> <span class="nav-text">2、算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、代码实现-1"><span class="nav-number">3.3.</span> <span class="nav-text">3、代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、选择排序（Selection-Sort）"><span class="nav-number">4.</span> <span class="nav-text">三、选择排序（Selection Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本思想-2"><span class="nav-number">4.1.</span> <span class="nav-text">1、基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、算法描述-2"><span class="nav-number">4.2.</span> <span class="nav-text">2、算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、代码实现-2"><span class="nav-number">4.3.</span> <span class="nav-text">3、代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、堆排序（Heap-Sort）"><span class="nav-number">5.</span> <span class="nav-text">四、堆排序（Heap Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本思想-3"><span class="nav-number">5.1.</span> <span class="nav-text">1、基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、算法描述-3"><span class="nav-number">5.2.</span> <span class="nav-text">2、算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、代码实现-3"><span class="nav-number">5.3.</span> <span class="nav-text">3、代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">ReadList</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
