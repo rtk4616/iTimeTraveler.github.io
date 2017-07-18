@@ -38,7 +38,7 @@
 归并排序
 基数排序">
 <meta property="og:image" content="http://github.com/gallery/sort-algorithms/big-o.png">
-<meta property="og:updated_time" content="2017-07-18T05:06:36.437Z">
+<meta property="og:updated_time" content="2017-07-18T05:14:45.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="八大排序算法总结与java实现">
 <meta name="twitter:description" content="概述因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：
@@ -202,7 +202,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/sort-algorithms/big-o.png" rel="gallery_cj594a4w1006fhcmye7p1ekes">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/sort-algorithms/big-o.png" rel="gallery_cj594kdfr0067usmyj6dmbgds">
         <img src="../../../../gallery/sort-algorithms/big-o.png" itemprop="image">
       </a>
     
@@ -254,7 +254,7 @@
 <a id="more"></a>
 <p><img src="/gallery/sort-algorithms/2016-07-15_常用排序算法.png" alt=""></p>
 <h3 id="一、直接插入排序（Insertion-Sort）"><a href="#一、直接插入排序（Insertion-Sort）" class="headerlink" title="一、直接插入排序（Insertion Sort）"></a>一、直接插入排序（Insertion Sort）</h3><h4 id="1、基本思想"><a href="#1、基本思想" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过为止。</p>
-<p><img src="/gallery/Insertion-sort-example-300px.gif" alt=""></p>
+<p><img src="/gallery/sort-algorithms/Insertion-sort-example-300px.gif" alt=""></p>
 <h4 id="2、算法描述"><a href="#2、算法描述" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
 <ol>
 <li>从第一个元素开始，该元素可以认为已经被排序</li>
@@ -264,7 +264,7 @@
 <li>将新元素插入到该位置后</li>
 <li>重复步骤2~5</li>
 </ol>
-<p><img src="/gallery/insert-sort.gif" alt=""></p>
+<p><img src="/gallery/sort-algorithms/insert-sort.gif" alt=""></p>
 <p>如果<em>比较操作</em>的代价比<em>交换操作</em>大的话，可以采用<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95" target="_blank" rel="external">二分查找法</a>来减少<em>比较操作</em>的数目。该算法可以认为是<strong>插入排序</strong>的一个变种，称为<a href="https://zh.wikipedia.org/w/index.php?title=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F&amp;action=edit&amp;redlink=1" target="_blank" rel="external">二分查找插入排序</a>。</p>
 <h4 id="3、代码实现"><a href="#3、代码实现" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * 插入排序</div><div class="line">    *</div><div class="line">    * 1. 从第一个元素开始，该元素可以认为已经被排序</div><div class="line">    * 2. 取出下一个元素，在已经排序的元素序列中从后向前扫描</div><div class="line">    * 3. 如果该元素（已排序）大于新元素，将该元素移到下一位置</div><div class="line">    * 4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</div><div class="line">    * 5. 将新元素插入到该位置后</div><div class="line">    * 6. 重复步骤2~5</div><div class="line">    * <span class="doctag">@param</span> arr  待排序数组</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">       <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length-<span class="number">1</span>; i++ ) &#123;</div><div class="line">           <span class="keyword">for</span>( <span class="keyword">int</span> j=i+<span class="number">1</span>; j&gt;<span class="number">0</span>; j-- ) &#123;</div><div class="line">               <span class="keyword">if</span>( arr[j-<span class="number">1</span>] &lt;= arr[j] )</div><div class="line">                   <span class="keyword">break</span>;</div><div class="line">               <span class="keyword">int</span> temp = arr[j];		<span class="comment">//交换操作</span></div><div class="line">               arr[j] = arr[j-<span class="number">1</span>];</div><div class="line">               arr[j-<span class="number">1</span>] = temp;</div><div class="line">               System.out.println(<span class="string">"Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <p>执行结果如下：</p>
@@ -273,7 +273,7 @@
 <blockquote>
 <p>1959年Shell发明；<br>第一个突破O(n^2)的排序算法；是简单插入排序的改进版；它与插入排序的不同之处在于，它会优先比较距离较远的元素。</p>
 </blockquote>
-<h4 id="1、基本思想-1"><a href="#1、基本思想-1" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p><img src="/gallery/shell-sort.jpg" alt=""></p>
+<h4 id="1、基本思想-1"><a href="#1、基本思想-1" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p><img src="/gallery/sort-algorithms/shell-sort.jpg" alt=""></p>
 <p>将待排序数组按照步长gap进行分组（一般的初次取数组长度的一半为增量），然后将每组的元素利用直接插入排序的方法进行排序；每次再将gap折半减小，循环上述操作；当gap=1时，利用直接插入，完成排序。</p>
 <h4 id="2、算法描述-1"><a href="#2、算法描述-1" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><ol>
 <li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（<strong>一般初次取数组半长，之后每次再减半，直到增量为1</strong>）</li>
