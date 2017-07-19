@@ -124,7 +124,7 @@ body,
 }
 body {
   background: #fff;
-  font: 15px "open sans", "Helvetica Neue", Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+  font: 14px Arial, "open sans", "Helvetica Neue", Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft Yahei, sans-serif;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizelegibility;
 }
@@ -640,7 +640,7 @@ body {
   width: 45px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #606060;
+  color: #444;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
@@ -652,7 +652,7 @@ body {
   line-height: 1.6em;
   outline: none !important;
   background: none !important;
-  font: 15px -apple-system, "Arial", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 14px -apple-system, "Arial", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   border: 0px;
 }
 .search-form-input:focus,
@@ -853,8 +853,8 @@ body {
 .article-title {
   text-decoration: none;
   font-weight: bold;
-  color: #555;
-  line-height: 1.1em;
+  color: #333;
+  line-height: 1em;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
@@ -865,7 +865,7 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-entry {
-  color: #606060;
+  color: #444;
   margin: 0 20px;
 }
 .article-entry:before,
@@ -900,8 +900,9 @@ a.article-title:hover {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  line-height: 1.1em;
-  margin: 1.1em 0;
+  line-height: 1em;
+  margin: 0;
+  padding: 1em 0 0;
 }
 .article-entry a {
   color: #0e83cd;
@@ -943,18 +944,18 @@ a.article-title:hover {
 }
 .article-entry blockquote {
   padding: 0.1px 20px;
-  font-family: "open sans", "Helvetica Neue", Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+  font-family: Arial, "open sans", "Helvetica Neue", Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft Yahei, sans-serif;
   font-size: 1.1em;
   margin: 1.4em 0px;
   border-left: 2px solid #414141;
   background: rgba(208,211,248,0.15);
 }
 .article-entry blockquote p {
-  font-size: 15px;
+  font-size: 14px;
   margin: 15px 0;
 }
 .article-entry blockquote footer {
-  font-size: 15px;
+  font-size: 14px;
   margin: 1.6em 0;
   font-family: -apple-system, "Arial", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
@@ -974,7 +975,7 @@ a.article-title:hover {
 }
 .article-entry .pullquote p {
   font-family: Georgia, Microsoft JhengHei, "sans serif";
-  font-size: 19px;
+  font-size: 1.2em;
 }
 .article-entry .pullquote:before {
   float: left;
@@ -1000,7 +1001,7 @@ a.article-title:hover {
 .article-entry .caption {
   color: #999;
   display: block;
-  font-size: 0.9em;
+  font-size: 0.8em;
   margin-top: 0.5em;
   position: relative;
   text-align: center;
@@ -1067,7 +1068,7 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-footer a:hover {
-  color: #606060;
+  color: #444;
 }
 .article-tag-list-item {
   float: left;
@@ -1137,7 +1138,7 @@ a.article-title:hover {
   display: block;
 }
 .article-nav-link-wrap:hover {
-  color: #606060;
+  color: #444;
 }
 @media screen and (min-width: 768px) {
   .article-nav-link-wrap {
@@ -1196,7 +1197,7 @@ a.article-title:hover {
   box-sizing: border-box;
   font: 14px -apple-system, "Arial", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   padding: 0 15px;
-  color: #606060;
+  color: #444;
   outline: none;
   border: 1px solid #eef1f8;
   border-radius: 3px 3px 0 0;
@@ -1537,7 +1538,7 @@ a.article-title:hover {
 }
 .archive-article-title {
   text-decoration: none;
-  color: #606060;
+  color: #444;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
@@ -1615,7 +1616,7 @@ a.article-title:hover {
   }
 }
 #page-nav .current {
-  color: #606060;
+  color: #444;
   font-weight: bold;
 }
 #page-nav .space {
@@ -1652,7 +1653,7 @@ a.article-title:hover {
   border-width: 1px 0;
   overflow: auto;
   color: $highlight-foreground;
-  line-height: 24px;
+  line-height: 22.400000000000002px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1665,7 +1666,7 @@ a.article-title:hover {
 }
 .article-entry code {
   background: rgba(208,211,248,0.2);
-  color: #606060;
+  color: #444;
   padding: 0 0.3em;
 }
 .article-entry pre code {
@@ -1708,7 +1709,7 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 24px;
+  height: 22.400000000000002px;
 }
 .article-entry .highlight .line.marked {
   background: $highlight-selection;
