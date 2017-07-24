@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-07-18T11:10:28.652Z</updated>
+  <updated>2017-07-24T02:53:02.101Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://github.com/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://github.com/2017/07/18/八大排序算法总结与java实现/</id>
     <published>2017-07-18T04:30:55.000Z</published>
-    <updated>2017-07-18T11:10:28.652Z</updated>
+    <updated>2017-07-24T02:53:02.101Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：</p>
-<p><img src="/gallery/sort-algorithms/1156494-ab4cecff133d87b3.png" alt=""></p>
+    <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
+<p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
 <ul>
 <li>直接插入排序</li>
 <li>希尔排序</li>
@@ -35,6 +35,8 @@
 <li>基数排序</li>
 </ul>
 <a id="more"></a>
+<p>其中我们讨论的这八大排序算法都属于内部排序，也就是只考虑数据量较小仅需要使用内存的排序算法，他们之间关系如下：</p>
+<p><img src="/gallery/sort-algorithms/1156494-ab4cecff133d87b3.png" alt=""></p>
 <h3 id="一、直接插入排序（Insertion-Sort）"><a href="#一、直接插入排序（Insertion-Sort）" class="headerlink" title="一、直接插入排序（Insertion Sort）"></a>一、直接插入排序（Insertion Sort）</h3><hr>
 <h4 id="1、基本思想"><a href="#1、基本思想" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过为止。</p>
 <p><img src="/gallery/sort-algorithms/Insertion-sort-example-300px.gif" alt="使用插入排序为一列数字进行排序的过程"></p>
@@ -121,8 +123,8 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。常见的八大排序算法，他们之间关系如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/gallery/sort-algorithms/1156494-ab4cecff133d87b3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/gallery/sort-algorithms/big-o.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;直接插入排序&lt;/li&gt;
 &lt;li&gt;希尔排序&lt;/li&gt;
