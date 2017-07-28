@@ -1361,7 +1361,7 @@ a.article-title:hover {
   position: fixed;
   top: 30px;
   margin-top: 0;
-  max-height: 81%;
+  max-height: auto;
   overflow: hidden;
   z-index: 1;
 }
