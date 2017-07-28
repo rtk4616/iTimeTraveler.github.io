@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-07-28T08:15:32.560Z</updated>
+  <updated>2017-07-28T08:39:49.583Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://github.com/2017/07/18/八大排序算法总结与java实现/</id>
     <published>2017-07-18T04:30:55.000Z</published>
-    <updated>2017-07-28T08:15:32.560Z</updated>
+    <updated>2017-07-28T08:39:49.583Z</updated>
     
     <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
 <p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
@@ -76,14 +76,35 @@ $$
 $$
 
 <h3 id="一、直接插入排序（Insertion-Sort）"><a href="#一、直接插入排序（Insertion-Sort）" class="headerlink" title="一、直接插入排序（Insertion Sort）"></a>一、直接插入排序（Insertion Sort）</h3><hr>
-<h4 id="1、基本思想"><a href="#1、基本思想" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过为止。</p>
+<p>插入排序的设计初衷是<strong>往有序的数组中快速插入一个新的元素</strong>。它的算法思想是：把要排序的数组分为了两个部分, 一部分是数组的全部元素(除去待插入的元素), 另一部分是待插入的元素; 先将第一部分排序完成, 然后再插入这个元素. 其中第一部分的排序也是通过再次拆分为两部分来进行的.</p>
+<p>插入排序由于操作不尽相同, 可分为 <code>直接插入排序</code> , <code>折半插入排序</code>(又称二分插入排序), <code>链表插入排序</code> , <code>希尔排序</code> 。我们先来看下直接插入排序。</p>
+<h4 id="1、基本思想"><a href="#1、基本思想" class="headerlink" title="1、基本思想"></a>1、基本思想</h4><p>直接插入排序的基本思想是：将数组中的所有元素依次跟前面已经排好的元素相比较，如果选择的元素比已排序的元素小，则交换，直到全部元素都比较过为止。</p>
 <p><img src="/gallery/sort-algorithms/Insertion-sort-example-300px.gif" alt="使用插入排序为一列数字进行排序的过程"></p>
 <h4 id="2、算法描述"><a href="#2、算法描述" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
 <p>①. 从第一个元素开始，该元素可以认为已经被排序<br>②. 取出下一个元素，在已经排序的元素序列中从后向前扫描<br>③. 如果该元素（已排序）大于新元素，将该元素移到下一位置<br>④. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置<br>⑤. 将新元素插入到该位置后<br>⑥. 重复步骤②~⑤</p>
 <p><img src="/gallery/sort-algorithms/insert-sort.gif" alt="直接插入排序演示"></p>
 <p>如果<em>比较操作</em>的代价比<em>交换操作</em>大的话，可以采用<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95" target="_blank" rel="external">二分查找法</a>来减少<em>比较操作</em>的数目。该算法可以认为是<strong>插入排序</strong>的一个变种，称为<a href="https://zh.wikipedia.org/w/index.php?title=%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F&amp;action=edit&amp;redlink=1" target="_blank" rel="external">二分查找插入排序</a>。</p>
 <h4 id="3、代码实现"><a href="#3、代码实现" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 插入排序</div><div class="line"> *</div><div class="line"> * 1. 从第一个元素开始，该元素可以认为已经被排序</div><div class="line"> * 2. 取出下一个元素，在已经排序的元素序列中从后向前扫描</div><div class="line"> * 3. 如果该元素（已排序）大于新元素，将该元素移到下一位置</div><div class="line"> * 4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</div><div class="line"> * 5. 将新元素插入到该位置后</div><div class="line"> * 6. 重复步骤2~5</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length-<span class="number">1</span>; i++ ) &#123;</div><div class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j=i+<span class="number">1</span>; j&gt;<span class="number">0</span>; j-- ) &#123;</div><div class="line">            <span class="keyword">if</span>( arr[j-<span class="number">1</span>] &lt;= arr[j] )</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">int</span> temp = arr[j];      <span class="comment">//交换操作</span></div><div class="line">            arr[j] = arr[j-<span class="number">1</span>];</div><div class="line">            arr[j-<span class="number">1</span>] = temp;</div><div class="line">            System.out.println(<span class="string">"Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h4><p>时间复杂度：O（n^2）</p>
+<p>直接插入排序复杂度如下：</p>
+<table>
+<thead>
+<tr>
+<th>平均时间复杂度</th>
+<th>最好情况</th>
+<th>最坏情况</th>
+<th>空间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>Tips: 由于直接插入排序每次只移动一个元素的位， 并不会改变值相同的元素之间的排序， 因此它是一种稳定排序。</p>
 <h3 id="二、希尔排序（Shell-Sort）"><a href="#二、希尔排序（Shell-Sort）" class="headerlink" title="二、希尔排序（Shell Sort）"></a>二、希尔排序（Shell Sort）</h3><hr>
 <blockquote class="pullquote right"><p>第一个突破O(n^2)的排序算法；是简单插入排序的改进版；它与插入排序的不同之处在于，它会优先比较距离较远的元素。</p>
 </blockquote>
@@ -144,6 +165,7 @@ $$
 </tr>
 </tbody>
 </table>
+<p>选择排序的简单和直观名副其实，这也造就了它”出了名的慢性子”，无论是哪种情况，哪怕原数组已排序完成，它也将花费将近n²/2次遍历来确认一遍。即便是这样，它的排序结果也还是不稳定的。 唯一值得高兴的是，它并不耗费额外的内存空间。</p>
 <h3 id="四、堆排序（Heap-Sort）"><a href="#四、堆排序（Heap-Sort）" class="headerlink" title="四、堆排序（Heap Sort）"></a>四、堆排序（Heap Sort）</h3><hr>
 <blockquote>
 <p>1991年的计算机先驱奖获得者、斯坦福大学计算机科学系教授罗伯特·弗洛伊德(Robert W．Floyd) 和威廉姆斯(J．Williams) 在1964年共同发明了著名的堆排序算法(Heap Sort).</p>
@@ -492,7 +514,7 @@ $$
 <p>(3). O(n1+§))排序，§是介于0和1之间的常数：<strong><code>希尔排序</code></strong></p>
 <p>(4). 线性阶O(n)排序：<strong><code>基数排序，此外还有桶、箱排序</code></strong>。
 　　</p>
-<h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><ul>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
 <li>当原表有序或基本有序时，直接插入排序和冒泡排序将大大减少比较次数和移动记录的次数，时间复杂度可降至O（n）；</li>
 <li>而快速排序则相反，当原表基本有序时，将蜕化为冒泡排序，时间复杂度提高为O（n2）；</li>
 <li>原表是否有序，对简单选择排序、堆排序、归并排序和基数排序的时间复杂度影响不大。</li>
