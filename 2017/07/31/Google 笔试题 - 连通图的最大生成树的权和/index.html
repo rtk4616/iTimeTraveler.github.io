@@ -3,29 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【d3】link nodes by name | iTimeTraveler</title>
+  <title>连通图的最大生成树的权和 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="D3.js" />
+    <meta name="keywords" content="Algorithm" />
   
   
   
   
-  <meta name="description" content="Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
-This example shows how to link nodes in a force-directed graph using a named identifier rather than a numeric index.">
+  <meta name="description" content="这是一道Google 笔试题
+题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【D3】Link Nodes by Name">
-<meta property="og:url" content="http://github.com/2016/11/16/【D3】Link Nodes by Name/index.html">
+<meta property="og:title" content="连通图的最大生成树的权和">
+<meta property="og:url" content="http://github.com/2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
-This example shows how to link nodes in a force-directed graph using a named identifier rather than a numeric index.">
-<meta property="og:image" content="http://github.com/gallery/d3_link-node-by-name.png">
-<meta property="og:updated_time" content="2016-11-18T08:27:59.326Z">
+<meta property="og:description" content="这是一道Google 笔试题
+题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
+<meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
+<meta property="og:updated_time" content="2017-07-31T11:15:42.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【D3】Link Nodes by Name">
-<meta name="twitter:description" content="Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
-This example shows how to link nodes in a force-directed graph using a named identifier rather than a numeric index.">
-<meta name="twitter:image" content="http://github.com/gallery/d3_link-node-by-name.png">
+<meta name="twitter:title" content="连通图的最大生成树的权和">
+<meta name="twitter:description" content="这是一道Google 笔试题
+题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
+<meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
@@ -169,14 +169,14 @@ This example shows how to link nodes in a force-directed graph using a named ide
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【D3】Link Nodes by Name" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Google 笔试题 - 连通图的最大生成树的权和" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/d3_link-node-by-name.png" rel="gallery_cj5s2707700468omyau1x17o5">
-        <img src="../../../../gallery/d3_link-node-by-name.png" itemprop="image">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj5s27051000c8omy0tp36id3">
+        <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
   </div>
@@ -187,7 +187,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      【D3】Link Nodes by Name
+      连通图的最大生成树的权和
     </h1>
   
 
@@ -196,11 +196,11 @@ This example shows how to link nodes in a force-directed graph using a named ide
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">2016-11-16</time>
+	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">2017-07-31</time>
 	</a>
 
       
-    <a class="article-category-link" href="../../../../categories/D3-js/">D3.js</a>
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
 
       
 	<a class="article-views">
@@ -212,11 +212,121 @@ This example shows how to link nodes in a force-directed graph using a named ide
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Source : <a href="http://bl.ocks.org/mbostock/533daf20348023dfdd76" target="_blank" rel="external">http://bl.ocks.org/mbostock/533daf20348023dfdd76</a></p>
-<p>This example shows how to link nodes in a <a href="http://bl.ocks.org/mbostock/4062045" target="_blank" rel="external"><strong>force-directed graph</strong></a> using a named identifier rather than a numeric index.</p>
-<a id="more"></a>
-<h2 id="index-html"><a href="#index-html" class="headerlink" title="# index.html"></a># index.html</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"></div><div class="line">.node &#123;</div><div class="line">  stroke: #000;</div><div class="line">  stroke-width: 1.5px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.link &#123;</div><div class="line">  stroke: #999;</div><div class="line">  stroke-width: 1.5px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"960"</span> <span class="attr">height</span>=<span class="string">"500"</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//d3js.org/d3.v4.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line"><span class="keyword">var</span> svg = d3.select(<span class="string">"svg"</span>),</div><div class="line">    width = +svg.attr(<span class="string">"width"</span>),</div><div class="line">    height = +svg.attr(<span class="string">"height"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> simulation = d3.forceSimulation()</div><div class="line">    .force(<span class="string">"charge"</span>, d3.forceManyBody().strength(<span class="number">-200</span>))</div><div class="line">    .force(<span class="string">"link"</span>, d3.forceLink().id(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;).distance(<span class="number">40</span>))</div><div class="line">    .force(<span class="string">"x"</span>, d3.forceX(width / <span class="number">2</span>))</div><div class="line">    .force(<span class="string">"y"</span>, d3.forceY(height / <span class="number">2</span>))</div><div class="line">    .on(<span class="string">"tick"</span>, ticked);</div><div class="line"></div><div class="line"><span class="keyword">var</span> link = svg.selectAll(<span class="string">".link"</span>),</div><div class="line">    node = svg.selectAll(<span class="string">".node"</span>);</div><div class="line"></div><div class="line">d3.json(<span class="string">"graph.json"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, graph</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</div><div class="line"></div><div class="line">  simulation.nodes(graph.nodes);</div><div class="line">  simulation.force(<span class="string">"link"</span>).links(graph.links);</div><div class="line"></div><div class="line">  link = link</div><div class="line">    .data(graph.links)</div><div class="line">    .enter().append(<span class="string">"line"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"link"</span>);</div><div class="line"></div><div class="line">  node = node</div><div class="line">    .data(graph.nodes)</div><div class="line">    .enter().append(<span class="string">"circle"</span>)</div><div class="line">      .attr(<span class="string">"class"</span>, <span class="string">"node"</span>)</div><div class="line">      .attr(<span class="string">"r"</span>, <span class="number">6</span>)</div><div class="line">      .style(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ticked</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  link.attr(<span class="string">"x1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.x; &#125;)</div><div class="line">      .attr(<span class="string">"y1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.source.y; &#125;)</div><div class="line">      .attr(<span class="string">"x2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.x; &#125;)</div><div class="line">      .attr(<span class="string">"y2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.target.y; &#125;);</div><div class="line"></div><div class="line">  node.attr(<span class="string">"cx"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.x; &#125;)</div><div class="line">      .attr(<span class="string">"cy"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.y; &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="graph-json"><a href="#graph-json" class="headerlink" title="# graph.json"></a># graph.json</h2><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"nodes"</span>: [</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"red"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"orange"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"yellow"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"green"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"blue"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"id"</span>: <span class="string">"violet"</span>&#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"links"</span>: [</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"yellow"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"blue"</span>&#125;,</div><div class="line">    &#123;<span class="attr">"source"</span>: <span class="string">"red"</span>, <span class="attr">"target"</span>: <span class="string">"green"</span>&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>这是一道Google 笔试题</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;0, 4, 5, 0, 3&#125;, </div><div class="line"> &#123;4, 0, 4, 2, 3&#125;, </div><div class="line"> &#123;5, 4, 0, 2, 0&#125;, </div><div class="line"> &#123;0, 2, 2, 0, 1&#125;, </div><div class="line"> &#123;3, 3, 0, 1, 0&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p>求这个图的最大生成树的权和。</p>
+<p>A、11</p>
+<p>B、12</p>
+<p>C、13</p>
+<p>D、14</p>
+<p>E、15</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题意是在考察最大生成树，我们需要根据给出的邻接矩阵代表的无向带权图求出最大生成树，然后计算权和就很简单水到渠成了。</p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>说到最大生成树，我们得先回顾一下最小生成树：</p>
+<p>最小生成树其实是最小权重生成树的简称。一个连通图可能有多个生成树。当图中的边具有权值时，总会有一个生成树的边的权值之和小于或者等于其它生成树的边的权值之和。也就是说最小生成树就是<strong>边权重之和最小</strong>的生成树。总结起来就是以下：</p>
+<ul>
+<li>1）必须使用且仅使用该网络中的n-1条边来连接网络中的n个顶点。</li>
+<li>2）不能使用产生回路的边。</li>
+<li>3）各边上的权值的总和达到最小。</li>
+</ul>
+<p>简单点说有几个城市你要设计一个路线，这个路线能走完所有的这几个城市，而且路程最短，这个路线就是最小生成树的含义。相反地，最大生成树就是边权重之和最大的生成树。</p>
+<p>那么，如何生成最小生成树呢？常用的算法有<strong><a href="https://zh.wikipedia.org/wiki/%E6%99%AE%E6%9E%97%E5%A7%86%E7%AE%97%E6%B3%95" target="_blank" rel="external">Prim算法</a></strong>（普里姆算法）和<strong><a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E9%B2%81%E6%96%AF%E5%85%8B%E5%B0%94%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="external">Kruskal算法</a></strong>（克鲁斯克尔算法）。</p>
+<h3 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h3><p>Prim算法是用来从带权图中搜索最小生成树的一种算法。 从单一顶点开始，Prim普里姆算法按照以下步骤逐步扩大树中所含顶点的数目，直到遍及连通图的所有顶点。</p>
+<ol>
+<li><p>输入：一个加权连通图，其中顶点集合为$V$，边集合为$E$；</p>
+</li>
+<li><p>初始化：$V<em>{new} = {x}$，其中x为集合V中的任一节点（起始点），$E</em>{new} = {}$；</p>
+</li>
+<li><p>重复下列操作，直到$V_{new} = V$：</p>
+<p><strong>a.</strong> 在集合E中选取权值最小的边（u, v），其中u为集合$V<em>{new} $中的元素，而v则是V中没有加入$V</em>{new} $的顶点（如<strong>b.</strong> 果存在有多条满足前述条件即具有相同权值的边，则可任意选取其中之一）；将v加入集合$V<em>{new} $中，将（u, v）加入集合$E</em>{new} $中；</p>
+</li>
+<li><p>输出：使用集合$V<em>{new} $和$E</em>{new} $来描述所得到的最小生成树。</p>
+</li>
+</ol>
+<p>算法伪代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Prim(G, T) &#123;</div><div class="line">    T = NULL;</div><div class="line">    U = &#123;w&#125;;    <span class="comment">//添加任一顶点w</span></div><div class="line">    <span class="keyword">while</span>((V - U)!=NULL) &#123;</div><div class="line">        设(u, v)是u ∈ U 与 v ∈ （V - U),且权值最小的边</div><div class="line">        T = T ∪ (u, v);</div><div class="line">        U = U ∪ v ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说白了，就是将起点u（任一节点）放入空集合S，则S = {u}；再找到距离集合S最近的一点u，加入S集合。直到所有节点都加入进来。</p>
+<blockquote>
+<p>Prim算法时间复杂度为O(V^2)，比较适合于求稠密图的最小生成树。</p>
+</blockquote>
+<h3 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a><strong>Kruskal算法</strong></h3><p>Kruskal算法是一种按权值的递增次序选择合适的边来构成最小生成树的方法。算法描述如下：</p>
+<ol>
+<li>新建图G，G中拥有原图中相同的节点，但没有边</li>
+<li>将原图中所有的边按权值从小到大排序</li>
+<li>从权值最小的边开始，如果这条边连接的两个节点于图G中不在同一个连通分量中，则添加这条边到图G中</li>
+<li>重复3，直至图G中所有的节点都在同一个连通分量中</li>
+</ol>
+<p>算法伪代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">KRUSKAL-FUNCTION(G, w)</div><div class="line">    F := 空集合</div><div class="line">    <span class="keyword">for</span> each 图 G 中的顶点 v</div><div class="line">        do 將 v 加入森林 F</div><div class="line">    所有的边(u, v) ∈ E依权重 w 递增排序</div><div class="line">   <span class="keyword">for</span> each 边(u, v) ∈ E</div><div class="line">        do <span class="keyword">if</span> u 和 v 不在同一棵子树</div><div class="line">            then F := F ∪ &#123;(u, v)&#125;</div><div class="line">                將 u 和 v 所在的子树合并</div></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Prim算法：是针对顶点展开的，适合于边数较多的情况。</p>
+<p>Kruskal算法：是针对边展开的，适合于边的数量较少的情况。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用Krustal算法或者Prime算法构造“”最大生成树”：</p>
+<ul>
+<li><p><strong>Prime算法</strong>：选择权重最大的边的两个顶点加入等价类</p>
+</li>
+<li><p><strong>Krustal算法</strong>：即每次选择权重最大的边加入森林；</p>
+</li>
+</ul>
+<p>我们看邻接矩阵</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td><strong>4</strong></td>
+<td><strong>5</strong></td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>B</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td><strong>2</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>E</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>利用Krustal算法，选择最大的边加入，但是不能形成回路，图中表黑的就是被选出的，DE边是不能选的，否则就形成闭路。总共5+4+3+2=14</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://blog.chinaunix.net/uid-26345906-id-3951551.html" target="_blank" rel="external">数据结构深入剖析（14）–最小连通图 </a></li>
+<li><a href="https://www.zybuluo.com/pastqing/note/318392#prim算法" target="_blank" rel="external">图的常见算法</a></li>
+<li><a href="https://www.zybuluo.com/guoxs/note/262429" target="_blank" rel="external">数据结构之图的存储方式</a></li>
+</ul>
 
       
     </div>
@@ -262,7 +372,7 @@ var a = new Donate({
 
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/D3/">D3</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
 
     </footer>
   </div>
@@ -270,19 +380,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="../../17/【Android】微信热修复 Tinker 的集成和使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          【Android】微信热修复 Tinker 的集成和使用
-        
-      </div>
-    </a>
   
-  
-    <a href="../../10/Android 热修复原理和实现/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../18/八大排序算法总结与java实现/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Android 热修复原理和实现</div>
+      <div class="article-nav-title">八大排序算法总结与java实现</div>
     </a>
   
 </nav>
@@ -296,7 +397,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#index-html"><span class="nav-number">1.</span> <span class="nav-text"># index.html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-json"><span class="nav-number">2.</span> <span class="nav-text"># graph.json</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树"><span class="nav-number">2.1.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim算法"><span class="nav-number">2.2.</span> <span class="nav-text">Prim算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">2.3.</span> <span class="nav-text">Kruskal算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
