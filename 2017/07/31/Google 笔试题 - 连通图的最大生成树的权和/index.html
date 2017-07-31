@@ -20,7 +20,7 @@
 <meta property="og:description" content="这是一道Google 笔试题
 题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
-<meta property="og:updated_time" content="2017-07-31T11:15:42.832Z">
+<meta property="og:updated_time" content="2017-07-31T11:17:51.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连通图的最大生成树的权和">
 <meta name="twitter:description" content="这是一道Google 笔试题
@@ -175,7 +175,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj5s27051000c8omy0tp36id3">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj5s29cib000ciomyoxllnv02">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -220,6 +220,7 @@
 <p>C、13</p>
 <p>D、14</p>
 <p>E、15</p>
+<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题意是在考察最大生成树，我们需要根据给出的邻接矩阵代表的无向带权图求出最大生成树，然后计算权和就很简单水到渠成了。</p>
 <h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>说到最大生成树，我们得先回顾一下最小生成树：</p>
 <p>最小生成树其实是最小权重生成树的简称。一个连通图可能有多个生成树。当图中的边具有权值时，总会有一个生成树的边的权值之和小于或者等于其它生成树的边的权值之和。也就是说最小生成树就是<strong>边权重之和最小</strong>的生成树。总结起来就是以下：</p>
