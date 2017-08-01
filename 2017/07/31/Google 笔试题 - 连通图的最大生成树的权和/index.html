@@ -20,7 +20,7 @@
 <meta property="og:description" content="这是一道Google 笔试题
 题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
-<meta property="og:updated_time" content="2017-07-31T11:17:51.330Z">
+<meta property="og:updated_time" content="2017-08-01T02:27:59.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连通图的最大生成树的权和">
 <meta name="twitter:description" content="这是一道Google 笔试题
@@ -175,7 +175,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj5s29cib000ciomyoxllnv02">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj5sz4g3q000340my1ngl9tj8">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -233,14 +233,14 @@
 <p>那么，如何生成最小生成树呢？常用的算法有<strong><a href="https://zh.wikipedia.org/wiki/%E6%99%AE%E6%9E%97%E5%A7%86%E7%AE%97%E6%B3%95" target="_blank" rel="external">Prim算法</a></strong>（普里姆算法）和<strong><a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E9%B2%81%E6%96%AF%E5%85%8B%E5%B0%94%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="external">Kruskal算法</a></strong>（克鲁斯克尔算法）。</p>
 <h3 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h3><p>Prim算法是用来从带权图中搜索最小生成树的一种算法。 从单一顶点开始，Prim普里姆算法按照以下步骤逐步扩大树中所含顶点的数目，直到遍及连通图的所有顶点。</p>
 <ol>
-<li><p>输入：一个加权连通图，其中顶点集合为$V$，边集合为$E$；</p>
+<li><p>输入：一个加权连通图，其中顶点集合为$V$ ，边集合为$E$；</p>
 </li>
-<li><p>初始化：$V<em>{new} = {x}$，其中x为集合V中的任一节点（起始点），$E</em>{new} = {}$；</p>
+<li><p>初始化：$V_{new} = {x}$ ，其中x为集合V中的任一节点（起始点）， $E_{new} = \{\}$ ；</p>
 </li>
-<li><p>重复下列操作，直到$V_{new} = V$：</p>
-<p><strong>a.</strong> 在集合E中选取权值最小的边（u, v），其中u为集合$V<em>{new} $中的元素，而v则是V中没有加入$V</em>{new} $的顶点（如<strong>b.</strong> 果存在有多条满足前述条件即具有相同权值的边，则可任意选取其中之一）；将v加入集合$V<em>{new} $中，将（u, v）加入集合$E</em>{new} $中；</p>
+<li><p>重复下列操作，直到$V_{new} = V$ ：</p>
+<p><strong>a.</strong> 在集合E中选取权值最小的边（u, v），其中u为集合$V_{new}​$中的元素，而v则是V中没有加入$V_{new}​$的顶点（如<strong>b.</strong> 果存在有多条满足前述条件即具有相同权值的边，则可任意选取其中之一）；将v加入集合$V_{new}​$中，将（u, v）加入集合$E_{new}​$中；</p>
 </li>
-<li><p>输出：使用集合$V<em>{new} $和$E</em>{new} $来描述所得到的最小生成树。</p>
+<li><p>输出：使用集合$V_{new}$和$E_{new}$来描述所得到的最小生成树。</p>
 </li>
 </ol>
 <p>算法伪代码：</p>
