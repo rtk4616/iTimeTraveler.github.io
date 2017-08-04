@@ -343,6 +343,96 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/">Google 面试题 | 判断字符串是否可由重复子字符串组成</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">2017-05-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Algorithm/">Algorithm</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abab”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>： 输入可由”ab”重复两次组成</li>
+</ul>
+</blockquote>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “aba”</li>
+<li><strong>输出</strong>： False</li>
+</ul>
+</blockquote>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><blockquote>
+<ul>
+<li><strong>输入</strong>： “abcabcabcabc”</li>
+<li><strong>输出</strong>： True</li>
+<li><strong>样例解释</strong>：输入可由”abc”重复四次组成</li>
+</ul>
+</blockquote>
+        <!-- 题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
+样例1
+
+输入： “abab”
+输出： True
+样例解释： 输入可由”ab”重复两次组成
+
+
+样例 2
+
+输入： “aba”
+输出： False
+
+
+样例 3
+
+输入： “abcabcabcabc”
+输出： True
+样例解释：输入可由”abc”重复四次组成
+
+
+
+解题思路1.......  -->
+        <p class="article-more-link">
+          <a href="../../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Google/">Google</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】判断应用Application、Activity是否处于活动状态"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -851,70 +941,11 @@ AbsoluteSizeSpan(int......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-【Java】泛型详解"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/12/27/【Java】泛型详解/">【Java】泛型详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/12/27/【Java】泛型详解/" class="article-date">
-	  <time datetime="2016-12-27T04:30:55.000Z" itemprop="datePublished">2016-12-27</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-为什么需要泛型？"><a href="#一-为什么需要泛型？" class="headerlink" title="一. 为什么需要泛型？"></a><strong>一. 为什么需要泛型？</strong></h2><p>首先，我们看下下面这段简短的代码:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List list = <span class="keyword">new</span> ArrayList();</div><div class="line">        list.add(<span class="string">"qqyumidi"</span>);</div><div class="line">        list.add(<span class="string">"corn"</span>);</div><div class="line">        list.add(<span class="number">100</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</div><div class="line">            String name = (String) list.get(i);  <span class="comment">// ① 错误</span></div><div class="line">            System.out.println(<span class="string">"name:"</span> + name);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>定义了一个List类型的集合，先向其中加入了两个字符串类型的值，随后加入一个Integer类型的值。这是完全允许的，因为此时list默认的类型为Object类型。在之后的循环中，由于忘记了之前在list中也加入了Integer类型的值或其他编码原因，很容易出现类似于<code>//①</code>中的错误。因为编译阶段正常，而运行时会出现<strong>“java.lang.ClassCastException”异常</strong>。因此，导致此类错误编码过程中不易发现。</p>
-<p> 在如上的编码过程中，我们发现主要存在两个问题：</p>
-<ol>
-<li><p>当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</p>
-</li>
-<li><p>因此，//① 处取出集合元素时需要人为的强制类型转化到具体的目标类型，且很容易出现“java.lang.ClassCastException”异常。</p>
-</li>
-</ol>
-<p>那么有没有什么办法可以使集合能够记住集合内元素各类型，且能够达到只要编译时不出现问题，运行时就不会出现“java.lang.ClassCastException”异常呢？答案就是使用<strong>泛型</strong>。</p>
-        <!-- 一. 为什么需要泛型？首先，我们看下下面这段简短的代码:
-public class GenericTest &#123;    public static void main(String[] args) &#123;        List list = new ArrayList();        list.add("qqyumidi");        list.add("corn"......  -->
-        <p class="article-more-link">
-          <a href="../../2016/12/27/【Java】泛型详解/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../../index.html">&laquo; 上一页</a><a class="page-number" href="../../index.html">1</a><span class="page-number current">2</span><a class="page-number" href="../3/">3</a><a class="page-number" href="../4/">4</a><span class="space">&hellip;</span><a class="page-number" href="../8/">8</a><a class="extend next" rel="next" href="../3/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="../../index.html">&laquo; 上一页</a><a class="page-number" href="../../index.html">1</a><span class="page-number current">2</span><a class="page-number" href="../3/">3</a><a class="page-number" href="../4/">4</a><span class="space">&hellip;</span><a class="page-number" href="../9/">9</a><a class="extend next" rel="next" href="../3/">下一页 &raquo;</a>
   </nav>
 
 </section>
