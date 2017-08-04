@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Andro">
 <meta property="og:image" content="http://github.com/gallery/14987336455200.jpg">
-<meta property="og:updated_time" content="2017-08-04T03:31:41.255Z">
+<meta property="og:updated_time" content="2017-08-04T05:50:51.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】源码分析 - Handler消息机制再梳理">
 <meta name="twitter:description" content="前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Andro">
@@ -172,7 +172,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/14987336455200.jpg" rel="gallery_cj5xbe2tf003spgmyfad3o5p6">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/14987336455200.jpg" rel="gallery_cj5xgczta0047w0my3a8haccd">
         <img src="../../../../gallery/14987336455200.jpg" itemprop="image">
       </a>
     
@@ -215,7 +215,8 @@
 <li>然后 Looper 无限循环读取消息</li>
 <li>再调用 Handler 处理消息</li>
 </ol>
-<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。Android 消息机制主要涉及 4 个类：</p>
+<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。</p>
+<p>在整个Android的源码世界里，有两大利剑，其一是<strong>Binder IPC机制</strong>，另一个便是<strong>消息机制</strong>。Android有大量的消息驱动方式来进行交互，比如Android的四剑客<code>Activity</code>, <code>Service</code>, <code>Broadcast</code>, <code>ContentProvider</code>的启动过程的交互，都离不开消息机制，Android某种意义上也可以说成是一个以消息驱动的系统。而Android 消息机制主要涉及 4 个类：</p>
 <ul>
 <li>Handler</li>
 <li>Message</li>
@@ -236,7 +237,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">sendEmptyMessage</span><span class="params">(<span class="keyword">int</span> what)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> sendEmptyMessageDelayed(what, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">sendEmptyMessageDelayed</span><span class="params">(<span class="keyword">int</span> what, <span class="keyword">long</span> delayMillis)</span> </span>&#123;</div><div class="line">    Message msg = Message.obtain();</div><div class="line">    msg.what = what;</div><div class="line">    <span class="keyword">return</span> sendMessageDelayed(msg, delayMillis);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">sendMessageDelayed</span><span class="params">(Message msg, <span class="keyword">long</span> delayMillis)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (delayMillis &lt; <span class="number">0</span>) &#123;</div><div class="line">        delayMillis = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我们可以看到，最后调用了<code>sendMessageAtTime()</code>方法，我们接着看这个方法：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sendMessageAtTime</span><span class="params">(Message msg, <span class="keyword">long</span> uptimeMillis)</span> </span>&#123;</div><div class="line">    MessageQueue queue = mQueue;	<span class="comment">//拿到MessageQueue队列对象</span></div><div class="line">    <span class="keyword">if</span> (queue == <span class="keyword">null</span>) &#123;</div><div class="line">        RuntimeException e = <span class="keyword">new</span> RuntimeException(</div><div class="line">                <span class="keyword">this</span> + <span class="string">" sendMessageAtTime() called with no mQueue"</span>);</div><div class="line">        Log.w(<span class="string">"Looper"</span>, e.getMessage(), e);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">  	<span class="comment">//把msg对象入队</span></div><div class="line">    <span class="keyword">return</span> enqueueMessage(queue, msg, uptimeMillis);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个方法我们看到两个亮点：</p>
+<p>也就是说，目前我们看到的Handler的<code>sendEmptyMessage()</code>方法调用逻辑如下图：</p>
+<p><img src="/gallery/android-handler/java_sendmessage.png" alt="Handler的sendEmptyMessage()方法调用逻辑"></p>
+<p>最后这个<code>sendMessageAtTime()</code>方法我们看到两个亮点：</p>
 <ul>
 <li>第一步，<strong>首先拿到消息队列<code>MessageQueue</code>类型的<code>mQueue</code>对象</strong>。</li>
 <li>第二步，<strong>把消息<code>Message</code>类型的实例<code>msg</code>对象入队</strong>。</li>
@@ -252,6 +255,16 @@
 <p>我们来看看这个<code>prepare()</code>方法到底干了什么：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</div><div class="line">	 <span class="comment">//每个线程只允许执行一次该方法，第二次执行时线程的TLS已有数据，则会抛出异常。</span></div><div class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//创建Looper对象，并保存到当前线程的TLS区域</span></div><div class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>原来是给<code>ThreadLocal</code>线程本地存储TLS对象set了一个新的Looper对象。换句话说，就是new了一个Looper对象然后保存在了线程本地存储区里了。而这个<code>ThreadLocal</code>线程本地存储对象就是每个线程专有的变量，可以理解成线程的自有变量保存区。我们这里不作深入介绍，只用理解每个线程可以通过<code>Looper.prepare()</code>方法new一个Looper对象保存起来，然后就可以拥有一个Looper了。这也就是我们在非UI线程中使用Handler之前必须首先调用<code>Looper.prepare()</code>方法的根本原因。</p>
+<blockquote>
+<p><strong>插播</strong>：<code>ThreadLocal</code>类实现一个线程本地的存储，也就是说，每个线程都有自己的局部变量。所有线程都共享一个ThreadLocal对象，但是每个线程在访问这些变量的时候能得到不同的值，每个线程可以更改这些变量并且不会影响其他的线程，并且支持null值。详细介绍可以看看这里：<a href="http://www.cnblogs.com/whoislcj/p/5811989.html" target="_blank" rel="external">Android线程管理之ThreadLocal理解及应用场景</a></p>
+</blockquote>
+<p>比如我们在Activity的onCreate()方法中写一段这样的代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">    Handler h1 = <span class="keyword">new</span> Handler();</div><div class="line"></div><div class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            Handler h2 = <span class="keyword">new</span> Handler();		<span class="comment">//直接在子线程中new一个Handler</span></div><div class="line">        &#125;</div><div class="line">    &#125;).start();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行之后h1正常创建，但是创建h2的时候crash了：</p>
+<blockquote>
+<p>——— beginning of crash<br>E/AndroidRuntime: FATAL EXCEPTION: Thread-263<br>Process: com.example.stone.sfsandroidclient, PID: 32286<br>java.lang.RuntimeException: <strong>Can’t create handler inside thread that has not called Looper.prepare()</strong><br>   at android.os.Handler.<init>(Handler.java:200)<br>   at android.os.Handler.<init>(Handler.java:114)<br>   at com.example.stone.sfsandroidclient.MainActivity$1.run(MainActivity.java:71)<br>   at java.lang.Thread.run(Thread.java:818)</init></init></p>
+</blockquote>
+<p>很明显，出错日志提示<strong>不能在一个没有调用过<code>Looper.prepare()</code>的Thread里边<code>new Handler()</code></strong>。</p>
 <p>看到了这里有一个疑惑，那就是我们在文章开头的示例代码中新建<code>mHandler</code>的时候并没有调用<code>Looper.prepare()</code>方法，那Looper的创建以及方法调用在哪里呢？其实这些东西Android本身已经帮我们做了，在程序入口<strong>ActivityThread</strong>的main方法里面我们可以找到：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    Looper.prepareMainLooper();		<span class="comment">//这里等同于Looper.prepare()</span></div><div class="line">    ...</div><div class="line">    Looper.loop();</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Message对象如何入队"><a href="#Message对象如何入队" class="headerlink" title="Message对象如何入队"></a>Message对象如何入队</h2><p>我们明白了MessageQueue消息队列对象是来自于ThreadLocal线程本地存储区存储的那个唯一的Looper对象。我们接着看<strong>Handler</strong>在发送消息的最后调用的<code>enqueueMessage()</code>方法，看名字应该是把消息加入队列的意思，点进去看下：</p>
@@ -274,6 +287,7 @@
 <li>再把分发后的Message回收到消息池，以便重复利用。</li>
 </ul>
 <p>拿到消息后调用<code>msg.target</code>的<code>dispatchMessage(msg)</code>方法，而这个<code>msg.target</code>是什么呢？就是前面<code>Handler</code>发送消息<code>sendMessageAtTime()</code>时把自己赋值给<code>msg.target</code>的主线程的<code>mHandler</code>对象。也就是说，最后还是 Handler 负责处理消息。可以看到，<strong>Looper 并没有执行消息，真正执行消息的还是添加消息到队列中的那个 Handler</strong>。</p>
+<p><img src="/gallery/android-handler/looper.png" alt="Looper处理Message的大致流程"></p>
 <p>所以我们来看Handler中的<code>dispatchMessage(msg)</code>方法：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Handle system messages here.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatchMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (msg.callback != <span class="keyword">null</span>) &#123;</div><div class="line">        handleCallback(msg);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span> (mCallback != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (mCallback.handleMessage(msg)) &#123;</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleMessage(msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">handleCallback</span><span class="params">(Message message)</span> </span>&#123;</div><div class="line">    message.callback.run();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看到，Handler 在处理消息时，会有三种情况：</p>
@@ -294,6 +308,126 @@
 </ul>
 </li>
 </ol>
+<p>而我们开头的例子，使用的就是第3种方法，大家可以回顾一下。</p>
+<p><img src="/gallery/android-handler/0_1327991304aZK7.jpg" alt="子线程向主线程中发送UI更新消息的整体流程"></p>
+<p>到这里，我们的疑问基本上就解决了，虽然没有再深入到jni层看native底层实现，但是java层的机制我们大概明白了。最后我们对上面的源码跟踪分析做一个宏观上的总结。</p>
+<h2 id="整体运行机制"><a href="#整体运行机制" class="headerlink" title="整体运行机制"></a>整体运行机制</h2><h3 id="四大主角"><a href="#四大主角" class="headerlink" title="四大主角"></a>四大主角</h3><p>与Windows系统一样，Android也是消息驱动型的系统。引用一下消息驱动机制的四要素：</p>
+<ul>
+<li>接收消息的“消息队列”</li>
+<li>阻塞式地从消息队列中接收消息并进行处理的“线程”</li>
+<li>可发送的“消息的格式”</li>
+<li>“消息发送函数”</li>
+</ul>
+<p>与之对应，Android中的实现对应了</p>
+<ul>
+<li>接收消息的“消息队列” ——【MessageQueue】</li>
+<li>阻塞式地从消息队列中接收消息并进行处理的“线程” ——【Thread+Looper】</li>
+<li>可发送的“消息的格式” ——【Message】</li>
+<li>“消息发送函数”——【Handler的post和sendMessage】</li>
+</ul>
+<p>也就是说，消息机制主要包含以下四个主角：</p>
+<ul>
+<li><strong>Message</strong>：消息分为硬件产生的消息（如按钮、触摸）和软件生成的消息；</li>
+<li><strong>MessageQueue</strong>：消息队列的主要功能向消息池投递消息（<code>MessageQueue.enqueueMessage()</code>）和取走消息池的消息（<code>MessageQueue.next()</code>）；</li>
+<li><strong>Handler</strong>：消息辅助类，主要功能向消息池发送各种消息事件（<code>Handler.sendMessage()</code>）和处理相应消息事件（<code>Handler.handleMessage()</code>）；</li>
+<li><strong>Looper</strong>：不断循环执行（<code>Looper.loop()</code>），按分发机制将消息分发给目标处理者。</li>
+</ul>
+<p>他们之间的关系如下：</p>
+<ul>
+<li><strong>Thread</strong>：一个线程有唯一一个对应的Looper；</li>
+<li><strong>Looper</strong>：有一个MessageQueue消息队列；</li>
+<li><strong>MessageQueue</strong>：有一组待处理的Message；</li>
+<li><strong>Message</strong>中有一个用于处理消息的Handler；</li>
+<li><strong>Handler</strong>中有Looper和MessageQueue。</li>
+</ul>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="/gallery/android-handler/1836169-c13aab3f58697aaa.png" alt=""></p>
+<p>一个<code>Looper</code>类似一个消息泵。它本身是一个死循环，不断地从<code>MessageQueue</code>中提取<code>Message</code>或者Runnable。而<code>Handler</code>可以看做是一个<code>Looper</code>的暴露接口，向外部暴露一些事件，并暴露<code>sendMessage()</code>和<code>post()</code>函数。</p>
+<p>在安卓中，除了<code>UI线程</code>/<code>主线程</code>以外，普通的线程(先不提<code>HandlerThread</code>)是不自带<code>Looper</code>的。想要通过UI线程与子线程通信需要在子线程内自己实现一个<code>Looper</code>。开启Looper分<strong>三步走</strong>：</p>
+<ol>
+<li>判定是否已有<code>Looper</code>并<code>Looper.prepare()</code></li>
+<li>做一些准备工作(如暴露handler等)</li>
+<li>调用<code>Looper.loop()</code>，线程进入阻塞态</li>
+</ol>
+<p>由于每一个线程内最多只可以有一个<code>Looper</code>，所以一定要在<code>Looper.prepare()</code>之前做好判定，否则会抛出<code>java.lang.RuntimeException: Only one Looper may be created per thread</code>。为了获取Looper的信息可以使用两个方法：</p>
+<ul>
+<li>Looper.myLooper()</li>
+<li>Looper.getMainLooper()</li>
+</ul>
+<p><code>Looper.myLooper()</code>获取当前线程绑定的Looper，如果没有返回<code>null</code>。<code>Looper.getMainLooper()</code>返回主线程的<code>Looper</code>,这样就可以方便的与主线程通信。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><code>Looper</code>调用<code>prepare()</code>进行初始化，创建了一个与当前线程对应的<code>Looper</code>对象（通过<code>ThreadLocal</code>实现），并且初始化了一个与当前<code>Looper</code>对应的<code>MessageQueue</code>对象。</li>
+<li><code>Looper</code>调用静态方法<code>loop()</code>开始消息循环，通过<code>MessageQueue.next()</code>方法获取<code>Message</code>对象。</li>
+<li>当获取到一个<code>Message</code>对象时，让<code>Message</code>的发送者（<code>target</code>）去处理它。</li>
+<li><code>Message</code>对象包括数据，发送者（<code>Handler</code>），可执行代码段（<code>Runnable</code>）三个部分组成。</li>
+<li><code>Handler</code>可以在一个已经<code>Looper.prepare()</code>的线程中初始化，如果线程没有初始化<code>Looper</code>，创建<code>Handler</code>对象会失败</li>
+<li>一个线程的执行流中可以构造多个<code>Handler</code>对象，它们都往同一个MQ中发消息，消息也只会分发给对应的<code>Handler</code>处理。</li>
+<li><code>Handler</code>将消息发送到MQ中，<code>Message</code>的<code>target</code>域会引用自己的发送者，<code>Looper</code>从MQ中取出来后，再交给发送这个<code>Message</code>的<code>Handler</code>去处理。</li>
+<li><code>Message</code>可以直接添加一个<code>Runnable</code>对象，当这条消息被处理的时候，直接执行<code>Runnable.run()</code>方法。</li>
+</ul>
+<h2 id="Handler的内存泄露问题"><a href="#Handler的内存泄露问题" class="headerlink" title="Handler的内存泄露问题"></a>Handler的内存泄露问题</h2><p>再来看看我们的新建Handler的代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>当使用内部类（包括匿名类）来创建Handler的时候，Handler对象会隐式地持有Activity的引用。</strong></p>
+<p>而Handler通常会伴随着一个耗时的后台线程一起出现，这个后台线程在任务执行完毕后发送消息去更新UI。然而，如果用户在网络请求过程中关闭了Activity，正常情况下，Activity不再被使用，它就有可能在GC检查时被回收掉，但由于这时线程尚未执行完，而该线程持有Handler的引用（不然它怎么发消息给Handler？），这个Handler又持有Activity的引用，就导致该Activity无法被回收（即内存泄露），直到网络请求结束。</p>
+<p>另外，如果执行了Handler的postDelayed()方法，那么在设定的delay到达之前，会有一条<strong>MessageQueue -&gt; Message -&gt; Handler -&gt; Activity</strong>的链，导致你的Activity被持有引用而无法被回收。</p>
+<p>解决方法之一，使用弱引用：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    WeakReference&lt;Activity &gt; mActivityReference;</div><div class="line">    MyHandler(Activity activity) &#123;</div><div class="line">        mActivityReference= <span class="keyword">new</span> WeakReference&lt;Activity&gt;(activity);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> Activity activity = mActivityReference.get();</div><div class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span>) &#123;</div><div class="line">            mImageView.setImageBitmap(mBitmap);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从JDK1.2开始，Java把对象的引用分为四种级别，这四种级别由高到低依次为：强引用、软引用、弱引用和虚引用。</p>
+<ol>
+<li><p><strong>强引用</strong>：我们一般使用的就是强引用，垃圾回收器一般都不会对其进行回收操作。当内存空间不足时Java虚拟机宁愿抛出OutOfMemoryError错误使程序异常终止，也不会回收具有强引用的对象。</p>
+</li>
+<li><p><strong>软引用(SoftReference)</strong>：如果一个对象具有软引用(SoftReference)，在内存空间足够的时候GC不会回收它，如果内存空间不足了GC就会回收这些对象的内存空间。</p>
+</li>
+<li><p><strong>弱引用(WeakReference)</strong> ：如果一个对象具有弱引用(WeakReference)，那么当GC线程扫描的过程中一旦发现某个对象只具有弱引用而不存在强引用时不管当前内存空间足够与否GC都会回收它的内存。由于垃圾回收器是一个优先级较低的线程，所以不一定会很快发现那些只具有弱引用的对象。为了防止内存溢出，在处理一些占用内存大而且生命周期较长的对象时候，可以尽量使用软引用和弱引用。</p>
+</li>
+<li><p><strong>虚引用(PhantomReference)</strong> ：虚引用(PhantomReference)与其他三种引用都不同，它并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。所以，虚引用主要用来跟踪对象被垃圾回收器回收的活动，在一般的开发中并不会使用它。</p>
+</li>
+</ol>
+<h2 id="进程、线程间通信方式"><a href="#进程、线程间通信方式" class="headerlink" title="进程、线程间通信方式"></a>进程、线程间通信方式</h2><p>文章最后，我们来整理一下进程、线程间通信方式，参考<a href="http://www.cnblogs.com/xh0102/p/5710074.html" target="_blank" rel="external">线程通信与进程通信的区别</a>。看看Handler消息传递机制属于哪种？</p>
+<h3 id="一、进程间的通信方式"><a href="#一、进程间的通信方式" class="headerlink" title="一、进程间的通信方式"></a>一、进程间的通信方式</h3><ul>
+<li><strong>管道( pipe )</strong>：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</li>
+<li><strong>有名管道 (namedpipe)</strong> ： 有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
+<li><strong>信号量(semophore )</strong> ： 信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</li>
+<li><strong>消息队列( messagequeue )</strong> ： 消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+<li><strong>信号 (sinal )</strong> ： 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
+<li><strong>共享内存(shared memory )</strong> ：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号两，配合使用，来实现进程间的同步和通信。</li>
+<li><strong>套接字(socket )</strong> ： 套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>IPC</strong></th>
+<th><strong>数据拷贝次数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共享内存</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Android Binder</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Socket/管道/消息队列</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二、线程间的通信方式"><a href="#二、线程间的通信方式" class="headerlink" title="二、线程间的通信方式"></a>二、线程间的通信方式</h3><ul>
+<li><strong>锁机制</strong>：包括互斥锁、条件变量、读写锁<ol>
+<li>互斥锁提供了以排他方式防止数据结构被并发修改的方法。</li>
+<li>读写锁允许多个线程同时读共享数据，而对写操作是互斥的。</li>
+<li>条件变量可以以原子的方式阻塞进程，直到某个特定条件为真为止。对条件的测试是在互斥锁的保护下进行的。条件变量始终与互斥锁一起使用。</li>
+</ol>
+</li>
+<li><strong>信号量机制(Semaphore)</strong>：包括无名线程信号量和命名线程信号量</li>
+<li><strong>信号机制(Signal)</strong>：类似进程间的信号处理</li>
+</ul>
+<p>线程间的通信目的主要是用于线程同步，所以线程没有像进程通信中的用于数据交换的通信机制。</p>
+<blockquote>
+<p>很明显，Android的Handler消息机制使用消息队列( MessageQueue )实现的线程间通信方式。而Binder是Android建立额一套新的IPC机制来满足系统对通信方式，传输性能和安全性的要求。<strong>Binder基于Client-Server通信模式，传输过程只需一次拷贝，为发送发添加UID/PID身份，既支持实名Binder也支持匿名Binder，安全性高。</strong>此处就不对Binder作更多介绍了。</p>
+</blockquote>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://gityuan.com/2015/12/26/handler-message-framework/" target="_blank" rel="external">Android消息机制1-Handler(Java层)</a></li>
 <li><a href="http://blog.csdn.net/ly502541243/article/details/52062179/" target="_blank" rel="external">从Handler.post(Runnable r)再一次梳理Android的消息机制</a></li>
@@ -375,7 +509,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初学Handler"><span class="nav-number">2.</span> <span class="nav-text">初学Handler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步更新UI"><span class="nav-number">2.1.</span> <span class="nav-text">异步更新UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler源码跟踪"><span class="nav-number">3.</span> <span class="nav-text">Handler源码跟踪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MessageQueue对象从哪里来"><span class="nav-number">4.</span> <span class="nav-text">MessageQueue对象从哪里来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message对象如何入队"><span class="nav-number">5.</span> <span class="nav-text">Message对象如何入队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Looper如何处理Message"><span class="nav-number">6.</span> <span class="nav-text">Looper如何处理Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初学Handler"><span class="nav-number">2.</span> <span class="nav-text">初学Handler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步更新UI"><span class="nav-number">2.1.</span> <span class="nav-text">异步更新UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler源码跟踪"><span class="nav-number">3.</span> <span class="nav-text">Handler源码跟踪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MessageQueue对象从哪里来"><span class="nav-number">4.</span> <span class="nav-text">MessageQueue对象从哪里来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message对象如何入队"><span class="nav-number">5.</span> <span class="nav-text">Message对象如何入队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Looper如何处理Message"><span class="nav-number">6.</span> <span class="nav-text">Looper如何处理Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体运行机制"><span class="nav-number">7.</span> <span class="nav-text">整体运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四大主角"><span class="nav-number">7.1.</span> <span class="nav-text">四大主角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-number">7.2.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler的内存泄露问题"><span class="nav-number">8.</span> <span class="nav-text">Handler的内存泄露问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程、线程间通信方式"><span class="nav-number">9.</span> <span class="nav-text">进程、线程间通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、进程间的通信方式"><span class="nav-number">9.1.</span> <span class="nav-text">一、进程间的通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、线程间的通信方式"><span class="nav-number">9.2.</span> <span class="nav-text">二、线程间的通信方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>

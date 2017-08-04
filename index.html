@@ -376,7 +376,8 @@
 <li>然后 Looper 无限循环读取消息</li>
 <li>再调用 Handler 处理消息</li>
 </ol>
-<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。Android 消息机制主要涉及 4 个类：</p>
+<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。</p>
+<p>在整个Android的源码世界里，有两大利剑，其一是<strong>Binder IPC机制</strong>，另一个便是<strong>消息机制</strong>。Android有大量的消息驱动方式来进行交互，比如Android的四剑客<code>Activity</code>, <code>Service</code>, <code>Broadcast</code>, <code>ContentProvider</code>的启动过程的交互，都离不开消息机制，Android某种意义上也可以说成是一个以消息驱动的系统。而Android 消息机制主要涉及 4 个类：</p>
 <ul>
 <li>Handler</li>
 <li>Message</li>
