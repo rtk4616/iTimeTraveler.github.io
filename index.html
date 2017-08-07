@@ -343,6 +343,62 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【算法】反转字符串"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2017/08/05/【算法】反转字符串/">【算法】反转字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2017/08/05/【算法】反转字符串/" class="article-date">
+	  <time datetime="2017-08-05T14:20:55.000Z" itemprop="datePublished">2017-08-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//输入一个字符串，输出它的倒序字符串</span></div><div class="line">input:  Hello</div><div class="line">output: olleH</div></pre></td></tr></table></figure>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>反转字符串，确实没什么难度，但是我无意间搜索了一下，才发现这么一个看似简单的反转算法实现起来真可谓花样繁多。这里我们尽可能分别总结介绍一下。</p>
+<h3 id="1、使用字符数组倒序输出"><a href="#1、使用字符数组倒序输出" class="headerlink" title="1、使用字符数组倒序输出"></a>1、使用字符数组倒序输出</h3><p>最常规的解法，也是最容易想到的一种方法就是使用字符数组倒序输出。</p>
+<p>具体思路是：倒序遍历字符串字符循环给char数组赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strReverseWithArray</span><span class="params">(String string)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (string == <span class="keyword">null</span> || string.length() == <span class="number">0</span>) <span class="keyword">return</span> string;</div><div class="line">    </div><div class="line">    <span class="keyword">char</span>[] array = <span class="keyword">new</span> <span class="keyword">char</span>[string.length()];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; string.length(); i++)&#123;</div><div class="line">        array[i] = string.charAt(string.length() - i - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(array);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 前言研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。
+123//输入一个字符串，输出它的倒序字符串input:  Hellooutput: olleH
+解法反转字符串，确实没什么难度，但是我无意间搜索了一下，才发现这么一个看似简单的反转算法实现起来真可谓花样繁多。这里我们尽可能分别总结介绍一下。
+1、使用字符数组倒序输出最常规的解法，也是最容易......  -->
+        <p class="article-more-link">
+          <a href="2017/08/05/【算法】反转字符串/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】源码分析 - Handler消息机制再梳理"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -851,58 +907,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】Audio音频输出通道切换 - 蓝牙、外放"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/">【Android】Audio音频输出通道切换 - 蓝牙、外放</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" class="article-date">
-	  <time datetime="2017-05-18T03:40:00.000Z" itemprop="datePublished">2017-05-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。</p>
-<h2 id="场景需求"><a href="#场景需求" class="headerlink" title="场景需求"></a><strong>场景需求</strong></h2><p>Android系统自动切换的这些策略，并不能全部满足我们的产品需求，比如音乐App需要对听歌时拔出耳机的操作进行阻止（暂停播放），防止突然切换到外放导致尴尬。</p>
-<p>最近项目需求希望<strong><code>即使在连接蓝牙音箱的情况下，仍旧使用手机外放播放音频</code></strong>。这就需要强制切换Audio输出通道，打破系统原有的策略。</p>
-<p>查阅资料，看到了Android中可以通过<code>AudioManager</code>查询、切换当前Audio输出通道，并且在Audio输出发生变化时，捕获并处理这种变化。</p>
-        <!-- 手机音频的输出有外放（Speaker）、听筒（Telephone Receiver）、有线耳机（WiredHeadset）、蓝牙音箱（Bluetooth A2DP）等输出设备。在平时，电话免提、插拔耳机、连接断开蓝牙设备等操作系统都会自动切换Audio音频到相应的输出设备上。比如电话免提就是从听筒切换到外放扬声器，插入耳机就是从外放切换到耳机。
-场景需求Android系统自动切换的这些策略，......  -->
-        <p class="article-more-link">
-          <a href="2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Audio/">Audio</a></li></ul>
 
     </footer>
   </div>
