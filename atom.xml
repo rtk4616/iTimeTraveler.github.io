@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-08-07T02:39:44.235Z</updated>
+  <updated>2017-08-23T02:57:56.454Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【算法】大数乘法问题及其高效算法</title>
+    <link href="http://github.com/2017/08/22/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%A4%A7%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E9%AB%98%E6%95%88%E7%AE%97%E6%B3%95/"/>
+    <id>http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/</id>
+    <published>2017-08-22T14:20:55.000Z</published>
+    <updated>2017-08-23T02:57:56.454Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
+<blockquote>
+<p>题目描述：    输出两个不超过100位的大整数的乘积。<br>输入：    输入两个大整数，如1234567 和 123<br>输出：    输出乘积，如：151851741</p>
+</blockquote>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">求 <span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> 的乘积结果</div></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘，就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<a id="more"></a>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>既然不能直接使用乘法做运算，最简单最容易想到的办法就是模拟乘法运算。</p>
+<h3 id="1、模拟乘法手算累加"><a href="#1、模拟乘法手算累加" class="headerlink" title="1、模拟乘法手算累加"></a>1、模拟乘法手算累加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">      7 8 9 6 5 2</div><div class="line">×         3 2 1 1</div><div class="line">-----------------</div><div class="line">      7 8 9 6 5 2   &lt;---- 第1趟 </div><div class="line">    7 8 9 6 5 2     &lt;---- 第2趟 </div><div class="line">   ..........       &lt;---- 第n趟 </div><div class="line">-----------------</div><div class="line">  ? ? ? ? ? ? ? ?   &lt;---- 最后的值用另一个数组表示</div></pre></td></tr></table></figure>
+<p>如上所示，乘法运算可以分拆为两步：</p>
+<ul>
+<li>第一步，是将乘数与被乘数逐位相乘；</li>
+<li>第二步，将逐位相乘得到的结果，对应相加起来。</li>
+</ul>
+<p>这有点类似小学数学中，计算乘法时通常采用的“竖式运算”。用Java简单实现了这个算法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 大数相乘 - 模拟乘法手算累加</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Integer[] bigNumberMultiply(<span class="keyword">int</span>[] arr1, <span class="keyword">int</span>[] arr2)&#123;</div><div class="line">    ArrayList&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();  <span class="comment">//中间求和的结果</span></div><div class="line"></div><div class="line">    <span class="comment">//arr2 逐位与arr1相乘</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = arr2.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        ArrayList&lt;Integer&gt; singleList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="comment">//arr2 逐位单次乘法的结果</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = arr1.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)&#123;</div><div class="line">            <span class="keyword">int</span> r = arr2[i] * arr1[j] + carry;</div><div class="line">            <span class="keyword">int</span> digit = r % <span class="number">10</span>;</div><div class="line">            carry = r / <span class="number">10</span>;</div><div class="line"></div><div class="line">            singleList.add(digit);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(carry != <span class="number">0</span>)&#123;</div><div class="line">            singleList.add(carry);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> resultCarry = <span class="number">0</span>, count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> offset = arr2.length - <span class="number">1</span> - i;       <span class="comment">//加法的偏移位</span></div><div class="line">        ArrayList&lt;Integer&gt; middleResult = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="comment">//arr2每位乘法的结果与上一轮的求和结果相加，从右向左做加法并进位</span></div><div class="line">        <span class="keyword">while</span> (k &lt; singleList.size() || l &lt; result.size()) &#123;</div><div class="line">            <span class="keyword">int</span> kv = <span class="number">0</span>, lv = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (k &lt; singleList.size() &amp;&amp; count &gt;= offset) &#123;</div><div class="line">                kv = singleList.get(k++);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (l &lt; result.size()) &#123;</div><div class="line">                lv = result.get(l++);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">int</span> sum = resultCarry + kv + lv;</div><div class="line">            middleResult.add(sum % <span class="number">10</span>);     <span class="comment">//相加结果从右向左（高位到低位）暂时存储，最后需要逆向输出</span></div><div class="line">            resultCarry = sum / <span class="number">10</span>;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(resultCarry != <span class="number">0</span>)&#123;</div><div class="line">            middleResult.add(resultCarry);</div><div class="line">        &#125;</div><div class="line">        result.clear();</div><div class="line">        result = middleResult;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Collections.reverse(result);    <span class="comment">//逆向输出结果</span></div><div class="line">    <span class="keyword">return</span> result.toArray(<span class="keyword">new</span> Integer[result.size()]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看了以上的代码，感觉思路虽然很简单，但是实现起来却很麻烦，那么我们有没有别的方法来实现这个程序呢？答案是有的，接下来我来介绍第二种方法。</p>
+<h3 id="2、模拟乘法累加-改进"><a href="#2、模拟乘法累加-改进" class="headerlink" title="2、模拟乘法累加 - 改进"></a>2、模拟乘法累加 - 改进</h3><p>简单来说，方法二就是先不算任何的进位，也就是说，<strong>将每一位相乘，相加的结果保存到同一个位置，到最后才计算进位</strong>。</p>
+<p>例如：计算98×21,步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">        9  8</div><div class="line">×       2  1</div><div class="line">-------------</div><div class="line">       (9)(8)  &lt;---- 第1趟: 98×1的每一位结果 </div><div class="line">  (18)(16)     &lt;---- 第2趟: 98×2的每一位结果 </div><div class="line">-------------</div><div class="line">  (18)(25)(8)  &lt;---- 这里就是相对位的和，还没有累加进位</div></pre></td></tr></table></figure>
+<p>这里唯一要注意的便是进位问题，我们可以先不考虑进位，当所有位对应相加，产生结果之后，再考虑。从右向左依次累加，如果该位的数字大于10，那么我们用取余运算，在该位上只保留取余后的个位数，而将十位数进位（通过模运算得到）累加到高位便可，循环直到累加完毕。</p>
+<p>核心代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 大数相乘方法二</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bigNumberMultiply2(<span class="keyword">int</span>[] num1, <span class="keyword">int</span>[] num2)&#123;</div><div class="line">    <span class="comment">// 分配一个空间，用来存储运算的结果，num1长的数 * num2长的数，结果不会超过num1+num2长</span></div><div class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num1.length + num2.length];</div><div class="line"></div><div class="line">    <span class="comment">// 先不考虑进位问题，根据竖式的乘法运算，num1的第i位与num2的第j位相乘，结果应该存放在结果的第i+j位上</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num1.length; i++)&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num2.length; j++)&#123;</div><div class="line">            result[i + j + <span class="number">1</span>] += num1[i] * num2[j];	 <span class="comment">// (因为进位的问题，最终放置到第i+j+1位)</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//单独处理进位</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = result.length-<span class="number">1</span>; k &gt; <span class="number">0</span>; k--)&#123;</div><div class="line">        <span class="keyword">if</span>(result[k] &gt; <span class="number">10</span>)&#123;</div><div class="line">            result[k - <span class="number">1</span>] += result[k] / <span class="number">10</span>;</div><div class="line">            result[k] %= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>！！注意：</strong>这里的进位有个大坑，因为<code>result[]</code>数组是从左到右记录相对位的和（还没有进位），而最后的进位是从右向左累加进位，这样的话，如果最高位，也就是最左侧那一位的累加结果需要进位的话，<code>result[]</code>数组就没有空间存放了。</p>
+</blockquote>
+<p>而正好<code>result[]</code>数组的最后一位空置，不可能被占用，我们就响应地把<strong>num1的第i位与num2的第j位相乘，结果应该存放在结果的第i+j位上</strong>的这个结果往后顺移一位（<code>放到第i+j+1位</code>），最后从右向左累加时就多了一个空间。</p>
+<h2 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetcodeTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"><span class="comment">//        String a = "1234567891011121314151617181920";</span></div><div class="line"><span class="comment">//        String b = "2019181716151413121110987654321";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "999999999999";</span></div><div class="line"><span class="comment">//        String b = "999999999999";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "24566";</span></div><div class="line"><span class="comment">//        String b = "452053";</span></div><div class="line"></div><div class="line">        String a = <span class="string">"98"</span>;</div><div class="line">        String b = <span class="string">"21"</span>;</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[] charArr1 = a.trim().toCharArray();</div><div class="line">        <span class="keyword">char</span>[] charArr2 = b.trim().toCharArray();</div><div class="line"></div><div class="line">        <span class="comment">// 字符数组转换为int[]数组</span></div><div class="line">        <span class="keyword">int</span>[] arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr1.length];</div><div class="line">        <span class="keyword">int</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr2.length];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr1.length; i++)&#123;</div><div class="line">            arr1[i] = charArr1[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr2.length; i++)&#123;</div><div class="line">            arr2[i] = charArr2[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 开始计算</span></div><div class="line">        <span class="keyword">int</span>[] result = LeetcodeTest.bigNumberMultiply2(arr1, arr2);</div><div class="line">        System.out.println(a + <span class="string">" * "</span> + b + <span class="string">" = "</span> + Arrays.toString(result).replace(<span class="string">", "</span>, <span class="string">""</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，是测试用例输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> = [<span class="number">02492816912877266687794240983772975935013386905490061131076320</span>]</div><div class="line"></div><div class="line"><span class="number">999999999999</span> * <span class="number">999999999999</span> = [<span class="number">999999999998000000000001</span>]</div><div class="line"></div><div class="line"><span class="number">24566</span> * <span class="number">452053</span> = [<span class="number">11105133998</span>]</div><div class="line"></div><div class="line"><span class="number">98</span> * <span class="number">21</span> = [<span class="number">2058</span>]</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/19678341" target="_blank" rel="external">大数乘法，在算法上，主要有几种思路？</a></li>
+<li><a href="http://www.cnblogs.com/king-ding/p/bigIntegerMul.html" target="_blank" rel="external">华为OJ机试题目：两个大整数相乘(纯C语言实现两个大整数相乘，两种方法实现大数相乘)</a></li>
+<li><a href="http://blog.csdn.net/jinyongqing/article/details/13508577" target="_blank" rel="external">算法理解——大数相乘问题</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;编写两个任意位数的大数相乘的程序，给出计算结果。比如：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;题目描述：    输出两个不超过100位的大整数的乘积。&lt;br&gt;输入：    输入两个大整数，如1234567 和 123&lt;br&gt;输出：    输出乘积，如：151851741&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;求 &lt;span class=&quot;number&quot;&gt;1234567891011121314151617181920&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;2019181716151413121110987654321&lt;/span&gt; 的乘积结果&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h2&gt;&lt;p&gt;所谓大数相乘，就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>【算法】反转字符串</title>
@@ -2299,135 +2363,6 @@ $$
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Activities provide a facility to manage the creation, saving and restoring of dialogs. See &lt;a href=&quot;https://developer.android.com/reference/android/app/Activity.html#onCreateDialog%28int%29&quot;&gt;onCreateDialog(int)&lt;/a&gt;, &lt;a href=&quot;https://developer.android.com/reference/android/app/Activity.html#onPrepareDialog%28int,%20android.app.Dialog%29&quot;&gt;onPrepareDialog(int, Dialog)&lt;/a&gt;, &lt;a href=&quot;https://developer.android.com/reference/android/app/Activity.html#showDialog%28int%29&quot;&gt;showDialog(int)&lt;/a&gt;, and &lt;a href=&quot;https://developer.android.com/reference/android/app/Activity.html#dismissDialog%28int%29&quot;&gt;dismissDialog(int)&lt;/a&gt;. If these methods are used, &lt;a href=&quot;https://developer.android.com/reference/android/app/Dialog.html#getOwnerActivity%28%29&quot;&gt;getOwnerActivity()&lt;/a&gt; will return the Activity that managed this dialog.&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://github.com/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://github.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Android】TextView中不同大小字体如何上下垂直居中？</title>
-    <link href="http://github.com/2017/01/03/%E3%80%90Android%E3%80%91TextView%E4%B8%AD%E4%B8%8D%E5%90%8C%E5%A4%A7%E5%B0%8F%E5%AD%97%E4%BD%93%E5%A6%82%E4%BD%95%E4%B8%8A%E4%B8%8B%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F/"/>
-    <id>http://github.com/2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/</id>
-    <published>2017-01-03T09:03:00.000Z</published>
-    <updated>2017-01-03T09:51:40.715Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了<code>AttributedString</code>，而Android则提供了<strong><code>SpannableString</code></strong>。</p>
-<p>在Android的android.text.style包下为我们提供了各种各样的span（可以<a href="http://blog.csdn.net/u010983881/article/details/52383539" target="_blank" rel="external"><strong>参考这篇文章</strong></a>），例如：</p>
-<ul>
-<li><p><strong>AbsoluteSizeSpan(int size)</strong> —— 设置字体大小，参数是绝对数值，相当于Word中的字体大小</p>
-</li>
-<li><p><strong>RelativeSizeSpan(float proportion)</strong> —— 设置字体大小，参数是相对于默认字体大小的倍数，比如默认字体大小是x, 那么设置后的字体大小就是x*proportion，这个用起来比较灵活，proportion&gt;1就是放大(zoom in), proportion&lt;1就是缩小(zoom out)</p>
-</li>
-<li><p><strong>BackgroundColorSpan(int color)</strong> —— 背景着色，参数是颜色数值，可以直接使用android.graphics.Color里面定义的常量，或是用Color.rgb(int, int, int)</p>
-</li>
-<li><p><strong>ForegroundColorSpan(int color)</strong> —— 前景着色，也就是字的着色，参数与背景着色一致</p>
-</li>
-</ul>
-<a id="more"></a>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>网上已经有着很多使用这些span的教程了，所以没必要在这里继续探讨这些基础使用了。但是，如果使用了<strong><code>AbsoluteSizeSpan(int size)</code></strong> 在同一个TextView中定义了不同字体大小，就会默认显示成底部对齐的方式：</p>
-<p><img src="/gallery/Textview-vertical/not.png" alt=""></p>
-<p>说到这里，第一反应肯定是<code>tv.setGravity(Gravity.CENTER_VERTICAL)</code>，但是很不幸，怎么试都不凑效。那么到底有没有办法使用Span让不同字体大小的垂直居中呢？</p>
-<p>答案是：<strong>当然可以，得用<code>ReplacementSpan</code></strong></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><h3 id="为何是ReplacementSpan？"><a href="#为何是ReplacementSpan？" class="headerlink" title="为何是ReplacementSpan？"></a><strong>为何是ReplacementSpan？</strong></h3><p>它是系统提供给我们的一个抽象类。通过名字我们可以知道其实用于是用于替换。指示我们<strong>可以把文本的某一部分替换成我们想要的内容</strong>。这也许是我们想要的。</p>
-<p><code>Relpacement</code>的定义很简单：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ReplacementSpan</span> <span class="keyword">extends</span> <span class="title">MetricAffectingSpan</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">(Paint paint, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Paint.FontMetricsInt fm)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">int</span> top, <span class="keyword">int</span> y, <span class="keyword">int</span> bottom, Paint paint)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateMeasureState</span><span class="params">(TextPaint p)</span> </span>&#123; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateDrawState</span><span class="params">(TextPaint ds)</span> </span>&#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们在继承它的时候，需要实现两个方法<code>getSize()</code>和<code>draw()</code>。通过方法名，我们也许能够知道其作用：<code>getSize()</code>用于确定span的大小（实际上只是一个宽度），<code>draw()</code>用于绘制我们想要的内容。</p>
-<p>但是问题来了，这些方法的传参是什么？<strong>为何<code>getSize()</code>只返回了一个int值？</strong></p>
-<p>了解了这两个问题，就基本弄懂了自定义span。来回答这两个问题前，我们首先要明确的一件事情是：span是用于<code>SpannableString</code>中，并且最终被用于<code>TextView</code>中。所以在定义span时，我们的大小、绘制内容都应该依赖于使用时的环境。我们假设自定义span使用的环境为A,那么A将包换一些信息，例如：<code>baseline</code>、<code>Paint</code>、<code>FontMetricsInt</code>等信息。</p>
-<p>那我们现在来看看<code>getSize()</code>方法。<code>getSize()</code>的返回值是int，其实这个值指的是自定义span的宽度，那它的高度呢？其实高度是已知的，那就是外界环境A带来的字的高度。但我某些情况我们希望改变span的高度，我们该怎么做呢？ 如果对Android上字体绘制有一定了解的同学会知道，一个字的高度取决于绘制这个子的<strong><code>Paint.FontMetricsInt</code></strong></p>
-<h3 id="什么是-Paint-FontMetrics"><a href="#什么是-Paint-FontMetrics" class="headerlink" title="什么是 Paint.FontMetrics"></a><strong>什么是 Paint.FontMetrics</strong></h3><p>它表示绘制字体时的度量标准。google的官方api文档对它的字段说明如下：</p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th style="text-align:left">Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public float</td>
-<td style="text-align:left"><strong>ascent</strong> - The recommended distance above the baseline for singled spaced text.</td>
-</tr>
-<tr>
-<td>public float</td>
-<td style="text-align:left"><strong>bottom</strong> - The maximum distance below the baseline for the lowest glyph in the font at a given text size.</td>
-</tr>
-<tr>
-<td>public float</td>
-<td style="text-align:left"><strong>descent</strong> - The recommended distance below the baseline for singled spaced text.</td>
-</tr>
-<tr>
-<td>public float</td>
-<td style="text-align:left"><strong>leading</strong> - The recommended additional space to add between lines of text.</td>
-</tr>
-<tr>
-<td>public float</td>
-<td style="text-align:left"><strong>top</strong> - The maximum distance above the baseline for the tallest glyph in the font at a given text size.</td>
-</tr>
-</tbody>
-</table>
-<p>其中：</p>
-<ul>
-<li><strong>ascent</strong> : 字体最上端到基线的距离，为负值。</li>
-<li><strong>descent</strong>：字体最下端到基线的距离，为正值。</li>
-</ul>
-<p><img src="/gallery/Textview-vertical/FontMetricsInt.png" alt=""></p>
-<p>如上图，中间那条线（Baseline）就是基线，基线到上面那条线的距离就是<code>ascent</code>，基线到下面那条线的距离就是<code>descent</code>。</p>
-<p>回到我们的主题， 我们发现<code>getSize()</code>方法的参数中有<code>Paint.FontMetricsInt</code>，那我们是否就可以通过改变传入的Paint.FontMetricsInt的<code>asent</code>和<code>desent</code>来达到改变高度的目的呢？答案是可行的。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h2><p>按照上面的分析，我们继承<code>ReplacementSpan</code> 自定义一个Span</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 使TextView中不同大小字体垂直居中</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomVerticalCenterSpan</span> <span class="keyword">extends</span> <span class="title">ReplacementSpan</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> fontSizeSp;    <span class="comment">//字体大小sp</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomVerticalCenterSpan</span><span class="params">(<span class="keyword">int</span> fontSizeSp)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.fontSizeSp = fontSizeSp;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">(Paint paint, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Paint.FontMetricsInt fm)</span> </span>&#123;</div><div class="line">		text = text.subSequence(start, end);</div><div class="line">		Paint p = getCustomTextPaint(paint);</div><div class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) p.measureText(text.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas, CharSequence text, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">float</span> x, <span class="keyword">int</span> top, <span class="keyword">int</span> y, <span class="keyword">int</span> bottom, Paint paint)</span> </span>&#123;</div><div class="line">		text = text.subSequence(start, end);</div><div class="line">		Paint p = getCustomTextPaint(paint);</div><div class="line">		Paint.FontMetricsInt fm = p.getFontMetricsInt();</div><div class="line">		canvas.drawText(text.toString(), x, y - ((y + fm.descent + y + fm.ascent) / <span class="number">2</span> - (bottom + top) / <span class="number">2</span>), p);    <span class="comment">//此处重新计算y坐标，使字体居中</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> TextPaint <span class="title">getCustomTextPaint</span><span class="params">(Paint srcPaint)</span> </span>&#123;</div><div class="line">		TextPaint paint = <span class="keyword">new</span> TextPaint(srcPaint);</div><div class="line">		paint.setTextSize(ViewUtils.getSpPixel(mContext, fontSizeSp));   <span class="comment">//设定字体大小, sp转换为px</span></div><div class="line">		<span class="keyword">return</span> paint;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>解释下形参：</p>
-<ul>
-<li><strong>x</strong>：要绘制的image的左边框到textview左边框的距离。</li>
-<li><strong>y</strong>：要替换的文字的基线（Baseline）的纵坐标。</li>
-<li><strong>top</strong>：替换行的最顶部位置。</li>
-<li><strong>bottom</strong>：替换行的最底部位置。注意，textview中两行之间的行间距是属于上一行的，所以这里bottom是指行间隔的底部位置。</li>
-<li><strong>paint</strong>：画笔，包含了要绘制字体的度量信息。</li>
-</ul>
-<p>所以就有：</p>
-<ul>
-<li><code>y + fm.descent</code>：得到字体的<code>descent</code>线坐标；<br> <code>y + fm.ascent</code>：得到字体的<code>ascent</code>线坐标；</li>
-</ul>
-<p><code>(y + fm.descent + y + fm.ascent) / 2</code> 也就是字体中间线的纵坐标</p>
-<p><code>((y + fm.descent + y + fm.ascent) / 2 - (bottom + top) / 2)</code> 就是字体需要向上调整的距离</p>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a><strong>使用方式</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SpannableString ss = <span class="keyword">new</span> SpannableString(disStr + unitString);</div><div class="line"></div><div class="line">ss.setSpan(<span class="keyword">new</span> AbsoluteSizeSpan(<span class="number">40</span>, <span class="keyword">true</span>), <span class="number">0</span>, disStr.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);</div><div class="line"><span class="comment">//垂直居中显示文字</span></div><div class="line">ss.setSpan(<span class="keyword">new</span> CustomVerticalCenterSpan(<span class="number">23</span>), disStr.length(), ss.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);</div></pre></td></tr></table></figure>
-<p>看看效果：</p>
-<p><img src="/gallery/Textview-vertical/ok1.png" alt=""></p>
-<p><img src="/gallery/Textview-vertical/ok2.png" alt=""></p>
-<hr>
-<h3 id="【参考资料】"><a href="#【参考资料】" class="headerlink" title="【参考资料】"></a><strong>【参考资料】</strong></h3><ol>
-<li><p><a href="http://stackoverflow.com/questions/36964034/how-to-make-relativesizespan-align-to-top" target="_blank" rel="external">How to make RelativeSizeSpan align to top？</a> </p>
-<p><img src="http://img.blog.csdn.net/20170103153457771?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-</li>
-<li><p><a href="http://stackoverflow.com/questions/23990381/how-to-create-vertically-aligned-superscript-and-subscript-in-textview" target="_blank" rel="external">How to create vertically aligned superscript and subscript in TextView</a></p>
-<p><img src="http://img.blog.csdn.net/20170103153252987?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-</li>
-<li><p><a href="http://blog.cgsdream.org/2016/07/06/custom-android-span/" target="_blank" rel="external">教你自定义android中span</a></p>
-</li>
-<li><p><a href="http://www.cnblogs.com/withwind318/p/5541267.html" target="_blank" rel="external">Android ImageSpan与TextView中的text居中对齐问题解决（无论TextView设置行距与否）</a></p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;在客户端开发中，我们往往需要对一个TextView的文字的部分内容进行特殊化处理，比如加粗、改变颜色、加链接、下划线等。iOS为我们提供了&lt;code&gt;AttributedString&lt;/code&gt;，而Android则提供了&lt;strong&gt;&lt;code&gt;SpannableString&lt;/code&gt;&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;在Android的android.text.style包下为我们提供了各种各样的span（可以&lt;a href=&quot;http://blog.csdn.net/u010983881/article/details/52383539&quot;&gt;&lt;strong&gt;参考这篇文章&lt;/strong&gt;&lt;/a&gt;），例如：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;AbsoluteSizeSpan(int size)&lt;/strong&gt; —— 设置字体大小，参数是绝对数值，相当于Word中的字体大小&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;RelativeSizeSpan(float proportion)&lt;/strong&gt; —— 设置字体大小，参数是相对于默认字体大小的倍数，比如默认字体大小是x, 那么设置后的字体大小就是x*proportion，这个用起来比较灵活，proportion&amp;gt;1就是放大(zoom in), proportion&amp;lt;1就是缩小(zoom out)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;BackgroundColorSpan(int color)&lt;/strong&gt; —— 背景着色，参数是颜色数值，可以直接使用android.graphics.Color里面定义的常量，或是用Color.rgb(int, int, int)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;ForegroundColorSpan(int color)&lt;/strong&gt; —— 前景着色，也就是字的着色，参数与背景着色一致&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     

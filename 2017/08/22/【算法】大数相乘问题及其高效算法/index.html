@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【算法】大数乘法问题及其高效算法 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Algorithm" />
+  
+  
+  
+  
+  <meta name="description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
+
+题目描述：    输出两个不超过100位的大整数的乘积。输入：    输入两个大整数，如1234567 和 123输出：    输出乘积，如：151851741
+
+或者
+1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
+分析所谓大数相乘，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法】大数乘法问题及其高效算法">
+<meta property="og:url" content="http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
+
+题目描述：    输出两个不超过100位的大整数的乘积。输入：    输入两个大整数，如1234567 和 123输出：    输出乘积，如：151851741
+
+或者
+1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
+分析所谓大数相乘，">
+<meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
+<meta property="og:updated_time" content="2017-08-23T02:57:56.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【算法】大数乘法问题及其高效算法">
+<meta name="twitter:description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
+
+题目描述：    输出两个不超过100位的大整数的乘积。输入：    输入两个大整数，如1234567 和 123输出：    输出乘积，如：151851741
+
+或者
+1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
+分析所谓大数相乘，">
+<meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  <link rel="apple-touch-icon" href="/http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="http://tvax2.sinaimg.cn/crop.0.0.440.440.180/5c78db24ly8fga78ly31oj20c80c874e.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【算法】大数相乘问题及其高效算法" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj6ofj840006hd0myjprqr15l">
+        <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【算法】大数乘法问题及其高效算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2017-08-22T14:20:55.000Z" itemprop="datePublished">2017-08-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
+<blockquote>
+<p>题目描述：    输出两个不超过100位的大整数的乘积。<br>输入：    输入两个大整数，如1234567 和 123<br>输出：    输出乘积，如：151851741</p>
+</blockquote>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">求 <span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> 的乘积结果</div></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘，就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<a id="more"></a>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>既然不能直接使用乘法做运算，最简单最容易想到的办法就是模拟乘法运算。</p>
+<h3 id="1、模拟乘法手算累加"><a href="#1、模拟乘法手算累加" class="headerlink" title="1、模拟乘法手算累加"></a>1、模拟乘法手算累加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">      7 8 9 6 5 2</div><div class="line">×         3 2 1 1</div><div class="line">-----------------</div><div class="line">      7 8 9 6 5 2   &lt;---- 第1趟 </div><div class="line">    7 8 9 6 5 2     &lt;---- 第2趟 </div><div class="line">   ..........       &lt;---- 第n趟 </div><div class="line">-----------------</div><div class="line">  ? ? ? ? ? ? ? ?   &lt;---- 最后的值用另一个数组表示</div></pre></td></tr></table></figure>
+<p>如上所示，乘法运算可以分拆为两步：</p>
+<ul>
+<li>第一步，是将乘数与被乘数逐位相乘；</li>
+<li>第二步，将逐位相乘得到的结果，对应相加起来。</li>
+</ul>
+<p>这有点类似小学数学中，计算乘法时通常采用的“竖式运算”。用Java简单实现了这个算法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 大数相乘 - 模拟乘法手算累加</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Integer[] bigNumberMultiply(<span class="keyword">int</span>[] arr1, <span class="keyword">int</span>[] arr2)&#123;</div><div class="line">    ArrayList&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();  <span class="comment">//中间求和的结果</span></div><div class="line"></div><div class="line">    <span class="comment">//arr2 逐位与arr1相乘</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = arr2.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</div><div class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">        ArrayList&lt;Integer&gt; singleList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="comment">//arr2 逐位单次乘法的结果</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = arr1.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)&#123;</div><div class="line">            <span class="keyword">int</span> r = arr2[i] * arr1[j] + carry;</div><div class="line">            <span class="keyword">int</span> digit = r % <span class="number">10</span>;</div><div class="line">            carry = r / <span class="number">10</span>;</div><div class="line"></div><div class="line">            singleList.add(digit);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(carry != <span class="number">0</span>)&#123;</div><div class="line">            singleList.add(carry);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> resultCarry = <span class="number">0</span>, count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> offset = arr2.length - <span class="number">1</span> - i;       <span class="comment">//加法的偏移位</span></div><div class="line">        ArrayList&lt;Integer&gt; middleResult = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        <span class="comment">//arr2每位乘法的结果与上一轮的求和结果相加，从右向左做加法并进位</span></div><div class="line">        <span class="keyword">while</span> (k &lt; singleList.size() || l &lt; result.size()) &#123;</div><div class="line">            <span class="keyword">int</span> kv = <span class="number">0</span>, lv = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (k &lt; singleList.size() &amp;&amp; count &gt;= offset) &#123;</div><div class="line">                kv = singleList.get(k++);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (l &lt; result.size()) &#123;</div><div class="line">                lv = result.get(l++);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">int</span> sum = resultCarry + kv + lv;</div><div class="line">            middleResult.add(sum % <span class="number">10</span>);     <span class="comment">//相加结果从右向左（高位到低位）暂时存储，最后需要逆向输出</span></div><div class="line">            resultCarry = sum / <span class="number">10</span>;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(resultCarry != <span class="number">0</span>)&#123;</div><div class="line">            middleResult.add(resultCarry);</div><div class="line">        &#125;</div><div class="line">        result.clear();</div><div class="line">        result = middleResult;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Collections.reverse(result);    <span class="comment">//逆向输出结果</span></div><div class="line">    <span class="keyword">return</span> result.toArray(<span class="keyword">new</span> Integer[result.size()]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看了以上的代码，感觉思路虽然很简单，但是实现起来却很麻烦，那么我们有没有别的方法来实现这个程序呢？答案是有的，接下来我来介绍第二种方法。</p>
+<h3 id="2、模拟乘法累加-改进"><a href="#2、模拟乘法累加-改进" class="headerlink" title="2、模拟乘法累加 - 改进"></a>2、模拟乘法累加 - 改进</h3><p>简单来说，方法二就是先不算任何的进位，也就是说，<strong>将每一位相乘，相加的结果保存到同一个位置，到最后才计算进位</strong>。</p>
+<p>例如：计算98×21,步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">        9  8</div><div class="line">×       2  1</div><div class="line">-------------</div><div class="line">       (9)(8)  &lt;---- 第1趟: 98×1的每一位结果 </div><div class="line">  (18)(16)     &lt;---- 第2趟: 98×2的每一位结果 </div><div class="line">-------------</div><div class="line">  (18)(25)(8)  &lt;---- 这里就是相对位的和，还没有累加进位</div></pre></td></tr></table></figure>
+<p>这里唯一要注意的便是进位问题，我们可以先不考虑进位，当所有位对应相加，产生结果之后，再考虑。从右向左依次累加，如果该位的数字大于10，那么我们用取余运算，在该位上只保留取余后的个位数，而将十位数进位（通过模运算得到）累加到高位便可，循环直到累加完毕。</p>
+<p>核心代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 大数相乘方法二</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bigNumberMultiply2(<span class="keyword">int</span>[] num1, <span class="keyword">int</span>[] num2)&#123;</div><div class="line">    <span class="comment">// 分配一个空间，用来存储运算的结果，num1长的数 * num2长的数，结果不会超过num1+num2长</span></div><div class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num1.length + num2.length];</div><div class="line"></div><div class="line">    <span class="comment">// 先不考虑进位问题，根据竖式的乘法运算，num1的第i位与num2的第j位相乘，结果应该存放在结果的第i+j位上</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num1.length; i++)&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num2.length; j++)&#123;</div><div class="line">            result[i + j + <span class="number">1</span>] += num1[i] * num2[j];	 <span class="comment">// (因为进位的问题，最终放置到第i+j+1位)</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//单独处理进位</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = result.length-<span class="number">1</span>; k &gt; <span class="number">0</span>; k--)&#123;</div><div class="line">        <span class="keyword">if</span>(result[k] &gt; <span class="number">10</span>)&#123;</div><div class="line">            result[k - <span class="number">1</span>] += result[k] / <span class="number">10</span>;</div><div class="line">            result[k] %= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>！！注意：</strong>这里的进位有个大坑，因为<code>result[]</code>数组是从左到右记录相对位的和（还没有进位），而最后的进位是从右向左累加进位，这样的话，如果最高位，也就是最左侧那一位的累加结果需要进位的话，<code>result[]</code>数组就没有空间存放了。</p>
+</blockquote>
+<p>而正好<code>result[]</code>数组的最后一位空置，不可能被占用，我们就响应地把<strong>num1的第i位与num2的第j位相乘，结果应该存放在结果的第i+j位上</strong>的这个结果往后顺移一位（<code>放到第i+j+1位</code>），最后从右向左累加时就多了一个空间。</p>
+<h2 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetcodeTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"><span class="comment">//        String a = "1234567891011121314151617181920";</span></div><div class="line"><span class="comment">//        String b = "2019181716151413121110987654321";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "999999999999";</span></div><div class="line"><span class="comment">//        String b = "999999999999";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "24566";</span></div><div class="line"><span class="comment">//        String b = "452053";</span></div><div class="line"></div><div class="line">        String a = <span class="string">"98"</span>;</div><div class="line">        String b = <span class="string">"21"</span>;</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[] charArr1 = a.trim().toCharArray();</div><div class="line">        <span class="keyword">char</span>[] charArr2 = b.trim().toCharArray();</div><div class="line"></div><div class="line">        <span class="comment">// 字符数组转换为int[]数组</span></div><div class="line">        <span class="keyword">int</span>[] arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr1.length];</div><div class="line">        <span class="keyword">int</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr2.length];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr1.length; i++)&#123;</div><div class="line">            arr1[i] = charArr1[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr2.length; i++)&#123;</div><div class="line">            arr2[i] = charArr2[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 开始计算</span></div><div class="line">        <span class="keyword">int</span>[] result = LeetcodeTest.bigNumberMultiply2(arr1, arr2);</div><div class="line">        System.out.println(a + <span class="string">" * "</span> + b + <span class="string">" = "</span> + Arrays.toString(result).replace(<span class="string">", "</span>, <span class="string">""</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，是测试用例输出结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> = [<span class="number">02492816912877266687794240983772975935013386905490061131076320</span>]</div><div class="line"></div><div class="line"><span class="number">999999999999</span> * <span class="number">999999999999</span> = [<span class="number">999999999998000000000001</span>]</div><div class="line"></div><div class="line"><span class="number">24566</span> * <span class="number">452053</span> = [<span class="number">11105133998</span>]</div><div class="line"></div><div class="line"><span class="number">98</span> * <span class="number">21</span> = [<span class="number">2058</span>]</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/19678341" target="_blank" rel="external">大数乘法，在算法上，主要有几种思路？</a></li>
+<li><a href="http://www.cnblogs.com/king-ding/p/bigIntegerMul.html" target="_blank" rel="external">华为OJ机试题目：两个大整数相乘(纯C语言实现两个大整数相乘，两种方法实现大数相乘)</a></li>
+<li><a href="http://blog.csdn.net/jinyongqing/article/details/13508577" target="_blank" rel="external">算法理解——大数相乘问题</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../05/【算法】反转字符串/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【算法】反转字符串</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、模拟乘法手算累加"><span class="nav-number">3.1.</span> <span class="nav-text">1、模拟乘法手算累加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、模拟乘法累加-改进"><span class="nav-number">3.2.</span> <span class="nav-text">2、模拟乘法累加 - 改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试程序"><span class="nav-number">4.</span> <span class="nav-text">测试程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
