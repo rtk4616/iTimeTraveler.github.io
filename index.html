@@ -376,7 +376,15 @@
 </blockquote>
 <p>或者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">求 <span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> 的乘积结果</div></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘，就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<p>参考了很多资料，包括维基百科词条<a href="https://en.wikipedia.org/wiki/Multiplication_algorithm">Multiplication algorithm</a>，才知道目前大数乘法算法主要有以下几种思路：</p>
+<ol>
+<li><strong>模拟小学乘法</strong>：最简单的乘法竖式手算的累加型；</li>
+<li><strong>分治乘法</strong>：最简单的是Karatsuba乘法，一般化以后有Toom-Cook乘法；</li>
+<li><strong>快速傅里叶变换FFT</strong>：（为了避免精度问题，可以改用快速数论变换FNTT），时间复杂度O(N lgN lglgN)。具体可参照<a href="https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm">Schönhage–Strassen algorithm</a>；</li>
+<li><strong>中国剩余定理</strong>：把每个数分解到一些互素的模上，然后每个同余方程对应乘起来就行；</li>
+<li><strong>Furer’s algorithm</strong>：在渐进意义上FNTT还快的算法。不过好像不太实用，本文就不作介绍了。大家可以参考维基百科<a href="https://en.wikipedia.org/wiki/F%C3%BCrer%27s_algorithm">Fürer’s algorithm</a></li>
+</ol>
         <!-- 题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
 
 题目描述：    输出两个不超过100位的大整数的乘积。输入：    输入两个大整数，如1234567 和 123输出：    输出乘积，如：151851741

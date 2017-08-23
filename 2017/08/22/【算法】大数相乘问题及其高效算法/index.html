@@ -17,7 +17,7 @@
 
 或者
 1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
-分析所谓大数相乘，">
+分析所谓大数相乘（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法】大数乘法问题及其高效算法">
 <meta property="og:url" content="http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/index.html">
@@ -28,9 +28,9 @@
 
 或者
 1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
-分析所谓大数相乘，">
+分析所谓大数相乘（">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
-<meta property="og:updated_time" content="2017-08-23T02:57:56.454Z">
+<meta property="og:updated_time" content="2017-08-23T09:17:40.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】大数乘法问题及其高效算法">
 <meta name="twitter:description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
@@ -39,7 +39,7 @@
 
 或者
 1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
-分析所谓大数相乘，">
+分析所谓大数相乘（">
 <meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
@@ -190,7 +190,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj6ofj840006hd0myjprqr15l">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj6ot3g9r006dcwmy784xcg3y">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -233,9 +233,17 @@
 </blockquote>
 <p>或者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">求 <span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> 的乘积结果</div></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘，就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
+<p>参考了很多资料，包括维基百科词条<a href="https://en.wikipedia.org/wiki/Multiplication_algorithm" target="_blank" rel="external">Multiplication algorithm</a>，才知道目前大数乘法算法主要有以下几种思路：</p>
+<ol>
+<li><strong>模拟小学乘法</strong>：最简单的乘法竖式手算的累加型；</li>
+<li><strong>分治乘法</strong>：最简单的是Karatsuba乘法，一般化以后有Toom-Cook乘法；</li>
+<li><strong>快速傅里叶变换FFT</strong>：（为了避免精度问题，可以改用快速数论变换FNTT），时间复杂度O(N lgN lglgN)。具体可参照<a href="https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm" target="_blank" rel="external">Schönhage–Strassen algorithm</a>；</li>
+<li><strong>中国剩余定理</strong>：把每个数分解到一些互素的模上，然后每个同余方程对应乘起来就行；</li>
+<li><strong>Furer’s algorithm</strong>：在渐进意义上FNTT还快的算法。不过好像不太实用，本文就不作介绍了。大家可以参考维基百科<a href="https://en.wikipedia.org/wiki/F%C3%BCrer%27s_algorithm" target="_blank" rel="external">Fürer’s algorithm</a></li>
+</ol>
 <a id="more"></a>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>既然不能直接使用乘法做运算，最简单最容易想到的办法就是模拟乘法运算。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>我们分别实现一下以上算法，既然不能直接使用乘法做运算，最简单最容易想到的办法就是模拟乘法运算。</p>
 <h3 id="1、模拟乘法手算累加"><a href="#1、模拟乘法手算累加" class="headerlink" title="1、模拟乘法手算累加"></a>1、模拟乘法手算累加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">      7 8 9 6 5 2</div><div class="line">×         3 2 1 1</div><div class="line">-----------------</div><div class="line">      7 8 9 6 5 2   &lt;---- 第1趟 </div><div class="line">    7 8 9 6 5 2     &lt;---- 第2趟 </div><div class="line">   ..........       &lt;---- 第n趟 </div><div class="line">-----------------</div><div class="line">  ? ? ? ? ? ? ? ?   &lt;---- 最后的值用另一个数组表示</div></pre></td></tr></table></figure>
 <p>如上所示，乘法运算可以分拆为两步：</p>
 <ul>
@@ -255,14 +263,101 @@
 <p><strong>！！注意：</strong>这里的进位有个大坑，因为<code>result[]</code>数组是从左到右记录相对位的和（还没有进位），而最后的进位是从右向左累加进位，这样的话，如果最高位，也就是最左侧那一位的累加结果需要进位的话，<code>result[]</code>数组就没有空间存放了。</p>
 </blockquote>
 <p>而正好<code>result[]</code>数组的最后一位空置，不可能被占用，我们就响应地把<strong>num1的第i位与num2的第j位相乘，结果应该存放在结果的第i+j位上</strong>的这个结果往后顺移一位（<code>放到第i+j+1位</code>），最后从右向左累加时就多了一个空间。</p>
+<h3 id="3、分治-Karatsuba算法"><a href="#3、分治-Karatsuba算法" class="headerlink" title="3、分治 - Karatsuba算法"></a>3、分治 - Karatsuba算法</h3><p>以上两种模拟乘法的手算累加型算法，他们都是模拟普通乘法的计算方式，时间复杂度都是O(n^2)，而这个Karatsuba算法，时间复杂度仅有 $O(n^{\log _{2}3})$ 。下面，我就来介绍一下这个算法。</p>
+<p>Karatsuba于1960年发明在 $O(n^{\log _{2}3})$ 步骤内将两个n位数相乘的Karatsuba算法。它反证了安德雷·柯尔莫哥洛夫于1956年认为这个乘法需要  $ \Omega (n^{2})$ 步骤的猜想。</p>
+<p>首先来看看这个算法是怎么进行计算的，见下图：</p>
+<hr>
+<p><img src="/gallery/bignumber-multi/20160910133150980.png" alt="Karatsuba Multiplication Algorithm - https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/"></p>
+<hr>
+<p>图中显示了计算<code>5678 * 1234</code>的过程，首先是拆分成abcd四个部分，然后分别计算<code>ac</code>, <code>bd</code>, <code>(a+b)*(c+d)</code>，最后再用第三个算式的结果减去前面两个（其实得到的就是<code>bc+ad</code>，但是减少了乘法步骤），然后，计算式1后面加4个0，计算式2后面不加，计算式3后面加2个0，再把这三者相加，就是正确结果。</p>
+<p>接下来，就来证明一下这个算法的正确性。这是一幅来自<a href="https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/" target="_blank" rel="external">Karatsuba Multiplication Algorithm – Python Code</a>的图，我们来看看：</p>
+<hr>
+<p><img src="/gallery/bignumber-multi/QQ截图20170823144857.png" alt="Karatsuba算法证明"></p>
+<hr>
+<p>我们假设要相乘的两个数是x * y。我们可以把x，y写成：<br>
+$$
+x = a * 10^{n/2} + b
+$$
+</p>
+
+$$
+y = c * 10^{n/2} + d
+$$
+
+<p>这里的n是数字的位数。如果是偶数，则a和b都是<code>n/2</code>位的。如果n是奇数，则你可以让a是<code>n/2+1</code>位，b是<code>n/2</code>位。（例如a = 12，b = 34；a = 123，b = 45），那么<code>x*y</code>就变成了：</p>
+
+$$
+x*y = (a * 10^{n/2}+b) * (c * 10^{n/2}+d)
+$$
+
+<p>进一步计算，</p>
+
+$$
+x*y = a * c * 10^n + (a * d + b * c) * 10^{n/2} + bd
+$$
+
+<p>对比之前的计算过程。结果已经呼之欲出了。这里唯一需要注意的两点就是：</p>
+<blockquote>
+<ol>
+<li><code>(a * d + b * c)</code>的计算为了防止两次乘法，应该使用之前的计算</li>
+<li>这些乘法在算法里应该是递归实现的，数字很大时，先拆分，然后拆分出来的数字还是很大的话，就继续拆分，直到a * b已经是一个非常简单的小问题为之。这也是分治的思想。</li>
+</ol>
+</blockquote>
+<hr>
+<p>我们举例来尝试一下这种算法，比如计算<code>12345 * 6789</code>，我们让<code>a = 12</code>，<code>b = 345</code>。同时<code>c = 6</code>，<code>d = 789</code>。也就是：</p>
+
+$$
+12345 = 12 · 1000 + 345\\
+6789 = 6 · 1000 + 789
+$$
+
+<p>那么<code>a*c</code>，<code>b*d</code>的结果如下：<br>
+$$
+\begin{align*}
+& z_2 = a*c = 12 × 6 = 72\\
+& z_0 = b*d = 345 × 789 = 272205 \\
+& z_1 = (12 + 345) × (6 + 789) − z_2 − z_0 = 283815 − 72 − 272205 = 11538 \\
+\end{align*}
+$$
+</p>
+<p>最终结果就是：</p>
+
+$$
+\begin{align*}
+& result = z_2 · 10^{2*3} + z_1 · 10^3 + z_0 \\
+& result = 72 · 10^6 + 11538 · 10^3 + 272205 = 83810205. \\
+\end{align*}
+$$
+
+<p>以上就是使用分治的方式计算乘法的原理。上面这个算法，由 Anatolii Alexeevitch Karatsuba 于1960年提出并于1962年发表，所以也被称为 Karatsuba 乘法。</p>
+<p>根据上面的思路，实现的Karatsuba乘法代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Karatsuba乘法</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">karatsuba</span><span class="params">(<span class="keyword">long</span> num1, <span class="keyword">long</span> num2)</span></span>&#123;</div><div class="line">    <span class="comment">//递归终止条件</span></div><div class="line">    <span class="keyword">if</span>(num1 &lt; <span class="number">10</span> || num2 &lt; <span class="number">10</span>) <span class="keyword">return</span> num1 * num2;</div><div class="line"></div><div class="line">    <span class="comment">// 计算拆分长度</span></div><div class="line">    <span class="keyword">int</span> size1 = String.valueOf(num1).length();</div><div class="line">    <span class="keyword">int</span> size2 = String.valueOf(num2).length();</div><div class="line">    <span class="keyword">int</span> halfN = Math.max(size1, size2) / <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="comment">/* 拆分为a, b, c, d */</span></div><div class="line">    <span class="keyword">long</span> a = Long.valueOf(String.valueOf(num1).substring(<span class="number">0</span>, size1 - halfN));</div><div class="line">    <span class="keyword">long</span> b = Long.valueOf(String.valueOf(num1).substring(size1 - halfN));</div><div class="line">    <span class="keyword">long</span> c = Long.valueOf(String.valueOf(num2).substring(<span class="number">0</span>, size2 - halfN));</div><div class="line">    <span class="keyword">long</span> d = Long.valueOf(String.valueOf(num2).substring(size2 - halfN));</div><div class="line"></div><div class="line">    <span class="comment">// 计算z2, z0, z1, 此处的乘法使用递归</span></div><div class="line">    <span class="keyword">long</span> z2 = karatsuba(a, c);</div><div class="line">    <span class="keyword">long</span> z0 = karatsuba(b, d);</div><div class="line">    <span class="keyword">long</span> z1 = karatsuba((a + b), (c + d)) - z0 - z2;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">long</span>)(z2 * Math.pow(<span class="number">10</span>, (<span class="number">2</span>*halfN)) + z1 * Math.pow(<span class="number">10</span>, halfN) + z0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>总结：</strong></p>
+<p>Karatsuba 算法是比较简单的递归乘法，把输入拆分成 2 部分，不过对于更大的数，可以把输入拆分成 3 部分甚至 4 部分。拆分为 3 部分时，可以使用下面的<code>Toom-Cook 3-way</code> 乘法，复杂度降低到 O(n^1.465)。拆分为 4 部分时，使用<code>Toom-Cook 4-way</code> 乘法，复杂度进一步下降到 O(n^1.404)。对于更大的数字，可以拆成 100 段，使用<code>快速傅里叶变换FFT</code>，复杂度接近线性，大约是 O(n^1.149)。可以看出，分割越大，时间复杂度就越低，但是所要计算的中间项以及合并最终结果的过程就会越复杂，开销会增加，因此分割点上升，对于公钥加密，暂时用不到太大的整数，所以使用 Karatsuba 就合适了，不用再去弄更复杂的递归乘法。</p>
+<!--
+### 4、分治 - Toom-Cook算法
+
+
+### 5、快速傅里叶变换FFT
+
+
+### 6、快速数论变换FNTT
+
+
+### 7、中国剩余定理
+
+-->
 <h2 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetcodeTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"><span class="comment">//        String a = "1234567891011121314151617181920";</span></div><div class="line"><span class="comment">//        String b = "2019181716151413121110987654321";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "999999999999";</span></div><div class="line"><span class="comment">//        String b = "999999999999";</span></div><div class="line"></div><div class="line"><span class="comment">//        String a = "24566";</span></div><div class="line"><span class="comment">//        String b = "452053";</span></div><div class="line"></div><div class="line">        String a = <span class="string">"98"</span>;</div><div class="line">        String b = <span class="string">"21"</span>;</div><div class="line"></div><div class="line">        <span class="keyword">char</span>[] charArr1 = a.trim().toCharArray();</div><div class="line">        <span class="keyword">char</span>[] charArr2 = b.trim().toCharArray();</div><div class="line"></div><div class="line">        <span class="comment">// 字符数组转换为int[]数组</span></div><div class="line">        <span class="keyword">int</span>[] arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr1.length];</div><div class="line">        <span class="keyword">int</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">int</span>[charArr2.length];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr1.length; i++)&#123;</div><div class="line">            arr1[i] = charArr1[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charArr2.length; i++)&#123;</div><div class="line">            arr2[i] = charArr2[i] - <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 开始计算</span></div><div class="line">        <span class="keyword">int</span>[] result = LeetcodeTest.bigNumberMultiply2(arr1, arr2);</div><div class="line">        System.out.println(a + <span class="string">" * "</span> + b + <span class="string">" = "</span> + Arrays.toString(result).replace(<span class="string">", "</span>, <span class="string">""</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>最后，是测试用例输出结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> = [<span class="number">02492816912877266687794240983772975935013386905490061131076320</span>]</div><div class="line"></div><div class="line"><span class="number">999999999999</span> * <span class="number">999999999999</span> = [<span class="number">999999999998000000000001</span>]</div><div class="line"></div><div class="line"><span class="number">24566</span> * <span class="number">452053</span> = [<span class="number">11105133998</span>]</div><div class="line"></div><div class="line"><span class="number">98</span> * <span class="number">21</span> = [<span class="number">2058</span>]</div></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Multiplication_algorithm" target="_blank" rel="external">维基百科：Multiplication algorithm</a></li>
 <li><a href="https://www.zhihu.com/question/19678341" target="_blank" rel="external">大数乘法，在算法上，主要有几种思路？</a></li>
 <li><a href="http://www.cnblogs.com/king-ding/p/bigIntegerMul.html" target="_blank" rel="external">华为OJ机试题目：两个大整数相乘(纯C语言实现两个大整数相乘，两种方法实现大数相乘)</a></li>
-<li><a href="http://blog.csdn.net/jinyongqing/article/details/13508577" target="_blank" rel="external">算法理解——大数相乘问题</a></li>
+<li><a href="http://blog.csdn.net/jinyongqing/article/details/13508577" target="_blank" rel="external">算法理解 — 大数相乘问题</a></li>
+<li><a href="http://blog.csdn.net/qj30212/article/details/52494556" target="_blank" rel="external">KaraTsuba乘法 — 高效的大数乘法</a></li>
 </ul>
+<p><img src="/gallery/bignumber-multi/1320989430_PEhXSo.png" alt=""></p>
 
       
     </div>
@@ -333,7 +428,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、模拟乘法手算累加"><span class="nav-number">3.1.</span> <span class="nav-text">1、模拟乘法手算累加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、模拟乘法累加-改进"><span class="nav-number">3.2.</span> <span class="nav-text">2、模拟乘法累加 - 改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试程序"><span class="nav-number">4.</span> <span class="nav-text">测试程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、模拟乘法手算累加"><span class="nav-number">3.1.</span> <span class="nav-text">1、模拟乘法手算累加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、模拟乘法累加-改进"><span class="nav-number">3.2.</span> <span class="nav-text">2、模拟乘法累加 - 改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、分治-Karatsuba算法"><span class="nav-number">3.3.</span> <span class="nav-text">3、分治 - Karatsuba算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试程序"><span class="nav-number">4.</span> <span class="nav-text">测试程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
