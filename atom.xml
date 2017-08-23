@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-08-23T09:19:06.629Z</updated>
+  <updated>2017-08-23T09:21:38.709Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/08/22/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%A4%A7%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E9%AB%98%E6%95%88%E7%AE%97%E6%B3%95/"/>
     <id>http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/</id>
     <published>2017-08-22T14:20:55.000Z</published>
-    <updated>2017-08-23T09:19:06.629Z</updated>
+    <updated>2017-08-23T09:21:38.709Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
 <blockquote>
@@ -62,7 +62,7 @@
 <p>Karatsuba于1960年发明在 $O(n^{\log _{2}3})$ 步骤内将两个n位数相乘的Karatsuba算法。它反证了安德雷·柯尔莫哥洛夫于1956年认为这个乘法需要  $ \Omega (n^{2})$ 步骤的猜想。</p>
 <p>首先来看看这个算法是怎么进行计算的，见下图：</p>
 <hr>
-<p><img src="/gallery/bignumber-multi/20160910133150980.png" alt="Karatsuba Multiplication Algorithm - https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/"></p>
+<p><img src="/gallery/bignumber-multi/20160910133150980.png" alt="Karatsuba Multiplication Algorithm步骤"></p>
 <hr>
 <p>图中显示了计算<code>5678 * 1234</code>的过程，首先是拆分成abcd四个部分，然后分别计算<code>ac</code>, <code>bd</code>, <code>(a+b)*(c+d)</code>，最后再用第三个算式的结果减去前面两个（其实得到的就是<code>bc+ad</code>，但是减少了乘法步骤），然后，计算式1后面加4个0，计算式2后面不加，计算式3后面加2个0，再把这三者相加，就是正确结果。</p>
 <p>接下来，就来证明一下这个算法的正确性。这是一幅来自<a href="https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/" target="_blank" rel="external">Karatsuba Multiplication Algorithm – Python Code</a>的图，我们来看看：</p>
@@ -1225,9 +1225,9 @@ $$
       <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
     
     
-      <category term="Java" scheme="http://github.com/tags/Java/"/>
-    
       <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
+    
+      <category term="Java" scheme="http://github.com/tags/Java/"/>
     
   </entry>
   

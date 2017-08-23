@@ -30,7 +30,7 @@
 1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
 分析所谓大数相乘（">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
-<meta property="og:updated_time" content="2017-08-23T09:19:06.629Z">
+<meta property="og:updated_time" content="2017-08-23T09:21:38.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】大数乘法问题及其高效算法">
 <meta name="twitter:description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
@@ -190,7 +190,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj6ot5l90006dc4myjma3w1hz">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj6otpz6s006kt0my9xouxfhv">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -267,7 +267,7 @@
 <p>Karatsuba于1960年发明在 $O(n^{\log _{2}3})$ 步骤内将两个n位数相乘的Karatsuba算法。它反证了安德雷·柯尔莫哥洛夫于1956年认为这个乘法需要  $ \Omega (n^{2})$ 步骤的猜想。</p>
 <p>首先来看看这个算法是怎么进行计算的，见下图：</p>
 <hr>
-<p><img src="/gallery/bignumber-multi/20160910133150980.png" alt="Karatsuba Multiplication Algorithm - https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/"></p>
+<p><img src="/gallery/bignumber-multi/20160910133150980.png" alt="Karatsuba Multiplication Algorithm步骤"></p>
 <hr>
 <p>图中显示了计算<code>5678 * 1234</code>的过程，首先是拆分成abcd四个部分，然后分别计算<code>ac</code>, <code>bd</code>, <code>(a+b)*(c+d)</code>，最后再用第三个算式的结果减去前面两个（其实得到的就是<code>bc+ad</code>，但是减少了乘法步骤），然后，计算式1后面加4个0，计算式2后面不加，计算式3后面加2个0，再把这三者相加，就是正确结果。</p>
 <p>接下来，就来证明一下这个算法的正确性。这是一幅来自<a href="https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/" target="_blank" rel="external">Karatsuba Multiplication Algorithm – Python Code</a>的图，我们来看看：</p>
