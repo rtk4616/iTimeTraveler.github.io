@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-08-23T09:17:40.475Z</updated>
+  <updated>2017-08-23T09:19:06.629Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/08/22/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%A4%A7%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E9%AB%98%E6%95%88%E7%AE%97%E6%B3%95/"/>
     <id>http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/</id>
     <published>2017-08-22T14:20:55.000Z</published>
-    <updated>2017-08-23T09:17:40.475Z</updated>
+    <updated>2017-08-23T09:19:06.629Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
 <blockquote>
@@ -151,6 +151,7 @@ $$
 <li><a href="http://www.cnblogs.com/king-ding/p/bigIntegerMul.html" target="_blank" rel="external">华为OJ机试题目：两个大整数相乘(纯C语言实现两个大整数相乘，两种方法实现大数相乘)</a></li>
 <li><a href="http://blog.csdn.net/jinyongqing/article/details/13508577" target="_blank" rel="external">算法理解 — 大数相乘问题</a></li>
 <li><a href="http://blog.csdn.net/qj30212/article/details/52494556" target="_blank" rel="external">KaraTsuba乘法 — 高效的大数乘法</a></li>
+<li><a href="https://pythonandr.com/2015/10/13/karatsuba-multiplication-algorithm-python-code/" target="_blank" rel="external">Karatsuba Multiplication Algorithm – Python Code</a></li>
 </ul>
 <p><img src="/gallery/bignumber-multi/1320989430_PEhXSo.png" alt=""></p>
 ]]></content>
@@ -1224,9 +1225,9 @@ $$
       <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
     
     
-      <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
-    
       <category term="Java" scheme="http://github.com/tags/Java/"/>
+    
+      <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
     
   </entry>
   
