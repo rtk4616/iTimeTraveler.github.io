@@ -1229,9 +1229,9 @@ $$
       <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
     
     
-      <category term="Java" scheme="http://github.com/tags/Java/"/>
-    
       <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
+    
+      <category term="Java" scheme="http://github.com/tags/Java/"/>
     
   </entry>
   
@@ -2180,16 +2180,16 @@ $$
     <link href="http://github.com/2017/02/23/%E3%80%90Gradle%E3%80%91Android%20Studio%E4%B8%ADGradle%E9%87%8D%E5%A4%8D%E4%BE%9D%E8%B5%96%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://github.com/2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/</id>
     <published>2017-02-23T05:03:00.000Z</published>
-    <updated>2017-02-23T05:24:23.064Z</updated>
+    <updated>2017-08-29T11:15:05.541Z</updated>
     
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h2><p>项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.</div><div class="line">&gt; com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/google/gson/annotations/Expose.class</div></pre></td></tr></table></figure>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><p>看到错误中的这个<strong>duplicate</strong>，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的<code>Expose.class</code> 类。</p>
 <p>使用快捷键（Shift + Ctrl + T）查看项目中的<code>Expose.class</code> 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。</p>
-<p><img src="http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20170223114733531" alt=""></p>
 <a id="more"></a>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>在往下面分析之前，需要先根据项目结构说明一下问题的本质，就是Module</p>
-<p><img src="http://img.blog.csdn.net/20170223124701598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20170223124701598" alt=""></p>
 <h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>第一个查到的解决办法是这个<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>Android Studio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a>，但是他的问题是依赖另外一个库retrofit，她用了下面的办法：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> (<span class="string">'com.squareup.retrofit2:converter-gson:2.1.0'</span>)&#123;</div><div class="line">	<span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.google.code.gson'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>所以我也尝试仿照他的方法，在我的Speech模块下的build.gradle文件里修改</p>
@@ -2201,7 +2201,7 @@ $$
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span>		<span class="comment">//注意这是主Module</span></div><div class="line"></div><div class="line"><span class="keyword">repositories</span> &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="comment">// Module dependency</span></div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':passportSDKLib'</span>)</div><div class="line">    <span class="keyword">compile</span> (<span class="keyword">project</span>(<span class="string">':Speech'</span>))&#123;</div><div class="line">	    <span class="comment">//解决Gson重复依赖问题，与passport-1.4.2.jar有冲突</span></div><div class="line">        <span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.google.code.gson'</span>, module: <span class="string">'gson'</span>       </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':Skin'</span>)</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: <span class="string">'*.jar'</span>, dir: <span class="string">'src/main/libs'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>唉，世界终于清静了</p>
 <hr>
-<h3 id="【参考资料】："><a href="#【参考资料】：" class="headerlink" title="【参考资料】："></a>【参考资料】：</h3><p>1、<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>AndroidStudio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a><br>2、<a href="http://blog.csdn.net/yisizhu/article/details/49952841" target="_blank" rel="external">  <strong>AndroidStudio的Gradle添加重复依赖的问题</strong> </a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>AndroidStudio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a><br>2、<a href="http://blog.csdn.net/yisizhu/article/details/49952841" target="_blank" rel="external"><strong>AndroidStudio的Gradle添加重复依赖的问题</strong></a></p>
 ]]></content>
     
     <summary type="html">
@@ -2210,7 +2210,7 @@ $$
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingForAutoioDebug&amp;apos;.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt; com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/google/gson/annotations/Expose.class&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;&lt;strong&gt;分析&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;看到错误中的这个&lt;strong&gt;duplicate&lt;/strong&gt;，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的&lt;code&gt;Expose.class&lt;/code&gt; 类。&lt;/p&gt;
 &lt;p&gt;使用快捷键（Shift + Ctrl + T）查看项目中的&lt;code&gt;Expose.class&lt;/code&gt; 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20170223114733531&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

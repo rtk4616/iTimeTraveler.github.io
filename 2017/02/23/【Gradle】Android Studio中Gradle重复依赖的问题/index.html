@@ -20,7 +20,7 @@
 <meta property="og:description" content="问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
 12Error:Execution failed for task &amp;apos;:app:transformClassesWithJarMergingForAutoioDebug&amp;apos;.&amp;gt; com.android.build.api.transform.TransformException: jav">
 <meta property="og:image" content="http://github.com/gallery/gradle-as.png">
-<meta property="og:updated_time" content="2017-02-23T05:24:23.064Z">
+<meta property="og:updated_time" content="2017-08-29T11:15:05.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Gradle】Android Studio中Gradle重复依赖的问题">
 <meta name="twitter:description" content="问题项目中有个Module需要解析json所以选用了依赖Gson，但是编译时报错如下：
@@ -177,7 +177,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/gradle-as.png" rel="gallery_cj6x829vm0043z8myekg4f03p">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/gradle-as.png" rel="gallery_cj6yktpk8004jmkmyrqhzzsdw">
         <img src="../../../../gallery/gradle-as.png" itemprop="image">
       </a>
     
@@ -218,10 +218,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Error:Execution failed for task &apos;:app:transformClassesWithJarMergingForAutoioDebug&apos;.</div><div class="line">&gt; com.android.build.api.transform.TransformException: java.util.zip.ZipException: duplicate entry: com/google/gson/annotations/Expose.class</div></pre></td></tr></table></figure>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a><strong>分析</strong></h2><p>看到错误中的这个<strong>duplicate</strong>，第一反应和平常一样，难道是得先清理一下Clean project ? 反复试了几次都不行，上网查才发现是重复依赖Gson库的问题，导致项目中有了两个重复的<code>Expose.class</code> 类。</p>
 <p>使用快捷键（Shift + Ctrl + T）查看项目中的<code>Expose.class</code> 类，发现是和passport-1.4.2.jar这个本地jar包冲突了，它也依赖了gson库所以导致了重复依赖。</p>
-<p><img src="http://img.blog.csdn.net/20170223114733531?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20170223114733531" alt=""></p>
 <a id="more"></a>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>在往下面分析之前，需要先根据项目结构说明一下问题的本质，就是Module</p>
-<p><img src="http://img.blog.csdn.net/20170223124701598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDk4Mzg4MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20170223124701598" alt=""></p>
 <h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><p>第一个查到的解决办法是这个<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>Android Studio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a>，但是他的问题是依赖另外一个库retrofit，她用了下面的办法：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">compile</span> (<span class="string">'com.squareup.retrofit2:converter-gson:2.1.0'</span>)&#123;</div><div class="line">	<span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.google.code.gson'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>所以我也尝试仿照他的方法，在我的Speech模块下的build.gradle文件里修改</p>
@@ -233,7 +233,7 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.application'</span>		<span class="comment">//注意这是主Module</span></div><div class="line"></div><div class="line"><span class="keyword">repositories</span> &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="comment">// Module dependency</span></div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':passportSDKLib'</span>)</div><div class="line">    <span class="keyword">compile</span> (<span class="keyword">project</span>(<span class="string">':Speech'</span>))&#123;</div><div class="line">	    <span class="comment">//解决Gson重复依赖问题，与passport-1.4.2.jar有冲突</span></div><div class="line">        <span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'com.google.code.gson'</span>, module: <span class="string">'gson'</span>       </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':Skin'</span>)</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: <span class="string">'*.jar'</span>, dir: <span class="string">'src/main/libs'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>唉，世界终于清静了</p>
 <hr>
-<h3 id="【参考资料】："><a href="#【参考资料】：" class="headerlink" title="【参考资料】："></a>【参考资料】：</h3><p>1、<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>AndroidStudio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a><br>2、<a href="http://blog.csdn.net/yisizhu/article/details/49952841" target="_blank" rel="external">  <strong>AndroidStudio的Gradle添加重复依赖的问题</strong> </a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>1、<a href="http://blog.csdn.net/cx1229/article/details/52786168" target="_blank" rel="external"><strong>AndroidStudio中如何解决重复依赖导致的app:transformClassesWithJarMergingForDebug</strong></a><br>2、<a href="http://blog.csdn.net/yisizhu/article/details/49952841" target="_blank" rel="external"><strong>AndroidStudio的Gradle添加重复依赖的问题</strong></a></p>
 
       
     </div>
@@ -313,7 +313,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目结构"><span class="nav-number">2.1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩过的坑"><span class="nav-number">2.2.</span> <span class="nav-text">踩过的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#【参考资料】："><span class="nav-number">3.1.</span> <span class="nav-text">【参考资料】：</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目结构"><span class="nav-number">2.1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩过的坑"><span class="nav-number">2.2.</span> <span class="nav-text">踩过的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
