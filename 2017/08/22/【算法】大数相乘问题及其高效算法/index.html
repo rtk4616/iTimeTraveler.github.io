@@ -30,7 +30,7 @@
 1求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
 分析所谓大数相乘（">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
-<meta property="og:updated_time" content="2017-08-30T11:10:36.353Z">
+<meta property="og:updated_time" content="2017-09-01T10:14:12.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】大数乘法问题及其高效算法">
 <meta name="twitter:description" content="题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
@@ -192,7 +192,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj7190qon006p64myv347f25k">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj71rcrnq006kpgmysq2681gx">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -286,22 +286,26 @@ $$
 y = c * 10^{n/2} + d
 $$
 
-<p>这里的n是数字的位数。如果是偶数，则a和b都是<code>n/2</code>位的。如果n是奇数，则你可以让a是<code>n/2+1</code>位，b是<code>n/2</code>位。（例如a = 12，b = 34；a = 123，b = 45），那么<code>x*y</code>就变成了：</p>
+<p>这里的n是数字的位数。如果是偶数，则a和b都是<code>n/2</code>位的。如果n是奇数，则你可以让a是<code>n/2+1</code>位，b是<code>n/2</code>位。（例如a = 12，b = 34；a = 123，b = 45），那么<code>x*y</code>就可以换算为：</p>
 
 $$
-x*y = (a * 10^{n/2}+b) * (c * 10^{n/2}+d)
+\begin{eqnarray*}
+&&x * y\\
+&=&(a * 10^{n/2}+b) * (c * 10^{n/2}+d)\\
+&=&ac * 10^n + (ad + bc) * 10^{n/2} + bd\\
+&=&ac * 10^n + [(a+b)*(c+d)-ac-bd] * 10^{n/2} + bd
+\end{eqnarray*}
 $$
 
-<p>进一步计算，</p>
+<p>注意最后一步，这个式子倒数第二步中的<code>(ad + bc)</code>，没必要另外进行两次乘法，可以使用<code>((a+b)*(c+d) - ac - bd)</code>来重复利用前面的两次乘积结果<code>ac</code>和<code>bd</code>。</p>
+<p>也就是说，我们发现最终只需要计算三次乘法 <code>a*c</code>， <code>b*d</code>， <code>(a+b)*(c+d)</code>  以及六次加法。因此这样复杂度就变为</p>
 
-$$
-x*y = a * c * 10^n + (a * d + b * c) * 10^{n/2} + bd
-$$
+$$ T(n) = 3T(\frac{n}{2}) + 6n = O(n^{\log_23}) $$
 
-<p>对比之前的计算过程。结果已经呼之欲出了。这里唯一需要注意的两点就是：</p>
+<p>对比之前的计算过程，结果已经呼之欲出了。这里唯一需要注意的两点就是：</p>
 <blockquote>
 <ol>
-<li><code>(a * d + b * c)</code>的计算为了防止两次乘法，应该使用之前的计算</li>
+<li><code>(a*d + b*c)</code>的计算为了防止两次乘法，应该使用之前的计算也就是第一幅图第四步的<code>③-②-①</code></li>
 <li>这些乘法在算法里应该是递归实现的，数字很大时，先拆分，然后拆分出来的数字还是很大的话，就继续拆分，直到a * b已经是一个非常简单的小问题为之。这也是分治的思想。</li>
 </ol>
 </blockquote>
@@ -316,9 +320,11 @@ $$
 <p>那么<code>a*c</code>，<code>b*d</code>的结果如下：<br>
 $$
 \begin{align*}
-& z_2 = a*c = 12 × 6 = 72\\
-& z_0 = b*d = 345 × 789 = 272205 \\
-& z_1 = (12 + 345) × (6 + 789) − z_2 − z_0 = 283815 − 72 − 272205 = 11538 \\
+ z_2 &= a*c = 12 × 6 = 72\\
+ z_0 &= b*d = 345 × 789 = 272205 \\
+ z_1 &= ((a+b)*(c+d) - a*c - b*d)\\
+     &= (12 + 345) × (6 + 789) − z_2 − z_0 = 283815 − 72 − 272205 = 11538
+
 \end{align*}
 $$
 </p>

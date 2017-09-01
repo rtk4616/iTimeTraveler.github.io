@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-08-30T11:10:36.353Z</updated>
+  <updated>2017-09-01T10:14:12.407Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/08/22/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%A4%A7%E6%95%B0%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E9%AB%98%E6%95%88%E7%AE%97%E6%B3%95/"/>
     <id>http://github.com/2017/08/22/【算法】大数相乘问题及其高效算法/</id>
     <published>2017-08-22T14:20:55.000Z</published>
-    <updated>2017-08-30T11:10:36.353Z</updated>
+    <updated>2017-09-01T10:14:12.407Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
 <blockquote>
@@ -79,22 +79,26 @@ $$
 y = c * 10^{n/2} + d
 $$
 
-<p>这里的n是数字的位数。如果是偶数，则a和b都是<code>n/2</code>位的。如果n是奇数，则你可以让a是<code>n/2+1</code>位，b是<code>n/2</code>位。（例如a = 12，b = 34；a = 123，b = 45），那么<code>x*y</code>就变成了：</p>
+<p>这里的n是数字的位数。如果是偶数，则a和b都是<code>n/2</code>位的。如果n是奇数，则你可以让a是<code>n/2+1</code>位，b是<code>n/2</code>位。（例如a = 12，b = 34；a = 123，b = 45），那么<code>x*y</code>就可以换算为：</p>
 
 $$
-x*y = (a * 10^{n/2}+b) * (c * 10^{n/2}+d)
+\begin{eqnarray*}
+&&x * y\\
+&=&(a * 10^{n/2}+b) * (c * 10^{n/2}+d)\\
+&=&ac * 10^n + (ad + bc) * 10^{n/2} + bd\\
+&=&ac * 10^n + [(a+b)*(c+d)-ac-bd] * 10^{n/2} + bd
+\end{eqnarray*}
 $$
 
-<p>进一步计算，</p>
+<p>注意最后一步，这个式子倒数第二步中的<code>(ad + bc)</code>，没必要另外进行两次乘法，可以使用<code>((a+b)*(c+d) - ac - bd)</code>来重复利用前面的两次乘积结果<code>ac</code>和<code>bd</code>。</p>
+<p>也就是说，我们发现最终只需要计算三次乘法 <code>a*c</code>， <code>b*d</code>， <code>(a+b)*(c+d)</code>  以及六次加法。因此这样复杂度就变为</p>
 
-$$
-x*y = a * c * 10^n + (a * d + b * c) * 10^{n/2} + bd
-$$
+$$ T(n) = 3T(\frac{n}{2}) + 6n = O(n^{\log_23}) $$
 
-<p>对比之前的计算过程。结果已经呼之欲出了。这里唯一需要注意的两点就是：</p>
+<p>对比之前的计算过程，结果已经呼之欲出了。这里唯一需要注意的两点就是：</p>
 <blockquote>
 <ol>
-<li><code>(a * d + b * c)</code>的计算为了防止两次乘法，应该使用之前的计算</li>
+<li><code>(a*d + b*c)</code>的计算为了防止两次乘法，应该使用之前的计算也就是第一幅图第四步的<code>③-②-①</code></li>
 <li>这些乘法在算法里应该是递归实现的，数字很大时，先拆分，然后拆分出来的数字还是很大的话，就继续拆分，直到a * b已经是一个非常简单的小问题为之。这也是分治的思想。</li>
 </ol>
 </blockquote>
@@ -109,9 +113,11 @@ $$
 <p>那么<code>a*c</code>，<code>b*d</code>的结果如下：<br>
 $$
 \begin{align*}
-& z_2 = a*c = 12 × 6 = 72\\
-& z_0 = b*d = 345 × 789 = 272205 \\
-& z_1 = (12 + 345) × (6 + 789) − z_2 − z_0 = 283815 − 72 − 272205 = 11538 \\
+ z_2 &= a*c = 12 × 6 = 72\\
+ z_0 &= b*d = 345 × 789 = 272205 \\
+ z_1 &= ((a+b)*(c+d) - a*c - b*d)\\
+     &= (12 + 345) × (6 + 789) − z_2 − z_0 = 283815 − 72 − 272205 = 11538
+
 \end{align*}
 $$
 </p>
@@ -1246,9 +1252,9 @@ $$
       <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
     
     
-      <category term="Java" scheme="http://github.com/tags/Java/"/>
-    
       <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
+    
+      <category term="Java" scheme="http://github.com/tags/Java/"/>
     
   </entry>
   
