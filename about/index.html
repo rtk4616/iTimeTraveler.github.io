@@ -189,18 +189,21 @@ Chris GardnerThe Pursuit of Happyness
 
               <!-- 自适应大图 -->
               <script>
-                  var h = 600;
-                  var img0 = new Image();
-                  var imageTag0 = document.getElementById("carousel-img0");
-                  img0.src = imageTag0.src;
-                  img0.onload=function(){
-                    if (img0.width / img0.height <= document.body.clientWidth / h) {
-                      imageTag0.style.width = document.body.clientWidth + "px";
-                    } else {
-                      imageTag0.style.height = h + "px";
-                      imageTag0.style.marginLeft = -(h * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                    }
-                  };
+              	  var carouselResize = function() {
+              	  	  var h = document.body.clientHeight / 3;
+	                  var img0 = new Image();
+	                  var imageTag0 = document.getElementById("carousel-img0");
+	                  img0.src = imageTag0.src;
+	                  img0.onload=function(){
+	                    if (img0.width / img0.height <= document.body.clientWidth / h) {
+	                      imageTag0.style.width = document.body.clientWidth + "px";
+	                    } else {
+	                      imageTag0.style.height = h + "px";
+	                      imageTag0.style.marginLeft = -(h * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
+	                    }
+	                  };
+              	  };
+                  carouselResize();
               </script>
             
               
@@ -211,18 +214,21 @@ Chris GardnerThe Pursuit of Happyness
 
               <!-- 自适应大图 -->
               <script>
-                  var h = 600;
-                  var img1 = new Image();
-                  var imageTag1 = document.getElementById("carousel-img1");
-                  img1.src = imageTag1.src;
-                  img1.onload=function(){
-                    if (img1.width / img1.height <= document.body.clientWidth / h) {
-                      imageTag1.style.width = document.body.clientWidth + "px";
-                    } else {
-                      imageTag1.style.height = h + "px";
-                      imageTag1.style.marginLeft = -(h * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                    }
-                  };
+              	  var carouselResize = function() {
+              	  	  var h = document.body.clientHeight / 3;
+	                  var img1 = new Image();
+	                  var imageTag1 = document.getElementById("carousel-img1");
+	                  img1.src = imageTag1.src;
+	                  img1.onload=function(){
+	                    if (img1.width / img1.height <= document.body.clientWidth / h) {
+	                      imageTag1.style.width = document.body.clientWidth + "px";
+	                    } else {
+	                      imageTag1.style.height = h + "px";
+	                      imageTag1.style.marginLeft = -(h * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
+	                    }
+	                  };
+              	  };
+                  carouselResize();
               </script>
             
         </div>
