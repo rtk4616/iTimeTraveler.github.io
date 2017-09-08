@@ -180,7 +180,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Thomas-Bayes.jpg" rel="gallery_cj79zuuu4007bk4my3ebkwixq">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Thomas-Bayes.jpg" rel="gallery_cj7b9ywlo007wswmyqi3634kw">
         <img src="../../../../gallery/Thomas-Bayes.jpg" itemprop="image">
       </a>
     
@@ -242,30 +242,30 @@
 <p>你说，这还不简单：算出学校里面有多少穿长裤的，然后在这些人里面再算出有多少女生，不就行了？</p>
 <p>我们来算一算：假设学校里面人的总数是 U 个。60% 的男生都穿长裤，于是我们得到了 <code>U * P(Boy) * P(Pants|Boy)</code>个穿长裤的（男生）（其中男生的概率 P(Boy) = 60%，这里可以简单的理解为男生的比例；<code>P(Pants|Boy)</code> 是条件概率，即在 Boy 这个条件下穿长裤的概率是多大，这里是 100% ，因为所有男生都穿长裤）。40% 的女生里面又有一半（50%）是穿长裤的，于是我们又得到了 <code>U * P(Girl) * P(Pants|Girl)</code> 个穿长裤的（女生）。加起来一共是 U <em> P(Boy) </em> P(Pants|Boy) + U <em> P(Girl) </em> P(Pants|Girl) 个穿长裤的，其中有 <code>U * P(Girl) * P(Pants|Girl)</code> 个女生。两者一比就是你要求的答案。</p>
 <p>下面我们把这个答案形式化一下：我们要求的是 P(Girl|Pants) （穿长裤的人里面有多少女生），我们计算的结果是 U <em> P(Girl) </em> P(Pants|Girl) / [U <em> P(Boy) </em> P(Pants|Boy) + U <em> P(Girl) </em> P(Pants|Girl)] 。容易发现这里校园内人的总数是无关的，可以消去。于是得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(Girl|Pants) = P(Girl) * P(Pants|Girl) / [P(Boy) * P(Pants|Boy) + P(Girl) * P(Pants|Girl)]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(Girl|Pants) = P(Girl) * P(Pants|Girl) / [P(Boy) * P(Pants|Boy) + P(Girl) * P(Pants|Girl)]</div></pre></td></tr></table></figure>
 <p>注意，如果把上式收缩起来，分母其实就是 P(Pants) ，分子其实就是 P(Pants, Girl) 。而这个比例很自然地就读作：在穿长裤的人（ P(Pants) ）里面有多少（穿长裤）的女孩（ P(Pants, Girl) ）。</p>
 <p>上式中的 Pants 和 Boy/Girl 可以指代一切东西，所以其一般形式就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(B|A) = P(A|B) * P(B) / [P(A|B) * P(B) + P(A|~B) * P(~B) ]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(B|A) = P(A|B) * P(B) / [P(A|B) * P(B) + P(A|~B) * P(~B) ]</div></pre></td></tr></table></figure>
 <p>收缩起来就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(B|A) = P(AB) / P(A)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(B|A) = P(AB) / P(A)</div></pre></td></tr></table></figure>
 <p>其实这个就等于：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(B|A) * P(A) = P(AB)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(B|A) * P(A) = P(AB)</div></pre></td></tr></table></figure>
 <p>难怪拉普拉斯说<strong>概率论只是把常识用数学公式表达了出来</strong>。</p>
 <p>然而，后面我们会逐渐发现，看似这么平凡的贝叶斯公式，背后却隐含着非常深刻的原理。</p>
 <h2 id="2-拼写纠正"><a href="#2-拼写纠正" class="headerlink" title="2. 拼写纠正"></a><strong>2. 拼写纠正</strong></h2><p>经典著作《人工智能：现代方法》的作者之一 Peter Norvig 曾经写过一篇介绍如何写一个拼写检查/纠正器的文章（原文<a href="http://norvig.com/spell-correct.html" target="_blank" rel="external"><strong>在这里</strong></a>，这篇文章很深入浅出，强烈建议读一读），里面用到的就是贝叶斯方法，这里我们不打算复述他写的文章，而是简要地将其核心思想介绍一下。</p>
 <p>首先，我们需要询问的是：<strong>“问题是什么？”</strong></p>
 <p>问题是我们看到用户输入了一个不在字典中的单词，我们需要去猜测：“这个家伙到底真正想输入的单词是什么呢？”用刚才我们形式化的语言来叙述就是，我们需要求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(我们猜测他想输入的单词 | 他实际输入的单词)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(我们猜测他想输入的单词 | 他实际输入的单词)</div></pre></td></tr></table></figure>
 <p>这个概率。并找出那个使得这个概率最大的猜测单词。显然，我们的猜测未必是唯一的，就像前面举的那个自然语言的歧义性的例子一样；这里，比如用户输入： thew ，那么他到底是想输入 the ，还是想输入 thaw ？到底哪个猜测可能性更大呢？幸运的是我们可以用贝叶斯公式来直接出它们各自的概率，我们不妨将我们的多个猜测记为 h1 h2 .. （ h 代表 hypothesis），它们都属于一个有限且离散的猜测空间 H （单词总共就那么多而已），将用户实际输入的单词记为 D （ D 代表 Data ，即观测数据），于是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(我们的猜测1 | 他实际输入的单词)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(我们的猜测1 | 他实际输入的单词)</div></pre></td></tr></table></figure>
 <p>可以抽象地记为：</p>
 <p>P(h1 | D)</p>
 <p>类似地，对于我们的猜测2，则是 P(h2 | D)。不妨统一记为：</p>
 <p>P(h | D)</p>
 <p>运用一次贝叶斯公式，我们得到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(h | D) = P(h) * P(D | h) / P(D)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h | D) = P(h) * P(D | h) / P(D)</div></pre></td></tr></table></figure>
 <p>对于不同的具体猜测 h1 h2 h3 .. ，P(D) 都是一样的，所以在比较 P(h1 | D) 和 P(h2 | D) 的时候我们可以忽略这个常数。即我们只需要知道：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)     //注：∝ 这个符号的意思是“正比例于”，不是无穷大，注意符号右端是有一个小缺口的。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)     //注：∝ 这个符号的意思是“正比例于”，不是无穷大，注意符号右端是有一个小缺口的。</div></pre></td></tr></table></figure>
 <p>这个式子的抽象含义是：对于给定观测数据，一个猜测是好是坏，取决于“这个猜测本身独立的可能性大小（先验概率，Prior ）”和“这个猜测生成我们观测到的数据的可能性大小”（似然，Likelihood ）的乘积。具体到我们的那个 thew 例子上，含义就是，用户实际是想输入 the 的可能性大小取决于 the 本身在词汇表中被使用的可能性（频繁程度）大小（先验概率）和 想打 the 却打成 thew 的可能性大小（似然）的乘积。</p>
 <p>下面的事情就很简单了，对于我们猜测为可能的每个单词计算一下 P(h) * P(D | h) 这个值，然后取最大的，得到的就是最靠谱的猜测。</p>
 <p><strong>一点注记：</strong> Norvig 的拼写纠正器里面只提取了编辑距离为 2 以内的所有已知单词。这是为了避免去遍历字典中每个单词计算它们的 <code>P(h) * P(D | h)</code> ，但这种做法为了节省时间带来了一些误差。但话说回来难道我们人类真的回去遍历每个可能的单词来计算他们的后验概率吗？不可能。实际上，根据认知神经科学的观点，我们首先根据错误的单词做一个 bottom-up 的关联提取，提取出有可能是实际单词的那些候选单词，这个提取过程就是所谓的基于内容的提取，可以根据错误单词的一些模式片段提取出有限的一组候选，非常快地缩小的搜索空间（比如我输入 explaination ，单词里面就有充分的信息使得我们的大脑在常数时间内把可能性 narrow down 到 explanation 这个单词上，至于具体是根据哪些线索——如音节——来提取，又是如何在生物神经网络中实现这个提取机制的，目前还是一个没有弄清的领域）。然后，我们对这有限的几个猜测做一个 top-down 的预测，看看到底哪个对于观测数据（即错误单词）的预测效力最好，而如何衡量预测效率则就是用贝叶斯公式里面的那个 <code>P(h) * P(D | h)</code> 了——虽然我们很可能使用了<a href="https://book.douban.com/subject/1599035/" target="_blank" rel="external">一些启发法来简化计算</a>。后面我们还会提到这样的 bottom-up 的关联提取。</p>
@@ -278,7 +278,7 @@
 <p>以上分析当中隐含的哲学是，观测数据总是会有各种各样的误差，比如观测误差（比如你观测的时候一个 MM 经过你一不留神，手一抖就是一个误差出现了），所以如果过分去寻求能够完美解释观测数据的模型，就会落入所谓的数据<a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank" rel="external">过配（overfitting）</a>的境地，一个过配的模型试图连误差（噪音）都去解释（而实际上噪音又是不需要解释的），显然就过犹不及了。所以 P(D | h) 大不代表你的 h （猜测）就是更好的 h。还要看 P(h) 是怎样的。所谓<a href="https://en.wikipedia.org/wiki/Occam%27s_razor" target="_blank" rel="external">奥卡姆剃刀</a>精神就是说：如果两个理论具有相似的解释力度，那么优先选择那个更简单的（往往也正是更平凡的，更少繁复的，更常见的）。</p>
 <p>过分匹配的另一个原因在于当观测的结果并不是因为误差而显得“不精确”而是因为真实世界中对数据的结果产生贡献的因素太多太多，跟噪音不同，这些偏差是一些另外的因素集体贡献的结果，不是你的模型所能解释的——噪音那是不需要解释——一个现实的模型往往只提取出几个与结果相关度很高，很重要的因素（cause）。这个时候观察数据会倾向于围绕你的有限模型的预测结果呈正态分布，于是你实际观察到的结果就是这个正态分布的随机取样，这个取样很可能受到其余因素的影响偏离你的模型所预测的中心，这个时候便不能贪心不足地试图通过改变模型来“完美”匹配数据，因为那些使结果偏离你的预测的贡献因素不是你这个有限模型里面含有的因素所能概括的，硬要打肿脸充胖子只能导致不实际的模型，举个教科书例子：身高和体重的实际关系近似于一个二阶多项式的关系，但大家都知道并不是只有身高才会对体重产生影响，物理世界影响体重的因素太多太多了，有人身材高大却瘦得跟稻草，有人却是横长竖不长。但不可否认的是总体上来说，那些特殊情况越是特殊就越是稀少，呈围绕最普遍情况（胖瘦适中）的正态分布，这个分布就保证了我们的身高——体重相关模型能够在大多数情况下做出靠谱的预测。但是——刚才说了，特例是存在的，就算不是特例，人有胖瘦，密度也有大小，所以完美符合身高——体重的某个假想的二阶多项式关系的人是不存在的，我们又不是欧几里德几何世界当中的理想多面体，所以，当我们对人群随机抽取了 N 个样本（数据点）试图对这 N 个数据点拟合出一个多项式的话就得注意，它肯定得是二阶多项式，我们要做的只是去根据数据点计算出多项式各项的参数（一个典型的方法就是最小二乘）；它肯定不是直线（我们又不是稻草），也不是三阶多项式四阶多项式.. 如果硬要完美拟合 N 个点，你可能会整出一个 N-1 阶多项式来——设想身高和体重的关系是 5 阶多项式看看？</p>
 <h3 id="3-2-模型比较理论（Model-Comparasion）与贝叶斯奥卡姆剃刀（Bayesian-Occam’s-Razor）"><a href="#3-2-模型比较理论（Model-Comparasion）与贝叶斯奥卡姆剃刀（Bayesian-Occam’s-Razor）" class="headerlink" title="3.2 模型比较理论（Model Comparasion）与贝叶斯奥卡姆剃刀（Bayesian Occam’s Razor）"></a>3.2 模型比较理论（Model Comparasion）与贝叶斯奥卡姆剃刀（Bayesian Occam’s Razor）</h3><p>实际上，模型比较就是去比较哪个模型（猜测）更可能隐藏在观察数据的背后。其基本思想前面已经用拼写纠正的例子来说明了。我们对用户实际想输入的单词的猜测就是模型，用户输错的单词就是观测数据。我们通过：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)</div></pre></td></tr></table></figure>
 <p>来比较哪个模型最为靠谱。前面提到，光靠 P(D | h) （即“似然”）是不够的，有时候还需要引入 P(h) 这个先验概率。奥卡姆剃刀就是说 P(h) 较大的模型有较大的优势，而最大似然则是说最符合观测数据的（即 P(D | h) 最大的）最有优势。整个模型比较就是这两方力量的拉锯。我们不妨再举一个简单的例子来说明这一精神：你随便找枚硬币，掷一下，观察一下结果。好，你观察到的结果要么是“正”，要么是“反”（不，不是少林足球那枚硬币:P ），不妨假设你观察到的是“正”。现在你要去根据这个观测数据推断这枚硬币掷出“正”的概率是多大。根据最大似然估计的精神，我们应该猜测这枚硬币掷出“正”的概率是 1 ，因为这个才是能最大化 P(D | h) 的那个猜测。然而每个人都会大摇其头——很显然，你随机摸出一枚硬币这枚硬币居然没有反面的概率是“不存在的”，我们对一枚随机硬币是否一枚有偏硬币，偏了多少，是有着一个先验的认识的，这个认识就是绝大多数硬币都是基本公平的，偏得越多的硬币越少见（可以用一个 <a href="https://en.wikipedia.org/wiki/Beta_distribution" target="_blank" rel="external"><strong>beta分布</strong></a>来表达这一先验概率）。将这个先验正态分布 p(θ) （其中 θ 表示硬币掷出正面的比例，小写的 p 代表这是<a href="https://en.wikipedia.org/wiki/Probability_density_function" target="_blank" rel="external"><strong>概率密度函数</strong></a>）结合到我们的问题中，我们便不是去最大化 P(D | h) ，而是去最大化 P(D | θ) * p(θ) ，显然 θ = 1 是不行的，因为 P(θ=1) 为 0 ，导致整个乘积也为 0 。实际上，只要对这个式子求一个导数就可以得到最值点。</p>
 <p>以上说的是当我们知道先验概率 P(h) 的时候，光用最大似然是不靠谱的，因为最大似然的猜测可能先验概率非常小。然而，有些时候，我们对于先验概率一无所知，只能假设每种猜测的先验概率是均等的，这个时候就只有用最大似然了。实际上，统计学家和贝叶斯学家有一个有趣的争论，统计学家说：我们让数据自己说话。言下之意就是要摒弃先验概率。而贝叶斯支持者则说：数据会有各种各样的偏差，而一个靠谱的先验概率则可以对这些随机噪音做到健壮。事实证明贝叶斯派胜利了，胜利的关键在于所谓先验概率其实也是经验统计的结果，譬如为什么我们会认为绝大多数硬币是基本公平的？为什么我们认为大多数人的肥胖适中？为什么我们认为肤色是种族相关的，而体重则与种族无关？先验概率里面的“先验”并不是指先于一切经验，而是仅指先于我们“当前”给出的观测数据而已，在硬币的例子中先验指的只是先于我们知道投掷的结果这个经验，而并非“先天”。</p>
 <p>然而，话说回来，有时候我们必须得承认，就算是基于以往的经验，我们手头的“先验”概率还是均匀分布，这个时候就必须依赖用最大似然，我们用前面留下的一个自然语言二义性问题来说明这一点：</p>
@@ -302,9 +302,9 @@
 <p>这个就是所谓的<strong>贝叶斯奥卡姆剃刀（Bayesian Occam’s Razor）</strong>，因为这个剃刀工作在贝叶斯公式的似然（P(D | h) ）上，而不是模型本身（ P(h) ）的先验概率上，后者是传统的奥卡姆剃刀。关于贝叶斯奥卡姆剃刀我们再来看一个前面说到的曲线拟合的例子：如果平面上有 N 个点，近似构成一条直线，但绝不精确地位于一条直线上。这时我们既可以用直线来拟合（模型1），也可以用二阶多项式（模型2）拟合，也可以用三阶多项式（模型3），.. ，特别地，用 N-1 阶多项式便能够保证肯定能完美通过 N 个数据点。那么，这些可能的模型之中到底哪个是最靠谱的呢？前面提到，一个衡量的依据是奥卡姆剃刀：越是高阶的多项式越是繁复和不常见。然而，我们其实并不需要依赖于这个先验的奥卡姆剃刀，因为有人可能会争辩说：你怎么就能说越高阶的多项式越不常见呢？我偏偏觉得所有阶多项式都是等可能的。好吧，既然如此那我们不妨就扔掉 P(h) 项，看看 P(D | h) 能告诉我们什么。我们注意到越是高阶的多项式，它的轨迹弯曲程度越是大，到了八九阶简直就是直上直下，于是我们不仅要问：一个比如说八阶多项式在平面上随机生成的一堆 N 个点偏偏恰好近似构成一条直线的概率（即 P(D | h) ）有多大？太小太小了。反之，如果背后的模型是一条直线，那么根据该模型生成一堆近似构成直线的点的概率就大得多了。这就是贝叶斯奥卡姆剃刀。</p>
 <p>这里只是提供一个关于贝叶斯奥卡姆剃刀的科普，强调直观解释，更多理论公式请参考 MacKay 的著作 《Information Theory : Inference and Learning Algorithms》第 28 章。</p>
 <h3 id="3-3-最小描述长度原则"><a href="#3-3-最小描述长度原则" class="headerlink" title="3.3 最小描述长度原则"></a>3.3 最小描述长度原则</h3><p>贝叶斯模型比较理论与信息论有一个有趣的关联：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h | D) ∝ P(h) * P(D | h)</div></pre></td></tr></table></figure>
 <p>两边求对数，将右式的乘积变成相加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln P(h | D) ∝ ln P(h) + ln P(D | h)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ln P(h | D) ∝ ln P(h) + ln P(D | h)</div></pre></td></tr></table></figure>
 <p>显然，最大化 P(h | D) 也就是最大化 ln P(h | D)。而 ln P(h) + ln P(D | h) 则可以解释为模型（或者称“假设”、“猜测”）h 的编码长度加上在该模型下数据 D 的编码长度。使这个和最小的模型就是最佳模型。</p>
 <p>而究竟如何定义一个模型的编码长度，以及数据在模型下的编码长度则是一个问题。更多可参考 Mitchell 的 《Machine Learning》的 6.6 节，或 Mackay 的 28.3 节）</p>
 <h3 id="3-4-最优贝叶斯推理"><a href="#3-4-最优贝叶斯推理" class="headerlink" title="3.4 最优贝叶斯推理"></a>3.4 最优贝叶斯推理</h3><p>所谓的推理，分为两个过程，第一步是对观测数据建立一个模型。第二步则是使用这个模型来推测未知现象发生的概率。我们前面都是讲的对于观测数据给出最靠谱的那个模型。然而很多时候，虽然某个模型是所有模型里面最靠谱的，但是别的模型也并不是一点机会都没有。譬如第一个模型在观测数据下的概率是 0.5 。第二个模型是 0.4 ，第三个是 0.1 。如果我们只想知道对于观测数据哪个模型最可能，那么只要取第一个就行了，故事到此结束。然而很多时候我们建立模型是为了推测未知的事情的发生概率，这个时候，三个模型对未知的事情发生的概率都会有自己的预测，仅仅因为某一个模型概率稍大一点就只听他一个人的就太不民主了。所谓的最优贝叶斯推理就是将三个模型对于未知数据的预测结论加权平均起来（权值就是模型相应的概率）。显然，这个推理是理论上的制高点，无法再优了，因为它已经把所有可能性都考虑进去了。</p>
@@ -322,18 +322,18 @@
 </ol>
 <p>这两个分词，到底哪个更靠谱呢？</p>
 <p>我们用贝叶斯公式来形式化地描述这个问题，令 X 为字串（句子），Y 为词串（一种特定的分词假设）。我们就是需要寻找使得 P(Y|X) 最大的 Y ，使用一次贝叶斯可得：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(Y|X) ∝ P(Y)*P(X|Y)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(Y|X) ∝ P(Y)*P(X|Y)</div></pre></td></tr></table></figure>
 <p>用自然语言来说就是 这种分词方式（词串）的可能性 乘以 这个词串生成我们的句子的可能性。我们进一步容易看到：可以近似地将 P(X|Y) 看作是恒等于 1 的，因为任意假想的一种分词方式之下生成我们的句子总是精准地生成的（只需把分词之间的分界符号扔掉即可）。于是，我们就变成了去最大化 P(Y) ，也就是寻找一种分词使得这个词串（句子）的概率最大化。而如何计算一个词串：</p>
 <p>W1, W2, W3, W4 ..</p>
 <p>的可能性呢？我们知道，根据<a href="https://en.wikipedia.org/wiki/Joint_probability_distribution" target="_blank" rel="external">联合概率（Joint probability distribution）</a>的公式展开：P(W1, W2, W3, W4 ..) = P(W1) <em> P(W2|W1) </em> P(W3|W2, W1) <em> P(W4|W1,W2,W3) </em> .. 于是我们可以通过一系列的条件概率（右式）的乘积来求整个联合概率。然而不幸的是随着条件数目的增加（P(Wn|Wn-1,Wn-2,..,W1) 的条件有 n-1 个），<a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank" rel="external">数据稀疏问题</a>也会越来越严重，即便语料库再大也无法统计出一个靠谱的 P(Wn|Wn-1,Wn-2,..,W1) 来。为了缓解这个问题，计算机科学家们一如既往地使用了“天真”假设：我们假设句子中一个词的出现概率只依赖于它前面的有限的 k 个词（k 一般不超过 3，如果只依赖于前面的一个词，就是2元<a href="https://en.wikipedia.org/wiki/N-gram" target="_blank" rel="external">语言模型</a>（2-gram），同理有 3-gram 、 4-gram 等），这个就是所谓的“有限地平线”假设。虽然这个假设很傻很天真，但结果却表明它的结果往往是很好很强大的，后面要提到的朴素贝叶斯方法使用的假设跟这个精神上是完全一致的，我们会解释为什么像这样一个天真的假设能够得到强大的结果。目前我们只要知道，有了这个假设，刚才那个乘积就可以改写成： P(W1) <em> P(W2|W1) </em> P(W3|W2) * P(W4|W3) .. （假设每个词只依赖于它前面的一个词）。而统计 P(W2|W1) 就不再受到数据稀疏问题的困扰了。对于我们上面提到的例子“南京市长江大桥”，如果按照自左到右的贪婪方法分词的话，结果就成了“南京市长/江大桥”。但如果按照贝叶斯分词的话（假设使用 3-gram），由于“南京市长”和“江大桥”在语料库中一起出现的频率为 0 ，这个整句的概率便会被判定为 0 。 从而使得“南京市/长江大桥”这一分词方式胜出。</p>
 <p>一点注记：有人可能会疑惑，难道我们人类也是基于这些天真的假设来进行推理的？不是的。事实上，统计机器学习方法所统计的东西往往处于相当表层（shallow）的层面，在这个层面机器学习只能看到一些非常表面的现象，有一点科学研究的理念的人都知道：越是往表层去，世界就越是繁复多变。从机器学习的角度来说，特征（feature）就越多，成百上千维度都是可能的。特征一多，好了，<a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank" rel="external">高维诅咒</a>就产生了，数据就稀疏得要命，不够用了。而我们人类的观察水平显然比机器学习的观察水平要更深入一些，为了避免数据稀疏我们不断地发明各种装置（最典型就是显微镜），来帮助我们直接深入到更深层的事物层面去观察更本质的联系，而不是在浅层对表面现象作统计归纳。举一个简单的例子，通过对大规模语料库的统计，机器学习可能会发现这样一个规律：所有的“他”都是不会穿 bra 的，所有的“她”则都是穿的。然而，作为一个男人，却完全无需进行任何统计学习，因为深层的规律就决定了我们根本不会去穿 bra 。至于机器学习能不能完成后者（像人类那样的）这个推理，则是人工智能领域的经典问题。至少在那之前，<strong>声称统计学习方法能够终结科学研究（<a href="https://www.wired.com/2008/06/pb-theory/" target="_blank" rel="external">原文</a>）的说法是纯粹外行人说的话。</strong></p>
 <h3 id="4-2-统计机器翻译"><a href="#4-2-统计机器翻译" class="headerlink" title="4.2 统计机器翻译"></a>4.2 统计机器翻译</h3><p>统计机器翻译因为其简单，自动（无需手动添加规则），迅速成为了机器翻译的事实标准。而统计机器翻译的核心算法也是使用的贝叶斯方法。</p>
 <p>问题是什么？统计机器翻译的问题可以描述为：给定一个句子 e ，它的可能的外文翻译 f 中哪个是最靠谱的。即我们需要计算：P(f|e) 。一旦出现条件概率贝叶斯总是挺身而出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(f|e) ∝ P(f) * P(e|f)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(f|e) ∝ P(f) * P(e|f)</div></pre></td></tr></table></figure>
 <p>这个式子的右端很容易解释：那些先验概率较高，并且更可能生成句子 e 的外文句子 f 将会胜出。我们只需简单统计（结合上面提到的 N-Gram 语言模型）就可以统计任意一个外文句子 f 的出现概率。然而 P(e|f) 却不是那么好求的，给定一个候选的外文局子 f ，它生成（或对应）句子 e 的概率是多大呢？我们需要定义什么叫 “对应”，这里需要用到一个分词对齐的平行语料库，有兴趣的可以参考 《Foundations of Statistical Natural Language Processing》第 13 章，这里摘选其中的一个例子：假设 e 为：John loves Mary 。我们需要考察的首选 f 是：Jean aime Marie （法文）。我们需要求出 P(e|f) 是多大，为此我们考虑 e 和 f 有多少种对齐的可能性，如：</p>
 <p>John (Jean) loves (aime) Marie (Mary)</p>
 <p>就是其中的一种（最靠谱的）对齐，为什么要对齐，是因为一旦对齐了之后，就可以容易地计算在这个对齐之下的 P(e|f) 是多大，只需计算：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(John|Jean) * P(loves|aime) * P(Marie|Mary)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(John|Jean) * P(loves|aime) * P(Marie|Mary)</div></pre></td></tr></table></figure>
 <p>即可。</p>
 <p>然后我们遍历所有的对齐方式，并将每种对齐方式之下的翻译概率 ∑ 求和。便可以获得整个的 P(e|f) 是多大。</p>
 <p><strong>一点注记：</strong> 还是那个问题：难道我们人类真的是用这种方式进行翻译的？highly unlikely 。这种计算复杂性非常高的东西连三位数乘法都搞不定的我们才不会笨到去使用呢。根据认知神经科学的认识，很可能我们是先从句子到语义（一个逐层往上（bottom-up）抽象的 folding 过程），然后从语义根据另一门语言的语法展开为另一门语言（一个逐层往下（top-down）的具体化 unfolding 过程）。如何可计算地实现这个过程，目前仍然是个难题。（我们看到很多地方都有 bottom-up/top-down 这样一个对称的过程，实际上有人猜测这正是生物神经网络原则上的运作方式，对视觉神经系统的研究尤其证明了这一点，Hawkins 在 《On Intelligence》 里面提出了一种 <a href="https://en.wikipedia.org/wiki/Hierarchical_temporal_memory" target="_blank" rel="external">HTM （Hierarchical Temporal Memory）</a>模型正是使用了这个原则。）</p>
@@ -350,11 +350,11 @@
 <p>一个接踵而来的问题就是，我们如何定义最佳？我们设每个点的坐标为 (Xi, Yi) 。如果直线为 y = f(x) 。那么 (Xi, Yi) 跟直线对这个点的“预测”：(Xi, f(Xi)) 就相差了一个 ΔYi = |Yi – f(Xi)| 。最小二乘就是说寻找直线使得 (ΔY1)^2 + (ΔY2)^2 + .. （即误差的平方和）最小，至于为什么是误差的平方和而不是误差的绝对值和，统计学上也没有什么好的解释。然而贝叶斯方法却能对此提供一个完美的解释。</p>
 <p>我们假设直线对于坐标 Xi 给出的预测 f(Xi) 是最靠谱的预测，所有纵坐标偏离 f(Xi) 的那些数据点都含有噪音，是噪音使得它们偏离了完美的一条直线，一个合理的假设就是偏离路线越远的概率越小，具体小多少，可以用一个正态分布曲线来模拟，这个分布曲线以直线对 Xi 给出的预测 f(Xi) 为中心，实际纵坐标为 Yi 的点 (Xi, Yi) 发生的概率就正比于 EXP[-(ΔYi)^2]。（EXP(..) 代表以常数 e 为底的多少次方）。</p>
 <p>现在我们回到问题的贝叶斯方面，我们要想最大化的后验概率是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">P(h|D) ∝ P(h) * P(D|h)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h|D) ∝ P(h) * P(D|h)</div></pre></td></tr></table></figure>
 <p>又见贝叶斯！这里 h 就是指一条特定的直线，D 就是指这 N 个数据点。我们需要寻找一条直线 h 使得 P(h) <em> P(D|h) 最大。很显然，P(h) 这个先验概率是均匀的，因为哪条直线也不比另一条更优越。所以我们只需要看 P(D|h) 这一项，这一项是指这条直线生成这些数据点的概率，刚才说过了，生成数据点 (Xi, Yi) 的概率为 EXP[-(ΔYi)^2] 乘以一个常数。而 P(D|h) = P(d1|h) </em> P(d2|h) <em> .. 即假设各个数据点是独立生成的，所以可以把每个概率乘起来。于是生成 N 个数据点的概率为 EXP[-(ΔY1)^2] </em> EXP[-(ΔY2)^2] <em> EXP[-(ΔY3)^2] </em> .. = EXP{-[(ΔY1)^2 + (ΔY2)^2 + (ΔY3)^2 + ..]} 最大化这个概率就是要最小化 (ΔY1)^2 + (ΔY2)^2 + (ΔY3)^2 + .. 。 熟悉这个式子吗？</p>
 <h2 id="5-朴素贝叶斯方法"><a href="#5-朴素贝叶斯方法" class="headerlink" title="5. 朴素贝叶斯方法"></a><strong>5. 朴素贝叶斯方法</strong></h2><p>朴素贝叶斯方法是一个很特别的方法，所以值得介绍一下。我们用朴素贝叶斯在垃圾邮件过滤中的应用来举例说明。</p>
 <h3 id="5-1-贝叶斯垃圾邮件过滤器"><a href="#5-1-贝叶斯垃圾邮件过滤器" class="headerlink" title="5.1 贝叶斯垃圾邮件过滤器"></a>5.1 贝叶斯垃圾邮件过滤器</h3><p>问题是什么？问题是，给定一封邮件，判定它是否属于垃圾邮件。按照先例，我们还是用 D 来表示这封邮件，注意 D 由 N 个单词组成。我们用 h+ 来表示垃圾邮件，h- 表示正常邮件。问题可以形式化地描述为求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">P(h+|D) = P(h+) * P(D|h+) / P(D)</div><div class="line"></div><div class="line">P(h-|D) = P(h-) * P(D|h-) / P(D)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">P(h+|D) = P(h+) * P(D|h+) / P(D)</div><div class="line"></div><div class="line">P(h-|D) = P(h-) * P(D|h-) / P(D)</div></pre></td></tr></table></figure>
 <p>其中 P(h+) 和 P(h-) 这两个先验概率都是很容易求出来的，只需要计算一个邮件库里面垃圾邮件和正常邮件的比例就行了。然而 P(D|h+) 却不容易求，因为 D 里面含有 N 个单词 d1, d2, d3, .. ，所以P(D|h+) = P(d1,d2,..,dn|h+) 。我们又一次遇到了数据稀疏性，为什么这么说呢？P(d1,d2,..,dn|h+) 就是说在垃圾邮件当中出现跟我们目前这封邮件一模一样的一封邮件的概率是多大！开玩笑，每封邮件都是不同的，世界上有无穷多封邮件。瞧，这就是数据稀疏性，因为可以肯定地说，你收集的训练数据库不管里面含了多少封邮件，也不可能找出一封跟目前这封一模一样的。结果呢？我们又该如何来计算 P(d1,d2,..,dn|h+) 呢？</p>
 <p>我们将 P(d1,d2,..,dn|h+)  扩展为： P(d1|h+) <em> P(d2|d1, h+) </em> P(d3|d2,d1, h+) <em> .. 。熟悉这个式子吗？这里我们会使用一个更激进的假设，我们假设 di 与 di-1 是完全条件无关的，于是式子就简化为 P(d1|h+) </em> P(d2|h+) <em> P(d3|h+) </em> .. 。这个就是所谓的<a href="https://en.wikipedia.org/wiki/Conditional_independence" target="_blank" rel="external">条件独立假设</a>，也正是朴素贝叶斯方法的朴素之处。而计算 P(d1|h+) <em> P(d2|h+) </em> P(d3|h+) * .. 就太简单了，只要统计 di 这个单词在垃圾邮件中出现的频率即可。关于贝叶斯垃圾邮件过滤更多的内容可以参考<a href="https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering" target="_blank" rel="external">这个条目</a>，注意其中提到的其他资料。</p>
 <p>一点注记：这里，为什么有这个数据稀疏问题，还是因为统计学习方法工作在浅层面，世界上的单词就算不再变多也是非常之多的，单词之间组成的句子也是变化多端，更不用说一篇文章了，文章数目则是无穷的，所以在这个层面作统计，肯定要被数据稀疏性困扰。我们要注意，虽然句子和文章的数目是无限的，然而就拿邮件来说，如果我们只关心邮件中句子的语义（进而更高抽象层面的“意图”（语义，意图如何可计算地定义出来是一个人工智能问题），在这个层面上可能性便大大缩减了，我们关心的抽象层面越高，可能性越小。单词集合和句子的对应是多对一的，句子和语义的对应又是多对一的，语义和意图的对应还是多对一的，这是个层级体系。神经科学的发现也表明大脑的皮层大致有一种层级结构，对应着越来越抽象的各个层面，至于如何具体实现一个可放在计算机内的大脑皮层，仍然是一个未解决问题，以上只是一个原则（principle）上的认识，只有当 computational 的 cortex 模型被建立起来了之后才可能将其放入电脑。</p>

@@ -180,7 +180,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_cj79zuuq5001qk4myt8sudwwv">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_cj7b9ywj2001gswmye9l4fr72">
         <img src="../../../../gallery/apk.png" itemprop="image">
       </a>
     
@@ -359,9 +359,9 @@
 <p>关于第一个目标，图片资源的优化，就写到这里了。</p>
 <h3 id="3-4-代码优化"><a href="#3-4-代码优化" class="headerlink" title="3.4 代码优化"></a>3.4 代码优化</h3><p>第二个目标已达成，剩下第三个目标，代码的优化，梳理如下优化路径：</p>
 <h4 id="1、开启proguard的代码优化"><a href="#1、开启proguard的代码优化" class="headerlink" title="1、开启proguard的代码优化"></a>1、开启proguard的代码优化</h4><p>将</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
 <p>开启代码优化后的注意点请参见附录。</p>
 <h4 id="2、去除无用的库"><a href="#2、去除无用的库" class="headerlink" title="2、去除无用的库"></a>2、去除无用的库</h4><p>如果apk支持的最低版本是API14,而代码中没有用到高于api14的api就可以考虑拿掉整个android support库。</p>
 <h4 id="3、用更小的库替代方案"><a href="#3、用更小的库替代方案" class="headerlink" title="3、用更小的库替代方案"></a>3、用更小的库替代方案</h4><p>如果只用到了谷歌统计，那么就不要把整个google play services都集成进来，只集成需要的部分。</p>
