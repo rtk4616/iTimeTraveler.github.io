@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-09-08T02:39:53.491Z</updated>
+  <updated>2017-09-12T03:52:38.856Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/09/08/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E4%BB%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E4%B9%98%E6%B3%95%E5%88%B0%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/"/>
     <id>http://github.com/2017/09/08/【算法】从多项式乘法到快速傅里叶变换/</id>
     <published>2017-09-08T04:20:55.000Z</published>
-    <updated>2017-09-08T02:39:53.491Z</updated>
+    <updated>2017-09-12T03:52:38.856Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>本文来自： <a href="http://blog.miskcoo.com/2015/04/polynomial-multiplication-and-fast-fourier-transform" target="_blank" rel="external">从多项式乘法到快速傅里叶变换</a> — <a href="http://blog.miskcoo.com/about" target="_blank" rel="external">miskcoo</a></p>
@@ -39,7 +39,7 @@
 <p>$$ e^{\theta i}=\cos\theta + i\sin\theta $$<br>就可以知道 n 次单位根的算术表示</p>
 <p>如果记$ \omega_n=e^{\frac{2\pi i}{n}}$，那么$ n $次单位根就是 $\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$</p>
 <h2 id="多项式的乘法"><a href="#多项式的乘法" class="headerlink" title="多项式的乘法"></a>多项式的乘法</h2><p>给定两个多项式$ A(x), B(x)$<br>
-$$
+$$ 
 A(x) = \sum_{i=0}^na_ix^i = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0 \\ B(x) = \sum_{i=0}^nb_ix^i = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0 
 $$
 <br>将这两个多项式相乘得到$ C(x) = \sum_{i=0}^{2n}c_ix^i$，在这里</p>
@@ -56,39 +56,39 @@ $$
 <p>假设现在有一个$ n-1 $次多项式$ A(x)=\sum_{i=0}^{n-1}a_ix^i$（为了方便，假设$ n=2^m, m\in \mathbb Z$，如果不足可以在高次项系数补成 0）</p>
 <p>将$ n $个$ n $次单位根$ \omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$ 带入$ A(x) $将其转换成点值表达</p>
 
-$$
+$$ 
 A(\omega_n^k) = \sum_{i=0}^{n-1}a_i\omega^{ki} , k = 0, 1, \cdots, n - 1 
 $$
 
 <p>点值向量 $ \vec y=(A(\omega_n^0), A(\omega_n^1), \cdots, A(\omega_n^{n-1})) $ 称作系数向量$ \vec a=(a_0, a_1, \cdots, a_{n-1}) $的<strong>离散傅里叶变换</strong>（Discrete Fourier Transform, DFT），也记作$ \vec y=DFT_n(\vec a) $</p>
 <p>到此为止，直接计算$ DFT_n(\vec a) $还是需要$ \mathcal O(n^2) $的时间，Cooley-Tukey 算法接下来做的事情是将每一项按照指数奇偶分类</p>
 
-$$
+$$ 
 \begin{eqnarray*} A(\omega_n^k) &=& \sum_{i=0}^{n-1}a_i\omega_n^{ki} \\ &=& \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_n^{2ki}+\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_n^{2ki} \\ \end{eqnarray*} 
 $$
 
 <p>但是，如果直接这样递归下去，你需要带入的值还是有$ n $个，也就是说，现在只是将系数减半，而没有将需要带入的值减半，上面的$ k $还是$ 0, 1, \cdots, n - 1$，这样的话复杂度还是$ \mathcal O(n^2)$</p>
 <p>但是你会注意到，根据准备知识中$ \omega_n^2=\left(e^{\frac{2\pi i}{n}}\right)^2=e^{\frac{2\pi i}{n/2}}=\omega_{\frac{n}{2}}$ ，并且$ \frac{n}{2} $次单位根只有$ \frac{n}{2} $个，也就是说，我们要带入的值再平方以后似乎变少了一半？仔细想想就会发现，既然单位根把单位圆等分，那么肯定会对称，也就是有一个正的，就会有一个负的，平方后这两个当然就相同了。严格一点的证明就是</p>
 
-$$
+$$ 
 \omega_n^{\frac{n}{2}+k} = \omega_n^{\frac{n}{2}}\cdot \omega_n^k = -\omega_n^k 
 $$
 
 <p>这也就是说，对于$ k &lt; \frac{n}{2}$ 的时候</p>
 
-$$
+$$ 
 A(\omega_n^k) = \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} 
 $$
 
 <p>并且</p>
 
-$$
+$$ 
 \begin{eqnarray*} A(\omega_n^{k+\frac{n}{2}}) &=& \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k+\frac{n}{2}}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} \\ &=&\sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}-\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} \end{eqnarray*} 
 $$
 
 <p>这样我们就将需要带入的值也减少成了 $ 1, \omega_{\frac{n}{2}}, \omega_{\frac{n}{2}}^2, \cdots, \omega_{\frac{n}{2}}^{\frac{n}{2}-1} $，问题变成了两个规模减半的子问题，只要递归下去计算就可以了，至于复杂度</p>
 
-$$
+$$ 
 T(n) = 2T(\frac{n}{2})+\mathcal O(n) = \mathcal O(n\log n) 
 $$
 
@@ -165,7 +165,7 @@ $$
 </ol>
 <h3 id="原根"><a href="#原根" class="headerlink" title="原根"></a>原根</h3><p>现在我们要在数论中寻找满足这三个性质的数，首先来介绍原根的概念，根据费马定理我们知道，对于一个素数$ p$，有下面这样的关系</p>
 
-$$
+$$ 
 a^{p-1} \equiv 1 \pmod p 
 $$
 
@@ -178,7 +178,7 @@ $$
 <p>那么这样任何多项式系数的范围是$ [0, m)$，两个相乘，不会超过$ (m - 1)^2$，一共 $n $项相加，不会超过 $n(m-1)^2$</p>
 <p>这样的话，选取$ k $个有上面形式的素数$ p_1, p_2, \cdots, p_k$，要求满足</p>
 
-$$
+$$ 
 \prod_{i=1}^k p_k > n(m-1)^2 
 $$
 
@@ -186,7 +186,7 @@ $$
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>FNT 的代码实现和 FFT 是一样的，只要把复数运算换成在 $\bmod p$ 剩余系下的运算即可</p>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="快速卷积"><a href="#快速卷积" class="headerlink" title="快速卷积"></a>快速卷积</h3><p>现有两个定义在$ \mathbb N $上的函数$ f(n), g(n)$，定义$ f $和 $g $的<strong>卷积</strong>（convolution）为 $f \otimes g$</p>
 
-$$
+$$ 
 (f \otimes g)(n) = \sum_{i=0}^n f(i)g(n-i) 
 $$
 
@@ -195,13 +195,13 @@ $$
 <p>对于要计算某些形如  $h(k) = \sum_{i=0}^n f(i)g(i+k) $ 的问题，可以令$ f’(x) = f(n-x)$，这样问题就变成计算$ \sum_{i=0}^n f’(n-i)g(i+k)$，也就是一个卷积的形式</p>
 <h4 id="例1：-ZJOI2014-力"><a href="#例1：-ZJOI2014-力" class="headerlink" title="例1：[ZJOI2014]力"></a>例1：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3527" target="_blank" rel="external">[ZJOI2014]力</a></h4><p>题目给出$ n $个数$ q_1, q_2, \cdots, q_n$，要求计算</p>
 
-$$
+$$ 
 F_i = \sum_{j=1}^{i-1}\frac{q_iq_j}{(j-i)^i}-\sum_{j=i+1}^{n}\frac{q_iq_j}{(j-i)^i} 
 $$
 
 <p>观察一下，假设有四个数$ q_1, q_2, q_3, q_4$，那么</p>
 
-$$
+$$ 
 \begin{eqnarray*} \frac{F_1}{q_1} &=& -\frac{q_2}{1^2}-\frac{q_3}{2^2}-\frac{q_4}{3^2} \\ 
 \frac{F_2}{q_2} &=& +\frac{q_1}{1^2}-\frac{q_3}{1^2}-\frac{q_4}{2^2} \\ 
 \frac{F_3}{q_3} &=& +\frac{q_1}{2^2}+\frac{q_2}{1^2}-\frac{q_4}{1^2} \\ 
@@ -980,7 +980,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://github.com/2017/07/18/八大排序算法总结与java实现/</id>
     <published>2017-07-18T04:30:55.000Z</published>
-    <updated>2017-09-11T11:00:02.479Z</updated>
+    <updated>2017-09-12T03:51:30.066Z</updated>
     
     <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
 <p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
@@ -1076,7 +1076,7 @@ $$
 <p>可以看到步长的选择是希尔排序的重要部分。只要最终步长为1任何步长序列都可以工作。一般来说最简单的步长取值是<strong>初次取数组长度的一半</strong>为增量，之后每次再减半，直到增量为1。更好的步长序列取值可以参考<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F#.E6.AD.A5.E9.95.BF.E5.BA.8F.E5.88.97" target="_blank" rel="external">维基百科</a>。</p>
 <h4 id="2、算法描述-1"><a href="#2、算法描述-1" class="headerlink" title="2、算法描述"></a>2、算法描述</h4><p>①. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（<strong>一般初次取数组半长，之后每次再减半，直到增量为1</strong>）<br>②. 按增量序列个数k，对序列进行k 趟排序；<br>③. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
 <h4 id="3、代码实现-1"><a href="#3、代码实现-1" class="headerlink" title="3、代码实现"></a>3、代码实现</h4><p>以下是我自己的实现，可以看到实现很幼稚，但是好处是理解起来很简单。因为没有经过任何的优化，所以不建议大家直接使用。建议对比下方的维基百科官方实现代码，特别是步长取值策略部分。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序</div><div class="line"> *</div><div class="line"> * 1. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（一般初次取数组半长，之后每次再减半，直到增量为1）</div><div class="line"> * 2. 按增量序列个数k，对序列进行k 趟排序；</div><div class="line"> * 3. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> gap = arr.length / <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span> (; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) &#123;      <span class="comment">//不断缩小gap，直到1为止</span></div><div class="line">        System.out.println(<span class="string">"Gap="</span> + gap);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = gap; j &lt; arr.length; j++)&#123;     <span class="comment">//使用当前gap挨个进行遍历</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = j-gap; k &gt;= <span class="number">0</span>; k -= gap)&#123;   <span class="comment">//两两一组，间隔进行比较</span></div><div class="line">                System.out.println(<span class="string">"Compare： k="</span> + k + <span class="string">", k+gap="</span> + (k+gap));</div><div class="line">                <span class="keyword">if</span>(arr[k] &gt; arr[k+gap])&#123;</div><div class="line">                    <span class="keyword">int</span> temp = arr[k+gap];      <span class="comment">//交换操作</span></div><div class="line">                    arr[k+gap] = arr[k];</div><div class="line">                    arr[k] = temp;</div><div class="line">                    System.out.println(<span class="string">"    Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(gap == <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序</div><div class="line"> *</div><div class="line"> * 1. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（一般初次取数组半长，之后每次再减半，直到增量为1）</div><div class="line"> * 2. 按增量序列个数k，对序列进行k 趟排序；</div><div class="line"> * 3. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> gap = arr.length / <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span> (; gap &gt; <span class="number">0</span>; gap /= <span class="number">2</span>) &#123;      <span class="comment">//不断缩小gap，直到1为止</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; (j+gap) &lt; arr.length; j++)&#123;     <span class="comment">//使用当前gap进行组内插入排序</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; (k+gap)&lt; arr.length; k += gap)&#123;</div><div class="line">                <span class="keyword">if</span>(arr[k] &gt; arr[k+gap]) &#123;</div><div class="line">                    <span class="keyword">int</span> temp = arr[k+gap];      <span class="comment">//交换操作</span></div><div class="line">                    arr[k+gap] = arr[k];</div><div class="line">                    arr[k] = temp;</div><div class="line">                    System.out.println(<span class="string">"    Sorting:  "</span> + Arrays.toString(arr));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面是维基百科官方实现，大家注意gap步长取值部分：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序（Wiki官方版）</div><div class="line"> *</div><div class="line"> * 1. 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；（注意此算法的gap取值）</div><div class="line"> * 2. 按增量序列个数k，对序列进行k 趟排序；</div><div class="line"> * 3. 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。</div><div class="line"> *    仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</div><div class="line"> * <span class="doctag">@param</span> arr  待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shell_sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> gap = <span class="number">1</span>, i, j, len = arr.length;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    <span class="keyword">while</span> (gap &lt; len / <span class="number">3</span>)</div><div class="line">        gap = gap * <span class="number">3</span> + <span class="number">1</span>;      <span class="comment">// &lt;O(n^(3/2)) by Knuth,1973&gt;: 1, 4, 13, 40, 121, ...</span></div><div class="line">    <span class="keyword">for</span> (; gap &gt; <span class="number">0</span>; gap /= <span class="number">3</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (i = gap; i &lt; len; i++) &#123;</div><div class="line">            temp = arr[i];</div><div class="line">            <span class="keyword">for</span> (j = i - gap; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap)</div><div class="line">                arr[j + gap] = arr[j];</div><div class="line">            arr[j + gap] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>以下是希尔排序复杂度:</p>
@@ -1516,9 +1516,9 @@ $$
       <category term="Algorithm" scheme="http://github.com/categories/Algorithm/"/>
     
     
-      <category term="Java" scheme="http://github.com/tags/Java/"/>
-    
       <category term="Algorithm" scheme="http://github.com/tags/Algorithm/"/>
+    
+      <category term="Java" scheme="http://github.com/tags/Java/"/>
     
   </entry>
   

@@ -21,14 +21,14 @@
 <meta property="og:description" content="本文来自： 从多项式乘法到快速傅里叶变换 — miskcoo
 
 概述计算多项式的乘法，或者计算两个大整数的乘法是在计算机中很常见的运算，如果用普通的方法进行，复杂度将会是$ \mathcal O(n^2) ​$的，还有一种分治乘法，可以做到 $\mathcal O(n^{\log_23}) ​$时间计算（可以看Karatsuba 乘法）。下面从计算多项式的乘法出发，介绍快速傅里叶变换（Fast">
-<meta property="og:image" content="http://github.com/">
-<meta property="og:updated_time" content="2017-09-08T02:39:53.491Z">
+<meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
+<meta property="og:updated_time" content="2017-09-12T03:52:38.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】从多项式乘法到快速傅里叶变换">
 <meta name="twitter:description" content="本文来自： 从多项式乘法到快速傅里叶变换 — miskcoo
 
 概述计算多项式的乘法，或者计算两个大整数的乘法是在计算机中很常见的运算，如果用普通的方法进行，复杂度将会是$ \mathcal O(n^2) ​$的，还有一种分治乘法，可以做到 $\mathcal O(n^{\log_23}) ​$时间计算（可以看Karatsuba 乘法）。下面从计算多项式的乘法出发，介绍快速傅里叶变换（Fast">
-<meta name="twitter:image" content="http://github.com/">
+<meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
@@ -180,8 +180,8 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../index.html" rel="gallery_cj7g24zk50061bsmyjghbyu9x">
-        <img src="../../../../index.html" itemprop="image">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cj7h2e5ux0064cwmy2zozwo51">
+        <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
   </div>
@@ -234,7 +234,7 @@
 <p>$$ e^{\theta i}=\cos\theta + i\sin\theta $$<br>就可以知道 n 次单位根的算术表示</p>
 <p>如果记$ \omega_n=e^{\frac{2\pi i}{n}}$，那么$ n $次单位根就是 $\omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$</p>
 <h2 id="多项式的乘法"><a href="#多项式的乘法" class="headerlink" title="多项式的乘法"></a>多项式的乘法</h2><p>给定两个多项式$ A(x), B(x)$<br>
-$$
+$$ 
 A(x) = \sum_{i=0}^na_ix^i = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0 \\ B(x) = \sum_{i=0}^nb_ix^i = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0 
 $$
 <br>将这两个多项式相乘得到$ C(x) = \sum_{i=0}^{2n}c_ix^i$，在这里</p>
@@ -251,39 +251,39 @@ $$
 <p>假设现在有一个$ n-1 $次多项式$ A(x)=\sum_{i=0}^{n-1}a_ix^i$（为了方便，假设$ n=2^m, m\in \mathbb Z$，如果不足可以在高次项系数补成 0）</p>
 <p>将$ n $个$ n $次单位根$ \omega_n^0, \omega_n^1, \cdots, \omega_n^{n-1}$ 带入$ A(x) $将其转换成点值表达</p>
 
-$$
+$$ 
 A(\omega_n^k) = \sum_{i=0}^{n-1}a_i\omega^{ki} , k = 0, 1, \cdots, n - 1 
 $$
 
 <p>点值向量 $ \vec y=(A(\omega_n^0), A(\omega_n^1), \cdots, A(\omega_n^{n-1})) $ 称作系数向量$ \vec a=(a_0, a_1, \cdots, a_{n-1}) $的<strong>离散傅里叶变换</strong>（Discrete Fourier Transform, DFT），也记作$ \vec y=DFT_n(\vec a) $</p>
 <p>到此为止，直接计算$ DFT_n(\vec a) $还是需要$ \mathcal O(n^2) $的时间，Cooley-Tukey 算法接下来做的事情是将每一项按照指数奇偶分类</p>
 
-$$
+$$ 
 \begin{eqnarray*} A(\omega_n^k) &=& \sum_{i=0}^{n-1}a_i\omega_n^{ki} \\ &=& \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_n^{2ki}+\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_n^{2ki} \\ \end{eqnarray*} 
 $$
 
 <p>但是，如果直接这样递归下去，你需要带入的值还是有$ n $个，也就是说，现在只是将系数减半，而没有将需要带入的值减半，上面的$ k $还是$ 0, 1, \cdots, n - 1$，这样的话复杂度还是$ \mathcal O(n^2)$</p>
 <p>但是你会注意到，根据准备知识中$ \omega_n^2=\left(e^{\frac{2\pi i}{n}}\right)^2=e^{\frac{2\pi i}{n/2}}=\omega_{\frac{n}{2}}$ ，并且$ \frac{n}{2} $次单位根只有$ \frac{n}{2} $个，也就是说，我们要带入的值再平方以后似乎变少了一半？仔细想想就会发现，既然单位根把单位圆等分，那么肯定会对称，也就是有一个正的，就会有一个负的，平方后这两个当然就相同了。严格一点的证明就是</p>
 
-$$
+$$ 
 \omega_n^{\frac{n}{2}+k} = \omega_n^{\frac{n}{2}}\cdot \omega_n^k = -\omega_n^k 
 $$
 
 <p>这也就是说，对于$ k &lt; \frac{n}{2}$ 的时候</p>
 
-$$
+$$ 
 A(\omega_n^k) = \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} 
 $$
 
 <p>并且</p>
 
-$$
+$$ 
 \begin{eqnarray*} A(\omega_n^{k+\frac{n}{2}}) &=& \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k+\frac{n}{2}}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} \\ &=&\sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}-\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} \end{eqnarray*} 
 $$
 
 <p>这样我们就将需要带入的值也减少成了 $ 1, \omega_{\frac{n}{2}}, \omega_{\frac{n}{2}}^2, \cdots, \omega_{\frac{n}{2}}^{\frac{n}{2}-1} $，问题变成了两个规模减半的子问题，只要递归下去计算就可以了，至于复杂度</p>
 
-$$
+$$ 
 T(n) = 2T(\frac{n}{2})+\mathcal O(n) = \mathcal O(n\log n) 
 $$
 
@@ -360,7 +360,7 @@ $$
 </ol>
 <h3 id="原根"><a href="#原根" class="headerlink" title="原根"></a>原根</h3><p>现在我们要在数论中寻找满足这三个性质的数，首先来介绍原根的概念，根据费马定理我们知道，对于一个素数$ p$，有下面这样的关系</p>
 
-$$
+$$ 
 a^{p-1} \equiv 1 \pmod p 
 $$
 
@@ -373,7 +373,7 @@ $$
 <p>那么这样任何多项式系数的范围是$ [0, m)$，两个相乘，不会超过$ (m - 1)^2$，一共 $n $项相加，不会超过 $n(m-1)^2$</p>
 <p>这样的话，选取$ k $个有上面形式的素数$ p_1, p_2, \cdots, p_k$，要求满足</p>
 
-$$
+$$ 
 \prod_{i=1}^k p_k > n(m-1)^2 
 $$
 
@@ -381,7 +381,7 @@ $$
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>FNT 的代码实现和 FFT 是一样的，只要把复数运算换成在 $\bmod p$ 剩余系下的运算即可</p>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="快速卷积"><a href="#快速卷积" class="headerlink" title="快速卷积"></a>快速卷积</h3><p>现有两个定义在$ \mathbb N $上的函数$ f(n), g(n)$，定义$ f $和 $g $的<strong>卷积</strong>（convolution）为 $f \otimes g$</p>
 
-$$
+$$ 
 (f \otimes g)(n) = \sum_{i=0}^n f(i)g(n-i) 
 $$
 
@@ -390,13 +390,13 @@ $$
 <p>对于要计算某些形如  $h(k) = \sum_{i=0}^n f(i)g(i+k) $ 的问题，可以令$ f’(x) = f(n-x)$，这样问题就变成计算$ \sum_{i=0}^n f’(n-i)g(i+k)$，也就是一个卷积的形式</p>
 <h4 id="例1：-ZJOI2014-力"><a href="#例1：-ZJOI2014-力" class="headerlink" title="例1：[ZJOI2014]力"></a>例1：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3527" target="_blank" rel="external">[ZJOI2014]力</a></h4><p>题目给出$ n $个数$ q_1, q_2, \cdots, q_n$，要求计算</p>
 
-$$
+$$ 
 F_i = \sum_{j=1}^{i-1}\frac{q_iq_j}{(j-i)^i}-\sum_{j=i+1}^{n}\frac{q_iq_j}{(j-i)^i} 
 $$
 
 <p>观察一下，假设有四个数$ q_1, q_2, q_3, q_4$，那么</p>
 
-$$
+$$ 
 \begin{eqnarray*} \frac{F_1}{q_1} &=& -\frac{q_2}{1^2}-\frac{q_3}{2^2}-\frac{q_4}{3^2} \\ 
 \frac{F_2}{q_2} &=& +\frac{q_1}{1^2}-\frac{q_3}{1^2}-\frac{q_4}{2^2} \\ 
 \frac{F_3}{q_3} &=& +\frac{q_1}{2^2}+\frac{q_2}{1^2}-\frac{q_4}{1^2} \\ 
