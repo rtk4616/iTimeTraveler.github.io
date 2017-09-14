@@ -980,7 +980,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://github.com/2017/07/18/八大排序算法总结与java实现/</id>
     <published>2017-07-18T04:30:55.000Z</published>
-    <updated>2017-09-12T04:11:22.842Z</updated>
+    <updated>2017-09-14T11:15:27.037Z</updated>
     
     <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
 <p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
@@ -1339,7 +1339,7 @@ $$
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 基数排序（LSD 从低位开始）</div><div class="line"> *</div><div class="line"> * 基数排序适用于：</div><div class="line"> *  (1)数据范围较小，建议在小于1000</div><div class="line"> *  (2)每个数值都要大于等于0</div><div class="line"> *</div><div class="line"> * ①. 取得数组中的最大数，并取得位数；</div><div class="line"> * ②. arr为原始数组，从最低位开始取每个位组成radix数组；</div><div class="line"> * ③. 对radix进行计数排序（利用计数排序适用于小范围数的特点）；</div><div class="line"> * <span class="doctag">@param</span> arr	 待排序数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">radixSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(arr.length &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">//取得数组中的最大数，并取得位数</span></div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(max &lt; arr[i])&#123;</div><div class="line">            max = arr[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> maxDigit = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(max / <span class="number">10</span> &gt; <span class="number">0</span>)&#123;</div><div class="line">        maxDigit++;</div><div class="line">        max = max / <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    System.out.println(<span class="string">"maxDigit: "</span> + maxDigit);</div><div class="line"></div><div class="line">    <span class="comment">//申请一个桶空间</span></div><div class="line">    <span class="keyword">int</span>[][] buckets = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][arr.length];</div><div class="line">    <span class="keyword">int</span> base = <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="comment">//从低位到高位，对每一位遍历，将所有元素分配到桶中</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxDigit; i++)&#123;</div><div class="line">        <span class="keyword">int</span>[] bktLen = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];        <span class="comment">//存储各个桶中存储元素的数量</span></div><div class="line">        </div><div class="line">        <span class="comment">//分配：将所有元素分配到桶中</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; arr.length; j++)&#123;</div><div class="line">            <span class="keyword">int</span> whichBucket = (arr[j] % base) / (base / <span class="number">10</span>);</div><div class="line">            buckets[whichBucket][bktLen[whichBucket]] = arr[j];</div><div class="line">            bktLen[whichBucket]++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//收集：将不同桶里数据挨个捞出来,为下一轮高位排序做准备,由于靠近桶底的元素排名靠前,因此从桶底先捞</span></div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> b = <span class="number">0</span>; b &lt; buckets.length; b++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">0</span>; p &lt; bktLen[b]; p++)&#123;</div><div class="line">                arr[k++] = buckets[b][p];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"Sorting: "</span> + Arrays.toString(arr));</div><div class="line">        base *= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以下是基数排序算法复杂度:</p>
+<p>以下是基数排序算法复杂度，其中k为最大数的位数：</p>
 <table>
 <thead>
 <tr>
@@ -1351,13 +1351,14 @@ $$
 </thead>
 <tbody>
 <tr>
-<td>O(n * k)</td>
-<td>O(n * k)</td>
-<td>O(n * k)</td>
-<td>O(k+N)</td>
+<td>O(d*(n+r))</td>
+<td>O(d*(n+r))</td>
+<td>O(d*(n+r))</td>
+<td>O(n+r)</td>
 </tr>
 </tbody>
 </table>
+<p>其中，<strong>d 为位数，r 为基数，n 为原数组个数</strong>。在基数排序中，因为没有比较操作，所以在复杂上，最好的情况与最坏的情况在时间上是一致的，均为 <code>O(d*(n + r))</code>。</p>
 <p>基数排序更适合用于对时间, 字符串等这些<strong>整体权值未知的数据</strong>进行排序。</p>
 <p>Tips: 基数排序不改变相同元素之间的相对顺序，因此它是稳定的排序算法。</p>
 <p><strong>基数排序 vs 计数排序 vs 桶排序</strong></p>
