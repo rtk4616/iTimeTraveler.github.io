@@ -360,6 +360,58 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Java】try-catch-finally语句中return的执行顺序思考"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/">【Java】try-catch-finally语句中return的执行顺序思考</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/" class="article-date">
+	  <time datetime="2017-09-20T14:30:55.000Z" itemprop="datePublished">2017-09-20</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a><strong>实验</strong></h3><p>对于try-catch-finally语句中return的执行顺序，我们都有知道，finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，这也是不建议在finally中return的原因。</p>
+<p>下面通过实验来看这几种情况的执行顺序到底是什么。</p>
+<h4 id="1、try中有return，finally中没有"><a href="#1、try中有return，finally中没有" class="headerlink" title="1、try中有return，finally中没有"></a><strong>1、try中有return，finally中没有</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryCatchTest</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"test()函数返回："</span> + test());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			System.out.println(<span class="string">"Try block executing: "</span> + ++i);</div><div class="line">			<span class="keyword">return</span> i;</div><div class="line">		&#125;<span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">			System.out.println(<span class="string">"Catch Error executing: "</span> + ++i);</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125;<span class="keyword">finally</span> &#123;</div><div class="line">			System.out.println(<span class="string">"finally executing: "</span> + ++i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 实验对于try-catch-finally语句中return的执行顺序，我们都有知道，finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，这也是不建议在finally中return的原因。
+下面通过实验来看这几种情况的执行顺序到底是什么。
+1、try中有return，finally中没有public......  -->
+        <p class="article-more-link">
+          <a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【算法】从多项式乘法到快速傅里叶变换"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -880,62 +932,6 @@
 class TestIntegerCache &#123;    public static void main(String[] args)&#123;        Integer i3 = 100;        Integer i4 = 100;        System.out.println(i3 == i4);        Inte......  -->
         <p class="article-more-link">
           <a href="2017/07/11/【Java】Integer变量相等（==）比较问题/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Java 8系列之重新认识HashMap"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/06/16/Java 8系列之重新认识HashMap/">Java 8系列之重新认识HashMap</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/06/16/Java 8系列之重新认识HashMap/" class="article-date">
-	  <time datetime="2017-06-16T09:30:55.000Z" itemprop="datePublished">2017-06-16</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本文来自美团点评技术团队： <a href="http://tech.meituan.com/java-hashmap.html">Java 8系列之重新认识HashMap</a></p>
-</blockquote>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h2><p>HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>Java为数据结构中的映射定义了一个接口java.util.Map，此接口主要有四个常用的实现类，分别是<code>HashMap</code>、<code>Hashtable</code>、<code>LinkedHashMap</code>和<code>TreeMap</code>，类继承关系如下图所示：</p>
-<p><img src="http://img.blog.csdn.net/20170616165413193" alt=""></p>
-        <!-- 
-本文来自美团点评技术团队： Java 8系列之重新认识HashMap
-
-摘要HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。随着JDK（Java Developmet Kit）版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。本文结合JDK1.7和JDK1.8的区别，深入探讨HashMap的结构实现和功能原理......  -->
-        <p class="article-more-link">
-          <a href="2017/06/16/Java 8系列之重新认识HashMap/#more">阅读全文</a>
         </p>
       
     </div>
