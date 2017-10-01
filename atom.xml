@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-10-01T07:42:46.211Z</updated>
+  <updated>2017-10-01T07:54:50.922Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>EventBus 3.0 源码分析</title>
+    <title>【Android】EventBus 3.0 源码分析</title>
     <link href="http://github.com/2017/09/30/EventBus%203.0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://github.com/2017/09/30/EventBus 3.0源码分析/</id>
     <published>2017-09-30T14:03:00.000Z</published>
-    <updated>2017-10-01T07:42:46.211Z</updated>
+    <updated>2017-10-01T07:54:50.922Z</updated>
     
     <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong><a href="https://github.com/greenrobot/EventBus">EventBus</a></strong>是Android中一个基于<strong>观察者模式</strong>的事件发布/订阅框架，开发者可以通过极少的代码去实现多个模块之间的通信，主要功能是替代Intent，Handler，BroadCast 在 Fragment，Activity，Service，线程Thread之间传递消息。优点是开销小，使用方便，可以很大程度上降低它们之间的耦合。 类似的库还有<a href="https://github.com/square/otto">Otto</a> ，今天就带大家一起研读 EventBus 的源码。</p>
 <p>这是EventBus源码中的介绍：</p>
@@ -855,7 +855,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/08/03/%E3%80%90Android%E3%80%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20Handler%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%86%8D%E6%A2%B3%E7%90%86/"/>
     <id>http://github.com/2017/08/03/【Android】源码分析 - Handler消息机制再梳理/</id>
     <published>2017-08-03T08:03:00.000Z</published>
-    <updated>2017-09-30T06:22:54.795Z</updated>
+    <updated>2017-10-01T07:55:14.067Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Android 消息机制无非就是：</p>
 <ol>
@@ -1113,6 +1113,8 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     
     
       <category term="Android" scheme="http://github.com/tags/Android/"/>
+    
+      <category term="源码分析" scheme="http://github.com/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
