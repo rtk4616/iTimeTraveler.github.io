@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Andro">
 <meta property="og:image" content="http://github.com/gallery/14987336455200.jpg">
-<meta property="og:updated_time" content="2017-08-04T05:50:51.838Z">
+<meta property="og:updated_time" content="2017-09-30T06:22:54.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】源码分析 - Handler消息机制再梳理">
 <meta name="twitter:description" content="前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Andro">
@@ -174,7 +174,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/14987336455200.jpg" rel="gallery_cj80xs27i004zt4mym8tsq1va">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/14987336455200.jpg" rel="gallery_cj88fwu1s004ao8my9wiapxbv">
         <img src="../../../../gallery/14987336455200.jpg" itemprop="image">
       </a>
     
@@ -428,7 +428,7 @@
 </ul>
 <p>线程间的通信目的主要是用于线程同步，所以线程没有像进程通信中的用于数据交换的通信机制。</p>
 <blockquote>
-<p>很明显，Android的Handler消息机制使用消息队列( MessageQueue )实现的线程间通信方式。而Binder是Android建立额一套新的IPC机制来满足系统对通信方式，传输性能和安全性的要求。<strong>Binder基于Client-Server通信模式，传输过程只需一次拷贝，为发送发添加UID/PID身份，既支持实名Binder也支持匿名Binder，安全性高。</strong>此处就不对Binder作更多介绍了。</p>
+<p>很明显，Android的Handler消息机制使用消息队列( MessageQueue )实现的线程间通信方式。而Binder是Android建立额一套新的IPC机制来满足系统对通信方式，传输性能和安全性的要求。<strong>Binder基于Client-Server通信模式，传输过程只需一次拷贝，为发送方添加UID/PID身份，既支持实名Binder也支持匿名Binder，安全性高。</strong>此处就不对Binder作更多介绍了。</p>
 </blockquote>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://gityuan.com/2015/12/26/handler-message-framework/" target="_blank" rel="external">Android消息机制1-Handler(Java层)</a></li>
