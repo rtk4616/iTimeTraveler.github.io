@@ -360,6 +360,72 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Android】源码分析 - AsyncTask异步任务机制"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/">【Android】源码分析 - AsyncTask异步任务机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" class="article-date">
+	  <time datetime="2017-10-09T12:03:00.000Z" itemprop="datePublished">2017-10-09</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。</p>
+<ul>
+<li><strong>AsyncTask:</strong> 封装了线程池和Handler，为 UI 线程与工作线程之间进行快速切换提供一种便捷机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。</li>
+<li><strong>HandlerThread:</strong> 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提供线程任务的调度机制。</li>
+<li><strong>ThreadPool:</strong> 把任务分解成不同的单元，分发到各个不同的线程上，进行同时并发处理。</li>
+<li><strong>IntentService:</strong> 适合于执行由 UI 触发的后台 Service 任务，并可以把后台任务执行的情况通过一定的机制反馈给 UI。</li>
+</ul>
+<p>我们从AsyncTask的基本用法开始，一起分析下AsyncTask源码，看看它是如何实现的。</p>
+<p><img src="/gallery/android-asynctask/worker_thread.png" alt=""></p>
+<h3 id="使用AsyncTask"><a href="#使用AsyncTask" class="headerlink" title="使用AsyncTask"></a>使用AsyncTask</h3><p>由于AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创建一个子类去继承它。在继承时我们可以为AsyncTask类指定三个泛型参数，这三个参数的用途如下：</p>
+<ol>
+<li><strong>Params</strong>：在执行AsyncTask时需要传入的参数，可用于在后台任务中使用。</li>
+<li><strong>Progress</strong>：后台任务执行时，如果需要在界面上显示当前的进度，则使用这里指定的泛型作为进度单位。</li>
+<li><strong>Result</strong>：当任务执行完毕后，如果需要对结果进行返回，则使用这里指定的泛型作为返回值类型。</li>
+</ol>
+<p>一个最简单的自定义AsyncTask就可以写成如下方式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123; ... &#125;</div></pre></td></tr></table></figure>
+        <!-- 前言提到Android的多线程机制，尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。
+
+AsyncTask: 封装了线程池和Handler，为 ......  -->
+        <p class="article-more-link">
+          <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-EventBus 3.0源码分析"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -879,58 +945,6 @@
 位图法：用一个bit......  -->
         <p class="article-more-link">
           <a href="2017/07/13/【算法】10亿int型数，统计只出现一次的数/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-遗传算法的基本概念和Java实现"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/07/11/遗传算法的基本概念和Java实现/">遗传算法的基本概念和Java实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/07/11/遗传算法的基本概念和Java实现/" class="article-date">
-	  <time datetime="2017-07-11T10:30:55.000Z" itemprop="datePublished">2017-07-11</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。</p>
-<p><img src="/gallery/genetic-algorithms/1-BYDJpa6M2rzWNSurvspf8Q.png" alt="如上图（左）所示，遗传算法的个体由多条染色体组成，每条染色体由多个基因组成。上图（右）展示了染色体分割和组合的方式。"></p>
-        <!-- 基因遗传算法是一种灵感源于达尔文自然进化理论的启发式搜索算法。该算法反映了自然选择的过程，即最适者被选定繁殖，并产生下一代。本文简要地介绍了遗传算法的基本概念和实现，希望能为读者展示启发式搜索的魅力。
-
-
-遗传算法的概念自然选择的过程从选择群体中最适应环境的个体开始。后代继承了父母的特性，并且这些特性将添加到下一代中。如果父母具有更好的适应性，那么它们的后代将更易于存活。迭代地进行该自然选择......  -->
-        <p class="article-more-link">
-          <a href="2017/07/11/遗传算法的基本概念和Java实现/#more">阅读全文</a>
         </p>
       
     </div>
