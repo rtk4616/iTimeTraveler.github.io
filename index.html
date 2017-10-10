@@ -387,15 +387,16 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，常用的有如下几种方式：</p>
 <ul>
 <li><strong>AsyncTask:</strong> 封装了线程池和Handler，为 UI 线程与工作线程之间进行快速切换提供一种便捷机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。</li>
 <li><strong>HandlerThread:</strong> 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提供线程任务的调度机制。</li>
 <li><strong>ThreadPool:</strong> 把任务分解成不同的单元，分发到各个不同的线程上，进行同时并发处理。</li>
 <li><strong>IntentService:</strong> 适合于执行由 UI 触发的后台 Service 任务，并可以把后台任务执行的情况通过一定的机制反馈给 UI。</li>
 </ul>
-<p>我们从AsyncTask的基本用法开始，一起分析下AsyncTask源码，看看它是如何实现的。</p>
-<p><img src="/gallery/android-asynctask/worker_thread.png" alt=""></p>
+<p>尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。</p>
+<p><img src="http://itimetraveler.github.io/gallery/android-asynctask/worker_thread.png" alt=""></p>
+<p>我们就从AsyncTask的基本用法开始，一起分析下AsyncTask源码，看看它是如何实现的。</p>
 <h3 id="使用AsyncTask"><a href="#使用AsyncTask" class="headerlink" title="使用AsyncTask"></a>使用AsyncTask</h3><p>由于AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创建一个子类去继承它。在继承时我们可以为AsyncTask类指定三个泛型参数，这三个参数的用途如下：</p>
 <ol>
 <li><strong>Params</strong>：在执行AsyncTask时需要传入的参数，可用于在后台任务中使用。</li>
@@ -404,9 +405,10 @@
 </ol>
 <p>一个最简单的自定义AsyncTask就可以写成如下方式：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123; ... &#125;</div></pre></td></tr></table></figure>
-        <!-- 前言提到Android的多线程机制，尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。
+        <!-- 前言提到Android的多线程机制，常用的有如下几种方式：
 
-AsyncTask: 封装了线程池和Handler，为 ......  -->
+AsyncTask: 封装了线程池和Handler，为 UI 线程与工作线程之间进行快速切换提供一种便捷机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。
+HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提......  -->
         <p class="article-more-link">
           <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/#more">阅读全文</a>
         </p>
@@ -426,7 +428,7 @@ AsyncTask: 封装了线程池和Handler，为 ......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-EventBus 3.0源码分析"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-【Android】源码分析 - IntentService机制"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -434,7 +436,7 @@ AsyncTask: 封装了线程池和Handler，为 ......  -->
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/09/30/EventBus 3.0源码分析/">【Android】EventBus 3.0 源码分析</a>
+      <a class="article-title" href="2017/10/05/【Android】源码分析 - IntentService机制/">【Android】源码分析 - IntentService机制</a>
     </h1>
   
 
@@ -442,7 +444,69 @@ AsyncTask: 封装了线程池和Handler，为 ......  -->
     
     <div class="article-meta">
       
-	<a href="2017/09/30/EventBus 3.0源码分析/" class="article-date">
+	<a href="2017/10/05/【Android】源码分析 - IntentService机制/" class="article-date">
+	  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">2017-10-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有</p>
+<ol>
+<li><strong>AsyncTask</strong>：封装了线程池和Handler，主要为了子线程更新UI；</li>
+<li><strong>HandlerThread</strong>：一个已经拥有了Looper的线程类，内部可以直接使用Handler；</li>
+<li><strong>IntentService</strong>：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；</li>
+</ol>
+<p>今天我们来根据平时的使用方式来分析一下第三个IntentSevice到底是什么怎么实现的？</p>
+<h3 id="IntentService的使用"><a href="#IntentService的使用" class="headerlink" title="IntentService的使用"></a>IntentService的使用</h3><p>IntentService继承了Service并且它本身是一个<strong>抽象类</strong>，因此使用它必须创建它的子类才能使用。所以这里我们自定义一个MyIntentService，来处理异步任务：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyIntentService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyIntentService"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyIntentService</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"MyIntentService"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">	        <span class="comment">//查看线程id</span></div><div class="line">	        Log.i(TAG, intent.getStringExtra(<span class="string">"params"</span>) + <span class="string">", 线程id:"</span> + Thread.currentThread().getId());</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line"></div><div class="line">            <span class="comment">//从0-100渐增</span></div><div class="line">            isRunning = <span class="keyword">true</span>;</div><div class="line">            count = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> (isRunning) &#123;</div><div class="line">                count++;</div><div class="line">                Log.i(TAG, <span class="string">"MyIntentService 线程运行中..."</span> + count);</div><div class="line">                <span class="keyword">if</span> (count &gt;= <span class="number">100</span>) &#123;</div><div class="line">                    isRunning = <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                Thread.sleep(<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <!-- 前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
+
+AsyncTask：封装了线程池和Handler，主要为了子线程更新UI；
+HandlerThread：一个已经拥有了Looper的线程类，内部可以直接使用Handler；
+IntentService：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；
+
+今......  -->
+        <p class="article-more-link">
+          <a href="2017/10/05/【Android】源码分析 - IntentService机制/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-【Android】EventBus 3.0源码分析"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2017/09/30/【Android】EventBus 3.0源码分析/">【Android】EventBus 3.0 源码分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2017/09/30/【Android】EventBus 3.0源码分析/" class="article-date">
 	  <time datetime="2017-09-30T14:03:00.000Z" itemprop="datePublished">2017-09-30</time>
 	</a>
 
@@ -462,7 +526,7 @@ AsyncTask: 封装了线程池和Handler，为 ......  -->
 <p>EventBus3 与之前的相比，其主要差别在于订阅方法可以不再以<code>onEvent</code> 开头了，改为用<strong>注解</strong>。</p>
         <!-- 概述EventBus是Android中一个基于观察者模式的事件发布/订阅框架，开发者可以通过极少的代码去实现多个模块之间的通信，主要功能是替代Intent，Handler，BroadCast 在 Fragment，Activity，Service，线程Thread之间传递消息。优点是开销小，使用方便，可以很大程度上降低它们之间的耦合。 类似的库还有Otto ，今天就带大家一起研读 Event......  -->
         <p class="article-more-link">
-          <a href="2017/09/30/EventBus 3.0源码分析/#more">阅读全文</a>
+          <a href="2017/09/30/【Android】EventBus 3.0源码分析/#more">阅读全文</a>
         </p>
       
     </div>
@@ -894,65 +958,6 @@ AsyncTask: 封装了线程池和Handler，为 ......  -->
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【算法】10亿int型数，统计只出现一次的数"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/07/13/【算法】10亿int型数，统计只出现一次的数/">【算法】10亿int型数，统计只出现一次的数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/07/13/【算法】10亿int型数，统计只出现一次的数/" class="article-date">
-	  <time datetime="2017-07-13T10:30:55.000Z" itemprop="datePublished">2017-07-13</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><strong>题目</strong></h2><p>10亿int整型数，以及一台可用内存为1GB的机器，时间复杂度要求O(n)，统计只出现一次的数？</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先分析多大的内存能够表示10亿的数呢？一个int型占4字节，10亿就是40亿字节（很明显就是4GB），也就是如果完全读入内存需要占用4GB，而题目只给1GB内存，显然不可能将所有数据读入内存。</p>
-<p>我们先不考虑时间复杂度，仅考虑解决问题。那么接下来的思路一般有两种。</p>
-<ol>
-<li><strong>位图法</strong>：用一个bit位来标识一个int整数。</li>
-<li><strong>分治法</strong>：分批处理这10亿的数。</li>
-</ol>
-<p>一种是位图法，如果各位老司机有经验的话很快会想到int整型数是4字节（Byte），也就是32位（bit），如果能用一个bit位来标识一个int整数那么存储空间将大大减少。另一种是分治法，内存有限，我想办法分批读取处理。下面大致分析一下两种思路。</p>
-        <!-- 题目10亿int整型数，以及一台可用内存为1GB的机器，时间复杂度要求O(n)，统计只出现一次的数？
-分析首先分析多大的内存能够表示10亿的数呢？一个int型占4字节，10亿就是40亿字节（很明显就是4GB），也就是如果完全读入内存需要占用4GB，而题目只给1GB内存，显然不可能将所有数据读入内存。
-我们先不考虑时间复杂度，仅考虑解决问题。那么接下来的思路一般有两种。
-
-位图法：用一个bit......  -->
-        <p class="article-more-link">
-          <a href="2017/07/13/【算法】10亿int型数，统计只出现一次的数/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
 
     </footer>
   </div>
