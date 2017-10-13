@@ -24,7 +24,7 @@
 四种启动模式启动模式简单地说就是Activity启动时的策略，在AndroidManifest.xml中的标签的android:launchMode属性设置；
 启动模式有4种">
 <meta property="og:image" content="http://github.com/gallery/14936293919569.jpg">
-<meta property="og:updated_time" content="2017-10-13T09:02:56.279Z">
+<meta property="og:updated_time" content="2017-10-13T09:28:55.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】Activity四种启动模式">
 <meta name="twitter:description" content="Task栈每个应用都有一个任务栈，是用来存放Activity的，功能类似于函数调用的栈，先后顺序代表了Activity的出现顺序；比如Activity1–&amp;gt;Activity2–&amp;gt;Activity3，则任务栈为：
@@ -183,7 +183,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/14936293919569.jpg" rel="gallery_cj8po0wfo001xw8mycne1pnsn">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/14936293919569.jpg" rel="gallery_cj8pp0vtv001s8omyuwxizrhd">
         <img src="../../../../gallery/14936293919569.jpg" itemprop="image">
       </a>
     
@@ -227,12 +227,28 @@
 <a id="more"></a>
 <h4 id="1、standard"><a href="#1、standard" class="headerlink" title="1、standard"></a>1、standard</h4><p>每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈；</p>
 <p><img src="/gallery/android_common/120721093646152.gif" alt=""></p>
-<h4 id="2、singleTop"><a href="#2、singleTop" class="headerlink" title="2、singleTop"></a>2、singleTop</h4><p>如果某个Activity自己激活自己，即任务栈栈顶就是该Activity，则不需要创建，其余情况都要创建Activity实例；</p>
+<h4 id="2、singleTop（栈顶复用模式）"><a href="#2、singleTop（栈顶复用模式）" class="headerlink" title="2、singleTop（栈顶复用模式）"></a>2、singleTop（栈顶复用模式）</h4><p>如果某个Activity自己激活自己，即任务栈栈顶就是该Activity，则不需要创建，其余情况都要创建Activity实例；</p>
 <p><img src="/gallery/android_common/120721093646153.gif" alt=""></p>
-<h4 id="3、singleTask"><a href="#3、singleTask" class="headerlink" title="3、singleTask"></a>3、singleTask</h4><p>如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把此Activity放入栈顶，并把该Activity以上的Activity实例都pop</p>
+<p>singleTop模式分3种情况：</p>
+<ul>
+<li>当前栈中已有该Activity的实例并且该实例位于栈顶时，不会新建实例，而是复用栈顶的实例，并且会将Intent对象传入，回调onNewIntent方法。</li>
+<li>当前栈中已有该Activity的实例但是该实例不在栈顶时，其行为和standard启动模式一样，依然会创建一个新的实例</li>
+<li>当前栈中不存在该Activity的实例时，其行为同standard启动模式。</li>
+</ul>
+<h4 id="3、singleTask（栈内复用模式）"><a href="#3、singleTask（栈内复用模式）" class="headerlink" title="3、singleTask（栈内复用模式）"></a>3、singleTask（栈内复用模式）</h4><p>如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把此Activity放入栈顶，并把该Activity以上的Activity实例都pop</p>
 <p><img src="/gallery/android_common/120721093646154.gif" alt=""></p>
+<p>singleTask启动模式启动Activity时，首先会根据taskAffinity去寻找当前是否存在一个对应名字的任务栈 </p>
+<ul>
+<li>如果不存在，则会创建一个新的Task，并创建新的Activity实例入栈到新创建的Task中去</li>
+<li>如果存在，则得到该任务栈，查找该任务栈中是否存在该Activity实例 <ul>
+<li>如果存在实例，则将它上面的Activity实例都出栈，然后回调启动的Activity实例的onNewIntent方法</li>
+<li>如果不存在该实例，则新建Activity，并入栈</li>
+</ul>
+</li>
+</ul>
 <h4 id="4、singleInstance"><a href="#4、singleInstance" class="headerlink" title="4、singleInstance"></a>4、singleInstance</h4><p>如果应用1的任务栈中创建了MainActivity实例，如果应用2也要激活MainActivity，则不需要创建，两应用共享该Activity实例；</p>
 <p><img src="/gallery/android_common/120721093646155.gif" alt=""></p>
+<p>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://www.cnblogs.com/meizixiong/archive/2013/07/03/3170591.html" target="_blank" rel="external">Android入门：Activity四种启动模式</a></li>
 <li><a href="https://www.cnblogs.com/plokmju/p/android_ActivityLauncherMode.html" target="_blank" rel="external">Android–Activity的启动模式</a></li>
@@ -319,7 +335,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task栈"><span class="nav-number">1.</span> <span class="nav-text">Task栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种启动模式"><span class="nav-number">2.</span> <span class="nav-text">四种启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、standard"><span class="nav-number">2.1.</span> <span class="nav-text">1、standard</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、singleTop"><span class="nav-number">2.2.</span> <span class="nav-text">2、singleTop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、singleTask"><span class="nav-number">2.3.</span> <span class="nav-text">3、singleTask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、singleInstance"><span class="nav-number">2.4.</span> <span class="nav-text">4、singleInstance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Task栈"><span class="nav-number">1.</span> <span class="nav-text">Task栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种启动模式"><span class="nav-number">2.</span> <span class="nav-text">四种启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、standard"><span class="nav-number">2.1.</span> <span class="nav-text">1、standard</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、singleTop（栈顶复用模式）"><span class="nav-number">2.2.</span> <span class="nav-text">2、singleTop（栈顶复用模式）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、singleTask（栈内复用模式）"><span class="nav-number">2.3.</span> <span class="nav-text">3、singleTask（栈内复用模式）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、singleInstance"><span class="nav-number">2.4.</span> <span class="nav-text">4、singleInstance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
