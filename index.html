@@ -360,6 +360,69 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【算法】字符串是否包含问题"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2017/10/18/【算法】字符串是否包含问题/">【算法】字符串是否包含问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2017/10/18/【算法】字符串是否包含问题/" class="article-date">
+	  <time datetime="2017-10-18T14:20:55.000Z" itemprop="datePublished">2017-10-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在网上看到这篇文章：<a href="http://www.vaikan.com/google-interviewing-story/">一次谷歌面试趣事</a>。觉得其中的算法题以及作者的解决思路很有趣，就拿来分享一下吧。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>假设这有一个各种字母组成的字符串，假设这还有另外一个字符串，而且这个字符串里的字母数相对少一些。从算法是讲，什么方法能最快的查出所有小字符串里的字母在大字符串里都有？</p>
+<p>比如，如果是下面两个字符串：</p>
+<blockquote>
+<p>String 1: ABCDEFGHLMNOPQRS<br>String 2: DCGSRQPO</p>
+</blockquote>
+<p>答案是true，所有在String2里的字母String1也都有。如果是下面两个字符串：</p>
+<blockquote>
+<p>String 1: ABCDEFGHLMNOPQRS<br>String 2: DCGSRQPZ</p>
+</blockquote>
+<p>答案是false，因为第二个字符串里的Z字母不在第一个字符串里。</p>
+        <!-- 在网上看到这篇文章：一次谷歌面试趣事。觉得其中的算法题以及作者的解决思路很有趣，就拿来分享一下吧。
+问题假设这有一个各种字母组成的字符串，假设这还有另外一个字符串，而且这个字符串里的字母数相对少一些。从算法是讲，什么方法能最快的查出所有小字符串里的字母在大字符串里都有？
+比如，如果是下面两个字符串：
+
+String 1: ABCDEFGHLMNOPQRSString 2: DCGSRQPO
+......  -->
+        <p class="article-more-link">
+          <a href="2017/10/18/【算法】字符串是否包含问题/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】源码分析 - AsyncTask异步任务机制"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -886,78 +949,6 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Google/">Google</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-八大排序算法总结与java实现"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/07/18/八大排序算法总结与java实现/">八大排序算法总结与java实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/07/18/八大排序算法总结与java实现/" class="article-date">
-	  <time datetime="2017-07-18T04:30:55.000Z" itemprop="datePublished">2017-07-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
-<p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
-<ul>
-<li>直接插入排序</li>
-<li>希尔排序</li>
-<li>简单选择排序</li>
-<li>堆排序</li>
-<li>冒泡排序</li>
-<li>快速排序</li>
-<li>归并排序</li>
-<li>基数排序</li>
-</ul>
-        <!-- 概述因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：
-
-
-直接插入排序
-希尔排序
-简单选择排序
-堆排序
-冒泡排序
-快速排序
-归并排序
-基数排序
-
-
-我们讨论的这八大排序算法的实现可以参考我的Github：SortAlgorithms，其中也包括了排序测试模块[Test.java]和排序算......  -->
-        <p class="article-more-link">
-          <a href="2017/07/18/八大排序算法总结与java实现/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
     </footer>
   </div>
