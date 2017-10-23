@@ -45,7 +45,7 @@
 }
 
 #donate-modal-container .donate-quote-word {
-	font-size: 1.2em;
+	font-size: 1.5em;
     color: #bbb;
 }
 
@@ -85,6 +85,7 @@
 
 #donate-modal-container .donate-image {
 	display: none;
+	min-height: 450px;
 	max-width: 300px;
 	margin: 20px auto
 }
@@ -106,6 +107,7 @@
 	box-sizing: border-box;
 	background: #fff;
 	width: 100%;
+	max-width: 900px;
 	padding: 50px;
 	border-radius: 3px;
 	font-weight: 300

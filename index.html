@@ -21,11 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-
-  
-
-  <link rel="icon" href="/gallery/avatar/0.svg">
-  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -37,331 +33,101 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-
-  
-    <link rel="stylesheet" href="/css/home.css" >
-  
-
-  
-
-  
-
-  
-  
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "关于"; 
+
+</script>
 
 
   <body>
 
 
-  
-    <header id="header">
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
 
-	<!-- 背景图模式 -->
-	
+          <h1 class="site-title">
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
+          </h1>
 
-    
-      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
 
-      <!-- Support rolling -->  
-        
-        <section class="awSlider">
-          <div class="carousel slide carousel-fade " data-ride="carousel">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-               
-                  
-                    <div class="item active">
-                  
-                    <img id="carousel-img0" src="https://source.unsplash.com/collection/954550/1920x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img0 = new Image();
-                      var imageTag0 = document.getElementById("carousel-img0");
-                      img0.src = imageTag0.src;
-                      img0.onload=function(){
-                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag0.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag0.style.height = document.body.clientHeight + "px";
-                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img1" src="https://source.unsplash.com/collection/954550/1920x1081">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img1 = new Image();
-                      var imageTag1 = document.getElementById("carousel-img1");
-                      img1.src = imageTag1.src;
-                      img1.onload=function(){
-                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag1.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag1.style.height = document.body.clientHeight + "px";
-                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1921x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img2 = new Image();
-                      var imageTag2 = document.getElementById("carousel-img2");
-                      img2.src = imageTag2.src;
-                      img2.onload=function(){
-                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag2.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag2.style.height = document.body.clientHeight + "px";
-                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img3" src="https://source.unsplash.com/collection/954550/1921x1081">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img3 = new Image();
-                      var imageTag3 = document.getElementById("carousel-img3");
-                      img3.src = imageTag3.src;
-                      img3.onload=function(){
-                        if (img3.width / img3.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag3.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag3.style.height = document.body.clientHeight + "px";
-                          imageTag3.style.marginLeft = -(document.body.clientHeight * img3.width / img3.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img4" src="https://source.unsplash.com/collection/954550/1920x1082">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img4 = new Image();
-                      var imageTag4 = document.getElementById("carousel-img4");
-                      img4.src = imageTag4.src;
-                      img4.onload=function(){
-                        if (img4.width / img4.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag4.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag4.style.height = document.body.clientHeight + "px";
-                          imageTag4.style.marginLeft = -(document.body.clientHeight * img4.width / img4.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img5" src="https://source.unsplash.com/collection/954550/1922x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img5 = new Image();
-                      var imageTag5 = document.getElementById("carousel-img5");
-                      img5.src = imageTag5.src;
-                      img5.onload=function(){
-                        if (img5.width / img5.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag5.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag5.style.height = document.body.clientHeight + "px";
-                          imageTag5.style.marginLeft = -(document.body.clientHeight * img5.width / img5.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img6" src="https://source.unsplash.com/collection/954550/1922x1082">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img6 = new Image();
-                      var imageTag6 = document.getElementById("carousel-img6");
-                      img6.src = imageTag6.src;
-                      img6.onload=function(){
-                        if (img6.width / img6.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag6.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag6.style.height = document.body.clientHeight + "px";
-                          imageTag6.style.marginLeft = -(document.body.clientHeight * img6.width / img6.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="index.html">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="funnysite">funnysite</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="collection">collection</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="about">关于</a> </li>
+                    
+              </ul>
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Geri</span>
-            </a>
-            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">İleri</span>
-            </a>
-          </div>
-        </section>
-        <script>
-          $('section.awSlider .carousel').carousel({
-              pause: '',
-              interval: 5000
-          });
-          var startImage = $('section.awSlider .item.active > img').attr('src');
-          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
-              var bscn = $(this).find('.item.active > img').attr('src');
-              $('section.awSlider > img').attr('src', bscn);
-          });
-        </script>
-      
-
-    
- 
+          </nav>
 
 
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-		 function redraw(){
-		 	var pattern = Trianglify({
-				width: window.innerWidth,
-				height: window.innerHeight
-			});
-            pattern.canvas(c)
-        }
-        document.getElementById("intrologo").onclick = redraw
-        document.getElementById("intrologo").ontouchstart = redraw
-		redraw()
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
-        
-          <div class="homelogoback"  style="border: 1px solid #404040;" >
-            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
-            <h3>Someone knock at the door.</h3>
-            <h5>Mr.Seven</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
+      </div>
   </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="index.html">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="funnysite">酷站</a>
-        
-          <a id="beautifont" class="main-nav-link" href="collection">收藏</a>
-        
-          <a id="beautifont" class="main-nav-link" href="about">关于</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/mybooks">🎁</a>
-        
-      </p>
-  </div>
-
 </header>
-  
+
+
+
+
   <div id="container">
     <div id="wrap">
-      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
+          <section id="main">
   
     <article id="post-【算法】字符串是否包含问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -376,45 +142,45 @@
     
     <div class="article-meta">
       
-	<a href="2017/10/18/【算法】字符串是否包含问题/" class="article-date">
-	  <time datetime="2017-10-18T14:20:55.000Z" itemprop="datePublished">2017-10-18</time>
+	Posted on <a href="2017/10/18/【算法】字符串是否包含问题/" class="article-date">
+	  <time datetime="2017-10-18T14:20:55.000Z" itemprop="datePublished">十月 18, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在网上看到这篇文章：<a href="http://www.vaikan.com/google-interviewing-story/">一次谷歌面试趣事</a>。觉得其中的算法题以及作者的解决思路很有趣，就拿来分享一下吧。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>假设这有一个各种字母组成的字符串，假设这还有另外一个字符串，而且这个字符串里的字母数相对少一些。从算法是讲，什么方法能最快的查出所有小字符串里的字母在大字符串里都有？</p>
-<p>比如，如果是下面两个字符串：</p>
-<blockquote>
-<p>String 1: ABCDEFGHLMNOPQRS<br>String 2: DCGSRQPO</p>
-</blockquote>
-<p>答案是true，所有在String2里的字母String1也都有。如果是下面两个字符串：</p>
-<blockquote>
-<p>String 1: ABCDEFGHLMNOPQRS<br>String 2: DCGSRQPZ</p>
-</blockquote>
-<p>答案是false，因为第二个字符串里的Z字母不在第一个字符串里。</p>
-        <!-- 在网上看到这篇文章：一次谷歌面试趣事。觉得其中的算法题以及作者的解决思路很有趣，就拿来分享一下吧。
+        
+          <div class="entry-thumbnail">
+            <a href="2017/10/18/【算法】字符串是否包含问题/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          在网上看到这篇文章：一次谷歌面试趣事。觉得其中的算法题以及作者的解决思路很有趣，就拿来分享一下吧。
 问题假设这有一个各种字母组成的字符串，假设这还有另外一个字符串，而且这个字符串里的字母数相对少一些。从算法是讲，什么方法能最快的查出所有小字符串里的字母在大字符串里都有？
 比如，如果是下面两个字符串：
 
 String 1: ABCDEFGHLMNOPQRSString 2: DCGSRQPO
-......  -->
-        <p class="article-more-link">
-          <a href="2017/10/18/【算法】字符串是否包含问题/#more">阅读全文</a>
-        </p>
+...
+
+        
+          <p class="article-more-link">
+            <a href="2017/10/18/【算法】字符串是否包含问题/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -424,7 +190,7 @@ String 1: ABCDEFGHLMNOPQRSString 2: DCGSRQPO
 
   
     <article id="post-【Android】源码分析 - AsyncTask异步任务机制"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -439,50 +205,43 @@ String 1: ABCDEFGHLMNOPQRSString 2: DCGSRQPO
     
     <div class="article-meta">
       
-	<a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" class="article-date">
-	  <time datetime="2017-10-09T12:03:00.000Z" itemprop="datePublished">2017-10-09</time>
+	Posted on <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" class="article-date">
+	  <time datetime="2017-10-09T12:03:00.000Z" itemprop="datePublished">十月 9, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，常用的有如下几种方式：</p>
-<ul>
-<li><strong>AsyncTask:</strong> 封装了线程池和Handler，为 UI 线程与工作线程之间进行快速切换提供一种便捷机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。</li>
-<li><strong>HandlerThread:</strong> 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提供线程任务的调度机制。</li>
-<li><strong>ThreadPool:</strong> 把任务分解成不同的单元，分发到各个不同的线程上，进行同时并发处理。</li>
-<li><strong>IntentService:</strong> 适合于执行由 UI 触发的后台 Service 任务，并可以把后台任务执行的情况通过一定的机制反馈给 UI。</li>
-</ul>
-<p>尽管Android已经设计了基本的Handler异步消息机制提供给我们进行线程间通信，不过对于频繁得UI更新操作Handler用起来确实有点细碎，为了更加方便我们在子线程中更新UI元素，Android从1.5版本就引入了一个AsyncTask类，使用它我们可以非常灵活方便地从子线程切换到UI线程。</p>
-<p><img src="http://itimetraveler.github.io/gallery/android-asynctask/worker_thread.png" alt=""></p>
-<p>我们就从AsyncTask的基本用法开始，一起分析下AsyncTask源码，看看它是如何实现的。</p>
-<h3 id="使用AsyncTask"><a href="#使用AsyncTask" class="headerlink" title="使用AsyncTask"></a>使用AsyncTask</h3><p>由于AsyncTask是一个抽象类，所以如果我们想使用它，就必须要创建一个子类去继承它。在继承时我们可以为AsyncTask类指定三个泛型参数，这三个参数的用途如下：</p>
-<ol>
-<li><strong>Params</strong>：在执行AsyncTask时需要传入的参数，可用于在后台任务中使用。</li>
-<li><strong>Progress</strong>：后台任务执行时，如果需要在界面上显示当前的进度，则使用这里指定的泛型作为进度单位。</li>
-<li><strong>Result</strong>：当任务执行完毕后，如果需要对结果进行返回，则使用这里指定的泛型作为返回值类型。</li>
-</ol>
-<p>一个最简单的自定义AsyncTask就可以写成如下方式：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123; ... &#125;</div></pre></td></tr></table></figure>
-        <!-- 前言提到Android的多线程机制，常用的有如下几种方式：
+        
+          <div class="entry-thumbnail">
+            <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/"><img width="250" height="175" src="/gallery/android-asynctask/AsyncTask.webp" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          前言提到Android的多线程机制，常用的有如下几种方式：
 
 AsyncTask: 封装了线程池和Handler，为 UI 线程与工作线程之间进行快速切换提供一种便捷机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。
-HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提......  -->
-        <p class="article-more-link">
-          <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/#more">阅读全文</a>
-        </p>
+HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提...
+
+        
+          <p class="article-more-link">
+            <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -492,7 +251,7 @@ HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使�
 
   
     <article id="post-【Android】源码分析 - IntentService机制"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -507,44 +266,48 @@ HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使�
     
     <div class="article-meta">
       
-	<a href="2017/10/05/【Android】源码分析 - IntentService机制/" class="article-date">
-	  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">2017-10-05</time>
+	Posted on <a href="2017/10/05/【Android】源码分析 - IntentService机制/" class="article-date">
+	  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">十月 5, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有</p>
-<ol>
-<li><strong>AsyncTask</strong>：封装了线程池和Handler，主要为了子线程更新UI；</li>
-<li><strong>HandlerThread</strong>：一个已经拥有了Looper的线程类，内部可以直接使用Handler；</li>
-<li><strong>IntentService</strong>：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；</li>
-</ol>
-<p>今天我们来根据平时的使用方式来分析一下第三个IntentSevice到底是什么怎么实现的？</p>
-<h3 id="IntentService的使用"><a href="#IntentService的使用" class="headerlink" title="IntentService的使用"></a>IntentService的使用</h3><p>IntentService继承了Service并且它本身是一个<strong>抽象类</strong>，因此使用它必须创建它的子类才能使用。所以这里我们自定义一个MyIntentService，来处理异步任务：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyIntentService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyIntentService"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyIntentService</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"MyIntentService"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">	        <span class="comment">//查看线程id</span></div><div class="line">	        Log.i(TAG, intent.getStringExtra(<span class="string">"params"</span>) + <span class="string">", 线程id:"</span> + Thread.currentThread().getId());</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line"></div><div class="line">            <span class="comment">//从0-100渐增</span></div><div class="line">            isRunning = <span class="keyword">true</span>;</div><div class="line">            count = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> (isRunning) &#123;</div><div class="line">                count++;</div><div class="line">                Log.i(TAG, <span class="string">"MyIntentService 线程运行中..."</span> + count);</div><div class="line">                <span class="keyword">if</span> (count &gt;= <span class="number">100</span>) &#123;</div><div class="line">                    isRunning = <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">                Thread.sleep(<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        <!-- 前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
 
 AsyncTask：封装了线程池和Handler，主要为了子线程更新UI；
 HandlerThread：一个已经拥有了Looper的线程类，内部可以直接使用Handler；
 IntentService：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；
 
-今......  -->
-        <p class="article-more-link">
-          <a href="2017/10/05/【Android】源码分析 - IntentService机制/#more">阅读全文</a>
-        </p>
+今天我们来根据平时的使用方式来分析一下第三个IntentSevice到底是什么怎么实现的？
+IntentService的使用IntentService继承了Service并且它本身是一个抽象类，因此使用它必须创建它的子类才能使用。所以这里我们自定义一个MyIntentService，来处理异步任务：
+...
+          
+
+        
+          <p class="article-more-link">
+            <a href="2017/10/05/【Android】源码分析 - IntentService机制/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -554,7 +317,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【Android】EventBus 3.0源码分析"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -569,36 +332,40 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/09/30/【Android】EventBus 3.0源码分析/" class="article-date">
-	  <time datetime="2017-09-30T14:03:00.000Z" itemprop="datePublished">2017-09-30</time>
+	Posted on <a href="2017/09/30/【Android】EventBus 3.0源码分析/" class="article-date">
+	  <time datetime="2017-09-30T14:03:00.000Z" itemprop="datePublished">九月 30, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/源码分析/">源码分析</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><strong><a href="https://github.com/greenrobot/EventBus">EventBus</a></strong>是Android中一个基于<strong>观察者模式</strong>的事件发布/订阅框架，开发者可以通过极少的代码去实现多个模块之间的通信，主要功能是替代Intent，Handler，BroadCast 在 Fragment，Activity，Service，线程Thread之间传递消息。优点是开销小，使用方便，可以很大程度上降低它们之间的耦合。 类似的库还有<a href="https://github.com/square/otto">Otto</a> ，今天就带大家一起研读 EventBus 的源码。</p>
-<p>这是EventBus源码中的介绍：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</div><div class="line"> * EventBus is a central publish/subscribe event system for Android. Events are posted (&#123;<span class="doctag">@link</span> #post(Object)&#125;) to the</div><div class="line"> * bus, which delivers it to subscribers that have a matching handler method for the event type. To receive events,</div><div class="line"> * subscribers must register themselves to the bus using &#123;<span class="doctag">@link</span> #register(Object)&#125;. Once registered, subscribers</div><div class="line"> * receive events until &#123;<span class="doctag">@link</span> #unregister(Object)&#125; is called. Event handling methods must be annotated by</div><div class="line"> * &#123;<span class="doctag">@link</span> Subscribe&#125;, must be public, return nothing (void), and have exactly one parameter</div><div class="line"> * (the event).</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> Markus Junginger, greenrobot</div><div class="line"> */</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>EventBus 是Android上的以<strong>发布\订阅事件</strong>为核心的库。事件 (<code>event</code>) 通过 <code>post()</code> 发送到总线，然后再分发到匹配事件类型的订阅者 (<code>subscribers</code>) 。订阅者只有在总线中注册 (<code>register</code>) 了才能收到事件，注销 (<code>unrigister</code>) 之后就收不到任何事件了。事件方法必须带有 <code>Subscribe</code> 的注解，必须是 <code>public</code> ，没有返回类型 <code>void</code> 并且只能有一个参数。</p>
-</blockquote>
-<p>EventBus3 与之前的相比，其主要差别在于订阅方法可以不再以<code>onEvent</code> 开头了，改为用<strong>注解</strong>。</p>
-        <!-- 概述EventBus是Android中一个基于观察者模式的事件发布/订阅框架，开发者可以通过极少的代码去实现多个模块之间的通信，主要功能是替代Intent，Handler，BroadCast 在 Fragment，Activity，Service，线程Thread之间传递消息。优点是开销小，使用方便，可以很大程度上降低它们之间的耦合。 类似的库还有Otto ，今天就带大家一起研读 Event......  -->
-        <p class="article-more-link">
-          <a href="2017/09/30/【Android】EventBus 3.0源码分析/#more">阅读全文</a>
-        </p>
+        
+          <div class="entry-thumbnail">
+            <a href="2017/09/30/【Android】EventBus 3.0源码分析/"><img width="250" height="175" src="/gallery/EventBus/android_with_eventbus.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          概述EventBus是Android中一个基于观察者模式的事件发布/订阅框架，开发者可以通过极少的代码去实现多个模块之间的通信，主要功能是替代Intent，Handler，BroadCast 在 Fragment，Activity，Service，线程Thread之间传递消息。优点是开销小，使用方便，可以很大程度上降低它们之间的耦合。 类似的库还有Otto ，今天就带大家一起研读 Event...
+
+        
+          <p class="article-more-link">
+            <a href="2017/09/30/【Android】EventBus 3.0源码分析/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/源码分析/">源码分析</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -608,7 +375,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【Java】try-catch-finally语句中return的执行顺序思考"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -623,34 +390,42 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/" class="article-date">
-	  <time datetime="2017-09-20T14:30:55.000Z" itemprop="datePublished">2017-09-20</time>
+	Posted on <a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/" class="article-date">
+	  <time datetime="2017-09-20T14:30:55.000Z" itemprop="datePublished">九月 20, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Java/">Java</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a><strong>实验</strong></h3><p>对于try-catch-finally语句中return的执行顺序，我们都有知道，finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，这也是不建议在finally中return的原因。</p>
-<p>下面通过实验来看这几种情况的执行顺序到底是什么。</p>
-<h4 id="1、try中有return，finally中没有"><a href="#1、try中有return，finally中没有" class="headerlink" title="1、try中有return，finally中没有"></a><strong>1、try中有return，finally中没有</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryCatchTest</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"test()函数返回："</span> + test());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			System.out.println(<span class="string">"Try block executing: "</span> + ++i);</div><div class="line">			<span class="keyword">return</span> i;</div><div class="line">		&#125;<span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">			System.out.println(<span class="string">"Catch Error executing: "</span> + ++i);</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125;<span class="keyword">finally</span> &#123;</div><div class="line">			System.out.println(<span class="string">"finally executing: "</span> + ++i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        <!-- 实验对于try-catch-finally语句中return的执行顺序，我们都有知道，finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，这也是不建议在finally中return的原因。
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            实验对于try-catch-finally语句中return的执行顺序，我们都有知道，finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，这也是不建议在finally中return的原因。
 下面通过实验来看这几种情况的执行顺序到底是什么。
-1、try中有return，finally中没有public......  -->
-        <p class="article-more-link">
-          <a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/#more">阅读全文</a>
-        </p>
+1、try中有return，finally中没有public class TryCatchTest &#123;	public static void main(String[] args) &#123;		System.out.println("test()函数返回：" + test());	&#125;	private static int test()...
+          
+
+        
+          <p class="article-more-link">
+            <a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Java/">Java</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -660,7 +435,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【算法】从多项式乘法到快速傅里叶变换"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -675,39 +450,43 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" class="article-date">
-	  <time datetime="2017-09-08T04:20:55.000Z" itemprop="datePublished">2017-09-08</time>
+	Posted on <a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" class="article-date">
+	  <time datetime="2017-09-08T04:20:55.000Z" itemprop="datePublished">九月 8, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>本文来自： <a href="http://blog.miskcoo.com/2015/04/polynomial-multiplication-and-fast-fourier-transform">从多项式乘法到快速傅里叶变换</a> — <a href="http://blog.miskcoo.com/about">miskcoo</a></p>
-</blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>计算多项式的乘法，或者计算两个大整数的乘法是在计算机中很常见的运算，如果用普通的方法进行，复杂度将会是$ \mathcal O(n^2) ​$的，还有一种分治乘法，可以做到 $\mathcal O(n^{\log_23}) ​$时间计算（可以看<a href="http://blog.miskcoo.com/2014/10/karatsuba-multiplication">Karatsuba 乘法</a>）。下面从计算多项式的乘法出发，介绍<strong>快速傅里叶变换（Fast Fourier Transform, FFT）</strong>如何在 $\mathcal O(n\log n) ​$的时间内计算出两个多项式的乘积。</p>
-<h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><p>这里介绍一些后面可能会用到的知识（主要是关于多项式、卷积以及复数的），如果你已经知道觉得它太水了或者想用到的时候再看就跳过吧。</p>
-<h2 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h2><p>简单来说，形如 $ a_0+a_1X+a_2X^2+\cdots+a_nX^n $ 的代数表达式叫做<strong>多项式</strong>，可以记作$P(X)=a_0+a_1X+a_2X^2+\cdots+a_nX^n$，$a_0, a_1, \cdots, a_n $叫做多项式的<strong>系数</strong>，$X $是一个不定元，不表示任何值，不定元在多项式中最大项的次数称作多项式的<strong>次数</strong></p>
-<h3 id="多项式的系数表示法"><a href="#多项式的系数表示法" class="headerlink" title="多项式的系数表示法"></a>多项式的系数表示法</h3><p>像刚刚我们提到的那些多项式，都是以系数形式表示的，也就是将 n 次多项式$ A(x) $的系数 $a_0, a_1, \cdots, a_n $看作 $n+1 $维向量$ \vec a=(a_0,a_1,\cdots,a_n)$，其<strong>系数表示（coefficient representation）</strong>就是向量$ \vec a$ 。</p>
-        <!-- 
+        
+          <div class="entry-thumbnail">
+            <a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          
 本文来自： 从多项式乘法到快速傅里叶变换 — miskcoo
 
-概述计算多项式的乘法，或者计算两个大整数的乘法是在计算机中很常见的运算，如果用普通的方法进行，复杂度将会是$ \mathcal O(n^2) ​$的，还有一种分治乘法，可以做到 $\mathcal O(n^{\log_23}) ​$时间计算（可以看Karatsuba 乘法）。下面从计算多项式的乘法出发，介绍快速傅里叶变换（Fa......  -->
-        <p class="article-more-link">
-          <a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/#more">阅读全文</a>
-        </p>
+概述计算多项式的乘法，或者计算两个大整数的乘法是在计算机中很常见的运算，如果用普通的方法进行，复杂度将会是$ \mathcal O(n^2) ​$的，还有一种分治乘法，可以做到 $\mathcal O(n^{\log_23}) ​$时间计算（可以看Karatsuba 乘法）。下面从计算多项式的乘法出发，介绍快速傅里叶变换（Fa...
+
+        
+          <p class="article-more-link">
+            <a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -717,7 +496,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【算法】大数相乘问题及其高效算法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -732,50 +511,46 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/08/22/【算法】大数相乘问题及其高效算法/" class="article-date">
-	  <time datetime="2017-08-22T14:20:55.000Z" itemprop="datePublished">2017-08-22</time>
+	Posted on <a href="2017/08/22/【算法】大数相乘问题及其高效算法/" class="article-date">
+	  <time datetime="2017-08-22T14:20:55.000Z" itemprop="datePublished">八月 22, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写两个任意位数的大数相乘的程序，给出计算结果。比如：</p>
-<blockquote>
-<p>题目描述：    输出两个不超过100位的大整数的乘积。<br>输入：    输入两个大整数，如1234567 和 123<br>输出：    输出乘积，如：151851741</p>
-</blockquote>
-<p>或者</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">求 <span class="number">1234567891011121314151617181920</span> * <span class="number">2019181716151413121110987654321</span> 的乘积结果</div></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>所谓大数相乘（Multiplication algorithm），就是指数字比较大，相乘的结果超出了基本类型的表示范围，所以这样的数不能够直接做乘法运算。</p>
-<p>参考了很多资料，包括维基百科词条<a href="https://en.wikipedia.org/wiki/Multiplication_algorithm">Multiplication algorithm</a>，才知道目前大数乘法算法主要有以下几种思路：</p>
-<ol>
-<li><strong>模拟小学乘法</strong>：最简单的乘法竖式手算的累加型；</li>
-<li><strong>分治乘法</strong>：最简单的是Karatsuba乘法，一般化以后有Toom-Cook乘法；</li>
-<li><strong>快速傅里叶变换FFT</strong>：（为了避免精度问题，可以改用快速数论变换FNTT），时间复杂度O(N lgN lglgN)。具体可参照<a href="https://en.wikipedia.org/wiki/Sch%C3%B6nhage%E2%80%93Strassen_algorithm">Schönhage–Strassen algorithm</a>；</li>
-<li><strong>中国剩余定理</strong>：把每个数分解到一些互素的模上，然后每个同余方程对应乘起来就行；</li>
-<li><strong>Furer’s algorithm</strong>：在渐进意义上FNTT还快的算法。不过好像不太实用，本文就不作介绍了。大家可以参考维基百科<a href="https://en.wikipedia.org/wiki/F%C3%BCrer%27s_algorithm">Fürer’s algorithm</a></li>
-</ol>
-        <!-- 题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
+        
+          <div class="entry-thumbnail">
+            <a href="2017/08/22/【算法】大数相乘问题及其高效算法/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          题目编写两个任意位数的大数相乘的程序，给出计算结果。比如：
 
 题目描述：    输出两个不超过100位的大整数的乘积。输入：    输入两个大整数，如1234567 和 123输出：    输出乘积，如：151851741
 
 或者
 求 1234567891011121314151617181920 * 2019181716151413121110987654321 的乘积结果
-分析所谓大数相......  -->
-        <p class="article-more-link">
-          <a href="2017/08/22/【算法】大数相乘问题及其高效算法/#more">阅读全文</a>
-        </p>
+分析所谓大数相...
+
+        
+          <p class="article-more-link">
+            <a href="2017/08/22/【算法】大数相乘问题及其高效算法/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -785,7 +560,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【算法】反转字符串"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -800,38 +575,43 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/08/05/【算法】反转字符串/" class="article-date">
-	  <time datetime="2017-08-05T14:20:55.000Z" itemprop="datePublished">2017-08-05</time>
+	Posted on <a href="2017/08/05/【算法】反转字符串/" class="article-date">
+	  <time datetime="2017-08-05T14:20:55.000Z" itemprop="datePublished">八月 5, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//输入一个字符串，输出它的倒序字符串</span></div><div class="line">input:  Hello</div><div class="line">output: olleH</div></pre></td></tr></table></figure>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>反转字符串，确实没什么难度，但是我无意间搜索了一下，才发现这么一个看似简单的反转算法实现起来真可谓花样繁多。这里我们尽可能分别总结介绍一下。</p>
-<h3 id="1、使用字符数组倒序输出"><a href="#1、使用字符数组倒序输出" class="headerlink" title="1、使用字符数组倒序输出"></a>1、使用字符数组倒序输出</h3><p>最常规的解法，也是最容易想到的一种方法就是使用字符数组倒序输出。</p>
-<p>具体思路是：倒序遍历字符串字符循环给char数组赋值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strReverseWithArray</span><span class="params">(String string)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (string == <span class="keyword">null</span> || string.length() == <span class="number">0</span>) <span class="keyword">return</span> string;</div><div class="line">    </div><div class="line">    <span class="keyword">char</span>[] array = <span class="keyword">new</span> <span class="keyword">char</span>[string.length()];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; string.length(); i++)&#123;</div><div class="line">        array[i] = string.charAt(string.length() - i - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(array);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        <!-- 前言研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。
+        
+          <div class="entry-thumbnail">
+            <a href="2017/08/05/【算法】反转字符串/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          前言研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。
 //输入一个字符串，输出它的倒序字符串input:  Hellooutput: olleH
 解法反转字符串，确实没什么难度，但是我无意间搜索了一下，才发现这么一个看似简单的反转算法实现起来真可谓花样繁多。这里我们尽可能分别总结介绍一下。
-1、使用字符数组倒序输出最常规的解法，也是最容易想到的......  -->
-        <p class="article-more-link">
-          <a href="2017/08/05/【算法】反转字符串/#more">阅读全文</a>
-        </p>
+1、使用字符数组倒序输出最常规的解法，也是最容易想到的...
+
+        
+          <p class="article-more-link">
+            <a href="2017/08/05/【算法】反转字符串/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Algorithm/">Algorithm</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -841,7 +621,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-【Android】源码分析 - Handler消息机制再梳理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -856,44 +636,40 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/" class="article-date">
-	  <time datetime="2017-08-03T08:03:00.000Z" itemprop="datePublished">2017-08-03</time>
+	Posted on <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/" class="article-date">
+	  <time datetime="2017-08-03T08:03:00.000Z" itemprop="datePublished">八月 3, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Android 消息机制无非就是：</p>
-<ol>
-<li>Handler 给 MessageQueue 添加消息</li>
-<li>然后 Looper 无限循环读取消息</li>
-<li>再调用 Handler 处理消息</li>
-</ol>
-<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。</p>
-<p>在整个Android的源码世界里，有两大利剑，其一是<strong>Binder IPC机制</strong>，另一个便是<strong>消息机制</strong>。Android有大量的消息驱动方式来进行交互，比如Android的四剑客<code>Activity</code>, <code>Service</code>, <code>Broadcast</code>, <code>ContentProvider</code>的启动过程的交互，都离不开消息机制，Android某种意义上也可以说成是一个以消息驱动的系统。而Android 消息机制主要涉及 4 个类：</p>
-<ul>
-<li>Handler</li>
-<li>Message</li>
-<li>MessageQueue</li>
-<li>Looper</li>
-</ul>
-<p>我们依次结合源码分析一下。</p>
-        <!-- 前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 An......  -->
-        <p class="article-more-link">
-          <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/#more">阅读全文</a>
-        </p>
+        
+          <div class="entry-thumbnail">
+            <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/"><img width="250" height="175" src="/gallery/14987336455200.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 An...
+
+        
+          <p class="article-more-link">
+            <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -903,7 +679,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   
     <article id="post-Google 笔试题 - 连通图的最大生成树的权和"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -918,38 +694,41 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
     
     <div class="article-meta">
       
-	<a href="2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/" class="article-date">
-	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">2017-07-31</time>
+	Posted on <a href="2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/" class="article-date">
+	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">七月 31, 2017</time>
 	</a>
-
-      
-    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是一道Google 笔试题</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;0, 4, 5, 0, 3&#125;, </div><div class="line"> &#123;4, 0, 4, 2, 3&#125;, </div><div class="line"> &#123;5, 4, 0, 2, 0&#125;, </div><div class="line"> &#123;0, 2, 2, 0, 1&#125;, </div><div class="line"> &#123;3, 3, 0, 1, 0&#125;&#125;</div></pre></td></tr></table></figure></p>
-<p>求这个图的最大生成树的权和。</p>
-<p>A、11</p>
-<p>B、12</p>
-<p>C、13</p>
-<p>D、14</p>
-<p>E、15</p>
-        <!-- 这是一道Google 笔试题
-题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&#123;&#123;0, 4, 5, 0, 3&#125;,  &#123;4, 0, 4, 2, 3&#125;,  &#123;5, 4, 0, 2, 0&#12......  -->
-        <p class="article-more-link">
-          <a href="2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/#more">阅读全文</a>
-        </p>
+        
+          <div class="entry-thumbnail">
+            <a href="2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          这是一道Google 笔试题
+题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&#123;&#123;0, 4, 5, 0, 3&#125;,  &#123;4, 0, 4, 2, 3&#125;,  &#123;5, 4, 0, 2, 0&#12...
+
+        
+          <p class="article-more-link">
+            <a href="2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="categories/Algorithm/">Algorithm</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Google/">Google</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -962,32 +741,531 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/9/">9</a><a class="extend next" rel="next" href="page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/9/">9</a><a class="extend next" rel="next" href="page/2/">下一页</a>
   </nav>
 
 </section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">起床了！</h3>
+<div class="widget">
+  <canvas id="c" style="background: url(/collection/code/img/window.jpg) no-repeat; 
+  background-size: contain;"></canvas>
+  <script type="text/javascript">
+
+  	var width = 300,
+  	height = 250,
+  	physics_accuracy = 3,
+	mouse_influence = 20,
+	mouse_cut = 5,
+	gravity = 1200,
+	cloth_height = 25,
+	cloth_width = 36,
+	start_y = 20,
+	spacing = 7,
+	tear_distance = 60;
+
+	window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+	function(callback) {
+	    window.setTimeout(callback, 1000 / 60);
+	};
+
+	var canvas, ctx, cloth, boundsx, boundsy, mouse = {
+	    down: false,
+	    button: 1,
+	    x: 0,
+	    y: 0,
+	    px: 0,
+	    py: 0
+	};
+
+	var Point = function(x, y) {
+
+	    this.x = x;
+	    this.y = y;
+	    this.px = x;
+	    this.py = y;
+	    this.vx = 0;
+	    this.vy = 0;
+	    this.pin_x = null;
+	    this.pin_y = null;
+
+	    this.constraints = [];
+	};
+
+	Point.prototype.update = function(delta) {
+
+	    if (mouse.down) {
+
+	        var diff_x = this.x - mouse.x,
+	        diff_y = this.y - mouse.y,
+	        dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
+
+	        if (mouse.button == 1) {
+
+	            if (dist < mouse_influence) {
+	                this.px = this.x - (mouse.x - mouse.px) * 1.8;
+	                this.py = this.y - (mouse.y - mouse.py) * 1.8;
+	            }
+
+	        } else if (dist < mouse_cut) this.constraints = [];
+	    }
+
+	    this.add_force(0, gravity);
+
+	    delta *= delta;
+	    nx = this.x + ((this.x - this.px) * .99) + ((this.vx / 2) * delta);
+	    ny = this.y + ((this.y - this.py) * .99) + ((this.vy / 2) * delta);
+
+	    this.px = this.x;
+	    this.py = this.y;
+
+	    this.x = nx;
+	    this.y = ny;
+
+	    this.vy = this.vx = 0
+	};
+
+	Point.prototype.draw = function() {
+
+	    if (this.constraints.length <= 0) return;
+
+	    var i = this.constraints.length;
+	    while (i--) this.constraints[i].draw();
+	};
+
+	Point.prototype.resolve_constraints = function() {
+
+	    if (this.pin_x != null && this.pin_y != null) {
+
+	        this.x = this.pin_x;
+	        this.y = this.pin_y;
+	        return;
+	    }
+
+	    var i = this.constraints.length;
+	    while (i--) this.constraints[i].resolve();
+
+	    if (this.x > boundsx) {
+
+	        this.x = 2 * boundsx - this.x;
+
+	    } else if (this.x < 1) {
+
+	        this.x = 2 - this.x;
+	    }
+
+	    if (this.y > boundsy) {
+
+	        this.y = 2 * boundsy - this.y;
+
+	    } else if (this.y < 1) {
+
+	        this.y = 2 - this.y;
+	    }
+	};
+
+	Point.prototype.attach = function(point) {
+
+	    this.constraints.push(new Constraint(this, point));
+	};
+
+	Point.prototype.remove_constraint = function(lnk) {
+
+	    var i = this.constraints.length;
+	    while (i--) if (this.constraints[i] == lnk) this.constraints.splice(i, 1);
+	};
+
+	Point.prototype.add_force = function(x, y) {
+
+	    this.vx += x;
+	    this.vy += y;
+	};
+
+	Point.prototype.pin = function(pinx, piny) {
+	    this.pin_x = pinx;
+	    this.pin_y = piny;
+	};
+
+	var Constraint = function(p1, p2) {
+
+	    this.p1 = p1;
+	    this.p2 = p2;
+	    this.length = spacing;
+	};
+
+	Constraint.prototype.resolve = function() {
+
+	    var diff_x = this.p1.x - this.p2.x,
+	    diff_y = this.p1.y - this.p2.y,
+	    dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y),
+	    diff = (this.length - dist) / dist;
+
+	    if (dist > tear_distance) this.p1.remove_constraint(this);
+
+	    var px = diff_x * diff * 0.5;
+	    var py = diff_y * diff * 0.5;
+
+	    this.p1.x += px;
+	    this.p1.y += py;
+	    this.p2.x -= px;
+	    this.p2.y -= py;
+	};
+
+	Constraint.prototype.draw = function() {
+
+	    ctx.moveTo(this.p1.x, this.p1.y);
+	    ctx.lineTo(this.p2.x, this.p2.y);
+	};
+
+	var Cloth = function() {
+
+	    this.points = [];
+
+	    var start_x = canvas.width / 2 - cloth_width * spacing / 2;
+
+	    for (var y = 0; y <= cloth_height; y++) {
+
+	        for (var x = 0; x <= cloth_width; x++) {
+
+	            var p = new Point(start_x + x * spacing, start_y + y * spacing);
+
+	            x != 0 && p.attach(this.points[this.points.length - 1]);
+	            y == 0 && p.pin(p.x, p.y);
+	            y != 0 && p.attach(this.points[x + (y - 1) * (cloth_width + 1)])
+
+	            this.points.push(p);
+	        }
+	    }
+	};
+
+	Cloth.prototype.update = function() {
+
+	    var i = physics_accuracy;
+
+	    while (i--) {
+	        var p = this.points.length;
+	        while (p--) this.points[p].resolve_constraints();
+	    }
+
+	    i = this.points.length;
+	    while (i--) this.points[i].update(.016);
+	};
+
+	Cloth.prototype.draw = function() {
+
+	    ctx.beginPath();
+
+	    var i = cloth.points.length;
+	    while (i--) cloth.points[i].draw();
+
+	    ctx.stroke();
+	};
+
+	function update() {
+
+	    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	    cloth.update();
+	    cloth.draw();
+
+	    requestAnimFrame(update);
+	}
+
+	function start() {
+
+	    canvas.onmousedown = function(e) {
+	        mouse.button = e.which;
+	        mouse.px = mouse.x;
+	        mouse.py = mouse.y;
+	        var rect = canvas.getBoundingClientRect();
+	        mouse.x = e.clientX - rect.left,
+	        mouse.y = e.clientY - rect.top,
+	        mouse.down = true;
+	        e.preventDefault();
+	    };
+
+	    canvas.onmouseup = function(e) {
+	        mouse.down = false;
+	        e.preventDefault();
+	    };
+
+	    canvas.onmousemove = function(e) {
+	        mouse.px = mouse.x;
+	        mouse.py = mouse.y;
+	        var rect = canvas.getBoundingClientRect();
+	        mouse.x = e.clientX - rect.left,
+	        mouse.y = e.clientY - rect.top,
+	        e.preventDefault();
+	    };
+
+	    canvas.oncontextmenu = function(e) {
+	        e.preventDefault();
+	    };
+
+	    boundsx = canvas.width - 1;
+	    boundsy = canvas.height - 1;
+
+	    ctx.strokeStyle = '#fff';
+	    cloth = new Cloth();
+	    update();
+	}
+
+	window.onload = function() {
+
+	    canvas = document.getElementById('c');
+	    ctx = canvas.getContext('2d');
+
+	    canvas.width = width;
+	    canvas.height = height;
+
+	    start();
+	};
+
+  </script>
+</div>
+</div>
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="搜索">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: 'content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="js/insight.js"></script>
+
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">联系我们</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>最新文章</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2017/10/18/【算法】字符串是否包含问题/" title=""><img width="50" height="50" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2017/10/18/【算法】字符串是否包含问题/">【算法】字符串是否包含问题</a></h6>
+              <span>十月 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" title=""><img width="50" height="50" src="/gallery/android-asynctask/AsyncTask.webp" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/">【Android】源码分析 - AsyncTask异步任务机制</a></h6>
+              <span>十月 9, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2017/10/05/【Android】源码分析 - IntentService机制/">【Android】源码分析 - IntentService机制</a></h6>
+              <span>十月 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2017/09/30/【Android】EventBus 3.0源码分析/" title=""><img width="50" height="50" src="/gallery/EventBus/android_with_eventbus.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2017/09/30/【Android】EventBus 3.0源码分析/">【Android】EventBus 3.0 源码分析</a></h6>
+              <span>九月 30, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/">【Java】try-catch-finally语句中return的执行顺序思考</a></h6>
+              <span>九月 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" title=""><img width="50" height="50" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2017/09/08/【算法】从多项式乘法到快速傅里叶变换/">【算法】从多项式乘法到快速傅里叶变换</a></h6>
+              <span>九月 8, 2017</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="categories/Algorithm/">Algorithm</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Android/">Android</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/D3-js/">D3.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Java/">Java</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="categories/源码分析/">源码分析</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="tags/APK/" style="font-size: 10px;">APK</a> <a href="tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="tags/Android/" style="font-size: 20px;">Android</a> <a href="tags/Audio/" style="font-size: 10px;">Audio</a> <a href="tags/BAT/" style="font-size: 10px;">BAT</a> <a href="tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="tags/D3/" style="font-size: 13.33px;">D3</a> <a href="tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="tags/Exception/" style="font-size: 10px;">Exception</a> <a href="tags/GPU/" style="font-size: 10px;">GPU</a> <a href="tags/Google/" style="font-size: 13.33px;">Google</a> <a href="tags/Go语言/" style="font-size: 11.67px;">Go语言</a> <a href="tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="tags/Java/" style="font-size: 18.33px;">Java</a> <a href="tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="tags/Linux/" style="font-size: 10px;">Linux</a> <a href="tags/Machine-Learning/" style="font-size: 11.67px;">Machine Learning</a> <a href="tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="tags/Neo4j/" style="font-size: 11.67px;">Neo4j</a> <a href="tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="tags/SVN/" style="font-size: 10px;">SVN</a> <a href="tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="tags/hotfix/" style="font-size: 11.67px;">hotfix</a> <a href="tags/源码分析/" style="font-size: 15px;">源码分析</a>
+    </div>
+  </div>
+
+  
+</aside>
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
+      <footer id="footer" class="site-footer">
   
 
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
@@ -995,16 +1273,9 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 <!-- min height -->
 
 <script>
-    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
 
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -1017,13 +1288,11 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
   
     <a href="tags" class="mobile-nav-link">Tags</a>
   
-    <a href="funnysite" class="mobile-nav-link">酷站</a>
+    <a href="funnysite" class="mobile-nav-link">FunnySite</a>
   
-    <a href="collection" class="mobile-nav-link">收藏</a>
+    <a href="collection" class="mobile-nav-link">Collection</a>
   
     <a href="about" class="mobile-nav-link">About</a>
-  
-    <a href="/mybooks" class="mobile-nav-link">🎁</a>
   
 </nav> -->
     
@@ -1064,12 +1333,9 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
   <script src="fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="js/scripts.js"></script>
-
-
-  <script src="js/home.js"></script>
-
-
+<script src="js/script.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
 
 
 
@@ -1077,8 +1343,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
 
 
-
-	<div style="display: none;">
+  <div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -1094,66 +1359,7 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
 
   </div>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            iTimeTraveler
-          </div>
-          <div class="panel-body">
-            Copyright © 2017 Mr.Seven All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

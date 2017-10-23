@@ -21,11 +21,7 @@
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-
-  
-
-  <link rel="icon" href="/gallery/avatar/0.svg">
-  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -37,331 +33,101 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
-  <script src="../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-
-  
-    <link rel="stylesheet" href="/css/home.css" >
-  
-
-  
-
-  
-
-  
-  
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
 
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "funnysite"; 
+
+  themeMenus["../collection"] = "collection"; 
+
+  themeMenus["../about"] = "关于"; 
+
+</script>
 
 
   <body>
 
 
-  
-    <header id="header">
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
 
-	<!-- 背景图模式 -->
-	
+          <h1 class="site-title">
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
+          </h1>
 
-    
-      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
 
-      <!-- Support rolling -->  
-        
-        <section class="awSlider">
-          <div class="carousel slide carousel-fade " data-ride="carousel">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-               
-                  
-                    <div class="item active">
-                  
-                    <img id="carousel-img0" src="https://source.unsplash.com/collection/954550/1920x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img0 = new Image();
-                      var imageTag0 = document.getElementById("carousel-img0");
-                      img0.src = imageTag0.src;
-                      img0.onload=function(){
-                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag0.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag0.style.height = document.body.clientHeight + "px";
-                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img1" src="https://source.unsplash.com/collection/954550/1920x1081">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img1 = new Image();
-                      var imageTag1 = document.getElementById("carousel-img1");
-                      img1.src = imageTag1.src;
-                      img1.onload=function(){
-                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag1.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag1.style.height = document.body.clientHeight + "px";
-                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1921x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img2 = new Image();
-                      var imageTag2 = document.getElementById("carousel-img2");
-                      img2.src = imageTag2.src;
-                      img2.onload=function(){
-                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag2.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag2.style.height = document.body.clientHeight + "px";
-                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img3" src="https://source.unsplash.com/collection/954550/1921x1081">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img3 = new Image();
-                      var imageTag3 = document.getElementById("carousel-img3");
-                      img3.src = imageTag3.src;
-                      img3.onload=function(){
-                        if (img3.width / img3.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag3.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag3.style.height = document.body.clientHeight + "px";
-                          imageTag3.style.marginLeft = -(document.body.clientHeight * img3.width / img3.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img4" src="https://source.unsplash.com/collection/954550/1920x1082">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img4 = new Image();
-                      var imageTag4 = document.getElementById("carousel-img4");
-                      img4.src = imageTag4.src;
-                      img4.onload=function(){
-                        if (img4.width / img4.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag4.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag4.style.height = document.body.clientHeight + "px";
-                          imageTag4.style.marginLeft = -(document.body.clientHeight * img4.width / img4.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img5" src="https://source.unsplash.com/collection/954550/1922x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img5 = new Image();
-                      var imageTag5 = document.getElementById("carousel-img5");
-                      img5.src = imageTag5.src;
-                      img5.onload=function(){
-                        if (img5.width / img5.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag5.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag5.style.height = document.body.clientHeight + "px";
-                          imageTag5.style.marginLeft = -(document.body.clientHeight * img5.width / img5.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img6" src="https://source.unsplash.com/collection/954550/1922x1082">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img6 = new Image();
-                      var imageTag6 = document.getElementById("carousel-img6");
-                      img6.src = imageTag6.src;
-                      img6.onload=function(){
-                        if (img6.width / img6.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag6.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag6.style.height = document.body.clientHeight + "px";
-                          imageTag6.style.marginLeft = -(document.body.clientHeight * img6.width / img6.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../funnysite">funnysite</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">collection</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">关于</a> </li>
+                    
+              </ul>
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Geri</span>
-            </a>
-            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">İleri</span>
-            </a>
-          </div>
-        </section>
-        <script>
-          $('section.awSlider .carousel').carousel({
-              pause: '',
-              interval: 5000
-          });
-          var startImage = $('section.awSlider .item.active > img').attr('src');
-          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
-              var bscn = $(this).find('.item.active > img').attr('src');
-              $('section.awSlider > img').attr('src', bscn);
-          });
-        </script>
-      
-
-    
- 
+          </nav>
 
 
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-		 function redraw(){
-		 	var pattern = Trianglify({
-				width: window.innerWidth,
-				height: window.innerHeight
-			});
-            pattern.canvas(c)
-        }
-        document.getElementById("intrologo").onclick = redraw
-        document.getElementById("intrologo").ontouchstart = redraw
-		redraw()
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
-        
-          <div class="homelogoback"  style="border: 1px solid #404040;" >
-            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
-            <h3>Someone knock at the door.</h3>
-            <h5>Mr.Seven</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
+      </div>
   </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="../../index.html">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../funnysite">酷站</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../collection">收藏</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../about">关于</a>
-        
-          <a id="beautifont" class="main-nav-link" href="../../mybooks">🎁</a>
-        
-      </p>
-  </div>
-
 </header>
-  
+
+
+
+
   <div id="container">
     <div id="wrap">
-      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
+          <section id="main">
   
     <article id="post-【Android】RxJava 入门详解"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -376,45 +142,43 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/12/19/【Android】RxJava 入门详解/" class="article-date">
-	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">2016-12-19</time>
+	Posted on <a href="../../2016/12/19/【Android】RxJava 入门详解/" class="article-date">
+	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">十二月 19, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>本文转载自 <a href="http://gank.io/post/560e15be2dca930e00da1083">给 Android 开发者的 RxJava 详解</a> —— by <a href="https://github.com/rengwuxian">扔物线</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJava 真是太难用了』，另外更多的人表示：我真的百度了也谷歌了，但我还是想问： RxJava 到底是什么？</p>
-<p>鉴于 RxJava 目前这种既火爆又神秘的现状，而我又在一年的使用过程中对 RxJava 有了一些理解，我决定写下这篇文章来对 RxJava 做一个相对详细的、针对 Android 开发者的介绍。</p>
-<p>这篇文章的目的有两个： </p>
-<ol>
-<li>给对 RxJava 感兴趣的人一些入门的指引 </li>
-<li>给正在使用 RxJava 但仍然心存疑惑的人一些更深入的解析</li>
-</ol>
-<p>在正文开始之前的最后，放上 GitHub 链接和引入依赖的 gradle 代码：<br>RxJava ： <a href="https://github.com/ReactiveX/RxJava">https://github.com/ReactiveX/RxJava</a><br>RxAndroid： <a href="https://github.com/ReactiveX/RxAndroid">https://github.com/ReactiveX/RxAndroid</a> </p>
-<p>引入依赖： </p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="comment">//（版本号是文章发布时的最新稳定版）</span></div><div class="line">compile <span class="string">'io.reactivex:rxjava:1.0.14'</span> </div><div class="line">compile <span class="string">'io.reactivex:rxandroid:1.0.1'</span></div></pre></td></tr></table></figure>
-        <!-- 
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/12/19/【Android】RxJava 入门详解/"><img width="250" height="175" src="/gallery/rxjava-introduction.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          
 本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线
 
-前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『Rx......  -->
-        <p class="article-more-link">
-          <a href="../../2016/12/19/【Android】RxJava 入门详解/#more">阅读全文</a>
-        </p>
+前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『Rx...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/12/19/【Android】RxJava 入门详解/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/RxJava/">RxJava</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -424,7 +188,7 @@
 
   
     <article id="post-【Android】APK瘦身记，实现将近一半的压缩效果"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -439,37 +203,43 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" class="article-date">
-	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">2016-11-30</time>
+	Posted on <a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" class="article-date">
+	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">十一月 30, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>本文转载自知乎： <a href="https://zhuanlan.zhihu.com/p/23882195"><strong>APK瘦身记，如何实现高达53%的压缩效果</strong></a> —— by <a href="https://www.zhihu.com/org/a-li-ju-an-quan-60">阿里聚安全</a></p>
-</blockquote>
-<h2 id="一、我是怎么思考这件事情的"><a href="#一、我是怎么思考这件事情的" class="headerlink" title="一、我是怎么思考这件事情的"></a><strong>一、我是怎么思考这件事情的</strong></h2><p>APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个思考和总结，所以随笔给大家，希望对大家从事相关工作的时候有所帮助和参考，同时也是抛砖引玉，希望大家共同探讨这个开放性的话题。</p>
-<p>关于为什么APK要瘦身，这个不多说，只从三个方面唠叨一下，对于用户（或者客户）来说，APK越大，在下载安装过程中，他们耗费的流量会越多，安装等待时间也会越长；对于产品本身，意味着下载转化率会越低（因为竞品中，用户有更多机会选择那个体验最好，功能最多，性能最好，包最小的）；对于研发来说，是一种优化改进技术的机会。</p>
-        <!-- 
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/"><img width="250" height="175" src="/gallery/apk.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          
 本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
 
-一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/#more">阅读全文</a>
-        </p>
+一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/APK/">APK</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -479,7 +249,7 @@
 
   
     <article id="post-基于社区发现算法和图分析Neo4j解读《权力的游戏》"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -494,34 +264,41 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" class="article-date">
-	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">2016-11-21</time>
+	Posted on <a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" class="article-date">
+	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">十一月 21, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Web/">Web</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
-<p>其中的分析和可视化是用Gephi做的，Gephi是非常流行的图分析工具。但作者觉得使用Neo4j来实现更有趣。</p>
-<h2 id="导入原始数据到Neo4j"><a href="#导入原始数据到Neo4j" class="headerlink" title="导入原始数据到Neo4j"></a>导入原始数据到Neo4j</h2><p>原始数据可<a href="https://www.macalester.edu/~abeverid/data/stormofswords.csv">从网络上下载</a>，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">Source,Target,Weight</div><div class="line">Aemon,Grenn,5</div><div class="line">Aemon,Samwell,31</div><div class="line">Aerys,Jaime,18</div><div class="line">...</div></pre></td></tr></table></figure>
-        <!-- 导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
-其中的分析和可视化是用Gep......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/#more">阅读全文</a>
-        </p>
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/"><img width="250" height="175" src="/gallery/Game-of-Thrones.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
+其中的分析和可视化是用Gep...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Web/">Web</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Neo4j/">Neo4j</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -531,7 +308,7 @@
 
   
     <article id="post-【D3.js】力导向布局 + 圆形图片展示的人物关系"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -546,36 +323,44 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" class="article-date">
-	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">2016-11-18</time>
+	Posted on <a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" class="article-date">
+	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">十一月 18, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： <a href="http://blog.csdn.net/lzhlzz/article/details/40450379"><strong>【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图</strong></a>，博主实现了下面这种样式，已经相当不错了。</p>
-<p><img src="http://img.blog.csdn.net/20161118161553200" alt=""></p>
-<p>但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：</p>
-        <!-- 前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/"><img width="250" height="175" src="http://img.blog.csdn.net/20161118161025881" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          前言使用d3的力学图（力导向图）与生活中常见的人物关系图结合，已经有了很好的例子： 【 D3.js 进阶系列 — 2.0 】 力学图 + 人物关系图，博主实现了下面这种样式，已经相当不错了。
 
 但是对于想把节点的方形图片换成圆形头像，网上的资料却很少，本例子就在上面的实例的基础上实现圆形头像，让人物关系图看起来更漂亮了一个档次。两个主要文件如下：
 
-# index.html&lt;html&......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/#more">阅读全文</a>
-        </p>
+# index.html&lt;html&...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/D3/">D3</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -585,7 +370,7 @@
 
   
     <article id="post-【Android】微信热修复 Tinker 的集成和使用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -600,39 +385,42 @@
     
     <div class="article-meta">
       
-	<a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="article-date">
-	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">2016-11-17</time>
+	Posted on <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="article-date">
+	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">十一月 17, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p> <strong><code>Tinker</code></strong>： n.   〈英〉小炉匠，补锅匠，修补匠</p>
-<p><a href="https://github.com/Tencent/tinker"><strong>Tinker</strong></a> 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 <code>dex</code>, <code>library</code> and <code>resources</code> 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。</p>
-<p>Tinker GitHub: <a href="https://github.com/Tencent/tinker">https://github.com/Tencent/tinker</a></p>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a><strong>使用步骤</strong></h2><h3 id="一个小坑"><a href="#一个小坑" class="headerlink" title="一个小坑"></a>一个小坑</h3><p>很多人遇到的第一个错误就是提示 <code>tinkerId is not set</code> ，这个在tinker-sample-android的<code>app/build.gradle</code> 中默认设置为Git的提交版本号，如下</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : gitSha()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果不是通过git clone方式下载的就可能出现这个错误，其实可以简单粗暴的方式解决，那就是在app/build.gradle中把tinker id写死：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="keyword">def</span> getTinkerIdValue() &#123;</div><div class="line">    <span class="keyword">return</span> hasProperty(<span class="string">"TINKER_ID"</span>) ? TINKER_ID : <span class="string">"tinker_id_2333"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面介绍一下如何一步步的把Tinker集成到自己的项目中，以及会遇到哪些问题该如何解决。</p>
-        <!-- 简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/"><img width="250" height="175" src="/gallery/tinker.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          简介 Tinker： n.   〈英〉小炉匠，补锅匠，修补匠
 Tinker 是微信官方开源的 Android 热修复框架，支持在无需升级APK的前提下更新 dex, library and resources 文件。它也就是今年9月24才刚刚开源，几天功夫star数就超过3000，可见在开发者中的影响力有多大，也说明这是一个刚需。
-Tinker GitHub: https://github.......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/#more">阅读全文</a>
-        </p>
+Tinker GitHub: https://github....
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Tinker/">Tinker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/hotfix/">hotfix</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -642,7 +430,7 @@ Tinker GitHub: https://github.......  -->
 
   
     <article id="post-【D3】Link Nodes by Name"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -657,34 +445,43 @@ Tinker GitHub: https://github.......  -->
     
     <div class="article-meta">
       
-	<a href="../../2016/11/16/【D3】Link Nodes by Name/" class="article-date">
-	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">2016-11-16</time>
+	Posted on <a href="../../2016/11/16/【D3】Link Nodes by Name/" class="article-date">
+	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">十一月 16, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Source : <a href="http://bl.ocks.org/mbostock/533daf20348023dfdd76">http://bl.ocks.org/mbostock/533daf20348023dfdd76</a></p>
-<p>This example shows how to link nodes in a <a href="http://bl.ocks.org/mbostock/4062045"><strong>force-directed graph</strong></a> using a named identifier rather than a numeric index.</p>
-        <!-- Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/16/【D3】Link Nodes by Name/"><img width="250" height="175" src="/gallery/d3_link-node-by-name.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          Source : http://bl.ocks.org/mbostock/533daf20348023dfdd76
 This example shows how to link nodes in a force-directed graph using a named identifier rather than a numeric index.
 
-# index.html&lt;!DOCT......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/16/【D3】Link Nodes by Name/#more">阅读全文</a>
-        </p>
+# index.html&lt;!DOCT...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/16/【D3】Link Nodes by Name/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/D3/">D3</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -694,7 +491,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
   
     <article id="post-Android 热修复原理和实现"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -709,25 +506,20 @@ This example shows how to link nodes in a force-directed graph using a named ide
     
     <div class="article-meta">
       
-	<a href="../../2016/11/10/Android 热修复原理和实现/" class="article-date">
-	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">2016-11-10</time>
+	Posted on <a href="../../2016/11/10/Android 热修复原理和实现/" class="article-date">
+	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">十一月 10, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>查看原文： <a href="http://kymjs.com/code/2016/05/08/01"><strong>Android 热修复，没你想的那么难</strong></a> —— by kymjs张涛</p>
-</blockquote>
-<p>一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。</p>
-<p>《插件化从放弃到捡起》第一章，首先看一张图：</p>
-<p><img src="http://img.blog.csdn.net/20161110131925707" alt=""></p>
-<p>这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 <a href="https://zhuanlan.zhihu.com/p/20308548">【Qzone 热修复方案】</a>为例，跟大家讲一讲插件化中 <code>热修复方案</code> 的实现。</p>
-        <!-- 
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/10/Android 热修复原理和实现/"><img width="250" height="175" src="/gallery/hotfix.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          
 查看原文： Android 热修复，没你想的那么难 —— by kymjs张涛
 
 一种动态加载最简单的实现方式，代码实现起来非常简单，重要的是这种思路和原理 。
@@ -735,18 +527,27 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
 这张图是我所理解的 Android 插件化技术的三个技术点以及它们的应用场景。今天以 【Qzone 热修复方案】为例，跟大家讲一讲插件化中 热修复方案 的实现。
 
-原理ClassLo......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/10/Android 热修复原理和实现/#more">阅读全文</a>
-        </p>
+原理ClassLo...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/10/Android 热修复原理和实现/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/hotfix/">hotfix</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -756,7 +557,7 @@ This example shows how to link nodes in a force-directed graph using a named ide
 
   
     <article id="post-使用Neo4j进行全栈Web开发"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -771,39 +572,42 @@ This example shows how to link nodes in a force-directed graph using a named ide
     
     <div class="article-meta">
       
-	<a href="../../2016/11/10/使用Neo4j进行全栈Web开发/" class="article-date">
-	  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">2016-11-10</time>
+	Posted on <a href="../../2016/11/10/使用Neo4j进行全栈Web开发/" class="article-date">
+	  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">十一月 10, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Web/">Web</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。</p>
-<h2 id="Neo4j是什么？"><a href="#Neo4j是什么？" class="headerlink" title="Neo4j是什么？"></a>Neo4j是什么？</h2><p><img src="http://img.blog.csdn.net/20161110104435615" alt="图1. Neo4j Web控制台"></p>
-<p>Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保存为节点以及节点之间的关系。在Neo4j中，节点以及关系都能够包含保存值的属性，此外：</p>
-<ul>
-<li>可以为节点设置零或多个<strong>标签</strong>（例如Author或Book）</li>
-<li>每个关系都对应一种<strong>类型</strong>（例如WROTE或FRIEND_OF）</li>
-<li>关系总是从一个节点指向另一个节点（但可以在不考虑指向性的情况下进行查询）</li>
-</ul>
-        <!-- 在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/11/10/使用Neo4j进行全栈Web开发/"><img width="250" height="175" src="/gallery/Neo4j.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。
 Neo4j是什么？
-Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/10/使用Neo4j进行全栈Web开发/#more">阅读全文</a>
-        </p>
+Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/10/使用Neo4j进行全栈Web开发/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Web/">Web</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Neo4j/">Neo4j</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -813,7 +617,7 @@ Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表
 
   
     <article id="post-D3.js加载本地json文件的问题"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -828,34 +632,43 @@ Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表
     
     <div class="article-meta">
       
-	<a href="../../2016/11/09/D3.js加载本地json文件的问题/" class="article-date">
-	  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">2016-11-09</time>
+	Posted on <a href="../../2016/11/09/D3.js加载本地json文件的问题/" class="article-date">
+	  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">十一月 9, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>打开本地html文件时，报错如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.</div><div class="line"></div><div class="line">Uncaught NetworkError: Failed to execute &apos;send&apos; on &apos;XMLHttpRequest&apos;: Failed to load</div></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>原因是因为浏览器为了安全性考虑，默认对跨域访问禁止，不允许直接读取本地文件。</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>给浏览器传入启动参数（allow-file-access-from-files），允许跨域访问。<br>Windows下，运行（CMD+R）或<code>右键桌面快捷方式-&gt;属性-&gt;目标</code>：</p>
-        <!-- 问题打开本地html文件时，报错如下
-XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource......  -->
-        <p class="article-more-link">
-          <a href="../../2016/11/09/D3.js加载本地json文件的问题/#more">阅读全文</a>
-        </p>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            问题打开本地html文件时，报错如下
+XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https, chrome-extension-resource.Uncaught NetworkError: Failed to execute &apos;send&apos; on &apos;XMLHttpRequest&apos;: Failed to load
+分析原因是因为浏览器为了安全性考虑，默认对跨域访问禁止，不允许直接读取本地文件。
+解决给浏...
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/11/09/D3.js加载本地json文件的问题/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/D3-js/">D3.js</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/D3/">D3</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -865,7 +678,7 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
 
   
     <article id="post-【Android】Broadcast广播机制总结"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
@@ -880,53 +693,47 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
     
     <div class="article-meta">
       
-	<a href="../../2016/10/25/【Android】Broadcast广播机制总结/" class="article-date">
-	  <time datetime="2016-10-25T08:06:00.000Z" itemprop="datePublished">2016-10-25</time>
+	Posted on <a href="../../2016/10/25/【Android】Broadcast广播机制总结/" class="article-date">
+	  <time datetime="2016-10-25T08:06:00.000Z" itemprop="datePublished">十月 25, 2016</time>
 	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>原文链接： <a href="http://www.cnblogs.com/lwbqqyumidi/p/4168017.html"><strong>Android总结篇系列：Android广播机制</strong></a></p>
-</blockquote>
-<h2 id="1-Android广播机制概述"><a href="#1-Android广播机制概述" class="headerlink" title="1. Android广播机制概述"></a><strong>1. Android广播机制概述</strong></h2><p>Android广播分为两个方面：广播发送者和广播接收者，通常情况下，BroadcastReceiver指的就是广播接收者（广播接收器）。广播作为Android组件间的通信方式，可以使用的场景如下：</p>
-<ol>
-<li><p>同一app内部的同一组件内的消息通信（单个或多个线程之间）；</p>
-</li>
-<li><p>同一app内部的不同组件之间的消息通信（单个进程）；</p>
-</li>
-<li><p>同一app具有多个进程的不同组件之间的消息通信；</p>
-</li>
-<li><p>不同app之间的组件之间消息通信；</p>
-</li>
-<li><p>Android系统在特定情况下与App之间的消息通信。</p>
-</li>
-</ol>
-<p>从实现原理看上，Android中的广播使用了观察者模式，基于消息的发布/订阅事件模型。因此，从实现的角度来看，Android中的广播将广播的发送者和接受者极大程度上解耦，使得系统能够方便集成，更易扩展。具体实现流程要点粗略概括如下：</p>
-        <!-- 
+        
+          <div class="entry-thumbnail">
+            <a href="../../2016/10/25/【Android】Broadcast广播机制总结/"><img width="250" height="175" src="/gallery/newyorkcity.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          
 原文链接： Android总结篇系列：Android广播机制
 
 1. Android广播机制概述Android广播分为两个方面：广播发送者和广播接收者，通常情况下，BroadcastReceiver指的就是广播接收者（广播接收器）。广播作为Android组件间的通信方式，可以使用的场景如下：
 
 同一app内部的同一组件内的消息通信（单个或多个线程之间）；
 
-同一app内部的不同组件之间的消......  -->
-        <p class="article-more-link">
-          <a href="../../2016/10/25/【Android】Broadcast广播机制总结/#more">阅读全文</a>
-        </p>
+同一app内部的不同组件之间的消...
+
+        
+          <p class="article-more-link">
+            <a href="../../2016/10/25/【Android】Broadcast广播机制总结/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
-    <footer class="article-footer">
+    <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
       
-      
+  <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Broadcast/">Broadcast</a></li></ul>
 
+      
+
+      
     </footer>
   </div>
   
@@ -939,32 +746,531 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../3/">&laquo; 上一页</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><span class="space">&hellip;</span><a class="page-number" href="../9/">9</a><a class="extend next" rel="next" href="../5/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="../3/">上一页</a><a class="page-number" href="../../index.html">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><span class="space">&hellip;</span><a class="page-number" href="../9/">9</a><a class="extend next" rel="next" href="../5/">下一页</a>
   </nav>
 
 </section>
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">起床了！</h3>
+<div class="widget">
+  <canvas id="c" style="background: url(/collection/code/img/window.jpg) no-repeat; 
+  background-size: contain;"></canvas>
+  <script type="text/javascript">
+
+  	var width = 300,
+  	height = 250,
+  	physics_accuracy = 3,
+	mouse_influence = 20,
+	mouse_cut = 5,
+	gravity = 1200,
+	cloth_height = 25,
+	cloth_width = 36,
+	start_y = 20,
+	spacing = 7,
+	tear_distance = 60;
+
+	window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+	function(callback) {
+	    window.setTimeout(callback, 1000 / 60);
+	};
+
+	var canvas, ctx, cloth, boundsx, boundsy, mouse = {
+	    down: false,
+	    button: 1,
+	    x: 0,
+	    y: 0,
+	    px: 0,
+	    py: 0
+	};
+
+	var Point = function(x, y) {
+
+	    this.x = x;
+	    this.y = y;
+	    this.px = x;
+	    this.py = y;
+	    this.vx = 0;
+	    this.vy = 0;
+	    this.pin_x = null;
+	    this.pin_y = null;
+
+	    this.constraints = [];
+	};
+
+	Point.prototype.update = function(delta) {
+
+	    if (mouse.down) {
+
+	        var diff_x = this.x - mouse.x,
+	        diff_y = this.y - mouse.y,
+	        dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
+
+	        if (mouse.button == 1) {
+
+	            if (dist < mouse_influence) {
+	                this.px = this.x - (mouse.x - mouse.px) * 1.8;
+	                this.py = this.y - (mouse.y - mouse.py) * 1.8;
+	            }
+
+	        } else if (dist < mouse_cut) this.constraints = [];
+	    }
+
+	    this.add_force(0, gravity);
+
+	    delta *= delta;
+	    nx = this.x + ((this.x - this.px) * .99) + ((this.vx / 2) * delta);
+	    ny = this.y + ((this.y - this.py) * .99) + ((this.vy / 2) * delta);
+
+	    this.px = this.x;
+	    this.py = this.y;
+
+	    this.x = nx;
+	    this.y = ny;
+
+	    this.vy = this.vx = 0
+	};
+
+	Point.prototype.draw = function() {
+
+	    if (this.constraints.length <= 0) return;
+
+	    var i = this.constraints.length;
+	    while (i--) this.constraints[i].draw();
+	};
+
+	Point.prototype.resolve_constraints = function() {
+
+	    if (this.pin_x != null && this.pin_y != null) {
+
+	        this.x = this.pin_x;
+	        this.y = this.pin_y;
+	        return;
+	    }
+
+	    var i = this.constraints.length;
+	    while (i--) this.constraints[i].resolve();
+
+	    if (this.x > boundsx) {
+
+	        this.x = 2 * boundsx - this.x;
+
+	    } else if (this.x < 1) {
+
+	        this.x = 2 - this.x;
+	    }
+
+	    if (this.y > boundsy) {
+
+	        this.y = 2 * boundsy - this.y;
+
+	    } else if (this.y < 1) {
+
+	        this.y = 2 - this.y;
+	    }
+	};
+
+	Point.prototype.attach = function(point) {
+
+	    this.constraints.push(new Constraint(this, point));
+	};
+
+	Point.prototype.remove_constraint = function(lnk) {
+
+	    var i = this.constraints.length;
+	    while (i--) if (this.constraints[i] == lnk) this.constraints.splice(i, 1);
+	};
+
+	Point.prototype.add_force = function(x, y) {
+
+	    this.vx += x;
+	    this.vy += y;
+	};
+
+	Point.prototype.pin = function(pinx, piny) {
+	    this.pin_x = pinx;
+	    this.pin_y = piny;
+	};
+
+	var Constraint = function(p1, p2) {
+
+	    this.p1 = p1;
+	    this.p2 = p2;
+	    this.length = spacing;
+	};
+
+	Constraint.prototype.resolve = function() {
+
+	    var diff_x = this.p1.x - this.p2.x,
+	    diff_y = this.p1.y - this.p2.y,
+	    dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y),
+	    diff = (this.length - dist) / dist;
+
+	    if (dist > tear_distance) this.p1.remove_constraint(this);
+
+	    var px = diff_x * diff * 0.5;
+	    var py = diff_y * diff * 0.5;
+
+	    this.p1.x += px;
+	    this.p1.y += py;
+	    this.p2.x -= px;
+	    this.p2.y -= py;
+	};
+
+	Constraint.prototype.draw = function() {
+
+	    ctx.moveTo(this.p1.x, this.p1.y);
+	    ctx.lineTo(this.p2.x, this.p2.y);
+	};
+
+	var Cloth = function() {
+
+	    this.points = [];
+
+	    var start_x = canvas.width / 2 - cloth_width * spacing / 2;
+
+	    for (var y = 0; y <= cloth_height; y++) {
+
+	        for (var x = 0; x <= cloth_width; x++) {
+
+	            var p = new Point(start_x + x * spacing, start_y + y * spacing);
+
+	            x != 0 && p.attach(this.points[this.points.length - 1]);
+	            y == 0 && p.pin(p.x, p.y);
+	            y != 0 && p.attach(this.points[x + (y - 1) * (cloth_width + 1)])
+
+	            this.points.push(p);
+	        }
+	    }
+	};
+
+	Cloth.prototype.update = function() {
+
+	    var i = physics_accuracy;
+
+	    while (i--) {
+	        var p = this.points.length;
+	        while (p--) this.points[p].resolve_constraints();
+	    }
+
+	    i = this.points.length;
+	    while (i--) this.points[i].update(.016);
+	};
+
+	Cloth.prototype.draw = function() {
+
+	    ctx.beginPath();
+
+	    var i = cloth.points.length;
+	    while (i--) cloth.points[i].draw();
+
+	    ctx.stroke();
+	};
+
+	function update() {
+
+	    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	    cloth.update();
+	    cloth.draw();
+
+	    requestAnimFrame(update);
+	}
+
+	function start() {
+
+	    canvas.onmousedown = function(e) {
+	        mouse.button = e.which;
+	        mouse.px = mouse.x;
+	        mouse.py = mouse.y;
+	        var rect = canvas.getBoundingClientRect();
+	        mouse.x = e.clientX - rect.left,
+	        mouse.y = e.clientY - rect.top,
+	        mouse.down = true;
+	        e.preventDefault();
+	    };
+
+	    canvas.onmouseup = function(e) {
+	        mouse.down = false;
+	        e.preventDefault();
+	    };
+
+	    canvas.onmousemove = function(e) {
+	        mouse.px = mouse.x;
+	        mouse.py = mouse.y;
+	        var rect = canvas.getBoundingClientRect();
+	        mouse.x = e.clientX - rect.left,
+	        mouse.y = e.clientY - rect.top,
+	        e.preventDefault();
+	    };
+
+	    canvas.oncontextmenu = function(e) {
+	        e.preventDefault();
+	    };
+
+	    boundsx = canvas.width - 1;
+	    boundsy = canvas.height - 1;
+
+	    ctx.strokeStyle = '#fff';
+	    cloth = new Cloth();
+	    update();
+	}
+
+	window.onload = function() {
+
+	    canvas = document.getElementById('c');
+	    ctx = canvas.getContext('2d');
+
+	    canvas.width = width;
+	    canvas.height = height;
+
+	    start();
+	};
+
+  </script>
+</div>
+</div>
+  
+    <div class="widget-wrap" style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 75%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="搜索">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../js/insight.js"></script>
+
+</div>
+</div>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">联系我们</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>最新文章</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2017/10/18/【算法】字符串是否包含问题/" title=""><img width="50" height="50" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/10/18/【算法】字符串是否包含问题/">【算法】字符串是否包含问题</a></h6>
+              <span>十月 18, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" title=""><img width="50" height="50" src="/gallery/android-asynctask/AsyncTask.webp" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/">【Android】源码分析 - AsyncTask异步任务机制</a></h6>
+              <span>十月 9, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/10/05/【Android】源码分析 - IntentService机制/">【Android】源码分析 - IntentService机制</a></h6>
+              <span>十月 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2017/09/30/【Android】EventBus 3.0源码分析/" title=""><img width="50" height="50" src="/gallery/EventBus/android_with_eventbus.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/09/30/【Android】EventBus 3.0源码分析/">【Android】EventBus 3.0 源码分析</a></h6>
+              <span>九月 30, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/">【Java】try-catch-finally语句中return的执行顺序思考</a></h6>
+              <span>九月 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="../../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" title=""><img width="50" height="50" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="../../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/">【算法】从多项式乘法到快速傅里叶变换</a></h6>
+              <span>九月 8, 2017</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/源码分析/">源码分析</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/Audio/" style="font-size: 10px;">Audio</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 13.33px;">D3</a> <a href="../../tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="../../tags/Exception/" style="font-size: 10px;">Exception</a> <a href="../../tags/GPU/" style="font-size: 10px;">GPU</a> <a href="../../tags/Google/" style="font-size: 13.33px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 11.67px;">Go语言</a> <a href="../../tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="../../tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 18.33px;">Java</a> <a href="../../tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 11.67px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 11.67px;">Neo4j</a> <a href="../../tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 11.67px;">hotfix</a> <a href="../../tags/源码分析/" style="font-size: 15px;">源码分析</a>
+    </div>
+  </div>
+
+  
+</aside>
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
+      <footer id="footer" class="site-footer">
   
 
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 iTimeTraveler All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
@@ -972,16 +1278,9 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
 <!-- min height -->
 
 <script>
-    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
 
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
     </div>
     <!-- <nav id="mobile-nav">
@@ -994,13 +1293,11 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
   
     <a href="../../tags" class="mobile-nav-link">Tags</a>
   
-    <a href="../../funnysite" class="mobile-nav-link">酷站</a>
+    <a href="../../funnysite" class="mobile-nav-link">FunnySite</a>
   
-    <a href="../../collection" class="mobile-nav-link">收藏</a>
+    <a href="../../collection" class="mobile-nav-link">Collection</a>
   
     <a href="../../about" class="mobile-nav-link">About</a>
-  
-    <a href="../../mybooks" class="mobile-nav-link">🎁</a>
   
 </nav> -->
     
@@ -1041,12 +1338,9 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
   <script src="../../fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="../../js/scripts.js"></script>
-
-
-  <script src="../../js/home.js"></script>
-
-
+<script src="../../js/script.js"></script>
+<script src="../../js/bootstrap.js"></script>
+<script src="../../js/main.js"></script>
 
 
 
@@ -1054,8 +1348,7 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
 
 
 
-
-	<div style="display: none;">
+  <div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -1071,66 +1364,7 @@ XMLHttpRequest cannot load file:/cities.csv. Cross origin requests are only supp
 
   </div>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            iTimeTraveler
-          </div>
-          <div class="panel-body">
-            Copyright © 2017 Mr.Seven All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
