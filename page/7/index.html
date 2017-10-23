@@ -118,7 +118,7 @@ var themeMenus = {};
         
           <section id="main">
   
-    <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -126,7 +126,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/">【Java】按位存储：使用int存储boolean数组</a>
+      <a class="article-title" href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/">【Android】技术调研：用代码模拟屏幕点击、触摸事件</a>
     </h1>
   
 
@@ -134,7 +134,7 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	Posted on <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
 	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
 	</a>
 
@@ -143,18 +143,19 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
+          <div class="entry-thumbnail">
+            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/"><img width="250" height="175" src="/gallery/touch-screen.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
           
-            <div class="entry-summary" style="margin-left:0;">
-            
-有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
+在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
 
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
-          
+经过调研发现，给系统模拟注入输入事件有如下几种方式：
+一、使用shell命令使用android自带的adb shell，里面自带一个input工具...
 
         
           <p class="article-more-link">
-            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">阅读全文</a>
+            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more">阅读全文</a>
           </p>
         </div>
       
@@ -162,11 +163,11 @@ var themeMenus = {};
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
       
             
@@ -878,10 +879,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
           <li class="clearfix">
 
             
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/10/18/【算法】字符串是否包含问题/" title=""><img width="50" height="50" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
+              <div class="widget-entry-summary" style="margin: 0;">
             
 
               <h6 style="margin: 0;"><a href="../../2017/10/18/【算法】字符串是否包含问题/">【算法】字符串是否包含问题</a></h6>
@@ -951,7 +949,7 @@ public： Java语言中访问限制最宽的修饰符，一般称之为“公共
 
             
               <div class="widget-entry-thumbnail">
-                <a href="../../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" title=""><img width="50" height="50" src="/gallery/android-common/FFT_of_Cosine_Summation_Function.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+                <a href="../../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" title=""><img width="50" height="50" src="/gallery/android_common/FFT-of-Cosine-Summation-Function.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
               <div class="widget-entry-summary">
             
