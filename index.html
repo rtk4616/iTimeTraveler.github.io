@@ -275,19 +275,17 @@ HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使�
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
+          <div class="entry-thumbnail">
+            <a href="2017/10/05/【Android】源码分析 - IntentService机制/"><img width="250" height="175" src="/gallery/Android-IntentService-feature-graphic.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
 
 AsyncTask：封装了线程池和Handler，主要为了子线程更新UI；
 HandlerThread：一个已经拥有了Looper的线程类，内部可以直接使用Handler；
 IntentService：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；
 
-今天我们来根据平时的使用方式来分析一下第三个IntentSevice到底是什么怎么实现的？
-IntentService的使用IntentService继承了Service并且它本身是一个抽象类，因此使用它必须创建它的子类才能使用。所以这里我们自定义一个MyIntentService，来处理异步任务：
-...
-          
+今...
 
         
           <p class="article-more-link">
@@ -585,7 +583,7 @@ IntentService的使用IntentService继承了Service并且它本身是一个抽�
       
         
           <div class="entry-thumbnail">
-            <a href="2017/08/05/【算法】反转字符串/"><img width="250" height="175" src="/gallery/george-booles-200th-birthday.gif" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="2017/08/05/【算法】反转字符串/"><img width="250" height="175" src="/gallery/android-common/reverse-string.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           前言研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。
@@ -646,7 +644,7 @@ IntentService的使用IntentService继承了Service并且它本身是一个抽�
       
         
           <div class="entry-thumbnail">
-            <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/"><img width="250" height="175" src="/gallery/14987336455200.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            <a href="2017/08/03/【Android】源码分析 - Handler消息机制再梳理/"><img width="250" height="175" src="/gallery/android-handler/1476414616125381.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
           </div>
           <div class="entry-summary">
           前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 An...
@@ -1172,7 +1170,10 @@ IntentService的使用IntentService继承了Service并且它本身是一个抽�
           <li class="clearfix">
 
             
-              <div class="widget-entry-summary" style="margin: 0;">
+              <div class="widget-entry-thumbnail">
+                <a href="2017/10/05/【Android】源码分析 - IntentService机制/" title=""><img width="50" height="50" src="/gallery/Android-IntentService-feature-graphic.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
             
 
               <h6 style="margin: 0;"><a href="2017/10/05/【Android】源码分析 - IntentService机制/">【Android】源码分析 - IntentService机制</a></h6>

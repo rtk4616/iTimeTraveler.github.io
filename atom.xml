@@ -282,7 +282,7 @@
     <link href="http://github.com/2017/10/05/%E3%80%90Android%E3%80%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20IntentService%E6%9C%BA%E5%88%B6/"/>
     <id>http://github.com/2017/10/05/【Android】源码分析 - IntentService机制/</id>
     <published>2017-10-05T08:03:00.000Z</published>
-    <updated>2017-10-10T03:13:52.116Z</updated>
+    <updated>2017-10-23T03:33:04.046Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有</p>
 <ol>
@@ -1102,7 +1102,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/08/05/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     <id>http://github.com/2017/08/05/【算法】反转字符串/</id>
     <published>2017-08-05T14:20:55.000Z</published>
-    <updated>2017-08-07T02:39:44.235Z</updated>
+    <updated>2017-10-23T03:40:09.064Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>研究算法能提高我们的编程功底，更好地编写出高效稳健的代码。今天，我们研究的是 —— 反转字符串。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//输入一个字符串，输出它的倒序字符串</span></div><div class="line">input:  Hello</div><div class="line">output: olleH</div></pre></td></tr></table></figure>
@@ -1194,7 +1194,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/08/03/%E3%80%90Android%E3%80%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20Handler%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%86%8D%E6%A2%B3%E7%90%86/"/>
     <id>http://github.com/2017/08/03/【Android】源码分析 - Handler消息机制再梳理/</id>
     <published>2017-08-03T08:03:00.000Z</published>
-    <updated>2017-10-01T07:55:14.067Z</updated>
+    <updated>2017-10-23T03:35:02.974Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Android 消息机制无非就是：</p>
 <ol>
