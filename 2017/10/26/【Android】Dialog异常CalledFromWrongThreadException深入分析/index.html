@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【android】dialog异常calledfromwrongthreadexception深入分析 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="源码分析" />
+  
+  
+  
+  
+  <meta name="description" content="问题在使用Dialog时，因为线程问题，在调用dismiss方法时出现了CalledFromWrongThreadException的Crash，如下：
+android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android】Dialog异常CalledFromWrongThreadException深入分析">
+<meta property="og:url" content="http://github.com/2017/10/26/【Android】Dialog异常CalledFromWrongThreadException深入分析/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="问题在使用Dialog时，因为线程问题，在调用dismiss方法时出现了CalledFromWrongThreadException的Crash，如下：
+android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch">
+<meta property="og:image" content="http://github.com/gallery/android_common/components-dialogs-usage2.png">
+<meta property="og:updated_time" content="2017-10-26T11:30:50.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android】Dialog异常CalledFromWrongThreadException深入分析">
+<meta name="twitter:description" content="问题在使用Dialog时，因为线程问题，在调用dismiss方法时出现了CalledFromWrongThreadException的Crash，如下：
+android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch">
+<meta name="twitter:image" content="http://github.com/gallery/android_common/components-dialogs-usage2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "酷站"; 
+
+  themeMenus["../collection"] = "收藏"; 
+
+  themeMenus["../about"] = "关于"; 
+
+  themeMenus["mybooks"] = "🎁"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【Android】Dialog异常CalledFromWrongThreadException深入分析" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/android_common/components-dialogs-usage2.png" rel="gallery_cj98e1s8h0027d4mypdyisbbx">
+        <img src="../../../../gallery/android_common/components-dialogs-usage2.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Android】Dialog异常CalledFromWrongThreadException深入分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2017-10-26T14:20:55.000Z" itemprop="datePublished">十月 26, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在使用Dialog时，因为线程问题，在调用dismiss方法时出现了CalledFromWrongThreadException的Crash，如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.</div></pre></td></tr></table></figure>
+<p>抛出异常为<code>CalledFromWrongThreadException</code>，很明显第一反应就是出现了非ui线程进行了ui操作造成了此异常。通过分析工程代码，发现本质上是因为在非ui线程中创建了Dialog，而在主线程（即ui线程）中调用了<code>show()</code>以及<code>dismiss()</code>方法，我把问题模型写成测试代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MainActivity test"</span>;</div><div class="line">    <span class="keyword">private</span> ProgressDialog dialog;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        EventBus.getDefault().register(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                Looper.prepare();</div><div class="line"></div><div class="line">                <span class="comment">//子线程中创建Dialog</span></div><div class="line">                dialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</div><div class="line">                dialog.setCanceledOnTouchOutside(<span class="keyword">true</span>);</div><div class="line">                dialog.setOnCancelListener(<span class="keyword">new</span> DialogInterface.OnCancelListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCancel</span><span class="params">(DialogInterface dialog)</span> </span>&#123;</div><div class="line">                        Log.d(TAG, <span class="string">"Dialog onCancel thread: "</span> + getThreadInfo());</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">                dialog.setOnDismissListener(<span class="keyword">new</span> DialogInterface.OnDismissListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDismiss</span><span class="params">(DialogInterface dialog)</span> </span>&#123;</div><div class="line">                        Log.d(TAG, <span class="string">"Dialog onDismiss thread: "</span> + getThreadInfo());</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">                dialog.setMessage(<span class="string">"正在加载..."</span>);</div><div class="line">                Log.d(TAG, <span class="string">"Dialog create thread: "</span> + getThreadInfo());</div><div class="line"></div><div class="line">                Looper.loop();</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line"></div><div class="line">        Button btn = (Button) findViewById(R.id.btn_helloworld);</div><div class="line">        btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                <span class="comment">//UI主线程中show，然后点击空白区域dismiss</span></div><div class="line">                dialog.show();</div><div class="line">                Log.d(TAG, <span class="string">"Dialog show thread: "</span> + getThreadInfo());</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 输出线程信息</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getThreadInfo</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"["</span> + Thread.currentThread().getId() + <span class="string">"]"</span> +</div><div class="line">                ((Looper.myLooper() == Looper.getMainLooper())? <span class="string">" is UI-Thread"</span> : <span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就是Activity打开的时候，使用work子线程创建了一个Dialog，然后手动点击按钮的时候，显示Dialog。再点击空白处，dialog本应该dismiss的，但是直接crash了。抛出了<code>CalledFromWrongThreadException</code>的异常。</p>
+<p>在上面的代码中，我顺便输出了Dialog每个操作的线程ID，同时会判定是不是ui主线程。我们来看看log：</p>
+<blockquote>
+<p>10-26 16:11:07.836 7405-7652/com.cuc.myandroidtest D/MainActivity test: Dialog create thread: [3953]<br>10-26 16:11:27.763 7405-7405/com.cuc.myandroidtest D/MainActivity test: Dialog show thread: [1] is UI-Thread<br>10-26 16:11:35.642 7405-7652/com.cuc.myandroidtest D/MainActivity test: Dialog onCancel thread: [3953]</p>
+<p>——– beginning of crash</p>
+</blockquote>
+<p>可以看到，以上出现的问题中执行Dialog操作的线程信息如下：</p>
+<ul>
+<li>创建Dialog：work子线程</li>
+<li>show()：ui主线程</li>
+<li>cancel()：work子线程</li>
+<li>dismiss()：因为crash没有执行到，未知</li>
+</ul>
+<p>如果说<strong>只有创建这个控件的线程才能去更新该控件的内容</strong>。那么在调用show方法的时候为什么不会crash，然后dismiss的时候才会崩溃？</p>
+<p>另外，到底是不是所有的操作都必须放到ui线程中执行才对？带着疑问我们深入Dialog源码一看究竟。</p>
+<a id="more"></a>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>我们先看Dialog的dismiss方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Dismiss this dialog, removing it from the screen. This method can be</div><div class="line"> * invoked safely from any thread.  Note that you should not override this</div><div class="line"> * method to do cleanup when the dialog is dismissed, instead implement</div><div class="line"> * that in &#123;<span class="doctag">@link</span> #onStop&#125;.</div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dismiss</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (Looper.myLooper() == mHandler.getLooper()) &#123;</div><div class="line">        dismissDialog();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        mHandler.post(mDismissAction);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> Runnable mDismissAction = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        dismissDialog();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>我们先看注释，意思是<strong>dismiss()这个函数可以在任意线程中调用，不用担心线程安全问题</strong>。</p>
+<p>很明显，dialog对于ui操作做了特别处理。如果当前执行dismiss操作的线程和mHandler所依附的线程不一致的话那么就会将dismiss操作丢到对应的mHandler的线程队列中等待执行。那么这个Handler又是哪里来的呢？</p>
+<p>我们开始调查，可以看到<code>mHandler</code>对象是Dialog类中私有的，会在new Dialog的时候自动初始化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">public class Dialog implements DialogInterface, Window.Callback,</div><div class="line">        KeyEvent.Callback, OnCreateContextMenuListener, Window.OnWindowDismissedCallback &#123;</div><div class="line"></div><div class="line">    private final Handler mHandler = new Handler();</div><div class="line">    </div><div class="line">    //...省略其余代码...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以分析得出，该mHandler直接关联的就是new Dialog的线程。也就能得出以下结论：</p>
+<blockquote>
+<p><strong>结论一</strong>：最终真正执行<code>dismissDialog()</code>方法销毁Dialog的线程就是new Dialog的线程。</p>
+</blockquote>
+<p>然后我们跟进去<code>dismissDialog()</code>看看到底如何销毁Dialog的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dismissDialog</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mDecor == <span class="keyword">null</span> || !mShowing) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (mWindow.isDestroyed()) &#123;</div><div class="line">        Log.e(TAG, <span class="string">"Tried to dismissDialog() but the Dialog's window was already destroyed!"</span>);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        mWindowManager.removeViewImmediate(mDecor);</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="keyword">if</span> (mActionMode != <span class="keyword">null</span>) &#123;</div><div class="line">            mActionMode.finish();</div><div class="line">        &#125;</div><div class="line">        mDecor = <span class="keyword">null</span>;</div><div class="line">        mWindow.closeAllPanels();</div><div class="line">        onStop();</div><div class="line">        mShowing = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        sendDismissMessage();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看出最终调用了<code>mWindowManager.removeViewImmediate(mDecor);</code>来销毁Dialog，继续跟进<code>removeViewImmediate()</code>这个方法。发现<code>mWindowManager</code>的类WindowManager是个abstract的类，我们来找找本尊。</p>
+<h4 id="Dialog中mWindowManager对象的来历"><a href="#Dialog中mWindowManager对象的来历" class="headerlink" title="Dialog中mWindowManager对象的来历"></a>Dialog中mWindowManager对象的来历</h4><p>发现<code>mWindowManager</code>这个对象的初始化是在Dialog的构造函数中：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Dialog(Context context, <span class="keyword">int</span> theme, <span class="keyword">boolean</span> createContextThemeWrapper) &#123;</div><div class="line">    <span class="keyword">if</span> (createContextThemeWrapper) &#123;</div><div class="line">        <span class="keyword">if</span> (theme == <span class="number">0</span>) &#123;</div><div class="line">            TypedValue outValue = <span class="keyword">new</span> TypedValue();</div><div class="line">            context.getTheme().resolveAttribute(com.android.internal.R.attr.dialogTheme,</div><div class="line">                    outValue, <span class="keyword">true</span>);</div><div class="line">            theme = outValue.resourceId;</div><div class="line">        &#125;</div><div class="line">        mContext = <span class="keyword">new</span> ContextThemeWrapper(context, theme);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        mContext = context;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">    Window w = PolicyManager.makeNewWindow(mContext);</div><div class="line">    mWindow = w;</div><div class="line">    w.setCallback(<span class="keyword">this</span>);</div><div class="line">    w.setOnWindowDismissedCallback(<span class="keyword">this</span>);</div><div class="line">    w.setWindowManager(mWindowManager, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    w.setGravity(Gravity.CENTER);</div><div class="line">    mListenersHandler = <span class="keyword">new</span> ListenersHandler(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它是通过<code>context.getSystemService(Context.WINDOW_SERVICE);</code>得到的，这里的context肯定就是Activity了，我们去Activity中找<code>getSystemService()</code>函数：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getSystemService</span><span class="params">(@ServiceName @NonNull String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (getBaseContext() == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</div><div class="line">                <span class="string">"System services not available to Activities before onCreate()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (WINDOW_SERVICE.equals(name)) &#123;</div><div class="line">        <span class="keyword">return</span> mWindowManager;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (SEARCH_SERVICE.equals(name)) &#123;</div><div class="line">        ensureSearchManager();</div><div class="line">        <span class="keyword">return</span> mSearchManager;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getSystemService(name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Context context, ActivityThread aThread,</span></span></div><div class="line">        Instrumentation instr, IBinder token, <span class="keyword">int</span> ident,</div><div class="line">        Application application, Intent intent, ActivityInfo info,</div><div class="line">        CharSequence title, Activity parent, String id,</div><div class="line">        NonConfigurationInstances lastNonConfigurationInstances,</div><div class="line">        Configuration config, IVoiceInteractor voiceInteractor) &#123;</div><div class="line"></div><div class="line">    mWindow.setWindowManager((WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</div><div class="line">            mToken, mComponent.flattenToString(),</div><div class="line">            (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != <span class="number">0</span>);</div><div class="line"></div><div class="line">    mWindowManager = mWindow.getWindowManager();</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其他代码...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们看到<code>mWindowManager</code>这个对象是在Activity被创建之后调用attach函数的时候通过<code>mWindow.setWindowManager()</code>初始化的，而这个函数里干了什么呢？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWindowManager</span><span class="params">(WindowManager wm, IBinder appToken, String appName,</span></span></div><div class="line">        <span class="keyword">boolean</span> hardwareAccelerated) &#123;</div><div class="line">    mAppToken = appToken;</div><div class="line">    mAppName = appName;</div><div class="line">    mHardwareAccelerated = hardwareAccelerated</div><div class="line">            || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">if</span> (wm == <span class="keyword">null</span>) &#123;</div><div class="line">        wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">    &#125;</div><div class="line">    mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到<code>mWindowManager</code>这个对象最终来源于<code>WindowManagerImpl</code>类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">WindowManagerImpl</span> <span class="keyword">implements</span> <span class="title">WindowManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Display mDisplay;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Window mParentWindow;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> WindowManagerImpl <span class="title">createLocalWindowManager</span><span class="params">(Window parentWindow)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WindowManagerImpl(mDisplay, parentWindow);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params)</span> </span>&#123;</div><div class="line">        mGlobal.addView(view, params, mDisplay, mParentWindow);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        mGlobal.removeView(view, <span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeViewImmediate</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        mGlobal.removeView(view, <span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在其中我们终于看到了<code>removeViewImmediate()</code>函数的身影，也就是说，在执行Dialog销毁的函数<code>dismissDialog()</code>中，最终调用了<code>mWindowManager.removeViewImmediate(mDecor);</code>来销毁Dialog。实际上调用的就是<code>WindowManagerImpl</code>实例中的<code>removeViewImmediate()</code>方法。</p>
+<p>而它又调用的是<code>WindowManagerGlobal</code>的<code>removeView()</code>函数：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view, <span class="keyword">boolean</span> immediate)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (view == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"view must not be null"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">        <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">true</span>);</div><div class="line">        View curView = mRoots.get(index).getView();</div><div class="line">        removeViewLocked(index, immediate);</div><div class="line">        <span class="keyword">if</span> (curView == view) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Calling with view "</span> + view</div><div class="line">                + <span class="string">" but the ViewAncestor is attached to "</span> + curView);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeViewLocked</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">boolean</span> immediate)</span> </span>&#123;</div><div class="line">    ViewRootImpl root = mRoots.get(index);</div><div class="line">    View view = root.getView();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</div><div class="line">        InputMethodManager imm = InputMethodManager.getInstance();</div><div class="line">        <span class="keyword">if</span> (imm != <span class="keyword">null</span>) &#123;</div><div class="line">            imm.windowDismissed(mViews.get(index).getWindowToken());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">boolean</span> deferred = root.die(immediate);</div><div class="line">    <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</div><div class="line">        view.assignParent(<span class="keyword">null</span>);</div><div class="line">        <span class="keyword">if</span> (deferred) &#123;</div><div class="line">            mDyingViews.add(view);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意这句<code>boolean deferred = root.die(immediate);</code>，其中root对象是个<code>ViewRootImpl</code>的实例，我们看看它的<code>die()</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">die</span><span class="params">(<span class="keyword">boolean</span> immediate)</span> </span>&#123;</div><div class="line">    <span class="comment">// Make sure we do execute immediately if we are in the middle of a traversal or the damage</span></div><div class="line">    <span class="comment">// done by dispatchDetachedFromWindow will cause havoc on return.</span></div><div class="line">    <span class="keyword">if</span> (immediate &amp;&amp; !mIsInTraversal) &#123;</div><div class="line">        doDie();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="comment">//...省略其余代码...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">doDie</span><span class="params">()</span> </span>&#123;</div><div class="line">    checkThread();</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终，执行到了<code>ViewRootImpl</code>类的<code>doDie()</code>方法，这个方法的第一句就是<code>checkThread()</code>，根据<a href="https://my.oschina.net/qixiaobo025/blog/195396" target="_blank" rel="external">Android4.4DialogUI线程CalledFromWrongThreadExcection</a>这篇文章，我们知道最终抛出异常的位置就是是在<code>ViewRootImpl</code>代码中的<code>checkThread</code>函数：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkThread</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mThread != Thread.currentThread()) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> CalledFromWrongThreadException(</div><div class="line">                <span class="string">"Only the original thread that created a view hierarchy can touch its views."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也就是说，当调用Dialog的<code>dismiss()</code>方法时，Dialog会自动抛到new Dialog的线程中执行，而这个线程就是当前的<code>Thread.currentThread()</code>。换句话说ViewRootImpl本身的mThread和这个new Dialog的线程不是同一个线程。然后我们看看这个ViewRootImpl本身的mThread的来源在何处。</p>
+<h4 id="ViewRootImpl中mThread的来历"><a href="#ViewRootImpl中mThread的来历" class="headerlink" title="ViewRootImpl中mThread的来历"></a>ViewRootImpl中mThread的来历</h4><p>在ViewRootImpl的构造函数中发现了mThread赋值的地方：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ViewRootImpl</span><span class="params">(Context context, Display display)</span> </span>&#123;</div><div class="line">    mThread = Thread.currentThread();</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那这个ViewRootImpl什么时候调用这个构造函数创建实例的呢？我们刚才在<code>WindowManagerGlobal</code>的<code>removeView()</code>函数中，看到了<code>root</code>对象是从<code>mRoots</code>对象中取出来的，而<code>mRoots</code>是一个ArrayList\<viewrootimpl\>。</viewrootimpl\></p>
+<p>所以我们来<code>WindowManagerGlobal</code>中找找<code>mRoots.add()</code>的地方，发现是在它的<code>addView()</code>函数中创建了一个<code>ViewRootImpl</code>对象并添加到了<code>mRoots</code>这个list中：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params,</span></span></div><div class="line">        Display display, Window parentWindow) &#123;</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码.....</span></div><div class="line"></div><div class="line">    ViewRootImpl root;</div><div class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">       </div><div class="line">       <span class="comment">//...省略其余代码.....</span></div><div class="line"></div><div class="line">        root = <span class="keyword">new</span> ViewRootImpl(view.getContext(), display);</div><div class="line">        mRoots.add(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// do this last because it fires off messages to start doing things</span></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        root.setView(view, wparams, panelParentView);</div><div class="line">    &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</div><div class="line">        <span class="comment">// BadTokenException or InvalidDisplayException, clean up.</span></div><div class="line">        <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">            <span class="keyword">final</span> <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">false</span>);</div><div class="line">            <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</div><div class="line">                removeViewLocked(index, <span class="keyword">true</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">throw</span> e;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>而这个<code>addView</code>方法什么时候会调用呢？就是<code>WindowManagerImpl</code>。</p>
+<p>就是刚才分析Dialog中<code>mWindowManager</code>对象的来历时，知道了它其实是<code>WindowManagerImpl</code>类的一个实例，WindowManagerImpl会通过<code>WindowManagerGlobal</code>的<code>removeView()</code>方法去实现removeView。同理，此处<code>WindowManagerGlobal</code>的<code>addView()</code>方法也是被WindowManagerImpl调用的。</p>
+<p>我们在Dialog的源码中找一下<code>mWindowManager</code>对象调用<code>addView()</code>方法的地方，很让人惊喜，它竟然在Dialog的<code>show()</code>方法中出现了：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//...省略其余代码.....</span></div><div class="line">    onStart();</div><div class="line">    mDecor = mWindow.getDecorView();</div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        mWindowManager.addView(mDecor, l);</div><div class="line">        mShowing = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        sendShowMessage();</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也就是说，Dialog的<code>show()</code>方法，会通过<code>mWindowManager.addView(mDecor, l);</code>创建一个<code>ViewRootImpl</code>的对象，这个对象会在创建的时候保存一个当前线程的Thread对象。也就是调用Dialog的<code>show()</code>方法的线程。</p>
+<p>而在调用Dialog的<code>dismiss()</code>方法时，会首先把它抛到new Dialog的线程中执行，最后通过调用<code>mWindowManager.removeViewImmediate()</code>来销毁View，此时也就自然调用到了<code>ViewRootImpl</code>对象的<code>doDie()</code>方法，这个方法中会<code>checkThread();</code>，此时会检查当前线程（也就是调用new Dialog的线程）是不是创建<code>ViewRootImpl</code>的对象的线程（也就是Dialog的<code>show()</code>方法的线程）。</p>
+<p>到这里，本文的bug根源也就找到了说通了。我们再来熟悉一下这个异常的场景。</p>
+<ul>
+<li>创建Dialog：work子线程</li>
+<li>show()：ui主线程</li>
+<li>cancel()：work子线程</li>
+<li>dismiss()：因为crash没有执行到，未知（其实是抛到了work子线程）</li>
+</ul>
+<p>现在就明确了，执行<code>show()</code>方法的时候<code>ViewRootImpl</code>没有<code>checkThread()</code>，所以不会出现crash。而在执行<code>dismiss()</code>的时候，它首先被抛到创建Dialog的线程中执行，而后真正销毁View时<code>ViewRootImpl</code>会<code>checkThread()</code>，保证addView的线程才能removeView。而在文章开头出错的例子中，Dialog的<code>show()</code>是在主线程执行，<code>new Dialog()</code>是在work子线程中执行的，所以抛出了<code>CalledFromWrongThreadException</code>的异常。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><ol>
+<li><p>Dialog的<code>dismiss()</code>会首先被抛到new Dialog的线程中执行。</p>
+</li>
+<li><p>只要保证创建Dialog和<code>show()</code>方法在同一个线程中执行，无论是在放到ui线程还是work子线程都可以。</p>
+</li>
+</ol>
+<p>比如，把文章开头的例子中的<code>show()</code>方法同样放到work线程中，可以正常执行，输出log如下：</p>
+<blockquote>
+<p>10-26 19:23:02.603 27689-27760/com.cuc.myandroidtest D/MainActivity test: Dialog create thread: [4213]<br>10-26 19:23:02.686 27689-27760/com.cuc.myandroidtest D/MainActivity test: Dialog show thread: [4213]<br>10-26 19:23:07.243 27689-27760/com.cuc.myandroidtest D/MainActivity test: Dialog onCancel thread: [4213]<br>10-26 19:23:07.243 27689-27760/com.cuc.myandroidtest D/MainActivity test: Dialog onDismiss thread: [4213]</p>
+</blockquote>
+<h3 id="版本差异"><a href="#版本差异" class="headerlink" title="版本差异"></a>版本差异</h3><p>注意，本文的这个<code>CalledFromWrongThreadException</code>异常，是在4.4版本及以上才会出现的。具体区别可以参考这篇文章：<a href="https://my.oschina.net/qixiaobo025/blog/195396" target="_blank" rel="external">Android4.4DialogUI线程CalledFromWrongThreadExcection</a></p>
+<p>4.2中Dialog的dismissDialog和4.4中Dialog的dismissDialog区别如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//4.2中Dialog的dismissDialog</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    mWindowManager.removeView(mDecor);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//4.4中Dialog的dismissDialog</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    mWindowManager.removeViewImmediate(mDecor);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://my.oschina.net/qixiaobo025/blog/195396" target="_blank" rel="external">Android4.4DialogUI线程CalledFromWrongThreadExcection</a></li>
+<li><a href="http://blog.csdn.net/qq_32059827/article/details/51689309" target="_blank" rel="external">Android异常：android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original</a></li>
+<li><a href="http://blog.csdn.net/kc58236582/article/details/52088224" target="_blank" rel="external">Activity WMS ViewRootImpl三者关系（Activity创建窗口 按键分发等）</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../18/【算法】字符串是否包含问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【算法】字符串是否包含问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dialog中mWindowManager对象的来历"><span class="nav-number">2.1.</span> <span class="nav-text">Dialog中mWindowManager对象的来历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewRootImpl中mThread的来历"><span class="nav-number">2.2.</span> <span class="nav-text">ViewRootImpl中mThread的来历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本差异"><span class="nav-number">4.</span> <span class="nav-text">版本差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
