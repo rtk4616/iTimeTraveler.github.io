@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2017-10-26T11:30:50.460Z</updated>
+  <updated>2017-10-27T01:53:34.718Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://github.com/2017/10/26/%E3%80%90Android%E3%80%91Dialog%E5%BC%82%E5%B8%B8CalledFromWrongThreadException%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/"/>
     <id>http://github.com/2017/10/26/【Android】Dialog异常CalledFromWrongThreadException深入分析/</id>
     <published>2017-10-26T14:20:55.000Z</published>
-    <updated>2017-10-26T11:30:50.460Z</updated>
+    <updated>2017-10-27T01:53:34.718Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在使用Dialog时，因为线程问题，在调用dismiss方法时出现了CalledFromWrongThreadException的Crash，如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.</div></pre></td></tr></table></figure>
@@ -73,7 +73,7 @@
 <p>也就是说，当调用Dialog的<code>dismiss()</code>方法时，Dialog会自动抛到new Dialog的线程中执行，而这个线程就是当前的<code>Thread.currentThread()</code>。换句话说ViewRootImpl本身的mThread和这个new Dialog的线程不是同一个线程。然后我们看看这个ViewRootImpl本身的mThread的来源在何处。</p>
 <h4 id="ViewRootImpl中mThread的来历"><a href="#ViewRootImpl中mThread的来历" class="headerlink" title="ViewRootImpl中mThread的来历"></a>ViewRootImpl中mThread的来历</h4><p>在ViewRootImpl的构造函数中发现了mThread赋值的地方：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ViewRootImpl</span><span class="params">(Context context, Display display)</span> </span>&#123;</div><div class="line">    mThread = Thread.currentThread();</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那这个ViewRootImpl什么时候调用这个构造函数创建实例的呢？我们刚才在<code>WindowManagerGlobal</code>的<code>removeView()</code>函数中，看到了<code>root</code>对象是从<code>mRoots</code>对象中取出来的，而<code>mRoots</code>是一个ArrayList\<viewrootimpl\>。</viewrootimpl\></p>
+<p>那这个ViewRootImpl什么时候调用这个构造函数创建实例的呢？我们刚才在<code>WindowManagerGlobal</code>的<code>removeView()</code>函数中，看到了<code>root</code>对象是从<code>mRoots</code>对象中取出来的，而<code>mRoots</code>是一个<code>ArrayList&lt;ViewRootImpl&gt;</code>。</p>
 <p>所以我们来<code>WindowManagerGlobal</code>中找找<code>mRoots.add()</code>的地方，发现是在它的<code>addView()</code>函数中创建了一个<code>ViewRootImpl</code>对象并添加到了<code>mRoots</code>这个list中：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params,</span></span></div><div class="line">        Display display, Window parentWindow) &#123;</div><div class="line">    </div><div class="line">    <span class="comment">//...省略其余代码.....</span></div><div class="line"></div><div class="line">    ViewRootImpl root;</div><div class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">       </div><div class="line">       <span class="comment">//...省略其余代码.....</span></div><div class="line"></div><div class="line">        root = <span class="keyword">new</span> ViewRootImpl(view.getContext(), display);</div><div class="line">        mRoots.add(root);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// do this last because it fires off messages to start doing things</span></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        root.setView(view, wparams, panelParentView);</div><div class="line">    &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</div><div class="line">        <span class="comment">// BadTokenException or InvalidDisplayException, clean up.</span></div><div class="line">        <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">            <span class="keyword">final</span> <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">false</span>);</div><div class="line">            <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</div><div class="line">                removeViewLocked(index, <span class="keyword">true</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">throw</span> e;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>而这个<code>addView</code>方法什么时候会调用呢？就是<code>WindowManagerImpl</code>。</p>
