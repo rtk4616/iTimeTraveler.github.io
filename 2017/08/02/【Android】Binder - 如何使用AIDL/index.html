@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【android】binder - 如何使用aidl | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Binder" />
+  
+  
+  
+  
+  <meta name="description" content="一、跨进程通信为了演示方便，将Service与Activity处于不同的进程，可以在AndroidManifest.xml中，把service配置成android:process=&amp;quot;:remote&amp;quot; ，也可以命名成其他的。
+AIDL（1） IRemoteService.aidl：定义Server端提供的服务接口
+// IRemoteService.aidlpackage com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android】Binder - 如何使用AIDL">
+<meta property="og:url" content="http://github.com/2017/08/02/【Android】Binder - 如何使用AIDL/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="一、跨进程通信为了演示方便，将Service与Activity处于不同的进程，可以在AndroidManifest.xml中，把service配置成android:process=&amp;quot;:remote&amp;quot; ，也可以命名成其他的。
+AIDL（1） IRemoteService.aidl：定义Server端提供的服务接口
+// IRemoteService.aidlpackage com">
+<meta property="og:image" content="http://github.com/gallery/android-binder/522669-03d807d111900c32.png">
+<meta property="og:updated_time" content="2017-11-02T07:14:34.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android】Binder - 如何使用AIDL">
+<meta name="twitter:description" content="一、跨进程通信为了演示方便，将Service与Activity处于不同的进程，可以在AndroidManifest.xml中，把service配置成android:process=&amp;quot;:remote&amp;quot; ，也可以命名成其他的。
+AIDL（1） IRemoteService.aidl：定义Server端提供的服务接口
+// IRemoteService.aidlpackage com">
+<meta name="twitter:image" content="http://github.com/gallery/android-binder/522669-03d807d111900c32.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus[""] = "首页"; 
+
+  themeMenus["../archives"] = "归档"; 
+
+  themeMenus["../categories"] = "分类"; 
+
+  themeMenus["../tags"] = "标签"; 
+
+  themeMenus["../funnysite"] = "酷站"; 
+
+  themeMenus["../collection"] = "收藏"; 
+
+  themeMenus["../about"] = "关于"; 
+
+  themeMenus["mybooks"] = "🎁"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
+            
+          </h1>
+
+          
+            <div class="site-description">Someone knock at the door.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【Android】Binder - 如何使用AIDL" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/android-binder/522669-03d807d111900c32.png" rel="gallery_cj9i4ym8h002510mymnbhlgrw">
+        <img src="../../../../gallery/android-binder/522669-03d807d111900c32.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Android】Binder - 如何使用AIDL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2017-08-02T14:20:55.000Z" itemprop="datePublished">八月 2, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、跨进程通信"><a href="#一、跨进程通信" class="headerlink" title="一、跨进程通信"></a>一、跨进程通信</h3><p>为了演示方便，将Service与Activity处于不同的进程，可以在AndroidManifest.xml中，把service配置成<code>android:process=&quot;:remote&quot;</code> ，也可以命名成其他的。</p>
+<h4 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h4><p>（1） IRemoteService.aidl：定义Server端提供的服务接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// IRemoteService.aidl</span></div><div class="line"><span class="keyword">package</span> com.cuc.myandroidtest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.cuc.myandroidtest.MyData;</div><div class="line"><span class="keyword">import</span> com.cuc.myandroidtest.IServiceCallback;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IRemoteService</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getPid</span><span class="params">()</span></span>;			<span class="comment">//获取服务端进程ID</span></div><div class="line">    <span class="function">MyData <span class="title">getMyData</span><span class="params">()</span></span>;		<span class="comment">//从服务端获取数据</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">registerCallback</span><span class="params">(IServiceCallback callback)</span></span>;		<span class="comment">//注册服务端回调</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unregisterCallback</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>（2） IServiceCallBack.aidl：定义服务端回调接口，把Service的下载进度通知给客户端ClientActivity</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// IServiceCallBack.aidl</span></div><div class="line"><span class="keyword">package</span> com.cuc.myandroidtest;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IServiceCallback</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onDownloadProgress</span><span class="params">(<span class="keyword">double</span> progress)</span></span>;   <span class="comment">//服务端下载进度通知</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onDownloadCompleted</span><span class="params">()</span></span>;                 <span class="comment">//下载完成通知</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>（3） MyData.aidl：定义传输的Parcel数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// MyData.aidl</span></div><div class="line"><span class="keyword">package</span> com.cuc.myandroidtest;</div><div class="line"></div><div class="line">parcelable MyData;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Parcel数据"><a href="#Parcel数据" class="headerlink" title="Parcel数据"></a>Parcel数据</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyData</span> <span class="keyword">implements</span> <span class="title">Parcelable</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> data1;</div><div class="line">	<span class="keyword">int</span> data2;</div><div class="line">	String key;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyData</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="title">MyData</span><span class="params">(Parcel in)</span> </span>&#123;</div><div class="line">		data1 = in.readInt();</div><div class="line">		data2 = in.readInt();</div><div class="line">		key = in.readString();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;MyData&gt; CREATOR = <span class="keyword">new</span> Creator&lt;MyData&gt;() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> MyData <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">new</span> MyData(in);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="keyword">public</span> MyData[] newArray(<span class="keyword">int</span> size) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">new</span> MyData[size];</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">      <span class="comment">/** 将数据写入到Parcel **/</span></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</div><div class="line">		dest.writeInt(data1);</div><div class="line">		dest.writeInt(data2);</div><div class="line">		dest.writeString(key);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getData1</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> data1;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData1</span><span class="params">(<span class="keyword">int</span> data1)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.data1 = data1;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getData2</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> data2;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData2</span><span class="params">(<span class="keyword">int</span> data2)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.data2 = data2;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> key;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.key = key;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Server端"><a href="#Server端" class="headerlink" title="Server端"></a>Server端</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"BinderSimple"</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> mDownloadCount = <span class="number">0</span>;</div><div class="line">	MyData mMyData;</div><div class="line">	IServiceCallback mCallback;    <span class="comment">//用来通知客户端的回调</span></div><div class="line">	ScheduledExecutorService mThreadPool;    <span class="comment">//下载线程</span></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate();</div><div class="line">		Log.i(TAG, <span class="string">"[RemoteService] onCreate"</span>);</div><div class="line"></div><div class="line">		mMyData = <span class="keyword">new</span> MyData();</div><div class="line">		mMyData.setData1(<span class="number">10</span>);</div><div class="line">		mMyData.setData2(<span class="number">20</span>);</div><div class="line">		mMyData.setKey(<span class="string">"在那遥远的地方"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[RemoteService] onBind"</span>);</div><div class="line"></div><div class="line">		<span class="comment">//开始下载</span></div><div class="line">		startDownloadThread();</div><div class="line">		<span class="keyword">return</span> mBinder;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[RemoteService] onUnbind"</span>);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			mBinder.unregisterCallback();</div><div class="line">		&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.onUnbind(intent);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[RemoteService] onDestroy"</span>);</div><div class="line">		<span class="keyword">super</span>.onDestroy();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 实现接口IRemoteService.aidl中定义的方法</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> IRemoteService.Stub mBinder = <span class="keyword">new</span> IRemoteService.Stub() &#123;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPid</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG,<span class="string">"[RemoteService] getPid() = "</span> + android.os.Process.myPid());</div><div class="line">			<span class="keyword">return</span> android.os.Process.myPid();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> MyData <span class="title">getMyData</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG,<span class="string">"[RemoteService] getMyData()  "</span> + mMyData.toString());</div><div class="line">			<span class="keyword">return</span> mMyData;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerCallback</span><span class="params">(IServiceCallback callback)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG,<span class="string">"[RemoteService] registerCallback()  "</span>);</div><div class="line">			mCallback = callback;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregisterCallback</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG,<span class="string">"[RemoteService] unregisterCallback()  "</span>);</div><div class="line">			mCallback = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">/**此处可用于权限拦截**/</span></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTransact</span><span class="params">(<span class="keyword">int</span> code, Parcel data, Parcel reply, <span class="keyword">int</span> flags)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">super</span>.onTransact(code, data, reply, flags);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 模拟下载线程</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startDownloadThread</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[RemoteService] startDownloadThread()"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//2秒后开始下载</span></div><div class="line">		mThreadPool = Executors.newScheduledThreadPool(<span class="number">1</span>);</div><div class="line">		mThreadPool.scheduleAtFixedRate(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					mDownloadCount++;</div><div class="line">					<span class="keyword">if</span>(mCallback != <span class="keyword">null</span>)&#123;</div><div class="line">						mCallback.onDownloadProgress((<span class="keyword">double</span>) mDownloadCount / <span class="number">100.0</span>);</div><div class="line">						<span class="keyword">if</span> (mDownloadCount == <span class="number">100</span>) &#123;</div><div class="line">							mCallback.onDownloadCompleted();</div><div class="line">							mThreadPool.shutdown();</div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">				&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;, <span class="number">2000</span>, <span class="number">50</span>, TimeUnit.MILLISECONDS);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Client端"><a href="#Client端" class="headerlink" title="Client端"></a>Client端</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"BinderSimple"</span>;</div><div class="line">	<span class="keyword">private</span> IRemoteService mRemoteService;</div><div class="line">	<span class="keyword">private</span> TextView textView;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> mIsBound;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		setContentView(R.layout.activity_client);</div><div class="line"></div><div class="line">		textView = (TextView) findViewById(R.id.tv);</div><div class="line">		Button btn0 = (Button) findViewById(R.id.btn_bind);</div><div class="line">		Button btn1 = (Button) findViewById(R.id.btn_unbind);</div><div class="line">		Button btn2 = (Button) findViewById(R.id.btn_kill);</div><div class="line">		btn0.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				bindMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line"></div><div class="line">		btn1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				unBindMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line"></div><div class="line">		btn2.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				killMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> ServiceConnection mRemoteConnection = <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">			<span class="comment">//注意这里，把Server返回的Binder对象转换成了IRemoteService接口对象</span></div><div class="line">			mRemoteService = IRemoteService.Stub.asInterface(service);</div><div class="line"></div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				mRemoteService.registerCallback(mServiceCallbackBinder);</div><div class="line"></div><div class="line">				MyData myData = mRemoteService.getMyData();</div><div class="line">				String pidInfo = <span class="string">" servicePid = "</span>+ mRemoteService.getPid() +</div><div class="line">						<span class="string">"\n myPid = "</span> + android.os.Process.myPid() +</div><div class="line">						<span class="string">"\n data1 = "</span>+ myData.getData1() +</div><div class="line">						<span class="string">"\n data2 = "</span>+ myData.getData2() +</div><div class="line">						<span class="string">"\n key = "</span>+ myData.getKey();</div><div class="line"></div><div class="line">				Log.i(TAG, <span class="string">"[ClientActivity] onServiceConnected\n"</span> + pidInfo);</div><div class="line">				textView.setText(pidInfo);</div><div class="line">				Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"remoteService 连接成功"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">			&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">			Log.i(TAG, <span class="string">"[ClientActivity] onServiceDisconnected"</span>);</div><div class="line">			mRemoteService = <span class="keyword">null</span>;</div><div class="line">			Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"remoteService 断开连接"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">//服务回调</span></div><div class="line">	<span class="keyword">private</span> IServiceCallback.Stub mServiceCallbackBinder = <span class="keyword">new</span> IServiceCallback.Stub()&#123;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDownloadProgress</span><span class="params">(<span class="keyword">final</span> <span class="keyword">double</span> progress)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Handler handler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</div><div class="line">			handler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">				<span class="meta">@Override</span></div><div class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">					textView.setText(<span class="string">"下载进度:"</span> + progress);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDownloadCompleted</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG, <span class="string">"[ClientActivity] mServiceCallbackBinder -&gt; onDownloadCompleted"</span>);</div><div class="line">			Handler handler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</div><div class="line">			handler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">				<span class="meta">@Override</span></div><div class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">					textView.setText(<span class="string">"下载完成"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 绑定远程服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bindMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] bindMyService"</span>);</div><div class="line">		Intent intent = <span class="keyword">new</span> Intent(ClientActivity.<span class="keyword">this</span>, RemoteService.class);</div><div class="line">		intent.setAction(IRemoteService.class.getName());</div><div class="line">		bindService(intent, mRemoteConnection, Context.BIND_AUTO_CREATE);</div><div class="line"></div><div class="line">		mIsBound = <span class="keyword">true</span>;</div><div class="line">		textView.setText(<span class="string">"bind success"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 解除绑定远程服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">unBindMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(!mIsBound)&#123;</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] unBindMyService"</span>);</div><div class="line">		unbindService(mRemoteConnection);</div><div class="line"></div><div class="line">		mIsBound = <span class="keyword">false</span>;</div><div class="line">		textView.setText(<span class="string">"unbind"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 杀死远程服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">killMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] killMyService"</span>);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			android.os.Process.killProcess(mRemoteService.getPid());</div><div class="line">			textView.setText(<span class="string">"kill success"</span>);</div><div class="line">		&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"kill failed"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>该工程会生成一个apk，安装到手机，打开apk，界面如下：</p>
+<p><img src="/gallery/android-binder/demoapk.gif" alt=""></p>
+<p>界面上有三个按钮，分别是功能分别是：</p>
+<ul>
+<li>bindService（绑定Service）</li>
+<li>unbindService（解除绑定Service）</li>
+<li>killProcess（杀死Service进程）</li>
+</ul>
+<p>从左往右，依次点击界面，可得：</p>
+<p><img src="/gallery/android-binder/bind-service-log.png" alt=""></p>
+<p><img src="/gallery/android-binder/unbind-service-log.png" alt=""></p>
+<p><img src="/gallery/android-binder/kill-process_log.png" alt=""></p>
+<h3 id="二、同一进程"><a href="#二、同一进程" class="headerlink" title="二、同一进程"></a>二、同一进程</h3><p>如果Activity和Service位于同一进程内，也可以使用上面的方式。不过还有一种方法是下面这种。</p>
+<p>AIDL文件、Parcel数据与上面均一致，下面仅列出不同的Server端和Client端的实现。</p>
+<h4 id="Server端-1"><a href="#Server端-1" class="headerlink" title="Server端"></a>Server端</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"BinderSimple"</span>;</div><div class="line"></div><div class="line">  	<span class="comment">//封装的服务端功能对象，供Client端bindService之后调用</span></div><div class="line">	<span class="keyword">private</span> LocalServerFunc mBinder = <span class="keyword">new</span> LocalServerFunc();</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate();</div><div class="line">		Log.i(TAG, <span class="string">"[LocalService] onCreate"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalService] onBind"</span>);</div><div class="line"></div><div class="line">		<span class="comment">//开启下载线程</span></div><div class="line">		mBinder.startDownloadThread();</div><div class="line">		<span class="keyword">return</span> mBinder;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[LocalService] onUnbind"</span>);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			mBinder.unregisterCallback();</div><div class="line">		&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.onUnbind(intent);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[LocalService] onDestroy"</span>);</div><div class="line">		<span class="keyword">super</span>.onDestroy();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为，Service被bind了之后，需要返回一个IBinder对象。所以需要继承自Binder封装一个IBinder对象供客户端调用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalServerFunc</span> <span class="keyword">extends</span> <span class="title">Binder</span> <span class="keyword">implements</span> <span class="title">IRemoteService</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"BinderSimple"</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> mDownloadCount = <span class="number">0</span>;</div><div class="line">	MyData mMyData;</div><div class="line">	IServiceCallback mCallback;</div><div class="line">	ScheduledExecutorService mThreadPool;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LocalServerFunc</span><span class="params">()</span></span>&#123;</div><div class="line">		mMyData = <span class="keyword">new</span> MyData();</div><div class="line">		mMyData.setData1(<span class="number">66</span>);</div><div class="line">		mMyData.setData2(<span class="number">88</span>);</div><div class="line">		mMyData.setKey(<span class="string">"就在眼前"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startDownloadThread</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalServerFunc] startDownloadThread()"</span>);</div><div class="line">		mThreadPool = Executors.newScheduledThreadPool(<span class="number">1</span>);</div><div class="line">		mThreadPool.scheduleAtFixedRate(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					mDownloadCount++;</div><div class="line">					<span class="keyword">if</span>(mCallback != <span class="keyword">null</span>)&#123;</div><div class="line">						mCallback.onDownloadProgress((<span class="keyword">double</span>) mDownloadCount / <span class="number">100.0</span>);</div><div class="line">						<span class="keyword">if</span> (mDownloadCount == <span class="number">100</span>) &#123;</div><div class="line">							mCallback.onDownloadCompleted();</div><div class="line">							mThreadPool.shutdown();</div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">				&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;, <span class="number">2000</span>, <span class="number">50</span>, TimeUnit.MILLISECONDS);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPid</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalServerFunc] getPid()"</span>);</div><div class="line">		<span class="keyword">return</span> android.os.Process.myPid();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> MyData <span class="title">getMyData</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalServerFunc] getMyData()"</span>);</div><div class="line">		<span class="keyword">return</span> mMyData;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerCallback</span><span class="params">(IServiceCallback callback)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalServerFunc] registerCallback()"</span>);</div><div class="line">		mCallback = callback;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregisterCallback</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">		Log.i(TAG,<span class="string">"[LocalServerFunc] unregisterCallback()"</span>);</div><div class="line">		<span class="keyword">if</span>(mThreadPool != <span class="keyword">null</span>)&#123;</div><div class="line">			mThreadPool.shutdown();</div><div class="line">		&#125;</div><div class="line">		mCallback = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IBinder <span class="title">asBinder</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Client端-1"><a href="#Client端-1" class="headerlink" title="Client端"></a>Client端</h4><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"BinderSimple"</span>;</div><div class="line">	<span class="keyword">private</span> IRemoteService mLocalService;</div><div class="line">	<span class="keyword">private</span> TextView textView;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> mIsBound;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		setContentView(R.layout.activity_client);</div><div class="line"></div><div class="line">		textView = (TextView) findViewById(R.id.tv);</div><div class="line">		Button btn0 = (Button) findViewById(R.id.btn_bind);</div><div class="line">		Button btn1 = (Button) findViewById(R.id.btn_unbind);</div><div class="line">		Button btn2 = (Button) findViewById(R.id.btn_kill);</div><div class="line">		btn0.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				bindMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line"></div><div class="line">		btn1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				unBindMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line"></div><div class="line">		btn2.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				killMyService();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> ServiceConnection mServiceConnection = <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">			<span class="comment">//注意这个Binder对象转换成IRemoteService接口方式的不同 </span></div><div class="line">			mLocalService = (IRemoteService) service;</div><div class="line"></div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				mLocalService.registerCallback(mLocalServiceCallback);</div><div class="line"></div><div class="line">				MyData myData = mLocalService.getMyData();</div><div class="line">				String pidInfo = <span class="string">" servicePid = "</span>+ mLocalService.getPid() +</div><div class="line">						<span class="string">"\n myPid = "</span> + android.os.Process.myPid() +</div><div class="line">						<span class="string">"\n data1 = "</span>+ myData.getData1() +</div><div class="line">						<span class="string">"\n data2 = "</span>+ myData.getData2() +</div><div class="line">						<span class="string">"\n key = "</span>+ myData.getKey();</div><div class="line"></div><div class="line">				Log.i(TAG, <span class="string">"[ClientActivity] onServiceConnected\n"</span> + pidInfo);</div><div class="line">				textView.setText(pidInfo);</div><div class="line">				Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"localService 连接成功"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">			&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">			Log.i(TAG, <span class="string">"[ClientActivity] onServiceDisconnected"</span>);</div><div class="line">			mLocalService = <span class="keyword">null</span>;</div><div class="line">			Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"localService 断开连接"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">//服务回调，注意这个对象的不同</span></div><div class="line">	<span class="keyword">private</span> IServiceCallback mLocalServiceCallback = <span class="keyword">new</span> IServiceCallback() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDownloadProgress</span><span class="params">(<span class="keyword">final</span> <span class="keyword">double</span> progress)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Handler handler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</div><div class="line">			handler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">				<span class="meta">@Override</span></div><div class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">					textView.setText(<span class="string">"下载进度:"</span> + progress);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDownloadCompleted</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</div><div class="line">			Log.i(TAG, <span class="string">"[ClientActivity] mServiceCallback -&gt; onDownloadCompleted"</span>);</div><div class="line"></div><div class="line">			Handler handler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</div><div class="line">			handler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">				<span class="meta">@Override</span></div><div class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">					textView.setText(<span class="string">"下载完成"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> IBinder <span class="title">asBinder</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 绑定服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bindMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] bindMyService"</span>);</div><div class="line">		Intent intent = <span class="keyword">new</span> Intent(ClientActivity.<span class="keyword">this</span>, LocalService.class);</div><div class="line">		intent.setAction(IRemoteService.class.getName());</div><div class="line">		bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);</div><div class="line"></div><div class="line">		mIsBound = <span class="keyword">true</span>;</div><div class="line">		textView.setText(<span class="string">"bind success"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 解除绑定服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">unBindMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(!mIsBound)&#123;</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] unBindMyService"</span>);</div><div class="line">		unbindService(mServiceConnection);</div><div class="line"></div><div class="line">		mIsBound = <span class="keyword">false</span>;</div><div class="line">		textView.setText(<span class="string">"unbind"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 杀死服务</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">killMyService</span><span class="params">()</span></span>&#123;</div><div class="line">		Log.i(TAG, <span class="string">"[ClientActivity] killMyService"</span>);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			android.os.Process.killProcess(mLocalService.getPid());</div><div class="line">			textView.setText(<span class="string">"kill success"</span>);</div><div class="line">		&#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			Toast.makeText(ClientActivity.<span class="keyword">this</span>, <span class="string">"kill failed"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h4><p><img src="/gallery/android-binder/ezgif-5-bba2b7e591.gif" alt=""></p>
+<p>从左往右，依次点击三个按钮，可得：</p>
+<p><img src="/gallery/android-binder/bind-localservice.png" alt=""></p>
+<p><img src="/gallery/android-binder/unbind-localservice.png" alt=""></p>
+<p><img src="/gallery/android-binder/kill-localservice.png" alt=""></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://developer.android.com/guide/components/aidl.html" target="_blank" rel="external">Android 接口定义语言 (AIDL)</a> - Google Developer文档</li>
+<li><a href="http://gityuan.com/2015/11/23/binder-aidl/" target="_blank" rel="external">Binder系列9—如何使用AIDL</a></li>
+<li><a href="http://blog.csdn.net/saberviii/article/details/51470347" target="_blank" rel="external">Android跨进程bindService与callback</a></li>
+<li><a href="http://blog.csdn.net/liuyi1207164339/article/details/51683544" target="_blank" rel="external">在Activity和Service之间使用本地Binder和回调接口进行通信</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../03/【Android】源码分析 - Handler消息机制再梳理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          【Android】源码分析 - Handler消息机制再梳理
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../07/31/Google 笔试题 - 连通图的最大生成树的权和/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">连通图的最大生成树的权和</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、跨进程通信"><span class="nav-number">1.</span> <span class="nav-text">一、跨进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AIDL"><span class="nav-number">1.1.</span> <span class="nav-text">AIDL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parcel数据"><span class="nav-number">1.2.</span> <span class="nav-text">Parcel数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Server端"><span class="nav-number">1.3.</span> <span class="nav-text">Server端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client端"><span class="nav-number">1.4.</span> <span class="nav-text">Client端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行"><span class="nav-number">1.5.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、同一进程"><span class="nav-number">2.</span> <span class="nav-text">二、同一进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Server端-1"><span class="nav-number">2.1.</span> <span class="nav-text">Server端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client端-1"><span class="nav-number">2.2.</span> <span class="nav-text">Client端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行-1"><span class="nav-number">2.3.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 iTimeTraveler All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
