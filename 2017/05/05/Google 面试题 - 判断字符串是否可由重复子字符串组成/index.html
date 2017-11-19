@@ -2,6 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="../../../../js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
   
   <title>google 面试题 | 判断字符串是否可由重复子字符串组成 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -106,6 +116,9 @@
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../../../css/my.css">
+
 </head>
 
 <script>
@@ -180,6 +193,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -193,7 +233,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cja2dvx6t000ig4mysix0q0s0">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cja6j9tjy0016fsmypyu5oxnn">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -389,6 +429,9 @@ var a = new Donate({
 
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 </script>
+
+<!-- Custome JS -->
+<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
