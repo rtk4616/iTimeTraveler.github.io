@@ -2042,7 +2042,7 @@ $$ log^* n = log n(log log n)(log log log n) ··· , $$
     <link href="http://github.com/2017/07/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8Ejava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://github.com/2017/07/18/八大排序算法总结与java实现/</id>
     <published>2017-07-18T04:30:55.000Z</published>
-    <updated>2017-10-18T07:21:46.817Z</updated>
+    <updated>2017-11-21T10:56:23.988Z</updated>
     
     <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为健忘，加上对各种排序算法理解不深刻，过段时间面对排序就蒙了。所以决定对我们常见的这几种排序算法进行统一总结，强行学习。首先罗列一下常见的十大排序算法：</p>
 <p><img src="/gallery/sort-algorithms/big-o.png" alt=""></p>
@@ -2544,6 +2544,14 @@ $$
 <p>(4). 线性阶O(n)排序：<strong><code>基数排序，此外还有桶、箱排序</code></strong>。<br>　　<br>到此，很多人会注意到<strong>基数排序</strong>的时间复杂度是最小的，那么为什么却没有快排、堆排序流行呢？我们看看下图算法导论的相关说明：</p>
 <p><img src="/gallery/sort-algorithms/radixsort-comparison.jpg" alt=""></p>
 <p>基数排序只适用于有基数的情况，而基于比较的排序适用范围就广得多。另一方面是内存上的考虑。作为一种通用的排序方法，最好不要带来意料之外的内存开销，所以各语言的默认实现都没有用基数排序，但是不能否认基数排序在各领域的应用。</p>
+<h4 id="时间复杂度极限"><a href="#时间复杂度极限" class="headerlink" title="时间复杂度极限"></a>时间复杂度极限</h4><p><strong>当被排序的数有一些性质的时候</strong>（比如是整数，比如有一定的范围），排序算法的复杂度是可以小于O(nlgn)的。</p>
+<p>比如</p>
+<ol>
+<li>计数排序 复杂度O( k+n)     要求：被排序的数是0~k范围内的整数</li>
+<li>基数排序 复杂度O( d(k+n) )  要求：d位数，每个数位有k个取值</li>
+<li>桶排序    复杂度 O( n ) （平均） 要求：被排序数在某个范围内，并且服从均匀分布</li>
+</ol>
+<p>但是，当被排序的数不具有任何性质的时候，一般使用基于比较的排序算法，而<strong>基于比较的排序算法时间复杂度的下限必须是O( nlgn) </strong>。参考<a href="https://www.zhihu.com/question/24516934" target="_blank" rel="external">很多高效排序算法的代价是 nlogn，难道这是排序算法的极限了吗？</a></p>
 <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
 <li>当原表有序或基本有序时，直接插入排序和冒泡排序将大大减少比较次数和移动记录的次数，时间复杂度可降至O（n）；</li>
 <li>而快速排序则相反，当原表基本有序时，将蜕化为冒泡排序，时间复杂度提高为O（n2）；</li>
