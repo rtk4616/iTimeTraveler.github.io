@@ -201,7 +201,7 @@
     <link href="http://github.com/2017/11/18/%E3%80%90Android%E3%80%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/"/>
     <id>http://github.com/2017/11/18/【Android】源码分析 - View事件分发机制/</id>
     <published>2017-11-18T14:20:55.000Z</published>
-    <updated>2017-11-19T09:01:40.404Z</updated>
+    <updated>2017-11-27T08:48:07.290Z</updated>
     
     <content type="html"><![CDATA[<h3 id="事件分发对象"><a href="#事件分发对象" class="headerlink" title="事件分发对象"></a>事件分发对象</h3><p>（1）所有 Touch 事件都被封装成了 MotionEvent 对象，包括 Touch 的位置、时间、历史记录以及第几个手指(多指触摸)等。</p>
 <p>（2）事件类型分为 <code>ACTION_DOWN</code>， <code>ACTION_UP</code>，<code>ACTION_MOVE</code>，<code>ACTION_POINTER_DOWN</code>，<code>ACTION_POINTER_UP</code>， <code>ACTION_CANCEL</code>，每个事件都是以 <code>ACTION_DOWN</code> 开始 <code>ACTION_UP</code> 结束。</p>
@@ -290,21 +290,21 @@
 <p>另一个案例可以参考这篇文章：<a href="https://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html" target="_blank" rel="external">Android 编程下 Touch 事件的分发和消费机制</a></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/gallery/android-view/1520093523-0.png" alt=""></p>
 <ul>
-<li>Touch事件分发中只有两个主角:ViewGroup和View。ViewGroup包含onInterceptTouchEvent、dispatchTouchEvent、onTouchEvent三个相关事件。View包含dispatchTouchEvent、onTouchEvent两个相关事件。其中ViewGroup又继承于View。</li>
+<li>（1）Touch事件分发中只有两个主角:ViewGroup和View。ViewGroup包含onInterceptTouchEvent、dispatchTouchEvent、onTouchEvent三个相关事件。View包含dispatchTouchEvent、onTouchEvent两个相关事件。其中ViewGroup又继承于View。</li>
 </ul>
 <ul>
-<li>（1）事件从 Activity.dispatchTouchEvent()开始传递，只要没有被停止或拦截，从最上层的 ViewGroup开始一直往下(子View)传递。子View可以通过 <code>onTouchEvent()</code>对事件进行处理。</li>
-<li>（2）事件由ViewGroup传递给子 View，ViewGroup 可以通过 <code>onInterceptTouchEvent()</code>对事件做拦截，停止其往下传递。</li>
-<li>（3）如果事件从上往下传递过程中一直没有被停止，且最底层子 View 没有消费事件，事件会反向往上传递，这时父 View(ViewGroup)可以进行消费，如果还是没有被消费的话，最后会到 Activity 的 onTouchEvent()函数。</li>
-<li>（4） 如果 View 没有对 ACTION_DOWN 进行消费，之后的其他事件不会传递过来。</li>
-<li>（5）OnTouchListener 优先于 onTouchEvent()对事件进行消费。</li>
-<li>当Acitivty接收到Touch事件时，将遍历子View进行Down事件的分发。ViewGroup的遍历可以看成是递归的。分发的目的是为了找到第一个真正要处理本次完整触摸事件的View，这个View会在onTouchuEvent结果返回true。</li>
-<li>当某个子View返回true时，会中止Down事件的分发，同时在ViewGroup中记录该子View。接下去的Move和Up事件将由该子View直接进行处理。由于子View是保存在ViewGroup中的，多层ViewGroup的节点结构时，上级ViewGroup保存的会是真实处理事件的View所在的ViewGroup对象:如ViewGroup0-ViewGroup1-TextView的结构中，TextView返回了true，它将被保存在ViewGroup1中，而ViewGroup1也会返回true，被保存在ViewGroup0中。当Move和UP事件来时，会先从ViewGroup0传递至ViewGroup1，再由ViewGroup1传递至TextView。</li>
-<li>当ViewGroup中所有子View都不捕获Down事件时，将触发ViewGroup自身的onTouch事件。触发的方式是调用super.dispatchTouchEvent函数，即父类View的dispatchTouchEvent方法。在所有子View都不处理的情况下，触发Acitivity的onTouchEvent方法。</li>
-<li>ViewGroup默认不拦截任何事件。源码中的ViewGroup的<code>onInterceptTouchEvent()</code>方法默认返回false。</li>
-<li>View没有<code>onInterceptTouchEvent()</code>方法。一旦点击事件传递给它，就会调用它的<code>onTouchEvent</code>方法</li>
-<li>我们可以发现ViewGroup没有onTouchEvent事件，说明他的处理逻辑和View是一样的。 </li>
-<li>子view如果消耗了事件，那么ViewGroup就不会在接受到事件了。</li>
+<li>（2）事件从 Activity.dispatchTouchEvent()开始传递，只要没有被停止或拦截，从最上层的 ViewGroup开始一直往下(子View)传递。子View可以通过 <code>onTouchEvent()</code>对事件进行处理。</li>
+<li>（3）事件由ViewGroup传递给子 View，ViewGroup 可以通过 <code>onInterceptTouchEvent()</code>对事件做拦截，停止其往下传递。</li>
+<li>（4）如果事件从上往下传递过程中一直没有被停止，且最底层子 View 没有消费事件，事件会反向往上传递，这时父 View(ViewGroup)可以进行消费，如果还是没有被消费的话，最后会到 Activity 的 onTouchEvent()函数。</li>
+<li>（5） 如果 View 没有对 ACTION_DOWN 进行消费，之后的其他事件不会传递过来。</li>
+<li>（6）OnTouchListener 优先于 onTouchEvent()对事件进行消费。</li>
+<li>（7）当Acitivty接收到Touch事件时，将遍历子View进行Down事件的分发。ViewGroup的遍历可以看成是递归的。分发的目的是为了找到第一个真正要处理本次完整触摸事件的View，这个View会在onTouchuEvent结果返回true。</li>
+<li>（8）当某个子View返回true时，会中止Down事件的分发，同时在ViewGroup中记录该子View。接下去的Move和Up事件将由该子View直接进行处理。由于子View是保存在ViewGroup中的，多层ViewGroup的节点结构时，上级ViewGroup保存的会是真实处理事件的View所在的ViewGroup对象:如ViewGroup0-ViewGroup1-TextView的结构中，TextView返回了true，它将被保存在ViewGroup1中，而ViewGroup1也会返回true，被保存在ViewGroup0中。当Move和UP事件来时，会先从ViewGroup0传递至ViewGroup1，再由ViewGroup1传递至TextView。</li>
+<li>（9）当ViewGroup中所有子View都不捕获Down事件时，将触发ViewGroup自身的onTouch事件。触发的方式是调用super.dispatchTouchEvent函数，即父类View的dispatchTouchEvent方法。在所有子View都不处理的情况下，触发Acitivity的onTouchEvent方法。</li>
+<li>（10）ViewGroup默认不拦截任何事件。源码中的ViewGroup的<code>onInterceptTouchEvent()</code>方法默认返回false。</li>
+<li>（11）View没有<code>onInterceptTouchEvent()</code>方法。一旦点击事件传递给它，就会调用它的<code>onTouchEvent</code>方法</li>
+<li>（12）我们可以发现ViewGroup没有onTouchEvent事件，说明他的处理逻辑和View是一样的。 </li>
+<li>（13）子view如果消耗了事件，那么ViewGroup就不会在接受到事件了。</li>
 </ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://www.cnblogs.com/linjzong/p/4191891.html" target="_blank" rel="external">Android:30分钟弄明白Touch事件分发机制</a></li>
