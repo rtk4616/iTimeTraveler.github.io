@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【算法】如何判断链表有环 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,43 +11,28 @@
   
   
   
-  <meta name="description" content="如何判断单链表是否存在环
-有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？
-
-不允许修改链表结构。
-时间复杂度O(n)，空间复杂度O(1)。
-
-
-方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
+  <meta name="description" content="如何判断单链表是否存在环 有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？  不允许修改链表结构。 时间复杂度O(n)，空间复杂度O(1)。   方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法】如何判断链表有环">
 <meta property="og:url" content="http://github.com/2017/12/24/【算法】如何判断链表有环/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="如何判断单链表是否存在环
-有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？
-
-不允许修改链表结构。
-时间复杂度O(n)，空间复杂度O(1)。
-
-
-方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
+<meta property="og:description" content="如何判断单链表是否存在环 有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？  不允许修改链表结构。 时间复杂度O(n)，空间复杂度O(1)。   方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/algorithms/20161127120747877.jpg">
 <meta property="og:updated_time" content="2017-12-27T02:26:43.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】如何判断链表有环">
-<meta name="twitter:description" content="如何判断单链表是否存在环
-有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？
-
-不允许修改链表结构。
-时间复杂度O(n)，空间复杂度O(1)。
-
-
-方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
+<meta name="twitter:description" content="如何判断单链表是否存在环 有一个单向链表，链表当中有可能出现“环”，就像题图这样。如何用程序判断出这个链表是有环链表？  不允许修改链表结构。 时间复杂度O(n)，空间复杂度O(1)。   方法一、穷举遍历方法一：首先从头节点开始，依次遍历单链表的每一个节点。每遍历到一个新节点，就从头节点重新遍历新节点之前的所有节点，用新节点ID和此节点之前所有节点ID依次作比较。如果发现新节点之前的所有节点当中">
 <meta name="twitter:image" content="http://github.com/gallery/algorithms/20161127120747877.jpg">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -69,138 +44,139 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【算法】如何判断链表有环" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【算法】如何判断链表有环" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/algorithms/20161127120747877.jpg" rel="gallery_cjbx1xl1900869cmya06cifkm">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/algorithms/20161127120747877.jpg" rel="gallery_cjc8gavy3008pqcmy8xnsvsle">
         <img src="../../../../gallery/algorithms/20161127120747877.jpg" itemprop="image">
       </a>
     
@@ -220,14 +196,19 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2017-12-24T14:20:55.000Z" itemprop="datePublished">十二月 24, 2017</time>
+	<a href="" class="article-date">
+	  <time datetime="2017-12-24T14:20:55.000Z" itemprop="datePublished">2017-12-24</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -249,15 +230,15 @@ var themeMenus = {};
 <h4 id="方法三、快慢指针"><a href="#方法三、快慢指针" class="headerlink" title="方法三、快慢指针"></a>方法三、快慢指针</h4><p>首先创建两个指针1和2（在java里就是两个对象引用），同时指向这个链表的头节点。然后开始一个大循环，在循环体中，让指针1每次向下移动一个节点，让指针2每次向下移动两个节点，然后比较两个指针指向的节点是否相同。如果相同，则判断出链表有环，如果不同，则继续下一次循环。</p>
 <p>例如链表A-&gt;B-&gt;C-&gt;D-&gt;B-&gt;C-&gt;D，两个指针最初都指向节点A，进入第一轮循环，指针1移动到了节点B，指针2移动到了C。第二轮循环，指针1移动到了节点C，指针2移动到了节点B。第三轮循环，指针1移动到了节点D，指针2移动到了节点D，此时两指针指向同一节点，判断出链表有环。</p>
 <p>此方法也可以用一个更生动的例子来形容：在一个环形跑道上，两个运动员在同一地点起跑，一个运动员速度快，一个运动员速度慢。当两人跑了一段时间，速度快的运动员必然会从速度慢的运动员身后再次追上并超过，原因很简单，因为跑道是环形的。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 判断单链表是否存在环</div><div class="line"> * <span class="doctag">@param</span> head</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">isLoopList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</div><div class="line">	ListNode&lt;T&gt; slowPointer, fastPointer;</div><div class="line">	</div><div class="line">	<span class="comment">//使用快慢指针，慢指针每次向前一步，快指针每次两步</span></div><div class="line">	slowPointer = fastPointer = head;</div><div class="line">	<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</div><div class="line">		slowPointer = slowPointer.next;</div><div class="line">		fastPointer = fastPointer.next.next;</div><div class="line">		</div><div class="line">		<span class="comment">//两指针相遇则有环</span></div><div class="line">		<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断单链表是否存在环</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> head</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">isLoopList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</span><br><span class="line">	ListNode&lt;T&gt; slowPointer, fastPointer;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使用快慢指针，慢指针每次向前一步，快指针每次两步</span></span><br><span class="line">	slowPointer = fastPointer = head;</span><br><span class="line">	<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">		slowPointer = slowPointer.next;</span><br><span class="line">		fastPointer = fastPointer.next.next;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//两指针相遇则有环</span></span><br><span class="line">		<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>假设从链表头节点到入环点的距离是D，链表的环长是S。那么循环会进行S次（为什么是S次，有心的同学可以自己揣摩下），可以简单理解为O（N）。除了两个指针以外，没有使用任何额外存储空间，所以空间复杂度是O（1）。</p>
 <h3 id="如何判断双向链表有环"><a href="#如何判断双向链表有环" class="headerlink" title="如何判断双向链表有环"></a>如何判断双向链表有环</h3><p><img src="/gallery/algorithms/20150320144956894.jpg" alt=""></p>
 <p>其实这题跟单链表判断环的方法相似，只是当判断next指针不会出现环时，要从尾节点按照之前的方法向头结点扫描，判断pre指针是否可能出现环，如图环2。当然如果在第一步判断链表有next环后是无法进行第二步判断的，因为你永远找不到尾节点。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 双向链表是否存在环</div><div class="line"> * <span class="doctag">@param</span> head</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">isLoopTowWayList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</div><div class="line">	ListNode&lt;T&gt; slow, fast;</div><div class="line"></div><div class="line">	<span class="comment">//与单链表类似，使用快慢指针先单向遍历到结尾，如果相遇证明起码单向有环</span></div><div class="line">	slow = fast = head;</div><div class="line">	<span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</div><div class="line">		slow = slow.next;</div><div class="line">		fast = fast.next.next;</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(slow == fast)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//找到尾指针</span></div><div class="line">	<span class="keyword">while</span>(slow.next != <span class="keyword">null</span>)&#123;</div><div class="line">		slow = slow.next;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//如果next单向没环，从尾节点回溯遍历，看prev是否存在环</span></div><div class="line">	fast = slow;</div><div class="line">	<span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.prev != <span class="keyword">null</span>)&#123;</div><div class="line">		slow = slow.prev;</div><div class="line">		fast = fast.prev.prev;</div><div class="line">		<span class="keyword">if</span>(slow == fast)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="如何找出有环链表的入环点？"><a href="#如何找出有环链表的入环点？" class="headerlink" title="如何找出有环链表的入环点？"></a>如何找出有环链表的入环点？</h3><p>根据这篇文章：<a href="https://www.cnblogs.com/lou424/p/5029225.html" target="_blank" rel="external">链表中环形的入口</a>，我们来分析一下入环口和我们上面这个快慢指针相遇点的关系。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 双向链表是否存在环</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> head</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">isLoopTowWayList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</span><br><span class="line">	ListNode&lt;T&gt; slow, fast;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//与单链表类似，使用快慢指针先单向遍历到结尾，如果相遇证明起码单向有环</span></span><br><span class="line">	slow = fast = head;</span><br><span class="line">	<span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">		slow = slow.next;</span><br><span class="line">		fast = fast.next.next;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//找到尾指针</span></span><br><span class="line">	<span class="keyword">while</span>(slow.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">		slow = slow.next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果next单向没环，从尾节点回溯遍历，看prev是否存在环</span></span><br><span class="line">	fast = slow;</span><br><span class="line">	<span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.prev != <span class="keyword">null</span>)&#123;</span><br><span class="line">		slow = slow.prev;</span><br><span class="line">		fast = fast.prev.prev;</span><br><span class="line">		<span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="如何找出有环链表的入环点？"><a href="#如何找出有环链表的入环点？" class="headerlink" title="如何找出有环链表的入环点？"></a>如何找出有环链表的入环点？</h3><p>根据这篇文章：<a href="https://www.cnblogs.com/lou424/p/5029225.html" target="_blank" rel="noopener">链表中环形的入口</a>，我们来分析一下入环口和我们上面这个快慢指针相遇点的关系。</p>
 <p><img src="/gallery/algorithms/355951-20151208151803386-2140188135.png" alt=""></p>
 <p>当fast若与slow相遇时，slow肯定没有走遍历完链表(不是一整个环，有开头部分，如上图)或者恰好遍历一圈(未做验证，看我的表格例子，在1处相遇)。于是我们从链表头、相遇点分别设一个指针，每次各走一步，两个指针必定相遇，且相遇第一点为环入口点(慢指针走了n步，第一次相遇在c点，对慢指针来说n=s+p，也就是说如果慢指针从c点再走n步，又会到c点，那么顺时针的CB距离是n-p=s，但是我们不知道s是几，那么当快指针此时在A点一步一步走，当快慢指针相遇时，相遇点恰好是圆环七点B(AB=CB=s))。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 找到有环链表的入口</div><div class="line"> * <span class="doctag">@param</span> head</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">ListNode&lt;T&gt; <span class="title">findEntranceInLoopList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</div><div class="line">	ListNode&lt;T&gt; slowPointer, fastPointer;</div><div class="line">	</div><div class="line">	<span class="comment">//使用快慢指针，慢指针每次向前一步，快指针每次两步</span></div><div class="line">	<span class="keyword">boolean</span> isLoop = <span class="keyword">false</span>;</div><div class="line">	slowPointer = fastPointer = head;</div><div class="line">	<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</div><div class="line">		slowPointer = slowPointer.next;</div><div class="line">		fastPointer = fastPointer.next.next;</div><div class="line">		</div><div class="line">		<span class="comment">//两指针相遇则有环</span></div><div class="line">		<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</div><div class="line">			isLoop = <span class="keyword">true</span>;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//一个指针从链表头开始，一个从相遇点开始，每次一步，再次相遇的点即是入口节点</span></div><div class="line">	<span class="keyword">if</span>(isLoop)&#123;</div><div class="line">		slowPointer = head;</div><div class="line">		<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</div><div class="line">			<span class="comment">//两指针相遇的点即是入口节点</span></div><div class="line">			<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</div><div class="line">				<span class="keyword">return</span> slowPointer;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			slowPointer = slowPointer.next;</div><div class="line">			fastPointer = fastPointer.next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 找到有环链表的入口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> head</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">ListNode&lt;T&gt; <span class="title">findEntranceInLoopList</span><span class="params">(ListNode&lt;T&gt; head)</span></span>&#123;</span><br><span class="line">	ListNode&lt;T&gt; slowPointer, fastPointer;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使用快慢指针，慢指针每次向前一步，快指针每次两步</span></span><br><span class="line">	<span class="keyword">boolean</span> isLoop = <span class="keyword">false</span>;</span><br><span class="line">	slowPointer = fastPointer = head;</span><br><span class="line">	<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">		slowPointer = slowPointer.next;</span><br><span class="line">		fastPointer = fastPointer.next.next;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//两指针相遇则有环</span></span><br><span class="line">		<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</span><br><span class="line">			isLoop = <span class="keyword">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//一个指针从链表头开始，一个从相遇点开始，每次一步，再次相遇的点即是入口节点</span></span><br><span class="line">	<span class="keyword">if</span>(isLoop)&#123;</span><br><span class="line">		slowPointer = head;</span><br><span class="line">		<span class="keyword">while</span>(fastPointer != <span class="keyword">null</span> &amp;&amp; fastPointer.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="comment">//两指针相遇的点即是入口节点</span></span><br><span class="line">			<span class="keyword">if</span>(slowPointer == fastPointer)&#123;</span><br><span class="line">				<span class="keyword">return</span> slowPointer;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			slowPointer = slowPointer.next;</span><br><span class="line">			fastPointer = fastPointer.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="如何判断两个单链表是否相交，以及相交点"><a href="#如何判断两个单链表是否相交，以及相交点" class="headerlink" title="如何判断两个单链表是否相交，以及相交点"></a>如何判断两个单链表是否相交，以及相交点</h3><p><img src="/gallery/algorithms/list-intersects.jpg" alt=""></p>
 <h4 id="方法一、直接法"><a href="#方法一、直接法" class="headerlink" title="方法一、直接法"></a>方法一、直接法</h4><p>直接判断第一个链表的每个结点是否在第二个链表中，时间复杂度为O(len1*len2)，耗时很大</p>
 <h4 id="方法二、利用计数"><a href="#方法二、利用计数" class="headerlink" title="方法二、利用计数"></a>方法二、利用计数</h4><p>如果两个链表相交，则两个链表就会有共同的结点；而结点地址又是结点唯一标识。因而判断两个链表中是否存在地址一致的节点，就可以知道是否相交了。可以对第一 个链表的节点地址进行hash排序，建立hash表，然后针对第二个链表的每个节点的地址查询hash表，如果它在hash表中出现，则说明两个链表有共 同的结点。这个方法的时间复杂度为：O(max(len1+len2)；但同时还得增加O(len1)的存储空间存储哈希表。这样减少了时间复杂度，增加 了存储空间。</p>
@@ -267,27 +248,19 @@ var themeMenus = {};
 <p>还可以这样：其中一个链表首尾相连，检测另外一个链表是否存在环，如果存在，则两个链表相交，而检测出来的依赖环入口即为相交的第一个</p>
 <p><img src="algorithms/20170628215711202.jpg" alt=""></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/31401474?utm_source=wechat_session&amp;utm_medium=social&amp;from=singlemessage" target="_blank" rel="external">漫画算法：如何判断链表有环？</a></li>
-<li><a href="https://zhidao.baidu.com/question/1689718158270538108.html" target="_blank" rel="external">判断两个单链表是否相交</a></li>
-<li><a href="https://www.jianshu.com/p/ef71e04241e4" target="_blank" rel="external">数据结构面试 之 单链表是否有环及环入口点 附有最详细明了的图解</a></li>
-<li><a href="https://www.cnblogs.com/lou424/p/5029225.html" target="_blank" rel="external">链表中环形的入口</a></li>
-<li><a href="http://blog.sina.com.cn/s/blog_6a0e04380101a9o2.html" target="_blank" rel="external">【单链表】环的入口点  原理理解！</a></li>
-<li><a href="http://blog.csdn.net/dawn_after_dark/article/details/73742239" target="_blank" rel="external"> 如何判断单链表是否有环、环的入口、环的长度和总长</a></li>
-<li><a href="http://blog.csdn.net/tjy1220646144/article/details/44491793" target="_blank" rel="external">如何判断双链表是否有环</a></li>
-<li><a href="http://wuchong.me/blog/2014/03/25/interview-link-questions/" target="_blank" rel="external">面试精选：链表问题集锦</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/31401474?utm_source=wechat_session&amp;utm_medium=social&amp;from=singlemessage" target="_blank" rel="noopener">漫画算法：如何判断链表有环？</a></li>
+<li><a href="https://zhidao.baidu.com/question/1689718158270538108.html" target="_blank" rel="noopener">判断两个单链表是否相交</a></li>
+<li><a href="https://www.jianshu.com/p/ef71e04241e4" target="_blank" rel="noopener">数据结构面试 之 单链表是否有环及环入口点 附有最详细明了的图解</a></li>
+<li><a href="https://www.cnblogs.com/lou424/p/5029225.html" target="_blank" rel="noopener">链表中环形的入口</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_6a0e04380101a9o2.html" target="_blank" rel="noopener">【单链表】环的入口点  原理理解！</a></li>
+<li><a href="http://blog.csdn.net/dawn_after_dark/article/details/73742239" target="_blank" rel="noopener"> 如何判断单链表是否有环、环的入口、环的长度和总长</a></li>
+<li><a href="http://blog.csdn.net/tjy1220646144/article/details/44491793" target="_blank" rel="noopener">如何判断双链表是否有环</a></li>
+<li><a href="http://wuchong.me/blog/2014/03/25/interview-link-questions/" target="_blank" rel="noopener">面试精选：链表问题集锦</a></li>
 </ul>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Algorithm/">Algorithm</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -302,7 +275,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -327,7 +299,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Algorithm/">Algorithm</a></li></ul>
+
     </footer>
   </div>
   
@@ -356,33 +332,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断单链表是否存在环"><span class="nav-number">1.</span> <span class="nav-text">如何判断单链表是否存在环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一、穷举遍历"><span class="nav-number">1.1.</span> <span class="nav-text">方法一、穷举遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二、哈希表缓存"><span class="nav-number">1.2.</span> <span class="nav-text">方法二、哈希表缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三、快慢指针"><span class="nav-number">1.3.</span> <span class="nav-text">方法三、快慢指针</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断双向链表有环"><span class="nav-number">2.</span> <span class="nav-text">如何判断双向链表有环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何找出有环链表的入环点？"><span class="nav-number">3.</span> <span class="nav-text">如何找出有环链表的入环点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断两个单链表是否相交，以及相交点"><span class="nav-number">4.</span> <span class="nav-text">如何判断两个单链表是否相交，以及相交点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一、直接法"><span class="nav-number">4.1.</span> <span class="nav-text">方法一、直接法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二、利用计数"><span class="nav-number">4.2.</span> <span class="nav-text">方法二、利用计数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三、利用有环链表思路"><span class="nav-number">4.3.</span> <span class="nav-text">方法三、利用有环链表思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断单链表是否存在环"><span class="nav-number">1.</span> <span class="nav-text">如何判断单链表是否存在环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一、穷举遍历"><span class="nav-number">1.1.</span> <span class="nav-text">方法一、穷举遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二、哈希表缓存"><span class="nav-number">1.2.</span> <span class="nav-text">方法二、哈希表缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三、快慢指针"><span class="nav-number">1.3.</span> <span class="nav-text">方法三、快慢指针</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断双向链表有环"><span class="nav-number">2.</span> <span class="nav-text">如何判断双向链表有环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何找出有环链表的入环点？"><span class="nav-number">3.</span> <span class="nav-text">如何找出有环链表的入环点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断两个单链表是否相交，以及相交点"><span class="nav-number">4.</span> <span class="nav-text">如何判断两个单链表是否相交，以及相交点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一、直接法"><span class="nav-number">4.1.</span> <span class="nav-text">方法一、直接法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二、利用计数"><span class="nav-number">4.2.</span> <span class="nav-text">方法二、利用计数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三、利用有环链表思路"><span class="nav-number">4.3.</span> <span class="nav-text">方法三、利用有环链表思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -390,13 +368,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -456,8 +438,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -465,7 +450,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -481,7 +467,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

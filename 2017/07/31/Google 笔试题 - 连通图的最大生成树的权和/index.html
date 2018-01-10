@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>连通图的最大生成树的权和 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,25 +11,28 @@
   
   
   
-  <meta name="description" content="这是一道Google 笔试题
-题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
+  <meta name="description" content="这是一道Google 笔试题 题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。12345&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="连通图的最大生成树的权和">
 <meta property="og:url" content="http://github.com/2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="这是一道Google 笔试题
-题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
+<meta property="og:description" content="这是一道Google 笔试题 题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。12345&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
 <meta property="og:updated_time" content="2017-08-01T02:27:59.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连通图的最大生成树的权和">
-<meta name="twitter:description" content="这是一道Google 笔试题
-题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#125;,">
+<meta name="twitter:description" content="这是一道Google 笔试题 题目一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。12345&amp;#123;&amp;#123;0, 4, 5, 0, 3&amp;#125;,  &amp;#123;4, 0, 4, 2, 3&amp;#125;,  &amp;#123;5, 4, 0, 2, 0&amp;#">
 <meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -51,138 +44,139 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Google 笔试题 - 连通图的最大生成树的权和" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-Google 笔试题 - 连通图的最大生成树的权和" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cjbx1xkxp00299cmy60glu5b2">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cjc8gavss002qqcmyugup052k">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -202,20 +196,25 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">七月 31, 2017</time>
+	<a href="" class="article-date">
+	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">2017-07-31</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <p>这是一道Google 笔试题</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;0, 4, 5, 0, 3&#125;, </div><div class="line"> &#123;4, 0, 4, 2, 3&#125;, </div><div class="line"> &#123;5, 4, 0, 2, 0&#125;, </div><div class="line"> &#123;0, 2, 2, 0, 1&#125;, </div><div class="line"> &#123;3, 3, 0, 1, 0&#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一个有n个结点的连通图的生成树是原图的最小连通子图, 且包含原图中所有n个结点，并且有保持图联通的最少的边。最大生成树就是权和最大生成树，现在给出一个无向带权图的邻接矩阵，权为0表示没有边。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;0, 4, 5, 0, 3&#125;, </span><br><span class="line"> &#123;4, 0, 4, 2, 3&#125;, </span><br><span class="line"> &#123;5, 4, 0, 2, 0&#125;, </span><br><span class="line"> &#123;0, 2, 2, 0, 1&#125;, </span><br><span class="line"> &#123;3, 3, 0, 1, 0&#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>求这个图的最大生成树的权和。</p>
 <p>A、11</p>
 <p>B、12</p>
@@ -232,7 +231,7 @@ var themeMenus = {};
 <li>3）各边上的权值的总和达到最小。</li>
 </ul>
 <p>简单点说有几个城市你要设计一个路线，这个路线能走完所有的这几个城市，而且路程最短，这个路线就是最小生成树的含义。相反地，最大生成树就是边权重之和最大的生成树。</p>
-<p>那么，如何生成最小生成树呢？常用的算法有<strong><a href="https://zh.wikipedia.org/wiki/%E6%99%AE%E6%9E%97%E5%A7%86%E7%AE%97%E6%B3%95" target="_blank" rel="external">Prim算法</a></strong>（普里姆算法）和<strong><a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E9%B2%81%E6%96%AF%E5%85%8B%E5%B0%94%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="external">Kruskal算法</a></strong>（克鲁斯克尔算法）。</p>
+<p>那么，如何生成最小生成树呢？常用的算法有<strong><a href="https://zh.wikipedia.org/wiki/%E6%99%AE%E6%9E%97%E5%A7%86%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">Prim算法</a></strong>（普里姆算法）和<strong><a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E9%B2%81%E6%96%AF%E5%85%8B%E5%B0%94%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">Kruskal算法</a></strong>（克鲁斯克尔算法）。</p>
 <h3 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h3><p>Prim算法是用来从带权图中搜索最小生成树的一种算法。 从单一顶点开始，Prim普里姆算法按照以下步骤逐步扩大树中所含顶点的数目，直到遍及连通图的所有顶点。</p>
 <ol>
 <li><p>输入：一个加权连通图，其中顶点集合为$V$ ，边集合为$E$；</p>
@@ -246,7 +245,7 @@ var themeMenus = {};
 </li>
 </ol>
 <p>算法伪代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Prim(G, T) &#123;</div><div class="line">    T = NULL;</div><div class="line">    U = &#123;w&#125;;    <span class="comment">//添加任一顶点w</span></div><div class="line">    <span class="keyword">while</span>((V - U)!=NULL) &#123;</div><div class="line">        设(u, v)是u ∈ U 与 v ∈ （V - U),且权值最小的边</div><div class="line">        T = T ∪ (u, v);</div><div class="line">        U = U ∪ v ;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Prim(G, T) &#123;</span><br><span class="line">    T = NULL;</span><br><span class="line">    U = &#123;w&#125;;    <span class="comment">//添加任一顶点w</span></span><br><span class="line">    <span class="keyword">while</span>((V - U)!=NULL) &#123;</span><br><span class="line">        设(u, v)是u ∈ U 与 v ∈ （V - U),且权值最小的边</span><br><span class="line">        T = T ∪ (u, v);</span><br><span class="line">        U = U ∪ v ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>说白了，就是将起点u（任一节点）放入空集合S，则S = {u}；再找到距离集合S最近的一点u，加入S集合。直到所有节点都加入进来。</p>
 <blockquote>
 <p>Prim算法时间复杂度为O(V^2)，比较适合于求稠密图的最小生成树。</p>
@@ -259,7 +258,7 @@ var themeMenus = {};
 <li>重复3，直至图G中所有的节点都在同一个连通分量中</li>
 </ol>
 <p>算法伪代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">KRUSKAL-FUNCTION(G, w)</div><div class="line">    F := 空集合</div><div class="line">    <span class="keyword">for</span> each 图 G 中的顶点 v</div><div class="line">        do 將 v 加入森林 F</div><div class="line">    所有的边(u, v) ∈ E依权重 w 递增排序</div><div class="line">   <span class="keyword">for</span> each 边(u, v) ∈ E</div><div class="line">        do <span class="keyword">if</span> u 和 v 不在同一棵子树</div><div class="line">            then F := F ∪ &#123;(u, v)&#125;</div><div class="line">                將 u 和 v 所在的子树合并</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">KRUSKAL-FUNCTION(G, w)</span><br><span class="line">    F := 空集合</span><br><span class="line">    <span class="keyword">for</span> each 图 G 中的顶点 v</span><br><span class="line">        <span class="keyword">do</span> 將 v 加入森林 F</span><br><span class="line">    所有的边(u, v) ∈ E依权重 w 递增排序</span><br><span class="line">   <span class="keyword">for</span> each 边(u, v) ∈ E</span><br><span class="line">        <span class="keyword">do</span> <span class="keyword">if</span> u 和 v 不在同一棵子树</span><br><span class="line">            then F := F ∪ &#123;(u, v)&#125;</span><br><span class="line">                將 u 和 v 所在的子树合并</span><br></pre></td></tr></table></figure>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Prim算法：是针对顶点展开的，适合于边数较多的情况。</p>
 <p>Kruskal算法：是针对边展开的，适合于边的数量较少的情况。</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用Krustal算法或者Prime算法构造“”最大生成树”：</p>
@@ -326,22 +325,14 @@ var themeMenus = {};
 </table>
 <p>利用Krustal算法，选择最大的边加入，但是不能形成回路，图中表黑的就是被选出的，DE边是不能选的，否则就形成闭路。总共5+4+3+2=14</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://blog.chinaunix.net/uid-26345906-id-3951551.html" target="_blank" rel="external">数据结构深入剖析（14）–最小连通图 </a></li>
-<li><a href="https://www.zybuluo.com/pastqing/note/318392#prim算法" target="_blank" rel="external">图的常见算法</a></li>
-<li><a href="https://www.zybuluo.com/guoxs/note/262429" target="_blank" rel="external">数据结构之图的存储方式</a></li>
+<li><a href="http://blog.chinaunix.net/uid-26345906-id-3951551.html" target="_blank" rel="noopener">数据结构深入剖析（14）–最小连通图 </a></li>
+<li><a href="https://www.zybuluo.com/pastqing/note/318392#prim算法" target="_blank" rel="noopener">图的常见算法</a></li>
+<li><a href="https://www.zybuluo.com/guoxs/note/262429" target="_blank" rel="noopener">数据结构之图的存储方式</a></li>
 </ul>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -356,7 +347,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -381,7 +371,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
+
     </footer>
   </div>
   
@@ -410,33 +404,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树"><span class="nav-number">2.1.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim算法"><span class="nav-number">2.2.</span> <span class="nav-text">Prim算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">2.3.</span> <span class="nav-text">Kruskal算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树"><span class="nav-number">2.1.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim算法"><span class="nav-number">2.2.</span> <span class="nav-text">Prim算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">2.3.</span> <span class="nav-text">Kruskal算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -444,13 +440,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -510,8 +510,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -519,7 +522,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -535,7 +539,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

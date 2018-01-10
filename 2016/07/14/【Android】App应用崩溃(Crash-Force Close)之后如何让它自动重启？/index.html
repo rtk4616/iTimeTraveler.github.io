@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【android】app应用崩溃(crash-force close)之后如何让它自动重启？ | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,29 +11,26 @@
   
   
   
-  <meta name="description" content="英文原文： Auto Restart application after Crash/Force Close in Android.
-手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
-
-这篇教程我们将学到如何自动处理Exception，并">
+  <meta name="description" content="英文原文： Auto Restart application after Crash/Force Close in Android. 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？  这篇教程我们将学到如何自动处理Exception，并">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？">
 <meta property="og:url" content="http://github.com/2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="英文原文： Auto Restart application after Crash/Force Close in Android.
-手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
-
-这篇教程我们将学到如何自动处理Exception，并">
+<meta property="og:description" content="英文原文： Auto Restart application after Crash/Force Close in Android. 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？  这篇教程我们将学到如何自动处理Exception，并">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-10-18T04:55:00.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？">
-<meta name="twitter:description" content="英文原文： Auto Restart application after Crash/Force Close in Android.
-手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
-
-这篇教程我们将学到如何自动处理Exception，并">
+<meta name="twitter:description" content="英文原文： Auto Restart application after Crash/Force Close in Android. 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？  这篇教程我们将学到如何自动处理Exception，并">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -55,133 +42,134 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -196,20 +184,25 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">七月 14, 2016</time>
+	<a href="" class="article-date">
+	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/" target="_blank" rel="external"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
+<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/" target="_blank" rel="noopener"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
 <p>手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？</p>
 </blockquote>
 <p>这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。</p>
@@ -218,7 +211,7 @@ var themeMenus = {};
 <p>操作步骤如下：</p>
 <p><strong>Step 1</strong></p>
 <p>像下面这样创建一个重启目标 Activity 的 Intent，并添加一些 Activity 启动的 Flags：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(activity, RelaunchActivity.class);</div><div class="line">intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP</div><div class="line">				| Intent.FLAG_ACTIVITY_CLEAR_TASK</div><div class="line">				| Intent.FLAG_ACTIVITY_NEW_TASK);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(activity, RelaunchActivity.class);</span><br><span class="line">intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP</span><br><span class="line">				| Intent.FLAG_ACTIVITY_CLEAR_TASK</span><br><span class="line">				| Intent.FLAG_ACTIVITY_NEW_TASK);</span><br></pre></td></tr></table></figure>
 <p>其中，</p>
 <ul>
 <li><p>Intent.FLAG_ACTIVITY_CLEAR_TOP ： 销毁目标Activity和它之上的所有Activity，重新创建目标Activity。</p>
@@ -230,35 +223,27 @@ var themeMenus = {};
 </ul>
 <p><strong>Step 2</strong></p>
 <p>在 <strong>uncaughtException()</strong> 方法中，添加如下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">PendingIntent pendingIntent = PendingIntent.getActivity(</div><div class="line">        YourApplication.getInstance().getBaseContext(), <span class="number">0</span>,</div><div class="line">                intent, intent.getFlags());</div><div class="line"> </div><div class="line">AlarmManager mgr = (AlarmManager) YourApplication.getInstance().getBaseContext()</div><div class="line">                .getSystemService(Context.ALARM_SERVICE);</div><div class="line">mgr.set(AlarmManager.RTC, System.currentTimeMillis() + <span class="number">2000</span>, pendingIntent);</div><div class="line"> </div><div class="line">activity.finish();</div><div class="line">System.exit(<span class="number">2</span>);</div></pre></td></tr></table></figure>
-<p>这里的 <a href="http://developer.android.com/reference/android/app/PendingIntent.html" target="_blank" rel="external">PendingIntent</a> 不同于常见的 Intent ，PendingIntent 是对 Intent 的一个包装，可以保存下来在将来某一刻执行。它存储了request code、intent 和 flags。</p>
-<p><a href="https://developer.android.com/reference/android/app/AlarmManager.html" target="_blank" rel="external">AlarmManager</a> 是为了设置一个计时器来延迟两秒再执行 pendingIntent 的，也就是重启我们的Activity的任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PendingIntent pendingIntent = PendingIntent.getActivity(</span><br><span class="line">        YourApplication.getInstance().getBaseContext(), <span class="number">0</span>,</span><br><span class="line">                intent, intent.getFlags());</span><br><span class="line"> </span><br><span class="line">AlarmManager mgr = (AlarmManager) YourApplication.getInstance().getBaseContext()</span><br><span class="line">                .getSystemService(Context.ALARM_SERVICE);</span><br><span class="line">mgr.set(AlarmManager.RTC, System.currentTimeMillis() + <span class="number">2000</span>, pendingIntent);</span><br><span class="line"> </span><br><span class="line">activity.finish();</span><br><span class="line">System.exit(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>这里的 <a href="http://developer.android.com/reference/android/app/PendingIntent.html" target="_blank" rel="noopener">PendingIntent</a> 不同于常见的 Intent ，PendingIntent 是对 Intent 的一个包装，可以保存下来在将来某一刻执行。它存储了request code、intent 和 flags。</p>
+<p><a href="https://developer.android.com/reference/android/app/AlarmManager.html" target="_blank" rel="noopener">AlarmManager</a> 是为了设置一个计时器来延迟两秒再执行 pendingIntent 的，也就是重启我们的Activity的任务。</p>
 <p><strong>Step 3</strong></p>
 <p>最后，在 Activity 的 onCreate() 方法中调用如下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Thread.setDefaultUncaughtExceptionHandler(<span class="keyword">new</span> DefaultExceptionHandler(<span class="keyword">this</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.setDefaultUncaughtExceptionHandler(<span class="keyword">new</span> DefaultExceptionHandler(<span class="keyword">this</span>));</span><br></pre></td></tr></table></figure>
 <p><strong>【完整代码】</strong></p>
 <ul>
 <li><p><strong>YourApplication.java</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> android.app.Application;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * This custom class is used to Application level things.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> Chintan Rathod (http://www.chintanrathod.com)</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YourApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context mContext;</div><div class="line">     </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> YourApplication instace;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        mContext = getApplicationContext();</div><div class="line">        instace = <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Context <span class="title">getApplicationContext</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.getApplicationContext();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> YourApplication <span class="title">getIntance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> instace;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Application;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This custom class is used to Application level things.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Chintan Rathod (http://www.chintanrathod.com)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YourApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context mContext;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> YourApplication instace;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        mContext = getApplicationContext();</span><br><span class="line">        instace = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Context <span class="title">getApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.getApplicationContext();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> YourApplication <span class="title">getIntance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instace;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>DefaultExceptionHandler.java</strong></p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.FileOutputStream;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</div><div class="line"><span class="keyword">import</span> java.lang.Thread.UncaughtExceptionHandler;</div><div class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.app.Activity;</div><div class="line"><span class="keyword">import</span> android.app.AlarmManager;</div><div class="line"><span class="keyword">import</span> android.app.PendingIntent;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.Intent;</div><div class="line"><span class="keyword">import</span> android.os.Environment;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * This custom class is used to handle exception.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@author</span> Chintan Rathod (http://www.chintanrathod.com)</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultExceptionHandler</span> <span class="keyword">implements</span> <span class="title">UncaughtExceptionHandler</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> UncaughtExceptionHandler defaultUEH;</div><div class="line">    Activity activity;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DefaultExceptionHandler</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.activity = activity;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread thread, Throwable ex)</span> </span>&#123;</div><div class="line"> </div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line"> </div><div class="line">            Intent intent = <span class="keyword">new</span> Intent(activity, RelaunchActivity.class);</div><div class="line"> </div><div class="line">            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP</div><div class="line">                    | Intent.FLAG_ACTIVITY_CLEAR_TASK</div><div class="line">                    | Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line"> </div><div class="line">            PendingIntent pendingIntent = PendingIntent.getActivity(</div><div class="line">                    YourApplication.getInstance().getBaseContext(), <span class="number">0</span>, intent, intent.getFlags());</div><div class="line"> </div><div class="line">            <span class="comment">//Following code will restart your application after 2 seconds</span></div><div class="line">            AlarmManager mgr = (AlarmManager) YourApplication.getInstance().getBaseContext()</div><div class="line">                    .getSystemService(Context.ALARM_SERVICE);</div><div class="line">            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + <span class="number">1000</span>,</div><div class="line">                    pendingIntent);</div><div class="line"> </div><div class="line">            <span class="comment">//This will finish your activity manually</span></div><div class="line">            activity.finish();</div><div class="line"> </div><div class="line">            <span class="comment">//This will stop your application and take out from it.</span></div><div class="line">            System.exit(<span class="number">2</span>);</div><div class="line"> </div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.lang.Thread.UncaughtExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.app.AlarmManager;</span><br><span class="line"><span class="keyword">import</span> android.app.PendingIntent;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.os.Environment;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This custom class is used to handle exception.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Chintan Rathod (http://www.chintanrathod.com)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultExceptionHandler</span> <span class="keyword">implements</span> <span class="title">UncaughtExceptionHandler</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> UncaughtExceptionHandler defaultUEH;</span><br><span class="line">    Activity activity;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DefaultExceptionHandler</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.activity = activity;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread thread, Throwable ex)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"> </span><br><span class="line">            Intent intent = <span class="keyword">new</span> Intent(activity, RelaunchActivity.class);</span><br><span class="line"> </span><br><span class="line">            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP</span><br><span class="line">                    | Intent.FLAG_ACTIVITY_CLEAR_TASK</span><br><span class="line">                    | Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line"> </span><br><span class="line">            PendingIntent pendingIntent = PendingIntent.getActivity(</span><br><span class="line">                    YourApplication.getInstance().getBaseContext(), <span class="number">0</span>, intent, intent.getFlags());</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//Following code will restart your application after 2 seconds</span></span><br><span class="line">            AlarmManager mgr = (AlarmManager) YourApplication.getInstance().getBaseContext()</span><br><span class="line">                    .getSystemService(Context.ALARM_SERVICE);</span><br><span class="line">            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + <span class="number">1000</span>,</span><br><span class="line">                    pendingIntent);</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//This will finish your activity manually</span></span><br><span class="line">            activity.finish();</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//This will stop your application and take out from it.</span></span><br><span class="line">            System.exit(<span class="number">2</span>);</span><br><span class="line"> </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>【参考资料】：</p>
-<p>1、<a href="http://wangkuiwu.github.io/2014/06/26/IntentFlag/" target="_blank" rel="external">Activity启动模式(二)之 Intent的Flag属性</a></p>
+<p>1、<a href="http://wangkuiwu.github.io/2014/06/26/IntentFlag/" target="_blank" rel="noopener">Activity启动模式(二)之 Intent的Flag属性</a></p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -273,7 +258,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -298,7 +282,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
@@ -327,33 +315,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav">无</ol>
+        <ol class="nav">无</ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -361,13 +351,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -427,8 +421,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -436,7 +433,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -452,7 +450,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

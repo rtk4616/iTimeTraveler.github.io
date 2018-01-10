@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,13 +15,18 @@
 <meta property="og:url" content="http://github.com/page/7/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="Someone knock at the door.">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTimeTraveler">
 <meta name="twitter:description" content="Someone knock at the door.">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -43,135 +38,320 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../css/style.css">
 
   <script src="../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+    <header id="header">
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
+	<!-- 背景图模式 -->
+	
 
-          
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+    
+      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../mybooks">🎁</a> </li>
-                    
-              </ul>
+      <!-- Support rolling -->  
+        
+        <section class="awSlider">
+          <div class="carousel slide carousel-fade " data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+               
+                  
+                    <div class="item active">
+                  
+                    <img id="carousel-img0" src="https://source.unsplash.com/collection/954550/1920x1080">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img0 = new Image();
+                      var imageTag0 = document.getElementById("carousel-img0");
+                      img0.src = imageTag0.src;
+                      img0.onload=function(){
+                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag0.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag0.style.height = document.body.clientHeight + "px";
+                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img1" src="https://source.unsplash.com/collection/954550/1920x1081">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img1 = new Image();
+                      var imageTag1 = document.getElementById("carousel-img1");
+                      img1.src = imageTag1.src;
+                      img1.onload=function(){
+                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag1.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag1.style.height = document.body.clientHeight + "px";
+                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1921x1080">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img2 = new Image();
+                      var imageTag2 = document.getElementById("carousel-img2");
+                      img2.src = imageTag2.src;
+                      img2.onload=function(){
+                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag2.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag2.style.height = document.body.clientHeight + "px";
+                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img3" src="https://source.unsplash.com/collection/954550/1921x1081">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img3 = new Image();
+                      var imageTag3 = document.getElementById("carousel-img3");
+                      img3.src = imageTag3.src;
+                      img3.onload=function(){
+                        if (img3.width / img3.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag3.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag3.style.height = document.body.clientHeight + "px";
+                          imageTag3.style.marginLeft = -(document.body.clientHeight * img3.width / img3.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img4" src="https://source.unsplash.com/collection/954550/1920x1082">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img4 = new Image();
+                      var imageTag4 = document.getElementById("carousel-img4");
+                      img4.src = imageTag4.src;
+                      img4.onload=function(){
+                        if (img4.width / img4.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag4.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag4.style.height = document.body.clientHeight + "px";
+                          imageTag4.style.marginLeft = -(document.body.clientHeight * img4.width / img4.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img5" src="https://source.unsplash.com/collection/954550/1922x1080">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img5 = new Image();
+                      var imageTag5 = document.getElementById("carousel-img5");
+                      img5.src = imageTag5.src;
+                      img5.onload=function(){
+                        if (img5.width / img5.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag5.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag5.style.height = document.body.clientHeight + "px";
+                          imageTag5.style.marginLeft = -(document.body.clientHeight * img5.width / img5.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img6" src="https://source.unsplash.com/collection/954550/1922x1082">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img6 = new Image();
+                      var imageTag6 = document.getElementById("carousel-img6");
+                      img6.src = imageTag6.src;
+                      img6.onload=function(){
+                        if (img6.width / img6.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag6.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag6.style.height = document.body.clientHeight + "px";
+                          imageTag6.style.marginLeft = -(document.body.clientHeight * img6.width / img6.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
             </div>
-          </nav>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Geri</span>
+            </a>
+            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">İleri</span>
+            </a>
+          </div>
+        </section>
+        <script>
+          $('section.awSlider .carousel').carousel({
+              pause: '',
+              interval: 5000
+          });
+          var startImage = $('section.awSlider .item.active > img').attr('src');
+          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
+              var bscn = $(this).find('.item.active > img').attr('src');
+              $('section.awSlider > img').attr('src', bscn);
+          });
+        </script>
+      
+
+    
+ 
 
 
-      </div>
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
+
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">iTimeTraveler</a></h1>
+            <h3>Someone knock at the door.</h3>
+            <h5>Mr.Seven</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="../../index.html">首页</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../archives">归档</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../tags">标签</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../funnysite">酷站</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../collection">收藏</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../about">关于</a>
+        
+          <a id="beautifont" class="main-nav-link" href="../../mybooks">🎁</a>
+        
+      </p>
+  </div>
+
 </header>
-
-
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
+  
   <div id="container">
     <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main">
+          <section id="main" style="float:none;">
   
     <article id="post-【Machine Learning】Github上关注最多的53个深度学习项目"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -186,19 +366,20 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
-	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">八月 12, 2016</time>
+	<a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="article-date">
+	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">2016-08-12</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
+        <h2 id="Top-Deep-Learning-Projects"><a href="#Top-Deep-Learning-Projects" class="headerlink" title="Top Deep Learning Projects"></a>Top Deep Learning Projects</h2><p>A list of popular github projects related to deep learning (ranked by stars).</p>
+<p>Last Update: 2016.08.09</p>
+        <!-- Top Deep Learning ProjectsA list of popular github projects related to deep learning (ranked by stars).
 Last Update: 2016.08.09
  
 
@@ -213,38 +394,18 @@ Description
 
 TensorFlow
 29622
-Computation using data flow graphs for scalable machine learning.
-
-
-Caffe
-11799
-Caffe: a fast open framework for deep learning.
-
-
-Neural Style
-10148
-Torch impleme...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more">阅读全文</a>
-          </p>
-        </div>
+Computation ......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Machine-Learning/">Machine Learning</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Machine-Learning/">Machine Learning</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -254,7 +415,7 @@ Torch impleme...
 
   
     <article id="post-【Android】使用shape的同时，动态替换shape的颜色属性"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -269,45 +430,41 @@ Torch impleme...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
-	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">八月 8, 2016</time>
+	<a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="article-date">
+	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">2016-08-08</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？</p>
+</blockquote>
+<h4 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a><strong>一、问题</strong></h4><p>比如以下这三个按钮：</p>
+<p><img src="http://img.blog.csdn.net/20160808175543250" alt="三个样式相同的按钮"></p>
+<p>为第一个灰色按钮自定义背景如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:color</span>=<span class="string">"@color/gray"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:radius</span>=<span class="string">"60dip"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">"@color/gray"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后，如果再为每个颜色的按钮都写一个shape背景也太麻烦，重用性太差。</p>
+        <!-- 
 在实现布局的时候，有些按钮形状相同，只是颜色有差异，如果使用自定义shape实现了其中一种按钮，有没有可能不需要再为其他每个颜色都写一个shape文件呢？
 
 一、问题比如以下这三个按钮：
 
-为第一个灰色按钮自定义背景如下：&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:android="http://schemas.android.com/apk/res/android"    android:shape="rectangle"    android:color="@color/gray"&gt;    &lt;corners        android:radius="60dip"/&gt;    &l...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more">阅读全文</a>
-          </p>
-        </div>
+为第一个灰色按钮自定义背景如下：1234567891011121314&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;shape    xmlns:and......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -317,7 +474,7 @@ Torch impleme...
 
   
     <article id="post-BAT人才体系的职位层级、薪酬、晋升标准大全"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -332,63 +489,56 @@ Torch impleme...
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
-	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">八月 2, 2016</time>
+	<a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="article-date">
+	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">2016-08-02</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <img src="/2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/01.jpg" title="&nbsp;">
+<blockquote>
+<p>互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题<a href="https://www.zhihu.com/question/27108669" target="_blank" rel="noopener">百度、腾讯和阿里内部的级别和薪资待遇是什么样的？</a></p>
+</blockquote>
+<h3 id="★-腾讯-★"><a href="#★-腾讯-★" class="headerlink" title="★ 腾讯 ★"></a><strong>★ 腾讯 ★</strong></h3><h4 id="1、职级"><a href="#1、职级" class="headerlink" title="1、职级"></a><strong>1、职级</strong></h4><p>腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：</p>
+<p>产品/项目通道，简称P族<br>技术通道，简称T族<br>市场通道，简称M族<br>职能通道，简称S族</p>
+<p>以T族为例，分别为：</p>
+<ul>
+<li><p>T1：助理工程师 （一般为校招新人）</p>
+</li>
+<li><p>T2：工程师</p>
+</li>
+<li><p>T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）</p>
+</li>
+<li><p>T4：专家工程师</p>
+</li>
+<li><p>T5：科学家</p>
+</li>
+<li><p>T6：首席科学家</p>
+</li>
+</ul>
+        <!-- 
 
 互联网圈有这么一句话：百度的技术，阿里的运营，腾讯的产品。那么代表互联网三座大山的BAT，内部人才体系有什么区别呢？可以先看看这个话题百度、腾讯和阿里内部的级别和薪资待遇是什么样的？
 
 ★ 腾讯 ★1、职级腾讯职级体系分6级，最低1级，最高6级。同时按照岗位又划分为四大通道，内部也叫“族”，比如：
 产品/项目通道，简称P族技术通道，简称T族市场通道，简称M族职能通道，简称S族
-以T族为例，分别为：
-
-T1：助理工程师 （一般为校招新人）
-
-T2：工程师
-
-T3：高级工程师 3-1相当于阿里的p6+到p7（能力强可能到p7）
-
-T4：专家工程师
-
-T5：科学家
-
-T6：首席科学家
-
-
-
-目前全腾讯貌似就一个T6。
-每一级之间又分为3个子级，3-1是任命组长/副组长的必要条件，其他线也...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">阅读全文</a>
-          </p>
-        </div>
+以T族为例......  -->
+        <p class="article-more-link">
+          <a href="../../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/BAT/">BAT</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/BAT/">BAT</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -398,7 +548,7 @@ T6：首席科学家
 
   
     <article id="post-【Android】dip和px之间到底如何转换"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -413,55 +563,63 @@ T6：首席科学家
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
-	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">七月 22, 2016</time>
+	<a href="../../2016/07/22/【Android】dip和px之间到底如何转换/" class="article-date">
+	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">2016-07-22</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。</p>
+<p>但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。</p>
+</blockquote>
+<h3 id="一、名词介绍"><a href="#一、名词介绍" class="headerlink" title="一、名词介绍"></a><strong>一、名词介绍</strong></h3><h4 id="1-PPI-Pixels-per-inch，每英寸上的像素数-即-“像素密度”"><a href="#1-PPI-Pixels-per-inch，每英寸上的像素数-即-“像素密度”" class="headerlink" title="1.  PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”"></a>1.  <strong>PPI</strong> = Pixels per inch，每英寸上的像素数,即 “像素密度”</h4><ul>
+<li><p>xhdpi: 2.0</p>
+</li>
+<li><p>hdpi: 1.5</p>
+</li>
+<li><p>mdpi: 1.0 (baseline)</p>
+</li>
+<li><p>ldpi: 0.75</p>
+</li>
+</ul>
+<p>下图是Android官网dpi的定义（其实在计算机中dpi就是ppi，不明白可以看这里 <a href="http://zhidao.baidu.com/link?url=vPAxK6EdTCzBfQy8xUCnHcZS6M45oijy87YKvW7UlM4W7majdUf7Af3tL8S8CvCX8Thswwf2SU-uKSwpdLQ-6a" target="_blank" rel="noopener">dpi与ppi区别</a>）：</p>
+<p><strong>同时也注意，是dpi，不是dip。</strong></p>
+<blockquote>
+<p>dpi是<strong>Dots Per Inch，每英寸点数</strong>。（一个量度单位，用于点阵数码影像，指每一英寸长度中，取样、可显示或输出点的数目。是现实概念）。</p>
+<p>dip是<strong>Device Independent Pixels，设备独立像素</strong>。（又称设备无关像，是人为抽象概念 ）。</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20160722113144430" alt="官方dpi定义"></p>
+<h4 id="2-dp-也就是dip（device-independent-pixels），设备独立像素。"><a href="#2-dp-也就是dip（device-independent-pixels），设备独立像素。" class="headerlink" title="2.  dp = 也就是dip（device independent pixels），设备独立像素。"></a>2.  <strong>dp</strong> = 也就是dip（device independent pixels），设备独立像素。</h4><p>以160PPI屏幕为标准，则1dp=1px，在不同的像素密度的设备上会自动适配，比如:</p>
+<ul>
+<li>在320x480分辨率，像素密度为160，1dp=1px</li>
+<li>在480x800分辨率，像素密度为240，1dp=1.5px<blockquote>
+<p>计算公式：1dp*像素密度/160 = 实际像素数</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3-sp-scaled-pixels，放大像素，它是安卓的字体单位"><a href="#3-sp-scaled-pixels，放大像素，它是安卓的字体单位" class="headerlink" title="3.  sp = scaled pixels，放大像素，它是安卓的字体单位"></a>3.  <strong>sp</strong> = scaled pixels，放大像素，它是安卓的字体单位</h4><p>主要用于字体显示best for textsize。根据 google 的建议，TextView 的字号最好使用 sp 做单位，而且查看TextView的源码可知 Android 默认使用 sp 作为字号单位。</p>
+        <!-- 
 在Android xml布局文件中，我们既可以设置px，也可以设置dp（或者dip）。一般情况下，我们都会选择使用dp，这样可以保证不同屏幕分辨率的机器上布局一致。
 但是在代码中，如何处理呢？很多控件的方法中都只提供了设置px的方法，例如setPadding，并没有提供设置dp的方法。这个时候，如果需要设置dp的话，就要将dp转换成px了。
 
-一、名词介绍1.  PPI = Pixels per inch，每英寸上的像素数,即 “像素密度”
-xhdpi: 2.0
-
-hdpi: 1.5
-
-mdpi: 1.0 (baseline)
-
-ldpi: 0.75
-
-
-下图是Android官网dpi的定义（其实在计算机中dpi就是ppi，不明白可以看这里 dpi与ppi区别）：
-同时也注意，是dp...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more">阅读全文</a>
-          </p>
-        </div>
+一、名词介绍1.  PPI = Pixels ......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/22/【Android】dip和px之间到底如何转换/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -471,7 +629,7 @@ ldpi: 0.75
 
   
     <article id="post-【Android】Monkey压力测试与停止"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -486,45 +644,46 @@ ldpi: 0.75
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
-	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">七月 19, 2016</time>
+	<a href="../../2016/07/19/【Android】Monkey压力测试与停止/" class="article-date">
+	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">2016-07-19</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
-二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventcount &gt; , 例如：
-
-adb shell monkey -v 500
-
-产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activit...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more">阅读全文</a>
-          </p>
-        </div>
+        <h4 id="一、Monkey-是什么？"><a href="#一、Monkey-是什么？" class="headerlink" title="一、Monkey 是什么？"></a><strong>一、Monkey 是什么？</strong></h4><p>Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。</p>
+<h4 id="二、Monkey命令"><a href="#二、Monkey命令" class="headerlink" title="二、Monkey命令"></a><strong>二、Monkey命令</strong></h4><p>1）. 标准的monkey 命令<br>[adb shell] monkey [options] &lt; eventcount &gt; , 例如：</p>
+<blockquote>
+<p>adb shell monkey -v 500</p>
+</blockquote>
+<p>产生500次随机事件，作用在系统中所有activity（其实也不是所有的activity，而是包含  Intent.CATEGORY_LAUNCHER 或Intent.CATEGORY_MONKEY 的activity）。<br>上面只是一个简单的例子，实际情况中通常会有很多的options 选项.</p>
+<p>2）. 四大类</p>
+<blockquote>
+<ul>
+<li>常用选项</li>
+<li>事件选项 </li>
+<li>约束选项 </li>
+<li>调试选项</li>
+</ul>
+</blockquote>
+<p>具体的命令解释可以看这里：<a href="http://www.jb51.net/article/48557.htm" target="_blank" rel="noopener">android 压力测试命令monkey详解</a></p>
+        <!-- 一、Monkey 是什么？Monkey测试是Android自动化测试的一种手段。该工具用于进行压力测试，就是模拟用户的按键输入，触摸屏输入，手势输入等，看设备多长时间会出异常。 然后开发人员结合monkey 打印的日志 和系统打印的日志，结局测试中出现的问题。
+二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventc......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -534,7 +693,7 @@ adb shell monkey -v 500
 
   
     <article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -549,49 +708,39 @@ adb shell monkey -v 500
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
-	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">七月 14, 2016</time>
+	<a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
+	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/" target="_blank" rel="noopener"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
+<p>手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？</p>
+</blockquote>
+<p>这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。</p>
+<p>其实方法很简单，这里我们需要用到 <strong>Thread.setDefaultUncaughtExceptionHandler()</strong>，当应用崩溃的时候代码就会自动调用 <strong>uncaughtException()</strong> 这个方法。</p>
+        <!-- 
 英文原文： Auto Restart application after Crash/Force Close in Android.
 手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
 
-这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。
-其实方法很简单，这里我们需要用到 Thread.setDefaultUncaughtExceptionHandler()，当应用崩溃的时候代码就会自动调用 uncaughtException() 这个方法。
-
-操作步骤如下：
-Step 1
-像下面这...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more">阅读全文</a>
-          </p>
-        </div>
+这篇教程我们将学到如何自动处理Exceptio......  -->
+        <p class="article-more-link">
+          <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -601,7 +750,7 @@ Step 1
 
   
     <article id="post-【SVN】使用patch命令保存更改"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -616,44 +765,37 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
-	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">六月 12, 2016</time>
+	<a href="../../2016/06/12/【SVN】使用patch命令保存更改/" class="article-date">
+	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">2016-06-12</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/SVN/">SVN</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！</p>
+</blockquote>
+<h4 id="一、生成patch文件"><a href="#一、生成patch文件" class="headerlink" title="一、生成patch文件"></a><strong>一、生成patch文件</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn diff &gt; patchFile 			// 整个工程的变动生成patch</span><br><span class="line">svn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch</span><br></pre></td></tr></table></figure>
+<h4 id="二、svn回滚"><a href="#二、svn回滚" class="headerlink" title="二、svn回滚"></a><strong>二、svn回滚</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">svn revert FILE 				// 单个文件回滚</span><br><span class="line">svn revert DIR --depth=infinity // 整个目录进行递归回滚</span><br><span class="line">svn revert . --depth=infinity 	// 当前目录进行递归回滚</span><br></pre></td></tr></table></figure>
+        <!-- 
 使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！
 
-一、生成patch文件svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch
-二、svn回滚svn revert FILE 				// 单个文件回滚svn revert DIR --depth=infinity // 整个目录进行递归回滚svn revert . --depth=infinity 	//...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/06/12/【SVN】使用patch命令保存更改/#more">阅读全文</a>
-          </p>
-        </div>
+一、生成patch文件12svn diff &gt; patchFile 			// 整个工程的变动生成patchsvn diff FILE_N......  -->
+        <p class="article-more-link">
+          <a href="../../2016/06/12/【SVN】使用patch命令保存更改/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/SVN/">SVN</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SVN/">SVN</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -663,7 +805,7 @@ Step 1
 
   
     <article id="post-【Java】按位存储：使用int存储boolean数组"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -678,43 +820,37 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
-	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
+	<a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。</p>
+</blockquote>
+<p>首先，敲定每个boolean值存储的位置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mBroadcastCustomValue = <span class="number">0</span>;   <span class="comment">//用来存储的int值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_BASE = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_TRAFFIC = <span class="number">1</span> &lt;&lt; <span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_CAMERA = <span class="number">1</span> &lt;&lt; <span class="number">2</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BROADCAST_TYPE_CUSTOM_SAFE = <span class="number">1</span> &lt;&lt; <span class="number">3</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="一、添加Add"><a href="#一、添加Add" class="headerlink" title="一、添加Add"></a><strong>一、添加Add</strong></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addLevel</span><span class="params">(<span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">	mBroadcastCustomValue |= level;    <span class="comment">//add</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用方式如下</span></span><br><span class="line">addLevel(BROADCAST_TYPE_CUSTOM_BASE);</span><br></pre></td></tr></table></figure>
+        <!-- 
 有一种场景，比如App设置页中会有一组开关选项，这个时候保存这些开关的状态，如果每个按钮都对应一个boolean值的话，太大材小用显得鸡肋，频繁读取SharedPreferences 存取效率自然快不过一次读取。
 
-首先，敲定每个boolean值存储的位置private int mBroadcastCustomValue = 0;   //用来存储的int值public static final int BROADCAST_TYPE_CUSTOM_BASE = 1;public static final int BROADCAST_TYPE_CUSTOM_TRAFFIC = 1 &lt;&lt; 1;public static final int BROADCAST_TYPE_CUS...
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">阅读全文</a>
-          </p>
-        </div>
+首先，敲定每个boolean值存储的位置12345private int mBroadcastCustomValue = 0;   //用来存储的int值public stat......  -->
+        <p class="article-more-link">
+          <a href="../../2016/06/02/【Java】按位存储：使用int存储boolean数组/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Java/">Java</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -724,7 +860,7 @@ Step 1
 
   
     <article id="post-【Android】技术调研：用代码模拟屏幕点击、触摸事件"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -739,44 +875,39 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
-	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">六月 2, 2016</time>
+	<a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="entry-thumbnail">
-            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/"><img width="250" height="175" src="/gallery/touch-screen.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          
+        <blockquote>
+<p>在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。</p>
+</blockquote>
+<p>经过调研发现，给系统模拟注入输入事件有如下几种方式：</p>
+<h2 id="一、使用shell命令"><a href="#一、使用shell命令" class="headerlink" title="一、使用shell命令"></a><strong>一、使用shell命令</strong></h2><p>使用android自带的adb shell，里面自带一个input工具，使用方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell <span class="comment">#进入系统</span></span><br><span class="line">input keyevent KEYCODE_BACK  <span class="comment">#模拟按返回键</span></span><br><span class="line">input keyevent KEYCODE_HOME  <span class="comment">#模拟按Home键</span></span><br></pre></td></tr></table></figure>
+        <!-- 
 在Android中，有些场景需要使用代码来模拟人的操作，比如微信自动抢红包、UI测试等都需要模拟实现点击事件（Click）、触摸事件（Touch）、键盘事件（KeyBoard）等。那么，有没有现成的方案可以实现呢？答案当然是肯定的啦，往下看。
 
 经过调研发现，给系统模拟注入输入事件有如下几种方式：
-一、使用shell命令使用android自带的adb shell，里面自带一个input工具...
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more">阅读全文</a>
-          </p>
-        </div>
+一、使用shell命令使用android自带的adb shell，里面自带一个input工具......  -->
+        <p class="article-more-link">
+          <a href="../../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -786,7 +917,7 @@ Step 1
 
   
     <article id="post-【MySQL】查询保持IN中的顺序"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -801,48 +932,38 @@ Step 1
     
     <div class="article-meta">
       
-	Posted on <a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
-	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">四月 29, 2016</time>
+	<a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/" class="article-date">
+	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">2016-04-29</time>
 	</a>
+
+      
+    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
+        <blockquote>
+<p>select * from table_name where id in ()的时候，MySQL会自动按主键自增排序，要是按IN中给定的顺序来取，如何实现呢？</p>
+</blockquote>
+<p>比如下面这个查询结果，mysql会默认使用主键id的ASC自增排序结果集：<br><img src="http://img.blog.csdn.net/20160429152929904" alt=""></p>
+        <!-- 
 select * from table_name where id in ()的时候，MySQL会自动按主键自增排序，要是按IN中给定的顺序来取，如何实现呢？
 
 比如下面这个查询结果，mysql会默认使用主键id的ASC自增排序结果集：
 
-那么，如果我们想维持查询语句中IN(26613,26612,26611,26610,26609,26608,26607)的顺序可以么？当然可以，像下面这样，使用Order by field()：
-SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612,26611,26610);
-这样读取出来的顺序就是IN（）语句中的顺序。
-
-          
-
-        
-          <p class="article-more-link">
-            <a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/#more">阅读全文</a>
-          </p>
-        </div>
+那么，如果我们想维持查询语句中IN(26613,26612,26611,26610,26609,26608,26607)的顺序可以么？当然可以，像下面这......  -->
+        <p class="article-more-link">
+          <a href="../../2016/04/29/【MySQL】查询保持IN中的顺序/#more">阅读全文</a>
+        </p>
       
     </div>
-    <footer class="entry-meta entry-footer">
+    <footer class="article-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../categories/MySQL/">MySQL</a>
-
       
-  <span class="ico-tags"></span>
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MySQL/">MySQL</a></li></ul>
 
-      
-            
-      
     </footer>
   </div>
   
@@ -855,536 +976,32 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../6/">上一页</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><span class="page-number current">7</span><a class="page-number" href="../8/">8</a><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><a class="extend next" rel="next" href="../8/">下一页</a>
+    <a class="extend prev" rel="prev" href="../6/">&laquo; 上一页</a><a class="page-number" href="../../index.html">1</a><span class="space">&hellip;</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><span class="page-number current">7</span><a class="page-number" href="../8/">8</a><a class="page-number" href="../9/">9</a><a class="page-number" href="../10/">10</a><a class="extend next" rel="next" href="../8/">下一页 &raquo;</a>
   </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap">
-<h3 class="widget-title">起床了！</h3>
-<div class="widget">
-  <canvas id="c" style="background: url(/collection/code/img/window.jpg) no-repeat; 
-  background-size: contain;"></canvas>
-  <script type="text/javascript">
-
-  	var width = 300,
-  	height = 250,
-  	physics_accuracy = 3,
-	mouse_influence = 20,
-	mouse_cut = 5,
-	gravity = 1200,
-	cloth_height = 25,
-	cloth_width = 36,
-	start_y = 20,
-	spacing = 7,
-	tear_distance = 60;
-
-	window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-	function(callback) {
-	    window.setTimeout(callback, 1000 / 60);
-	};
-
-	var canvas, ctx, cloth, boundsx, boundsy, mouse = {
-	    down: false,
-	    button: 1,
-	    x: 0,
-	    y: 0,
-	    px: 0,
-	    py: 0
-	};
-
-	var Point = function(x, y) {
-
-	    this.x = x;
-	    this.y = y;
-	    this.px = x;
-	    this.py = y;
-	    this.vx = 0;
-	    this.vy = 0;
-	    this.pin_x = null;
-	    this.pin_y = null;
-
-	    this.constraints = [];
-	};
-
-	Point.prototype.update = function(delta) {
-
-	    if (mouse.down) {
-
-	        var diff_x = this.x - mouse.x,
-	        diff_y = this.y - mouse.y,
-	        dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
-
-	        if (mouse.button == 1) {
-
-	            if (dist < mouse_influence) {
-	                this.px = this.x - (mouse.x - mouse.px) * 1.8;
-	                this.py = this.y - (mouse.y - mouse.py) * 1.8;
-	            }
-
-	        } else if (dist < mouse_cut) this.constraints = [];
-	    }
-
-	    this.add_force(0, gravity);
-
-	    delta *= delta;
-	    nx = this.x + ((this.x - this.px) * .99) + ((this.vx / 2) * delta);
-	    ny = this.y + ((this.y - this.py) * .99) + ((this.vy / 2) * delta);
-
-	    this.px = this.x;
-	    this.py = this.y;
-
-	    this.x = nx;
-	    this.y = ny;
-
-	    this.vy = this.vx = 0
-	};
-
-	Point.prototype.draw = function() {
-
-	    if (this.constraints.length <= 0) return;
-
-	    var i = this.constraints.length;
-	    while (i--) this.constraints[i].draw();
-	};
-
-	Point.prototype.resolve_constraints = function() {
-
-	    if (this.pin_x != null && this.pin_y != null) {
-
-	        this.x = this.pin_x;
-	        this.y = this.pin_y;
-	        return;
-	    }
-
-	    var i = this.constraints.length;
-	    while (i--) this.constraints[i].resolve();
-
-	    if (this.x > boundsx) {
-
-	        this.x = 2 * boundsx - this.x;
-
-	    } else if (this.x < 1) {
-
-	        this.x = 2 - this.x;
-	    }
-
-	    if (this.y > boundsy) {
-
-	        this.y = 2 * boundsy - this.y;
-
-	    } else if (this.y < 1) {
-
-	        this.y = 2 - this.y;
-	    }
-	};
-
-	Point.prototype.attach = function(point) {
-
-	    this.constraints.push(new Constraint(this, point));
-	};
-
-	Point.prototype.remove_constraint = function(lnk) {
-
-	    var i = this.constraints.length;
-	    while (i--) if (this.constraints[i] == lnk) this.constraints.splice(i, 1);
-	};
-
-	Point.prototype.add_force = function(x, y) {
-
-	    this.vx += x;
-	    this.vy += y;
-	};
-
-	Point.prototype.pin = function(pinx, piny) {
-	    this.pin_x = pinx;
-	    this.pin_y = piny;
-	};
-
-	var Constraint = function(p1, p2) {
-
-	    this.p1 = p1;
-	    this.p2 = p2;
-	    this.length = spacing;
-	};
-
-	Constraint.prototype.resolve = function() {
-
-	    var diff_x = this.p1.x - this.p2.x,
-	    diff_y = this.p1.y - this.p2.y,
-	    dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y),
-	    diff = (this.length - dist) / dist;
-
-	    if (dist > tear_distance) this.p1.remove_constraint(this);
-
-	    var px = diff_x * diff * 0.5;
-	    var py = diff_y * diff * 0.5;
-
-	    this.p1.x += px;
-	    this.p1.y += py;
-	    this.p2.x -= px;
-	    this.p2.y -= py;
-	};
-
-	Constraint.prototype.draw = function() {
-
-	    ctx.moveTo(this.p1.x, this.p1.y);
-	    ctx.lineTo(this.p2.x, this.p2.y);
-	};
-
-	var Cloth = function() {
-
-	    this.points = [];
-
-	    var start_x = canvas.width / 2 - cloth_width * spacing / 2;
-
-	    for (var y = 0; y <= cloth_height; y++) {
-
-	        for (var x = 0; x <= cloth_width; x++) {
-
-	            var p = new Point(start_x + x * spacing, start_y + y * spacing);
-
-	            x != 0 && p.attach(this.points[this.points.length - 1]);
-	            y == 0 && p.pin(p.x, p.y);
-	            y != 0 && p.attach(this.points[x + (y - 1) * (cloth_width + 1)])
-
-	            this.points.push(p);
-	        }
-	    }
-	};
-
-	Cloth.prototype.update = function() {
-
-	    var i = physics_accuracy;
-
-	    while (i--) {
-	        var p = this.points.length;
-	        while (p--) this.points[p].resolve_constraints();
-	    }
-
-	    i = this.points.length;
-	    while (i--) this.points[i].update(.016);
-	};
-
-	Cloth.prototype.draw = function() {
-
-	    ctx.beginPath();
-
-	    var i = cloth.points.length;
-	    while (i--) cloth.points[i].draw();
-
-	    ctx.stroke();
-	};
-
-	function update() {
-
-	    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	    cloth.update();
-	    cloth.draw();
-
-	    requestAnimFrame(update);
-	}
-
-	function start() {
-
-	    canvas.onmousedown = function(e) {
-	        mouse.button = e.which;
-	        mouse.px = mouse.x;
-	        mouse.py = mouse.y;
-	        var rect = canvas.getBoundingClientRect();
-	        mouse.x = e.clientX - rect.left,
-	        mouse.y = e.clientY - rect.top,
-	        mouse.down = true;
-	        e.preventDefault();
-	    };
-
-	    canvas.onmouseup = function(e) {
-	        mouse.down = false;
-	        e.preventDefault();
-	    };
-
-	    canvas.onmousemove = function(e) {
-	        mouse.px = mouse.x;
-	        mouse.py = mouse.y;
-	        var rect = canvas.getBoundingClientRect();
-	        mouse.x = e.clientX - rect.left,
-	        mouse.y = e.clientY - rect.top,
-	        e.preventDefault();
-	    };
-
-	    canvas.oncontextmenu = function(e) {
-	        e.preventDefault();
-	    };
-
-	    boundsx = canvas.width - 1;
-	    boundsy = canvas.height - 1;
-
-	    ctx.strokeStyle = '#fff';
-	    cloth = new Cloth();
-	    update();
-	}
-
-	window.onload = function() {
-
-	    canvas = document.getElementById('c');
-	    ctx = canvas.getContext('2d');
-
-	    canvas.width = width;
-	    canvas.height = height;
-
-	    start();
-	};
-
-  </script>
-</div>
-</div>
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/12/31/【算法】字符串循环移位后是否可包含/" title=""><img width="50" height="50" src="/gallery/algorithms/20161211013128643.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/12/31/【算法】字符串循环移位后是否可包含/">【算法】字符串循环移位后是否可包含</a></h6>
-              <span>十二月 31, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/12/24/【算法】如何判断链表有环/" title=""><img width="50" height="50" src="/gallery/algorithms/20161127120747877.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/12/24/【算法】如何判断链表有环/">【算法】如何判断链表有环</a></h6>
-              <span>十二月 24, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/12/18/【Android】源码分析 - Activity启动流程/" title=""><img width="50" height="50" src="/gallery/android_common/flow.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/12/18/【Android】源码分析 - Activity启动流程/">【Android】源码分析 - Activity启动流程</a></h6>
-              <span>十二月 18, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/11/25/【Java】HashMap源码分析（JDK1.8）/" title=""><img width="50" height="50" src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/java-common/java.util.map_class.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/11/25/【Java】HashMap源码分析（JDK1.8）/">【Java】HashMap源码分析（JDK1.8）</a></h6>
-              <span>十一月 25, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/11/18/【Android】源码分析 - View事件分发机制/" title=""><img width="50" height="50" src="/gallery/android_common/Circuit-Splash-1024x853.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/11/18/【Android】源码分析 - View事件分发机制/">【Android】源码分析 - View事件分发机制</a></h6>
-              <span>十一月 18, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../../2017/11/10/【Java】生产者消费者模式的实现/" title=""><img width="50" height="50" src="/gallery/android_common/producer-consumer.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../../2017/11/10/【Java】生产者消费者模式的实现/">【Java】生产者消费者模式的实现</a></h6>
-              <span>十一月 10, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../categories/Algorithm/">Algorithm</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Android/">Android</a><span class="category-list-count">41</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/BAT/">BAT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/D3-js/">D3.js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Go语言/">Go语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Gradle/">Gradle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/">Java</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="../../categories/Java/Design-Pattern/">Design Pattern</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="../../categories/源码分析/">源码分析</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="../../tags/APK/" style="font-size: 10px;">APK</a> <a href="../../tags/Algorithm/" style="font-size: 16.67px;">Algorithm</a> <a href="../../tags/Android/" style="font-size: 20px;">Android</a> <a href="../../tags/Audio/" style="font-size: 10px;">Audio</a> <a href="../../tags/BAT/" style="font-size: 10px;">BAT</a> <a href="../../tags/Bayesian/" style="font-size: 10px;">Bayesian</a> <a href="../../tags/Broadcast/" style="font-size: 10px;">Broadcast</a> <a href="../../tags/D3/" style="font-size: 13.33px;">D3</a> <a href="../../tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="../../tags/Exception/" style="font-size: 10px;">Exception</a> <a href="../../tags/GPU/" style="font-size: 10px;">GPU</a> <a href="../../tags/Google/" style="font-size: 13.33px;">Google</a> <a href="../../tags/Go语言/" style="font-size: 11.67px;">Go语言</a> <a href="../../tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="../../tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="../../tags/Java/" style="font-size: 18.33px;">Java</a> <a href="../../tags/Java-Generics/" style="font-size: 10px;">Java Generics</a> <a href="../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../tags/Machine-Learning/" style="font-size: 11.67px;">Machine Learning</a> <a href="../../tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="../../tags/Neo4j/" style="font-size: 11.67px;">Neo4j</a> <a href="../../tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="../../tags/SVN/" style="font-size: 10px;">SVN</a> <a href="../../tags/Tinker/" style="font-size: 10px;">Tinker</a> <a href="../../tags/WebDevelopment/" style="font-size: 10px;">WebDevelopment</a> <a href="../../tags/hotfix/" style="font-size: 11.67px;">hotfix</a> <a href="../../tags/源码分析/" style="font-size: 15px;">源码分析</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/11/">十一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/07/">七月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/06/">六月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/05/">五月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/12/">十二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/11/">十一月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/09/">九月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/08/">八月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/06/">六月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2016/01/">一月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/12/">十二月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2014/05/">五月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/10/">十月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -1392,13 +1009,17 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -1458,8 +1079,9 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
 
 <script src="../../js/scripts.js"></script>
-<script src="../../js/bootstrap.js"></script>
-<script src="../../js/main.js"></script>
+
+
+  <script src="../../js/home.js"></script>
 
 
 
@@ -1467,7 +1089,10 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
 
 
-  <div style="display: none;">
+
+
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -1483,7 +1108,66 @@ SELECT * from `models` where `id` in (26612,26611,26610) order by field(id,26612
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
 </body>
 </html>

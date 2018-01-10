@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>google 面试题 | 判断字符串是否可由重复子字符串组成 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,76 +11,28 @@
   
   
   
-  <meta name="description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
-样例1
-
-输入： “abab”
-输出： True
-样例解释： 输入可由”ab”重复两次组成
-
-
-样例 2
-
-输入： “aba”
-输出： False
-
-
-样例 3
-
-输入： “abcabcabcabc”
-输出： True
-样例解释：输入可由”abc”重复四次组成">
+  <meta name="description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。 样例1  输入： “abab” 输出： True 样例解释： 输入可由”ab”重复两次组成   样例 2  输入： “aba” 输出： False   样例 3  输入： “abcabcabcabc” 输出： True 样例解释：输入可由”abc”重复四次组成">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google 面试题 | 判断字符串是否可由重复子字符串组成">
 <meta property="og:url" content="http://github.com/2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
-样例1
-
-输入： “abab”
-输出： True
-样例解释： 输入可由”ab”重复两次组成
-
-
-样例 2
-
-输入： “aba”
-输出： False
-
-
-样例 3
-
-输入： “abcabcabcabc”
-输出： True
-样例解释：输入可由”abc”重复四次组成">
+<meta property="og:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。 样例1  输入： “abab” 输出： True 样例解释： 输入可由”ab”重复两次组成   样例 2  输入： “aba” 输出： False   样例 3  输入： “abcabcabcabc” 输出： True 样例解释：输入可由”abc”重复四次组成">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
 <meta property="og:updated_time" content="2017-07-14T05:42:59.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google 面试题 | 判断字符串是否可由重复子字符串组成">
-<meta name="twitter:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。
-样例1
-
-输入： “abab”
-输出： True
-样例解释： 输入可由”ab”重复两次组成
-
-
-样例 2
-
-输入： “aba”
-输出： False
-
-
-样例 3
-
-输入： “abcabcabcabc”
-输出： True
-样例解释：输入可由”abc”重复四次组成">
+<meta name="twitter:description" content="题目描述对于一个非空字符串，判断其是否可由一个子字符串重复多次组成。字符串只包含小写字母且长度不超过10000。 样例1  输入： “abab” 输出： True 样例解释： 输入可由”ab”重复两次组成   样例 2  输入： “aba” 输出： False   样例 3  输入： “abcabcabcabc” 输出： True 样例解释：输入可由”abc”重复四次组成">
 <meta name="twitter:image" content="http://github.com/gallery/george-booles-200th-birthday.gif">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -102,138 +44,139 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-Google 面试题 - 判断字符串是否可由重复子字符串组成" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cjbx1xkvs00169cmya6sobnw1">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/george-booles-200th-birthday.gif" rel="gallery_cjc8gavmu0016qcmylugdyyyk">
         <img src="../../../../gallery/george-booles-200th-birthday.gif" itemprop="image">
       </a>
     
@@ -253,14 +196,19 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">五月 5, 2017</time>
+	<a href="" class="article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">2017-05-05</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -307,22 +255,14 @@ var themeMenus = {};
 <li><p>利用已算出的next(n-1)，令k=n-1-next(n-1)，由c可知，若k整除n，且k &lt; n，则s满足条件，否则不满足。上述算法的复杂度可证明为O(n)。</p>
 </li>
 </ol>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a><strong>参考代码</strong></h2><p>参考代码给出了利用next数组求解的代码。来自<a href="http://www.jiuzhang.com/solutions/repeated-substring-pattern/" target="_blank" rel="external"><strong>九章算法答案</strong></a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = s.length();</div><div class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[l];</div><div class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> i, j = -<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; l; i++) &#123;</div><div class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j = next[j];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (s.charAt(i) == s.charAt(j + <span class="number">1</span>)) &#123;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">            next[i] = j;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> lenSub = l - <span class="number">1</span> - next[l - <span class="number">1</span>];</div><div class="line">        <span class="keyword">return</span> lenSub != l &amp;&amp; l % lenSub ==<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a><strong>参考代码</strong></h2><p>参考代码给出了利用next数组求解的代码。来自<a href="http://www.jiuzhang.com/solutions/repeated-substring-pattern/" target="_blank" rel="noopener"><strong>九章算法答案</strong></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">repeatedSubstringPattern</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = s.length();</span><br><span class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[l];</span><br><span class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i, j = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; l; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j + <span class="number">1</span>)) &#123;</span><br><span class="line">                j = next[j];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) == s.charAt(j + <span class="number">1</span>)) &#123;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> lenSub = l - <span class="number">1</span> - next[l - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> lenSub != l &amp;&amp; l % lenSub ==<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="面试官角度分析"><a href="#面试官角度分析" class="headerlink" title="面试官角度分析"></a><strong>面试官角度分析</strong></h2><p>这道题的第一种解法比较简单，考察穷举和字符串处理的能力，给出第一种方法并正确分析时间复杂度基本可以达到hire；如果面试者对KMP算法有了解，可以给出第二种next数组的算法可以达到strong hire。</p>
-<p>本文来自九章算法公众号 <a href="http://mp.weixin.qq.com/s?__biz=MzA5MzE4MjgyMw==&amp;mid=2649457295&amp;idx=1&amp;sn=e2f9448ff2b83c36f2abc343936125b8&amp;chksm=887eec87bf096591aa2ae39c12003e786e9ffbf738d2784d26f70f9db6fe1a57099eb5cb129d&amp;mpshare=1&amp;scene=1&amp;srcid=05059UsS011ChQckeShTIQX4#rd" target="_blank" rel="external">Google 面试题 | 重复子字符串模式</a></p>
+<p>本文来自九章算法公众号 <a href="http://mp.weixin.qq.com/s?__biz=MzA5MzE4MjgyMw==&amp;mid=2649457295&amp;idx=1&amp;sn=e2f9448ff2b83c36f2abc343936125b8&amp;chksm=887eec87bf096591aa2ae39c12003e786e9ffbf738d2784d26f70f9db6fe1a57099eb5cb129d&amp;mpshare=1&amp;scene=1&amp;srcid=05059UsS011ChQckeShTIQX4#rd" target="_blank" rel="noopener">Google 面试题 | 重复子字符串模式</a></p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Algorithm/">Algorithm</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -337,7 +277,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -362,7 +301,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Google/">Google</a></li></ul>
+
     </footer>
   </div>
   
@@ -391,33 +334,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例1"><span class="nav-number">1.1.</span> <span class="nav-text">样例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-2"><span class="nav-number">1.2.</span> <span class="nav-text">样例 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-3"><span class="nav-number">1.3.</span> <span class="nav-text">样例 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一个简单的思路"><span class="nav-number">2.1.</span> <span class="nav-text">1. 一个简单的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-下面再说一种神奇的方法"><span class="nav-number">2.2.</span> <span class="nav-text">2. 下面再说一种神奇的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试官角度分析"><span class="nav-number">4.</span> <span class="nav-text">面试官角度分析</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例1"><span class="nav-number">1.1.</span> <span class="nav-text">样例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-2"><span class="nav-number">1.2.</span> <span class="nav-text">样例 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例-3"><span class="nav-number">1.3.</span> <span class="nav-text">样例 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一个简单的思路"><span class="nav-number">2.1.</span> <span class="nav-text">1. 一个简单的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-下面再说一种神奇的方法"><span class="nav-number">2.2.</span> <span class="nav-text">2. 下面再说一种神奇的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试官角度分析"><span class="nav-number">4.</span> <span class="nav-text">面试官角度分析</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -425,13 +370,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -491,8 +440,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -500,7 +452,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -516,7 +469,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

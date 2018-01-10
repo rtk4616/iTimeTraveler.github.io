@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>归档 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,13 +15,18 @@
 <meta property="og:url" content="http://github.com/archives/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="Someone knock at the door.">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTimeTraveler">
 <meta name="twitter:description" content="Someone knock at the door.">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -43,128 +38,131 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../css/style.css">
 
   <script src="../js/jquery-3.1.1.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+    <link rel="stylesheet" href="/css/archive.css" >
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body>
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                 >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
@@ -172,6 +170,7 @@ var themeMenus = {};
   <div class="archives-tags-wrap"><blockquote><span>嗯，目前共计98篇文章</span></blockquote>
 
 
+<!-- 分页显示 -->
 
 
 	<!-- 完全显示 -->
@@ -190,10 +189,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/12/31/【算法】字符串循环移位后是否可包含/" class="archive-article-date">
+	  <time datetime="2017-12-31T07:20:55.000Z" itemprop="datePublished">2017-12-31</time>
+	</a>
 
-      <a href="../2017/12/31/【算法】字符串循环移位后是否可包含/" class="archive-article-date">
-		  <time datetime="2017-12-31T07:20:55.000Z" itemprop="datePublished">12月 31, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -210,10 +210,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/12/24/【算法】如何判断链表有环/" class="archive-article-date">
+	  <time datetime="2017-12-24T14:20:55.000Z" itemprop="datePublished">2017-12-24</time>
+	</a>
 
-      <a href="../2017/12/24/【算法】如何判断链表有环/" class="archive-article-date">
-		  <time datetime="2017-12-24T14:20:55.000Z" itemprop="datePublished">12月 24, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -230,10 +231,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/12/18/【Android】源码分析 - Activity启动流程/" class="archive-article-date">
+	  <time datetime="2017-12-18T14:20:55.000Z" itemprop="datePublished">2017-12-18</time>
+	</a>
 
-      <a href="../2017/12/18/【Android】源码分析 - Activity启动流程/" class="archive-article-date">
-		  <time datetime="2017-12-18T14:20:55.000Z" itemprop="datePublished">12月 18, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -250,10 +252,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/11/25/【Java】HashMap源码分析（JDK1.8）/" class="archive-article-date">
+	  <time datetime="2017-11-25T14:20:55.000Z" itemprop="datePublished">2017-11-25</time>
+	</a>
 
-      <a href="../2017/11/25/【Java】HashMap源码分析（JDK1.8）/" class="archive-article-date">
-		  <time datetime="2017-11-25T14:20:55.000Z" itemprop="datePublished">11月 25, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -270,10 +273,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/11/18/【Android】源码分析 - View事件分发机制/" class="archive-article-date">
+	  <time datetime="2017-11-18T14:20:55.000Z" itemprop="datePublished">2017-11-18</time>
+	</a>
 
-      <a href="../2017/11/18/【Android】源码分析 - View事件分发机制/" class="archive-article-date">
-		  <time datetime="2017-11-18T14:20:55.000Z" itemprop="datePublished">11月 18, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -290,10 +294,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/11/10/【Java】生产者消费者模式的实现/" class="archive-article-date">
+	  <time datetime="2017-11-10T14:20:55.000Z" itemprop="datePublished">2017-11-10</time>
+	</a>
 
-      <a href="../2017/11/10/【Java】生产者消费者模式的实现/" class="archive-article-date">
-		  <time datetime="2017-11-10T14:20:55.000Z" itemprop="datePublished">11月 10, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -310,10 +315,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/10/26/【Android】Dialog异常CalledFromWrongThreadException深入分析/" class="archive-article-date">
+	  <time datetime="2017-10-26T14:20:55.000Z" itemprop="datePublished">2017-10-26</time>
+	</a>
 
-      <a href="../2017/10/26/【Android】Dialog异常CalledFromWrongThreadException深入分析/" class="archive-article-date">
-		  <time datetime="2017-10-26T14:20:55.000Z" itemprop="datePublished">10月 26, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -330,10 +336,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/10/18/【算法】字符串是否包含问题/" class="archive-article-date">
+	  <time datetime="2017-10-18T14:20:55.000Z" itemprop="datePublished">2017-10-18</time>
+	</a>
 
-      <a href="../2017/10/18/【算法】字符串是否包含问题/" class="archive-article-date">
-		  <time datetime="2017-10-18T14:20:55.000Z" itemprop="datePublished">10月 18, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -350,10 +357,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" class="archive-article-date">
+	  <time datetime="2017-10-09T12:03:00.000Z" itemprop="datePublished">2017-10-09</time>
+	</a>
 
-      <a href="../2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/" class="archive-article-date">
-		  <time datetime="2017-10-09T12:03:00.000Z" itemprop="datePublished">10月 09, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -370,10 +378,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/10/05/【Android】源码分析 - IntentService机制/" class="archive-article-date">
+	  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">2017-10-05</time>
+	</a>
 
-      <a href="../2017/10/05/【Android】源码分析 - IntentService机制/" class="archive-article-date">
-		  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">10月 05, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -390,10 +399,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/09/30/【Android】EventBus 3.0源码分析/" class="archive-article-date">
+	  <time datetime="2017-09-30T14:03:00.000Z" itemprop="datePublished">2017-09-30</time>
+	</a>
 
-      <a href="../2017/09/30/【Android】EventBus 3.0源码分析/" class="archive-article-date">
-		  <time datetime="2017-09-30T14:03:00.000Z" itemprop="datePublished">9月 30, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -410,10 +420,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/" class="archive-article-date">
+	  <time datetime="2017-09-20T14:30:55.000Z" itemprop="datePublished">2017-09-20</time>
+	</a>
 
-      <a href="../2017/09/20/【Java】try-catch-finally语句中return的执行顺序思考/" class="archive-article-date">
-		  <time datetime="2017-09-20T14:30:55.000Z" itemprop="datePublished">9月 20, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -430,10 +441,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" class="archive-article-date">
+	  <time datetime="2017-09-08T04:20:55.000Z" itemprop="datePublished">2017-09-08</time>
+	</a>
 
-      <a href="../2017/09/08/【算法】从多项式乘法到快速傅里叶变换/" class="archive-article-date">
-		  <time datetime="2017-09-08T04:20:55.000Z" itemprop="datePublished">9月 08, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -450,10 +462,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/08/22/【算法】大数相乘问题及其高效算法/" class="archive-article-date">
+	  <time datetime="2017-08-22T14:20:55.000Z" itemprop="datePublished">2017-08-22</time>
+	</a>
 
-      <a href="../2017/08/22/【算法】大数相乘问题及其高效算法/" class="archive-article-date">
-		  <time datetime="2017-08-22T14:20:55.000Z" itemprop="datePublished">8月 22, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -470,10 +483,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/08/05/【算法】反转字符串/" class="archive-article-date">
+	  <time datetime="2017-08-05T14:20:55.000Z" itemprop="datePublished">2017-08-05</time>
+	</a>
 
-      <a href="../2017/08/05/【算法】反转字符串/" class="archive-article-date">
-		  <time datetime="2017-08-05T14:20:55.000Z" itemprop="datePublished">8月 05, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -490,10 +504,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/08/03/【Android】源码分析 - Handler消息机制再梳理/" class="archive-article-date">
+	  <time datetime="2017-08-03T08:03:00.000Z" itemprop="datePublished">2017-08-03</time>
+	</a>
 
-      <a href="../2017/08/03/【Android】源码分析 - Handler消息机制再梳理/" class="archive-article-date">
-		  <time datetime="2017-08-03T08:03:00.000Z" itemprop="datePublished">8月 03, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -510,10 +525,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/08/02/【Android】Binder - 如何使用AIDL/" class="archive-article-date">
+	  <time datetime="2017-08-02T14:20:55.000Z" itemprop="datePublished">2017-08-02</time>
+	</a>
 
-      <a href="../2017/08/02/【Android】Binder - 如何使用AIDL/" class="archive-article-date">
-		  <time datetime="2017-08-02T14:20:55.000Z" itemprop="datePublished">8月 02, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -530,10 +546,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/" class="archive-article-date">
+	  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">2017-07-31</time>
+	</a>
 
-      <a href="../2017/07/31/Google 笔试题 - 连通图的最大生成树的权和/" class="archive-article-date">
-		  <time datetime="2017-07-31T09:20:55.000Z" itemprop="datePublished">7月 31, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -550,10 +567,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/07/18/八大排序算法总结与java实现/" class="archive-article-date">
+	  <time datetime="2017-07-18T04:30:55.000Z" itemprop="datePublished">2017-07-18</time>
+	</a>
 
-      <a href="../2017/07/18/八大排序算法总结与java实现/" class="archive-article-date">
-		  <time datetime="2017-07-18T04:30:55.000Z" itemprop="datePublished">7月 18, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -570,10 +588,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/07/13/【算法】10亿int型数，统计只出现一次的数/" class="archive-article-date">
+	  <time datetime="2017-07-13T10:30:55.000Z" itemprop="datePublished">2017-07-13</time>
+	</a>
 
-      <a href="../2017/07/13/【算法】10亿int型数，统计只出现一次的数/" class="archive-article-date">
-		  <time datetime="2017-07-13T10:30:55.000Z" itemprop="datePublished">7月 13, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -590,10 +609,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/07/11/遗传算法的基本概念和Java实现/" class="archive-article-date">
+	  <time datetime="2017-07-11T10:30:55.000Z" itemprop="datePublished">2017-07-11</time>
+	</a>
 
-      <a href="../2017/07/11/遗传算法的基本概念和Java实现/" class="archive-article-date">
-		  <time datetime="2017-07-11T10:30:55.000Z" itemprop="datePublished">7月 11, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -610,10 +630,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/07/11/【Java】Integer变量相等（==）比较问题/" class="archive-article-date">
+	  <time datetime="2017-07-11T04:30:55.000Z" itemprop="datePublished">2017-07-11</time>
+	</a>
 
-      <a href="../2017/07/11/【Java】Integer变量相等（==）比较问题/" class="archive-article-date">
-		  <time datetime="2017-07-11T04:30:55.000Z" itemprop="datePublished">7月 11, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -630,10 +651,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/06/16/Java 8系列之重新认识HashMap/" class="archive-article-date">
+	  <time datetime="2017-06-16T09:30:55.000Z" itemprop="datePublished">2017-06-16</time>
+	</a>
 
-      <a href="../2017/06/16/Java 8系列之重新认识HashMap/" class="archive-article-date">
-		  <time datetime="2017-06-16T09:30:55.000Z" itemprop="datePublished">6月 16, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -650,10 +672,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/06/15/【面试题】Java String常量相等（==）问题/" class="archive-article-date">
+	  <time datetime="2017-06-15T08:51:55.000Z" itemprop="datePublished">2017-06-15</time>
+	</a>
 
-      <a href="../2017/06/15/【面试题】Java String常量相等（==）问题/" class="archive-article-date">
-		  <time datetime="2017-06-15T08:51:55.000Z" itemprop="datePublished">6月 15, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -670,10 +693,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/06/02/详解Java类的生命周期/" class="archive-article-date">
+	  <time datetime="2017-06-02T03:36:55.000Z" itemprop="datePublished">2017-06-02</time>
+	</a>
 
-      <a href="../2017/06/02/详解Java类的生命周期/" class="archive-article-date">
-		  <time datetime="2017-06-02T03:36:55.000Z" itemprop="datePublished">6月 02, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -690,10 +714,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" class="archive-article-date">
+	  <time datetime="2017-05-18T03:40:00.000Z" itemprop="datePublished">2017-05-18</time>
+	</a>
 
-      <a href="../2017/05/18/【Android】Audio音频输出通道切换 - 蓝牙、外放/" class="archive-article-date">
-		  <time datetime="2017-05-18T03:40:00.000Z" itemprop="datePublished">5月 18, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -710,10 +735,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="archive-article-date">
+	  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">2017-05-05</time>
+	</a>
 
-      <a href="../2017/05/05/Google 面试题 - 判断字符串是否可由重复子字符串组成/" class="archive-article-date">
-		  <time datetime="2017-05-05T09:20:55.000Z" itemprop="datePublished">5月 05, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -730,10 +756,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="archive-article-date">
+	  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">2017-05-03</time>
+	</a>
 
-      <a href="../2017/05/03/【Android】判断应用Application、Activity是否处于活动状态/" class="archive-article-date">
-		  <time datetime="2017-05-03T07:03:00.000Z" itemprop="datePublished">5月 03, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -750,10 +777,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="archive-article-date">
+	  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">2017-04-20</time>
+	</a>
 
-      <a href="../2017/04/20/【Android】使用UncaughtExceptionHandler捕获全局异常/" class="archive-article-date">
-		  <time datetime="2017-04-20T06:10:55.000Z" itemprop="datePublished">4月 20, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -770,10 +798,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/03/30/【Android 】硬件加速原理与实现简介/" class="archive-article-date">
+	  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">2017-03-30</time>
+	</a>
 
-      <a href="../2017/03/30/【Android 】硬件加速原理与实现简介/" class="archive-article-date">
-		  <time datetime="2017-03-30T07:29:55.000Z" itemprop="datePublished">3月 30, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -790,10 +819,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="archive-article-date">
+	  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">2017-02-23</time>
+	</a>
 
-      <a href="../2017/02/23/【Gradle】Android Studio中Gradle重复依赖的问题/" class="archive-article-date">
-		  <time datetime="2017-02-23T05:03:00.000Z" itemprop="datePublished">2月 23, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -810,10 +840,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/02/13/【Android】内存泄漏分析心得/" class="archive-article-date">
+	  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">2017-02-13</time>
+	</a>
 
-      <a href="../2017/02/13/【Android】内存泄漏分析心得/" class="archive-article-date">
-		  <time datetime="2017-02-13T08:03:00.000Z" itemprop="datePublished">2月 13, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -830,10 +861,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/01/31/【算法】单链表反转，两两反转/" class="archive-article-date">
+	  <time datetime="2017-01-31T09:20:55.000Z" itemprop="datePublished">2017-01-31</time>
+	</a>
 
-      <a href="../2017/01/31/【算法】单链表反转，两两反转/" class="archive-article-date">
-		  <time datetime="2017-01-31T09:20:55.000Z" itemprop="datePublished">1月 31, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -850,10 +882,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" class="archive-article-date">
+	  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">2017-01-20</time>
+	</a>
 
-      <a href="../2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/" class="archive-article-date">
-		  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">1月 20, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -870,10 +903,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" class="archive-article-date">
+	  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">2017-01-03</time>
+	</a>
 
-      <a href="../2017/01/03/【Android】TextView中不同大小字体如何上下垂直居中？/" class="archive-article-date">
-		  <time datetime="2017-01-03T09:03:00.000Z" itemprop="datePublished">1月 03, 2017</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -900,10 +934,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/12/27/【Java】泛型中 extends 和 super 的区别？/" class="archive-article-date">
+	  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">2016-12-27</time>
+	</a>
 
-      <a href="../2016/12/27/【Java】泛型中 extends 和 super 的区别？/" class="archive-article-date">
-		  <time datetime="2016-12-27T06:46:00.000Z" itemprop="datePublished">12月 27, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -920,10 +955,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/12/27/【Java】泛型详解/" class="archive-article-date">
+	  <time datetime="2016-12-27T04:30:55.000Z" itemprop="datePublished">2016-12-27</time>
+	</a>
 
-      <a href="../2016/12/27/【Java】泛型详解/" class="archive-article-date">
-		  <time datetime="2016-12-27T04:30:55.000Z" itemprop="datePublished">12月 27, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -940,10 +976,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="archive-article-date">
+	  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">2016-12-22</time>
+	</a>
 
-      <a href="../2016/12/22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" class="archive-article-date">
-		  <time datetime="2016-12-22T03:08:00.000Z" itemprop="datePublished">12月 22, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -960,10 +997,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/12/19/【Android】RxJava 入门详解/" class="archive-article-date">
+	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">2016-12-19</time>
+	</a>
 
-      <a href="../2016/12/19/【Android】RxJava 入门详解/" class="archive-article-date">
-		  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">12月 19, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -980,10 +1018,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" class="archive-article-date">
+	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">2016-11-30</time>
+	</a>
 
-      <a href="../2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" class="archive-article-date">
-		  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">11月 30, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1000,10 +1039,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" class="archive-article-date">
+	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">2016-11-21</time>
+	</a>
 
-      <a href="../2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/" class="archive-article-date">
-		  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">11月 21, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1020,10 +1060,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" class="archive-article-date">
+	  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">2016-11-18</time>
+	</a>
 
-      <a href="../2016/11/18/【D3.js】力导向布局 + 圆形图片展示的人物关系/" class="archive-article-date">
-		  <time datetime="2016-11-18T08:06:00.000Z" itemprop="datePublished">11月 18, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1040,10 +1081,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="archive-article-date">
+	  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">2016-11-17</time>
+	</a>
 
-      <a href="../2016/11/17/【Android】微信热修复 Tinker 的集成和使用/" class="archive-article-date">
-		  <time datetime="2016-11-17T03:51:55.000Z" itemprop="datePublished">11月 17, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1060,10 +1102,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/16/【D3】Link Nodes by Name/" class="archive-article-date">
+	  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">2016-11-16</time>
+	</a>
 
-      <a href="../2016/11/16/【D3】Link Nodes by Name/" class="archive-article-date">
-		  <time datetime="2016-11-16T08:08:00.000Z" itemprop="datePublished">11月 16, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1080,10 +1123,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/10/Android 热修复原理和实现/" class="archive-article-date">
+	  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">2016-11-10</time>
+	</a>
 
-      <a href="../2016/11/10/Android 热修复原理和实现/" class="archive-article-date">
-		  <time datetime="2016-11-10T05:06:00.000Z" itemprop="datePublished">11月 10, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1100,10 +1144,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/10/使用Neo4j进行全栈Web开发/" class="archive-article-date">
+	  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">2016-11-10</time>
+	</a>
 
-      <a href="../2016/11/10/使用Neo4j进行全栈Web开发/" class="archive-article-date">
-		  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">11月 10, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1120,10 +1165,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/11/09/D3.js加载本地json文件的问题/" class="archive-article-date">
+	  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">2016-11-09</time>
+	</a>
 
-      <a href="../2016/11/09/D3.js加载本地json文件的问题/" class="archive-article-date">
-		  <time datetime="2016-11-09T13:13:20.000Z" itemprop="datePublished">11月 09, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1140,10 +1186,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/10/25/【Android】Broadcast广播机制总结/" class="archive-article-date">
+	  <time datetime="2016-10-25T08:06:00.000Z" itemprop="datePublished">2016-10-25</time>
+	</a>
 
-      <a href="../2016/10/25/【Android】Broadcast广播机制总结/" class="archive-article-date">
-		  <time datetime="2016-10-25T08:06:00.000Z" itemprop="datePublished">10月 25, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1160,10 +1207,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/10/21/谷歌整体战略：关于人工智能、云服务和登月计划的未来/" class="archive-article-date">
+	  <time datetime="2016-10-21T07:43:20.000Z" itemprop="datePublished">2016-10-21</time>
+	</a>
 
-      <a href="../2016/10/21/谷歌整体战略：关于人工智能、云服务和登月计划的未来/" class="archive-article-date">
-		  <time datetime="2016-10-21T07:43:20.000Z" itemprop="datePublished">10月 21, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1180,10 +1228,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/10/18/深入了解Android Studio和Gradle/" class="archive-article-date">
+	  <time datetime="2016-10-18T09:08:00.000Z" itemprop="datePublished">2016-10-18</time>
+	</a>
 
-      <a href="../2016/10/18/深入了解Android Studio和Gradle/" class="archive-article-date">
-		  <time datetime="2016-10-18T09:08:00.000Z" itemprop="datePublished">10月 18, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1200,10 +1249,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/10/17/Hiker中文使用教程/" class="archive-article-date">
+	  <time datetime="2016-10-17T07:47:20.000Z" itemprop="datePublished">2016-10-17</time>
+	</a>
 
-      <a href="../2016/10/17/Hiker中文使用教程/" class="archive-article-date">
-		  <time datetime="2016-10-17T07:47:20.000Z" itemprop="datePublished">10月 17, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1220,10 +1270,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/09/28/Chrome自带的开发者工具进阶技巧/" class="archive-article-date">
+	  <time datetime="2016-09-28T10:50:00.000Z" itemprop="datePublished">2016-09-28</time>
+	</a>
 
-      <a href="../2016/09/28/Chrome自带的开发者工具进阶技巧/" class="archive-article-date">
-		  <time datetime="2016-09-28T10:50:00.000Z" itemprop="datePublished">9月 28, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1240,10 +1291,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/09/19/【Android】抽象布局 — include、merge 、ViewStub/" class="archive-article-date">
+	  <time datetime="2016-09-19T03:47:00.000Z" itemprop="datePublished">2016-09-19</time>
+	</a>
 
-      <a href="../2016/09/19/【Android】抽象布局 — include、merge 、ViewStub/" class="archive-article-date">
-		  <time datetime="2016-09-19T03:47:00.000Z" itemprop="datePublished">9月 19, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1260,10 +1312,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/09/08/【Java】设计模式：深入理解单例模式/" class="archive-article-date">
+	  <time datetime="2016-09-08T06:18:20.000Z" itemprop="datePublished">2016-09-08</time>
+	</a>
 
-      <a href="../2016/09/08/【Java】设计模式：深入理解单例模式/" class="archive-article-date">
-		  <time datetime="2016-09-08T06:18:20.000Z" itemprop="datePublished">9月 08, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1280,10 +1333,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/09/07/【Go语言】基本类型排序和 slice 排序/" class="archive-article-date">
+	  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">2016-09-07</time>
+	</a>
 
-      <a href="../2016/09/07/【Go语言】基本类型排序和 slice 排序/" class="archive-article-date">
-		  <time datetime="2016-09-07T08:36:00.000Z" itemprop="datePublished">9月 07, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1300,10 +1354,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/09/07/【Android 】TextView 局部文字变色/" class="archive-article-date">
+	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">2016-09-07</time>
+	</a>
 
-      <a href="../2016/09/07/【Android 】TextView 局部文字变色/" class="archive-article-date">
-		  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">9月 07, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1320,10 +1375,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/30/【Android】获取View的截图/" class="archive-article-date">
+	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">2016-08-30</time>
+	</a>
 
-      <a href="../2016/08/30/【Android】获取View的截图/" class="archive-article-date">
-		  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">8月 30, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1340,10 +1396,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/" class="archive-article-date">
+	  <time datetime="2016-08-26T07:20:00.000Z" itemprop="datePublished">2016-08-26</time>
+	</a>
 
-      <a href="../2016/08/26/【Android】如何加速 AndroidStudio 的编译效率/" class="archive-article-date">
-		  <time datetime="2016-08-26T07:20:00.000Z" itemprop="datePublished">8月 26, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1360,10 +1417,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/" class="archive-article-date">
+	  <time datetime="2016-08-18T08:36:00.000Z" itemprop="datePublished">2016-08-18</time>
+	</a>
 
-      <a href="../2016/08/18/【Go】为什么 Go 语言把类型声明放在后面？/" class="archive-article-date">
-		  <time datetime="2016-08-18T08:36:00.000Z" itemprop="datePublished">8月 18, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1380,10 +1438,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="archive-article-date">
+	  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">2016-08-14</time>
+	</a>
 
-      <a href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="archive-article-date">
-		  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">8月 14, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1400,10 +1459,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="archive-article-date">
+	  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">2016-08-12</time>
+	</a>
 
-      <a href="../2016/08/12/【Machine Learning】Github上关注最多的53个深度学习项目/" class="archive-article-date">
-		  <time datetime="2016-08-12T07:22:00.000Z" itemprop="datePublished">8月 12, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1420,10 +1480,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="archive-article-date">
+	  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">2016-08-08</time>
+	</a>
 
-      <a href="../2016/08/08/【Android】使用shape的同时，动态替换shape的颜色属性/" class="archive-article-date">
-		  <time datetime="2016-08-08T10:10:00.000Z" itemprop="datePublished">8月 08, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1440,10 +1501,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="archive-article-date">
+	  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">2016-08-02</time>
+	</a>
 
-      <a href="../2016/08/02/BAT人才体系的职位层级、薪酬、晋升标准大全/" class="archive-article-date">
-		  <time datetime="2016-08-02T03:06:00.000Z" itemprop="datePublished">8月 02, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1460,10 +1522,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/07/22/【Android】dip和px之间到底如何转换/" class="archive-article-date">
+	  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">2016-07-22</time>
+	</a>
 
-      <a href="../2016/07/22/【Android】dip和px之间到底如何转换/" class="archive-article-date">
-		  <time datetime="2016-07-22T04:02:00.000Z" itemprop="datePublished">7月 22, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1480,10 +1543,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/07/19/【Android】Monkey压力测试与停止/" class="archive-article-date">
+	  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">2016-07-19</time>
+	</a>
 
-      <a href="../2016/07/19/【Android】Monkey压力测试与停止/" class="archive-article-date">
-		  <time datetime="2016-07-19T03:09:00.000Z" itemprop="datePublished">7月 19, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1500,10 +1564,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="archive-article-date">
+	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
+	</a>
 
-      <a href="../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="archive-article-date">
-		  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">7月 14, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1520,10 +1585,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/06/12/【SVN】使用patch命令保存更改/" class="archive-article-date">
+	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">2016-06-12</time>
+	</a>
 
-      <a href="../2016/06/12/【SVN】使用patch命令保存更改/" class="archive-article-date">
-		  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">6月 12, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1540,10 +1606,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="archive-article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
+	</a>
 
-      <a href="../2016/06/02/【Java】按位存储：使用int存储boolean数组/" class="archive-article-date">
-		  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">6月 02, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1560,10 +1627,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="archive-article-date">
+	  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">2016-06-02</time>
+	</a>
 
-      <a href="../2016/06/02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" class="archive-article-date">
-		  <time datetime="2016-06-02T03:55:00.000Z" itemprop="datePublished">6月 02, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1580,10 +1648,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/04/29/【MySQL】查询保持IN中的顺序/" class="archive-article-date">
+	  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">2016-04-29</time>
+	</a>
 
-      <a href="../2016/04/29/【MySQL】查询保持IN中的顺序/" class="archive-article-date">
-		  <time datetime="2016-04-29T07:36:00.000Z" itemprop="datePublished">4月 29, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1600,10 +1669,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="archive-article-date">
+	  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">2016-04-29</time>
+	</a>
 
-      <a href="../2016/04/29/【Linux】执行shell脚本出现异常：bad interpreter- No such file or directory如何解决/" class="archive-article-date">
-		  <time datetime="2016-04-29T03:37:09.000Z" itemprop="datePublished">4月 29, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1620,10 +1690,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/04/06/”二分查找“算法的时间复杂度/" class="archive-article-date">
+	  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">2016-04-06</time>
+	</a>
 
-      <a href="../2016/04/06/”二分查找“算法的时间复杂度/" class="archive-article-date">
-		  <time datetime="2016-04-06T06:03:00.000Z" itemprop="datePublished">4月 06, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1640,10 +1711,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="archive-article-date">
+	  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">2016-03-30</time>
+	</a>
 
-      <a href="../2016/03/30/给大家推荐一款Sublime Text的主题”brogrammer-theme“/" class="archive-article-date">
-		  <time datetime="2016-03-30T08:46:00.000Z" itemprop="datePublished">3月 30, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1660,10 +1732,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="archive-article-date">
+	  <time datetime="2016-03-08T07:03:00.000Z" itemprop="datePublished">2016-03-08</time>
+	</a>
 
-      <a href="../2016/03/08/【Android】Picasso加载本地图片如何清理缓存cache？/" class="archive-article-date">
-		  <time datetime="2016-03-08T07:03:00.000Z" itemprop="datePublished">3月 08, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1680,10 +1753,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="archive-article-date">
+	  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">2016-01-22</time>
+	</a>
 
-      <a href="../2016/01/22/如何生成100个1-100以内的不重复的随机数/" class="archive-article-date">
-		  <time datetime="2016-01-22T03:55:00.000Z" itemprop="datePublished">1月 22, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1700,10 +1774,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/19/【Android】如何查看Activity Task栈的情况/" class="archive-article-date">
+	  <time datetime="2016-01-19T03:48:00.000Z" itemprop="datePublished">2016-01-19</time>
+	</a>
 
-      <a href="../2016/01/19/【Android】如何查看Activity Task栈的情况/" class="archive-article-date">
-		  <time datetime="2016-01-19T03:48:00.000Z" itemprop="datePublished">1月 19, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1720,10 +1795,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/15/Java中的封装、继承与多态/" class="archive-article-date">
+	  <time datetime="2016-01-15T07:43:20.000Z" itemprop="datePublished">2016-01-15</time>
+	</a>
 
-      <a href="../2016/01/15/Java中的封装、继承与多态/" class="archive-article-date">
-		  <time datetime="2016-01-15T07:43:20.000Z" itemprop="datePublished">1月 15, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1740,10 +1816,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/15/Java访问权限修饰符的区别/" class="archive-article-date">
+	  <time datetime="2016-01-15T07:07:20.000Z" itemprop="datePublished">2016-01-15</time>
+	</a>
 
-      <a href="../2016/01/15/Java访问权限修饰符的区别/" class="archive-article-date">
-		  <time datetime="2016-01-15T07:07:20.000Z" itemprop="datePublished">1月 15, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1760,10 +1837,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="archive-article-date">
+	  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">2016-01-05</time>
+	</a>
 
-      <a href="../2016/01/05/【面试题】N级台阶（比如100级），每次可走1步或者2步，求总共有多少种走法？/" class="archive-article-date">
-		  <time datetime="2016-01-05T07:31:00.000Z" itemprop="datePublished">1月 05, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1780,10 +1858,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/04/新主题酝酿中/" class="archive-article-date">
+	  <time datetime="2016-01-04T07:08:00.000Z" itemprop="datePublished">2016-01-04</time>
+	</a>
 
-      <a href="../2016/01/04/新主题酝酿中/" class="archive-article-date">
-		  <time datetime="2016-01-04T07:08:00.000Z" itemprop="datePublished">1月 04, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1800,10 +1879,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/03/好看的多说样式/" class="archive-article-date">
+	  <time datetime="2016-01-03T07:08:00.000Z" itemprop="datePublished">2016-01-03</time>
+	</a>
 
-      <a href="../2016/01/03/好看的多说样式/" class="archive-article-date">
-		  <time datetime="2016-01-03T07:08:00.000Z" itemprop="datePublished">1月 03, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1820,10 +1900,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2016/01/02/【Java】内部类（Inner Class）如何创建（new）/" class="archive-article-date">
+	  <time datetime="2016-01-02T13:13:20.000Z" itemprop="datePublished">2016-01-02</time>
+	</a>
 
-      <a href="../2016/01/02/【Java】内部类（Inner Class）如何创建（new）/" class="archive-article-date">
-		  <time datetime="2016-01-02T13:13:20.000Z" itemprop="datePublished">1月 02, 2016</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1850,10 +1931,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/12/31/【Android】 加解密算法 HMAC 的使用/" class="archive-article-date">
+	  <time datetime="2015-12-31T07:30:00.000Z" itemprop="datePublished">2015-12-31</time>
+	</a>
 
-      <a href="../2015/12/31/【Android】 加解密算法 HMAC 的使用/" class="archive-article-date">
-		  <time datetime="2015-12-31T07:30:00.000Z" itemprop="datePublished">12月 31, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1870,10 +1952,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/12/25/【Android】app打包成apk文件以后，如何查看VersionCode、VersionName等版本信息/" class="archive-article-date">
+	  <time datetime="2015-12-25T02:57:55.000Z" itemprop="datePublished">2015-12-25</time>
+	</a>
 
-      <a href="../2015/12/25/【Android】app打包成apk文件以后，如何查看VersionCode、VersionName等版本信息/" class="archive-article-date">
-		  <time datetime="2015-12-25T02:57:55.000Z" itemprop="datePublished">12月 25, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1890,10 +1973,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/12/09/【Java】不用循环语句如何输入打印数组元素/" class="archive-article-date">
+	  <time datetime="2015-12-09T05:58:20.000Z" itemprop="datePublished">2015-12-09</time>
+	</a>
 
-      <a href="../2015/12/09/【Java】不用循环语句如何输入打印数组元素/" class="archive-article-date">
-		  <time datetime="2015-12-09T05:58:20.000Z" itemprop="datePublished">12月 09, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1910,10 +1994,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/25/【Android】Activity与Fragment的生命周期的关系/" class="archive-article-date">
+	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">2015-11-25</time>
+	</a>
 
-      <a href="../2015/11/25/【Android】Activity与Fragment的生命周期的关系/" class="archive-article-date">
-		  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">11月 25, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1930,10 +2015,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/25/【Android】Fragment的生命周期详解/" class="archive-article-date">
+	  <time datetime="2015-11-25T03:43:55.000Z" itemprop="datePublished">2015-11-25</time>
+	</a>
 
-      <a href="../2015/11/25/【Android】Fragment的生命周期详解/" class="archive-article-date">
-		  <time datetime="2015-11-25T03:43:55.000Z" itemprop="datePublished">11月 25, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1950,10 +2036,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/19/【Android】长按连续触发事件的实现方法/" class="archive-article-date">
+	  <time datetime="2015-11-19T06:35:55.000Z" itemprop="datePublished">2015-11-19</time>
+	</a>
 
-      <a href="../2015/11/19/【Android】长按连续触发事件的实现方法/" class="archive-article-date">
-		  <time datetime="2015-11-19T06:35:55.000Z" itemprop="datePublished">11月 19, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1970,10 +2057,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/" class="archive-article-date">
+	  <time datetime="2015-11-10T03:55:00.000Z" itemprop="datePublished">2015-11-10</time>
+	</a>
 
-      <a href="../2015/11/10/【Java】HashMap 和 HashTable 的区别到底是什么？/" class="archive-article-date">
-		  <time datetime="2015-11-10T03:55:00.000Z" itemprop="datePublished">11月 10, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -1990,10 +2078,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/" class="archive-article-date">
+	  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">2015-11-03</time>
+	</a>
 
-      <a href="../2015/11/03/各种排序算法时间复杂度和空间复杂度表/" class="archive-article-date">
-		  <time datetime="2015-11-03T03:55:00.000Z" itemprop="datePublished">11月 03, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2010,10 +2099,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/11/02/【Java】函数中的参数传递是“引用传递”还是“值传递”？/" class="archive-article-date">
+	  <time datetime="2015-11-02T07:33:20.000Z" itemprop="datePublished">2015-11-02</time>
+	</a>
 
-      <a href="../2015/11/02/【Java】函数中的参数传递是“引用传递”还是“值传递”？/" class="archive-article-date">
-		  <time datetime="2015-11-02T07:33:20.000Z" itemprop="datePublished">11月 02, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2030,10 +2120,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/10/09/【Android】Activity四种启动模式/" class="archive-article-date">
+	  <time datetime="2015-10-09T12:03:00.000Z" itemprop="datePublished">2015-10-09</time>
+	</a>
 
-      <a href="../2015/10/09/【Android】Activity四种启动模式/" class="archive-article-date">
-		  <time datetime="2015-10-09T12:03:00.000Z" itemprop="datePublished">10月 09, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2050,10 +2141,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/09/18/【Android】onActivityResult()和onResume()的调用顺序问题/" class="archive-article-date">
+	  <time datetime="2015-09-18T09:16:55.000Z" itemprop="datePublished">2015-09-18</time>
+	</a>
 
-      <a href="../2015/09/18/【Android】onActivityResult()和onResume()的调用顺序问题/" class="archive-article-date">
-		  <time datetime="2015-09-18T09:16:55.000Z" itemprop="datePublished">9月 18, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2070,10 +2162,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2015/09/15/【Android】如何启动调用其他app中的Activity/" class="archive-article-date">
+	  <time datetime="2015-09-15T03:06:00.000Z" itemprop="datePublished">2015-09-15</time>
+	</a>
 
-      <a href="../2015/09/15/【Android】如何启动调用其他app中的Activity/" class="archive-article-date">
-		  <time datetime="2015-09-15T03:06:00.000Z" itemprop="datePublished">9月 15, 2015</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2100,10 +2193,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2014/09/12/【Android】保存图片到系统图库, 并立即显示在图库中/" class="archive-article-date">
+	  <time datetime="2014-09-12T03:55:00.000Z" itemprop="datePublished">2014-09-12</time>
+	</a>
 
-      <a href="../2014/09/12/【Android】保存图片到系统图库, 并立即显示在图库中/" class="archive-article-date">
-		  <time datetime="2014-09-12T03:55:00.000Z" itemprop="datePublished">9月 12, 2014</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2120,10 +2214,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2014/05/15/如何删除多行首字母，Sublime Text多行编辑运用/" class="archive-article-date">
+	  <time datetime="2014-05-15T03:55:00.000Z" itemprop="datePublished">2014-05-15</time>
+	</a>
 
-      <a href="../2014/05/15/如何删除多行首字母，Sublime Text多行编辑运用/" class="archive-article-date">
-		  <time datetime="2014-05-15T03:55:00.000Z" itemprop="datePublished">5月 15, 2014</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2150,10 +2245,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2013/10/20/Ubuntu上Eclipse识别不了Android手机的解决方法/" class="archive-article-date">
+	  <time datetime="2013-10-20T08:46:00.000Z" itemprop="datePublished">2013-10-20</time>
+	</a>
 
-      <a href="../2013/10/20/Ubuntu上Eclipse识别不了Android手机的解决方法/" class="archive-article-date">
-		  <time datetime="2013-10-20T08:46:00.000Z" itemprop="datePublished">10月 20, 2013</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2170,10 +2266,11 @@ var themeMenus = {};
 		<article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      
+	<a href="../2013/08/01/【Java】操作excel表，包括创建、读取、以及修改/" class="archive-article-date">
+	  <time datetime="2013-08-01T04:31:20.000Z" itemprop="datePublished">2013-08-01</time>
+	</a>
 
-      <a href="../2013/08/01/【Java】操作excel表，包括创建、读取、以及修改/" class="archive-article-date">
-		  <time datetime="2013-08-01T04:31:20.000Z" itemprop="datePublished">8月 01, 2013</time>
-	  </a>
       
   
     <h1 class="thumb" itemprop="name">
@@ -2185,10 +2282,10 @@ var themeMenus = {};
   </div>
 </article>
 	
-
 	
 		</div></section>
 	
+
 
 
 
@@ -2199,19 +2296,19 @@ var themeMenus = {};
 <h3 class="widget-title">起床了！</h3>
 <div class="widget">
   <canvas id="c" style="background: url(/collection/code/img/window.jpg) no-repeat; 
-  background-size: contain;"></canvas>
+  background-size: cover;"></canvas>
   <script type="text/javascript">
 
-  	var width = 300,
-  	height = 250,
+  	var width = 200,
+  	height = 150,
   	physics_accuracy = 3,
 	mouse_influence = 20,
 	mouse_cut = 5,
 	gravity = 1200,
-	cloth_height = 25,
-	cloth_width = 36,
-	start_y = 20,
-	spacing = 7,
+	cloth_height = 29,
+	cloth_width = 30,
+	start_y = 10,
+	spacing = (width-15)/cloth_width,
 	tear_distance = 60;
 
 	window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -2475,52 +2572,9 @@ var themeMenus = {};
 </div>
 </div>
   
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../js/insight.js"></script>
-
-</div>
-</div>
-  
     
   <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
+    <h3 class="widget-title">关注我</h3>
     <div class="widget widget_athemes_social_icons">
 
     	<ul class="clearfix widget-social-icons">   
@@ -2530,7 +2584,7 @@ var themeMenus = {};
           
    		
           
-     			  <li><a href="null" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+     			  <li><a href="http://www.weibo.com/xueyubowen" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
           
    		
           
@@ -2543,10 +2597,6 @@ var themeMenus = {};
    		
           
      			  <li><a href="null" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:null?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           
    		
    		</ul>
@@ -2568,101 +2618,29 @@ var themeMenus = {};
 
   
     
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/12/31/【算法】字符串循环移位后是否可包含/" title=""><img width="50" height="50" src="/gallery/algorithms/20161211013128643.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/12/31/【算法】字符串循环移位后是否可包含/">【算法】字符串循环移位后是否可包含</a></h6>
-              <span>十二月 31, 2017</span>
-            </div>
-
+          <li>
+            <a href="../2017/12/31/【算法】字符串循环移位后是否可包含/">【算法】字符串循环移位后是否可包含</a>
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/12/24/【算法】如何判断链表有环/" title=""><img width="50" height="50" src="/gallery/algorithms/20161127120747877.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/12/24/【算法】如何判断链表有环/">【算法】如何判断链表有环</a></h6>
-              <span>十二月 24, 2017</span>
-            </div>
-
+          <li>
+            <a href="../2017/12/24/【算法】如何判断链表有环/">【算法】如何判断链表有环</a>
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/12/18/【Android】源码分析 - Activity启动流程/" title=""><img width="50" height="50" src="/gallery/android_common/flow.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/12/18/【Android】源码分析 - Activity启动流程/">【Android】源码分析 - Activity启动流程</a></h6>
-              <span>十二月 18, 2017</span>
-            </div>
-
+          <li>
+            <a href="../2017/12/18/【Android】源码分析 - Activity启动流程/">【Android】源码分析 - Activity启动流程</a>
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/11/25/【Java】HashMap源码分析（JDK1.8）/" title=""><img width="50" height="50" src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/java-common/java.util.map_class.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/11/25/【Java】HashMap源码分析（JDK1.8）/">【Java】HashMap源码分析（JDK1.8）</a></h6>
-              <span>十一月 25, 2017</span>
-            </div>
-
+          <li>
+            <a href="../2017/11/25/【Java】HashMap源码分析（JDK1.8）/">【Java】HashMap源码分析（JDK1.8）</a>
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/11/18/【Android】源码分析 - View事件分发机制/" title=""><img width="50" height="50" src="/gallery/android_common/Circuit-Splash-1024x853.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/11/18/【Android】源码分析 - View事件分发机制/">【Android】源码分析 - View事件分发机制</a></h6>
-              <span>十一月 18, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="../2017/11/10/【Java】生产者消费者模式的实现/" title=""><img width="50" height="50" src="/gallery/android_common/producer-consumer.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="../2017/11/10/【Java】生产者消费者模式的实现/">【Java】生产者消费者模式的实现</a></h6>
-              <span>十一月 10, 2017</span>
-            </div>
-
+          <li>
+            <a href="../2017/11/18/【Android】源码分析 - View事件分发机制/">【Android】源码分析 - View事件分发机制</a>
           </li>
         
       </ul>
@@ -2703,22 +2681,24 @@ var themeMenus = {};
 </aside>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -2726,13 +2706,17 @@ var themeMenus = {};
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -2792,8 +2776,6 @@ var themeMenus = {};
 
 
 <script src="../js/scripts.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/main.js"></script>
 
 
 
@@ -2801,7 +2783,11 @@ var themeMenus = {};
 
 
 
-  <div style="display: none;">
+
+
+
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -2817,7 +2803,66 @@ var themeMenus = {};
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
 </body>
 </html>

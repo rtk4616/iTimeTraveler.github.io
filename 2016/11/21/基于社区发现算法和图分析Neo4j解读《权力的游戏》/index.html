@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>基于社区发现算法和图分析neo4j解读《权力的游戏》 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,25 +11,28 @@
   
   
   
-  <meta name="description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
-其中的分析和可视化是用Gephi做">
+  <meta name="description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。 其中的分析和可视化是用Gephi做">
+<meta name="keywords" content="Neo4j">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
 <meta property="og:url" content="http://github.com/2016/11/21/基于社区发现算法和图分析Neo4j解读《权力的游戏》/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
-其中的分析和可视化是用Gephi做">
+<meta property="og:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。 其中的分析和可视化是用Gephi做">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
 <meta property="og:updated_time" content="2016-12-09T07:27:27.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于社区发现算法和图分析Neo4j解读《权力的游戏》">
-<meta name="twitter:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。
-其中的分析和可视化是用Gephi做">
+<meta name="twitter:description" content="导读几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表《权力的网络》，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。 其中的分析和可视化是用Gephi做">
 <meta name="twitter:image" content="http://github.com/gallery/Game-of-Thrones.jpg">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -51,138 +44,139 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-基于社区发现算法和图分析Neo4j解读《权力的游戏》" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-基于社区发现算法和图分析Neo4j解读《权力的游戏》" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_cjbx1xl1n008v9cmy4vy9m81m">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/Game-of-Thrones.jpg" rel="gallery_cjc8gavy7008vqcmyusa3ht9x">
         <img src="../../../../gallery/Game-of-Thrones.jpg" itemprop="image">
       </a>
     
@@ -202,39 +196,44 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">十一月 21, 2016</time>
+	<a href="" class="article-date">
+	  <time datetime="2016-11-21T03:08:00.000Z" itemprop="datePublished">2016-11-21</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Web/">Web</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="external"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
+        <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>几个月前，数学家 Andrew Beveridge 和Jie Shan在数学杂志上发表<a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="noopener"><strong>《权力的网络》</strong></a>，主要分析畅销小说《冰与火之歌》第三部《冰雨的风暴》中人物关系，其已经拍成电视剧《权力的游戏》系列。他们在论文中介绍了如何通过文本分析和实体提取构建人物关系的网络。紧接着，使用社交网络分析算法对人物关系网络分析找出最重要的角色；应用社区发现算法来找到人物聚类。</p>
 <p>其中的分析和可视化是用Gephi做的，Gephi是非常流行的图分析工具。但作者觉得使用Neo4j来实现更有趣。</p>
-<h2 id="导入原始数据到Neo4j"><a href="#导入原始数据到Neo4j" class="headerlink" title="导入原始数据到Neo4j"></a>导入原始数据到Neo4j</h2><p>原始数据可<a href="https://www.macalester.edu/~abeverid/data/stormofswords.csv" target="_blank" rel="external">从网络上下载</a>，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">Source,Target,Weight</div><div class="line">Aemon,Grenn,5</div><div class="line">Aemon,Samwell,31</div><div class="line">Aerys,Jaime,18</div><div class="line">...</div></pre></td></tr></table></figure>
+<h2 id="导入原始数据到Neo4j"><a href="#导入原始数据到Neo4j" class="headerlink" title="导入原始数据到Neo4j"></a>导入原始数据到Neo4j</h2><p>原始数据可<a href="https://www.macalester.edu/~abeverid/data/stormofswords.csv" target="_blank" rel="noopener">从网络上下载</a>，格式如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Source,Target,Weight</span><br><span class="line">Aemon,Grenn,5</span><br><span class="line">Aemon,Samwell,31</span><br><span class="line">Aerys,Jaime,18</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>上面是人物关系的之邻接表以及关系权重。作者使用简单的数据模型：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">(:Character &#123;name&#125;)-[:INTERACTS]-&gt;(:Character &#123;name&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(:Character &#123;name&#125;)-[:INTERACTS]-&gt;(:Character &#123;name&#125;)</span><br></pre></td></tr></table></figure>
 <p>带有标签Character的节点代表小说中的角色，用单向关系类型INTERACTS代表小说中的角色有过接触。节点属性会存储角色的名字name，两角色间接触的次数作为关系的属性：权重（weight）。</p>
 <p>首先创建节点c，并做唯一限制性约束，c.name唯一，保证schema的完整性：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CREATE CONSTRAINT ON (c:Character) ASSERT c.name IS UNIQUE;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE CONSTRAINT ON (c:Character) ASSERT c.name IS UNIQUE;</span><br></pre></td></tr></table></figure>
 <p>一旦约束创建即相应的创建索引，这将有助于通过角色的名字查询的性能。作者使用Neo4j的Cypher（Cypher是一种声明式图查询语言，能表达高效查询和更新图数据库）LOAD CSV语句导入数据：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">LOAD CSV WITH HEADERS FROM &quot;https://www.macalester.edu/~abeverid/data/stormofswords.csv&quot; AS row</div><div class="line">MERGE (src:Character &#123;name: row.Source&#125;)</div><div class="line">MERGE (tgt:Character &#123;name: row.Target&#125;)</div><div class="line">MERGE (src)-[r:INTERACTS]-&gt;(tgt)</div><div class="line">SET r.weight = toInt(row.Weight)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV WITH HEADERS FROM &quot;https://www.macalester.edu/~abeverid/data/stormofswords.csv&quot; AS row</span><br><span class="line">MERGE (src:Character &#123;name: row.Source&#125;)</span><br><span class="line">MERGE (tgt:Character &#123;name: row.Target&#125;)</span><br><span class="line">MERGE (src)-[r:INTERACTS]-&gt;(tgt)</span><br><span class="line">SET r.weight = toInt(row.Weight)</span><br></pre></td></tr></table></figure>
 <p>这样得到一个简单的数据模型：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CALL apoc.meta.graph()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CALL apoc.meta.graph()</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/game/1.png" alt="图1 ：《权力的游戏》模型的图。Character角色节点由INTERACTS关系联结"></p>
 <p>我们能可视化整个图形，但是这并不能给我们很多信息，比如哪些是最重要的人物，以及他们相互接触的信息：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH p=(:Character)-[:INTERACTS]-(:Character)</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH p=(:Character)-[:INTERACTS]-(:Character)</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/game/2.jpg" alt="图2"></p>
 <h2 id="人物网络分析"><a href="#人物网络分析" class="headerlink" title="人物网络分析"></a>人物网络分析</h2><p>作者使用Neo4j的图查询语言Cypher来做《权力的游戏》图分析，应用到了网络分析的一些工具，具体见《网络，人群和市场：关于高度连接的世界》。</p>
 <h3 id="人物数量"><a href="#人物数量" class="headerlink" title="人物数量"></a>人物数量</h3><p>万事以简单开始。先看看上图上由有多少人物：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character) RETURN count(c)</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character) RETURN count(c)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -248,7 +247,7 @@ var themeMenus = {};
 </tbody>
 </table>
 <h3 id="概要统计"><a href="#概要统计" class="headerlink" title="概要统计"></a>概要统计</h3><p>统计每个角色接触的其它角色的数目：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)-[:INTERACTS]-&gt;()</div><div class="line">WITH c, count(*) AS num</div><div class="line">RETURN min(num) AS min, max(num) AS max, avg(num) AS avg_characters, stdev(num) AS stdev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)-[:INTERACTS]-&gt;()</span><br><span class="line">WITH c, count(*) AS num</span><br><span class="line">RETURN min(num) AS min, max(num) AS max, avg(num) AS avg_characters, stdev(num) AS stdev</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -268,7 +267,7 @@ var themeMenus = {};
 </tbody>
 </table>
 <h3 id="图（网络）的直径"><a href="#图（网络）的直径" class="headerlink" title="图（网络）的直径"></a>图（网络）的直径</h3><p>网络的直径或者测底线或者最长最短路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Find maximum diameter of network</div><div class="line">// maximum shortest path between two nodes</div><div class="line">MATCH (a:Character), (b:Character) WHERE id(a) &gt; id(b)</div><div class="line">MATCH p=shortestPath((a)-[:INTERACTS*]-(b))</div><div class="line">RETURN length(p) AS len, extract(x IN nodes(p) | x.name) AS path</div><div class="line">ORDER BY len DESC LIMIT 4</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Find maximum diameter of network</span><br><span class="line">// maximum shortest path between two nodes</span><br><span class="line">MATCH (a:Character), (b:Character) WHERE id(a) &gt; id(b)</span><br><span class="line">MATCH p=shortestPath((a)-[:INTERACTS*]-(b))</span><br><span class="line">RETURN length(p) AS len, extract(x IN nodes(p) | x.name) AS path</span><br><span class="line">ORDER BY len DESC LIMIT 4</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -297,13 +296,13 @@ var themeMenus = {};
 </table>
 <p>我们能看到网络中有许多长度为6的路径。</p>
 <h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><p>作者使用Cypher 的shortestPath函数找到图中任意两个角色之间的最短路径。让我们找出凯特琳·史塔克（Catelyn Stark ）和卓戈·卡奥（Kahl Drogo）之间的最短路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Shortest path from Catelyn Stark to Khal Drogo</div><div class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</div><div class="line">MATCH p=shortestPath((catelyn)-[INTERACTS*]-(drogo))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Shortest path from Catelyn Stark to Khal Drogo</span><br><span class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</span><br><span class="line">MATCH p=shortestPath((catelyn)-[INTERACTS*]-(drogo))</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/game/3.jpg" alt="图3"></p>
 <h3 id="所有最短路径"><a href="#所有最短路径" class="headerlink" title="所有最短路径"></a>所有最短路径</h3><p>联结凯特琳·史塔克（Catelyn Stark ）和卓戈·卡奥（Kahl Drogo）之间的最短路径可能还有其它路径，我们可以使用Cypher的allShortestPaths函数来查找：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// All shortest paths from Catelyn Stark to Khal Drogo</div><div class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</div><div class="line">MATCH p=allShortestPaths((catelyn)-[INTERACTS*]-(drogo))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// All shortest paths from Catelyn Stark to Khal Drogo</span><br><span class="line">MATCH (catelyn:Character &#123;name: &quot;Catelyn&quot;&#125;), (drogo:Character &#123;name: &quot;Drogo&quot;&#125;)</span><br><span class="line">MATCH p=allShortestPaths((catelyn)-[INTERACTS*]-(drogo))</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/game/4.jpg" alt="图4"></p>
 <h3 id="关键节点"><a href="#关键节点" class="headerlink" title="关键节点"></a>关键节点</h3><p>在网络中，如果一个节点位于其它两个节点所有的最短路径上，即称为关键节点。下面我们找出网络中所有的关键节点：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Find all pivotal nodes in network</div><div class="line">MATCH (a:Character), (b:Character)</div><div class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b)) WITH collect(p) AS paths, a, b</div><div class="line">MATCH (c:Character) WHERE all(x IN paths WHERE c IN nodes(x)) AND NOT c IN [a,b]</div><div class="line">RETURN a.name, b.name, c.name AS PivotalNode SKIP 490 LIMIT 10</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Find all pivotal nodes in network</span><br><span class="line">MATCH (a:Character), (b:Character)</span><br><span class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b)) WITH collect(p) AS paths, a, b</span><br><span class="line">MATCH (c:Character) WHERE all(x IN paths WHERE c IN nodes(x)) AND NOT c IN [a,b]</span><br><span class="line">RETURN a.name, b.name, c.name AS PivotalNode SKIP 490 LIMIT 10</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -366,11 +365,11 @@ var themeMenus = {};
 </tbody>
 </table>
 <p>从结果表格中我们可以看出有趣的结果：罗柏·史塔克（Robb）是卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）的关键节点。这意味着，所有联结卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）的最短路径都要经过罗柏·史塔克（Robb）。我们可以通过可视化卓戈·卡奥（Drogo）和拉姆塞·波顿（Ramsay）之间的所有最短路径来验证：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (a:Character &#123;name: &quot;Drogo&quot;&#125;), (b:Character &#123;name: &quot;Ramsay&quot;&#125;)</div><div class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b))</div><div class="line">RETURN p</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a:Character &#123;name: &quot;Drogo&quot;&#125;), (b:Character &#123;name: &quot;Ramsay&quot;&#125;)</span><br><span class="line">MATCH p=allShortestPaths((a)-[:INTERACTS*]-(b))</span><br><span class="line">RETURN p</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/game/5.jpg" alt="图5"></p>
 <h3 id="节点中心度"><a href="#节点中心度" class="headerlink" title="节点中心度"></a>节点中心度</h3><p>节点中心度给出网络中节点的重要性的相对度量。有许多不同的方式来度量中心度，每种方式都代表不同类型的“重要性”。</p>
 <h3 id="度中心性-Degree-Centrality"><a href="#度中心性-Degree-Centrality" class="headerlink" title="度中心性(Degree Centrality)"></a>度中心性(Degree Centrality)</h3><p>度中心性是最简单度量，即为某个节点在网络中的联结数。在《权力的游戏》的图中，某个角色的度中心性是指该角色接触的其他角色数。作者使用Cypher计算度中心性：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)-[:INTERACTS]-()</div><div class="line">RETURN c.name AS character, count(*) AS degree ORDER BY degree DESC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)-[:INTERACTS]-()</span><br><span class="line">RETURN c.name AS character, count(*) AS degree ORDER BY degree DESC</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -423,7 +422,7 @@ var themeMenus = {};
 </table>
 <p>从上面可以发现，在《权力的游戏》网络中提利昂·兰尼斯特（Tyrion）和最多的角色有接触。鉴于他的心计，我们觉得这是有道理的。</p>
 <h3 id="加权度中心性（Weighted-Degree-Centrality）"><a href="#加权度中心性（Weighted-Degree-Centrality）" class="headerlink" title="加权度中心性（Weighted Degree Centrality）"></a>加权度中心性（Weighted Degree Centrality）</h3><p>作者存储一对角色接触的次数作为INTERACTS关系的weight属性。对该角色的INTERACTS关系的所有weight相加得到加权度中心性。作者使用Cypher计算所有角色的这个度量：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)-[r:INTERACTS]-()</div><div class="line">RETURN c.name AS character, sum(r.weight) AS weightedDegree ORDER BY weightedDegree DESC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)-[r:INTERACTS]-()</span><br><span class="line">RETURN c.name AS character, sum(r.weight) AS weightedDegree ORDER BY weightedDegree DESC</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -477,7 +476,7 @@ var themeMenus = {};
 <h3 id="介数中心性（Betweenness-Centrality）"><a href="#介数中心性（Betweenness-Centrality）" class="headerlink" title="介数中心性（Betweenness Centrality）"></a>介数中心性（Betweenness Centrality）</h3><p>介数中心性：在网络中，一个节点的介数中心性是指其它两个节点的所有最短路径都经过这个节点，则这些所有最短路径数即为此节点的介数中心性。介数中心性是一种重要的度量，因为它可以鉴别出网络中的“信息中间人”或者网络聚类后的联结点。</p>
 <p><img src="/gallery/game/6.jpg" alt="图6中红色节点是具有高的介数中心性，网络聚类的联结点。"></p>
 <p>为了计算介数中心性，作者使用Neo4j 3.x或者apoc库。安装apoc后能用Cypher调用其170+的程序：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)</div><div class="line">WITH collect(c) AS characters</div><div class="line">CALL apoc.algo.betweenness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</div><div class="line">SET node.betweenness = score</div><div class="line">RETURN node.name AS name, score ORDER BY score DESC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)</span><br><span class="line">WITH collect(c) AS characters</span><br><span class="line">CALL apoc.algo.betweenness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</span><br><span class="line">SET node.betweenness = score</span><br><span class="line">RETURN node.name AS name, score ORDER BY score DESC</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -530,7 +529,7 @@ var themeMenus = {};
 </table>
 <h3 id="紧度中心性（Closeness-centrality）"><a href="#紧度中心性（Closeness-centrality）" class="headerlink" title="紧度中心性（Closeness centrality）"></a>紧度中心性（Closeness centrality）</h3><p>紧度中心性是指到网络中所有其他角色的平均距离的倒数。在图中，具有高紧度中心性的节点在聚类社区之间被高度联结，但在社区之外不一定是高度联结的。</p>
 <p><img src="/gallery/game/7.png" alt="图7 ：网络中具有高紧度中心性的节点被其它节点高度联结"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)</div><div class="line">WITH collect(c) AS characters</div><div class="line">CALL apoc.algo.closeness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</div><div class="line">RETURN node.name AS name, score ORDER BY score DESC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)</span><br><span class="line">WITH collect(c) AS characters</span><br><span class="line">CALL apoc.algo.closeness([&apos;INTERACTS&apos;], characters, &apos;BOTH&apos;) YIELD node, score</span><br><span class="line">RETURN node.name AS name, score ORDER BY score DESC</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -583,14 +582,14 @@ var themeMenus = {};
 </table>
 <h2 id="使用python-igraph"><a href="#使用python-igraph" class="headerlink" title="使用python-igraph"></a>使用python-igraph</h2><p>Neo4j与其它工具（比如，R和Python数据科学工具）完美结合。我们继续使用apoc运行 PageRank和社区发现（community detection）算法。这里接着使用python-igraph计算分析。Python-igraph移植自R的igraph图形分析库。 使用pip install python-igraph安装它。</p>
 <h3 id="从Neo4j构建一个igraph实例"><a href="#从Neo4j构建一个igraph实例" class="headerlink" title="从Neo4j构建一个igraph实例"></a>从Neo4j构建一个igraph实例</h3><p>为了在《权力的游戏》的数据的图分析中使用igraph，首先需要从Neo4j拉取数据，用Python建立igraph实例。作者使用 Neo4j 的Python驱动库py2neo。我们能直接传入Py2neo查询结果对象到igraph的TupleList构造器，创建igraph实例：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph</div><div class="line"><span class="keyword">from</span> igraph <span class="keyword">import</span> Graph <span class="keyword">as</span> IGraph</div><div class="line">graph = Graph()</div><div class="line"></div><div class="line">query = <span class="string">'''</span></div><div class="line">MATCH (c1:Character)-[r:INTERACTS]-&gt;(c2:Character)</div><div class="line">RETURN c1.name, c2.name, r.weight AS weight</div><div class="line">'''</div><div class="line"></div><div class="line">ig = IGraph.TupleList(graph.run(query), weights=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> py2neo <span class="keyword">import</span> Graph</span><br><span class="line"><span class="keyword">from</span> igraph <span class="keyword">import</span> Graph <span class="keyword">as</span> IGraph</span><br><span class="line">graph = Graph()</span><br><span class="line"></span><br><span class="line">query = <span class="string">'''</span></span><br><span class="line"><span class="string">MATCH (c1:Character)-[r:INTERACTS]-&gt;(c2:Character)</span></span><br><span class="line"><span class="string">RETURN c1.name, c2.name, r.weight AS weight</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">ig = IGraph.TupleList(graph.run(query), weights=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p>现在有了igraph对象，可以运行igraph实现的各种图算法来。</p>
-<h3 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h3><p>作者使用igraph运行的第一个算法是<a href="https://en.wikipedia.org/wiki/PageRank" target="_blank" rel="external">PageRank</a>。PageRank算法源自Google的网页排名。它是一种<a href="https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality" target="_blank" rel="external">特征向量中心性(eigenvector centrality)</a>算法。</p>
+<h3 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h3><p>作者使用igraph运行的第一个算法是<a href="https://en.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">PageRank</a>。PageRank算法源自Google的网页排名。它是一种<a href="https://en.wikipedia.org/wiki/Centrality#Eigenvector_centrality" target="_blank" rel="noopener">特征向量中心性(eigenvector centrality)</a>算法。</p>
 <p><img src="/gallery/game/page-rank.png" alt=""></p>
 <p>在igraph实例中运行PageRank算法，然后把结果写回Neo4j，在角色节点创建一个pagerank属性存储igraph计算的值：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">pg = ig.pagerank()</div><div class="line">pgvs = []</div><div class="line"><span class="keyword">for</span> p <span class="keyword">in</span> zip(ig.vs, pg):</div><div class="line">    print(p)</div><div class="line">    pgvs.append(&#123;<span class="string">"name"</span>: p[<span class="number">0</span>][<span class="string">"name"</span>], <span class="string">"pg"</span>: p[<span class="number">1</span>]&#125;)</div><div class="line">pgvs</div><div class="line"></div><div class="line">write_clusters_query = <span class="string">'''</span></div><div class="line">UNWIND &#123;nodes&#125; AS n</div><div class="line">MATCH (c:Character) WHERE c.name = n.name</div><div class="line">SET c.pagerank = n.pg</div><div class="line">'''</div><div class="line"></div><div class="line">graph.run(write_clusters_query, nodes=pgvs)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pg = ig.pagerank()</span><br><span class="line">pgvs = []</span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> zip(ig.vs, pg):</span><br><span class="line">    print(p)</span><br><span class="line">    pgvs.append(&#123;<span class="string">"name"</span>: p[<span class="number">0</span>][<span class="string">"name"</span>], <span class="string">"pg"</span>: p[<span class="number">1</span>]&#125;)</span><br><span class="line">pgvs</span><br><span class="line"></span><br><span class="line">write_clusters_query = <span class="string">'''</span></span><br><span class="line"><span class="string">UNWIND &#123;nodes&#125; AS n</span></span><br><span class="line"><span class="string">MATCH (c:Character) WHERE c.name = n.name</span></span><br><span class="line"><span class="string">SET c.pagerank = n.pg</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">graph.run(write_clusters_query, nodes=pgvs)</span><br></pre></td></tr></table></figure>
 <p>现在可以在Neo4j的图中查询最高PageRank值的节点：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (n:Character)</div><div class="line">RETURN n.name AS name, n.pagerank AS pagerank ORDER BY pagerank DESC LIMIT 10</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Character)</span><br><span class="line">RETURN n.name AS name, n.pagerank AS pagerank ORDER BY pagerank DESC LIMIT 10</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -644,9 +643,9 @@ var themeMenus = {};
 <p><img src="/gallery/game/8.jpg" alt=""></p>
 <p>社区发现算法用来找出图中的社区聚类。作者使用igraph实现的随机游走算法（ walktrap）来找到在社区中频繁有接触的角色社区，在社区之外角色不怎么接触。</p>
 <p>在igraph中运行随机游走的社区发现算法，然后把社区发现的结果导入Neo4j，其中每个角色所属的社区用一个整数来表示：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">clusters = IGraph.community_walktrap(ig, weights=<span class="string">"weight"</span>).as_clustering()</div><div class="line"></div><div class="line">nodes = [&#123;<span class="string">"name"</span>: node[<span class="string">"name"</span>]&#125; <span class="keyword">for</span> node <span class="keyword">in</span> ig.vs]</div><div class="line"><span class="keyword">for</span> node <span class="keyword">in</span> nodes:</div><div class="line">    idx = ig.vs.find(name=node[<span class="string">"name"</span>]).index</div><div class="line">    node[<span class="string">"community"</span>] = clusters.membership[idx]</div><div class="line"></div><div class="line">write_clusters_query = <span class="string">'''</span></div><div class="line">UNWIND &#123;nodes&#125; AS n</div><div class="line">MATCH (c:Character) WHERE c.name = n.name</div><div class="line">SET c.community = toInt(n.community)</div><div class="line">'''</div><div class="line"></div><div class="line">graph.run(write_clusters_query, nodes=nodes)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">clusters = IGraph.community_walktrap(ig, weights=<span class="string">"weight"</span>).as_clustering()</span><br><span class="line"></span><br><span class="line">nodes = [&#123;<span class="string">"name"</span>: node[<span class="string">"name"</span>]&#125; <span class="keyword">for</span> node <span class="keyword">in</span> ig.vs]</span><br><span class="line"><span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">    idx = ig.vs.find(name=node[<span class="string">"name"</span>]).index</span><br><span class="line">    node[<span class="string">"community"</span>] = clusters.membership[idx]</span><br><span class="line"></span><br><span class="line">write_clusters_query = <span class="string">'''</span></span><br><span class="line"><span class="string">UNWIND &#123;nodes&#125; AS n</span></span><br><span class="line"><span class="string">MATCH (c:Character) WHERE c.name = n.name</span></span><br><span class="line"><span class="string">SET c.community = toInt(n.community)</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">graph.run(write_clusters_query, nodes=nodes)</span><br></pre></td></tr></table></figure>
 <p>我们能在Neo4j中查询有多少个社区以及每个社区的成员数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATCH (c:Character)</div><div class="line">WITH c.community AS cluster, collect(c.name) AS  members</div><div class="line">RETURN cluster, members ORDER BY cluster ASC</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:Character)</span><br><span class="line">WITH c.community AS cluster, collect(c.name) AS  members</span><br><span class="line">RETURN cluster, members ORDER BY cluster ASC</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -692,7 +691,7 @@ var themeMenus = {};
 <h3 id="角色“大合影”"><a href="#角色“大合影”" class="headerlink" title="角色“大合影”"></a>角色“大合影”</h3><p><img src="/gallery/game/graph-of-thrones.png" alt="The graph of thrones"></p>
 <p>《权力的游戏》的权力图。节点的大小正比于介数中心性，颜色表示社区（由随机游走算法获得），边的厚度正比于两节点接触的次数。<br>现在已经计算好这些图的分析数据，让我们对其进行可视化，让数据看起来更有意义。</p>
 <p>Neo4j自带浏览器可以对Cypher查询的结果进行很好的可视化，但如果我们想把可视化好的图嵌入到其它应用中，可以使用Javascript可视化库Vis.js。从Neo4j拉取数据，用Vis.js的neovis.js构建可视化图。Neovis.js提供简单的API配置，例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> config = &#123;</div><div class="line">  <span class="attr">container_id</span>: <span class="string">"viz"</span>,</div><div class="line">  <span class="attr">server_url</span>: <span class="string">"localhost"</span>,</div><div class="line">  <span class="attr">labels</span>: &#123;    <span class="string">"Character"</span>: <span class="string">"name"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">label_size</span>: &#123;    <span class="string">"Character"</span>: <span class="string">"betweenness"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">relationships</span>: &#123;    <span class="string">"INTERACTS"</span>: <span class="literal">null</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">relationship_thickness</span>: &#123;    <span class="string">"INTERACTS"</span>: <span class="string">"weight"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">cluster_labels</span>: &#123;    <span class="string">"Character"</span>: <span class="string">"community"</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> viz = <span class="keyword">new</span> NeoVis(config);</div><div class="line">viz.render();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  container_id: <span class="string">"viz"</span>,</span><br><span class="line">  server_url: <span class="string">"localhost"</span>,</span><br><span class="line">  labels: &#123;    <span class="string">"Character"</span>: <span class="string">"name"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  label_size: &#123;    <span class="string">"Character"</span>: <span class="string">"betweenness"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relationships: &#123;    <span class="string">"INTERACTS"</span>: <span class="literal">null</span></span><br><span class="line">  &#125;,</span><br><span class="line">  relationship_thickness: &#123;    <span class="string">"INTERACTS"</span>: <span class="string">"weight"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  cluster_labels: &#123;    <span class="string">"Character"</span>: <span class="string">"community"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> viz = <span class="keyword">new</span> NeoVis(config);</span><br><span class="line">viz.render();</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li>节点带有标签<code>Character</code>，属性<code>name</code>；</li>
@@ -704,30 +703,22 @@ var themeMenus = {};
 <li>在一个id为<code>viz</code>的DOM元素中展示可视化。</li>
 </ul>
 <h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
-<li><p>A. Beveridge and J. Shan, <a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="external">“Network of Thrones”</a> Math Horizons Magazine , Vol. 23, No. 4 (2016), pp. 18-22.</p>
+<li><p>A. Beveridge and J. Shan, <a href="http://www.maa.org/sites/default/files/pdf/Mathhorizons/NetworkofThrones.pdf" target="_blank" rel="noopener">“Network of Thrones”</a> Math Horizons Magazine , Vol. 23, No. 4 (2016), pp. 18-22.</p>
 </li>
-<li><p>J. Kleinberg and D. Easley, <a href="https://www.cs.cornell.edu/home/kleinber/networks-book/" target="_blank" rel="external">Networks, Crowds, and Markets: Reasoning About a Highly Connected World</a>. Cambridge University Press (2010)<br>All code is <a href="https://github.com/johnymontana/graph-of-thrones">available on Github</a>.</p>
+<li><p>J. Kleinberg and D. Easley, <a href="https://www.cs.cornell.edu/home/kleinber/networks-book/" target="_blank" rel="noopener">Networks, Crowds, and Markets: Reasoning About a Highly Connected World</a>. Cambridge University Press (2010)<br>All code is <a href="https://github.com/johnymontana/graph-of-thrones">available on Github</a>.</p>
 </li>
 </ul>
 <hr>
 <p>【参考资料】</p>
 <ul>
-<li><a href="http://www.lyonwj.com/2016/06/26/graph-of-thrones-neo4j-social-network-analysis/" target="_blank" rel="external"><strong>Analyzing the Graph of Thrones</strong> – by William Lyon</a></li>
-<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MDIxMDM0MQ==&amp;mid=2247483702&amp;idx=2&amp;sn=7a1abd6d129b87150e890b7ae11791aa&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd" target="_blank" rel="external">基于社区发现算法和图分析Neo4j解读《权力的游戏》上篇</a></li>
-<li><a href="http://www.hizher.com/pageContent-1148688-51394.html" target="_blank" rel="external">基于社区发现算法和图分析Neo4j解读《权力的游戏》下篇</a></li>
+<li><a href="http://www.lyonwj.com/2016/06/26/graph-of-thrones-neo4j-social-network-analysis/" target="_blank" rel="noopener"><strong>Analyzing the Graph of Thrones</strong> – by William Lyon</a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI0MDIxMDM0MQ==&amp;mid=2247483702&amp;idx=2&amp;sn=7a1abd6d129b87150e890b7ae11791aa&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd" target="_blank" rel="noopener">基于社区发现算法和图分析Neo4j解读《权力的游戏》上篇</a></li>
+<li><a href="http://www.hizher.com/pageContent-1148688-51394.html" target="_blank" rel="noopener">基于社区发现算法和图分析Neo4j解读《权力的游戏》下篇</a></li>
 </ul>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Web/">Web</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Neo4j/">Neo4j</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -742,7 +733,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -767,7 +757,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Neo4j/">Neo4j</a></li></ul>
+
     </footer>
   </div>
   
@@ -796,33 +790,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入原始数据到Neo4j"><span class="nav-number">2.</span> <span class="nav-text">导入原始数据到Neo4j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物网络分析"><span class="nav-number">3.</span> <span class="nav-text">人物网络分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#人物数量"><span class="nav-number">3.1.</span> <span class="nav-text">人物数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概要统计"><span class="nav-number">3.2.</span> <span class="nav-text">概要统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图（网络）的直径"><span class="nav-number">3.3.</span> <span class="nav-text">图（网络）的直径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路径"><span class="nav-number">3.4.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有最短路径"><span class="nav-number">3.5.</span> <span class="nav-text">所有最短路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键节点"><span class="nav-number">3.6.</span> <span class="nav-text">关键节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点中心度"><span class="nav-number">3.7.</span> <span class="nav-text">节点中心度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#度中心性-Degree-Centrality"><span class="nav-number">3.8.</span> <span class="nav-text">度中心性(Degree Centrality)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权度中心性（Weighted-Degree-Centrality）"><span class="nav-number">3.9.</span> <span class="nav-text">加权度中心性（Weighted Degree Centrality）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介数中心性（Betweenness-Centrality）"><span class="nav-number">3.10.</span> <span class="nav-text">介数中心性（Betweenness Centrality）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#紧度中心性（Closeness-centrality）"><span class="nav-number">3.11.</span> <span class="nav-text">紧度中心性（Closeness centrality）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用python-igraph"><span class="nav-number">4.</span> <span class="nav-text">使用python-igraph</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从Neo4j构建一个igraph实例"><span class="nav-number">4.1.</span> <span class="nav-text">从Neo4j构建一个igraph实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PageRank"><span class="nav-number">4.2.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#角色“大合影”"><span class="nav-number">4.3.</span> <span class="nav-text">角色“大合影”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">5.</span> <span class="nav-text">Resources</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入原始数据到Neo4j"><span class="nav-number">2.</span> <span class="nav-text">导入原始数据到Neo4j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物网络分析"><span class="nav-number">3.</span> <span class="nav-text">人物网络分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#人物数量"><span class="nav-number">3.1.</span> <span class="nav-text">人物数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概要统计"><span class="nav-number">3.2.</span> <span class="nav-text">概要统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图（网络）的直径"><span class="nav-number">3.3.</span> <span class="nav-text">图（网络）的直径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路径"><span class="nav-number">3.4.</span> <span class="nav-text">最短路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所有最短路径"><span class="nav-number">3.5.</span> <span class="nav-text">所有最短路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键节点"><span class="nav-number">3.6.</span> <span class="nav-text">关键节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点中心度"><span class="nav-number">3.7.</span> <span class="nav-text">节点中心度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#度中心性-Degree-Centrality"><span class="nav-number">3.8.</span> <span class="nav-text">度中心性(Degree Centrality)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权度中心性（Weighted-Degree-Centrality）"><span class="nav-number">3.9.</span> <span class="nav-text">加权度中心性（Weighted Degree Centrality）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介数中心性（Betweenness-Centrality）"><span class="nav-number">3.10.</span> <span class="nav-text">介数中心性（Betweenness Centrality）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#紧度中心性（Closeness-centrality）"><span class="nav-number">3.11.</span> <span class="nav-text">紧度中心性（Closeness centrality）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用python-igraph"><span class="nav-number">4.</span> <span class="nav-text">使用python-igraph</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从Neo4j构建一个igraph实例"><span class="nav-number">4.1.</span> <span class="nav-text">从Neo4j构建一个igraph实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PageRank"><span class="nav-number">4.2.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#角色“大合影”"><span class="nav-number">4.3.</span> <span class="nav-text">角色“大合影”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">5.</span> <span class="nav-text">Resources</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -830,13 +826,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -896,8 +896,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -905,7 +908,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -921,7 +925,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

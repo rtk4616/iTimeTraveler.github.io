@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>chrome自带的开发者工具进阶技巧 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,18 +11,14 @@
   
   
   
-  <meta name="description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain
-
-Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。
-我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
+  <meta name="description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain  Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。 我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
+<meta name="keywords" content="WebDevelopment">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chrome自带的开发者工具进阶技巧">
 <meta property="og:url" content="http://github.com/2016/09/28/Chrome自带的开发者工具进阶技巧/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain
-
-Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。
-我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
+<meta property="og:description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain  Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。 我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.blog.csdn.net/20160928183251857">
 <meta property="og:image" content="http://img.blog.csdn.net/20160928183416388">
 <meta property="og:image" content="http://img.blog.csdn.net/20160928183613844">
@@ -43,15 +29,16 @@ Chrome自带开发者工具。它的功能十分丰富，包括元素、网络�
 <meta property="og:updated_time" content="2016-10-18T06:45:25.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chrome自带的开发者工具进阶技巧">
-<meta name="twitter:description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain
-
-Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。
-我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
+<meta name="twitter:description" content="原文链接： Things you probably didn’t know you could do with Chrome’s Developer Console作者：Swagat Kumar Swain  Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍JavaScript控制台部分的功能。 我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160928183251857">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -63,133 +50,134 @@ Chrome自带开发者工具。它的功能十分丰富，包括元素、网络�
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Chrome自带的开发者工具进阶技巧" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-Chrome自带的开发者工具进阶技巧" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -204,20 +192,23 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2016-09-28T10:50:00.000Z" itemprop="datePublished">九月 28, 2016</time>
+	<a href="" class="article-date">
+	  <time datetime="2016-09-28T10:50:00.000Z" itemprop="datePublished">2016-09-28</time>
 	</a>
 
       
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>原文链接： <a href="https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.iu8wnwr86" target="_blank" rel="external"><strong>Things you probably didn’t know you could do with Chrome’s Developer Console</strong></a><br>作者：<a href="https://medium.freecodecamp.com/@swagatswain" target="_blank" rel="external">Swagat Kumar Swain</a></p>
+<p>原文链接： <a href="https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.iu8wnwr86" target="_blank" rel="noopener"><strong>Things you probably didn’t know you could do with Chrome’s Developer Console</strong></a><br>作者：<a href="https://medium.freecodecamp.com/@swagatswain" target="_blank" rel="noopener">Swagat Kumar Swain</a></p>
 </blockquote>
 <p>Chrome自带开发者工具。它的功能十分丰富，包括元素、网络、安全等等。今天我们主要介绍<strong>JavaScript控制台</strong>部分的功能。</p>
 <p>我最早写代码的时候，也就是在JS控制台里输出一些服务器返回的内容，或者一些变量的值。但是后来通过一些深入的学习和了解，我发现Chrome的JS控制台原来还有这么多神奇的功能。</p>
@@ -231,16 +222,16 @@ var themeMenus = {};
 <a id="more"></a>
 <h3 id="2-一秒钟让Chrome变成所见即所得的编辑器"><a href="#2-一秒钟让Chrome变成所见即所得的编辑器" class="headerlink" title="2.一秒钟让Chrome变成所见即所得的编辑器"></a><strong>2.一秒钟让Chrome变成所见即所得的编辑器</strong></h3><p>你可能经常会困惑你到底能不能直接在浏览器里更改网页的文本内容。答案是肯定的，你可以只通过一行简单的指令把Chrome变成所见即所得的编辑器，直接在网页上随心所欲地删改文字。</p>
 <p>你不需要再傻傻地右键审查元素，编辑源代码了。打开Chrome的开发者控制台，输入</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">document</span>.body.contentEditable=<span class="literal">true</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.contentEditable=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>然后奇迹就发生啦，你竟然可以在网页里直接编辑，或者随意拖动图片的位置了！要是你正在用Chrome现在就可以试试！</p>
 <p><img src="http://img.blog.csdn.net/20160928183416388" alt=""></p>
 <h3 id="3-获取某个DOM元素绑定的事件"><a href="#3-获取某个DOM元素绑定的事件" class="headerlink" title="3.获取某个DOM元素绑定的事件"></a><strong>3.获取某个DOM元素绑定的事件</strong></h3><p>在调试的时候，你肯定需要知道某个元素上面绑定了什么触发事件。Chrome的开发者控制台可以让你很轻松地找到它们。</p>
 <p><code>getEventListeners($(&#39;selector&#39;))</code> 方法以数组对象的格式返回某个元素绑定的所有事件。你可以在控制台里展开对象查看详细的内容。</p>
 <p><img src="http://img.blog.csdn.net/20160928183613844" alt=""></p>
 <p>要是你需要选择其中的某个事件，可以通过下面的方法来访问：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">getEventListeners($(<span class="string">'selector'</span>)).eventName[<span class="number">0</span>].listener</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getEventListeners($(<span class="string">'selector'</span>)).eventName[<span class="number">0</span>].listener</span><br></pre></td></tr></table></figure>
 <p>这里的 eventName 表示某种事件类型，例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">getEventListeners($(<span class="string">'#firstName'</span>)).click[<span class="number">0</span>].listener</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getEventListeners($(<span class="string">'#firstName'</span>)).click[<span class="number">0</span>].listener</span><br></pre></td></tr></table></figure>
 <p>上面的例子会返回ID为 firstName 元素绑定的click事件。</p>
 <h3 id="4-监测事件"><a href="#4-监测事件" class="headerlink" title="4.监测事件"></a><strong>4.监测事件</strong></h3><p>当你需要监视某个DOM触发的事件时，也可以用到控制台。例如下面这些方法：</p>
 <ul>
@@ -254,11 +245,11 @@ var themeMenus = {};
 </li>
 </ul>
 <h3 id="5-用计时器来获取某段代码块的运行时间"><a href="#5-用计时器来获取某段代码块的运行时间" class="headerlink" title="5.用计时器来获取某段代码块的运行时间"></a><strong>5.用计时器来获取某段代码块的运行时间</strong></h3><p>通过 console.time(‘labelName’) 来设定一个计时器，其中的 labelName 是计时器的名称。通过console.timeEnd(‘labelName’) 方法来停止并输出某个计时器的时间。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.time(<span class="string">'myTime'</span>); <span class="comment">//设定计时器开始 - myTime</span></div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'mytime'</span>); <span class="comment">//结束并输出计时时长 - myTime</span></div><div class="line"></div><div class="line"><span class="comment">//输出: myTime:123.00 ms</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">'myTime'</span>); <span class="comment">//设定计时器开始 - myTime</span></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'mytime'</span>); <span class="comment">//结束并输出计时时长 - myTime</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出: myTime:123.00 ms</span></span><br></pre></td></tr></table></figure>
 <p>再举一个通过计时器来计算代码块运行时间的例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.time(<span class="string">'myTime'</span>); <span class="comment">//开始计时 - myTime</span></div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">100000</span>; i++)&#123;</div><div class="line">  <span class="number">2</span>+<span class="number">4</span>+<span class="number">5</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'mytime'</span>); <span class="comment">//结束并输出计时时长 - myTime</span></div><div class="line"></div><div class="line"><span class="comment">//输出 - myTime:12345.00 ms</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">'myTime'</span>); <span class="comment">//开始计时 - myTime</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">100000</span>; i++)&#123;</span><br><span class="line">  <span class="number">2</span>+<span class="number">4</span>+<span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'mytime'</span>); <span class="comment">//结束并输出计时时长 - myTime</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出 - myTime:12345.00 ms</span></span><br></pre></td></tr></table></figure>
 <h3 id="6-以表格的形式输出数组"><a href="#6-以表格的形式输出数组" class="headerlink" title="6.以表格的形式输出数组"></a><strong>6.以表格的形式输出数组</strong></h3><p>假设我们有一个像下面这样的数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> myArray=[&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>,<span class="attr">d</span>:<span class="number">4</span>&#125;,&#123;<span class="attr">k</span>:<span class="number">11</span>,<span class="attr">f</span>:<span class="number">22</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;]</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray=[&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>,<span class="attr">d</span>:<span class="number">4</span>&#125;,&#123;<span class="attr">k</span>:<span class="number">11</span>,<span class="attr">f</span>:<span class="number">22</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;]</span><br></pre></td></tr></table></figure>
 <p>要是你直接在控制台里输入数组的名称，Chrome会以文本的形式返回一个数组对象。但你完全可以通过<code>console.table(variableName)</code> 方法来以表格的形式输出每个元素的值。例如下图：</p>
 <p><img src="http://img.blog.csdn.net/20160928184410011" alt=""></p>
 <h3 id="7-通过控制台方法来检查元素"><a href="#7-通过控制台方法来检查元素" class="headerlink" title="7.通过控制台方法来检查元素"></a><strong>7.通过控制台方法来检查元素</strong></h3><p>你可以直接在控制台里输入下面的方法来检查元素</p>
@@ -273,19 +264,14 @@ var themeMenus = {};
 <p>dir($(‘selector’)) 会返回匹配选择器的DOM元素的所有属性，你可以展开输出的结果查看详细内容。</p>
 <p><img src="http://img.blog.csdn.net/20160928184731077" alt=""></p>
 <h3 id="9-获取最后计算结果的值"><a href="#9-获取最后计算结果的值" class="headerlink" title="9.获取最后计算结果的值"></a><strong>9.获取最后计算结果的值</strong></h3><p>你可以把控制台当作计算器使用。当你在Chrome控制台里进行计算时，可以通过$_来获取最后的计算结果值，还是直接看例子吧：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="number">2</span>+<span class="number">3</span>+<span class="number">4</span></div><div class="line"><span class="number">9</span> <span class="comment">//- The Answer of the SUM is 9</span></div><div class="line"></div><div class="line">$_</div><div class="line"><span class="number">9</span> <span class="comment">// Gives the last Result</span></div><div class="line"></div><div class="line">$_ * $_</div><div class="line"><span class="number">81</span>  <span class="comment">// As the last Result was 9</span></div><div class="line"></div><div class="line"><span class="built_in">Math</span>.sqrt($_)</div><div class="line"><span class="number">9</span> <span class="comment">// As the last Result was 81</span></div><div class="line"></div><div class="line">$_</div><div class="line"><span class="number">9</span> <span class="comment">// As the Last Result is 9</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>+<span class="number">3</span>+<span class="number">4</span></span><br><span class="line"><span class="number">9</span> <span class="comment">//- The Answer of the SUM is 9</span></span><br><span class="line"></span><br><span class="line">$_</span><br><span class="line"><span class="number">9</span> <span class="comment">// Gives the last Result</span></span><br><span class="line"></span><br><span class="line">$_ * $_</span><br><span class="line"><span class="number">81</span>  <span class="comment">// As the last Result was 9</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.sqrt($_)</span><br><span class="line"><span class="number">9</span> <span class="comment">// As the last Result was 81</span></span><br><span class="line"></span><br><span class="line">$_</span><br><span class="line"><span class="number">9</span> <span class="comment">// As the Last Result is 9</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://img.blog.csdn.net/20160928184825129" alt=""></p>
 <h3 id="10-清空控制台输出"><a href="#10-清空控制台输出" class="headerlink" title="10.清空控制台输出"></a><strong>10.清空控制台输出</strong></h3><p>当你需要这么做的时候，只需要输入 <code>clear()</code> 然后回车就好啦！</p>
 <p>Chrome开发者工具的强大远远超出你的想象！这只是其中的一部分小技巧而已，希望能够帮到你！</p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/WebDevelopment/">WebDevelopment</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -300,7 +286,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -325,7 +310,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/WebDevelopment/">WebDevelopment</a></li></ul>
+
     </footer>
   </div>
   
@@ -354,33 +343,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-选取DOM元素"><span class="nav-number">1.</span> <span class="nav-text">1.选取DOM元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一秒钟让Chrome变成所见即所得的编辑器"><span class="nav-number">2.</span> <span class="nav-text">2.一秒钟让Chrome变成所见即所得的编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-获取某个DOM元素绑定的事件"><span class="nav-number">3.</span> <span class="nav-text">3.获取某个DOM元素绑定的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-监测事件"><span class="nav-number">4.</span> <span class="nav-text">4.监测事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-用计时器来获取某段代码块的运行时间"><span class="nav-number">5.</span> <span class="nav-text">5.用计时器来获取某段代码块的运行时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-以表格的形式输出数组"><span class="nav-number">6.</span> <span class="nav-text">6.以表格的形式输出数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-通过控制台方法来检查元素"><span class="nav-number">7.</span> <span class="nav-text">7.通过控制台方法来检查元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-列出某个元素的所有属性"><span class="nav-number">8.</span> <span class="nav-text">8.列出某个元素的所有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-获取最后计算结果的值"><span class="nav-number">9.</span> <span class="nav-text">9.获取最后计算结果的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-清空控制台输出"><span class="nav-number">10.</span> <span class="nav-text">10.清空控制台输出</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-选取DOM元素"><span class="nav-number">1.</span> <span class="nav-text">1.选取DOM元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一秒钟让Chrome变成所见即所得的编辑器"><span class="nav-number">2.</span> <span class="nav-text">2.一秒钟让Chrome变成所见即所得的编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-获取某个DOM元素绑定的事件"><span class="nav-number">3.</span> <span class="nav-text">3.获取某个DOM元素绑定的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-监测事件"><span class="nav-number">4.</span> <span class="nav-text">4.监测事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-用计时器来获取某段代码块的运行时间"><span class="nav-number">5.</span> <span class="nav-text">5.用计时器来获取某段代码块的运行时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-以表格的形式输出数组"><span class="nav-number">6.</span> <span class="nav-text">6.以表格的形式输出数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-通过控制台方法来检查元素"><span class="nav-number">7.</span> <span class="nav-text">7.通过控制台方法来检查元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-列出某个元素的所有属性"><span class="nav-number">8.</span> <span class="nav-text">8.列出某个元素的所有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-获取最后计算结果的值"><span class="nav-number">9.</span> <span class="nav-text">9.获取最后计算结果的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-清空控制台输出"><span class="nav-number">10.</span> <span class="nav-text">10.清空控制台输出</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -388,13 +379,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -454,8 +449,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -463,7 +461,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -479,7 +478,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

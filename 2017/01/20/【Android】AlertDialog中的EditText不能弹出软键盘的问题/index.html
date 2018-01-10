@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【android】alertdialog中的edittext不能弹出软键盘的问题 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,31 +11,28 @@
   
   
   
-  <meta name="description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。
-解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：
-
-Note: Activ">
+  <meta name="description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。 解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：  Note: Activ">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Android】AlertDialog中的EditText不能弹出软键盘的问题">
 <meta property="og:url" content="http://github.com/2017/01/20/【Android】AlertDialog中的EditText不能弹出软键盘的问题/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。
-解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：
-
-Note: Activ">
+<meta property="og:description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。 解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：  Note: Activ">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/android_m_marshmallow.jpg">
 <meta property="og:updated_time" content="2017-01-20T03:13:42.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】AlertDialog中的EditText不能弹出软键盘的问题">
-<meta name="twitter:description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。
-解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：
-
-Note: Activ">
+<meta name="twitter:description" content="摘要AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是强制弹出软键盘，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。 解决方案Dialog的官方文档：http://developer.android.com/reference/android/app/Dialog.html ，其中有一段：  Note: Activ">
 <meta name="twitter:image" content="http://github.com/gallery/android_m_marshmallow.jpg">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -57,138 +44,139 @@ Note: Activ">
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Android】AlertDialog中的EditText不能弹出软键盘的问题" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【Android】AlertDialog中的EditText不能弹出软键盘的问题" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/android_m_marshmallow.jpg" rel="gallery_cjbx1xkzo004y9cmy6glh9w19">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/android_m_marshmallow.jpg" rel="gallery_cjc8gavu50030qcmys97im1bh">
         <img src="../../../../gallery/android_m_marshmallow.jpg" itemprop="image">
       </a>
     
@@ -208,51 +196,48 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">一月 20, 2017</time>
+	<a href="" class="article-date">
+	  <time datetime="2017-01-20T03:03:00.000Z" itemprop="datePublished">2017-01-20</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h2><p>AlertDialog中加入EditText但是不弹出软键盘等问题网上有很多不管用的解决方案，有的方案是<strong>强制弹出软键盘</strong>，然而即使弹出来，也是显示在AlertDialog的后面，被Dialog遮挡。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><p>Dialog的官方文档：<a href="http://developer.android.com/reference/android/app/Dialog.html" target="_blank" rel="external">http://developer.android.com/reference/android/app/Dialog.html</a> ，其中有一段：</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><p>Dialog的官方文档：<a href="http://developer.android.com/reference/android/app/Dialog.html" target="_blank" rel="noopener">http://developer.android.com/reference/android/app/Dialog.html</a> ，其中有一段：</p>
 <blockquote>
-<p><strong>Note:</strong> Activities provide a facility to manage the creation, saving and restoring of dialogs. See <a href="https://developer.android.com/reference/android/app/Activity.html#onCreateDialog%28int%29" target="_blank" rel="external">onCreateDialog(int)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#onPrepareDialog%28int,%20android.app.Dialog%29" target="_blank" rel="external">onPrepareDialog(int, Dialog)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#showDialog%28int%29" target="_blank" rel="external">showDialog(int)</a>, and <a href="https://developer.android.com/reference/android/app/Activity.html#dismissDialog%28int%29" target="_blank" rel="external">dismissDialog(int)</a>. If these methods are used, <a href="https://developer.android.com/reference/android/app/Dialog.html#getOwnerActivity%28%29" target="_blank" rel="external">getOwnerActivity()</a> will return the Activity that managed this dialog.</p>
+<p><strong>Note:</strong> Activities provide a facility to manage the creation, saving and restoring of dialogs. See <a href="https://developer.android.com/reference/android/app/Activity.html#onCreateDialog%28int%29" target="_blank" rel="noopener">onCreateDialog(int)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#onPrepareDialog%28int,%20android.app.Dialog%29" target="_blank" rel="noopener">onPrepareDialog(int, Dialog)</a>, <a href="https://developer.android.com/reference/android/app/Activity.html#showDialog%28int%29" target="_blank" rel="noopener">showDialog(int)</a>, and <a href="https://developer.android.com/reference/android/app/Activity.html#dismissDialog%28int%29" target="_blank" rel="noopener">dismissDialog(int)</a>. If these methods are used, <a href="https://developer.android.com/reference/android/app/Dialog.html#getOwnerActivity%28%29" target="_blank" rel="noopener">getOwnerActivity()</a> will return the Activity that managed this dialog.</p>
 </blockquote>
 <a id="more"></a>
 <blockquote>
-<p>Often you will want to have a Dialog display on top of the current input method, because there is no reason for it to accept text. You can do this by setting the <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_ALT_FOCUSABLE_IM" target="_blank" rel="external">WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM</a> window flag (assuming your Dialog takes input focus, as it the default) with the following code:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,</div><div class="line">         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);</div></pre></td></tr></table></figure></p>
+<p>Often you will want to have a Dialog display on top of the current input method, because there is no reason for it to accept text. You can do this by setting the <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_ALT_FOCUSABLE_IM" target="_blank" rel="noopener">WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM</a> window flag (assuming your Dialog takes input focus, as it the default) with the following code:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,</span><br><span class="line">         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>这段话的大概意思是说，WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM  这个参数会让Dialog遮挡住软键盘，显示在软键盘的前面。</p>
 <p>这是默认情况下隐藏软键盘的方法，要重新显示软键盘，要执行下面这段代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);</span><br></pre></td></tr></table></figure>
 <p>我是把它写在了setOnFocusChangeListener里，起效了</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">editText.setOnFocusChangeListener(<span class="keyword">new</span> View.OnFocusChangeListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFocusChange</span><span class="params">(View view, <span class="keyword">boolean</span> focused)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (focused) &#123;</div><div class="line">	         <span class="comment">//dialog弹出软键盘</span></div><div class="line">	         alertDialog.getWindow()</div><div class="line">			       .clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);   </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">editText.setOnFocusChangeListener(<span class="keyword">new</span> View.OnFocusChangeListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFocusChange</span><span class="params">(View view, <span class="keyword">boolean</span> focused)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (focused) &#123;</span><br><span class="line">	         <span class="comment">//dialog弹出软键盘</span></span><br><span class="line">	         alertDialog.getWindow()</span><br><span class="line">			       .clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>AlertDialog.setView()则不会出现以上问题。</p>
 <h3 id="另外"><a href="#另外" class="headerlink" title="另外"></a><strong>另外</strong></h3><p>为了防止弹出输入法时把后面的背景挤变形，可以在Manifest里的相应Activity添加：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">android:windowSoftInputMode="adjustPan|stateHidden"</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:windowSoftInputMode="adjustPan|stateHidden"</span><br></pre></td></tr></table></figure>
 <p>像这样：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span></span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></div><div class="line">    <span class="attr">android:windowSoftInputMode</span>=<span class="string">"adjustPan|stateHidden"</span></div><div class="line">    <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:windowSoftInputMode</span>=<span class="string">"adjustPan|stateHidden"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="【参考资料】"><a href="#【参考资料】" class="headerlink" title="【参考资料】"></a><strong>【参考资料】</strong></h2><p>1、<a href="http://blog.csdn.net/wurensen/article/details/21018115" target="_blank" rel="external">关于AlertDialog中EditText不能弹出输入法解决方法</a></p>
+<h2 id="【参考资料】"><a href="#【参考资料】" class="headerlink" title="【参考资料】"></a><strong>【参考资料】</strong></h2><p>1、<a href="http://blog.csdn.net/wurensen/article/details/21018115" target="_blank" rel="noopener">关于AlertDialog中EditText不能弹出输入法解决方法</a></p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -267,7 +252,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -292,7 +276,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
@@ -321,33 +309,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#另外"><span class="nav-number">2.1.</span> <span class="nav-text">另外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【参考资料】"><span class="nav-number">3.</span> <span class="nav-text">【参考资料】</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#另外"><span class="nav-number">2.1.</span> <span class="nav-text">另外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【参考资料】"><span class="nav-number">3.</span> <span class="nav-text">【参考资料】</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -355,13 +345,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -421,8 +415,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -430,7 +427,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -446,7 +444,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

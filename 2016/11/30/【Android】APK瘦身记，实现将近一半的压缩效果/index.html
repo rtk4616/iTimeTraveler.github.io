@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【android】apk瘦身记，实现将近一半的压缩效果 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,28 +11,28 @@
   
   
   
-  <meta name="description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
-
-一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
+  <meta name="description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全  一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Android】APK瘦身记，实现将近一半的压缩效果">
 <meta property="og:url" content="http://github.com/2016/11/30/【Android】APK瘦身记，实现将近一半的压缩效果/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
-
-一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
+<meta property="og:description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全  一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/apk.png">
 <meta property="og:updated_time" content="2016-12-22T05:01:06.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】APK瘦身记，实现将近一半的压缩效果">
-<meta name="twitter:description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全
-
-一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
+<meta name="twitter:description" content="本文转载自知乎： APK瘦身记，如何实现高达53%的压缩效果 —— by 阿里聚安全  一、我是怎么思考这件事情的APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个">
 <meta name="twitter:image" content="http://github.com/gallery/apk.png">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -54,138 +44,139 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Android】APK瘦身记，实现将近一半的压缩效果" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【Android】APK瘦身记，实现将近一半的压缩效果" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_cjbx1xkyw003c9cmyei64x151">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/apk.png" rel="gallery_cjc8gavnq002bqcmyjp1n3fkw">
         <img src="../../../../gallery/apk.png" itemprop="image">
       </a>
     
@@ -205,27 +196,32 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">十一月 30, 2016</time>
+	<a href="" class="article-date">
+	  <time datetime="2016-11-30T02:31:55.000Z" itemprop="datePublished">2016-11-30</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>本文转载自知乎： <a href="https://zhuanlan.zhihu.com/p/23882195" target="_blank" rel="external"><strong>APK瘦身记，如何实现高达53%的压缩效果</strong></a> —— by <a href="https://www.zhihu.com/org/a-li-ju-an-quan-60" target="_blank" rel="external">阿里聚安全</a></p>
+<p>本文转载自知乎： <a href="https://zhuanlan.zhihu.com/p/23882195" target="_blank" rel="noopener"><strong>APK瘦身记，如何实现高达53%的压缩效果</strong></a> —— by <a href="https://www.zhihu.com/org/a-li-ju-an-quan-60" target="_blank" rel="noopener">阿里聚安全</a></p>
 </blockquote>
 <h2 id="一、我是怎么思考这件事情的"><a href="#一、我是怎么思考这件事情的" class="headerlink" title="一、我是怎么思考这件事情的"></a><strong>一、我是怎么思考这件事情的</strong></h2><p>APK是Android系统安装包的文件格式，关于这个话题其实是一个老生常谈的题目，不论是公司内部，还是外部网络，前人前辈已经总结出很多方法和规律。不过随着移动端技术近两年的飞速发展，一些新的思维方式和优化方法也逐渐涌现和成熟起来。笔者在实践过程中踩过一些坑，收获了一些经验，在这里做个思考和总结，所以随笔给大家，希望对大家从事相关工作的时候有所帮助和参考，同时也是抛砖引玉，希望大家共同探讨这个开放性的话题。</p>
 <p>关于为什么APK要瘦身，这个不多说，只从三个方面唠叨一下，对于用户（或者客户）来说，APK越大，在下载安装过程中，他们耗费的流量会越多，安装等待时间也会越长；对于产品本身，意味着下载转化率会越低（因为竞品中，用户有更多机会选择那个体验最好，功能最多，性能最好，包最小的）；对于研发来说，是一种优化改进技术的机会。</p>
 <a id="more"></a>
 <p>欲瘦身，我们先找找胖的原因和问题。按目标－路径－资源的思维模式，找原因和问题有如下几条路径，一是拍脑袋，按自己的经验和判断，甚至是主观想象；二是去搜索引擎找关键字，逛各种技术论坛听技术大牛们怎么说，看各类技术文章抽取提炼；三是用一种可测量的工具或者方法发现问题。</p>
 <p>前两种不赘述，我这里说说第三种方法。用一种可测量的工具或者方法来分析，所谓工欲善其事，必先利其器。这个器可以可以自己锻造，也可以用现成的。这里推荐一个在线apk分析工具，因为是外部工具，所以大家请在使用过程中，不要上传未发布出去的产品，为了数据安全，笔者这里拿一个github上开源的Android项目作为瘦身示例。</p>
-<h2 id="二、寻找问题"><a href="#二、寻找问题" class="headerlink" title="二、寻找问题"></a><strong>二、寻找问题</strong></h2><p><a href="https://nimbledroid.com/" target="_blank" rel="external"><strong>NimbleDroid</strong></a> 是美国哥伦比亚大学的博士创业团队研发出来的分析Android app性能指标的系统，分析的方式有静态和动态两种方式，其中静态分析可以分析出APK安装包中大文件排行榜，各种知名SDK的大小以及占代码整体的比例，各种类型文件的大小以及占排行，各种知名SDK的方法数以及占所有dex中方法数的比例，废话不多说，下面上高清无码大图看看颜值吧。</p>
+<h2 id="二、寻找问题"><a href="#二、寻找问题" class="headerlink" title="二、寻找问题"></a><strong>二、寻找问题</strong></h2><p><a href="https://nimbledroid.com/" target="_blank" rel="noopener"><strong>NimbleDroid</strong></a> 是美国哥伦比亚大学的博士创业团队研发出来的分析Android app性能指标的系统，分析的方式有静态和动态两种方式，其中静态分析可以分析出APK安装包中大文件排行榜，各种知名SDK的大小以及占代码整体的比例，各种类型文件的大小以及占排行，各种知名SDK的方法数以及占所有dex中方法数的比例，废话不多说，下面上高清无码大图看看颜值吧。</p>
 <p>如果想使用分析功能分析自己的产品，请登录并上传自己产品的apk包，所有功能目前均免费使用，如果是想分析Google Play上已经发布的产品，可以直接点击”Play Apps”查看，还可以使用搜索功能根据应用名和包名查看结果。再次强调下，请不要上传任何未发布的产品。</p>
 <ul>
 <li><p>登录</p>
@@ -280,7 +276,7 @@ var themeMenus = {};
 <p><img src="/gallery/android_apk/8.jpg" alt=""></p>
 <p>命令执行的结果如下</p>
 <p><img src="/gallery/android_apk/9.png" alt=""></p>
-<p>恩，所有的png文件居然是STORE的方式存储到apk里的，关于zip里的STORE和DEFLATE，详见<a href="https://en.wikipedia.org/wiki/Zip_(file_format" target="_blank" rel="external">Wikipedia</a> )</p>
+<p>恩，所有的png文件居然是STORE的方式存储到apk里的，关于zip里的STORE和DEFLATE，详见<a href="https://en.wikipedia.org/wiki/Zip_(file_format" target="_blank" rel="noopener">Wikipedia</a> )</p>
 <p>通俗的说，当文件是STORED的方式存储到zip，表示这个文件并没有经过压缩，如果是Defl:N的方式，表示通过DEFLATED normal的方式压缩存储到zip。</p>
 <p>这看起来有点不合理，png原封不动的放入zip，当然最后产出的apk会比较大。那么，如何解决呢？笔者首先尝使用android gradle plugin的方式，发现aaptOptions和packagingOptions都未能解决问题。在github上发现一个开源项目<a href="https://github.com/shwenzhang/AndResGuard"><strong>AndResGuard</strong></a>，试了集成到项目中，再看结果如下：</p>
 <p>优化前：</p>
@@ -329,21 +325,21 @@ var themeMenus = {};
 <p>2、gradle脚本中开启shrinkResources</p>
 <p>脚本参考如下</p>
 <p><img src="/gallery/android_apk/19.jpg" alt=""></p>
-<p>shrinkResources配合minifyEnabled使用效果更佳，详见<a href="http://tools.android.com/tech-docs/new-build-system/resource-shrinking" target="_blank" rel="external">shrinkResources用法以及注意</a></p>
+<p>shrinkResources配合minifyEnabled使用效果更佳，详见<a href="http://tools.android.com/tech-docs/new-build-system/resource-shrinking" target="_blank" rel="noopener">shrinkResources用法以及注意</a></p>
 <p>采用7zip压缩：8115283字节 （压缩了将近23%，再增加1个点）</p>
 <p>3、使用图片压缩工具，压缩png图的大小，将非alpha的图转换成jpg形式，关于这点同事以及网络上的大牛们已经整理的很详细了，我这里做简单总结，欲知详情，请见附录的参考。</p>
 <p>使用tinypng，我只想说咱们在公司做产品，此方案慎用，上传任何未发布产品的内容到外部网络，都有可能引起数据泄漏，所以慎用此方案。下面说替代方案。</p>
 <ul>
-<li><a href="http://wasted.werk01.de/" target="_blank" rel="external"><strong>WASTED</strong></a></li>
-<li><a href="https://pngquant.org/" target="_blank" rel="external"><strong>pngquant</strong></a></li>
-<li><a href="https://pngmini.com/" target="_blank" rel="external"><strong>ImageAlpha</strong></a></li>
-<li><a href="https://imageoptim.com/mac" target="_blank" rel="external"><strong>ImageOptim</strong></a></li>
+<li><a href="http://wasted.werk01.de/" target="_blank" rel="noopener"><strong>WASTED</strong></a></li>
+<li><a href="https://pngquant.org/" target="_blank" rel="noopener"><strong>pngquant</strong></a></li>
+<li><a href="https://pngmini.com/" target="_blank" rel="noopener"><strong>ImageAlpha</strong></a></li>
+<li><a href="https://imageoptim.com/mac" target="_blank" rel="noopener"><strong>ImageOptim</strong></a></li>
 </ul>
 <p>以上工具太散，有没有集成化的工具，答案是“有”</p>
 <p>@心伦 童鞋开发的imagemin</p>
 <p>@姐夫童鞋开发的MSImageResourcesHelper</p>
 <p>png转成jpg格式，具体效果不等。</p>
-<p>4、终极大杀器，png转成webp，关于webp，更多详情请参考<a href="https://developers.google.com/speed/webp/" target="_blank" rel="external">谷歌官方文档</a>以及<a href="https://developer.android.com/guide/appendix/media-formats.html" target="_blank" rel="external">安卓开发者在线参考</a></p>
+<p>4、终极大杀器，png转成webp，关于webp，更多详情请参考<a href="https://developers.google.com/speed/webp/" target="_blank" rel="noopener">谷歌官方文档</a>以及<a href="https://developer.android.com/guide/appendix/media-formats.html" target="_blank" rel="noopener">安卓开发者在线参考</a></p>
 <p>先上效果图：</p>
 <p><img src="/gallery/android_apk/20.png" alt=""></p>
 <p>采用7zip压缩：4926912字节 （压缩了将近53%，再增加30个点）</p>
@@ -359,9 +355,9 @@ var themeMenus = {};
 <p>关于第一个目标，图片资源的优化，就写到这里了。</p>
 <h3 id="3-4-代码优化"><a href="#3-4-代码优化" class="headerlink" title="3.4 代码优化"></a>3.4 代码优化</h3><p>第二个目标已达成，剩下第三个目标，代码的优化，梳理如下优化路径：</p>
 <h4 id="1、开启proguard的代码优化"><a href="#1、开启proguard的代码优化" class="headerlink" title="1、开启proguard的代码优化"></a>1、开启proguard的代码优化</h4><p>将</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>),<span class="string">'proguard-project.txt'</span></span><br></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>),<span class="string">'proguard-project.txt'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proguardFiles getDefaultProguardFile(<span class="string">'proguard-android-optimize.txt'</span>),<span class="string">'proguard-project.txt'</span></span><br></pre></td></tr></table></figure>
 <p>开启代码优化后的注意点请参见附录。</p>
 <h4 id="2、去除无用的库"><a href="#2、去除无用的库" class="headerlink" title="2、去除无用的库"></a>2、去除无用的库</h4><p>如果apk支持的最低版本是API14,而代码中没有用到高于api14的api就可以考虑拿掉整个android support库。</p>
 <h4 id="3、用更小的库替代方案"><a href="#3、用更小的库替代方案" class="headerlink" title="3、用更小的库替代方案"></a>3、用更小的库替代方案</h4><p>如果只用到了谷歌统计，那么就不要把整个google play services都集成进来，只集成需要的部分。</p>
@@ -398,22 +394,14 @@ var themeMenus = {};
 <p>最后，继续学习和尝试新的优化方案</p>
 <p>以此文献给“唯瘦身与产品不可辜负”的技术们！！！</p>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
-<li><a href="http://blog.csdn.net/UsherFor/article/details/46827587" target="_blank" rel="external">如何做到将apk大小减少6M</a></li>
-<li><a href="http://www.jayfeng.com/2016/03/01/Android-APP%E7%BB%88%E6%9E%81%E7%98%A6%E8%BA%AB%E6%8C%87%E5%8D%97/" target="_blank" rel="external">Android APP终极瘦身指南</a></li>
-<li><a href="http://www.jayfeng.com/2015/12/29/APK%E7%98%A6%E8%BA%AB%E5%AE%9E%E8%B7%B5/" target="_blank" rel="external">APK瘦身实践</a></li>
+<li><a href="http://blog.csdn.net/UsherFor/article/details/46827587" target="_blank" rel="noopener">如何做到将apk大小减少6M</a></li>
+<li><a href="http://www.jayfeng.com/2016/03/01/Android-APP%E7%BB%88%E6%9E%81%E7%98%A6%E8%BA%AB%E6%8C%87%E5%8D%97/" target="_blank" rel="noopener">Android APP终极瘦身指南</a></li>
+<li><a href="http://www.jayfeng.com/2015/12/29/APK%E7%98%A6%E8%BA%AB%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener">APK瘦身实践</a></li>
 </ul>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/APK/">APK</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -428,7 +416,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -453,7 +440,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/APK/">APK</a></li></ul>
+
     </footer>
   </div>
   
@@ -482,33 +473,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、我是怎么思考这件事情的"><span class="nav-number">1.</span> <span class="nav-text">一、我是怎么思考这件事情的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、寻找问题"><span class="nav-number">2.</span> <span class="nav-text">二、寻找问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、梳理优化目标"><span class="nav-number">3.</span> <span class="nav-text">三、梳理优化目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-图片优化的尝试"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 图片优化的尝试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-一次意外的发现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 一次意外的发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3图片优化的方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.3图片优化的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-代码优化"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 代码优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、开启proguard的代码优化"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、开启proguard的代码优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、去除无用的库"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、去除无用的库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、用更小的库替代方案"><span class="nav-number">3.4.3.</span> <span class="nav-text">3、用更小的库替代方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、定期清理废弃的代码"><span class="nav-number">3.4.4.</span> <span class="nav-text">4、定期清理废弃的代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、业务模块采用插件化框架，代码动态从云端拉取"><span class="nav-number">3.4.5.</span> <span class="nav-text">5、业务模块采用插件化框架，代码动态从云端拉取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、我是怎么思考这件事情的"><span class="nav-number">1.</span> <span class="nav-text">一、我是怎么思考这件事情的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、寻找问题"><span class="nav-number">2.</span> <span class="nav-text">二、寻找问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、梳理优化目标"><span class="nav-number">3.</span> <span class="nav-text">三、梳理优化目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-图片优化的尝试"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 图片优化的尝试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-一次意外的发现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 一次意外的发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3图片优化的方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.3图片优化的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-代码优化"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 代码优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、开启proguard的代码优化"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、开启proguard的代码优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、去除无用的库"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、去除无用的库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、用更小的库替代方案"><span class="nav-number">3.4.3.</span> <span class="nav-text">3、用更小的库替代方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、定期清理废弃的代码"><span class="nav-number">3.4.4.</span> <span class="nav-text">4、定期清理废弃的代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、业务模块采用插件化框架，代码动态从云端拉取"><span class="nav-number">3.4.5.</span> <span class="nav-text">5、业务模块采用插件化框架，代码动态从云端拉取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -516,13 +509,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -582,8 +579,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -591,7 +591,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -607,7 +608,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

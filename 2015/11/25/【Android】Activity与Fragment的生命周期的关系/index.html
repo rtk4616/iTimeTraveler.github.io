@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【android】activity与fragment的生命周期的关系 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,14 +11,14 @@
   
   
   
-  <meta name="description" content="一、问题描述：
-假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
+  <meta name="description" content="一、问题描述： 假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Android】Activity与Fragment的生命周期的关系">
 <meta property="og:url" content="http://github.com/2015/11/25/【Android】Activity与Fragment的生命周期的关系/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="一、问题描述：
-假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
+<meta property="og:description" content="一、问题描述： 假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.blog.csdn.net/20151125142250638">
 <meta property="og:image" content="http://img.blog.csdn.net/20151125114550996">
 <meta property="og:image" content="http://img.blog.csdn.net/20160122171224773">
@@ -36,13 +26,16 @@
 <meta property="og:updated_time" content="2016-11-28T08:18:13.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】Activity与Fragment的生命周期的关系">
-<meta name="twitter:description" content="一、问题描述：
-假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
+<meta name="twitter:description" content="一、问题描述： 假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20151125142250638">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -54,133 +47,134 @@
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Android】Activity与Fragment的生命周期的关系" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【Android】Activity与Fragment的生命周期的关系" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -195,14 +189,19 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">十一月 25, 2015</time>
+	<a href="" class="article-date">
+	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">2015-11-25</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -213,42 +212,34 @@ var themeMenus = {};
 <p><img src="http://img.blog.csdn.net/20151125142250638" alt=""></p>
 <hr>
 <a id="more"></a>
-<h2 id="二、生命周期知识"><a href="#二、生命周期知识" class="headerlink" title="二、生命周期知识"></a><strong>二、生命周期知识</strong></h2><p>Activity和Fragment的生命周期图谱可以参考我的另外一篇博客：<a href="http://blog.csdn.net/u010983881/article/details/50034805" target="_blank" rel="external"><strong>【Android】Fragment的生命周期详解</strong></a>，他们的关系大致如下图：</p>
+<h2 id="二、生命周期知识"><a href="#二、生命周期知识" class="headerlink" title="二、生命周期知识"></a><strong>二、生命周期知识</strong></h2><p>Activity和Fragment的生命周期图谱可以参考我的另外一篇博客：<a href="http://blog.csdn.net/u010983881/article/details/50034805" target="_blank" rel="noopener"><strong>【Android】Fragment的生命周期详解</strong></a>，他们的关系大致如下图：</p>
 <p><img src="http://img.blog.csdn.net/20151125114550996" alt=""></p>
 <hr>
 <h2 id="三、代码验证"><a href="#三、代码验证" class="headerlink" title="三、代码验证"></a><strong>三、代码验证</strong></h2><p>  MainActivity和SecondActivity的布局是这样的，里面各添加了一个Fragment：</p>
 <p>   <img src="http://img.blog.csdn.net/20160122171224773" alt=""> <img src="http://img.blog.csdn.net/20160122171401607" alt=""></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">/**</div><div class="line">  * MainActivity布局xml文件</div><div class="line">  */</div><div class="line"></div><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span> <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/button"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"开启第二个Activity"</span></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/linearlayout"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"#339999"</span>&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  * MainActivity布局xml文件</span><br><span class="line">  */</span><br><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span> <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"fill_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/button"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"开启第二个Activity"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/linearlayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"#339999"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * MainActivity.java代码，SecondActivity的代码与之类似，这里就不贴那么多了</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"MainActivity"</span>;</div><div class="line">    <span class="keyword">private</span> Button mButton;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onCreate()"</span>);</div><div class="line"></div><div class="line">        FragmentManager fragmentManager = getFragmentManager();</div><div class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</div><div class="line"></div><div class="line">        FirstFragment firstFragment = <span class="keyword">new</span> FirstFragment();</div><div class="line">        fragmentTransaction.add(R.id.linearlayout, firstFragment);</div><div class="line">        fragmentTransaction.commit();</div><div class="line"></div><div class="line">        mButton = (Button) findViewById(R.id.button);</div><div class="line">        mButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                Log.w(LOG_TAG, <span class="string">"------------------mButton onClick-------------------"</span>);</div><div class="line">                startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SecondActivity.class));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onStart()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onRestart();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onRestart()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onResume()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onPause()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onStop()"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"==============onDestroy()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * MainActivity.java代码，SecondActivity的代码与之类似，这里就不贴那么多了</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"MainActivity"</span>;</span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onCreate()"</span>);</span><br><span class="line"></span><br><span class="line">        FragmentManager fragmentManager = getFragmentManager();</span><br><span class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line">        FirstFragment firstFragment = <span class="keyword">new</span> FirstFragment();</span><br><span class="line">        fragmentTransaction.add(R.id.linearlayout, firstFragment);</span><br><span class="line">        fragmentTransaction.commit();</span><br><span class="line"></span><br><span class="line">        mButton = (Button) findViewById(R.id.button);</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Log.w(LOG_TAG, <span class="string">"------------------mButton onClick-------------------"</span>);</span><br><span class="line">                startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SecondActivity.class));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onStart()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onRestart();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onRestart()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onResume()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onPause()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onStop()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"==============onDestroy()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * FirstFragment.java代码， SecondFragment和它差不多一样</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"FirstFragment"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ARG_PARAM1 = <span class="string">"param1"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ARG_PARAM2 = <span class="string">"param2"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String mParam1;</div><div class="line">    <span class="keyword">private</span> String mParam2;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FirstFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAttach(activity);</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onAttach..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onCreate..."</span>);</div><div class="line">        <span class="keyword">if</span> (getArguments() != <span class="keyword">null</span>) &#123;</div><div class="line">            mParam1 = getArguments().getString(ARG_PARAM1);</div><div class="line">            mParam2 = getArguments().getString(ARG_PARAM2);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></div><div class="line">                             Bundle savedInstanceState) &#123;</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onCreateView..."</span>);</div><div class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_first, container, <span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onActivityCreated..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onStart..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onResume..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onPause..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onStop..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroyView();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onDestroyView..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onDestroy..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDetach</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDetach();</div><div class="line">        Log.w(LOG_TAG, <span class="string">"onDetach..."</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * FirstFragment.java代码， SecondFragment和它差不多一样</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"FirstFragment"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ARG_PARAM1 = <span class="string">"param1"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ARG_PARAM2 = <span class="string">"param2"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String mParam1;</span><br><span class="line">    <span class="keyword">private</span> String mParam2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FirstFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onAttach(activity);</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onAttach..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onCreate..."</span>);</span><br><span class="line">        <span class="keyword">if</span> (getArguments() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mParam1 = getArguments().getString(ARG_PARAM1);</span><br><span class="line">            mParam2 = getArguments().getString(ARG_PARAM2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></span><br><span class="line"><span class="function"><span class="params">                             Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onCreateView..."</span>);</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_first, container, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onActivityCreated..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onStart..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onResume..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onPause..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onStop..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroyView();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onDestroyView..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onDestroy..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDetach</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDetach();</span><br><span class="line">        Log.w(LOG_TAG, <span class="string">"onDetach..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="四、运行结果"><a href="#四、运行结果" class="headerlink" title="四、运行结果"></a><strong>四、运行结果</strong></h2><p>1、第一次打开以后：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onCreate()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onAttach...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onCreate...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onCreateView...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onActivityCreated...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onCreate()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onAttach...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onCreate...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onCreateView...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onActivityCreated...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</span><br></pre></td></tr></table></figure>
 <p>2、点击MainActivity中的按钮“打开第二个Activity”以后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ----------------mButton onClick-----------------</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onAttach...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onCreate...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onCreateView...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onActivityCreated...</div><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onStart()</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onStart...</div><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onResume()</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onResume...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</div></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ----------------mButton onClick-----------------</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onAttach...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onCreate...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onCreateView...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onActivityCreated...</span><br><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onStart()</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onStart...</span><br><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onResume()</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onResume...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</span><br></pre></td></tr></table></figure>
 <p>3、点击SecondActivity的按钮“finish”之后：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ -----------------mButton onClick------------------</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onPause...</div><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onPause()</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onRestart()</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onStop...</div><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onStop()</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDestroyView...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDestroy...</div><div class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDetach...</div><div class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onDestroy()</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ -----------------mButton onClick------------------</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onPause...</span><br><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onPause()</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onRestart()</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onStop...</span><br><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onStop()</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDestroyView...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDestroy...</span><br><span class="line">com.example.kuguan.anlearning W/SecondFragment﹕ onDetach...</span><br><span class="line">com.example.kuguan.anlearning W/SecondActivity﹕ ==============onDestroy()</span><br></pre></td></tr></table></figure>
 <p>4、点击back键使MainActivity退到后台：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDestroyView...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDestroy...</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDetach...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onDestroy()</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDestroyView...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDestroy...</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onDetach...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onDestroy()</span><br></pre></td></tr></table></figure>
 <p>5、在MianActivity显示的时候，按HOME键：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onPause...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onPause()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStop...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStop()</span><br></pre></td></tr></table></figure>
 <p>6、然后再点击Icon打开：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onRestart()</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</div><div class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</div><div class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</div></pre></td></tr></table></figure>
-<h2 id="【参考资料】："><a href="#【参考资料】：" class="headerlink" title="【参考资料】："></a>【参考资料】：</h2><p>1、<a href="http://www.cnblogs.com/mengdd/archive/2013/01/11/2856374.html" target="_blank" rel="external">Fragment和Activity</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onRestart()</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onStart()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onStart...</span><br><span class="line">com.example.kuguan.anlearning W/MainActivity﹕ ==============onResume()</span><br><span class="line">com.example.kuguan.anlearning W/FirstFragment﹕ onResume...</span><br></pre></td></tr></table></figure>
+<h2 id="【参考资料】："><a href="#【参考资料】：" class="headerlink" title="【参考资料】："></a>【参考资料】：</h2><p>1、<a href="http://www.cnblogs.com/mengdd/archive/2013/01/11/2856374.html" target="_blank" rel="noopener">Fragment和Activity</a></p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -263,7 +254,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -288,7 +278,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
@@ -317,33 +311,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题描述："><span class="nav-number">1.</span> <span class="nav-text">一、问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、生命周期知识"><span class="nav-number">2.</span> <span class="nav-text">二、生命周期知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、代码验证"><span class="nav-number">3.</span> <span class="nav-text">三、代码验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、运行结果"><span class="nav-number">4.</span> <span class="nav-text">四、运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【参考资料】："><span class="nav-number">5.</span> <span class="nav-text">【参考资料】：</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题描述："><span class="nav-number">1.</span> <span class="nav-text">一、问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、生命周期知识"><span class="nav-number">2.</span> <span class="nav-text">二、生命周期知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、代码验证"><span class="nav-number">3.</span> <span class="nav-text">三、代码验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、运行结果"><span class="nav-number">4.</span> <span class="nav-text">四、运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【参考资料】："><span class="nav-number">5.</span> <span class="nav-text">【参考资料】：</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -351,13 +347,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -417,8 +417,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -426,7 +429,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -442,7 +446,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>

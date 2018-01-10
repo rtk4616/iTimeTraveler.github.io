@@ -2,16 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-
-  <!-- PACE Progress Bar START -->
-  
-    <script src="../../../../js/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
-  
-  
-
-  <!-- PACE Progress Bar START -->
-
   
   <title>【android】获取view的截图 | iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,26 +11,26 @@
   
   
   
-  <meta name="description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
-Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
-使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
+  <meta name="description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView： 使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Android】获取View的截图">
 <meta property="og:url" content="http://github.com/2016/08/30/【Android】获取View的截图/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
-Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
-使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
+<meta property="og:description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView： 使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-10-18T04:55:33.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android】获取View的截图">
-<meta name="twitter:description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。
-Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView：
-使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
+<meta name="twitter:description" content="引言 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。 Android中对View的截图也有以下两种方式，值得注意的是两个方法都不适用于SurfaceView： 使用DrawingCache如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawing">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
-  <link rel="icon" href="/css/images/favicon.ico">
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -52,133 +42,134 @@ Android中对View的截图也有以下两种方式，值得注意的是两个方
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-    
-  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
   <link rel="stylesheet" href="../../../../css/style.css">
 
   <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
   
     <link rel="stylesheet" href="/css/vdonate.css" >
   
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../../../../css/my.css">
-
 </head>
 
-<script>
-var themeMenus = {};
-
-  themeMenus[""] = "首页"; 
-
-  themeMenus["../archives"] = "归档"; 
-
-  themeMenus["../categories"] = "分类"; 
-
-  themeMenus["../tags"] = "标签"; 
-
-  themeMenus["../funnysite"] = "酷站"; 
-
-  themeMenus["../collection"] = "收藏"; 
-
-  themeMenus["../about"] = "关于"; 
-
-  themeMenus["mybooks"] = "🎁"; 
-
-</script>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  <header id="allheader" class="site-header" role="banner">
-  <div class="clearfix container">
-      <div class="site-branding">
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
-          <h1 class="site-title">
-            
-              <a href="/" title="iTimeTraveler" rel="home"> iTimeTraveler </a>
-            
-          </h1>
-
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
           
-            <div class="site-description">Someone knock at the door.</div>
-          
-            
-          <nav id="main-navigation" class="main-navigation" role="navigation">
-            <a class="nav-open">Menu</a>
-            <a class="nav-close">Close</a>
-            <div class="clearfix sf-menu">
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-              <ul id="main-nav" class="nmenu sf-js-enabled">
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首页</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">归档</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分类</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">标签</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../funnysite">酷站</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../collection">收藏</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">关于</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../mybooks">🎁</a> </li>
-                    
-              </ul>
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
             </div>
-          </nav>
-
-
+          </div>
+                
       </div>
-  </div>
+    </div>
+
 </header>
 
 
-  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
-        <img id="originBg" width="100%" alt="" src="">
-      </div>
-
-  </div>
-
-  <script>
-  function setAboutIMG(){
-      var imgUrls = "https://source.unsplash.com/collection/954550/1920x1080,gallery/bg/01.jpg,gallery/bg/02.jpg,gallery/bg/03.jpg,gallery/bg/04.jpg,gallery/bg/05.jpg,gallery/bg/06.jpg,gallery/bg/07.jpg,gallery/bg/08.jpg,gallery/bg/09.jpg,gallery/bg/10.jpg,gallery/bg/11.jpg,gallery/bg/12.jpg".split(",");
-      var random = Math.floor((Math.random() * imgUrls.length ));
-      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-        document.getElementById("originBg").src=imgUrls[random];
-      } else {
-        document.getElementById("originBg").src='/' + imgUrls[random];
-      }
-  }
-  bgDiv=document.getElementById("originBgDiv");
-  if(location.pathname.match('about')){
-    setAboutIMG();
-    bgDiv.style.display='block';
-  }else{
-    bgDiv.style.display='none';
-  }
-  </script>
-
-
-
-  <div id="container">
-    <div id="wrap">
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Android】获取View的截图" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main" style="float:none;"><article id="post-【Android】获取View的截图" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
@@ -193,14 +184,19 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="" class="article-date">
-	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">八月 30, 2016</time>
+	<a href="" class="article-date">
+	  <time datetime="2016-08-30T02:32:00.000Z" itemprop="datePublished">2016-08-30</time>
 	</a>
 
       
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -208,30 +204,22 @@ var themeMenus = {};
         <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h3><p> 在Android应用开发过程中，可能会遇到需要对整个界面或者某一部分进行截图的需求。</p>
 <p>Android中对View的截图也有以下两种方式，值得注意的是<strong>两个方法都不适用于<code>SurfaceView</code></strong>：</p>
 <h3 id="使用DrawingCache"><a href="#使用DrawingCache" class="headerlink" title="使用DrawingCache"></a><strong>使用DrawingCache</strong></h3><p>如果使用DrawingCache，则对要截图的View有一个要求：View本身已经显示在界面上。如果View没有添加到界面上或者没有显示（绘制）过，则buildDrawingCache会失败。这种方式比较适合对应用界面或者某一部分的截图。步骤很简单：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">view.setDrawingCacheEnabled(<span class="keyword">true</span>);  </div><div class="line">view.buildDrawingCache();  		<span class="comment">//启用DrawingCache并创建位图  </span></div><div class="line"></div><div class="line"><span class="comment">//创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收  </span></div><div class="line">Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); </div><div class="line">view.setDrawingCacheEnabled(<span class="keyword">false</span>);  	<span class="comment">//禁用DrawingCahce否则会影响性能</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">view.setDrawingCacheEnabled(<span class="keyword">true</span>);  </span><br><span class="line">view.buildDrawingCache();  		<span class="comment">//启用DrawingCache并创建位图  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收  </span></span><br><span class="line">Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); </span><br><span class="line">view.setDrawingCacheEnabled(<span class="keyword">false</span>);  	<span class="comment">//禁用DrawingCahce否则会影响性能</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>完整的截图功能函数如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * 获取一个 View 的缓存视图</div><div class="line">  *</div><div class="line">  * <span class="doctag">@param</span> view</div><div class="line">  * <span class="doctag">@return</span></div><div class="line">  */</div><div class="line"> <span class="function"><span class="keyword">private</span> Bitmap <span class="title">getCacheBitmapFromView</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">     <span class="keyword">final</span> <span class="keyword">boolean</span> drawingCacheEnabled = <span class="keyword">true</span>;</div><div class="line">     view.setDrawingCacheEnabled(drawingCacheEnabled);</div><div class="line">     view.buildDrawingCache(drawingCacheEnabled);</div><div class="line">     <span class="keyword">final</span> Bitmap drawingCache = view.getDrawingCache();</div><div class="line">     Bitmap bitmap;</div><div class="line">     <span class="keyword">if</span> (drawingCache != <span class="keyword">null</span>) &#123;</div><div class="line">         bitmap = Bitmap.createBitmap(drawingCache);</div><div class="line">         view.setDrawingCacheEnabled(<span class="keyword">false</span>);</div><div class="line">     &#125; <span class="keyword">else</span> &#123;</div><div class="line">         bitmap = <span class="keyword">null</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> bitmap;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 获取一个 View 的缓存视图</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> view</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> Bitmap <span class="title">getCacheBitmapFromView</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">final</span> <span class="keyword">boolean</span> drawingCacheEnabled = <span class="keyword">true</span>;</span><br><span class="line">     view.setDrawingCacheEnabled(drawingCacheEnabled);</span><br><span class="line">     view.buildDrawingCache(drawingCacheEnabled);</span><br><span class="line">     <span class="keyword">final</span> Bitmap drawingCache = view.getDrawingCache();</span><br><span class="line">     Bitmap bitmap;</span><br><span class="line">     <span class="keyword">if</span> (drawingCache != <span class="keyword">null</span>) &#123;</span><br><span class="line">         bitmap = Bitmap.createBitmap(drawingCache);</span><br><span class="line">         view.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         bitmap = <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bitmap;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="直接调用View-draw"><a href="#直接调用View-draw" class="headerlink" title="直接调用View.draw"></a><strong>直接调用View.draw</strong></h3><p>如果需要截图的View并没有添加到界面上，可能是通过java代码创建的或者inflate创建的，此时调用DrawingCache方法是获取不到位图的。因为View在添加到容器中之前并没有得到实际的大小（如果LayoutWidth是MatchParent，它还没有Parent…），所以首先需要指定View的大小：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">layoutView</span><span class="params">(View v, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;  </div><div class="line">    <span class="comment">// validate view.width and view.height  </span></div><div class="line">    v.layout(<span class="number">0</span>, <span class="number">0</span>, width, height);  </div><div class="line">    <span class="keyword">int</span> measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);  </div><div class="line">    <span class="keyword">int</span> measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);  </div><div class="line">    </div><div class="line">    <span class="comment">// validate view.measurewidth and view.measureheight  </span></div><div class="line">    v.measure(measuredWidth, measuredHeight);  </div><div class="line">    v.layout(<span class="number">0</span>, <span class="number">0</span>, v.getMeasuredWidth(), v.getMeasuredHeight());i  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">layoutView</span><span class="params">(View v, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;  </span><br><span class="line">    <span class="comment">// validate view.width and view.height  </span></span><br><span class="line">    v.layout(<span class="number">0</span>, <span class="number">0</span>, width, height);  </span><br><span class="line">    <span class="keyword">int</span> measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);  </span><br><span class="line">    <span class="keyword">int</span> measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);  </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// validate view.measurewidth and view.measureheight  </span></span><br><span class="line">    v.measure(measuredWidth, measuredHeight);  </span><br><span class="line">    v.layout(<span class="number">0</span>, <span class="number">0</span>, v.getMeasuredWidth(), v.getMeasuredHeight());i  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用方式如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">int</span> viewWidth = webView.getMeasuredWidth();  </div><div class="line"><span class="keyword">int</span> viewHeight = webView.getMeasuredHeight();  </div><div class="line"><span class="keyword">if</span> (viewWidth &gt; <span class="number">0</span> &amp;&amp; viewHeight &gt; <span class="number">0</span>) &#123;  </div><div class="line">    b = Bitmap.createBitmap(viewWidth, viewHeight, Config.ARGB_8888);  </div><div class="line">    Canvas cvs = <span class="keyword">new</span> Canvas(b);  </div><div class="line">    webView.draw(cvs);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> viewWidth = webView.getMeasuredWidth();  </span><br><span class="line"><span class="keyword">int</span> viewHeight = webView.getMeasuredHeight();  </span><br><span class="line"><span class="keyword">if</span> (viewWidth &gt; <span class="number">0</span> &amp;&amp; viewHeight &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">    b = Bitmap.createBitmap(viewWidth, viewHeight, Config.ARGB_8888);  </span><br><span class="line">    Canvas cvs = <span class="keyword">new</span> Canvas(b);  </span><br><span class="line">    webView.draw(cvs);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于WebView的截图有一点特殊，网页内容并不能在布局完成后立即渲染出来，大概需要300ms的时间（对于不同性能的设备、网页复杂程度和Webkit版本可能不同）。</p>
 <p>如果创建后台的WebView需要截图的话，应该在创建时就对其进行布局操作，这样加载完成后大部分就已经渲染完毕了（除非有异步的js处理）。</p>
 <p>【参考资料】：</p>
-<p>1、<a href="http://blog.csdn.net/jokers_i/article/details/39549633" target="_blank" rel="external">Android应用截图两种方法</a><br>2、<a href="http://geek.csdn.net/news/detail/97777" target="_blank" rel="external">知乎和简书的夜间模式实现套路</a></p>
+<p>1、<a href="http://blog.csdn.net/jokers_i/article/details/39549633" target="_blank" rel="noopener">Android应用截图两种方法</a><br>2、<a href="http://geek.csdn.net/news/detail/97777" target="_blank" rel="noopener">知乎和简书的夜间模式实现套路</a></p>
 
       
     </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
-
+    <footer class="article-footer">
       
         <div id="donation_div"></div>
 
@@ -246,7 +234,6 @@ var a = new Donate({
 });
 </script>
       
-            
       
         
 	<div id="comment">
@@ -271,7 +258,11 @@ var a = new Donate({
 	</div>
 
 
+
       
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li></ul>
+
     </footer>
   </div>
   
@@ -300,33 +291,35 @@ var a = new Donate({
 
 <!-- Table of Contents -->
 
-  <aside id="sidebar">
+  <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用DrawingCache"><span class="nav-number">2.</span> <span class="nav-text">使用DrawingCache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接调用View-draw"><span class="nav-number">3.</span> <span class="nav-text">直接调用View.draw</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用DrawingCache"><span class="nav-number">2.</span> <span class="nav-text">使用DrawingCache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接调用View-draw"><span class="nav-number">3.</span> <span class="nav-text">直接调用View.draw</span></a></li></ol>
     
     </div>
   </aside>
 </section>
         
       </div>
-      <footer id="footer" class="site-footer">
+      
+      <footer id="footer">
   
 
-  <div class="clearfix container">
-      <div class="site-info">
-	      &copy; 2018 iTimeTraveler All Rights Reserved.
-          
-            <span id="busuanzi_container_site_uv">
-              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-          
-      </div>
-      <div class="site-credit">
-        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
-      </div>
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
 
@@ -334,13 +327,17 @@ var a = new Donate({
 <!-- min height -->
 
 <script>
+    var wrapdiv = document.getElementById("wrap");
     var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
 
-    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-
-<!-- Custome JS -->
-<script src="../../../../js/my.js"></script>
     </div>
     <!-- <nav id="mobile-nav">
   
@@ -400,8 +397,11 @@ var a = new Donate({
 
 
 <script src="../../../../js/scripts.js"></script>
-<script src="../../../../js/bootstrap.js"></script>
-<script src="../../../../js/main.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
 
 
 
@@ -409,7 +409,8 @@ var a = new Donate({
 
 
 
-  <div style="display: none;">
+
+	<div style="display: none;">
     <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
   </div>
 
@@ -425,7 +426,68 @@ var a = new Donate({
 
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 </body>
 </html>
