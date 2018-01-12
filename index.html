@@ -350,6 +350,59 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Android】源码分析 - LRUCache缓存实现原理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/01/12/【Android】源码分析 - LRUCache缓存实现原理/">【Android】源码分析 - LRUCache缓存实现原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="2018/01/12/【Android】源码分析 - LRUCache缓存实现原理/" class="article-date">
+	  <time datetime="2018-01-12T14:20:55.000Z" itemprop="datePublished">2018-01-12</time>
+	</a>
+
+      
+    <a class="article-category-link" href="categories/Android/">Android</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、Android中的缓存策略"><a href="#一、Android中的缓存策略" class="headerlink" title="一、Android中的缓存策略"></a>一、Android中的缓存策略</h3><p>一般来说，缓存策略主要包含缓存的添加、获取和删除这三类操作。如何添加和获取缓存这个比较好理解，那么为什么还要删除缓存呢？这是因为不管是内存缓存还是硬盘缓存，它们的缓存大小都是有限的。当缓存满了之后，再想其添加缓存，这个时候就需要删除一些旧的缓存并添加新的缓存。</p>
+<p>因此LRU(<strong>Least Recently Used</strong>)缓存算法便应运而生，LRU是近期最少使用的算法，它的核心思想是当缓存满时，会优先淘汰那些近期最少使用的缓存对象，有效的避免了OOM的出现。采用LRU算法的缓存有两种：<a href="https://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="noopener">LruCache</a>和DisLruCache，分别用于实现内存缓存和硬盘缓存，其核心思想都是LRU缓存算法。</p>
+<h3 id="二、LruCache的使用"><a href="#二、LruCache的使用" class="headerlink" title="二、LruCache的使用"></a>二、LruCache的使用</h3><p><code>LruCache</code>是Android 3.1所提供的一个缓存类，所以在Android中可以直接使用LruCache实现内存缓存。而DisLruCache目前在Android 还不是Android SDK的一部分，但Android官方文档推荐使用该算法来实现硬盘缓存。</p>
+<p>讲到<code>LruCache</code>不得不提一下<code>LinkedHashMap</code>，因为LruCache中Lru算法的实现就是通过<code>LinkedHashMap</code>来实现的。<code>LinkedHashMap</code>继承于<code>HashMap</code>，它使用了一个双向链表来存储Map中的Entry顺序关系，这种顺序有两种，一种是<strong>LRU顺序</strong>，一种是<strong>插入顺序</strong>，这可以由其构造函数<code>public LinkedHashMap(int initialCapacity,float loadFactor, boolean accessOrder)</code>的最后一个参数<code>accessOrder</code>来指定。所以，对于get、put、remove等操作，<code>LinkedHashMap</code>除了要做<code>HashMap</code>做的事情，还做些调整Entry顺序链表的工作。<code>LruCache</code>中将<code>LinkedHashMap</code>的顺序设置为LRU顺序来实现LRU缓存，每次调用get(也就是从内存缓存中取图片)，则将该对象移到链表的尾端。调用put插入新的对象也是存储在链表尾端，这样当内存缓存达到设定的最大值时，将链表头部的对象（近期最少用到的）移除。关于LinkedHashMap详解请前往：<a href="http://www.cnblogs.com/children/archive/2012/10/02/2710624.html" target="_blank" rel="noopener">理解LinkedHashMap</a></p>
+<p><img src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/algorithms/lru-cache.png" alt=""></p>
+        <!-- 一、Android中的缓存策略一般来说，缓存策略主要包含缓存的添加、获取和删除这三类操作。如何添加和获取缓存这个比较好理解，那么为什么还要删除缓存呢？这是因为不管是内存缓存还是硬盘缓存，它们的缓存大小都是有限的。当缓存满了之后，再想其添加缓存，这个时候就需要删除一些旧的缓存并添加新的缓存。
+因此LRU(Least Recently Used)缓存算法便应运而生，LRU是近期最少使用的算法，它......  -->
+        <p class="article-more-link">
+          <a href="2018/01/12/【Android】源码分析 - LRUCache缓存实现原理/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【算法】字符串循环移位后是否可包含"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -881,68 +934,6 @@ AsyncTask: 封装了线程池和Handler，为 UI 线程与工作线程之间进�
 HandlerThread: 一个已经拥有了Looper的线程类，内部可以直接使用Handler。为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提......  -->
         <p class="article-more-link">
           <a href="2017/10/09/【Android】源码分析 - AsyncTask异步任务机制/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】源码分析 - IntentService机制"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/10/05/【Android】源码分析 - IntentService机制/">【Android】源码分析 - IntentService机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/10/05/【Android】源码分析 - IntentService机制/" class="article-date">
-	  <time datetime="2017-10-05T08:03:00.000Z" itemprop="datePublished">2017-10-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Android/">Android</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有</p>
-<ol>
-<li><strong>AsyncTask</strong>：封装了线程池和Handler，主要为了子线程更新UI；</li>
-<li><strong>HandlerThread</strong>：一个已经拥有了Looper的线程类，内部可以直接使用Handler；</li>
-<li><strong>IntentService</strong>：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；</li>
-</ol>
-<p>今天我们来根据平时的使用方式来分析一下第三个IntentSevice到底是什么怎么实现的？</p>
-<h3 id="IntentService的使用"><a href="#IntentService的使用" class="headerlink" title="IntentService的使用"></a>IntentService的使用</h3><p>IntentService继承了Service并且它本身是一个<strong>抽象类</strong>，因此使用它必须创建它的子类才能使用。所以这里我们自定义一个MyIntentService，来处理异步任务：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyIntentService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyIntentService"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyIntentService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="string">"MyIntentService"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">	        <span class="comment">//查看线程id</span></span><br><span class="line">	        Log.i(TAG, intent.getStringExtra(<span class="string">"params"</span>) + <span class="string">", 线程id:"</span> + Thread.currentThread().getId());</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//从0-100渐增</span></span><br><span class="line">            isRunning = <span class="keyword">true</span>;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (isRunning) &#123;</span><br><span class="line">                count++;</span><br><span class="line">                Log.i(TAG, <span class="string">"MyIntentService 线程运行中..."</span> + count);</span><br><span class="line">                <span class="keyword">if</span> (count &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">                    isRunning = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Thread.sleep(<span class="number">50</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        <!-- 前言提到Android的多线程机制，除了我们常用的Thread来实现异步任务之外，还有
-
-AsyncTask：封装了线程池和Handler，主要为了子线程更新UI；
-HandlerThread：一个已经拥有了Looper的线程类，内部可以直接使用Handler；
-IntentService：一个内部采用HandlerThread来执行任务的Service服务，任务执行完毕后会自动退出；
-
-今......  -->
-        <p class="article-more-link">
-          <a href="2017/10/05/【Android】源码分析 - IntentService机制/#more">阅读全文</a>
         </p>
       
     </div>
