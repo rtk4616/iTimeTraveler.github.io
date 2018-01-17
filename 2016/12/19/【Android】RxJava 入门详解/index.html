@@ -1,59 +1,219 @@
-<!doctype html>
-<html lang="en">
-    <head>
-		
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="Someone knock at the door.">
-        <link rel="shortcut icon" href="/gallery/avatar/0.svg"/>
-        <link rel="canonical" href="http://guolinn.com/">
-        <link rel="alternate" type="application/rss+xml" title="Mr.Seven" href="/atom.xml">
-        <title>【Android】RxJava 入门详解 | iTimeTraveler</title>
-        <meta name="description" content="{{meta_description}}">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【android】rxjava 入门详解 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="RxJava" />
+  
+  
+  
+  
+  <meta name="description" content="本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线  前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJav">
+<meta name="keywords" content="RxJava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android】RxJava 入门详解">
+<meta property="og:url" content="http://github.com/2016/12/19/【Android】RxJava 入门详解/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线  前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJav">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://github.com/gallery/rxjava-introduction.png">
+<meta property="og:updated_time" content="2016-12-22T03:23:45.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android】RxJava 入门详解">
+<meta name="twitter:description" content="本文转载自 给 Android 开发者的 RxJava 详解 —— by 扔物线  前言我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJav">
+<meta name="twitter:image" content="http://github.com/gallery/rxjava-introduction.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
 
-        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/styles/crisp.css">
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+  
 
-    </head>
-    
-		<body class="post-template">
-	
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="../../../../css/style.css">
 
-        <header id="header">
-            <a id="logo" href="/"><img src="/gallery/avatar/0.svg" alt="iTimeTraveler" /></a>
-            <h1><a href="/">Mr.Seven</a></h1>
-            <p></p>
-            <div id="follow-icons">
-                  <a href="/atom.xml"><i class="fa fa-rss-square fa-2x"></i></a>
-  </div>
-<h6><a href="/about">About</a></h6>
-        </header>
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
 
-        <main id="content">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
         
+          <section id="main" style="float:none;"><article id="post-【Android】RxJava 入门详解" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="../../../../gallery/rxjava-introduction.png" rel="gallery_cjcix5vpm003vd8myuxko93i1">
+        <img src="../../../../gallery/rxjava-introduction.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
 
-<article class="post">
-  十二月 19, 2016
+    
+      <header class="article-header">
+        
   
-    <span class="taglist">  &middot; 
-    
-    
-      <a href='/tags/RxJava/'>RxJava</a> 
-    
-    </span>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Android】RxJava 入门详解
+    </h1>
   
 
-  <h1 class="post-title">【Android】RxJava 入门详解</h1>
-  <section class="post-content article-entry">
-    <blockquote>
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2016-12-19T11:03:00.000Z" itemprop="datePublished">2016-12-19</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>本文转载自 <a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">给 Android 开发者的 RxJava 详解</a> —— by <a href="https://github.com/rengwuxian">扔物线</a></p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>我从去年开始使用 RxJava ，到现在一年多了。今年加入了 Flipboard 后，看到 Flipboard 的 Android 项目也在使用 RxJava ，并且使用的场景越来越多 。而最近这几个月，我也发现国内越来越多的人开始提及 RxJava 。有人说『RxJava 真是太好用了』，有人说『RxJava 真是太难用了』，另外更多的人表示：我真的百度了也谷歌了，但我还是想问： RxJava 到底是什么？</p>
@@ -342,50 +502,277 @@
 <h3 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h3><p>朱凯（<a href="https://github.com/rengwuxian">扔物线</a>），<a href="http://www.flipboard.cn/app" target="_blank" rel="noopener">Flipboard 北京</a> Android 工程师。</p>
 <h3 id="为什么写这个？"><a href="#为什么写这个？" class="headerlink" title="为什么写这个？"></a>为什么写这个？</h3><p>与两三年前的境况不同，中国现在已经不缺初级 Android 工程师，但中级和高级工程师严重供不应求。因此我决定从今天开始不定期地发布我的技术分享，只希望能够和大家共同提升，通过我们的成长来解决一点点国内互联网公司人才稀缺的困境，也提升各位技术党的收入。所以，不仅要写这篇，我还会写更多。至于内容的定位，我计划只定位真正的干货，一些边边角角的小技巧和炫酷的黑科技应该都不会写，总之希望每篇文章都能帮读者提升真正的实力。</p>
 
-  </section>
-  <footer class="post-footer">
-    <!--
-    <section class="author">
-      <h4>Mr.Seven</h4>
-      <p></p>
-    </section>
-    -->
-  </footer>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/RxJava/">RxJava</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../22/数学之美番外篇：平凡而又神奇的贝叶斯方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          数学之美番外篇：平凡而又神奇的贝叶斯方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../../11/30/【Android】APK瘦身记，实现将近一半的压缩效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【Android】APK瘦身记，实现将近一半的压缩效果</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-<nav class="pagination" role="pagination">
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-    <a class="newer-posts" href="../../22/数学之美番外篇：平凡而又神奇的贝叶斯方法/">
-        ← prev <!--数学之美番外篇：平凡而又神奇的贝叶斯方法-->
-    </a>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-到底是什么"><span class="nav-number">2.</span> <span class="nav-text">RxJava 到底是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-好在哪"><span class="nav-number">3.</span> <span class="nav-text">RxJava 好在哪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#举个例子？"><span class="nav-number">3.1.</span> <span class="nav-text">举个例子？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-介绍和原理简析"><span class="nav-number">4.</span> <span class="nav-text">API 介绍和原理简析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念：扩展的观察者模式"><span class="nav-number">4.1.</span> <span class="nav-text">1. 概念：扩展的观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#观察者模式"><span class="nav-number">4.1.1.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJava-的观察者模式"><span class="nav-number">4.1.2.</span> <span class="nav-text">RxJava 的观察者模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基本实现"><span class="nav-number">4.2.</span> <span class="nav-text">2. 基本实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建-Observer"><span class="nav-number">4.2.1.</span> <span class="nav-text">1) 创建 Observer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建-Observable"><span class="nav-number">4.2.2.</span> <span class="nav-text">2) 创建 Observable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Subscribe-订阅"><span class="nav-number">4.2.3.</span> <span class="nav-text">3) Subscribe (订阅)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-场景示例"><span class="nav-number">4.2.4.</span> <span class="nav-text">4) 场景示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线程控制-——-Scheduler-一"><span class="nav-number">4.3.</span> <span class="nav-text">3. 线程控制 —— Scheduler (一)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Scheduler-的-API-一"><span class="nav-number">4.3.1.</span> <span class="nav-text">1) Scheduler 的 API (一)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scheduler-的原理-一"><span class="nav-number">4.3.2.</span> <span class="nav-text">2) Scheduler 的原理 (一)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-变换"><span class="nav-number">4.4.</span> <span class="nav-text">4. 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-API"><span class="nav-number">4.4.1.</span> <span class="nav-text">1) API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-变换的原理：lift"><span class="nav-number">4.4.2.</span> <span class="nav-text">2) 变换的原理：lift()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-compose-对-Observable-整体的变换"><span class="nav-number">4.4.3.</span> <span class="nav-text">3) compose: 对 Observable 整体的变换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-线程控制：Scheduler-二"><span class="nav-number">4.5.</span> <span class="nav-text">5. 线程控制：Scheduler (二)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Scheduler-的-API-二"><span class="nav-number">4.5.1.</span> <span class="nav-text">1) Scheduler 的 API (二)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scheduler-的原理（二）"><span class="nav-number">4.5.2.</span> <span class="nav-text">2) Scheduler 的原理（二）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-延伸：doOnSubscribe"><span class="nav-number">4.5.3.</span> <span class="nav-text">3) 延伸：doOnSubscribe()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RxJava-的适用场景和使用方式"><span class="nav-number">5.</span> <span class="nav-text">RxJava 的适用场景和使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-与-Retrofit-的结合"><span class="nav-number">5.1.</span> <span class="nav-text">1. 与 Retrofit 的结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RxBinding"><span class="nav-number">5.2.</span> <span class="nav-text">2. RxBinding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-各种异步操作"><span class="nav-number">5.3.</span> <span class="nav-text">3. 各种异步操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-RxBus"><span class="nav-number">5.4.</span> <span class="nav-text">4. RxBus</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于作者"><span class="nav-number">6.1.</span> <span class="nav-text">关于作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么写这个？"><span class="nav-number">6.2.</span> <span class="nav-text">为什么写这个？</span></a></li></ol></li></ol>
     
-    <span class="page-number">•</span>
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
+  
+</nav> -->
     
-    <a class="older-posts" href="../../../11/30/【Android】APK瘦身记，实现将近一半的压缩效果/">
-        <!--【Android】APK瘦身记，实现将近一半的压缩效果--> next →
-    </a>
-    
-</nav>
-<div id="comments">
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-      var disqus_shortname = 'iTimeTraveler';
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-        </main>
-        <footer id="footer">
-            <section id="footer-message">&copy; 2018 Mr.Seven. All rights reserved. Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="https://github.com/guolin/crisp-hexo-theme" target="_blank">crisp</a> theme by <a href="guolin.github.io" target="_blank">Guo Lin</a>.</section>
-        </footer>
-    </body>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
 </html>
-
-
