@@ -1,219 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>使用neo4j进行全栈web开发 | iTimeTraveler</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="Neo4j" />
-  
-  
-  
-  
-  <meta name="description" content="在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。 Neo4j是什么？ Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保">
-<meta name="keywords" content="Neo4j">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用Neo4j进行全栈Web开发">
-<meta property="og:url" content="http://github.com/2016/11/10/使用Neo4j进行全栈Web开发/index.html">
-<meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。 Neo4j是什么？ Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://github.com/gallery/Neo4j.png">
-<meta property="og:updated_time" content="2017-01-13T11:05:23.357Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Neo4j进行全栈Web开发">
-<meta name="twitter:description" content="在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。 Neo4j是什么？ Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保">
-<meta name="twitter:image" content="http://github.com/gallery/Neo4j.png">
-  
-    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
-  
+<!doctype html>
+<html lang="en">
+    <head>
+		
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Someone knock at the door.">
+        <link rel="shortcut icon" href="/gallery/avatar/0.svg"/>
+        <link rel="canonical" href="http://guolinn.com/">
+        <link rel="alternate" type="application/rss+xml" title="Mr.Seven" href="/atom.xml">
+        <title>使用Neo4j进行全栈Web开发 | iTimeTraveler</title>
+        <meta name="description" content="{{meta_description}}">
 
-  
+        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/styles/crisp.css">
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-  <link rel="icon" href="/gallery/avatar/0.svg">
-  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-  <link rel="stylesheet" href="../../../../css/style.css">
-
-  <script src="../../../../js/jquery-3.1.1.min.js"></script>
-  <script src="../../../../js/bootstrap.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-
-  
-    <link rel="stylesheet" href="../../../../css/dialog.css">
-  
-
-  
-
-  
-    <link rel="stylesheet" href="/css/header-post.css" >
-  
-
-  
-  
-  
-    <link rel="stylesheet" href="/css/vdonate.css" >
-  
-
-</head>
-
-
-
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
-
-
-  
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
-
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            
-              <a class="brand" style="
-                 border-width: 0px;  margin-top: 8px;"  
-                href="#" data-toggle="modal" data-target="#myModal" >
-                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="hnav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
-                
-                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
-                
-                  <li><div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '../../../../content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="../../../../js/insight.js"></script>
-
-</div></li>
-            </div>
-          </div>
-                
-      </div>
-    </div>
-
-</header>
-
-
-
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-使用Neo4j进行全栈Web开发" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+    </head>
     
-<div class="article-gallery">
-  <div class="article-gallery-photos">
-    
-      <a class="article-gallery-img fancybox" href="../../../../gallery/Neo4j.png" rel="gallery_cjcfj591f008xfwmyq3b29x9p">
-        <img src="../../../../gallery/Neo4j.png" itemprop="image">
-      </a>
-    
+		<body class="post-template">
+	
+
+        <header id="header">
+            <a id="logo" href="/"><img src="/gallery/avatar/0.svg" alt="iTimeTraveler" /></a>
+            <h1><a href="/">Mr.Seven</a></h1>
+            <p></p>
+            <div id="follow-icons">
+                  <a href="/atom.xml"><i class="fa fa-rss-square fa-2x"></i></a>
   </div>
-</div>
+<h6><a href="/about">About</a></h6>
+        </header>
 
-    
-      <header class="article-header">
+        <main id="content">
         
-  
-    <h1 class="thumb" class="article-title" itemprop="name">
-      使用Neo4j进行全栈Web开发
-    </h1>
-  
 
-      </header>
+<article class="post">
+  十一月 10, 2016
+  
+    <span class="taglist">  &middot; 
     
-    <div class="article-meta">
-      
-	<a href="" class="article-date">
-	  <time datetime="2016-11-10T03:08:00.000Z" itemprop="datePublished">2016-11-10</time>
-	</a>
+    
+      <a href='/tags/Neo4j/'>Neo4j</a> 
+    
+    </span>
+  
 
-      
-    <a class="article-category-link" href="../../../../categories/Web/">Web</a>
-
-      
-	<a class="article-views">
-	<span id="busuanzi_container_page_pv">
-		阅读量<span id="busuanzi_value_page_pv"></span>
-	</span>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。</p>
+  <h1 class="post-title">使用Neo4j进行全栈Web开发</h1>
+  <section class="post-content article-entry">
+    <p>在开发一个全栈web应用时，作为整个栈的底层，你可以在多种数据库之间进行选择。作为事实的数据源，你当然希望选择一种可靠的数据库，但同时也希望它能够允许你以良好的方式进行数据建模。在本文中，我将为你介绍Neo4j，当你的数据模型包含大量关联数据以及关系时，它可以成为你的web应用栈的基础的一个良好选择。</p>
 <h2 id="Neo4j是什么？"><a href="#Neo4j是什么？" class="headerlink" title="Neo4j是什么？"></a>Neo4j是什么？</h2><p><img src="http://img.blog.csdn.net/20161110104435615" alt="图1. Neo4j Web控制台"></p>
 <p>Neo4j是一个图形数据库，这也就意味着它的数据并非保存在表或集合中，而是保存为节点以及节点之间的关系。在Neo4j中，节点以及关系都能够包含保存值的属性，此外：</p>
 <ul>
@@ -320,277 +160,50 @@
 <h3 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h3><p><strong>Brian Underwood</strong>是一位软件工程师，喜爱任何与数据相关的东西。作为一名Neo4j 的Developer Advocate，以及<a href="https://github.com/neo4jrb/neo4j">neo4j ruby gem</a>的维护者，Brian经常通过一些演讲，以及在他的博客上的文章宣传图形数据库的强大与简洁。Brian如今正与他的妻儿在全球旅行。可以在<a href="https://twitter.com/cheerfulstoic" target="_blank" rel="noopener">Twitter</a> 上找到Brian，或在<a href="https://www.linkedin.com/in/brianunderwoodcodes" target="_blank" rel="noopener">LinkedIn</a>上联系他。</p>
 <p>查看英文原文：<a href="https://www.infoq.com/articles/full-stack-web-development-using-neo4j" target="_blank" rel="noopener"><strong>Full Stack Web Development Using Neo4j</strong></a></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div id="donation_div"></div>
-
-<script src="../../../../js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: '打赏支持', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
-  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
-});
-</script>
-      
-      
-        
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
-
-		       if (typeof LivereTower === 'function') { return; }
-
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
-
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
-	</div>
-
-
-
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Neo4j/">Neo4j</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="../Android 热修复原理和实现/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Android 热修复原理和实现
-        
-      </div>
-    </a>
-  
-  
-    <a href="../../09/D3.js加载本地json文件的问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">D3.js加载本地json文件的问题</div>
-    </a>
-  
-</nav>
-
-  
+  </section>
+  <footer class="post-footer">
+    <!--
+    <section class="author">
+      <h4>Mr.Seven</h4>
+      <p></p>
+    </section>
+    -->
+  </footer>
 </article>
 
-<!-- Table of Contents -->
-
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
+<nav class="pagination" role="pagination">
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neo4j是什么？"><span class="nav-number">1.</span> <span class="nav-text">Neo4j是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要选择Neo4j？"><span class="nav-number">2.</span> <span class="nav-text">为什么要选择Neo4j？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候不应使用Neo4j？"><span class="nav-number">3.</span> <span class="nav-text">什么时候不应使用Neo4j？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你应该选择哪种技术栈以配合Neo4j？"><span class="nav-number">4.</span> <span class="nav-text">你应该选择哪种技术栈以配合Neo4j？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个应用程序示例"><span class="nav-number">5.</span> <span class="nav-text">一个应用程序示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于作者"><span class="nav-number">5.1.</span> <span class="nav-text">关于作者</span></a></li></ol></li></ol>
+    <a class="newer-posts" href="../Android 热修复原理和实现/">
+        ← prev <!--Android 热修复原理和实现-->
+    </a>
     
-    </div>
-  </aside>
-</section>
-        
-      </div>
-      
-      <footer id="footer">
-  
-
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
-  
-    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
-  
-    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
-  
-    <a href="../../../../about" class="mobile-nav-link">About</a>
-  
-    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
-  
-</nav> -->
+    <span class="page-number">•</span>
     
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
-  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="../../../../js/scripts.js"></script>
-
-
-
-
-  <script src="../../../../js/dialog.js"></script>
-
-
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            iTimeTraveler
-          </div>
-          <div class="panel-body">
-            Copyright © 2018 Mr.Seven All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
+    <a class="older-posts" href="../../09/D3.js加载本地json文件的问题/">
+        <!--D3.js加载本地json文件的问题--> next →
+    </a>
+    
+</nav>
+<div id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'iTimeTraveler';
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
-  
-</body>
+
+
+        </main>
+        <footer id="footer">
+            <section id="footer-message">&copy; 2018 Mr.Seven. All rights reserved. Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. <a href="https://github.com/guolin/crisp-hexo-theme" target="_blank">crisp</a> theme by <a href="guolin.github.io" target="_blank">Guo Lin</a>.</section>
+        </footer>
+    </body>
 </html>
+
+
