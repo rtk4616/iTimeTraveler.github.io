@@ -500,6 +500,16 @@ Big-Endian和Little-Endian的定义如下：
 <p>给定两个字符串s1和s2，要求判断s2是否能够被通过s1做循环移位（rotate）得到的字符串包含。<br>例如，s1=AABCD和s2=CDAA，返回true；给定s1=ABCD和s2=ACBD，返回false。</p>
 </blockquote>
 <h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>最直接最笨的方法就对s1进行循环移动，再进行字符串包含的判断，从而遍历其所有的可能性。字符串循环移动，时间复杂度为O（n），字符串包含判断，采用普通的方法，时间复杂度为O（n*m），总体复杂度为O（n*n*m）。字符串包含判断，若采用KMP算法，时间复杂度为O（n），这样总体的复杂度为O（n*n）。若字符串的长度n较大，显然效率比较低。其中n为s1的长度，m为s2的长度。</p>
+<h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>对s1的循环移位操作，可以使用拼接s1+s1的方式得到。</p>
+<p>以S1 = ABCD为例，先分析对S1进行循环移位之后的结果，如下所示：</p>
+<blockquote>
+<p>ABCD—&gt;BCDA—-&gt;CDAB—-&gt;DABC—-&gt;ABCD……</p>
+</blockquote>
+<p>假设我们把前面的移走的数据进行保留，会发现有如下的规律：</p>
+<blockquote>
+<p>ABCD—&gt;ABCDA—-&gt;ABCDAB—-&gt;ABCDABC—-&gt;ABCDABCD……</p>
+</blockquote>
+<p>因此，可以看出对s1做循环移位所得到的字符串都将是字符串s1s1的子字符串。如果s2可以由s1循环移位得到，那么s2一定在s1s1上，这样时间复杂度就降低了。</p>
         <!-- 问题
 给定两个字符串s1和s2，要求判断s2是否能够被通过s1做循环移位（rotate）得到的字符串包含。例如，s1=AABCD和s2=CDAA，返回true；给定s1=ABCD和s2=ACBD，返回false。
 
