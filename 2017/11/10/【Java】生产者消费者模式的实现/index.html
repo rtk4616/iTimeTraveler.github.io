@@ -11,19 +11,19 @@
   
   
   
-  <meta name="description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。">
+  <meta name="description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。 wait/notify方法首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章j">
 <meta name="keywords" content="生产者消费者">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Java】生产者消费者模式的实现">
 <meta property="og:url" content="http://github.com/2017/11/10/【Java】生产者消费者模式的实现/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。">
+<meta property="og:description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。 wait/notify方法首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章j">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/android_common/producer-consumer.png">
-<meta property="og:updated_time" content="2017-11-16T11:16:15.449Z">
+<meta property="og:updated_time" content="2018-01-26T06:48:30.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Java】生产者消费者模式的实现">
-<meta name="twitter:description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。">
+<meta name="twitter:description" content="前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。 阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。 wait/notify方法首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章j">
 <meta name="twitter:image" content="http://github.com/gallery/android_common/producer-consumer.png">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
@@ -176,7 +176,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/android_common/producer-consumer.png" rel="gallery_cjctuag0r0078agmyhu702rx9">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/android_common/producer-consumer.png" rel="gallery_cjcvn6te8007jp0mypn9jjm7a">
         <img src="../../../../gallery/android_common/producer-consumer.png" itemprop="image">
       </a>
     
@@ -215,16 +215,13 @@
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。</p>
 <p>阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。</p>
-<a id="more"></a>
 <h3 id="wait-notify方法"><a href="#wait-notify方法" class="headerlink" title="wait/notify方法"></a>wait/notify方法</h3><p>首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章<a href="https://www.zhihu.com/question/23328075" target="_blank" rel="noopener">java sleep和wait的区别的疑惑?</a></p>
 <ol>
-<li><p><code>sleep()</code>是Thread类的方法；而<code>wait()</code>，<code>notify()</code>，<code>notifyAll()</code>是Object类中定义的方法；尽管这两个方法都会影响线程的执行行为，但是本质上是有区别的。</p>
-</li>
-<li><p><code>Thread.sleep()</code>不会导致锁行为的改变，如果当前线程是拥有锁的，那么<code>Thread.sleep()</code>不会让线程释放锁。如果能够帮助你记忆的话，可以简单认为和锁相关的方法都定义在Object类中，因此调用<code>Thread.sleep()</code>是不会影响锁的相关行为。</p>
-</li>
-<li><p><code>Thread.sleep</code>和<code>Object.wait</code>都会暂停当前的线程，对于CPU资源来说，不管是哪种方式暂停的线程，都表示它暂时不再需要CPU的执行时间。OS会将执行时间分配给其它线程。区别是调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。</p>
-</li>
+<li><code>sleep()</code>是Thread类的方法；而<code>wait()</code>，<code>notify()</code>，<code>notifyAll()</code>是Object类中定义的方法；尽管这两个方法都会影响线程的执行行为，但是本质上是有区别的。</li>
+<li><code>Thread.sleep()</code>不会导致锁行为的改变，如果当前线程是拥有锁的，那么<code>Thread.sleep()</code>不会让线程释放锁。如果能够帮助你记忆的话，可以简单认为和锁相关的方法都定义在Object类中，因此调用<code>Thread.sleep()</code>是不会影响锁的相关行为。</li>
+<li><code>Thread.sleep</code>和<code>Object.wait</code>都会暂停当前的线程，对于CPU资源来说，不管是哪种方式暂停的线程，都表示它暂时不再需要CPU的执行时间。OS会将执行时间分配给其它线程。区别是调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。</li>
 </ol>
+<a id="more"></a>
 <p><strong>线程状态图：</strong></p>
 <p><img src="/gallery/android_common/1886630-1301e97750ae36a3.jpg" alt=""></p>
 <ul>

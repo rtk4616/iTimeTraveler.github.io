@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【android】okhttp源码分析 | iTimeTraveler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="OkHttp" />
+  
+  
+  
+  
+  <meta name="description" content="Android为我们提供了两种HTTP交互的方式：HttpURLConnection 和 Apache HttpClient，虽然两者都支持HTTPS，流的上传和下载，配置超时，IPv6和连接池，已足够满足我们各种HTTP请求的需求。但更高效的使用HTTP 可以让您的应用运行更快、更节省流量。而OkHttp库就是为此而生。在开始分析OkHttp之前我们先了解一下 HttpURLConnection">
+<meta name="keywords" content="OkHttp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android】OkHttp源码分析">
+<meta property="og:url" content="http://github.com/2018/01/25/【Android】OkHttp源码分析/index.html">
+<meta property="og:site_name" content="iTimeTraveler">
+<meta property="og:description" content="Android为我们提供了两种HTTP交互的方式：HttpURLConnection 和 Apache HttpClient，虽然两者都支持HTTPS，流的上传和下载，配置超时，IPv6和连接池，已足够满足我们各种HTTP请求的需求。但更高效的使用HTTP 可以让您的应用运行更快、更节省流量。而OkHttp库就是为此而生。在开始分析OkHttp之前我们先了解一下 HttpURLConnection">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/okhttp_interceptors.png">
+<meta property="og:updated_time" content="2018-01-26T08:04:43.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android】OkHttp源码分析">
+<meta name="twitter:description" content="Android为我们提供了两种HTTP交互的方式：HttpURLConnection 和 Apache HttpClient，虽然两者都支持HTTPS，流的上传和下载，配置超时，IPv6和连接池，已足够满足我们各种HTTP请求的需求。但更高效的使用HTTP 可以让您的应用运行更快、更节省流量。而OkHttp库就是为此而生。在开始分析OkHttp之前我们先了解一下 HttpURLConnection">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/okhttp_interceptors.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/gallery/avatar/0.svg">
+  <link rel="apple-touch-icon" href="/gallery/avatar/0.svg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+  <script src="../../../../js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="../../../../css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 border-width: 0px;  margin-top: 8px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="75px" height="75px" alt="Hike News" src="/gallery/avatar/0.svg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="../../../../index.html">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../funnysite">酷站</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../collection">收藏</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="../../../../mybooks">🎁</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '../../../../content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="../../../../js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-【Android】OkHttp源码分析" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/okhttp_interceptors.png" rel="gallery_cjcvn6tcj003up0my3mbby61h">
+        <img src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/okhttp_interceptors.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【Android】OkHttp源码分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2018-01-25T14:20:55.000Z" itemprop="datePublished">2018-01-25</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../../../categories/Android/">Android</a><a class="article-category-link" href="../../../../categories/Android/源码分析/">源码分析</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android为我们提供了两种HTTP交互的方式：<a href="https://developer.android.com/reference/java/net/HttpURLConnection.html" target="_blank" rel="noopener">HttpURLConnection</a> 和 Apache HttpClient，虽然两者都支持HTTPS，流的上传和下载，配置超时，IPv6和连接池，已足够满足我们各种HTTP请求的需求。但更高效的使用HTTP 可以让您的应用运行更快、更节省流量。而<a href="https://github.com/square/okhttp">OkHttp</a>库就是为此而生。在开始分析OkHttp之前我们先了解一下 HttpURLConnection 和 HttpClient 两者之间关系，以及它们和 OkHttp 之间的关系。</p>
+<h2 id="HttpClient-vs-HttpURLConnection"><a href="#HttpClient-vs-HttpURLConnection" class="headerlink" title="HttpClient vs HttpURLConnection"></a>HttpClient vs HttpURLConnection</h2><p>在Android API Level 9（Android 2.2）之前之能使用<code>DefaultHttpClient</code>类发送http请求。<code>DefaultHttpClient</code>是Apache用于发送http请求的客户端，其提供了强大的API支持，而且基本没有什么bug，但是由于其太过复杂，Android团队在保持向后兼容的情况下，很难对<code>DefaultHttpClient</code>进行增强。为此，Android团队从Android API Level 9开始自己实现了一个发送http请求的客户端类 —— <code>HttpURLConnection</code>。</p>
+<p>相比于<code>DefaultHttpClient</code>，<code>HttpURLConnection</code>比较轻量级，虽然功能没有<code>DefaultHttpClient</code>那么强大，但是能够满足大部分的需求，所以Android推荐使用<code>HttpURLConnection</code>代替<code>DefaultHttpClient</code>，并不强制使用<code>HttpURLConnection</code>。</p>
+<p>但从Android API Level 23（Android 6.0）开始，不能再在Android中使用<code>HttpClient</code>，强制使用<code>HttpURLConnection</code>。参考官网：<a href="https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html" target="_blank" rel="noopener">Android 6.0 Changes - Google Developer</a></p>
+<blockquote>
+<p>Android 6.0 版移除了对 Apache HTTP client的支持。如果您的应用使用该客户端，并以 Android 2.3（API level 9）或更高版本为目标平台，请改用 <code>HttpURLConnection</code> 类。此 API 效率更高，因为它可以通过透明压缩和响应缓存减少网络使用，并可最大限度降低耗电量。要继续使用 Apache HTTP API，您必须先在 <code>build.gradle</code> 文件中声明以下编译时依赖项：</p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    useLibrary <span class="string">'org.apache.http.legacy'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="二者对比"><a href="#二者对比" class="headerlink" title="二者对比"></a>二者对比</h3><ul>
+<li><p><strong>HttpURLConnection</strong> </p>
+<p>在Android2.2之前：HttpURLConnection 有个重大 Bug：调用 close() 函数会影响连接池,导致连接复用失效；所以<strong>Android2.2之前不建议使用HttpURLConnection</strong>。在Android2.2之后：HttpURLConnection默认开启了 gzip 压缩&amp;提高了HTTPS 的性能</p>
+</li>
+<li><p><strong>HttpClient</strong> </p>
+<p>优点：相比于HttpURLConnection，更加高效简洁<br>缺点：结构过于复杂；维护成本高</p>
+<blockquote>
+<p>在5.0版本后被Android官方弃用</p>
+</blockquote>
+</li>
+</ul>
+<p>尽管Google在大部分安卓版本中推荐使用HttpURLConnection，但是这个类相比HttpClient实在是太难用，太弱爆了。OkHttp是一个相对成熟的解决方案，我们跟踪这篇文章：<a href="http://blog.csdn.net/charon_chui/article/details/46895773" target="_blank" rel="noopener">Android HttpURLConnection源码分析</a>。就会发现Android4.4之后的HttpURLConnection基于<code>OkHttp</code>实现的。所以我们更有理由相信OkHttp的强大。</p>
+<h3 id="二者与网络请求库之间的关系"><a href="#二者与网络请求库之间的关系" class="headerlink" title="二者与网络请求库之间的关系"></a>二者与网络请求库之间的关系</h3><p>网络请求框架本质上是一个将网络请求的相关方法（ HttpClient或HttpURLConnection）封装好的类库，并实现另开线程进行请求和处理数据，从而实现整个网络请求模块的功能。具体的关系可看下图: </p>
+<p><img src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/20160810152440105.jpg" alt=""></p>
+<p>而<code>OkHttp</code>是基于http协议封装的一套请求客户端，虽然它也可以开线程，但根本上它更偏向真正的请求，跟<code>HttpClient</code>，<code>HttpUrlConnection</code>的职责是一样的。</p>
+<h2 id="OkHttp简介"><a href="#OkHttp简介" class="headerlink" title="OkHttp简介"></a>OkHttp简介</h2><p><a href="https://github.com/square/okhttp">OkHttp</a> 库的设计和实现的首要目标是高效。这也是选择 OkHttp 的重要理由之一。OkHttp 提供了对最新的 HTTP 协议版本 HTTP/2 和 SPDY 的支持，这使得对同一个主机发出的所有请求都可以共享相同的套接字连接。如果 HTTP/2 和 SPDY 不可用，OkHttp 会使用连接池来复用连接以提高效率。OkHttp 提供了对 GZIP 的默认支持来降低传输内容的大小。OkHttp 也提供了对 HTTP 响应的缓存机制，可以避免不必要的网络请求。当网络出现问题时，OkHttp 会自动重试一个主机的多个 IP 地址。</p>
+<p>OkHttp是一个高效的HTTP库:</p>
+<blockquote>
+<ul>
+<li>支持 SPDY ，共享同一个Socket来处理同一个服务器的所有请求</li>
+<li>如果SPDY不可用，则通过连接池来减少请求延时</li>
+<li>无缝的支持GZIP来减少数据流量</li>
+<li>缓存响应数据来减少重复的网络请求</li>
+</ul>
+</blockquote>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>OkHttp的使用是比较简单的，整体步骤是：</p>
+<ol>
+<li>初始化OkHttpClient</li>
+<li>初始化一个Request</li>
+<li>由OkHttpClient和Request生成一个Call</li>
+<li>call调用enqueue或者execute</li>
+</ol>
+<h3 id="同步Get请求"><a href="#同步Get请求" class="headerlink" title="同步Get请求"></a>同步Get请求</h3><p>这是OkHttp 最基本的 HTTP 请求，注意别放到UI线程执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SyncGet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1. 初始化OkHttpClient</span></span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 初始化一个Request</span></span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                .url(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">                .header(<span class="string">"User-Agent"</span>, <span class="string">"My super agent"</span>)</span><br><span class="line">                .addHeader(<span class="string">"Accept"</span>, <span class="string">"text/html"</span>)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 由OkHttpClient和Request生成一个Call</span></span><br><span class="line">        <span class="comment">//4. call调用enqueue或者execute</span></span><br><span class="line">        Response response = client.newCall(request).execute();</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"服务器端错误: "</span> + response);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Headers responseHeaders = response.headers();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; responseHeaders.size(); i++) &#123;</span><br><span class="line">            System.out.println(responseHeaders.name(i) + <span class="string">": "</span> + responseHeaders.value(i));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="异步Get请求"><a href="#异步Get请求" class="headerlink" title="异步Get请求"></a>异步Get请求</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncGet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                .url(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        client.newCall(request).enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!response.isSuccessful()) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"服务器端错误: "</span> + response);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                System.out.println(response.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h3><p>HTTP POST 和 PUT 请求可以包含要提交的内容。只需要在创建 <code>Request</code> 对象时，通过 <code>post()</code> 和 <code>put()</code> 方法来指定要提交的内容即可。下面的代码通过 <code>RequestBody</code> 的 <code>create()</code> 方法来创建媒体类型为<strong>application/ json</strong> 的内容并提交。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType JSON = MediaType.parse(<span class="string">"application/json; charset=utf-8"</span>);</span><br><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="comment">//post请求</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">post</span><span class="params">(String url, String json)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    RequestBody body = RequestBody.create(JSON, json);</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">            .url(url)</span><br><span class="line">            .post(body)</span><br><span class="line">            .build();</span><br><span class="line">    Response response = client.newCall(request).execute();</span><br><span class="line">    <span class="keyword">return</span> response.body().string();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的使用方法可以参考IBM的这篇文章：<a href="https://www.ibm.com/developerworks/cn/java/j-lo-okhttp/" target="_blank" rel="noopener">OkHttp：Java平台上的新一代HTTP客户端</a> ，下面我们转入源码的分析。</p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>我们从创建 <code>OkHttpClient</code> 对象开始：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br></pre></td></tr></table></figure>
+<h3 id="OkHttpClient"><a href="#OkHttpClient" class="headerlink" title="OkHttpClient"></a>OkHttpClient</h3><p>看看其构造函数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OkHttpClient</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">new</span> Builder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原来是方便我们使用，提供了一个“快捷操作”，全部使用了默认的配置。<code>OkHttpClient.Builder</code> 类成员很多，后面我们再慢慢分析，这里先暂时略过：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//OkHttpClient.java类中</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	dispatcher = <span class="keyword">new</span> Dispatcher();</span><br><span class="line">	protocols = DEFAULT_PROTOCOLS;</span><br><span class="line">	connectionSpecs = DEFAULT_CONNECTION_SPECS;</span><br><span class="line">	eventListenerFactory = EventListener.factory(EventListener.NONE);</span><br><span class="line">	proxySelector = ProxySelector.getDefault();</span><br><span class="line">	cookieJar = CookieJar.NO_COOKIES;</span><br><span class="line">	socketFactory = SocketFactory.getDefault();</span><br><span class="line">	hostnameVerifier = OkHostnameVerifier.INSTANCE;</span><br><span class="line">	certificatePinner = CertificatePinner.DEFAULT;</span><br><span class="line">	proxyAuthenticator = Authenticator.NONE;</span><br><span class="line">	authenticator = Authenticator.NONE;</span><br><span class="line">	connectionPool = <span class="keyword">new</span> ConnectionPool();</span><br><span class="line">	dns = Dns.SYSTEM;</span><br><span class="line">	followSslRedirects = <span class="keyword">true</span>;</span><br><span class="line">	followRedirects = <span class="keyword">true</span>;</span><br><span class="line">	retryOnConnectionFailure = <span class="keyword">true</span>;</span><br><span class="line">	connectTimeout = <span class="number">10_000</span>;</span><br><span class="line">	readTimeout = <span class="number">10_000</span>;</span><br><span class="line">	writeTimeout = <span class="number">10_000</span>;</span><br><span class="line">	pingInterval = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到这，如果你还不明白的话，也没关系，在<code>OkHttp</code>中只是设置用的的各个东西。真正的流程要从里面的<code>newCall()</code>方法中说起，因为我们使用OkHttp发起 HTTP 请求的方式一般如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">      .url(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">      .build();</span><br><span class="line"></span><br><span class="line"><span class="comment">//发起请求</span></span><br><span class="line">Response response = client.newCall(request).execute();</span><br></pre></td></tr></table></figure>
+<p>当通过<strong>建造者模式</strong>创建了<code>Request</code>之后（这个没什么好说），紧接着就通过<code>client.newCall(request).execute()</code>来获得<code>Response</code>。这句代码就开启了整个GET请求的流程：</p>
+<p>那我们现在就来看看它是如何通过<code>newCall()</code>创建 Call 的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> Call <span class="title">newCall</span><span class="params">(Request request)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> RealCall.newRealCall(<span class="keyword">this</span>, request, <span class="keyword">false</span> <span class="comment">/* for web socket */</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>OkHttpClient</code> 实现了 <code>Call.Factory</code>，负责根据请求创建新的 <code>Call</code>。</p>
+<blockquote>
+<p><code>CallFactory</code> 负责创建 HTTP 请求，HTTP 请求被抽象为了 <code>okhttp3.Call</code> 类，它表示一个已经准备好，可以随时执行的 HTTP 请求</p>
+</blockquote>
+<h3 id="RealCall"><a href="#RealCall" class="headerlink" title="RealCall"></a>RealCall</h3><p>先看看<code>newRealCall()</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> RealCall <span class="title">newRealCall</span><span class="params">(OkHttpClient client, Request originalRequest, <span class="keyword">boolean</span> forWebSocket)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Safely publish the Call instance to the EventListener.</span></span><br><span class="line">	RealCall call = <span class="keyword">new</span> RealCall(client, originalRequest, forWebSocket);</span><br><span class="line">	call.eventListener = client.eventListenerFactory().create(call);</span><br><span class="line">	<span class="keyword">return</span> call;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">RealCall</span><span class="params">(OkHttpClient client, Request originalRequest, <span class="keyword">boolean</span> forWebSocket)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.client = client;</span><br><span class="line">	<span class="keyword">this</span>.originalRequest = originalRequest;</span><br><span class="line">	<span class="keyword">this</span>.forWebSocket = forWebSocket;</span><br><span class="line">	<span class="keyword">this</span>.retryAndFollowUpInterceptor = <span class="keyword">new</span> RetryAndFollowUpInterceptor(client, forWebSocket);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实就是通过构造函数new了一个<code>RealCall</code>对象，构造函数如下，不用看很细，略过。我们<strong>重点看看 <code>RealCall#execute</code></strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RealCall类中</span></span><br><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="comment">//1. 每个Call只能被执行一次。如果该 call 已经被执行过了，就设置 executed 为 true</span></span><br><span class="line">		<span class="keyword">if</span> (executed) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Already Executed"</span>);</span><br><span class="line">		executed = <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	captureCallStackTrace();</span><br><span class="line">	eventListener.callStart(<span class="keyword">this</span>);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//2. 加入 runningSyncCalls 队列中</span></span><br><span class="line">		client.dispatcher().executed(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">//3. 得到响应 result</span></span><br><span class="line">		Response result = getResponseWithInterceptorChain();</span><br><span class="line">		<span class="keyword">if</span> (result == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Canceled"</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		eventListener.callFailed(<span class="keyword">this</span>, e);</span><br><span class="line">		<span class="keyword">throw</span> e;</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//4. 从 runningSyncCalls 队列中移除</span></span><br><span class="line">		client.dispatcher().finished(<span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们做了 4 件事：</p>
+<ol>
+<li>检查这个 call 是否已经被执行了，每个 call 只能被执行一次，如果想要一个完全一样的 call，可以利用 <code>call#clone</code> 方法进行克隆。</li>
+<li>利用 <code>client.dispatcher().executed(this)</code> 来进行实际执行，<code>dispatcher</code> 是刚才看到的 <code>OkHttpClient.Builder</code> 的成员之一，它的文档说自己是异步 HTTP 请求的执行策略，现在看来，同步请求它也有掺和。</li>
+<li>调用 <code>getResponseWithInterceptorChain()</code> 函数获取 HTTP 返回结果，从函数名可以看出，这一步还会进行一系列“拦截”操作。</li>
+<li>最后还要通知 <code>dispatcher</code> 自己已经执行完毕。</li>
+</ol>
+<p><code>dispatcher</code> 这里我们不过度关注，在同步执行的流程中，涉及到 dispatcher 的内容只不过是告知它我们的执行状态，比如开始执行了（调用 <code>executed</code>），比如执行完毕了（调用 <code>finished</code>），在异步执行流程中它会有更多的参与。</p>
+<p>真正发出网络请求，解析返回结果的，还是 <code>getResponseWithInterceptorChain</code>。我们可以看到这方法是直接返回 <code>Response</code> 对象的，所以，在这个方法中一定做了很多很多的事情。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RealCall类中</span></span><br><span class="line"><span class="function">Response <span class="title">getResponseWithInterceptorChain</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Build a full stack of interceptors.</span></span><br><span class="line">    List&lt;Interceptor&gt; interceptors = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    interceptors.addAll(client.interceptors());    <span class="comment">// 加入用户自定义的拦截器</span></span><br><span class="line">    interceptors.add(retryAndFollowUpInterceptor);   <span class="comment">// 重试和重定向拦截器</span></span><br><span class="line">    interceptors.add(<span class="keyword">new</span> BridgeInterceptor(client.cookieJar()));  <span class="comment">// 加入转化请求响应的拦截器</span></span><br><span class="line">    interceptors.add(<span class="keyword">new</span> CacheInterceptor(client.internalCache()));  <span class="comment">// 加入缓存拦截器</span></span><br><span class="line">    interceptors.add(<span class="keyword">new</span> ConnectInterceptor(client));  <span class="comment">// 加入连接拦截器</span></span><br><span class="line">    <span class="keyword">if</span> (!forWebSocket) &#123;</span><br><span class="line">      interceptors.addAll(client.networkInterceptors());   <span class="comment">// 加入用户自定义的网络拦截器</span></span><br><span class="line">    &#125;</span><br><span class="line">    interceptors.add(<span class="keyword">new</span> CallServerInterceptor(forWebSocket));   <span class="comment">// 加入发出请求和读取响应的拦截器</span></span><br><span class="line"></span><br><span class="line">    Interceptor.Chain chain = <span class="keyword">new</span> RealInterceptorChain(interceptors, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">0</span>,</span><br><span class="line">        originalRequest, <span class="keyword">this</span>, eventListener, client.connectTimeoutMillis(),</span><br><span class="line">        client.readTimeoutMillis(), client.writeTimeoutMillis());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 利用 chain 来链式调用拦截器，最后的返回结果就是 Response 对象</span></span><br><span class="line">    <span class="keyword">return</span> chain.proceed(originalRequest);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>在 <a href="https://publicobject.com/2016/07/03/the-last-httpurlconnection/" target="_blank" rel="noopener">OkHttp 开发者之一介绍 OkHttp 的文章</a>里面，作者讲到：</p>
+<blockquote>
+<p>the whole thing is just a stack of built-in interceptors.</p>
+</blockquote>
+<p>可见 <code>Interceptor</code> 是 OkHttp 最核心的一个东西，不要误以为它只负责拦截请求进行一些额外的处理（例如 cookie），<strong>实际上它把实际的网络请求、缓存、透明压缩等功能都统一了起来</strong>，每一个功能都只是一个 <code>Interceptor</code>，它们再连接成一个 <code>Interceptor.Chain</code>，环环相扣，最终圆满完成一次网络请求。</p>
+<p>从 <code>getResponseWithInterceptorChain</code> 函数我们可以看到，<code>Interceptor.Chain</code> 的分布依次是：</p>
+<p><img src="https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/master/gallery/android_common/okhttp_interceptors-details.png" alt=""></p>
+<ol>
+<li><code>client.interceptors()</code> ，首先加入 <code>interceptors</code> 的是用户自定义的拦截器，比如修改请求头的拦截器等；</li>
+<li><strong>RetryAndFollowUpInterceptor</strong> ：是用来重试和重定向的拦截器，在下面我们会讲到；</li>
+<li><strong>BridgeInterceptor</strong>：是用来将用户友好的请求转化为向服务器的请求，之后又把服务器的响应转化为对用户友好的响应；</li>
+<li><strong>CacheInterceptor</strong>：是缓存拦截器，若存在缓存并且可用就直接返回该缓存，否则会向服务器请求；</li>
+<li><strong>ConnectInterceptor</strong>：用来建立连接的拦截器；</li>
+<li><code>client.networkInterceptors()</code> 加入用户自定义的 <code>networkInterceptors</code> ;</li>
+<li><strong>CallServerInterceptor</strong>：是真正向服务器发出请求且得到响应的拦截器；</li>
+</ol>
+<p>在这里，位置决定了功能，最后一个 Interceptor 一定是负责和服务器实际通讯的，重定向、缓存等一定是在实际通讯之前的。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">责任链模式</a>在这个 <code>Interceptor</code> 链条中得到了很好的实践。</p>
+<blockquote>
+<p><strong>责任链模式</strong>在<a href="https://zh.wikipedia.org/wiki/%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">面向对象程式设计</a>里是一种<a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">软件设计模式</a>，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法。</p>
+</blockquote>
+<p>另外参考文章：<a href="https://github.com/simple-android-framework-exchange/android_design_patterns_analysis/tree/master/chain-of-responsibility/AigeStudio#android%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0">Android设计模式之责任链模式</a>中相关的分析：</p>
+<blockquote>
+<p>Android中关于责任链模式比较明显的体现就是在事件分发过程中对事件的投递，其实严格来说，事件投递的模式并不是严格的责任链模式，但是其是责任链模式的一种变种体现。</p>
+</blockquote>
+<p>对于把 <code>Request</code> 变成 <code>Response</code> 这件事来说，每个 <code>Interceptor</code> 都可能完成这件事，所以我们循着链条让每个 <code>Interceptor</code> 自行决定能否完成任务以及怎么完成任务（自力更生或者交给下一个 <code>Interceptor</code>）。这样一来，完成网络请求这件事就彻底从 <code>RealCall</code> 类中剥离了出来，简化了各自的责任和逻辑。</p>
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>拦截器是 OkHttp 提供的对 HTTP 请求和响应进行统一处理的强大机制。拦截器在实现和使用上类似于 Servlet 规范中的过滤器。多个拦截器可以链接起来，形成一个链条。拦截器会按照在链条上的顺序依次执行。 拦截器在执行时，可以先对请求的 Request 对象进行修改；再得到响应的 Response 对象之后，可以进行修改之后再返回。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>OkHttp 作为一个简洁高效的 HTTP 客户端，可以在 Java 和 Android 程序中使用。相对于 Apache HttpClient 来说，OkHttp 的性能更好，其 API 设计也更加简单实用。</p>
+<p>OkHttp 使用调用（Call）来对发送 HTTP 请求和获取响应的过程进行抽象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Call</span> <span class="keyword">extends</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">Request <span class="title">request</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">Response <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(Callback responseCallback)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isExecuted</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isCanceled</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">Call <span class="title">clone</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">interface</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">		<span class="function">Call <span class="title">newCall</span><span class="params">(Request request)</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HTTP-连接"><a href="#HTTP-连接" class="headerlink" title="HTTP 连接"></a>HTTP 连接</h2><p>虽然在使用 OkHttp 发送 HTTP 请求时只需要提供 URL 即可，OkHttp 在实现中需要综合考虑 3 种不同的要素来确定与 HTTP 服务器之间实际建立的 HTTP 连接。这样做的目的是为了达到最佳的性能。</p>
+<p>首先第一个考虑的要素是 URL 本身。URL 给出了要访问的资源的路径。比如 URL <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a> 所对应的是百度首页的 HTTP 文档。在 URL 中比较重要的部分是访问时使用的模式，即 HTTP 还是 HTTPS。这会确定 OkHttp 所建立的是明文的 HTTP 连接，还是加密的 HTTPS 连接。</p>
+<p>第二个要素是 HTTP 服务器的地址，如 baidu.com。每个地址都有对应的配置，包括端口号，HTTPS 连接设置和网络传输协议。同一个地址上的 URL 可以共享同一个底层 TCP 套接字连接。通过共享连接可以有显著的性能提升。OkHttp 提供了一个连接池来复用连接。</p>
+<p>第三个要素是连接 HTTP 服务器时使用的路由。路由包括具体连接的 IP 地址（通过 DNS 查询来发现）和所使用的代理服务器。对于 HTTPS 连接还包括通讯协商时使用的 TLS 版本。对于同一个地址，可能有多个不同的路由。OkHttp 在遇到访问错误时会自动尝试备选路由。</p>
+<p>当通过 OkHttp 来请求某个 URL 时，OkHttp 首先从 URL 中得到地址信息，再从连接池中根据地址来获取连接。如果在连接池中没有找到连接，则选择一个路由来尝试连接。尝试连接需要通过 DNS 查询来得到服务器的 IP 地址，也会用到代理服务器和 TLS 版本等信息。当实际的连接建立之后，OkHttp 发送 HTTP 请求并获取响应。当连接出现问题时，OkHttp 会自动选择另外的路由进行尝试。这使得 OkHttp 可以自动处理可能出现的网络问题。当成功获取到 HTTP 请求的响应之后，当前的连接会被放回到连接池中，提供给后续的请求来复用。连接池会定期把闲置的连接关闭以释放资源。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://blog.csdn.net/a109340/article/details/73887753" target="_blank" rel="noopener">OkHttp的初始化</a></li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0326/2643.html" target="_blank" rel="noopener">OKHttp源码解析</a></li>
+<li><a href="https://juejin.im/entry/597800116fb9a06baf2eeb63" target="_blank" rel="noopener">OkHttp源码解析</a> - <a href="https://link.juejin.im/?target=http%3A%2F%2Fyuqirong.me%2F2017%2F07%2F25%2FOkHttp%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%2F" target="_blank" rel="noopener">yuqirong.me</a></li>
+<li><a href="https://blog.piasy.com/2016/07/11/Understand-OkHttp/" target="_blank" rel="noopener">拆轮子系列：拆OkHttp</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-okhttp/" target="_blank" rel="noopener">OkHttp：Java 平台上的新一代 HTTP 客户端 - IBM DeveloperWorks</a></li>
+<li><a href="http://blog.csdn.net/carson_ho/article/details/52171976" target="_blank" rel="noopener">Android主流网络请求开源库的对比（Android-Async-Http、Volley、OkHttp、Retrofit）</a></li>
+<li><a href="https://www.jianshu.com/p/77d418e7b5d6" target="_blank" rel="noopener">OkHttp, Retrofit, Volley应该选择哪一个？</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/源码分析/">源码分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../22/用Java实现断点续传 (HTTP)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">用Java实现断点续传 (HTTP)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpClient-vs-HttpURLConnection"><span class="nav-number">1.</span> <span class="nav-text">HttpClient vs HttpURLConnection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二者对比"><span class="nav-number">1.1.</span> <span class="nav-text">二者对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二者与网络请求库之间的关系"><span class="nav-number">1.2.</span> <span class="nav-text">二者与网络请求库之间的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp简介"><span class="nav-number">2.</span> <span class="nav-text">OkHttp简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用"><span class="nav-number">3.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步Get请求"><span class="nav-number">3.1.</span> <span class="nav-text">同步Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步Get请求"><span class="nav-number">3.2.</span> <span class="nav-text">异步Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post请求"><span class="nav-number">3.3.</span> <span class="nav-text">Post请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">4.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OkHttpClient"><span class="nav-number">4.1.</span> <span class="nav-text">OkHttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RealCall"><span class="nav-number">4.2.</span> <span class="nav-text">RealCall</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拦截器"><span class="nav-number">5.</span> <span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-连接"><span class="nav-number">7.</span> <span class="nav-text">HTTP 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 iTimeTraveler All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../funnysite" class="mobile-nav-link">酷站</a>
+  
+    <a href="../../../../collection" class="mobile-nav-link">收藏</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+    <a href="../../../../mybooks" class="mobile-nav-link">🎁</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+
+
+
+
+  <script src="../../../../js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            iTimeTraveler
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 Mr.Seven All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
