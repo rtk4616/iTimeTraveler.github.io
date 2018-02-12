@@ -350,6 +350,63 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Java】生产者消费者模式的实现"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2017/11/10/【Java】生产者消费者模式的实现/">【Java】生产者消费者模式的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2017/11/10/【Java】生产者消费者模式的实现/" class="article-date">
+	  <time datetime="2017-11-10T14:20:55.000Z" itemprop="datePublished">2017-11-10</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Java/">Java</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。</p>
+<p>阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。</p>
+<h3 id="wait-notify方法"><a href="#wait-notify方法" class="headerlink" title="wait/notify方法"></a>wait/notify方法</h3><p>首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章<a href="https://www.zhihu.com/question/23328075" target="_blank" rel="noopener">java sleep和wait的区别的疑惑?</a></p>
+<ol>
+<li><code>sleep()</code>是Thread类的方法；而<code>wait()</code>，<code>notify()</code>，<code>notifyAll()</code>是Object类中定义的方法；尽管这两个方法都会影响线程的执行行为，但是本质上是有区别的。</li>
+<li><code>Thread.sleep()</code>不会导致锁行为的改变，如果当前线程是拥有锁的，那么<code>Thread.sleep()</code>不会让线程释放锁。如果能够帮助你记忆的话，可以简单认为和锁相关的方法都定义在Object类中，因此调用<code>Thread.sleep()</code>是不会影响锁的相关行为。</li>
+<li><code>Thread.sleep</code>和<code>Object.wait</code>都会暂停当前的线程，对于CPU资源来说，不管是哪种方式暂停的线程，都表示它暂时不再需要CPU的执行时间。OS会将执行时间分配给其它线程。区别是调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。</li>
+</ol>
+        <!-- 前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。
+阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。
+wait/notify方法首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇......  -->
+        <p class="article-more-link">
+          <a href="../../2017/11/10/【Java】生产者消费者模式的实现/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】Dialog异常CalledFromWrongThreadException深入分析"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -888,68 +945,6 @@ IntentService：一个内部采用HandlerThread来执行任务的Service服务�
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Algorithm/">Algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】源码分析 - Handler消息机制再梳理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2017/08/03/【Android】源码分析 - Handler消息机制再梳理/">【Android】源码分析 - Handler消息机制再梳理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2017/08/03/【Android】源码分析 - Handler消息机制再梳理/" class="article-date">
-	  <time datetime="2017-08-03T08:03:00.000Z" itemprop="datePublished">2017-08-03</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 Android 消息机制无非就是：</p>
-<ol>
-<li>Handler 给 MessageQueue 添加消息</li>
-<li>然后 Looper 无限循环读取消息</li>
-<li>再调用 Handler 处理消息</li>
-</ol>
-<p>但是只知道整体流程，细节还不是特别透彻。最近不甚忙碌，回头看到这块又有些许收获，我们来记录一下吧。</p>
-<p>在整个Android的源码世界里，有两大利剑，其一是<strong>Binder IPC机制</strong>，另一个便是<strong>消息机制</strong>。Android有大量的消息驱动方式来进行交互，比如Android的四剑客<code>Activity</code>, <code>Service</code>, <code>Broadcast</code>, <code>ContentProvider</code>的启动过程的交互，都离不开消息机制，Android某种意义上也可以说成是一个以消息驱动的系统。而Android 消息机制主要涉及 4 个类：</p>
-<ul>
-<li>Handler</li>
-<li>Message</li>
-<li>MessageQueue</li>
-<li>Looper</li>
-</ul>
-<p>我们依次结合源码分析一下。</p>
-        <!-- 前言多线程的消息传递处理，从初学Android时的Handler，懵懵懂懂地照猫画虎，到后来一头雾水的疑惑它为什么这么复杂，再到熟悉之后的叹为观止，一步步地都是自己踩过的足迹，都是成长啊哈哈哈。虽然离出神入化的境界还远十万八千里呢，但Android中的Handler多线程消息传递机制，的确是研发技术学习中不可多得的一个宝藏。本来我以为自己之前的学习以及比较了解 Handler，在印象中 An......  -->
-        <p class="article-more-link">
-          <a href="../../2017/08/03/【Android】源码分析 - Handler消息机制再梳理/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/源码分析/">源码分析</a></li></ul>
 
     </footer>
   </div>

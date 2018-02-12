@@ -350,6 +350,64 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Android 】TextView 局部文字变色"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2016/09/07/【Android 】TextView 局部文字变色/">【Android 】TextView 局部文字变色</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2016/09/07/【Android 】TextView 局部文字变色/" class="article-date">
+	  <time datetime="2016-09-07T07:02:45.000Z" itemprop="datePublished">2016-09-07</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”</p>
+</blockquote>
+<h3 id="一、需求效果"><a href="#一、需求效果" class="headerlink" title="一、需求效果"></a><strong>一、需求效果</strong></h3><p><img src="http://img.blog.csdn.net/20161009150647271" alt="比如这个"></p>
+<h3 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a><strong>二、解决方案</strong></h3><p>针对这类问题，Android提供了 <a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html" target="_blank" rel="noopener"><strong><code>SpannableStringBuilder</code></strong></a>，方便我们自定义富文本的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">textView = (TextView) findViewById(R.id.textview);</span><br><span class="line">SpannableStringBuilder builder = <span class="keyword">new</span> SpannableStringBuilder(textView.getText().toString());</span><br><span class="line"></span><br><span class="line"><span class="comment">//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色</span></span><br><span class="line">ForegroundColorSpan redSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.RED);</span><br><span class="line">ForegroundColorSpan whiteSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.WHITE);</span><br><span class="line">ForegroundColorSpan blueSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.BLUE);</span><br><span class="line">ForegroundColorSpan greenSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.GREEN);</span><br><span class="line">ForegroundColorSpan yellowSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.YELLOW);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">builder.setSpan(redSpan, <span class="number">0</span>, <span class="number">1</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">builder.setSpan(whiteSpan, <span class="number">1</span>, <span class="number">2</span>, Spannable.SPAN_INCLUSIVE_INCLUSIVE);</span><br><span class="line">builder.setSpan(blueSpan, <span class="number">2</span>, <span class="number">3</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">builder.setSpan(greenSpan, <span class="number">3</span>, <span class="number">4</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">builder.setSpan(yellowSpan, <span class="number">4</span>,<span class="number">5</span>, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line"></span><br><span class="line">textView.setText(builder);</span><br></pre></td></tr></table></figure>
+        <!-- 
+TextView 对于富文本效果的实现支持不支持呢？比如“局部文字颜色的变动”，“局部字体的变动”
+
+一、需求效果
+二、解决方案针对这类问题，Android提供了 SpannableStringBuilder，方便我们自定义富文本的实现。
+123456789101112131415161718textView = (TextView) findViewById(R.id.textview)......  -->
+        <p class="article-more-link">
+          <a href="../../2016/09/07/【Android 】TextView 局部文字变色/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】获取View的截图"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -897,63 +955,6 @@ Computation ......  -->
 二、Monkey命令1）. 标准的monkey 命令[adb shell] monkey [options] &lt; eventc......  -->
         <p class="article-more-link">
           <a href="../../2016/07/19/【Android】Monkey压力测试与停止/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/">【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" class="article-date">
-	  <time datetime="2016-07-14T08:27:00.000Z" itemprop="datePublished">2016-07-14</time>
-	</a>
-
-      
-    <a class="article-category-link" href="../../categories/Android/">Android</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>英文原文： <a href="http://chintanrathod.com/auto-restart-application-after-crash-forceclose-in-android/" target="_blank" rel="noopener"><strong>Auto Restart application after Crash/Force Close in Android.</strong></a></p>
-<p>手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？</p>
-</blockquote>
-<p>这篇教程我们将学到如何自动处理Exception，并且了解在App Crash以后如何自动重启。</p>
-<p>其实方法很简单，这里我们需要用到 <strong>Thread.setDefaultUncaughtExceptionHandler()</strong>，当应用崩溃的时候代码就会自动调用 <strong>uncaughtException()</strong> 这个方法。</p>
-        <!-- 
-英文原文： Auto Restart application after Crash/Force Close in Android.
-手机上的Android应用，经常会出现“Force Close”的错误，这种情况一般是因为代码中没有正确获取到Exceptions。那么如果想让App在出现这种错误崩溃Crash以后自动重启，我们该怎么办呢？
-
-这篇教程我们将学到如何自动处理Exceptio......  -->
-        <p class="article-more-link">
-          <a href="../../2016/07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/#more">阅读全文</a>
         </p>
       
     </div>

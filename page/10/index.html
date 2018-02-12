@@ -350,6 +350,64 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Android】Activity与Fragment的生命周期的关系"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/">【Android】Activity与Fragment的生命周期的关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/" class="article-date">
+	  <time datetime="2015-11-25T06:31:55.000Z" itemprop="datePublished">2015-11-25</time>
+	</a>
+
+      
+    <a class="article-category-link" href="../../categories/Android/">Android</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、问题描述："><a href="#一、问题描述：" class="headerlink" title="一、问题描述："></a><strong>一、问题描述：</strong></h2><blockquote>
+<p>假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20151125142250638" alt=""></p>
+<hr>
+        <!-- 一、问题描述：
+假设有两个Activity（1和2）,每个Activity拥有一个Fragment，并分别有一个Button，点击Button1可以start Activity2，然后点击Button2可以finish掉自己（即Activity2）,然后返回到Activity1。根据这个简单模型描述一下Activity和Fragment的生命周期之间的依赖关系？
+
+
+
+
+二、生命周期知识Ac......  -->
+        <p class="article-more-link">
+          <a href="../../2015/11/25/【Android】Activity与Fragment的生命周期的关系/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】Fragment的生命周期详解"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -870,54 +928,6 @@ Android中保存图片的方法可能有如下两种：
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Android/">Android</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-如何删除多行首字母，Sublime Text多行编辑运用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2014/05/15/如何删除多行首字母，Sublime Text多行编辑运用/">如何删除多行首字母，Sublime Text多行编辑运用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2014/05/15/如何删除多行首字母，Sublime Text多行编辑运用/" class="article-date">
-	  <time datetime="2014-05-15T03:55:00.000Z" itemprop="datePublished">2014-05-15</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、问题描述："><a href="#一、问题描述：" class="headerlink" title="一、问题描述："></a><strong>一、问题描述：</strong></h4><p>问答区有个问题是这样问的：<a href="http://ask.csdn.net/questions/29687" target="_blank" rel="noopener"><strong>如何在eclipse中删除多行首字母？</strong></a></p>
-<p>题主的问题是代码中每行都有序号，这些序号一行一行地删太麻烦，如何进行批量删除？我们在进行代码重用的时候时常会出现行号同时被复制的情况，比如下面的这点代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">155</span>.     <span class="meta">@Override</span>  </span><br><span class="line"><span class="number">156</span>.     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span>   </span></span><br><span class="line"><span class="function">157.     </span>&#123;   </span><br><span class="line"><span class="number">158</span>.         Log.d(<span class="string">"onKeyDown:"</span>, <span class="string">" keyCode="</span> + keyCode + <span class="string">" KeyEvent="</span> + event);   </span><br><span class="line"><span class="number">159</span>.         <span class="keyword">switch</span> (keyCode)   </span><br><span class="line"><span class="number">160</span>.         &#123;   </span><br><span class="line"><span class="number">161</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_DPAD_UP:   </span><br><span class="line"><span class="number">162</span>.   </span><br><span class="line"><span class="number">163</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">164</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_DPAD_DOWN:   </span><br><span class="line"><span class="number">165</span>.   </span><br><span class="line"><span class="number">166</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">167</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_DPAD_LEFT:   </span><br><span class="line"><span class="number">168</span>.                 <span class="comment">//右左按键可以控制第一进度的增减   </span></span><br><span class="line"><span class="number">169</span>.                 pb.setProgress( pb.getProgress()-<span class="number">5</span> );   </span><br><span class="line"><span class="number">170</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">171</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_DPAD_RIGHT:   </span><br><span class="line"><span class="number">172</span>.                 pb.setProgress( pb.getProgress()+<span class="number">5</span> );   </span><br><span class="line"><span class="number">173</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">174</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_DPAD_CENTER:   </span><br><span class="line"><span class="number">175</span>.   </span><br><span class="line"><span class="number">176</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">177</span>.             <span class="keyword">case</span> KeyEvent.KEYCODE_0:   </span><br><span class="line"><span class="number">178</span>.             <span class="keyword">break</span>;   </span><br><span class="line"><span class="number">179</span>.         &#125;   </span><br><span class="line"><span class="number">180</span>.         <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);   </span><br><span class="line"><span class="number">181</span>.     &#125;   </span><br><span class="line"><span class="number">182</span>. &#125;</span><br></pre></td></tr></table></figure>
-        <!-- 一、问题描述：问答区有个问题是这样问的：如何在eclipse中删除多行首字母？
-题主的问题是代码中每行都有序号，这些序号一行一行地删太麻烦，如何进行批量删除？我们在进行代码重用的时候时常会出现行号同时被复制的情况，比如下面的这点代码：
-12345678910111213141516171819202122232425262728155.     @Override  156.     pub......  -->
-        <p class="article-more-link">
-          <a href="../../2014/05/15/如何删除多行首字母，Sublime Text多行编辑运用/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
     </footer>
   </div>
   

@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【svn】使用patch命令保存更改 | iTimeTraveler</title>
+  <title>iTimeTraveler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="SVN" />
   
   
   
-  
-  <meta name="description" content="使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！">
-<meta name="keywords" content="SVN">
+  <meta name="description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【SVN】使用patch命令保存更改">
-<meta property="og:url" content="http://github.com/2016/06/12/【SVN】使用patch命令保存更改/index.html">
+<meta property="og:title" content="iTimeTraveler">
+<meta property="og:url" content="http://github.com/2018/02/12/【Java】源码分析 - ThreadPoolExecutor线程池实现原理/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
-<meta property="og:description" content="使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！">
+<meta property="og:description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2016-10-18T04:57:14.094Z">
+<meta property="og:updated_time" content="2018-02-12T04:44:37.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【SVN】使用patch命令保存更改">
-<meta name="twitter:description" content="使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！">
+<meta name="twitter:title" content="iTimeTraveler">
+<meta name="twitter:description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
   
     <link rel="alternate" href="/atom.xml" title="iTimeTraveler" type="application/atom+xml">
   
@@ -168,29 +165,17 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【SVN】使用patch命令保存更改" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-【Java】源码分析 - ThreadPoolExecutor线程池实现原理" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" class="article-title" itemprop="name">
-      【SVN】使用patch命令保存更改
-    </h1>
-  
-
-      </header>
     
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2016-06-12T03:06:00.000Z" itemprop="datePublished">2016-06-12</time>
+	  <time datetime="2018-02-12T04:44:36.577Z" itemprop="datePublished">2018-02-12</time>
 	</a>
 
       
-    <a class="article-category-link" href="../../../../categories/SVN/">SVN</a>
-
       
 	<a class="article-views">
 	<span id="busuanzi_container_page_pv">
@@ -201,13 +186,19 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>使用svn管理工程代码时，有些时候的更改尚未整理好，需要暂时搁置，转而进行下一个任务，此时就需要将当前的更改（diff）暂时保存下来，忙完其他的任务之后再继续进行。但是如果不进行commit，怎么保存当前的更改呢？答案是使用 patch 命令！</p>
-</blockquote>
-<h4 id="一、生成patch文件"><a href="#一、生成patch文件" class="headerlink" title="一、生成patch文件"></a><strong>一、生成patch文件</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svn diff &gt; patchFile 			// 整个工程的变动生成patch</span><br><span class="line">svn diff FILE_NAME &gt; patchFile 	// 某个文件单独变动的patch</span><br></pre></td></tr></table></figure>
-<h4 id="二、svn回滚"><a href="#二、svn回滚" class="headerlink" title="二、svn回滚"></a><strong>二、svn回滚</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">svn revert FILE 				// 单个文件回滚</span><br><span class="line">svn revert DIR --depth=infinity // 整个目录进行递归回滚</span><br><span class="line">svn revert . --depth=infinity 	// 当前目录进行递归回滚</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="三、打patch"><a href="#三、打patch" class="headerlink" title="三、打patch"></a><strong>三、打patch</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">patch -p0 &lt; test.patch 	// -p0 选项要从当前目录查找目的文件（夹）</span><br><span class="line">patch -p1 &lt; test.patch 	// -p1 选项要从当前目录查找目的文件，不包含patch中的最上级目录（夹）</span><br></pre></td></tr></table></figure>
+        <p>在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程）</p>
+<p>如果设置了keepAliveTime&gt;0，那非核心线程会在空闲状态下等待keepAliveTime之后销毁，直到最终的线程数量等于corePoolSize</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://liuzho.github.io/2017/04/17/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E6%88%96%E8%AE%B8%E5%B0%B1%E5%A4%9F%E4%BA%86/" target="_blank" rel="noopener">线程池，这一篇或许就够了</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/l-threadPool/" target="_blank" rel="noopener">线程池的介绍及简单实现</a></li>
+<li><a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></li>
+<li><a href="http://blog.csdn.net/fuyuwei2015/article/details/72758179" target="_blank" rel="noopener">Java线程池(ThreadPoolExecutor)原理分析与使用</a></li>
+<li><a href="https://www.jianshu.com/p/9d03bf5ed5cd" target="_blank" rel="noopener">Java线程池原理分析ThreadPoolExecutor篇</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/java-concurrency/executor.html" target="_blank" rel="noopener">并发新特性—Executor 框架与线程池</a></li>
+<li><a href="http://www.importnew.com/19011.html" target="_blank" rel="noopener">深入理解Java之线程池</a></li>
+<li><a href="https://www.zhihu.com/question/38128980" target="_blank" rel="noopener">java线程池大小为何会大多被设置成CPU核心数+1？</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -252,27 +243,16 @@ var a = new Donate({
 
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/SVN/">SVN</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="../../../07/14/【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          【Android】App应用崩溃(Crash-Force Close)之后如何让它自动重启？
-        
-      </div>
-    </a>
   
-  
-    <a href="../../02/【Android】技术调研：用代码模拟屏幕点击、触摸事件/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../../01/25/【Android】OkHttp源码分析/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">【Android】技术调研：用代码模拟屏幕点击、触摸事件</div>
+      <div class="article-nav-title">【Android】OkHttp源码分析</div>
     </a>
   
 </nav>
@@ -286,7 +266,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、生成patch文件"><span class="nav-number">1.</span> <span class="nav-text">一、生成patch文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、svn回滚"><span class="nav-number">2.</span> <span class="nav-text">二、svn回滚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、打patch"><span class="nav-number">3.</span> <span class="nav-text">三、打patch</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li></ol>
     
     </div>
   </aside>

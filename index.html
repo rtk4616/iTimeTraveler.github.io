@@ -350,6 +350,48 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-【Java】源码分析 - ThreadPoolExecutor线程池实现原理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+    <div class="article-meta">
+      
+	<a href="2018/02/12/【Java】源码分析 - ThreadPoolExecutor线程池实现原理/" class="article-date">
+	  <time datetime="2018-02-12T04:44:36.577Z" itemprop="datePublished">2018-02-12</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程）</p>
+<p>如果设置了keepAliveTime&gt;0，那非核心线程会在空闲状态下等待keepAliveTime之后销毁，直到最终的线程数量等于corePoolSize</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://liuzho.github.io/2017/04/17/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E6%88%96%E8%AE%B8%E5%B0%B1%E5%A4%9F%E4%BA%86/" target="_blank" rel="noopener">线程池，这一篇或许就够了</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/l-threadPool/" target="_blank" rel="noopener">线程池的介绍及简单实现</a></li>
+<li><a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></li>
+<li><a href="http://blog.csdn.net/fuyuwei2015/article/details/72758179" target="_blank" rel="noopener">Java线程池(ThreadPoolExecutor)原理分析与使用</a></li>
+<li><a href="https://www.jianshu.com/p/9d03bf5ed5cd" target="_blank" rel="noopener">Java线程池原理分析ThreadPoolExecutor篇</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/java-concurrency/executor.html" target="_blank" rel="noopener">并发新特性—Executor 框架与线程池</a></li>
+<li><a href="http://www.importnew.com/19011.html" target="_blank" rel="noopener">深入理解Java之线程池</a></li>
+<li><a href="https://www.zhihu.com/question/38128980" target="_blank" rel="noopener">java线程池大小为何会大多被设置成CPU核心数+1？</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-【Android】OkHttp源码分析"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -874,63 +916,6 @@ Big-Endian和Little-Endian的定义如下：
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-【Java】生产者消费者模式的实现"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="2017/11/10/【Java】生产者消费者模式的实现/">【Java】生产者消费者模式的实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="2017/11/10/【Java】生产者消费者模式的实现/" class="article-date">
-	  <time datetime="2017-11-10T14:20:55.000Z" itemprop="datePublished">2017-11-10</time>
-	</a>
-
-      
-    <a class="article-category-link" href="categories/Java/">Java</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。</p>
-<p>阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。</p>
-<h3 id="wait-notify方法"><a href="#wait-notify方法" class="headerlink" title="wait/notify方法"></a>wait/notify方法</h3><p>首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇文章<a href="https://www.zhihu.com/question/23328075" target="_blank" rel="noopener">java sleep和wait的区别的疑惑?</a></p>
-<ol>
-<li><code>sleep()</code>是Thread类的方法；而<code>wait()</code>，<code>notify()</code>，<code>notifyAll()</code>是Object类中定义的方法；尽管这两个方法都会影响线程的执行行为，但是本质上是有区别的。</li>
-<li><code>Thread.sleep()</code>不会导致锁行为的改变，如果当前线程是拥有锁的，那么<code>Thread.sleep()</code>不会让线程释放锁。如果能够帮助你记忆的话，可以简单认为和锁相关的方法都定义在Object类中，因此调用<code>Thread.sleep()</code>是不会影响锁的相关行为。</li>
-<li><code>Thread.sleep</code>和<code>Object.wait</code>都会暂停当前的线程，对于CPU资源来说，不管是哪种方式暂停的线程，都表示它暂时不再需要CPU的执行时间。OS会将执行时间分配给其它线程。区别是调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。</li>
-</ol>
-        <!-- 前言生产者消费者问题是线程模型中的经典问题：生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。
-阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。这个阻塞队列就是用来给生产者和消费者解耦的。
-wait/notify方法首先，我们搞清楚Thread.sleep()方法和Object.wait()、Object.notify()方法的区别。根据这篇......  -->
-        <p class="article-more-link">
-          <a href="2017/11/10/【Java】生产者消费者模式的实现/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Java/">Java</a></li></ul>
 
     </footer>
   </div>
