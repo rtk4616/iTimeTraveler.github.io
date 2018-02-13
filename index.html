@@ -354,36 +354,60 @@
   <div id="articleInner" class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/02/13/【Java】线程池ThreadPoolExecutor实现原理/">【Java】线程池ThreadPoolExecutor实现原理</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	<a href="2018/02/13/【Java】线程池ThreadPoolExecutor实现原理/" class="article-date">
-	  <time datetime="2018-02-13T05:36:12.627Z" itemprop="datePublished">2018-02-13</time>
+	  <time datetime="2018-02-13T14:20:55.000Z" itemprop="datePublished">2018-02-13</time>
 	</a>
 
       
+    <a class="article-category-link" href="categories/Android/">Android</a><a class="article-category-link" href="categories/Android/源码分析/">源码分析</a>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程）</p>
-<p>如果设置了keepAliveTime&gt;0，那非核心线程会在空闲状态下等待keepAliveTime之后销毁，直到最终的线程数量等于corePoolSize</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://liuzho.github.io/2017/04/17/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E6%88%96%E8%AE%B8%E5%B0%B1%E5%A4%9F%E4%BA%86/" target="_blank" rel="noopener">线程池，这一篇或许就够了</a></li>
-<li><a href="https://www.ibm.com/developerworks/cn/java/l-threadPool/" target="_blank" rel="noopener">线程池的介绍及简单实现</a></li>
-<li><a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></li>
-<li><a href="http://blog.csdn.net/fuyuwei2015/article/details/72758179" target="_blank" rel="noopener">Java线程池(ThreadPoolExecutor)原理分析与使用</a></li>
-<li><a href="https://www.jianshu.com/p/9d03bf5ed5cd" target="_blank" rel="noopener">Java线程池原理分析ThreadPoolExecutor篇</a></li>
-<li><a href="http://wiki.jikexueyuan.com/project/java-concurrency/executor.html" target="_blank" rel="noopener">并发新特性—Executor 框架与线程池</a></li>
-<li><a href="http://www.importnew.com/19011.html" target="_blank" rel="noopener">深入理解Java之线程池</a></li>
-<li><a href="https://www.zhihu.com/question/38128980" target="_blank" rel="noopener">java线程池大小为何会大多被设置成CPU核心数+1？</a></li>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>线程池：可以理解为缓冲区，由于频繁的创建销毁线程会带来一定的成本，可以预先创建但不立即销毁，以共享方式为别人提供服务，一来可以提供效率，再者可以控制线程无线扩张。合理利用线程池能够带来三个好处：</p>
+<ol>
+<li>降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
+<li>提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
+<li>提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
+</ol>
+<p>但是要做到合理的利用线程池，必须对其原理了如指掌。</p>
+<h2 id="线程的几种状态"><a href="#线程的几种状态" class="headerlink" title="线程的几种状态"></a><strong>线程的几种状态</strong></h2><p>线程在一定条件下，状态会发生变化。根据<a href="https://my.oschina.net/cctester/blog/991744" target="_blank" rel="noopener">线程的几种状态</a> 这篇文章，线程一共有以下几种状态：</p>
+<p><strong>1、新建状态(New)</strong>：新创建了一个线程对象。<br><strong>2、就绪状态(Runnable)</strong>：线程对象创建后，其他线程调用了该对象的<code>start()</code>方法。该状态的线程位于“可运行线程池”中，变得可运行，只等待获取CPU的使用权，即<strong>在就绪状态的线程除CPU之外，其它的运行所需资源都已全部获得。</strong><br><strong>3、运行状态(Running)</strong>：就绪状态的线程获取了CPU，执行程序代码。<br><strong>4、阻塞状态(Blocked)</strong>：阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况分三种：</p>
+<ul>
+<li>①. 等待阻塞：运行的线程执行<code>wait()</code>方法，该线程会释放占用的所有资源，JVM会把该线程放入“等待池”中。进入这个状态后，是不能自动唤醒的必须依靠其他线程调用<code>notify()</code>或<code>notifyAll()</code>方法才能被唤醒。</li>
+<li>②. 同步阻塞：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则JVM会把该线程放入“锁池”中。</li>
+<li>③. 其他阻塞：运行的线程执行<code>sleep()</code>或<code>join()</code>方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当<code>sleep()</code>状态超时、<code>join()</code>等待线程终止或者超时，或者I/O处理完毕时，线程重新转入就绪状态。</li>
 </ul>
+<p><strong>5、死亡状态(Dead)</strong>：线程执行完了或者因异常退出了<code>run()</code>方法，该线程结束生命周期。</p>
+        <!-- 引言线程池：可以理解为缓冲区，由于频繁的创建销毁线程会带来一定的成本，可以预先创建但不立即销毁，以共享方式为别人提供服务，一来可以提供效率，再者可以控制线程无线扩张。合理利用线程池能够带来三个好处：
 
+降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。
+提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。
+提高线程的可管理性。线程是稀缺资源，如果无限制的创建......  -->
+        <p class="article-more-link">
+          <a href="2018/02/13/【Java】线程池ThreadPoolExecutor实现原理/#more">阅读全文</a>
+        </p>
       
     </div>
     <footer class="article-footer">
       
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/源码分析/">源码分析</a></li></ul>
+
     </footer>
   </div>
   
