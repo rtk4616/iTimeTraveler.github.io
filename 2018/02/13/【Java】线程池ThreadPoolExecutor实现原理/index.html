@@ -12,11 +12,11 @@
   <meta name="description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iTimeTraveler">
-<meta property="og:url" content="http://github.com/2018/02/12/【Java】源码分析 - ThreadPoolExecutor线程池实现原理/index.html">
+<meta property="og:url" content="http://github.com/2018/02/13/【Java】线程池ThreadPoolExecutor实现原理/index.html">
 <meta property="og:site_name" content="iTimeTraveler">
 <meta property="og:description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-12T04:44:37.058Z">
+<meta property="og:updated_time" content="2018-02-13T05:36:22.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTimeTraveler">
 <meta name="twitter:description" content="在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程） 如果设置了keepAliveTime&amp;gt;0，那非核心线程会在空闲状态下等待keepAliv">
@@ -165,14 +165,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-【Java】源码分析 - ThreadPoolExecutor线程池实现原理" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-【Java】线程池ThreadPoolExecutor实现原理" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2018-02-12T04:44:36.577Z" itemprop="datePublished">2018-02-12</time>
+	  <time datetime="2018-02-13T05:36:12.627Z" itemprop="datePublished">2018-02-13</time>
 	</a>
 
       

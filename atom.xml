@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/"/>
-  <updated>2018-02-12T04:44:37.058Z</updated>
+  <updated>2018-02-13T05:36:22.856Z</updated>
   <id>http://github.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title></title>
-    <link href="http://github.com/2018/02/12/%E3%80%90Java%E3%80%91%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20-%20ThreadPoolExecutor%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
-    <id>http://github.com/2018/02/12/【Java】源码分析 - ThreadPoolExecutor线程池实现原理/</id>
-    <published>2018-02-12T04:44:36.577Z</published>
-    <updated>2018-02-12T04:44:37.058Z</updated>
+    <link href="http://github.com/2018/02/13/%E3%80%90Java%E3%80%91%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://github.com/2018/02/13/【Java】线程池ThreadPoolExecutor实现原理/</id>
+    <published>2018-02-13T05:36:12.627Z</published>
+    <updated>2018-02-13T05:36:22.856Z</updated>
     
     <content type="html"><![CDATA[<p>在runWorker中，每一个Worker getTask成功之后都要获取Worker的锁之后运行，也就是说运行中的Worker不会中断。因为核心线程一般在空闲的时候会一直阻塞在获取Task上，也只有中断才可能导致其退出。这些阻塞着的Worker就是空闲的线程（当然，非核心线程，并且阻塞的也是空闲线程）</p><p>如果设置了keepAliveTime&gt;0，那非核心线程会在空闲状态下等待keepAliveTime之后销毁，直到最终的线程数量等于corePoolSize</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://liuzho.github.io/2017/04/17/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E6%88%96%E8%AE%B8%E5%B0%B1%E5%A4%9F%E4%BA%86/" target="_blank" rel="noopener">线程池，这一篇或许就够了</a></li><li><a href="https://www.ibm.com/developerworks/cn/java/l-threadPool/" target="_blank" rel="noopener">线程池的介绍及简单实现</a></li><li><a href="https://www.jianshu.com/p/87bff5cc8d8c" target="_blank" rel="noopener">深入分析java线程池的实现原理</a></li><li><a href="http://blog.csdn.net/fuyuwei2015/article/details/72758179" target="_blank" rel="noopener">Java线程池(ThreadPoolExecutor)原理分析与使用</a></li><li><a href="https://www.jianshu.com/p/9d03bf5ed5cd" target="_blank" rel="noopener">Java线程池原理分析ThreadPoolExecutor篇</a></li><li><a href="http://wiki.jikexueyuan.com/project/java-concurrency/executor.html" target="_blank" rel="noopener">并发新特性—Executor 框架与线程池</a></li><li><a href="http://www.importnew.com/19011.html" target="_blank" rel="noopener">深入理解Java之线程池</a></li><li><a href="https://www.zhihu.com/question/38128980" target="_blank" rel="noopener">java线程池大小为何会大多被设置成CPU核心数+1？</a></li></ul>]]></content>
     
