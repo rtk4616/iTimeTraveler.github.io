@@ -20,7 +20,7 @@
 <meta property="og:description" content="引言线程池：可以理解为缓冲区，由于频繁的创建销毁线程会带来一定的成本，可以预先创建但不立即销毁，以共享方式为别人提供服务，一来可以提供效率，再者可以控制线程无线扩张。合理利用线程池能够带来三个好处：  降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。 提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。 提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://github.com/gallery/java-common/20150716165059215.jpg">
-<meta property="og:updated_time" content="2018-02-13T09:30:36.108Z">
+<meta property="og:updated_time" content="2018-02-13T09:36:40.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Java】线程池ThreadPoolExecutor实现原理">
 <meta name="twitter:description" content="引言线程池：可以理解为缓冲区，由于频繁的创建销毁线程会带来一定的成本，可以预先创建但不立即销毁，以共享方式为别人提供服务，一来可以提供效率，再者可以控制线程无线扩张。合理利用线程池能够带来三个好处：  降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。 提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。 提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅">
@@ -176,7 +176,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="../../../../gallery/java-common/20150716165059215.jpg" rel="gallery_cjdlg69dl00972wmyuepmktbh">
+      <a class="article-gallery-img fancybox" href="../../../../gallery/java-common/20150716165059215.jpg" rel="gallery_cjdxu8akg0082romyo45r0bcp">
         <img src="../../../../gallery/java-common/20150716165059215.jpg" itemprop="image">
       </a>
     
@@ -220,7 +220,7 @@
 <li>提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
 </ol>
 <p>但是要做到合理的利用线程池，必须对其原理了如指掌。</p>
-<h2 id="线程的几种状态"><a href="#线程的几种状态" class="headerlink" title="线程的几种状态"></a><strong>线程的几种状态</strong></h2><p>线程在一定条件下，状态会发生变化。根据<a href="https://my.oschina.net/cctester/blog/991744" target="_blank" rel="noopener">线程的几种状态</a> 这篇文章，线程一共有以下几种状态：</p>
+<h2 id="线程的几种状态"><a href="#线程的几种状态" class="headerlink" title="线程的几种状态"></a><strong>线程的几种状态</strong></h2><p>线程在一定条件下，状态会发生变化。根据<a href="https://my.oschina.net/cctester/blog/991744" target="_blank" rel="noopener">线程的几种状态</a>这篇文章，线程一共有以下几种状态：</p>
 <p><strong>1、新建状态(New)</strong>：新创建了一个线程对象。<br><strong>2、就绪状态(Runnable)</strong>：线程对象创建后，其他线程调用了该对象的<code>start()</code>方法。该状态的线程位于“可运行线程池”中，变得可运行，只等待获取CPU的使用权，即<strong>在就绪状态的线程除CPU之外，其它的运行所需资源都已全部获得。</strong><br><strong>3、运行状态(Running)</strong>：就绪状态的线程获取了CPU，执行程序代码。<br><strong>4、阻塞状态(Blocked)</strong>：阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况分三种：</p>
 <ul>
 <li>①. 等待阻塞：运行的线程执行<code>wait()</code>方法，该线程会释放占用的所有资源，JVM会把该线程放入“等待池”中。进入这个状态后，是不能自动唤醒的必须依靠其他线程调用<code>notify()</code>或<code>notifyAll()</code>方法才能被唤醒。</li>
